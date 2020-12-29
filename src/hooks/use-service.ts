@@ -1,27 +1,24 @@
-// import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import axios from 'axios';
+import { Request } from 'helper';
 
-// const useService = ({ config }) => {
-//   const client = useQueryClient();
-//   // const {data}=useQuery('test',async()=>await axios.get('http:ssdsd/sds'))
-//   return {
-//     query: ({ url, onSuccess, onError }) => {
-//       const queryKey = "url";
-//       const fetcher = async () => await axios.get(url);
-//       return useQuery(queryKey, fetcher, { onError, onSuccess });
-//     },
-//     mutation: ({ url }) => {
-//         const mutatateFn = async (model) => await axios.post("", {
+const useService = ({ config }) => {
+  const client = useQueryClient();
 
-//       });
-//       return useMutation(mutatateFn, {
-//         onMutate: () => {
-//           client.setQueryData(queryKey),
-//         },
-//         onSuccess: () => {},
-//         onError: () => {},
-//         onSettled: () => {},
-//       });
-//     },
-//   };
-// };
-// export { useService };
+  return {
+    query: ({ url, onSuccess, onError }) => {
+      const queryKey = 'url';
+      const fetcher = async () => await Request.get('/add/totdo');
+      return useQuery(queryKey, fetcher, { onError, onSuccess });
+    },
+    mutation: ({ url }) => {
+      const mutatateFn = async (model) => await axios.post('', {});
+      return useMutation(mutatateFn, {
+        onSuccess: () => {},
+        onError: () => {},
+        onSettled: () => {},
+      });
+    },
+  };
+};
+export { useService };

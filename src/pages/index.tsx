@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function Home() {
   return (
@@ -7,7 +7,9 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      Hello World
+      <main>
+        <span className="text-test">sdsd</span>
+      </main>
     </div>
-  )
+  );
 }
