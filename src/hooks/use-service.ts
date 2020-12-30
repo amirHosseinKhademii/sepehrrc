@@ -1,3 +1,5 @@
+/* eslint-disable no-return-await */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
 import { Request } from 'helper';
