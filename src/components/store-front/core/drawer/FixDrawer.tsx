@@ -1,10 +1,18 @@
 import { ButtonIcon } from 'components';
 import { ICEditAlt, ICPlus, ICSetting, ICMenu } from 'icons';
+import { useContext } from 'react';
+import { uiTypes, UIContext } from 'providers/ui-provider';
 
-export const BaseDrawer = () => {
+export const FixDrawer = () => {
+  const { dispatch } = useContext(UIContext);
+
+  const toggleMenu = () => {
+    dispatch({ type: uiTypes.DRAWER_MENU });
+  };
+
   return (
-    <div className="w-68px h-full absolute right-0 top-0 bg-clr_gray_shade-800  flex flex-col pt-30px pb-20px px-10px items-center">
-      <ButtonIcon className="flex flex-col items-center">
+    <div className="w-68px h-full absolute right-0 top-0 bg-clr_gray_shade-800 border-l border-gray-500  flex flex-col pt-30px pb-20px px-10px items-center">
+      <ButtonIcon className="flex flex-col items-center" onClick={toggleMenu}>
         <ICMenu className="mb-45px" />
       </ButtonIcon>
       <ButtonIcon className="flex flex-col items-center">

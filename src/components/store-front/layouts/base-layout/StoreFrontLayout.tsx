@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { BaseDrawer } from 'components';
+import { Drawer } from 'components';
 
 interface ILayout {
   children?: any;
@@ -7,7 +7,7 @@ interface ILayout {
 export const StoreFrontLayout: FC<ILayout> = ({ children }) => {
   return (
     <div>
-      <BaseDrawer />
+      <Drawer />
       {children}
     </div>
   );
