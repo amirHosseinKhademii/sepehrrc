@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "watch": "postcss src/styles/app.css -o src/styles/index.css"
+    "tailwind": "postcss src/styles/app.css -o src/styles/index.css --watch"
   },
   "dependencies": {
     "axios": "^0.21.1",
