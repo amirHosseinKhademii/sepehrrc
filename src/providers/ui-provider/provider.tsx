@@ -11,8 +11,8 @@ const initialState = {
   },
 };
 
-const reducer = (state, action) => {
-  switch (action.type) {
+const reducer = (state, { type, payload }) => {
+  switch (type) {
     case uiTypes.DRAWER_MENU:
       return {
         ...state,
@@ -26,10 +26,19 @@ const reducer = (state, action) => {
         ...state,
         drawer: {
           ...state.drawer,
-          sections: !state.drawer.sections,
+          sections: payload,
+          add: false,
         },
       };
-
+    case uiTypes.DRAWER_ADD:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: false,
+          add: payload,
+        },
+      };
     default:
       return state;
   }

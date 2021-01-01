@@ -11,7 +11,11 @@ export const DrawerFix = () => {
   };
 
   const toggleSections = () => {
-    uiDispatch({ type: uiTypes.DRAWER_SECTIONS });
+    uiDispatch({ type: uiTypes.DRAWER_SECTIONS, payload: true });
+  };
+
+  const toggleAdd = () => {
+    uiDispatch({ type: uiTypes.DRAWER_ADD, payload: true });
   };
 
   return (
@@ -29,7 +33,10 @@ export const DrawerFix = () => {
         <ICEditAlt />
         <span className="text-14px text-gray_shade-300 font-light">بخش ها</span>
       </ButtonIcon>
-      <ButtonIcon className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 ">
+      <ButtonIcon
+        className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
+        onClick={toggleAdd}
+      >
         <ICPlus />
         <span className=" text-14px text-gray_shade-300 font-light ">
           افزودن

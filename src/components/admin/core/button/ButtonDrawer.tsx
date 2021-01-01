@@ -7,10 +7,11 @@ export const ButtonDrawer: FC<IButton> = ({
   text,
   withDelete,
   withSetting,
-  onClick,
   onDelete,
   onSetting,
   className,
+  withIcon,
+  children,
 }) => {
   return (
     <button
@@ -27,6 +28,7 @@ export const ButtonDrawer: FC<IButton> = ({
             <ICTrash />
           </ButtonIcon>
         )}
+        {withIcon && children}
       </div>
       <p className="text-white_shade-100 text-14px">{text}</p>
     </button>
