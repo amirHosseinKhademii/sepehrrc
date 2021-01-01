@@ -1,1 +1,0 @@
-export { StoreFrontLayout } from './StoreFrontLayout';

@@ -6,6 +6,8 @@ export const UIContext = createContext(undefined);
 const initialState = {
   drawer: {
     menu: false,
+    sections: false,
+    add: false,
   },
 };
 
@@ -19,6 +21,14 @@ const reducer = (state, action) => {
           menu: !state.drawer.menu,
         },
       };
+    case uiTypes.DRAWER_SECTIONS:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: !state.drawer.sections,
+        },
+      };
 
     default:
       return state;
@@ -26,9 +36,9 @@ const reducer = (state, action) => {
 };
 
 export const UiProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [uiState, uiDispatch] = useReducer(reducer, initialState);
   return (
-    <UIContext.Provider value={{ state, dispatch }}>
+    <UIContext.Provider value={{ uiState, uiDispatch }}>
       {children}
     </UIContext.Provider>
   );
