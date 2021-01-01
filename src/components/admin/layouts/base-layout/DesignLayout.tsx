@@ -6,7 +6,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
   return (
     <div>
       <Drawer />
-      {children}
+      <div className="z-0">{children}</div>
     </div>
   );
 };

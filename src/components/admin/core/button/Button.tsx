@@ -1,18 +1,12 @@
 import { FC } from 'react';
+import { IButton } from './interfaces';
 
-interface IButton {
-  item?: any;
-  page?: boolean;
-}
-
-export const Button: FC<IButton> = ({ item, page = false }) => {
+export const Button: FC<IButton> = ({ className, children }) => {
   return (
     <button
-      className={` mx-auto rounded p-4 ${item.className} ${
-        page ? 'w-1/4' : 'w-full'
-      }`}
+      className={`rounded flex items-center justify-center text-white_shade-100 ${className}`}
     >
-      {item.name}
+      {children}
     </button>
   );
 };
