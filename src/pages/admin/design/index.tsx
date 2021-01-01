@@ -1,22 +1,12 @@
 import { Design } from 'containers';
+import { DesignLayout } from 'components/admin/layouts';
 
-const index = ({ page }) => {
-  return <Design />;
+const index = () => {
+  return (
+    <DesignLayout>
+      <Design />
+    </DesignLayout>
+  );
 };
 
 export default index;
-
-export const getStaticProps = (context) => {
-  return {
-    revalidate: {},
-    props: {
-      page: 1,
-    },
-  };
-};
-
-// export const getServerSideProps = (context) => {
-//   return {
-//     props: {},
-//   };
-// };

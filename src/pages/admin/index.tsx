@@ -1,5 +1,5 @@
-import { StoreFrontLayout } from 'components';
+import { DesignLayout } from 'components/admin/layouts';
 
-const Admin = () => <StoreFrontLayout>sdsdsd</StoreFrontLayout>;
+const Admin = () => <DesignLayout>sdsdsd</DesignLayout>;
 
 export default Admin;
