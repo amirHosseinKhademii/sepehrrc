@@ -8,6 +8,7 @@ const initialState = {
     menu: false,
     sections: false,
     add: false,
+    settings: false,
   },
 };
 
@@ -26,8 +27,9 @@ const reducer = (state, { type, payload }) => {
         ...state,
         drawer: {
           ...state.drawer,
-          sections: payload,
+          settings: false,
           add: false,
+          sections: payload,
         },
       };
     case uiTypes.DRAWER_ADD:
@@ -36,7 +38,18 @@ const reducer = (state, { type, payload }) => {
         drawer: {
           ...state.drawer,
           sections: false,
+          settings: false,
           add: payload,
+        },
+      };
+    case uiTypes.DRAWER_SETTINGS:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: false,
+          add: false,
+          settings: payload,
         },
       };
     default:
