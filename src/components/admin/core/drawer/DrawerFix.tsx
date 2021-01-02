@@ -8,6 +8,7 @@ export const DrawerFix = () => {
 
   const toggleMenu = () => {
     uiDispatch({ type: uiTypes.DRAWER_MENU });
+    uiDispatch({ type: uiTypes.DRAWER_CLOSE });
   };
 
   const toggleSections = () => {
