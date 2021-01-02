@@ -3,15 +3,16 @@ import { uiTypes } from './types';
 
 export const UIContext = createContext(undefined);
 
-const initialState = {
+const uiInitialState = {
   drawer: {
     menu: false,
     sections: false,
     add: false,
+    settings: false,
   },
 };
 
-const reducer = (state, { type, payload }) => {
+const uiReducer = (state = uiInitialState, { type, payload }) => {
   switch (type) {
     case uiTypes.DRAWER_MENU:
       return {
@@ -19,6 +20,9 @@ const reducer = (state, { type, payload }) => {
         drawer: {
           ...state.drawer,
           menu: !state.drawer.menu,
+          sections: false,
+          add: false,
+          settings: false,
         },
       };
     case uiTypes.DRAWER_SECTIONS:
@@ -26,8 +30,9 @@ const reducer = (state, { type, payload }) => {
         ...state,
         drawer: {
           ...state.drawer,
-          sections: payload,
+          settings: false,
           add: false,
+          sections: payload,
         },
       };
     case uiTypes.DRAWER_ADD:
@@ -36,7 +41,28 @@ const reducer = (state, { type, payload }) => {
         drawer: {
           ...state.drawer,
           sections: false,
+          settings: false,
           add: payload,
+        },
+      };
+    case uiTypes.DRAWER_SETTINGS:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: false,
+          add: false,
+          settings: payload,
+        },
+      };
+    case uiTypes.DRAWER_CLOSE:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: false,
+          add: false,
+          settings: false,
         },
       };
     default:
@@ -45,7 +71,7 @@ const reducer = (state, { type, payload }) => {
 };
 
 export const UiProvider = ({ children }) => {
-  const [uiState, uiDispatch] = useReducer(reducer, initialState);
+  const [uiState, uiDispatch] = useReducer(uiReducer, uiInitialState);
   return (
     <UIContext.Provider value={{ uiState, uiDispatch }}>
       {children}
