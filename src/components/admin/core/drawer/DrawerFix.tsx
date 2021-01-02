@@ -19,7 +19,7 @@ export const DrawerFix = () => {
   };
 
   return (
-    <div className="w-68px h-full absolute right-0 top-0 bg-gray_shade-800 flex flex-col items-center">
+    <div className="w-68px h-full fixed right-0 top-0 bg-gray_shade-800 flex flex-col items-center">
       <ButtonIcon
         className="flex justify-center items-center h-82px w-68px py-17px"
         onClick={toggleMenu}
