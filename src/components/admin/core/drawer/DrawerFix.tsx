@@ -8,6 +8,7 @@ export const DrawerFix = () => {
 
   const toggleMenu = () => {
     uiDispatch({ type: uiTypes.DRAWER_MENU });
+    uiDispatch({ type: uiTypes.DRAWER_CLOSE });
   };
 
   const toggleSections = () => {
@@ -16,6 +17,10 @@ export const DrawerFix = () => {
 
   const toggleAdd = () => {
     uiDispatch({ type: uiTypes.DRAWER_ADD, payload: true });
+  };
+
+  const toggleSettings = () => {
+    uiDispatch({ type: uiTypes.DRAWER_SETTINGS, payload: true });
   };
 
   return (
@@ -42,7 +47,10 @@ export const DrawerFix = () => {
           افزودن
         </span>
       </ButtonIcon>
-      <ButtonIcon className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 ">
+      <ButtonIcon
+        className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
+        onClick={toggleSettings}
+      >
         <ICSetting />
         <span className=" text-14px text-gray_shade-300 font-light ">
           تنظیمات
