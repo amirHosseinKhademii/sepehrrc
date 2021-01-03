@@ -3,6 +3,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        alert: {
+          300: '#de4437',
+          900: '#1f1e23',
+        },
         white_shade: {
           100: '#ffffff',
         },
@@ -22,8 +26,10 @@ module.exports = {
         '3px': '3px',
         '6px': '6px',
         '7px': '7px',
+        '8px': '8px',
         '10px': '10px',
         '12px': '12px',
+        '14px': '14px',
         '23px': '23px',
         '13px': '13px',
         '16px': '16px',
@@ -35,10 +41,12 @@ module.exports = {
         '21px': '21px',
         '29px': '29px',
         '30px': '30px',
+        '32px': '32px',
         '34px': '34px',
         '35px': '35px',
         '45px': '45px',
         '50px': '50px',
+        '54px': '54px',
         '58px': '58px',
         '68px': '68px',
         '81px': '81px',

@@ -17,7 +17,7 @@ export const ButtonDrawer: FC<IButton> = ({
     <button
       className={`w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${className}`}
     >
-      <div>
+      <div className="flex flex-row items-center">
         {withSetting && (
           <ButtonIcon onClick={onSetting} className="pr-13px">
             <ICSettingCog />
