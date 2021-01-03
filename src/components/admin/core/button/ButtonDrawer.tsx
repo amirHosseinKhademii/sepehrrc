@@ -15,7 +15,7 @@ export const ButtonDrawer: FC<IButton> = ({
 }) => {
   return (
     <button
-      className={`w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${className}`}
+      className={`focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${className}`}
     >
       <div className="flex flex-row items-center">
         {withSetting && (
