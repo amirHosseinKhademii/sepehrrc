@@ -2,15 +2,19 @@
 
 @tailwind components;
 
-@font-face {
-  font-family: 'YekanBakhFABold';
-  font-style: normal;
-  font-weight: bold;
-  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('ttf');
+@tailwind utilities;
+
+.designWidth {
+  width: calc(100% - 68px);
+}
+.designWidthMenu {
+  width: calc(100% - 284px);
+}
+
+.designWidthSection {
+  width: calc(100% - 378px);
 }
 
 .sm-li {
   @apply text-white text-xl font-semibold py-2 w-full cursor-pointer;
 }
-
-@tailwind utilities;

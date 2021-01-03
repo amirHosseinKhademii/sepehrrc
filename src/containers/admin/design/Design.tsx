@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Container, Draggable } from 'react-smooth-dnd';
+import { useContext } from 'react';
+import { UIContext } from 'providers/ui-provider';
 import { applyDrag, generateItems } from '../../../utils';
 
 const data1 = [
@@ -24,12 +26,12 @@ const data1 = [
   //   },
 ];
 const data2 = [
-  {
-    id: 1,
-    name: 'item1',
-    type: 'button',
-    className: 'bg-yellow-400',
-  },
+  // {
+  //   id: 1,
+  //   name: 'item1',
+  //   type: 'button',
+  //   className: 'bg-yellow-400',
+  // },
   //   {
   //     id: 4,
   //     name: 'item5',
@@ -41,37 +43,29 @@ const data2 = [
 ];
 
 export const Design = () => {
-  const [dataOne, setDataOne] = useState(data1);
-  const [dataTwo, setDataTwo] = useState(data2);
-  const handleChild = (index, arr) => arr.filter((item, i) => i === index)[0];
+  const {uiState} = useContext(UIContext);
+  let designWidth = 'designWidth';
+  if (uiState.drawer.sections || uiState.drawer.add){
+    designWidth = 'designWidthSection'}
+  else if (uiState.drawer.menu){
+    designWidth = 'designWidthMenu' 
+  }
+  const [data, setData] = useState(data2);
+  const childPayload = (index, arr) => arr.filter((item, i) => i === index)[0];
   return (
-    <div>
-      {/* <Container
-        groupName="1"
-        onDrop={(e) => setDataTwo(applyDrag(dataTwo, e))}
-        getChildPayload={(index) => handleChild(index, dataTwo)}
-        style={{ width: '100%' }}
-      >
-        {(dataTwo || []).map((item, index) => (
+    <div 
+    className={`${designWidth}`}
+     >
+      <Container groupName="1" dragClass='bg-red-600' onDrop={(dropResult)=>setData(applyDrag(data,dropResult))} getChildPayload={(index)=>childPayload(index,data)}>
+        {data.map((item, index) => {
+          return (
             <Draggable key={index}>
-              {item.type === 'button' && <Button item={item} page />}
-              {item.type === 'input' && <Input item={item} page />}
+              <div className="h-130px  w-4/5 mx-auto bg-green-700 my-5">heyz,mmmmmmmmmmmmmmm</div>
             </Draggable>
-          ))}
+          );
+        })}
       </Container>
-
-      <Container
-        groupName="1"
-        // onDrop={(e) => setDataOne(applyDrag(dataOne, e))}
-        getChildPayload={(index) => handleChild(index, dataOne)}
-      >
-        {dataOne.map((item, index) => (
-          <Draggable key={index}>
-            {item.type === 'button' && <Button item={item} />}
-            {item.type === 'input' && <Input item={item} />}
-          </Draggable>
-        ))}
-      </Container> */}
+     
     </div>
   );
 };

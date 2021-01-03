@@ -6,7 +6,7 @@ export const DrawerMenu = () => {
 
   return (
     <div
-      className={`w-216px h-216px pt-21px pb-35px absolute right-0 top-0 mr-68px bg-gray_shade-800 z-50 ${
+      className={`w-216px h-216px pt-21px pb-35px fixed right-0 top-0 mr-68px bg-gray_shade-800 z-50 ${
         uiState.drawer.menu ? 'block' : 'hidden'
       }`}
     >
