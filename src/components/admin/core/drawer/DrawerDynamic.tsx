@@ -1,4 +1,4 @@
-import { FC, Fragment, useContext, useState } from 'react';
+import { FC, Fragment, useContext } from 'react';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
@@ -7,8 +7,9 @@ import {
   DropDown,
 } from 'components';
 import { UIContext } from 'providers/ui-provider';
+import { DndContext } from 'providers/dnd-provider';
 import { Draggable, Container } from 'react-smooth-dnd';
-import { applyDrag } from 'utils';
+import { useDnd } from 'hooks';
 
 interface IDrawer {
   children?: any;
@@ -16,36 +17,33 @@ interface IDrawer {
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState } = useContext(UIContext);
+  const { dndState } = useContext(DndContext);
+  const { setChildPayload } = useDnd();
 
   const DrawerAdd = () => (
     <div className=" w-310px h-full absolute top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
       <HeaderDrawer />
       <div className="flex flex-col items-center px-20px pt-30px">
-        <ButtonDrawer text=" اسلایدر" className="mb-25px cursor-move" withIcon>
-          <div className="bg-gray_shade-700 flex items-center justify-between rounded h-22px w-45px px-6px pb-1">
-            <span className="text-gray_shade-300 font-bold">{'<'}</span>
-            <span className="text-gray_shade-300 font-bold">{'>'}</span>
-          </div>
-        </ButtonDrawer>
-        <ButtonDrawer
-          text=" لیست محصولات"
-          className="mb-25px  cursor-move"
-          withIcon
+        <Container
+          groupName="1"
+          getChildPayload={(index) => setChildPayload(index, dndState.menu)}
+          style={{ width: '100%' }}
         >
-          <div className=" flex items-center  rounded h-22px ">
-            <span className="text-gray_shade-300 font-bold pb-1">{'<'}</span>
-            <div className="bg-gray_shade-700 w-12px h-23px rounded mr-3px" />
-            <div className="bg-gray_shade-700 w-12px h-23px rounded" />
-            <span className="text-gray_shade-300 font-bold pb-1">{'>'}</span>
-          </div>
-        </ButtonDrawer>
-        <ButtonDrawer text=" متن" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" برندها" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" لیست اخبار" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" متن با تصویر" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" نظرات مشتریان" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" اسلایدر" className="mb-25px  cursor-move" />
-        <ButtonDrawer text=" لیست محصولات" className=" cursor-move" />
+          {(dndState.menu || []).map((item, index) => (
+            <Draggable key={index}>
+              <ButtonDrawer
+                text={item.title}
+                className="mb-25px cursor-move"
+                withIcon
+              >
+                <div className="bg-gray_shade-700 flex items-center justify-between rounded h-22px w-45px px-6px ">
+                  <span className="text-gray_shade-300 font-bold">{'<'}</span>
+                  <span className="text-gray_shade-300 font-bold">{'>'}</span>
+                </div>
+              </ButtonDrawer>
+            </Draggable>
+          ))}
+        </Container>
       </div>
       <ButtonGroupDrawer />
     </div>
@@ -108,7 +106,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
   };
 
   const DrawerSections = () => {
-    const allButtons: {
+    const items: {
       id: number;
       text: string;
       withSetting: boolean;
@@ -163,61 +161,50 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         withSetting: true,
       },
     ];
-
-    const childPayloadHandler = (index, arr) => {
-      return arr.filter((item, i) => i === index)[0];
-    };
-
-    const [items, setItems] = useState(allButtons);
-
     const DrawerParts = () => {
       return (
         <Container
           groupName="1"
-          onDrop={(dropResult) => applyDrag(items, dropResult)}
-          getChildPayload={(index) => childPayloadHandler(index, items)}
+          // onDrop={(dropResult) => applyDrag(items, dropResult)}
+          // getChildPayload={(index) => childPayloadHandler(index, items)}
           style={{ width: '100%' }}
         >
           {items?.map((item, index) => {
             if (item.withDelete && item.withSetting) {
               return (
-                <Draggable key={index}>
-                  <ButtonDrawer
-                    withDelete
-                    withSetting
-                    className="mb-25px last:mb-0"
-                    text={item.text}
-                  />
-                </Draggable>
+                <ButtonDrawer
+                  key={index}
+                  withDelete
+                  withSetting
+                  className="mb-25px last:mb-0"
+                  text={item.text}
+                />
               );
             } else if (item.withDelete && !item.withSetting) {
               return (
-                <Draggable key={index}>
-                  <ButtonDrawer
-                    withDelete
-                    className="mb-25px last:mb-0"
-                    text={item.text}
-                  />
-                </Draggable>
+                <ButtonDrawer
+                  key={index}
+                  withDelete
+                  className="mb-25px last:mb-0"
+                  text={item.text}
+                />
               );
             } else if (!item.withDelete && item.withSetting) {
               return (
-                <Draggable key={index}>
-                  <ButtonDrawer
-                    withSetting
-                    className="mb-25px last:mb-0"
-                    text={item.text}
-                  />
-                </Draggable>
+                <ButtonDrawer
+                  key={index}
+                  withSetting
+                  className="mb-25px last:mb-0"
+                  text={item.text}
+                />
               );
             } else
               return (
-                <Draggable key={index}>
-                  <ButtonDrawer
-                    className="mb-25px last:mb-0"
-                    text={item.text}
-                  />
-                </Draggable>
+                <ButtonDrawer
+                  className="mb-25px last:mb-0"
+                  text={item.text}
+                  key={index}
+                />
               );
           })}
         </Container>
