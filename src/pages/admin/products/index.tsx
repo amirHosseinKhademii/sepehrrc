@@ -4,7 +4,7 @@ import React from 'react'
 const Products = () => {
 
     return(
-        <div className='font-bakh'>جواد</div>
+        <div className='font-body font-bold'>جواد</div>
     )
 }
 
