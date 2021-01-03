@@ -14,7 +14,7 @@ export const ButtonDrawer: FC<IButton> = ({
   children,
 }) => {
   return (
-    <button
+    <div
       className={`focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${className}`}
     >
       <div className="flex flex-row items-center">
@@ -31,6 +31,6 @@ export const ButtonDrawer: FC<IButton> = ({
         {withIcon && children}
       </div>
       <p className="text-white_shade-100 text-14px">{text}</p>
-    </button>
+    </div>
   );
 };
