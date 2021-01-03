@@ -7,12 +7,67 @@
 .designWidth {
   width: calc(100% - 68px);
 }
+
 .designWidthMenu {
   width: calc(100% - 284px);
 }
 
 .designWidthSection {
   width: calc(100% - 378px);
+}
+
+@layer base {
+  
+  @font-face {
+    font-family: 'YekanBakhFA';
+    font-style: normal;
+    font-weight: 200;
+    src: url("./eot/YekanBakhFAThin.eot");
+    src: url("./eot/YekanBakhFAThin.eot?#iefix") format("embedded-opentype");
+    src: url("./woff/YekanBakhFAThin.woff") format("woff");
+    src: url("./ttf/YekanBakhFAThin.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'YekanBakhFA';
+    font-style: normal;
+    font-weight: 300;
+    src: url("./eot/YekanBakhFALight.eot");
+    src: url("./eot/YekanBakhFALight.eot?#iefix") format("embedded-opentype");
+    src: url("./woff/YekanBakhFALight.woff") format("woff");
+    src: url("./ttf/YekanBakhFALight.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: 'YekanBakhFA';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/assets/fonts/eot/YekanBakhFARegular.eot");
+    src: url("../../public/assets/fonts/eot/YekanBakhFARegular.eot?#iefix") format("embedded-opentype");
+    src: url("../../public/assets/fonts/woff/YekanBakhFARegular.woff") format("woff");
+    src: url("../../public/assets/fonts/ttf/YekanBakhFARegular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'YekanBakhFA';
+    font-style: normal;
+    font-weight: 500;
+    src: url("../../public/assets/fonts/eot/YekanBakhFAMedium.eot");
+    src: url("../../public/assets/fonts/eot/YekanBakhFAMedium.eot?#iefix") format("embedded-opentype");
+    src: url("../../public/assets/fonts/woff/YekanBakhFAMedium.woff") format("woff");
+    src: url("../../public/assets/fonts/ttf/YekanBakhFAMedium.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: 'YekanBakhFA';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../public/assets/fonts/eot/YekanBakhFABold.eot");
+    src: url("../../public/assets/fonts/eot/YekanBakhFABold.eot?#iefix") format("embedded-opentype");
+    src: url("../../public/assets/fonts/woff/YekanBakhFABold.woff") format("woff");
+    src: url("../../public/assets/fonts/ttf/YekanBakhFABold.ttf") format("truetype");
+  }
+
 }
 
 .sm-li {
