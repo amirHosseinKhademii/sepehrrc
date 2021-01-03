@@ -21,6 +21,9 @@ module.exports = {
           200: '#5ad076',
         },
       },
+      boxShadow: {
+        'custom-1': '0 3px 50px 0 rgba(0,0,0,0.16)',
+      },
       spacing: {
         '1px': '1px',
         '3px': '3px',
@@ -55,6 +58,7 @@ module.exports = {
         '175px': '175px',
         '216px': '216px',
         '310px': '310px',
+        '378px': '378px',
       },
       fontSize: {
         '14px': '14px',
