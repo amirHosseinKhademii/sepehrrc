@@ -2,6 +2,13 @@
 
 @tailwind components;
 
+@font-face {
+  font-family: 'YekanBakhFABold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('ttf');
+}
+
 .sm-li {
   @apply text-white text-xl font-semibold py-2 w-full cursor-pointer;
 }

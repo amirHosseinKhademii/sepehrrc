@@ -56,6 +56,9 @@ module.exports = {
         '216px': '216px',
         '310px': '310px',
       },
+      fontFamily: {
+        bakh: ['YekanBakhFALight']
+      },
       fontSize: {
         '14px': '14px',
       },
