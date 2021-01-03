@@ -17,7 +17,7 @@ export const ICEditAlt: FC<IIcon> = ({ className }) => {
           transform="translate(-.498) translate(.498)"
         />
         <path
-          fill="#9ba3b5"
+          fill="current"
           d="M2.5 10.56l9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 0 0 0-1.73l-9-5.2a1 1 0 0 0-1 0l-9 5.2a1 1 0 0 0 0 1.73zM12 5.65l7 4-7 4.05-7-4.01zm8.5 7.79L12 18.35l-8.5-4.91a1 1 0 1 0-1 1.73l9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 1 0-1-1.73z"
           transform="translate(-.498) translate(.004 -.496)"
         />

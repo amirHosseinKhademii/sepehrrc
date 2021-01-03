@@ -7,7 +7,7 @@ export const DropDown: FC<IDropDown> = ({ children, className }) => {
   return (
     <div className="custom-select w-full">
       <select
-        className={`w-full pr-20px bg-gray_shade-800 rounded flex items-center  text-gray_shade-300 ${className}`}
+        className={`focus:outline-none w-full pr-20px bg-gray_shade-800 rounded flex items-center  text-gray_shade-300 ${className}`}
         style={{ direction: 'rtl' }}
       >
         {children}

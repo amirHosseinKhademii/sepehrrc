@@ -23,7 +23,7 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
         className="h-50px bg-gray_shade-400 text-14px w-130px"
         onClick={onCancelClick}
       >
-        لغو اغییرات
+        لغو تغییرات
       </Button>
     </div>
   );
