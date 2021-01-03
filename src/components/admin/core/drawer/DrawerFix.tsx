@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ButtonIcon } from 'components';
-import { ICEditAlt, ICPlus, ICSetting, ICMenu, ICMultiply } from 'icons';
+import { ICEditAlt, ICPlus, ICSetting, ICMenu, ICMultiply,ICLogo } from 'icons';
 import { uiTypes, UIContext } from 'providers/ui-provider';
 
 export const DrawerFix = () => {
@@ -54,6 +54,12 @@ export const DrawerFix = () => {
         <ICSetting />
         <span className=" text-14px text-gray_shade-300 font-light ">
           تنظیمات
+        </span>
+      </ButtonIcon>
+      <ButtonIcon className ="flex flex-col items-center absolute bottom-0 focus:outline-none">
+        <ICLogo className="h-36px w-36px "/>
+        <span className="uppercase text-gray_shade-300 mt-10px mb-20px ml-auto mr-auto w-36px text-sm ">
+          sepehr v2.1
         </span>
       </ButtonIcon>
     </div>
