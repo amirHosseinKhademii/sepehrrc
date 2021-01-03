@@ -5,7 +5,7 @@ interface IDrawerHeader {
 export const HeaderDrawer = ({ setting = false }) => {
   return (
     <div className="flex items-center border-b border-gray_shade-800 px-20px pb-16px justify-between">
-      <button className="rounded-full bg-gray_shade-800 px-2 mr-20px text-white_shade-100">
+      <button className="focus:outline-none rounded-full bg-gray_shade-800 px-2 mr-20px text-white_shade-100">
         ؟
       </button>
       {setting ? (

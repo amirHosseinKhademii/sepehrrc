@@ -60,6 +60,9 @@ module.exports = {
         '310px': '310px',
         '378px': '378px',
       },
+      fontFamily: {
+        body: ['YekanBakhFA']
+      },
       fontSize: {
         '14px': '14px',
       },
