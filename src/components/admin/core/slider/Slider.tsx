@@ -2,26 +2,30 @@ import { Fragment, useContext, useState, useRef, useEffect, FC } from 'react';
 import { UIContext } from 'providers/ui-provider';
 import { ArrowLeft, ArrowRight } from 'icons';
 
+const img1 = '/assets/images/slider1.jpg';
+const img2 = '/assets/images/slider1.jpg';
+const img3 = '/assets/images/slider1.jpg';
+
 const data = [
   {
     id: '0',
     name: 'slider1',
-    url: require(`./images/slider1.jpg`),
+    url: img1,
   },
   {
     id: '1',
     name: 'slider2',
-    url: require(`./images/slider2.jpg`),
+    url: img2,
   },
   {
     id: '2',
     name: 'slider31',
-    url: require(`./images/slider3.jpg`),
+    url: img3,
   },
   {
     id: '3',
     name: 'slider31',
-    url: require(`./images/slider3.jpg`),
+    url: img2,
   },
 ];
 
