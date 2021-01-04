@@ -1,10 +1,10 @@
-import { Design } from 'containers';
+import { DesignContainer } from 'containers';
 import { DesignLayout } from 'components/admin/layouts';
 
 const index = () => {
   return (
     <DesignLayout>
-      <Design />
+      <DesignContainer />
     </DesignLayout>
   );
 };

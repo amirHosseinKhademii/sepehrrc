@@ -17,9 +17,8 @@ export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState } = useUi();
   const { dndState, setChildPayload, onVerticalDrop, onDeleteItem } = useDnd();
 
-  const DrawerAdd = () => (
-    <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
-      <HeaderDrawer />
+  const DrawerAdd = () => {
+    const AddParts = () => (
       <div className="flex flex-col items-center px-20px pt-30px">
         <Container
           groupName="ADMIN_DESIGN"
@@ -43,46 +42,48 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           ))}
         </Container>
       </div>
-      <ButtonGroupDrawer />
-    </div>
-  );
+    );
+    return (
+      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
+        <HeaderDrawer />
+        <AddParts />
+        <ButtonGroupDrawer />
+      </div>
+    );
+  };
 
   const DrawerSections = () => {
-    const DrawerParts = () => {
-      return (
-        <Fragment>
-          <ButtonDrawer withSetting className="mb-25px " text="هدر استایل-1" />
-          <Container
-            groupName="1"
-            style={{ width: '100%' }}
-            orientation="vertical"
-            lockAxis="y"
-            onDrop={onVerticalDrop}
-            getChildPayload={(index) => setChildPayload(index, dndState.page)}
-          >
-            {dndState.page.map((item, index) => (
-              <Draggable key={index}>
-                <ButtonDrawer
-                  withDelete
-                  withSetting
-                  className="mb-25px cursor-move"
-                  text={item.title}
-                  onDelete={() => onDeleteItem(item)}
-                />
-              </Draggable>
-            ))}
-          </Container>
-          <ButtonDrawer withSetting text="فوتر استایل-1" />
-        </Fragment>
-      );
-    };
+    const SectionParts = () => (
+      <div className="flex flex-col items-center  pt-30px px-20px">
+        <ButtonDrawer withSetting className="mb-25px " text="هدر استایل-1" />
+        <Container
+          groupName="1"
+          style={{ width: '100%' }}
+          orientation="vertical"
+          lockAxis="y"
+          onDrop={onVerticalDrop}
+          getChildPayload={(index) => setChildPayload(index, dndState.page)}
+        >
+          {dndState.page.map((item, index) => (
+            <Draggable key={index}>
+              <ButtonDrawer
+                withDelete
+                withSetting
+                className="mb-25px cursor-move"
+                text={item.title}
+                onDelete={() => onDeleteItem(item)}
+              />
+            </Draggable>
+          ))}
+        </Container>
+        <ButtonDrawer withSetting text="فوتر استایل-1" />
+      </div>
+    );
 
     return (
       <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50 ">
         <HeaderDrawer />
-        <div className="flex flex-col items-center  pt-30px px-20px">
-          <DrawerParts />
-        </div>
+        <SectionParts />
         <ButtonGroupDrawer />
       </div>
     );

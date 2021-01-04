@@ -1,10 +1,11 @@
 import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
-import { CardContainer } from 'containers';
 import { useDnd, useUi } from 'hooks';
+import { CardContainer } from './CardContainer';
+
 import { Slider } from 'components';
 
-export const Design = () => {
+export const DesignContainer = () => {
   const { uiState } = useUi();
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, dndState } = useDnd();
@@ -15,7 +16,7 @@ export const Design = () => {
   } else if (uiState.drawer.menu) {
     designWidth = 'designWidthMenu';
   }
-  
+
   return (
     <div className={`${designWidth}`}>
       <Container
@@ -26,24 +27,19 @@ export const Design = () => {
         onDragEnd={(e) => setDrop(e)}
         style={{ height: '100vh' }}
       >
-        {dndState.page.map((item, index) => {
-          return (
-            <Fragment key={index}>
-              {item.type == 'products' && (
-                <CardContainer
-                  items={item.items}
-                  title="جدیدترین محصولات ماه"
-                />
-              )}
-              {item.type == 'slider' && <Slider />}
-              {item.type == 'text' && (
-                <div className="text-center p-10 rounded bg-red-400 text-white text-lg flex items-center justify-center w-1/4 mx-auto my-20">
-                  {item.title}
-                </div>
-              )}
-            </Fragment>
-          );
-        })}
+        {dndState.page.map((item, index) => (
+          <Fragment key={index}>
+            {item.type == 'products' && (
+              <CardContainer items={item.items} title="جدیدترین محصولات ماه" />
+            )}
+            {item.type == 'slider' && <Slider />}
+            {item.type == 'text' && (
+              <div className="text-center p-10 rounded bg-red-400 text-white text-lg flex items-center justify-center w-1/4 mx-auto my-20">
+                {item.title}
+              </div>
+            )}
+          </Fragment>
+        ))}
       </Container>
     </div>
   );
