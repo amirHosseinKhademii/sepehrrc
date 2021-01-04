@@ -1,5 +1,8 @@
 import { Container, Draggable } from 'react-smooth-dnd';
-import { useDnd, useUi } from 'hooks';
+import { useContext } from 'react';
+import { UIContext } from 'providers/ui-provider';
+import { DndContext, dndTypes } from 'providers/dnd-provider';
+import { applyDrag, generateItems } from '../../../utils';
 
 export const Design = () => {
   const { uiState } = useUi();
