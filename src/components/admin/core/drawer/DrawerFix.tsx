@@ -24,7 +24,7 @@ export const DrawerFix = () => {
   };
 
   return (
-    <div className="w-68px h-full fixed right-0 top-0 bg-gray_shade-800 flex flex-col items-center">
+    <div className="w-68px h-full fixed right-0 top-0 bg-gray_shade-800 flex flex-col items-center z-50">
       <ButtonIcon
         className="flex justify-center items-center h-82px w-68px py-17px"
         onClick={toggleMenu}
@@ -35,15 +35,33 @@ export const DrawerFix = () => {
         className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900"
         onClick={toggleSections}
       >
-        <ICEditAlt className={`fill-current  ${uiState.drawer.sections ? 'text-white' : 'text-gray_shade-300'}`} />
-        <span className={`text-14px font-light ${uiState.drawer.sections ? 'text-white' : 'text-gray_shade-300'}`}>بخش ها</span>
+        <ICEditAlt
+          className={`fill-current  ${
+            uiState.drawer.sections ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        />
+        <span
+          className={`text-14px font-light ${
+            uiState.drawer.sections ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        >
+          بخش ها
+        </span>
       </ButtonIcon>
       <ButtonIcon
         className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
         onClick={toggleAdd}
       >
-        <ICPlus className={`fill-current  ${uiState.drawer.add ? 'text-white' : 'text-gray_shade-300'}`} />
-        <span className={`text-14px font-light ${uiState.drawer.add ? 'text-white' : 'text-gray_shade-300'}`}>
+        <ICPlus
+          className={`fill-current  ${
+            uiState.drawer.add ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        />
+        <span
+          className={`text-14px font-light ${
+            uiState.drawer.add ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        >
           افزودن
         </span>
       </ButtonIcon>
@@ -51,8 +69,16 @@ export const DrawerFix = () => {
         className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
         onClick={toggleSettings}
       >
-        <ICSetting className={`fill-current  ${uiState.drawer.settings ? 'text-white' : 'text-gray_shade-300'}`} />
-        <span className={`text-14px font-light ${uiState.drawer.settings ? 'text-white' : 'text-gray_shade-300'}`}>
+        <ICSetting
+          className={`fill-current  ${
+            uiState.drawer.settings ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        />
+        <span
+          className={`text-14px font-light ${
+            uiState.drawer.settings ? 'text-white' : 'text-gray_shade-300'
+          }`}
+        >
           تنظیمات
         </span>
       </ButtonIcon>
