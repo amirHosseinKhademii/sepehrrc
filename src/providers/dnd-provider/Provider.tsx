@@ -1,6 +1,7 @@
 import { createContext, useReducer } from 'react';
 import { dndTypes } from './types';
-const productCover = '/assets/images/product.png';
+import { applyDrag } from 'utils';
+
 export const DndContext = createContext(undefined);
 
 const initialState = {
@@ -18,28 +19,28 @@ const initialState = {
         {
           id: 0,
           name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: productCover,
+          cover: '/assets/images/product.png',
           price: '3/000/000',
           discount: '500000',
         },
         {
           id: 1,
           name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: productCover,
+          cover: '/assets/images/product.png',
           price: '3/000/000',
           discount: '500000',
         },
         {
           id: 2,
           name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: productCover,
+          cover: '/assets/images/product.png',
           price: '3/000/000',
           discount: '500000',
         },
         {
           id: 3,
           name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: productCover,
+          cover: '/assets/images/product.png',
           price: '3/000/000',
           discount: '500000',
         },
@@ -47,7 +48,7 @@ const initialState = {
     },
     {
       id: '2',
-      type: 'slider',
+      type: 'text',
       title: 'متن',
     },
     {
@@ -81,32 +82,25 @@ const initialState = {
       title: 'لیست محصولات',
     },
   ],
-  page: [
-    {
-      id: '0',
-      type: 'header',
-      title: 'تست',
-      icon: 'ICSlider',
-      order: 0,
-    },
-  ],
+  page: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case dndTypes.ON_DROP:
-      let pageClone = [...state.page];
-      let pageMutated = pageClone.map((item) =>
-        item.order >= payload.addedIndex
-          ? { ...item, order: item.order + 1 }
-          : item
-      );
+    case dndTypes.ON_HORIZONTAL_DROP:
       return {
         ...state,
-        page: [
-          ...pageMutated,
-          { ...payload.payload, order: payload.addedIndex },
-        ],
+        page: applyDrag(state.page, payload),
+      };
+    case dndTypes.ON_VERTICAL_DROP:
+      return {
+        ...state,
+        page: applyDrag(state.page, payload),
+      };
+    case dndTypes.ON_DELETE_ITEM:
+      return {
+        ...state,
+        page: [...state.page].filter((item) => item.uuid != payload.uuid),
       };
     default:
       return state;

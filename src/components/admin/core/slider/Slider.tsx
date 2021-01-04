@@ -3,8 +3,8 @@ import { UIContext } from 'providers/ui-provider';
 import { ArrowLeft, ArrowRight } from 'icons';
 
 const img1 = '/assets/images/slider1.jpg';
-const img2 = '/assets/images/slider1.jpg';
-const img3 = '/assets/images/slider1.jpg';
+const img2 = '/assets/images/slider2.jpg';
+const img3 = '/assets/images/slider3.jpg';
 
 const data = [
   {
