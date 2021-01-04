@@ -7,12 +7,12 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
     <div>
       <Drawer />
       <div className="z-0">
-        <header className="h-20 bg-gray-500 w-full">test</header>
+        <header className="h-20 bg-gray-500 w-full">Header</header>
 
         {children}
 
         <footer className="fixed bottom-0 w-full bg-gray-200 h-20 z-0">
-          test
+          Footer
         </footer>
       </div>
     </div>

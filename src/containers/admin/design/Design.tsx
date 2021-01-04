@@ -1,4 +1,8 @@
 import { Container, Draggable } from 'react-smooth-dnd';
+import { useContext } from 'react';
+import { UIContext } from 'providers/ui-provider';
+import { DndContext, dndTypes } from 'providers/dnd-provider';
+import { applyDrag, generateItems } from '../../../utils';
 import { useDnd, useUi } from 'hooks';
 
 export const Design = () => {
