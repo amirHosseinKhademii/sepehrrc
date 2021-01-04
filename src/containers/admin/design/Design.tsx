@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Container, Draggable } from 'react-smooth-dnd';
 import { useContext } from 'react';
 import { UIContext } from 'providers/ui-provider';
@@ -6,8 +5,8 @@ import { DndContext, dndTypes } from 'providers/dnd-provider';
 import { applyDrag, generateItems } from '../../../utils';
 
 export const Design = () => {
-  const { uiState } = useContext(UIContext);
-  const { dndState, dndDispatch } = useContext(DndContext);
+  const { uiState } = useUi();
+  const { onDrop, setChildPayload, dndState } = useDnd();
 
   let designWidth = 'designWidth';
   if (uiState.drawer.sections || uiState.drawer.add) {
@@ -16,26 +15,23 @@ export const Design = () => {
     designWidth = 'designWidthMenu';
   }
 
-  // const [data, setData] = useState(data2);
-  const childPayload = (index, arr) => arr.filter((item, i) => i === index)[0];
-
   return (
     <div className={`${designWidth}`}>
       <Container
-        groupName="1"
+        groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
-        onDrop={(dropResult) =>
-          dndDispatch({ type: dndTypes.ON_DRAG, payload: dropResult })
-        }
-        getChildPayload={(index) => childPayload(index, dndState.page)}
+        onDrop={onDrop}
+        getChildPayload={(index) => setChildPayload(index, dndState.page)}
       >
-        {dndState.page.map((item, index) => {
-          return (
-            <Draggable key={index}>
-              <div>{item.title}</div>
-            </Draggable>
-          );
-        })}
+        {dndState.page
+          .sort((a, b) => (a.order > b.order ? 1 : -1))
+          .map((item, index) => {
+            return (
+              <Draggable key={index}>
+                <div>{item.title}</div>
+              </Draggable>
+            );
+          })}
       </Container>
     </div>
   );

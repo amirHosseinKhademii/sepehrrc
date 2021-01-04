@@ -1,4 +1,4 @@
-import { FC, Fragment, useContext } from 'react';
+import { FC, Fragment } from 'react';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
@@ -6,26 +6,23 @@ import {
   Button,
   DropDown,
 } from 'components';
-import { UIContext } from 'providers/ui-provider';
-import { DndContext } from 'providers/dnd-provider';
 import { Draggable, Container } from 'react-smooth-dnd';
-import { useDnd } from 'hooks';
+import { useDnd, useUi } from 'hooks';
 
 interface IDrawer {
   children?: any;
 }
 
 export const DrawerDynamic: FC<IDrawer> = () => {
-  const { uiState } = useContext(UIContext);
-  const { dndState } = useContext(DndContext);
-  const { setChildPayload } = useDnd();
+  const { uiState } = useUi();
+  const { setChildPayload, dndState } = useDnd();
 
   const DrawerAdd = () => (
     <div className=" w-310px h-full absolute top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
       <HeaderDrawer />
       <div className="flex flex-col items-center px-20px pt-30px">
         <Container
-          groupName="1"
+          groupName="ADMIN_DESIGN"
           getChildPayload={(index) => setChildPayload(index, dndState.menu)}
           style={{ width: '100%' }}
         >
