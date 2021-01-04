@@ -64,22 +64,29 @@ const initialState = {
     {
       id: '0',
       type: 'header',
-      title: 'هدر',
+      title: 'تست',
       icon: 'ICSlider',
+      order: 0,
     },
   ],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case dndTypes.ON_DRAG:
-      console.log(payload);
-
+    case dndTypes.ON_DROP:
+      let pageClone = [...state.page];
+      let pageMutated = pageClone.map((item) =>
+        item.order >= payload.addedIndex
+          ? { ...item, order: item.order + 1 }
+          : item
+      );
       return {
         ...state,
-        page: [...state.page, payload.payload],
+        page: [
+          ...pageMutated,
+          { ...payload.payload, order: payload.addedIndex },
+        ],
       };
-
     default:
       return state;
   }
