@@ -1,7 +1,8 @@
-import { Container, Draggable } from 'react-smooth-dnd';
+import { Fragment } from 'react';
+import { Container } from 'react-smooth-dnd';
 import { CardContainer } from 'containers';
 import { useDnd, useUi } from 'hooks';
-import { Fragment } from 'react';
+import { Slider } from 'components';
 
 export const Design = () => {
   const { uiState } = useUi();
@@ -15,12 +16,13 @@ export const Design = () => {
   }
 
   return (
-    <div className={`${designWidth} h-full`}>
+    <div className={`${designWidth}`}>
       <Container
         groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
         onDrop={onDrop}
         getChildPayload={(index) => setChildPayload(index, dndState.page)}
+        style={{ height: '100vh' }}
       >
         {dndState.page
           .sort((a, b) => (a.order > b.order ? 1 : -1))
@@ -33,7 +35,7 @@ export const Design = () => {
                     title="جدیدترین محصولات ماه"
                   />
                 )}
-                {item.type == 'slider' && <div>slider</div>}
+                {item.type == 'slider' && <Slider />}
               </Fragment>
             );
           })}
