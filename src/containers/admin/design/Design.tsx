@@ -1,9 +1,7 @@
 import { Container, Draggable } from 'react-smooth-dnd';
-import { useContext } from 'react';
-import { UIContext } from 'providers/ui-provider';
-import { DndContext, dndTypes } from 'providers/dnd-provider';
-import { applyDrag, generateItems } from '../../../utils';
+import { CardContainer } from 'containers';
 import { useDnd, useUi } from 'hooks';
+import { Fragment } from 'react';
 
 export const Design = () => {
   const { uiState } = useUi();
@@ -17,7 +15,7 @@ export const Design = () => {
   }
 
   return (
-    <div className={`${designWidth}`}>
+    <div className={`${designWidth} h-full`}>
       <Container
         groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
@@ -28,9 +26,15 @@ export const Design = () => {
           .sort((a, b) => (a.order > b.order ? 1 : -1))
           .map((item, index) => {
             return (
-              <Draggable key={index}>
-                <div>{item.title}</div>
-              </Draggable>
+              <Fragment key={index}>
+                {item.type == 'products' && (
+                  <CardContainer
+                    items={item.items}
+                    title="جدیدترین محصولات ماه"
+                  />
+                )}
+                {item.type == 'slider' && <div>slider</div>}
+              </Fragment>
             );
           })}
       </Container>

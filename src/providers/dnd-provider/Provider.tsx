@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react';
 import { dndTypes } from './types';
-
+const productCover = '/assets/images/product.png';
 export const DndContext = createContext(undefined);
 
 const initialState = {
@@ -14,6 +14,36 @@ const initialState = {
       id: '1',
       type: 'products',
       title: 'لیست محصولات',
+      items: [
+        {
+          id: 0,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: productCover,
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 1,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: productCover,
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 2,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: productCover,
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 3,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: productCover,
+          price: '3/000/000',
+          discount: '500000',
+        },
+      ],
     },
     {
       id: '2',
