@@ -15,7 +15,7 @@ export const ProductsCard:FC<IProducts> = ({data,title,columnCount}) => {
                         <span className='text-lg font-bold'>{item.price}</span>
                         <span className='text-sm font-bold mr-1'>تومان</span>
                         </div>
-                        <button style={{height:'51px',width:'135px'}} className='mt-9 rounded-full border-2 border-red-500 text-red-500 text-sm'>افزون به سبد خرید</button>
+                        <button style={{height:'51px',width:'135px'}} className='focus:outline-none mt-9 rounded-full border-2 border-red-500 text-red-500 text-sm'>افزون به سبد خرید</button>
                     </div>
                 ))}
             </div>
