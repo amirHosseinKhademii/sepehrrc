@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { UIContext } from 'providers/ui-provider';
 import { DndContext, dndTypes } from 'providers/dnd-provider';
 import { applyDrag, generateItems } from '../../../utils';
+import { Slider } from 'components';
 
 const data1 = [
   {
@@ -70,7 +71,7 @@ export const Design = () => {
         {dndState.page.map((item, index) => {
           return (
             <Draggable key={index}>
-              <div>{item.title}</div>
+              {item.title === 'اسلایدر' ? <Slider /> : <div>{item.title}</div>}
             </Draggable>
           );
         })}
