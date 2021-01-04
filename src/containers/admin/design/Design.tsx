@@ -5,44 +5,6 @@ import { UIContext } from 'providers/ui-provider';
 import { DndContext, dndTypes } from 'providers/dnd-provider';
 import { applyDrag, generateItems } from '../../../utils';
 
-const data1 = [
-  {
-    id: 1,
-    name: 'item1',
-    type: 'button',
-    className: 'bg-yellow-400',
-  },
-  {
-    id: 2,
-    name: 'item2',
-    type: 'input',
-    className: '',
-    placeholder: 'test',
-  },
-  //   {
-  //     id: 6,
-  //     name: 'item3',
-  //     type: 'input',
-  //     className: 'bg-yellow-400',
-  //   },
-];
-const data2 = [
-  // {
-  //   id: 1,
-  //   name: 'item1',
-  //   type: 'button',
-  //   className: 'bg-yellow-400',
-  // },
-  //   {
-  //     id: 4,
-  //     name: 'item5',
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'item6',
-  //   },
-];
-
 export const Design = () => {
   const { uiState } = useContext(UIContext);
   const { dndState, dndDispatch } = useContext(DndContext);
