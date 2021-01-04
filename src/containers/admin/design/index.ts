@@ -1,2 +1,1 @@
-export * from './Design';
-export * from './page';
+export * from './DesignContainer';

@@ -1,5 +1,3 @@
-import { DesignLayout } from 'components/admin/layouts';
-
-const Admin = () => <DesignLayout>sdsdsd</DesignLayout>;
+const Admin = () => <></>;
 
 export default Admin;
