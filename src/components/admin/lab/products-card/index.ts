@@ -1,1 +1,0 @@
-export { ProductsCard } from './ProductsCard'

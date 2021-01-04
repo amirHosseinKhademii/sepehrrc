@@ -1,4 +1,6 @@
 import { FC, Fragment } from 'react';
+import { Draggable, Container } from 'react-smooth-dnd';
+import { useDnd, useUi } from 'hooks';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
@@ -6,8 +8,6 @@ import {
   Button,
   DropDown,
 } from 'components';
-import { Draggable, Container } from 'react-smooth-dnd';
-import { useDnd, useUi } from 'hooks';
 
 interface IDrawer {
   children?: any;
@@ -15,7 +15,7 @@ interface IDrawer {
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState } = useUi();
-  const { setChildPayload, dndState } = useDnd();
+  const { dndState, setChildPayload, onVerticalDrop, onDeleteItem } = useDnd();
 
   const DrawerAdd = () => (
     <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
@@ -25,6 +25,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           groupName="ADMIN_DESIGN"
           getChildPayload={(index) => setChildPayload(index, dndState.menu)}
           style={{ width: '100%' }}
+          behaviour="copy"
         >
           {(dndState.menu || []).map((item, index) => (
             <Draggable key={index}>
@@ -45,6 +46,47 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       <ButtonGroupDrawer />
     </div>
   );
+
+  const DrawerSections = () => {
+    const DrawerParts = () => {
+      return (
+        <Fragment>
+          <ButtonDrawer withSetting className="mb-25px " text="هدر استایل-1" />
+          <Container
+            groupName="1"
+            style={{ width: '100%' }}
+            orientation="vertical"
+            lockAxis="y"
+            onDrop={onVerticalDrop}
+            getChildPayload={(index) => setChildPayload(index, dndState.page)}
+          >
+            {dndState.page.map((item, index) => (
+              <Draggable key={index}>
+                <ButtonDrawer
+                  withDelete
+                  withSetting
+                  className="mb-25px cursor-move"
+                  text={item.title}
+                  onDelete={() => onDeleteItem(item)}
+                />
+              </Draggable>
+            ))}
+          </Container>
+          <ButtonDrawer withSetting text="فوتر استایل-1" />
+        </Fragment>
+      );
+    };
+
+    return (
+      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50 ">
+        <HeaderDrawer />
+        <div className="flex flex-col items-center  pt-30px px-20px">
+          <DrawerParts />
+        </div>
+        <ButtonGroupDrawer />
+      </div>
+    );
+  };
 
   const DrawerSettings = () => {
     const ColorsButtons = () => (
@@ -97,123 +139,6 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         <HeaderDrawer setting />
         <ColorsButtons />
         <FontDropDowns />
-        <ButtonGroupDrawer />
-      </div>
-    );
-  };
-
-  const DrawerSections = () => {
-    const items: {
-      id: number;
-      text: string;
-      withSetting: boolean;
-      withDelete: boolean;
-    }[] = [
-      {
-        id: 0,
-        text: 'هدر - استایل ۱',
-        withDelete: false,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'اسلایدر - استایل ۱',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'بنر ستونی - استایل 3',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'لیست محصولات - استایل 3',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'متن - استایل ۱',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'لیست اخبار - استایل 5',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'دکمه فراخوان - استایل 3',
-        withDelete: true,
-        withSetting: true,
-      },
-      {
-        id: 0,
-        text: 'فوتر - استایل 2',
-        withDelete: false,
-        withSetting: true,
-      },
-    ];
-    const DrawerParts = () => {
-      return (
-        <Container
-          groupName="1"
-          // onDrop={(dropResult) => applyDrag(items, dropResult)}
-          // getChildPayload={(index) => childPayloadHandler(index, items)}
-          style={{ width: '100%' }}
-        >
-          {items?.map((item, index) => {
-            if (item.withDelete && item.withSetting) {
-              return (
-                <ButtonDrawer
-                  key={index}
-                  withDelete
-                  withSetting
-                  className="mb-25px last:mb-0"
-                  text={item.text}
-                />
-              );
-            } else if (item.withDelete && !item.withSetting) {
-              return (
-                <ButtonDrawer
-                  key={index}
-                  withDelete
-                  className="mb-25px last:mb-0"
-                  text={item.text}
-                />
-              );
-            } else if (!item.withDelete && item.withSetting) {
-              return (
-                <ButtonDrawer
-                  key={index}
-                  withSetting
-                  className="mb-25px last:mb-0"
-                  text={item.text}
-                />
-              );
-            } else
-              return (
-                <ButtonDrawer
-                  className="mb-25px last:mb-0"
-                  text={item.text}
-                  key={index}
-                />
-              );
-          })}
-        </Container>
-      );
-    };
-
-    return (
-      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50 ">
-        <HeaderDrawer />
-        <div className="flex flex-col items-center  pt-30px px-20px">
-          <DrawerParts />
-        </div>
         <ButtonGroupDrawer />
       </div>
     );

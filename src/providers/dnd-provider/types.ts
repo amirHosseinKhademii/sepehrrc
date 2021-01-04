@@ -1,4 +1,5 @@
 export const dndTypes = {
-  ON_DRAG: 'On Drag Start',
-  ON_DROP: 'On Drop End',
+  ON_VERTICAL_DROP: 'On Vertical Drag ',
+  ON_HORIZONTAL_DROP: 'On Drop End',
+  ON_DELETE_ITEM: 'On Delete item',
 };

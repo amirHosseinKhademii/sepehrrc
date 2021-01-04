@@ -2,10 +2,11 @@ import { useContext } from 'react';
 import { ButtonIcon } from 'components';
 import { ICEditAlt, ICPlus, ICSetting, ICMenu, ICMultiply,ICLogo } from 'icons';
 import { uiTypes, UIContext } from 'providers/ui-provider';
+import { useUi } from 'hooks';
 
 export const DrawerFix = () => {
-  const { uiState, uiDispatch } = useContext(UIContext);
-
+  const { uiDispatch } = useContext(UIContext);
+  const { uiState } = useUi();
   const toggleMenu = () => {
     uiDispatch({ type: uiTypes.DRAWER_MENU });
     uiDispatch({ type: uiTypes.DRAWER_CLOSE });
@@ -32,7 +33,9 @@ export const DrawerFix = () => {
         {uiState.drawer.menu ? <ICMultiply /> : <ICMenu />}
       </ButtonIcon>
       <ButtonIcon
-        className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900"
+        className={`flex flex-col items-center h-81px w-68px py-17px ${
+          uiState.drawer.sections && ' bg-gray_shade-900'
+        }`}
         onClick={toggleSections}
       >
         <ICEditAlt
@@ -49,7 +52,9 @@ export const DrawerFix = () => {
         </span>
       </ButtonIcon>
       <ButtonIcon
-        className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
+        className={`flex flex-col items-center h-81px w-68px py-17px ${
+          uiState.drawer.add && ' bg-gray_shade-900'
+        }`}
         onClick={toggleAdd}
       >
         <ICPlus
@@ -66,7 +71,9 @@ export const DrawerFix = () => {
         </span>
       </ButtonIcon>
       <ButtonIcon
-        className="flex flex-col items-center h-81px w-68px py-17px focus:bg-gray_shade-900 "
+        className={`flex flex-col items-center h-81px w-68px py-17px ${
+          uiState.drawer.settings && ' bg-gray_shade-900'
+        }`}
         onClick={toggleSettings}
       >
         <ICSetting

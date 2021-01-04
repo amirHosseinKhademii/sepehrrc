@@ -1,13 +1,13 @@
-import { Container, Draggable } from 'react-smooth-dnd';
-import { useContext } from 'react';
-import { UIContext } from 'providers/ui-provider';
-import { DndContext, dndTypes } from 'providers/dnd-provider';
-import { applyDrag, generateItems } from '../../../utils';
+import { Fragment, useState } from 'react';
+import { Container } from 'react-smooth-dnd';
+import { CardContainer } from 'containers';
 import { useDnd, useUi } from 'hooks';
+import { Slider } from 'components';
 
 export const Design = () => {
   const { uiState } = useUi();
-  const { onDrop, setChildPayload, dndState } = useDnd();
+  const [drop, setDrop] = useState({});
+  const { onHorizontalDrop, setChildPayload, dndState } = useDnd();
 
   let designWidth = 'designWidth';
   if (uiState.drawer.sections || uiState.drawer.add) {
@@ -15,24 +15,35 @@ export const Design = () => {
   } else if (uiState.drawer.menu) {
     designWidth = 'designWidthMenu';
   }
-
+  
   return (
     <div className={`${designWidth}`}>
       <Container
         groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
-        onDrop={onDrop}
+        onDrop={onHorizontalDrop(drop)}
         getChildPayload={(index) => setChildPayload(index, dndState.page)}
+        onDragEnd={(e) => setDrop(e)}
+        style={{ height: '100vh' }}
       >
-        {dndState.page
-          .sort((a, b) => (a.order > b.order ? 1 : -1))
-          .map((item, index) => {
-            return (
-              <Draggable key={index}>
-                <div>{item.title}</div>
-              </Draggable>
-            );
-          })}
+        {dndState.page.map((item, index) => {
+          return (
+            <Fragment key={index}>
+              {item.type == 'products' && (
+                <CardContainer
+                  items={item.items}
+                  title="جدیدترین محصولات ماه"
+                />
+              )}
+              {item.type == 'slider' && <Slider />}
+              {item.type == 'text' && (
+                <div className="text-center p-10 rounded bg-red-400 text-white text-lg flex items-center justify-center w-1/4 mx-auto my-20">
+                  {item.title}
+                </div>
+              )}
+            </Fragment>
+          );
+        })}
       </Container>
     </div>
   );

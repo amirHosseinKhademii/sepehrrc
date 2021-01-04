@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react';
 import { dndTypes } from './types';
+import { applyDrag } from 'utils';
 
 export const DndContext = createContext(undefined);
 
@@ -9,83 +10,97 @@ const initialState = {
       id: '0',
       type: 'slider',
       title: 'اسلایدر',
-      icon: 'ICSlider',
     },
     {
       id: '1',
       type: 'products',
       title: 'لیست محصولات',
-      icon: 'ICSlider',
+      items: [
+        {
+          id: 0,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 1,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 2,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '3/000/000',
+          discount: '500000',
+        },
+        {
+          id: 3,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '3/000/000',
+          discount: '500000',
+        },
+      ],
     },
     {
       id: '2',
-      type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      type: 'text',
+      title: 'متن',
     },
     {
       id: '3',
       type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      title: 'برندها',
     },
     {
       id: '4',
       type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      title: 'لیست اخبار',
     },
     {
       id: '5',
       type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      title: 'متن با تصویر',
     },
     {
       id: '6',
       type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      title: 'نظرات مشتریان',
     },
     {
       id: '7',
       type: 'slider',
       title: 'اسلایدر',
-      icon: 'ICSlider',
     },
     {
       id: '8',
       type: 'slider',
-      title: 'اسلایدر',
-      icon: 'ICSlider',
+      title: 'لیست محصولات',
     },
   ],
-  page: [
-    {
-      id: '0',
-      type: 'header',
-      title: 'تست',
-      icon: 'ICSlider',
-      order: 0,
-    },
-  ],
+  page: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case dndTypes.ON_DROP:
-      let pageClone = [...state.page];
-      let pageMutated = pageClone.map((item) =>
-        item.order >= payload.addedIndex
-          ? { ...item, order: item.order + 1 }
-          : item
-      );
+    case dndTypes.ON_HORIZONTAL_DROP:
       return {
         ...state,
-        page: [
-          ...pageMutated,
-          { ...payload.payload, order: payload.addedIndex },
-        ],
+        page: applyDrag(state.page, payload),
+      };
+    case dndTypes.ON_VERTICAL_DROP:
+      return {
+        ...state,
+        page: applyDrag(state.page, payload),
+      };
+    case dndTypes.ON_DELETE_ITEM:
+      return {
+        ...state,
+        page: [...state.page].filter((item) => item.uuid != payload.uuid),
       };
     default:
       return state;
