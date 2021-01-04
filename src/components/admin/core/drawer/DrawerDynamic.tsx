@@ -18,7 +18,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
   const { setChildPayload, dndState } = useDnd();
 
   const DrawerAdd = () => (
-    <div className=" w-310px h-full absolute top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
+    <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
       <HeaderDrawer />
       <div className="flex flex-col items-center px-20px pt-30px">
         <Container
@@ -93,7 +93,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     );
 
     return (
-      <div className=" w-310px h-full absolute top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50">
+      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50">
         <HeaderDrawer setting />
         <ColorsButtons />
         <FontDropDowns />

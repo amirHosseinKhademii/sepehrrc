@@ -5,3 +5,4 @@ export * from './menu';
 export * from './multiply';
 export * from './setting-cog';
 export * from './trash';
+export * from './logo';

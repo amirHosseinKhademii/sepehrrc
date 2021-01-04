@@ -1,4 +1,5 @@
-import { DropDown } from 'components';
+import { DropDown, Drop } from 'components';
+
 interface IDrawerHeader {
   setting?: boolean;
 }
@@ -13,9 +14,20 @@ export const HeaderDrawer = ({ setting = false }) => {
           تنظیمات قالب
         </p>
       ) : (
-        <DropDown className="h-50px">
-          <option className="text-14px">صفحه اصلی سایت</option>
-        </DropDown>
+        <Drop
+          options={[
+            'صفحه اصلی سایت',
+            'صفحه آرشیو محصولات',
+            'صفحه خبر وبلاگ',
+            'صفحه آرشیو اخبار وبلاگ',
+            'صفحه سوالات متداول',
+            'صفحه تماس با ما',
+            'صفحه درباره ما',
+          ]}
+        />
+        // <DropDown className="h-50px">
+        //   <option className="text-14px">صفحه اصلی سایت</option>
+        // </DropDown>
       )}
     </div>
   );
