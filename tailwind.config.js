@@ -54,17 +54,20 @@ module.exports = {
         '68px': '68px',
         '81px': '81px',
         '82px': '82px',
+        '122px': '122px',
         '130px': '130px',
         '175px': '175px',
         '216px': '216px',
         '310px': '310px',
         '378px': '378px',
+        '450px': '450px',
       },
       fontFamily: {
-        body: ['YekanBakhFA']
+        body: ['YekanBakhFA'],
       },
       fontSize: {
         '14px': '14px',
+        '16px': '16px',
       },
     },
   },
