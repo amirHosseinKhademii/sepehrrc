@@ -6,7 +6,7 @@ import {
   ButtonGroupDrawer,
   HeaderDrawer,
   Button,
-  DropDown,
+  Drop,
 } from 'components';
 
 interface IDrawer {
@@ -58,7 +58,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         <ButtonDrawer withSetting className="mb-25px" text="هدر استایل-1" />
         <Container
           groupName="1"
-          style={{ width: '100%',minHeight:0 }}
+          style={{ width: '100%', minHeight: 0 }}
           orientation="vertical"
           lockAxis="y"
           onDrop={onVerticalDrop}
@@ -117,9 +117,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
             انتخاب فونت تیتر ها
           </p>
           <div className="felx flex-col mt-20px">
-            <DropDown className="h-54px">
-              <option>یکان بخ</option>
-            </DropDown>
+            <Drop options={['یکان بخ']} />
           </div>
         </div>
         <div className="flex flex-col px-20px pt-30px">
@@ -127,9 +125,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
             انتخاب فونت نوشته ها
           </p>
           <div className="felx flex-col mt-20px">
-            <DropDown className="h-54px">
-              <option>یکان بخ</option>
-            </DropDown>
+            <Drop options={['یکان بخ']} />
           </div>
         </div>
       </>

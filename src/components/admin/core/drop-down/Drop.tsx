@@ -15,10 +15,17 @@ export const Drop: FC<IDrop> = ({ children, className, options }) => {
 
   return (
     <div
-      className="custom-select w-full bg-gray_shade-800 text-gray_shade-300 rounded-md rounded-b-none shadow-custom-1 "
+      className={`custom-select w-full bg-gray_shade-800 text-gray_shade-300 rounded-md ${
+        showMenu && 'rounded-b-none'
+      } shadow-custom-1 `}
       style={{ direction: 'rtl' }}
     >
-      <div className="DropDown relative flex justify-between">
+      <div
+        className="DropDown relative flex justify-between"
+        onClick={() => {
+          setShowMenu(!showMenu);
+        }}
+      >
         <div className="h-50px flex items-center flex-row-reverse pr-20px ">
           {value}
         </div>
@@ -46,7 +53,7 @@ export const Drop: FC<IDrop> = ({ children, className, options }) => {
             showMenu
               ? 'opacity-100 pointer-events-auto'
               : 'opacity-0 pointer-events-none'
-          } t'ransition-all duration-500 z-50 w-full  `}
+          } transition-all duration-500 z-50 w-full rounded-b-md  `}
         >
           {options.map((item, index) => {
             return (
