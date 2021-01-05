@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { ArrowDown, ArrowUp } from '../../../../icons/Library2';
+import { ICArrowDown, ICArrowUp } from '../../../../icons/Library2';
 
 interface IDrop {
   children?: any;
@@ -30,20 +30,18 @@ export const Drop: FC<IDrop> = ({ children, className, options }) => {
           {value}
         </div>
         {showMenu ? (
-          <ArrowUp
+          <ICArrowUp
             onClick={() => {
               setShowMenu(!showMenu);
             }}
-            fontSize="24px"
             fill="#fff"
             className="my-auto ml-2"
           />
         ) : (
-          <ArrowDown
+          <ICArrowDown
             onClick={() => {
               setShowMenu(!showMenu);
             }}
-            fontSize="24px"
             fill="#fff"
             className="my-auto ml-2"
           />

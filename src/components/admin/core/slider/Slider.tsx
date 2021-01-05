@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState, useRef, useEffect, FC } from 'react';
 import { UIContext } from 'providers/ui-provider';
-import { ArrowLeft, ArrowRight } from 'icons';
+import { ICArrowLeft, ICArrowRight } from 'icons';
 
 const img1 = '/assets/images/slider1.jpg';
 const img2 = '/assets/images/slider2.jpg';
@@ -129,19 +129,21 @@ const Slide = ({ item }) => {
 const Arrow = ({ direction, handleClick }) => {
   if (direction === 'left') {
     return (
-      <ArrowLeft
+      <ICArrowLeft
         onClick={handleClick}
+        height="40px"
+        width="40px"
         className="absolute left-10px top-2/4"
-        fontSize="40px"
         fill="#fff"
       />
     );
   } else if (direction === 'right')
     return (
-      <ArrowRight
+      <ICArrowRight
         fill="#fff"
+        height="40px"
+        width="40px"
         className="absolute right-10px top-2/4"
-        fontSize="40px"
         onClick={handleClick}
       />
     );

@@ -1,14 +1,21 @@
 import { FC } from 'react';
-import { IIcon } from '../interfaces';
+import { IIcon } from '../../interfaces';
 
-export const ICMenu: FC<IIcon> = ({ className,height,width,fill }) => {
+export const ICMenu: FC<IIcon> = ({
+  className,
+  onClick,
+  height,
+  width,
+  fill,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : 24}
       height={height ? height : 24}
       viewBox="0 0 24 24"
-      className={className} 
+      className={className}
+      onClick={onClick}
     >
       <g>
         <path
@@ -17,7 +24,7 @@ export const ICMenu: FC<IIcon> = ({ className,height,width,fill }) => {
           transform="translate(.09) translate(-.09)"
         />
         <path
-          fill={fill ? fill : 'white'}
+          fill={fill ? fill : 'current'}
           d="M3 8h18a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2z"
           transform="translate(.09) translate(-.091 -.143)"
         />

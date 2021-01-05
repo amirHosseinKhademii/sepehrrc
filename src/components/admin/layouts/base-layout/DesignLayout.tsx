@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Drawer } from 'components';
 import { ILayout } from './interfaces';
+import { FooterContainer } from '../../../../containers/admin';
 import { Header } from 'containers';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
@@ -12,9 +13,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
 
         {children}
 
-        <footer className="fixed bottom-0 w-full bg-gray-200 h-20 z-0">
-          Footer
-        </footer>
+        <FooterContainer />
       </div>
     </div>
   );
