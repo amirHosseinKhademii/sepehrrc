@@ -1,8 +1,3 @@
-import React from 'react';
-
-const Admin = () => (
-  <div>Admin Page</div>
-);
-
+const Admin = () => <></>;
 
 export default Admin;

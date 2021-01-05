@@ -1,0 +1,61 @@
+
+@font-face {
+	font-family: YekanBakhFABold; 
+	font-style: normal;
+	font-weight: bold;
+	src: url("./eot/YekanBakhFABold.eot");
+	src: url("./eot/YekanBakhFABold.eot?#iefix")
+			format("embedded-opentype"),
+		/* FF39+,Chrome36+, Opera24+*/ url("./woff/YekanBakhFABold.woff")
+			format("woff"),
+		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("./ttf/YekanBakhFABold.ttf")
+			format("truetype");
+}
+@font-face {
+	font-family: YekanBakhFAMedium;
+	font-style: normal;
+	font-weight: 500;
+	src: url("./eot/YekanBakhFAMedium.eot");
+	src: url("./eot/YekanBakhFAMedium.eot?#iefix")
+			format("embedded-opentype"),
+		/* FF39+,Chrome36+, Opera24+*/ url("./woff/YekanBakhFAMedium.woff")
+			format("woff"),
+		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+			url("./ttf/YekanBakhFAMedium.ttf") format("truetype");
+}
+@font-face {
+	font-family: YekanBakhFALight;
+	font-style: normal;
+	font-weight: 300;
+	src: url("./eot/YekanBakhFALight.eot");
+	src: url("./eot/YekanBakhFALight.eot?#iefix")
+			format("embedded-opentype"),
+		/* FF39+,Chrome36+, Opera24+*/ url("./woff/YekanBakhFALight.woff")
+			format("woff"),
+		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+			url("./ttf/YekanBakhFALight.ttf") format("truetype");
+}
+@font-face {
+	font-family: YekanBakhFAThin;
+	font-style: normal;
+	font-weight: 200;
+	src: url("./eot/YekanBakhFAThin.eot");
+	src: url("./eot/YekanBakhFAThin.eot?#iefix")
+			format("embedded-opentype"),
+			/* FF39+,Chrome36+, Opera24+*/
+			url("./woff/YekanBakhFAThin.woff") format("woff"),
+			format("woff"),
+		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+			url("./ttf/YekanBakhFAThin.ttf") format("truetype");
+}
+@font-face {
+	font-family: YekanBakhFARegular;
+	font-style: normal;
+	font-weight: normal;
+	src: url("./eot/YekanBakhFARegular.eot");
+	src: url("./eot/YekanBakhFARegular.eot?#iefix") format("embedded-opentype"),
+		/* FF39+,Chrome36+, Opera24+*/ url("./woff/YekanBakhFARegular.woff")
+			format("woff"),
+		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("./ttf/YekanBakhFARegular.ttf")
+			format("truetype");
+}
