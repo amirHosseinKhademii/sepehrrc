@@ -30,8 +30,8 @@ export const ICLogo: FC<IIcon> = ({ className }) => {
             transform="translate(1311.887 1702.053)"
             fill="none"
             stroke="#636c81"
-            stroke-linecap="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeWidth="3"
           />
         </g>
       </g>
