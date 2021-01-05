@@ -18,32 +18,32 @@ const item = {
   order: ['logo', 'menu', 'icons'],
   logo: {
     img: logo,
-    link: '#',
+    link: './admin/design',
   },
   menuItems: [
-    { text: 'صفحه اصلی', link: '#' },
-    { text: 'محصولات فروشگاه', link: '#' },
-    { text: 'درباره ما', link: '#' },
-    { text: 'تماس باما', link: '#' },
+    { text: 'صفحه اصلی', link: './admin/design' },
+    { text: 'محصولات فروشگاه', link: './admin/design' },
+    { text: 'درباره ما', link: './admin/design' },
+    { text: 'تماس باما', link: './admin/design' },
   ],
   icons: [
     {
       type: 'search',
-      link: '#',
+      link: './admin/design',
     },
     {
       type: 'cart',
-      link: '#',
+      link: './admin/design',
     },
     {
       type: 'user',
-      linik: '#',
+      link: './admin/design',
     },
   ],
 };
 export const Header = ({ backgroundColor = 'bg-white' }) => {
   return (
-    <div className={`${backgroundColor}`}>
+    <div className={`${backgroundColor} shadow-large-1`}>
       <div
         className={`container mx-auto   w-full h-122px grid  grid-cols-12`}
         style={{ direction: 'rtl' }}

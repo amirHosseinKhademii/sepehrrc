@@ -7,7 +7,6 @@ interface INavbar {
 }
 
 export const Navbar: FC<INavbar> = ({ items, direction = 'horizental' }) => {
-  console.log(items, 'items');
   return (
     <div
       className={`${direction === 'horizental' ? 'flex' : 'flex  flex-col'} `}
