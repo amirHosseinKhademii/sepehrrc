@@ -5,3 +5,4 @@ export * from './drop-down';
 export * from './header-drawer';
 export * from './card';
 export * from './slider';
+export * from './navbar'
