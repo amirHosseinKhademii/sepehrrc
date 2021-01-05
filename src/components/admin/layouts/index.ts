@@ -1,1 +1,2 @@
-export { DesignLayout } from './base-layout';
+export { DesignLayout } from './design-layout';
+export * from './drawer-layout';

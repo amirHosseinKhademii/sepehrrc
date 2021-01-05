@@ -1,6 +1,7 @@
 import { FC, Fragment } from 'react';
 import { Draggable, Container } from 'react-smooth-dnd';
 import { useDnd, useUi } from 'hooks';
+import { DrawerLayout } from 'components/admin/layouts';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
@@ -14,7 +15,7 @@ interface IDrawer {
 }
 
 export const DrawerDynamic: FC<IDrawer> = () => {
-  const { uiState } = useUi();
+  const { uiState, toggleStyleDrawer } = useUi();
   const { dndState, setChildPayload, onVerticalDrop, onDeleteItem } = useDnd();
 
   const DrawerAdd = () => {
@@ -44,18 +45,28 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       </div>
     );
     return (
-      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-10">
+      <DrawerLayout>
         <HeaderDrawer />
         <AddParts />
         <ButtonGroupDrawer />
-      </div>
+      </DrawerLayout>
     );
   };
 
   const DrawerSections = () => {
     const SectionParts = () => (
       <div className="flex flex-col items-center pt-30px px-20px">
-        <ButtonDrawer withSetting className="mb-25px" text="هدر استایل-1" />
+        <ButtonDrawer
+          withSetting
+          className="mb-25px"
+          text="هدر استایل-1"
+          onSetting={() =>
+            toggleStyleDrawer({
+              open: true,
+              current: { name: 'header' },
+            })
+          }
+        />
         <Container
           groupName="1"
           style={{ width: '100%', minHeight: 0 }}
@@ -72,20 +83,32 @@ export const DrawerDynamic: FC<IDrawer> = () => {
                 className="mb-25px cursor-move"
                 text={item.title}
                 onDelete={() => onDeleteItem(item)}
+                onSetting={() =>
+                  toggleStyleDrawer({ open: true, current: item })
+                }
               />
             </Draggable>
           ))}
         </Container>
-        <ButtonDrawer withSetting text="فوتر استایل-1" />
+        <ButtonDrawer
+          withSetting
+          text="فوتر استایل-1"
+          onSetting={() =>
+            toggleStyleDrawer({
+              open: true,
+              current: { name: 'فوتر' },
+            })
+          }
+        />
       </div>
     );
 
     return (
-      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50 ">
+      <DrawerLayout>
         <HeaderDrawer />
         <SectionParts />
         <ButtonGroupDrawer />
-      </div>
+      </DrawerLayout>
     );
   };
 
@@ -132,12 +155,35 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     );
 
     return (
-      <div className=" w-310px h-full fixed top-0 right-0 mr-68px bg-gray_shade-900  pt-13px z-50">
+      <DrawerLayout>
         <HeaderDrawer setting />
         <ColorsButtons />
         <FontDropDowns />
         <ButtonGroupDrawer />
+      </DrawerLayout>
+    );
+  };
+
+  const DrawerStyle = () => {
+    const StyleParts = () => (
+      <div className="flex flex-col items-center pt-30px px-20px">
+        <ButtonDrawer text="اینپوت" className="mb-25px" />
+        <ButtonDrawer text="استایل" className="mb-25px" />
+        <ButtonDrawer text="استایل" className="mb-25px" withUpload />
+        <ButtonDrawer
+          text="استایل"
+          className="mb-25px"
+          withLink
+          link="https:localhost"
+        />
       </div>
+    );
+    return (
+      <DrawerLayout>
+        <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
+        <StyleParts />
+        <ButtonGroupDrawer />
+      </DrawerLayout>
     );
   };
 
@@ -146,6 +192,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
+      {uiState.drawer.style && <DrawerStyle />}
     </Fragment>
   );
 };

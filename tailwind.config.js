@@ -69,6 +69,7 @@ module.exports = {
         body: ['YekanBakhFA'],
       },
       fontSize: {
+        '12px': '12px',
         '14px': '14px',
         '16px': '16px',
       },

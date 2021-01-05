@@ -10,6 +10,10 @@ interface IButton {
   onCancel?: any;
   onSave?: any;
   withIcon?: boolean;
+  withLink?: boolean;
+  link?: string;
+  withUpload?: boolean;
+  onUpload?: any;
 }
 
 export { IButton };

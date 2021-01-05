@@ -6,3 +6,5 @@ export * from './multiply';
 export * from './setting-cog';
 export * from './trash';
 export * from './logo';
+export * from './link';
+export * from './arrow-right';
