@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { Drawer } from 'components';
 import { ILayout } from './interfaces';
-import { FooterContainer } from '../../../../containers/admin';
-import { Header } from 'containers';
+import { Header, FooterContainer } from 'containers';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
   return (
@@ -10,9 +9,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
       <Drawer />
       <div className="z-0">
         <Header />
-
         {children}
-
         <FooterContainer />
       </div>
     </div>

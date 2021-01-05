@@ -53,26 +53,24 @@ export const Drop: FC<IDrop> = ({ children, className, options }) => {
               : 'opacity-0 pointer-events-none'
           } transition-all duration-500 z-50 w-full rounded-b-md  `}
         >
-          {options.map((item, index) => {
-            return (
-              <li
-                className={`text-left  pr-20px  hover:bg-white hover:text-gray_shade-800 transition h-50px flex  items-center
+          {options.map((item, index) => (
+            <li
+              className={`text-left  pr-20px  hover:bg-white hover:text-gray_shade-800 transition h-50px flex  items-center
                  ${
                    selected === index
                      ? 'bg-white text-gray_shade-800'
                      : 'bg-gray_shade-800'
                  }`}
-                key={index}
-                onClick={() => {
-                  setValue(item);
-                  setSelected(index);
-                  setShowMenu(false);
-                }}
-              >
-                {item}
-              </li>
-            );
-          })}
+              key={index}
+              onClick={() => {
+                setValue(item);
+                setSelected(index);
+                setShowMenu(false);
+              }}
+            >
+              {item}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
