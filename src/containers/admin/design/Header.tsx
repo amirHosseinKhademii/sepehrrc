@@ -1,5 +1,5 @@
 import { Navbar, Button } from 'components';
-import { Search, ShoppingCart, UsersAlt } from 'icons';
+import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 import Link from 'next/link';
 
 interface IHeader {
@@ -62,13 +62,13 @@ export const Header = ({ backgroundColor = 'bg-white' }) => {
         <div className="col-span-4 flex items-center justify-end">
           <div className="flex justify-self-end">
             <Link href={item.icons[0].link}>
-              <Search fontSize="24px" className="mx-4" />
+              <ICSearch className="mx-4" />
             </Link>
             <Link href={item.icons[1].link}>
-              <ShoppingCart fontSize="24px" className="mx-4" />
+              <ICShoppingCart className="mx-4" />
             </Link>
             <Link href={item.icons[2].link}>
-              <UsersAlt fontSize="24px" className="mx-4" />
+              <ICUsersAlt className="mx-4" />
             </Link>
           </div>
           {item.hasButton ? (
