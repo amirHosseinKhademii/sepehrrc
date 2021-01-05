@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IIcon } from './interfaces';
+import { IIcon } from '../interfaces';
 
 export const ICLogo: FC<IIcon> = ({ className }) => {
   return (
