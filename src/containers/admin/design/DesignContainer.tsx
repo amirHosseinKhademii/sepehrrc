@@ -30,7 +30,7 @@ export const DesignContainer = () => {
         {dndState.page.map((item, index) => (
           <Fragment key={index}>
             {item.type == 'products' && (
-              <CardContainer items={item.items} title="جدیدترین محصولات ماه" />
+              <CardContainer items={item.items} title="جدیدترین محصولات ما" />
             )}
             {item.type == 'slider' && <Slider />}
             {item.type == 'text' && (

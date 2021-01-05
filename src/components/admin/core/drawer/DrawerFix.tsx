@@ -1,6 +1,13 @@
 import { useContext } from 'react';
 import { ButtonIcon } from 'components';
-import { ICEditAlt, ICPlus, ICSetting, ICMenu, ICMultiply,ICLogo } from 'icons';
+import {
+  ICEditAlt,
+  ICPlus,
+  ICSetting,
+  ICMenu,
+  ICMultiply,
+  ICLogo,
+} from 'icons';
 import { uiTypes, UIContext } from 'providers/ui-provider';
 import { useUi } from 'hooks';
 
@@ -30,7 +37,11 @@ export const DrawerFix = () => {
         className="flex justify-center items-center h-82px w-68px py-17px"
         onClick={toggleMenu}
       >
-        {uiState.drawer.menu ? <ICMultiply /> : <ICMenu />}
+        {uiState.drawer.menu ? (
+          <ICMultiply fill="white" />
+        ) : (
+          <ICMenu fill="white" />
+        )}
       </ButtonIcon>
       <ButtonIcon
         className={`flex flex-col items-center h-81px w-68px py-17px ${
@@ -89,8 +100,8 @@ export const DrawerFix = () => {
           تنظیمات
         </span>
       </ButtonIcon>
-      <ButtonIcon className ="flex flex-col items-center absolute bottom-0 focus:outline-none">
-        <ICLogo className="h-36px w-36px "/>
+      <ButtonIcon className="flex flex-col items-center absolute bottom-0 focus:outline-none">
+        <ICLogo className="h-36px w-36px " />
         <span className="uppercase text-gray_shade-300 mt-10px mb-20px ml-auto mr-auto w-36px text-sm ">
           sepehr v2.1
         </span>

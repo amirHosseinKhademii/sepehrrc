@@ -20,12 +20,12 @@ export const ButtonDrawer: FC<IButton> = ({
       <div className="flex flex-row items-center">
         {withSetting && (
           <ButtonIcon onClick={onSetting} className="pr-13px">
-            <ICSettingCog />
+            <ICSettingCog fill="#b8bdca" />
           </ButtonIcon>
         )}
         {withDelete && (
           <ButtonIcon onClick={onDelete}>
-            <ICTrash />
+            <ICTrash fill="#b8bdca" />
           </ButtonIcon>
         )}
         {withIcon && children}
