@@ -9,6 +9,8 @@ const uiInitialState = {
     sections: false,
     add: false,
     settings: false,
+    style: false,
+    current: {},
   },
 };
 
@@ -23,6 +25,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           add: false,
           settings: false,
+          style: false,
         },
       };
     case uiTypes.DRAWER_SECTIONS:
@@ -33,6 +36,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           settings: false,
           add: false,
           sections: payload,
+          style: false,
         },
       };
     case uiTypes.DRAWER_ADD:
@@ -43,6 +47,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           settings: false,
           add: payload,
+          style: false,
         },
       };
     case uiTypes.DRAWER_SETTINGS:
@@ -53,6 +58,19 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           add: false,
           settings: payload,
+          style: false,
+        },
+      };
+    case uiTypes.DRAWER_STYLE:
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          sections: false,
+          add: false,
+          settings: false,
+          style: payload.open,
+          current: payload.current,
         },
       };
     case uiTypes.DRAWER_CLOSE:
