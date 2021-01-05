@@ -25,7 +25,7 @@ export const DesignContainer = () => {
         onDrop={onHorizontalDrop(drop)}
         getChildPayload={(index) => setChildPayload(index, dndState.page)}
         onDragEnd={(e) => setDrop(e)}
-        style={{ height: '100vh' }}
+        style={{ height: '90vh' }}
       >
         {dndState.page.map((item, index) => (
           <Fragment key={index}>

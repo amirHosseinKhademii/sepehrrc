@@ -54,11 +54,11 @@ export const DrawerDynamic: FC<IDrawer> = () => {
 
   const DrawerSections = () => {
     const SectionParts = () => (
-      <div className="flex flex-col items-center  pt-30px px-20px">
-        <ButtonDrawer withSetting className="mb-25px " text="هدر استایل-1" />
+      <div className="flex flex-col items-center pt-30px px-20px">
+        <ButtonDrawer withSetting className="mb-25px" text="هدر استایل-1" />
         <Container
           groupName="1"
-          style={{ width: '100%' }}
+          style={{ width: '100%',minHeight:0 }}
           orientation="vertical"
           lockAxis="y"
           onDrop={onVerticalDrop}
