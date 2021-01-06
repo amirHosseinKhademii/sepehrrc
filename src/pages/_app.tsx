@@ -1,13 +1,13 @@
 import '../styles/index.css';
 import { UiProvider } from 'providers/ui-provider';
-import { DndProvider } from 'providers/dnd-provider';
+import { DesignProvider } from 'providers/design-provider';
 
 function MyApp({ Component, pageProps }) {
   return (
     <UiProvider>
-      <DndProvider>
+      <DesignProvider>
         <Component {...pageProps} />
-      </DndProvider>
+      </DesignProvider>
     </UiProvider>
   );
 }

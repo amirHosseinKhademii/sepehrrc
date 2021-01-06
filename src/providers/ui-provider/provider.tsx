@@ -10,7 +10,6 @@ const uiInitialState = {
     add: false,
     settings: false,
     style: false,
-    current: {},
   },
 };
 
@@ -70,7 +69,6 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           add: false,
           settings: false,
           style: payload.open,
-          current: payload.current,
         },
       };
     case uiTypes.DRAWER_CLOSE:
