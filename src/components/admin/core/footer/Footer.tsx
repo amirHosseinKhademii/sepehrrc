@@ -8,7 +8,7 @@ export const Footer: FC<IFooter> = ({ phone }) => {
     <div className="container mx-auto h-full">
       <div className="grid grid-cols-6 h-full">
         <div className="col-span-3 flex items-center">
-          <button className="flex justify-center items-center h-9 bg-red-500 rounded-full px-3 py-2 text-white">
+          <button className="focus:outline-none flex justify-center items-center h-9 bg-red-500 rounded-full px-3 py-2 text-white">
             <ICPhone
               fill="white"
               className="text-xl"

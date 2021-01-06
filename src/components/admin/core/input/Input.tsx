@@ -1,16 +1,12 @@
 import { FC } from 'react';
+import { IInput } from './interface';
 
-interface IInput {
-  item?: any;
-  page?: boolean;
-}
-export const Input: FC<IInput> = ({ item, page = false }) => {
+export const Input: FC<IInput> = ({ item, placeholder }) => {
   return (
     <input
-      className={`rounded border p-3 my-2 ${page ? 'w-1/4' : 'w-full'} ${
-        item.className
-      }`}
-      placeholder={item.placeholder}
+      className={`placeholder-gray_shade-300 focus:outline-none rounded px-4  h-54px w-270px bg-gray_shade-500 text-white focus:ring-2 focus:ring-blue-500`}
+      placeholder={placeholder}
+      dir="rtl"
     />
   );
 };
