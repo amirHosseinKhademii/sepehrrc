@@ -1,8 +1,10 @@
+import { DesignContext, designTypes } from 'providers/design-provider';
 import { UIContext, uiTypes } from 'providers/ui-provider';
 import { useContext } from 'react';
 
 export const useUi = () => {
   const { uiState, uiDispatch } = useContext(UIContext);
+  const { designDispatch } = useContext(DesignContext);
 
   return {
     toggleMenu: () => {
@@ -20,6 +22,7 @@ export const useUi = () => {
     },
     toggleStyleDrawer: (payload) => {
       uiDispatch({ type: uiTypes.DRAWER_STYLE, payload });
+      designDispatch({ type: designTypes.ON_SETTING_CLICK, payload });
     },
     uiState,
     uiTypes,
