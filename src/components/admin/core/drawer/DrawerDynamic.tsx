@@ -17,6 +17,7 @@ interface IDrawer {
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState, toggleStyleDrawer } = useUi();
   const { dndState, setChildPayload, onVerticalDrop, onDeleteItem } = useDnd();
+ 
 
   const DrawerAdd = () => {
     const AddParts = () => (
