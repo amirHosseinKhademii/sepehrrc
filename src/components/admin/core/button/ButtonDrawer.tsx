@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import { ButtonIcon } from './ButtonIcon';
+import { useClass } from 'hooks';
 import { ICLink, ICSettingCog, ICTrash } from 'icons';
 import { IButton } from './interfaces';
 import { Button } from './Button';
+import { ButtonIcon } from './ButtonIcon';
 
 export const ButtonDrawer: FC<IButton> = ({
   text,
@@ -18,9 +19,13 @@ export const ButtonDrawer: FC<IButton> = ({
   withUpload,
   onUpload,
 }) => {
+  const { join } = useClass();
   return (
     <div
-      className={`focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${className}`}
+      className={join(
+        'focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px',
+        className
+      )}
     >
       <div className="flex flex-row items-center">
         {withLink && (
