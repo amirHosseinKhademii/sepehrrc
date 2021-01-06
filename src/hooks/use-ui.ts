@@ -18,6 +18,10 @@ export const useUi = () => {
     toggleSettingsDrawer: (payload) => {
       uiDispatch({ type: uiTypes.DRAWER_SETTINGS, payload });
     },
+    toggleStyleDrawer: (payload) => {
+      uiDispatch({ type: uiTypes.DRAWER_STYLE, payload });
+    },
     uiState,
+    uiTypes,
   };
 };
