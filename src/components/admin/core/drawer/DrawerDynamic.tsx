@@ -2,18 +2,15 @@ import { FC, Fragment } from 'react';
 import { Draggable, Container } from 'react-smooth-dnd';
 import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components/admin/layouts';
+import { IDrawer } from './interfaces';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
   HeaderDrawer,
   Button,
   Drop,
-  StyleBoxBanner,
+  BannerDashboard,
 } from 'components';
-
-interface IDrawer {
-  children?: any;
-}
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState, toggleStyleDrawer } = useUi();
@@ -30,7 +27,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         <Container
           groupName="ADMIN_DESIGN"
           getChildPayload={(index) => setChildPayload(index, designState.menu)}
-          style={{ width: '100%' }}
+          style={{ width: 270 }}
           behaviour="copy"
         >
           {(designState.menu || []).map((item, index) => (
@@ -180,27 +177,12 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     );
   };
 
-  const DrawerStyle = () => {
-    const StyleParts = () => (
-      <div className="flex flex-col items-center pt-30px px-20px">
-        <StyleBoxBanner />
-      </div>
-    );
-    return (
-      <DrawerLayout>
-        <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
-        <StyleParts />
-        <ButtonGroupDrawer />
-      </DrawerLayout>
-    );
-  };
-
   return (
     <Fragment>
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
-      {uiState.drawer.style && <DrawerStyle />}
+      {uiState.drawer.style && <BannerDashboard />}
     </Fragment>
   );
 };

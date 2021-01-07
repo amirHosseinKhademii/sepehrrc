@@ -1,17 +1,21 @@
-import { useClass, useStyleBox } from 'hooks';
-import { FC } from 'react';
+import { useClass, useDesign } from 'hooks';
+import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
-
-interface IStyleBox {
-  variation?: 'first' | 'second' | 'third' | 'forth' | 'fifth' | 'sixth';
-  onEdit?: any;
-  className?: string;
-  onClick?: any;
-}
+import { IStyleBox } from './interface';
 
 export const StyleBoxBanner: FC<IStyleBox> = () => {
   const { join } = useClass();
-  const { onEditClick, onSelect, styleBoxState } = useStyleBox();
+  const { designState, onSetItemSetting } = useDesign();
+  const [open, setopen] = useState(false);
+
+  const toggleDropdown = () => {
+    setopen(!open);
+  };
+
+  const onSelectClick = (payload) => {
+    onSetItemSetting(payload);
+    toggleDropdown();
+  };
 
   const BlueBox = ({ className, number }) => (
     <div
@@ -125,49 +129,68 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     </div>
   );
 
+  const ShowBox = () => {
+    const { style } = designState.current.settings;
+
+    if (!style || style === 'first') return <FirstVariation />;
+    else if (style === 'second') return <SecondVariation />;
+    else if (style === 'third') return <ThirdVariation />;
+    else if (style === 'forth') return <ForthVariation />;
+    else if (style === 'fifth') return <FifthVariation />;
+    else if (style === 'sixth') return <SixthVariation />;
+  };
+
+  const DropDown = () => (
+    <div className="grid grid-cols-1 gap-y-2  focus:ring-2 focus:ring-blue-500">
+      <FirstVariation onClick={() => onSelectClick({ style: 'first' })} />
+      <SecondVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ style: 'second' })}
+      />
+      <ThirdVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ style: 'third' })}
+      />
+      <ForthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ style: 'forth' })}
+      />
+      <FifthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ style: 'fifth' })}
+      />
+      <SixthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ style: 'sixth' })}
+      />
+    </div>
+  );
+
+  const styleTitle = () => {
+    const { style } = designState.current.settings;
+
+    if (!style || style === 'first') return '1 نمایش : استایل ';
+    else if (style === 'second') return '2 نمایش : استایل ';
+    else if (style === 'third') return '3 نمایش : استایل ';
+    else if (style === 'forth') return '4 نمایش : استایل ';
+    else if (style === 'fifth') return '5 نمایش : استایل ';
+    else if (style === 'sixth') return '6 نمایش : استایل ';
+  };
+
   return (
     <div className="w-full bg-gray_shade-500 rounded flex flex-col  px-16px py-21px">
       <div className="flex justify-between">
-        <div className="flex cursor-pointer" onClick={onEditClick}>
-          <ICEditSettings className="mr-1 cursor-pointer" />
-          <span className="text-14px text-gray_shade-300">ویرایش</span>
+        <div className="flex cursor-pointer" onClick={toggleDropdown}>
+          {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
+          <span className="text-14px text-gray_shade-300">
+            {open ? 'بازگشت' : 'ویرایش'}
+          </span>
         </div>
         <span className="text-16px  text-white_shade-100 ">
-          نمایش: استایل 1
+          {open ? 'انتخاب کنید' : styleTitle()}
         </span>
       </div>
-      {styleBoxState.open ? (
-        <div className="grid grid-cols-1 gap-y-2">
-          <FirstVariation onClick={() => onSelect('first')} />
-          <SecondVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('second')}
-          />
-          <ThirdVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('third')}
-          />
-          <ForthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('forth')}
-          />
-          <FifthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('fifth')}
-          />
-          <SixthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('sixth')}
-          />
-        </div>
-      ) : (
-        (styleBoxState.variation === 'first' && <FirstVariation />) ||
-        (styleBoxState.variation === 'second' && <SecondVariation />) ||
-        (styleBoxState.variation === 'third' && <ThirdVariation />) ||
-        (styleBoxState.variation === 'forth' && <ForthVariation />) ||
-        (styleBoxState.variation === 'fifth' && <FifthVariation />) ||
-        (styleBoxState.variation === 'sixth' && <SixthVariation />)
-      )}
+      {open ? <DropDown /> : <ShowBox />}
     </div>
   );
 };

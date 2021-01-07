@@ -84,7 +84,7 @@ const initialState = {
     },
   ],
   page: [],
-  current: { id: '', type: '', title: '', uuid: '' },
+  current: { uuid: '', settings: {} },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -107,17 +107,40 @@ const reducer = (state = initialState, { type, payload }) => {
     case designTypes.ON_SETTING_CLICK:
       return {
         ...state,
-        current: payload.current,
+        current: { ...state.current, ...payload.current },
       };
     case designTypes.ON_SET_ITEM_SETTING:
       const pageSetting = [...state.page];
       let itemSetting = pageSetting.find(
         (item) => item.uuid === state.current.uuid
       );
-      itemSetting.style = payload;
+      itemSetting.settings = itemSetting.setting
+        ? { ...itemSetting.settings, ...payload }
+        : { ...payload };
+
+      const currentSettings = {
+        ...state.current,
+        settings: { ...state.current.settings, ...payload },
+      };
       return {
         ...state,
         page: pageSetting,
+        current: currentSettings,
+      };
+    case designTypes.ON_SET_ITEM_PROPS:
+      const pageProps = [...state.page];
+      let itemProps = pageProps.find(
+        (item) => item.uuid === state.current.uuid
+      );
+      itemProps[payload.key] = payload.value;
+      const currentProps = {
+        ...state.current,
+        [payload.key]: payload.value,
+      };
+      return {
+        ...state,
+        page: pageProps,
+        current: currentProps,
       };
     default:
       return state;

@@ -43,16 +43,26 @@ export const ButtonDrawer: FC<IButton> = ({
         )}
         {withIcon && children}
         {withUpload && (
-          <Button
-            className=" bg-gray_shade-900 rounded h-29px w-81px flex items-center justify-center"
-            onClick={onUpload}
-          >
-            <span className="text-gray_shade-300 text-12px pt-1">Browse</span>
+          <Button className=" bg-gray_shade-900 rounded h-29px w-81px flex items-center justify-center">
+            <input
+              type="file"
+              id="actual-btn"
+              className="hidden"
+              onChange={onUpload}
+            />
+            <label
+              htmlFor="actual-btn"
+              className="text-gray_shade-300 text-12px pt-1"
+            >
+              Browse
+            </label>
           </Button>
         )}
       </div>
       {withLink ? (
         <ICLink />
+      ) : withUpload ? (
+        <p className="text-14px text-gray_shade-300">{text}</p>
       ) : (
         <p className="text-white_shade-100 text-14px">{text}</p>
       )}

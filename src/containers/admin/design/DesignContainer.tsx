@@ -1,31 +1,23 @@
 import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
-import { useDesign, useUi } from 'hooks';
-import { CardContainer } from './CardContainer';
-
+import { useDesign } from 'hooks';
+import { CardContainer } from './card';
 import { Slider } from 'components';
+import { BannerContainer } from './banner';
 
 export const DesignContainer = () => {
-  const { uiState } = useUi();
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
 
-  let designWidth = 'designWidth';
-  if (uiState.drawer.sections || uiState.drawer.add) {
-    designWidth = 'designWidthSection';
-  } else if (uiState.drawer.menu) {
-    designWidth = 'designWidthMenu';
-  }
-
   return (
-    <div className={`${designWidth}`}>
+    <div>
       <Container
         groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
         onDrop={onHorizontalDrop(drop)}
         getChildPayload={(index) => setChildPayload(index, designState.page)}
         onDragEnd={(e) => setDrop(e)}
-        style={{ height: '90vh' }}
+        style={{ height: '90vh', width: '100%' }}
       >
         {designState.page.map((item, index) => (
           <Fragment key={index}>
@@ -33,11 +25,7 @@ export const DesignContainer = () => {
               <CardContainer items={item.items} title="جدیدترین محصولات ما" />
             )}
             {item.type == 'slider' && <Slider />}
-            {item.type == 'banner' && (
-              <div className="text-center p-10 rounded bg-red-400 text-white text-lg flex items-center justify-center w-1/4 mx-auto my-20">
-                {item.title}
-              </div>
-            )}
+            {item.type == 'banner' && <BannerContainer item={item} />}
           </Fragment>
         ))}
       </Container>

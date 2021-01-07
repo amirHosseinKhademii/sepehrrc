@@ -14,6 +14,7 @@ interface IButton {
   link?: string;
   withUpload?: boolean;
   onUpload?: any;
+  label?: string;
 }
 
 export { IButton };
