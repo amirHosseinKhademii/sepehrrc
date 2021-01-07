@@ -53,6 +53,8 @@ export const ButtonDrawer: FC<IButton> = ({
       </div>
       {withLink ? (
         <ICLink />
+      ) : withUpload ? (
+        <p className="text-14px text-gray_shade-300">{text}</p>
       ) : (
         <p className="text-white_shade-100 text-14px">{text}</p>
       )}

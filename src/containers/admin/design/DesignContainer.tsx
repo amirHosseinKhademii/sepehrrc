@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
-import { CardContainer } from './CardContainer';
-import { Slider, Banner } from 'components';
+import { CardContainer } from './card';
+import { Slider } from 'components';
+import { BannerContainer } from './banner';
 
 export const DesignContainer = () => {
   const [drop, setDrop] = useState({});
@@ -24,7 +25,7 @@ export const DesignContainer = () => {
               <CardContainer items={item.items} title="جدیدترین محصولات ما" />
             )}
             {item.type == 'slider' && <Slider />}
-            {item.type == 'banner' && <Banner item={item} />}
+            {item.type == 'banner' && <BannerContainer item={item} />}
           </Fragment>
         ))}
       </Container>

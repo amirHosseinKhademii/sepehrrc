@@ -2,6 +2,7 @@ import { FC, Fragment } from 'react';
 import { Draggable, Container } from 'react-smooth-dnd';
 import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components/admin/layouts';
+import { IDrawer } from './interfaces';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
@@ -9,11 +10,9 @@ import {
   Button,
   Drop,
   StyleBoxBanner,
+  Input,
+  Text,
 } from 'components';
-
-interface IDrawer {
-  children?: any;
-}
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState, toggleStyleDrawer } = useUi();
@@ -181,9 +180,22 @@ export const DrawerDynamic: FC<IDrawer> = () => {
   };
 
   const DrawerStyle = () => {
+    const UploadButtonGroup = () => (
+      <Fragment>
+        <Text className="mt-30px mb-14px text-14px text-white_shade-100 text-right">
+          تصویر 1
+        </Text>
+        <ButtonDrawer withUpload text="انتخاب تصویر" />
+        <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
+      </Fragment>
+    );
+
     const StyleParts = () => (
-      <div className="flex flex-col items-center pt-30px px-20px">
+      <div className="flex flex-col items-end pt-30px px-20px">
+        <Input className=" mb-30px" label="عنوان بخش" />
         <StyleBoxBanner />
+        <UploadButtonGroup />
+        <UploadButtonGroup />
       </div>
     );
     return (

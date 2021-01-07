@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { Drawer } from 'components';
 import { ILayout } from './interfaces';
-import { Header, FooterContainer } from 'containers';
+import { DesignHeader, DesignFooter } from 'containers';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
   return (
     <div>
       <Drawer />
       <div className="z-0 ">
-        <Header />
+        <DesignHeader />
         <div className="py-20">{children}</div>
-        <FooterContainer />
+        <DesignFooter />
       </div>
     </div>
   );

@@ -9,3 +9,4 @@ export * from './navbar';
 export * from './footer';
 export * from './style-box';
 export * from './banner';
+export * from './text';

@@ -41,7 +41,7 @@ const item = {
     },
   ],
 };
-export const Header = ({ backgroundColor = 'bg-white' }) => {
+export const DesignHeader = ({ backgroundColor = 'bg-white' }) => {
   return (
     <div className={`${backgroundColor} shadow-large-1`}>
       <div

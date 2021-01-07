@@ -1,3 +1,3 @@
 export * from './DesignContainer';
-export * from './FooterContainer';
-export * from './HeaderContainer';
+export * from './footer';
+export * from './header';
