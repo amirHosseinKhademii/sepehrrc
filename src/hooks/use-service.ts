@@ -1,25 +1,16 @@
-/* eslint-disable no-return-await */
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
-import { Request } from 'helper';
 
-const useService = ({ config }) => {
-  const client = useQueryClient();
-
+const useService = () => {
   return {
-    query: ({ url, onSuccess, onError }) => {
-      const queryKey = 'url';
-      const fetcher = async () => await Request.get('/add/totdo');
-      return useQuery(queryKey, fetcher, { onError, onSuccess });
-    },
-    mutation: ({ url }) => {
-      const mutatateFn = async (model) => await axios.post('', {});
-      return useMutation(mutatateFn, {
-        onSuccess: () => {},
-        onError: () => {},
-        onSettled: () => {},
-      });
+    onUpload: async (file) => {
+      const data = new FormData();
+      data.append('file', file);
+      data.append('upload_preset', 'xicq5r2v');
+      return await axios.post(
+        ' https://api.cloudinary.com/v1_1/dqn0ufzhz/image/upload',
+        data
+      );
     },
   };
 };

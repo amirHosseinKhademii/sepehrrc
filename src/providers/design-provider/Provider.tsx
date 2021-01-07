@@ -127,6 +127,21 @@ const reducer = (state = initialState, { type, payload }) => {
         page: pageSetting,
         current: currentSettings,
       };
+    case designTypes.ON_SET_ITEM_PROPS:
+      const pageProps = [...state.page];
+      let itemProps = pageProps.find(
+        (item) => item.uuid === state.current.uuid
+      );
+      itemProps[payload.key] = payload.value;
+      const currentProps = {
+        ...state.current,
+        [payload.key]: payload.value,
+      };
+      return {
+        ...state,
+        page: pageProps,
+        current: currentProps,
+      };
     default:
       return state;
   }

@@ -10,3 +10,4 @@ export * from './footer';
 export * from './style-box';
 export * from './banner';
 export * from './text';
+export * from './style-dashboard';

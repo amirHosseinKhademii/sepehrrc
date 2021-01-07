@@ -2,7 +2,14 @@ import { useClass } from 'hooks';
 import { FC } from 'react';
 import { IInput } from './interface';
 
-export const Input: FC<IInput> = ({ className, placeholder, label }) => {
+export const Input: FC<IInput> = ({
+  className,
+  placeholder,
+  label,
+  onChange,
+  onBlur,
+  value,
+}) => {
   const { join } = useClass();
 
   return (
@@ -18,16 +25,11 @@ export const Input: FC<IInput> = ({ className, placeholder, label }) => {
       <input
         id={label}
         placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
         className="w-full h-54px px-4 text-right rounded text-gray_shade-300 bg-gray_shade-500 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500"
       />
     </div>
-  );
-
-  return (
-    <input
-      className={`placeholder-gray_shade-300 focus:outline-none rounded px-4  h-54px w-270px bg-gray_shade-500 text-white focus:ring-2 focus:ring-blue-500`}
-      placeholder={placeholder}
-      dir="rtl"
-    />
   );
 };

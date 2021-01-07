@@ -9,9 +9,7 @@ import {
   HeaderDrawer,
   Button,
   Drop,
-  StyleBoxBanner,
-  Input,
-  Text,
+  BannerDashboard,
 } from 'components';
 
 export const DrawerDynamic: FC<IDrawer> = () => {
@@ -179,40 +177,12 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     );
   };
 
-  const DrawerStyle = () => {
-    const UploadButtonGroup = () => (
-      <Fragment>
-        <Text className="mt-30px mb-14px text-14px text-white_shade-100 text-right">
-          تصویر 1
-        </Text>
-        <ButtonDrawer withUpload text="انتخاب تصویر" />
-        <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
-      </Fragment>
-    );
-
-    const StyleParts = () => (
-      <div className="flex flex-col items-end pt-30px px-20px">
-        <Input className=" mb-30px" label="عنوان بخش" />
-        <StyleBoxBanner />
-        <UploadButtonGroup />
-        <UploadButtonGroup />
-      </div>
-    );
-    return (
-      <DrawerLayout>
-        <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
-        <StyleParts />
-        <ButtonGroupDrawer />
-      </DrawerLayout>
-    );
-  };
-
   return (
     <Fragment>
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
-      {uiState.drawer.style && <DrawerStyle />}
+      {uiState.drawer.style && <BannerDashboard />}
     </Fragment>
   );
 };

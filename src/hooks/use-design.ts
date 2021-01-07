@@ -44,6 +44,12 @@ export const useDesign = () => {
         payload,
       });
     },
+    onSetItemProps: (payload) => {
+      designDispatch({
+        type: designTypes.ON_SET_ITEM_PROPS,
+        payload,
+      });
+    },
     designState,
   };
 };
