@@ -1,5 +1,5 @@
-import { useClass, useStyleBox } from 'hooks';
-import { FC } from 'react';
+import { useClass, useDesign } from 'hooks';
+import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
 
 interface IStyleBox {
@@ -11,7 +11,17 @@ interface IStyleBox {
 
 export const StyleBoxBanner: FC<IStyleBox> = () => {
   const { join } = useClass();
-  const { onEditClick, onSelect, styleBoxState } = useStyleBox();
+  const { designState, onSetItemSetting } = useDesign();
+  const [open, setopen] = useState(false);
+
+  const toggleDropdown = () => {
+    setopen(!open);
+  };
+
+  const onSelectClick = (payload) => {
+    onSetItemSetting(payload);
+    toggleDropdown();
+  };
 
   const BlueBox = ({ className, number }) => (
     <div
@@ -125,10 +135,47 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     </div>
   );
 
+  const ShowBox = () => {
+    const { variation } = designState.current.settings;
+
+    if (!variation || variation === 'first') return <FirstVariation />;
+    else if (variation === 'second') return <SecondVariation />;
+    else if (variation === 'third') return <ThirdVariation />;
+    else if (variation === 'forth') return <ForthVariation />;
+    else if (variation === 'fifth') return <FifthVariation />;
+    else if (variation === 'sixth') return <SixthVariation />;
+  };
+
+  const DropDown = () => (
+    <div className="grid grid-cols-1 gap-y-2">
+      <FirstVariation onClick={() => onSelectClick({ variation: 'first' })} />
+      <SecondVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ variation: 'second' })}
+      />
+      <ThirdVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ variation: 'third' })}
+      />
+      <ForthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ variation: 'forth' })}
+      />
+      <FifthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ variation: 'fifth' })}
+      />
+      <SixthVariation
+        className=" border-t pt-4 border-gray-400"
+        onClick={() => onSelectClick({ variation: 'sixth' })}
+      />
+    </div>
+  );
+
   return (
     <div className="w-full bg-gray_shade-500 rounded flex flex-col  px-16px py-21px">
       <div className="flex justify-between">
-        <div className="flex cursor-pointer" onClick={onEditClick}>
+        <div className="flex cursor-pointer" onClick={toggleDropdown}>
           <ICEditSettings className="mr-1 cursor-pointer" />
           <span className="text-14px text-gray_shade-300">ویرایش</span>
         </div>
@@ -136,38 +183,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
           نمایش: استایل 1
         </span>
       </div>
-      {styleBoxState.open ? (
-        <div className="grid grid-cols-1 gap-y-2">
-          <FirstVariation onClick={() => onSelect('first')} />
-          <SecondVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('second')}
-          />
-          <ThirdVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('third')}
-          />
-          <ForthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('forth')}
-          />
-          <FifthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('fifth')}
-          />
-          <SixthVariation
-            className=" border-t pt-4 border-gray-400"
-            onClick={() => onSelect('sixth')}
-          />
-        </div>
-      ) : (
-        (styleBoxState.variation === 'first' && <FirstVariation />) ||
-        (styleBoxState.variation === 'second' && <SecondVariation />) ||
-        (styleBoxState.variation === 'third' && <ThirdVariation />) ||
-        (styleBoxState.variation === 'forth' && <ForthVariation />) ||
-        (styleBoxState.variation === 'fifth' && <FifthVariation />) ||
-        (styleBoxState.variation === 'sixth' && <SixthVariation />)
-      )}
+      {open ? <DropDown /> : <ShowBox />}
     </div>
   );
 };

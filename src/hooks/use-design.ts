@@ -38,6 +38,12 @@ export const useDesign = () => {
     setChildPayload: (index, items) => {
       return items.filter((_item, i) => i === index)[0];
     },
+    onSetItemSetting: (payload) => {
+      designDispatch({
+        type: designTypes.ON_SET_ITEM_SETTING,
+        payload,
+      });
+    },
     designState,
   };
 };

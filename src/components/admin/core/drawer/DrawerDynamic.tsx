@@ -30,7 +30,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         <Container
           groupName="ADMIN_DESIGN"
           getChildPayload={(index) => setChildPayload(index, designState.menu)}
-          style={{ width: '100%' }}
+          style={{ width: 270 }}
           behaviour="copy"
         >
           {(designState.menu || []).map((item, index) => (

@@ -7,9 +7,9 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
   return (
     <div>
       <Drawer />
-      <div className="z-0">
+      <div className="z-0 ">
         <Header />
-        {children}
+        <div className="py-20">{children}</div>
         <FooterContainer />
       </div>
     </div>
