@@ -82,6 +82,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           add: false,
           settings: false,
+          style: false,
         },
       };
     case uiTypes.MODAL_TOGGLE:

@@ -30,101 +30,101 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
 
   const FirstVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join('grid grid-cols-3 w-full mt-16px  mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center mr-6px">
-        <BlueBox className="w-75px h-35px" number="2" />
-        <BlueBox className="w-75px h-35px mt-5px" number="3" />
+      <div className=" col-span-1 grid grid-cols-1 mr-6px">
+        <BlueBox className=" h-35px" number="2" />
+        <BlueBox className=" h-35px mt-5px" number="3" />
       </div>
-      <div className="">
-        <BlueBox className="w-155px h-75px" number="1" />
+      <div className=" col-span-2">
+        <BlueBox className=" h-75px" number="1" />
       </div>
     </div>
   );
 
   const SecondVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join('grid grid-cols-4 w-full  mt-16px  mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-52px h-35px" number="4" />
-        <BlueBox className="w-52px h-35px mt-5px" number="5" />
+      <div className=" col-span-1 grid grid-cols-1 ">
+        <BlueBox className=" h-35px" number="4" />
+        <BlueBox className=" h-35px mt-5px" number="5" />
       </div>
-      <div className=" mx-6px">
-        <BlueBox className="w-122px h-75px" number="1" />
+      <div className=" col-span-2 mx-6px">
+        <BlueBox className=" h-75px" number="1" />
       </div>
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-52px h-35px" number="2" />
-        <BlueBox className="w-52px h-35px mt-5px" number="3" />
+      <div className=" grid grid-cols-1">
+        <BlueBox className=" h-35px" number="2" />
+        <BlueBox className="h-35px mt-5px" number="3" />
       </div>
     </div>
   );
 
   const ThirdVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-77px h-35px" number="4" />
-        <BlueBox className="w-77px h-35px mt-5px" number="5" />
+      <div className=" grid grid-cols-1 ">
+        <BlueBox className="  h-35px" number="4" />
+        <BlueBox className=" h-35px mt-5px" number="5" />
       </div>
-      <div className="flex flex-col items-center mx-4px ">
-        <BlueBox className=" w-77px h-35px" number="4" />
-        <BlueBox className="w-77px h-35px mt-5px" number="5" />
+      <div className=" grid grid-cols-1  mx-4px ">
+        <BlueBox className=" h-35px" number="4" />
+        <BlueBox className=" h-35px mt-5px" number="5" />
       </div>
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-77px h-35px" number="4" />
-        <BlueBox className="w-77px h-35px mt-5px" number="5" />
+      <div className=" grid grid-cols-1  ">
+        <BlueBox className=" h-35px" number="4" />
+        <BlueBox className=" h-35px mt-5px" number="5" />
       </div>
     </div>
   );
 
   const ForthVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-116px h-35px" number="4" />
-        <BlueBox className="w-116px h-35px mt-5px" number="5" />
+      <div className=" grid grid-cols-1 ">
+        <BlueBox className="  h-35px" number="4" />
+        <BlueBox className="h-35px mt-5px" number="5" />
       </div>
-      <div className="flex flex-col items-center ml-6px ">
-        <BlueBox className=" w-116px h-35px" number="4" />
-        <BlueBox className="w-116px h-35px mt-5px" number="5" />
+      <div className=" grid grid-cols-1 ml-6px ">
+        <BlueBox className=" h-35px" number="4" />
+        <BlueBox className=" h-35px mt-5px" number="5" />
       </div>
     </div>
   );
 
   const FifthVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center mr-6px ">
-        <BlueBox className=" w-116px h-35px" number="4" />
+      <div className=" grid grid-cols-1 ">
+        <BlueBox className="  h-35px" number="4" />
       </div>
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-116px h-35px" number="4" />
+      <div className=" grid grid-cols-1 ml-6px ">
+        <BlueBox className=" h-35px" number="4" />
       </div>
     </div>
   );
 
   const SixthVariation: FC<IStyleBox> = ({ className, onClick }) => (
     <div
-      className={join(' flex mt-16px w-full mx-auto', className)}
+      className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-77px h-35px" number="4" />
+      <div className=" grid grid-cols-1 ">
+        <BlueBox className="  h-35px" number="4" />
       </div>
-      <div className="flex flex-col items-center mx-4px ">
-        <BlueBox className=" w-77px h-35px" number="4" />
+      <div className=" grid grid-cols-1  mx-4px ">
+        <BlueBox className=" h-35px" number="4" />
       </div>
-      <div className="flex flex-col items-center ">
-        <BlueBox className=" w-77px h-35px" number="4" />
+      <div className=" grid grid-cols-1  ">
+        <BlueBox className=" h-35px" number="4" />
       </div>
     </div>
   );

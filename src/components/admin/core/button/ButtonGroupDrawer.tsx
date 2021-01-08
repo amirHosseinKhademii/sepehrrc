@@ -8,7 +8,6 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
 
   const onCancelClick = () => {
     uiDispatch({ type: uiTypes.DRAWER_CLOSE });
-    // onCancel();
   };
 
   return (
