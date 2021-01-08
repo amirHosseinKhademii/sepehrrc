@@ -1,4 +1,4 @@
-export { useService } from './use-service';
-export { useDesign } from './use-design';
-export { useUi } from './use-ui';
-export { useClass } from './use-class';
+export * from './use-service';
+export * from './use-design';
+export * from './use-ui';
+export * from './use-class';

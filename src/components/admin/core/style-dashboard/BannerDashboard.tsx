@@ -1,32 +1,35 @@
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
-import { useDesign } from 'hooks';
+import { useClass, useDesign } from 'hooks';
 import {
-  ButtonDrawer,
   Text,
   Input,
+  CheckBox,
+  ButtonDrawer,
   StyleBoxBanner,
   HeaderDrawer,
   ButtonGroupDrawer,
 } from 'components';
 
 export const BannerDashboard = () => {
-  const { designState, setProps, setImage } = useDesign();
+  const { designState, setProps, setPureImage } = useDesign();
+  const { join } = useClass();
 
   const UploadButtonGroup = () => {
-    const ButtonBox = ({ label, number }) => {
+    const ButtonBox: FC<IBannerDashboard> = ({ label, number, className }) => {
       return (
-        <Fragment>
+        <div className={join('w-full', className)}>
           <Text className="mt-30px mb-14px text-14px text-white_shade-100 text-right">
             {label}
           </Text>
           <ButtonDrawer
             withUpload
             text="انتخاب تصویر"
-            onUpload={(file) => setImage(file, number)}
+            onUpload={(file) => setPureImage(file, number)}
           />
           <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
-        </Fragment>
+          <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
+        </div>
       );
     };
 
@@ -35,7 +38,7 @@ export const BannerDashboard = () => {
         <Fragment>
           <ButtonBox label="تصویر 1" number="one" />
           <ButtonBox label="تصویر 2" number="two" />
-          <ButtonBox label="تصویر 3" number="three" />
+          <ButtonBox label="تصویر 3" number="three" className="mb-122px" />
         </Fragment>
       );
     else if (designState.current.settings.style === 'second')
@@ -45,7 +48,7 @@ export const BannerDashboard = () => {
           <ButtonBox label="تصویر 2" number="two" />
           <ButtonBox label="تصویر 3" number="three" />
           <ButtonBox label="تصویر 4" number="four" />
-          <ButtonBox label="تصویر 5" number="five" />
+          <ButtonBox label="تصویر 5" number="five" className="mb-122px" />
         </Fragment>
       );
     else if (designState.current.settings.style === 'third')
@@ -56,7 +59,7 @@ export const BannerDashboard = () => {
           <ButtonBox label="تصویر 3" number="three" />
           <ButtonBox label="تصویر 4" number="four" />
           <ButtonBox label="تصویر 5" number="five" />
-          <ButtonBox label="تصویر 6" number="six" />
+          <ButtonBox label="تصویر 6" number="six" className="mb-122px" />
         </Fragment>
       );
     else if (designState.current.settings.style === 'forth')
@@ -65,14 +68,14 @@ export const BannerDashboard = () => {
           <ButtonBox label="تصویر 1" number="one" />
           <ButtonBox label="تصویر 2" number="two" />
           <ButtonBox label="تصویر 3" number="three" />
-          <ButtonBox label="تصویر 4" number="four" />
+          <ButtonBox label="تصویر 4" number="four" className="mb-122px" />
         </Fragment>
       );
     else if (designState.current.settings.style === 'fifth')
       return (
         <Fragment>
           <ButtonBox label="تصویر 1" number="one" />
-          <ButtonBox label="تصویر 2" number="two" />
+          <ButtonBox label="تصویر 2" number="two" className="mb-122px" />
         </Fragment>
       );
     else if (designState.current.settings.style === 'sixth')
@@ -80,7 +83,7 @@ export const BannerDashboard = () => {
         <Fragment>
           <ButtonBox label="تصویر 1" number="one" />
           <ButtonBox label="تصویر 2" number="two" />
-          <ButtonBox label="تصویر 3" number="three" />
+          <ButtonBox label="تصویر 3" number="three" className="mb-122px" />
         </Fragment>
       );
     else
@@ -88,7 +91,7 @@ export const BannerDashboard = () => {
         <Fragment>
           <ButtonBox label="تصویر 1" number="one" />
           <ButtonBox label="تصویر 2" number="two" />
-          <ButtonBox label="تصویر 3" number="three" />
+          <ButtonBox label="تصویر 3" number="three" className="mb-122px" />
         </Fragment>
       );
   };

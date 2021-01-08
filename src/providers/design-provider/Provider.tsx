@@ -87,6 +87,7 @@ const initialState = {
   ],
   page: [],
   current: { uuid: '', settings: {}, images: {} },
+  pureImage: { number: '', value: '' },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -132,14 +133,19 @@ const reducer = (state = initialState, { type, payload }) => {
         page: clonePage,
         current: cloneCurrent,
       };
+    case designTypes.ON_SET_PURE_IMAGE:
+      return {
+        ...state,
+        pureImage: { number: payload.number, value: payload.value },
+      };
     case designTypes.ON_SET_ITEM_IMAGES:
       pageCurrent.images = {
         ...pageCurrent.images,
-        [payload.number]: payload.value,
+        [state.pureImage.number]: payload,
       };
       cloneCurrent.images = {
         ...cloneCurrent.images,
-        [payload.number]: payload.value,
+        [state.pureImage.number]: payload,
       };
       return {
         ...state,

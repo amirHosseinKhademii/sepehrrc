@@ -11,6 +11,9 @@ const uiInitialState = {
     settings: false,
     style: false,
   },
+  modal: {
+    open: false,
+  },
 };
 
 const uiReducer = (state = uiInitialState, { type, payload }) => {
@@ -79,7 +82,13 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           add: false,
           settings: false,
+          style: false,
         },
+      };
+    case uiTypes.MODAL_TOGGLE:
+      return {
+        ...state,
+        modal: { ...state.modal, open: payload },
       };
     default:
       return state;
