@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         primary: {
           300: '#36a7ff',
+          600: '#136ccf',
           700: '#1578e6',
         },
         alert: {
@@ -68,11 +69,14 @@ module.exports = {
         '77px': '77px',
         '81px': '81px',
         '82px': '82px',
+        '85px': '85px',
         '116px': '116px',
         '122px': '122px',
         '130px': '130px',
         '155px': '155px',
+        '160px': '160px',
         '175px': '175px',
+        '188px': '188px',
         '211px': '211px',
         '216px': '216px',
         '270px': '270px',
@@ -80,6 +84,7 @@ module.exports = {
         '378px': '378px',
         '437px': '437px',
         '450px': '450px',
+        '557px': '557px',
       },
       fontFamily: {
         body: ['YekanBakhFA'],

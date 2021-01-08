@@ -11,3 +11,5 @@ export * from './style-box';
 export * from './banner';
 export * from './text';
 export * from './style-dashboard';
+export * from './modal';
+export * from './checkbox';

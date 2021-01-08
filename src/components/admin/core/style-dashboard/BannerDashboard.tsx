@@ -2,16 +2,17 @@ import { Fragment } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign } from 'hooks';
 import {
-  ButtonDrawer,
   Text,
   Input,
+  CheckBox,
+  ButtonDrawer,
   StyleBoxBanner,
   HeaderDrawer,
   ButtonGroupDrawer,
 } from 'components';
 
 export const BannerDashboard = () => {
-  const { designState, setProps, setImage } = useDesign();
+  const { designState, setProps, setPureImage } = useDesign();
 
   const UploadButtonGroup = () => {
     const ButtonBox = ({ label, number }) => {
@@ -23,9 +24,10 @@ export const BannerDashboard = () => {
           <ButtonDrawer
             withUpload
             text="انتخاب تصویر"
-            onUpload={(file) => setImage(file, number)}
+            onUpload={(file) => setPureImage(file, number)}
           />
           <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
+          <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
         </Fragment>
       );
     };
