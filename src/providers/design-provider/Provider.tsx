@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react';
+import { clone } from 'ramda';
 import { designTypes } from './types';
 import { applyDrag } from 'utils';
 
@@ -50,6 +51,7 @@ const initialState = {
       id: '2',
       type: 'banner',
       title: 'بنر',
+      images: {},
     },
 
     {
@@ -84,10 +86,13 @@ const initialState = {
     },
   ],
   page: [],
-  current: { uuid: '', settings: {} },
+  current: { uuid: '', settings: {}, images: {} },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
+  let clonePage = clone(state.page);
+  let cloneCurrent = clone(state.current);
+  let pageCurrent = clonePage.find((item) => item.uuid === state.current.uuid);
   switch (type) {
     case designTypes.ON_HORIZONTAL_DROP:
       return {
@@ -102,7 +107,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case designTypes.ON_DELETE_ITEM:
       return {
         ...state,
-        page: [...state.page].filter((item) => item.uuid != payload.uuid),
+        page: clonePage.filter((item) => item.uuid != payload.uuid),
       };
     case designTypes.ON_SETTING_CLICK:
       return {
@@ -110,37 +115,36 @@ const reducer = (state = initialState, { type, payload }) => {
         current: { ...state.current, ...payload.current },
       };
     case designTypes.ON_SET_ITEM_SETTING:
-      const pageSetting = [...state.page];
-      let itemSetting = pageSetting.find(
-        (item) => item.uuid === state.current.uuid
-      );
-      itemSetting.settings = itemSetting.setting
-        ? { ...itemSetting.settings, ...payload }
+      pageCurrent.settings = pageCurrent.setting
+        ? { ...pageCurrent.settings, ...payload }
         : { ...payload };
-
-      const currentSettings = {
-        ...state.current,
-        settings: { ...state.current.settings, ...payload },
-      };
+      cloneCurrent.settings = { ...cloneCurrent.settings, ...payload };
       return {
         ...state,
-        page: pageSetting,
-        current: currentSettings,
+        page: clonePage,
+        current: cloneCurrent,
       };
     case designTypes.ON_SET_ITEM_PROPS:
-      const pageProps = [...state.page];
-      let itemProps = pageProps.find(
-        (item) => item.uuid === state.current.uuid
-      );
-      itemProps[payload.key] = payload.value;
-      const currentProps = {
-        ...state.current,
-        [payload.key]: payload.value,
+      pageCurrent[payload.key] = payload.value;
+      cloneCurrent[payload.key] = payload.value;
+      return {
+        ...state,
+        page: clonePage,
+        current: cloneCurrent,
+      };
+    case designTypes.ON_SET_ITEM_IMAGES:
+      pageCurrent.images = {
+        ...pageCurrent.images,
+        [payload.number]: payload.value,
+      };
+      cloneCurrent.images = {
+        ...cloneCurrent.images,
+        [payload.number]: payload.value,
       };
       return {
         ...state,
-        page: pageProps,
-        current: currentProps,
+        page: clonePage,
+        current: cloneCurrent,
       };
     default:
       return state;

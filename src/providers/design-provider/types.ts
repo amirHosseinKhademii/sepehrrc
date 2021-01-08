@@ -5,4 +5,5 @@ export const designTypes = {
   ON_SETTING_CLICK: 'On Setting Click',
   ON_SET_ITEM_SETTING: 'On Set Item Setting',
   ON_SET_ITEM_PROPS: 'ON Set Item Properties',
+  ON_SET_ITEM_IMAGES: 'On Set Item Images',
 };

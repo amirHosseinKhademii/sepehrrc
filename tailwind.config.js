@@ -43,6 +43,7 @@ module.exports = {
         '10px': '10px',
         '12px': '12px',
         '14px': '14px',
+        '15px': '15px',
         '23px': '23px',
         '13px': '13px',
         '16px': '16px',
@@ -71,12 +72,13 @@ module.exports = {
         '122px': '122px',
         '130px': '130px',
         '155px': '155px',
-
         '175px': '175px',
+        '211px': '211px',
         '216px': '216px',
         '270px': '270px',
         '310px': '310px',
         '378px': '378px',
+        '437px': '437px',
         '450px': '450px',
       },
       fontFamily: {

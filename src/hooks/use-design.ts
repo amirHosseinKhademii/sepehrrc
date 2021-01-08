@@ -50,6 +50,12 @@ export const useDesign = () => {
         payload,
       });
     },
+    onSetItemImages: (payload) => {
+      designDispatch({
+        type: designTypes.ON_SET_ITEM_IMAGES,
+        payload,
+      });
+    },
     designState,
   };
 };
