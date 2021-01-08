@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
-import { useDesign, useService } from 'hooks';
+import { useDesign } from 'hooks';
 import {
   ButtonDrawer,
   Text,
@@ -11,16 +11,7 @@ import {
 } from 'components';
 
 export const BannerDashboard = () => {
-  const { designState, onSetItemProps, onSetItemImages } = useDesign();
-  const { onUpload } = useService();
-
-  const handleUpload = async (value, number) => {
-    const result = await onUpload(value);
-    onSetItemImages({
-      value: result.data.secure_url,
-      number,
-    });
-  };
+  const { designState, setProps, setImage } = useDesign();
 
   const UploadButtonGroup = () => {
     const ButtonBox = ({ label, number }) => {
@@ -32,7 +23,7 @@ export const BannerDashboard = () => {
           <ButtonDrawer
             withUpload
             text="انتخاب تصویر"
-            onUpload={(file) => handleUpload(file, number)}
+            onUpload={(file) => setImage(file, number)}
           />
           <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
         </Fragment>
@@ -107,7 +98,7 @@ export const BannerDashboard = () => {
       <Input
         className=" mb-30px"
         label="عنوان بخش"
-        onBlur={(e) => onSetItemProps({ key: 'title', value: e.target.value })}
+        onBlur={(e) => setProps({ key: 'title', value: e.target.value })}
         placeholder={designState.current.title}
       />
       <StyleBoxBanner />

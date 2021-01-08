@@ -5,7 +5,7 @@ import { IStyleBox } from './interface';
 
 export const StyleBoxBanner: FC<IStyleBox> = () => {
   const { join } = useClass();
-  const { designState, onSetItemSetting } = useDesign();
+  const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
 
   const toggleDropdown = () => {
@@ -13,7 +13,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
   };
 
   const onSelectClick = (payload) => {
-    onSetItemSetting(payload);
+    setSetting(payload);
     toggleDropdown();
   };
 

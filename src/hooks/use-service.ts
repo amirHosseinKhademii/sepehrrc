@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const useService = () => {
   return {
-    onUpload: async (file) => {
+    upload: async (file) => {
       const data = new FormData();
       data.append('file', file);
       data.append('upload_preset', 'xicq5r2v');
