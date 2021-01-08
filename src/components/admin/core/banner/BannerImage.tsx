@@ -1,12 +1,14 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
 import { IBanner } from './interfaces';
+
 export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
   const { join } = useClass();
+
   if (item.images && item.images[0])
     return (
       <img
-        className=" object-cover object-center  rounded"
+        className={join('w-full rounded object-cover object-center', className)}
         src={item.images[0]}
       />
     );

@@ -15,14 +15,19 @@ export const BannerContainer = ({ item }) => {
       item.settings.style === 'first'
     )
       return <BannerFirst item={item} />;
-    else if (item.settings.style === 'second') return <BannerSecond />;
-    else if (item.settings.style === 'third') return <BannerThird />;
-    else if (item.settings.style === 'forth') return <BannerForth />;
-    else if (item.settings.style === 'fifth') return <BannerFifth />;
-    else if (item.settings.style === 'sixth') return <BannerSixth />;
+    else if (item.settings.style === 'second')
+      return <BannerSecond item={item} />;
+    else if (item.settings.style === 'third')
+      return <BannerThird item={item} />;
+    else if (item.settings.style === 'forth')
+      return <BannerForth item={item} />;
+    else if (item.settings.style === 'fifth')
+      return <BannerFifth item={item} />;
+    else if (item.settings.style === 'sixth')
+      return <BannerSixth item={item} />;
   };
   return (
-    <div className="h-2/5">
+    <div className="">
       <Banners />
     </div>
   );
