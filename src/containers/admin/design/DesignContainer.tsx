@@ -17,7 +17,7 @@ export const DesignContainer = () => {
         onDrop={onHorizontalDrop(drop)}
         getChildPayload={(index) => setChildPayload(index, designState.page)}
         onDragEnd={(e) => setDrop(e)}
-        style={{ height: '90vh', width: '100%' }}
+        style={{ height: '80vh', width: '100%' }}
       >
         {designState.page.map((item, index) => (
           <Fragment key={index}>

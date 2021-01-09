@@ -8,9 +8,10 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
   return (
     <div>
       <Drawer />
-      <div className="z-0 ">
+      <div className="z-0">
         <DesignHeader />
-        <div className="py-20">{children}</div>
+        {/* <div className="py-20">{children}</div> fix */}
+        <div>{children}</div>
         <DesignFooter />
       </div>
       <ModalCrop />
