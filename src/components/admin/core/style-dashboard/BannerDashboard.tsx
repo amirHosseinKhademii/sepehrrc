@@ -99,8 +99,9 @@ export const BannerDashboard = () => {
   const StyleParts = () => (
     <div className="flex flex-col items-end pt-30px px-20px">
       <Input
-        className=" mb-30px"
+        className="mb-30px"
         label="عنوان بخش"
+        variant="input"
         onBlur={(e) => setProps({ key: 'title', value: e.target.value })}
         placeholder={designState.current.title}
       />

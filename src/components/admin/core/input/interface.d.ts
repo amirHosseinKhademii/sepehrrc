@@ -6,6 +6,7 @@ interface IInput {
   onChange?: any;
   value?: any;
   onBlur?;
+  variant: ?('input' | 'inputIcon');
 }
 
 export { IInput };

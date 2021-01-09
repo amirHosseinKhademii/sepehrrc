@@ -178,7 +178,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
   };
 
   return (
-    <div className="w-full bg-gray_shade-500 rounded flex flex-col  px-16px py-21px">
+    <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
       <div className="flex justify-between">
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
           {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
