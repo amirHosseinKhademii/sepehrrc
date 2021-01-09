@@ -18,6 +18,7 @@ export const ButtonDrawer: FC<IButton> = ({
   link,
   withUpload,
   onUpload,
+  onClick,
 }) => {
   const { join } = useClass();
   return (
@@ -26,6 +27,7 @@ export const ButtonDrawer: FC<IButton> = ({
         'focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px',
         className
       )}
+      onClick={onClick}
     >
       <div className="flex flex-row items-center">
         {withLink && (
@@ -43,16 +45,26 @@ export const ButtonDrawer: FC<IButton> = ({
         )}
         {withIcon && children}
         {withUpload && (
-          <Button
-            className=" bg-gray_shade-900 rounded h-29px w-81px flex items-center justify-center"
-            onClick={onUpload}
-          >
-            <span className="text-gray_shade-300 text-12px pt-1">Browse</span>
-          </Button>
+          <div className="  w-81px flex items-center justify-center">
+            <input
+              type="file"
+              id="actual-btn"
+              className="mt-1 py-1"
+              onChange={(e) => onUpload(e.target.files[0])}
+            />
+            {/* <label
+              htmlFor="actual-btn"
+              className="text-gray_shade-300 text-12px pt-1 cursor-pointer"
+            >
+              Browse
+            </label> */}
+          </div>
         )}
       </div>
       {withLink ? (
         <ICLink />
+      ) : withUpload ? (
+        <p className="text-14px text-gray_shade-300">{text}</p>
       ) : (
         <p className="text-white_shade-100 text-14px">{text}</p>
       )}

@@ -14,9 +14,9 @@ export const Navbar: FC<INavbar> = ({ items, direction = 'horizental' }) => {
       {items.map((item, index) => {
         return (
           <div className="px-6 " key={index}>
-            <Link href={item.link}>
-              <a className="font-bold text-16px">{item.text}</a>
-            </Link>
+            {/* <Link href={item.link}> */}
+            <a className="font-bold text-16px">{item.text}</a>
+            {/* </Link> */}
           </div>
         );
       })}

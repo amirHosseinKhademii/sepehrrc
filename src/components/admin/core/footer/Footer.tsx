@@ -21,12 +21,11 @@ export const Footer: FC<IFooter> = ({ phone }) => {
         <div className="col-span-3 flex flex-row-reverse items-center">
           <span>.تمام حقوق برای این فروشگاه محفوظ است</span>
           <span>
-            ساخته شده با{' '}
-            <Link href="#">
-              <span className="font-bold text-blue-500 cursor-pointer">
-                فروشگاه ساز سپهر
-              </span>
-            </Link>
+            ساخته شده با {/* <Link href="#"> */}
+            <span className="font-bold text-blue-500 cursor-pointer">
+              فروشگاه ساز سپهر
+            </span>
+            {/* </Link> */}
           </span>
         </div>
       </div>
