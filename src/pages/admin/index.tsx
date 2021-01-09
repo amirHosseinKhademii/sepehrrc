@@ -1,6 +1,6 @@
-import { InputIcon } from 'components';
+import { CheckBox } from 'components';
 const Admin = () => {
-  return <InputIcon placeholder="تست" />;
+  return <CheckBox label="تست" />;
 };
 
 export default Admin;
