@@ -1,10 +1,6 @@
-import { Input, InputIcon } from 'components';
+import { InputIcon } from 'components';
 const Admin = () => {
-  return (
-    <div>
-      <InputIcon placeholder="پیوند تصویر" />
-    </div>
-  );
+  return <InputIcon placeholder="تست" />;
 };
 
 export default Admin;
