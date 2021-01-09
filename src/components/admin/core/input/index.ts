@@ -1,2 +1,2 @@
 export * from './Input';
-export * from './InputIcon';
+export { InputIcon } from './InputIcon';

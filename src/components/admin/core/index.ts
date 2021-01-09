@@ -7,3 +7,4 @@ export * from './card';
 export * from './slider';
 export * from './navbar';
 export * from './footer';
+export * from './check-box';
