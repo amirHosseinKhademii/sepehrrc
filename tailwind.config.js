@@ -106,6 +106,9 @@ module.exports = {
       },
       fontFamily: {
         body: ['YekanBakhFA'],
+        iransans: ['IRANSansFaNum'],
+        yekanbakh: ['YekanBakhFA'],
+        lato: ['Lato'],
       },
       fontSize: {
         '12px': '12px',
