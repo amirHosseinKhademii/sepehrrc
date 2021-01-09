@@ -12,7 +12,7 @@ export const ProductCard = ({ item }) => {
       <span className="text-lg mt-7">{item.name}</span>
       <div className="flex flex-row-reverse items-center mt-5">
         <span className="text-lg font-bold">{item.price}</span>
-        <span className="text-sm font-bold mr-1">تومان</span>
+        <span className="text-sm font-bold mr-1 font-iransans">تومان</span>
       </div>
       <button
         style={{ height: '51px', width: '135px' }}

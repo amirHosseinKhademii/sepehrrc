@@ -1,3 +1,5 @@
+import { useClass } from 'hooks';
 export const Text = ({ children, className }) => {
-  return <h1 className={className}>{children}</h1>;
+  const { join } = useClass();
+  return <h1 className={join('font-iransans', className)}>{children}</h1>;
 };
