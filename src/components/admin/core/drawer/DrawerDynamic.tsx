@@ -1,34 +1,36 @@
 import { FC, Fragment } from 'react';
 import { Draggable, Container } from 'react-smooth-dnd';
-import { useDnd, useUi } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components/admin/layouts';
+import { IDrawer } from './interfaces';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
   HeaderDrawer,
   Button,
   Drop,
+  BannerDashboard,
 } from 'components';
-
-interface IDrawer {
-  children?: any;
-}
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState, toggleStyleDrawer } = useUi();
-  const { dndState, setChildPayload, onVerticalDrop, onDeleteItem } = useDnd();
- 
+  const {
+    designState,
+    setChildPayload,
+    onVerticalDrop,
+    onDeleteItem,
+  } = useDesign();
 
   const DrawerAdd = () => {
     const AddParts = () => (
       <div className="flex flex-col items-center px-20px pt-30px">
         <Container
           groupName="ADMIN_DESIGN"
-          getChildPayload={(index) => setChildPayload(index, dndState.menu)}
-          style={{ width: '100%' }}
+          getChildPayload={(index) => setChildPayload(index, designState.menu)}
+          style={{ width: 270 }}
           behaviour="copy"
         >
-          {(dndState.menu || []).map((item, index) => (
+          {(designState.menu || []).map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
                 text={item.title}
@@ -64,7 +66,12 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           onSetting={() =>
             toggleStyleDrawer({
               open: true,
-              current: { name: 'header' },
+              current: {
+                name: 'هدر',
+                uuid: '123456789',
+                type: 'header',
+                id: '0',
+              },
             })
           }
         />
@@ -74,9 +81,9 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           orientation="vertical"
           lockAxis="y"
           onDrop={onVerticalDrop}
-          getChildPayload={(index) => setChildPayload(index, dndState.page)}
+          getChildPayload={(index) => setChildPayload(index, designState.page)}
         >
-          {dndState.page.map((item, index) => (
+          {designState.page.map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
                 withDelete
@@ -97,7 +104,12 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           onSetting={() =>
             toggleStyleDrawer({
               open: true,
-              current: { name: 'فوتر' },
+              current: {
+                name: 'فوتر',
+                uuid: '0987654321',
+                type: 'فوتر',
+                id: '100',
+              },
             })
           }
         />
@@ -165,35 +177,12 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     );
   };
 
-  const DrawerStyle = () => {
-    const StyleParts = () => (
-      <div className="flex flex-col items-center pt-30px px-20px">
-        <ButtonDrawer text="اینپوت" className="mb-25px" />
-        <ButtonDrawer text="استایل" className="mb-25px" />
-        <ButtonDrawer text="استایل" className="mb-25px" withUpload />
-        <ButtonDrawer
-          text="استایل"
-          className="mb-25px"
-          withLink
-          link="https:localhost"
-        />
-      </div>
-    );
-    return (
-      <DrawerLayout>
-        <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
-        <StyleParts />
-        <ButtonGroupDrawer />
-      </DrawerLayout>
-    );
-  };
-
   return (
     <Fragment>
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
-      {uiState.drawer.style && <DrawerStyle />}
+      {uiState.drawer.style && <BannerDashboard />}
     </Fragment>
   );
 };

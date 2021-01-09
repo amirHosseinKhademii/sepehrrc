@@ -1,14 +1,17 @@
 import '../styles/index.css';
 import { UiProvider } from 'providers/ui-provider';
-import { DndProvider } from 'providers/dnd-provider';
+import { DesignProvider } from 'providers/design-provider';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UiProvider>
-      <DndProvider>
-        <Component {...pageProps} />
-      </DndProvider>
-    </UiProvider>
+    <QueryClientProvider client={new QueryClient()}>
+      <UiProvider>
+        <DesignProvider>
+          <Component {...pageProps} />
+        </DesignProvider>
+      </UiProvider>
+    </QueryClientProvider>
   );
 }
 

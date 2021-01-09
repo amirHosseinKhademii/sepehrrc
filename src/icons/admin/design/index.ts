@@ -8,3 +8,4 @@ export * from './trash';
 export * from './logo';
 export * from './link';
 export * from './arrow-right';
+export * from './edit-setting';

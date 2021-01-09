@@ -10,7 +10,9 @@ const uiInitialState = {
     add: false,
     settings: false,
     style: false,
-    current: {},
+  },
+  modal: {
+    open: false,
   },
 };
 
@@ -70,7 +72,6 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           add: false,
           settings: false,
           style: payload.open,
-          current: payload.current,
         },
       };
     case uiTypes.DRAWER_CLOSE:
@@ -81,7 +82,13 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           sections: false,
           add: false,
           settings: false,
+          style: false,
         },
+      };
+    case uiTypes.MODAL_TOGGLE:
+      return {
+        ...state,
+        modal: { ...state.modal, open: payload },
       };
     default:
       return state;

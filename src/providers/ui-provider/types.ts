@@ -5,4 +5,5 @@ export const uiTypes = {
   DRAWER_SETTINGS: 'Toggle drawer settings',
   DRAWER_STYLE: 'Toggle drawer style',
   DRAWER_CLOSE: 'Close Drawer',
+  MODAL_TOGGLE: 'Toggle Modal',
 };
