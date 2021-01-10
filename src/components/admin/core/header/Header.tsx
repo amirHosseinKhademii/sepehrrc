@@ -201,16 +201,14 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             className={`grid  grid-cols-12   w-full h-122px container mx-auto  `}
             style={{ direction: 'rtl' }}
           >
-            <div className="col-span-1  flex items-center">
+            <div className="col-span-6 flex items-center ">
+              <Navbar direction="horizental" items={item.menuItems} />
+            </div>
+            <div className="col-span-1  flex items-center ">
               <HeaderLogo src={logo} />
             </div>
-            <div className="col-span-7 flex items-center justify-center ">
-              <HeaderInput className="w-535px" />
-            </div>
-            <div className="col-span-4 flex items-center justify-end ">
-              <HeaderActions variation="Tel" />
-              <HeaderActions variation="fifth" />
-              <HeaderButton variant="contained">ورود/عضویت</HeaderButton>
+            <div className="col-span-5 flex items-center justify-end">
+              <HeaderActions variation="third" />
             </div>
           </div>
         </div>
@@ -228,6 +226,99 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
+  const EightsVariation = ({ backgroundColor = 'bg-white', item }) => {
+    return (
+      <div className={`${backgroundColor} shadow-large-1`}>
+        <div className="border-b-2">
+          <div
+            className={`grid  grid-cols-12   w-full h-122px container mx-auto  `}
+            style={{ direction: 'rtl' }}
+          >
+            <div className="col-span-1  flex items-center">
+              <HeaderLogo src={logo} />
+            </div>
+            <div className="col-span-7 flex items-center justify-center ">
+              <HeaderInput className="w-535px" />
+            </div>
+            <div className="col-span-4 flex items-center justify-end ">
+              <HeaderActions variation="third" />
+            </div>
+          </div>
+        </div>
+        <div className="bg-red-600 text-white">
+          <div
+            className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+            style={{ direction: 'rtl' }}
+          >
+            <div className="col-span-9  flex items-center ">
+              <Navbar direction="horizental" items={item.menuItems} />
+            </div>
+            <div className="col-span-3 flex items-center justify-end">
+              <HeaderActions
+                variation="Tel"
+                iconColor="#fff"
+                tel="03152895885"
+                className="text-white"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const NinthVariation = ({ backgroundColor = 'bg-white', item }) => {
+    return (
+      <div className={`${backgroundColor} shadow-large-1`}>
+        <div className="bg-gray_shade-700 text-white">
+          <div
+            className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+            style={{ direction: 'rtl' }}
+          >
+            <div className="col-span-9  flex items-center ">
+              <Navbar direction="horizental" items={item.menuItems} />
+            </div>
+            <div className="col-span-3 flex items-center justify-end">
+              <HeaderActions
+                variation="Tel"
+                iconColor="#fff"
+                tel="03152895885"
+                className="text-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="border-b-2">
+          <div
+            className={`grid  grid-cols-12   w-full h-122px container mx-auto  `}
+            style={{ direction: 'rtl' }}
+          >
+            <div className="col-span-1  flex items-center">
+              <HeaderLogo src={logo} />
+            </div>
+            <div className="col-span-7 flex items-center justify-center ">
+              <HeaderInput className="w-535px" />
+            </div>
+            <div className="col-span-4 flex items-center justify-end ">
+              <HeaderActions variation="fourth" className="ml-4" />
+              <HeaderButton variant="contained">ورود/عضویت</HeaderButton>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+          style={{ direction: 'rtl' }}
+        >
+          <div className="col-span-9  flex items-center ">
+            <Navbar direction="horizental" items={item.menuItems} />
+          </div>
+          <div className="col-span-3 flex items-center justify-end">
+            <HeaderActions variation="Tel" tel="03152895885" />
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <Fragment>
@@ -238,6 +329,8 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       {variation === 'fifth' && <FifthVariation item={item} />}
       {variation === 'sixth' && <SixthVariation item={item} />}
       {variation === 'seventh' && <SeventhVariation item={item} />}
+      {variation === 'eighth' && <EightsVariation item={item} />}
+      {variation === 'ninth' && <NinthVariation item={item} />}
     </Fragment>
   );
 };

@@ -15,6 +15,7 @@ export const ICPhoneVolume: FC<IIcon> = ({
       height={height ? height : 24}
       className={className}
       onClick={onClick}
+      fill={fill}
     >
       <path data-name="Rectangle 37" fill="none" d="M0 0h24v24H0z" />
       <path

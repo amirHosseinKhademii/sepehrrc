@@ -39,5 +39,5 @@ const item = {
   ],
 };
 export const DesignHeader = ({ backgroundColor = 'bg-white' }) => {
-  return <Header variation="sixth" item={item} />;
+  return <Header variation="ninth" item={item} />;
 };
