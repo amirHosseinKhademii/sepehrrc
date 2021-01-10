@@ -1,5 +1,4 @@
-import { BannerImage } from './BannerImage';
-import { BannerLayout } from './BannerLayout';
+import { BannerImage, BannerLayout } from './dependencies';
 
 export const BannerForth = ({ item }) => {
   return (
