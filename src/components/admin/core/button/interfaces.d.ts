@@ -7,6 +7,7 @@ interface IButton {
   onDelete?: any;
   onSetting?: any;
   text?: string;
+  textCenter?:boolean;
   onCancel?: any;
   onSave?: any;
   withIcon?: boolean;

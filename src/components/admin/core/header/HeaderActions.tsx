@@ -12,18 +12,26 @@ import { useClass } from 'hooks';
 import { HeaderButton } from './HeaderButton';
 import { FC, Fragment } from 'react';
 import { IHeaderActions, IShoppingCart } from './interface';
+import { stringify } from 'postcss';
 export const HeaderActions: FC<IHeaderActions> = ({
   className,
   tel,
   variation,
+  iconColor,
 }) => {
   const { join } = useClass();
 
-  const HeaderTel = ({ tel }) => {
+  const HeaderTel = ({
+    tel,
+    iconColor,
+  }: {
+    tel: string;
+    iconColor?: string;
+  }) => {
     return (
       <div className={join('flex items-center', className)}>
         <div className="text-16px">{tel}</div>
-        <ICPhoneVolume className="mx-4" />
+        <ICPhoneVolume className="mr-4" fill={iconColor} />
       </div>
     );
   };
@@ -49,10 +57,18 @@ export const HeaderActions: FC<IHeaderActions> = ({
     );
   };
 
-  const SecondVariation = ({ tel, className }) => {
+  const SecondVariation = ({
+    tel,
+    className,
+    iconColor,
+  }: {
+    tel: string;
+    className?: string;
+    iconColor?: string;
+  }) => {
     return (
       <div className={join('flex items-center', className)}>
-        <HeaderTel tel={tel} />
+        <HeaderTel tel={tel} iconColor={iconColor} />
         <ShoppingCart />
       </div>
     );
@@ -72,7 +88,7 @@ export const HeaderActions: FC<IHeaderActions> = ({
     return (
       <div className={join('flex items-center', className)}>
         <ICSearch className="mx-4" />
-        <ICShoppingCart className="mx-4" />
+        <ShoppingCart />
       </div>
     );
   };
@@ -105,7 +121,7 @@ export const HeaderActions: FC<IHeaderActions> = ({
       {variation === 'fourth' && <FourthVariation className={className} />}
       {variation === 'fifth' && <FifthVariation className={className} />}
       {variation === 'social' && <SocialVariation className={className} />}
-      {variation === 'Tel' && <HeaderTel tel={tel} />}
+      {variation === 'Tel' && <HeaderTel tel={tel} iconColor={iconColor} />}
     </Fragment>
   );
 };

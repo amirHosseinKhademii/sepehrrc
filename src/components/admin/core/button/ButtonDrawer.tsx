@@ -6,6 +6,7 @@ import { Button } from './Button';
 import { ButtonIcon } from './ButtonIcon';
 
 export const ButtonDrawer: FC<IButton> = ({
+  textCenter,
   text,
   withDelete,
   withSetting,
@@ -65,6 +66,10 @@ export const ButtonDrawer: FC<IButton> = ({
         <ICLink />
       ) : withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
+      ) : textCenter ? (
+        <p className="text-white_shade-100 text-14px mx-auto cursor-pointer">
+          {text}
+        </p>
       ) : (
         <p className="text-white_shade-100 text-14px">{text}</p>
       )}

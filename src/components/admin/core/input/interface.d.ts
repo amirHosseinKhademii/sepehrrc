@@ -6,7 +6,9 @@ interface IInput {
   onChange?: any;
   value?: any;
   onBlur?;
-  variant: ?('input' | 'inputIcon');
+  variant?: 'input' | 'inputIcon';
+  withLink?: boolean;
+  fontFamily?: 'font-body' | 'font-yekanbakh' | 'font-iransans' | 'font-lato';
 }
 
 export { IInput };
