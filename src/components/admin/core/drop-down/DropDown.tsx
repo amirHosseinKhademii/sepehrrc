@@ -38,7 +38,7 @@ export const DropDown: FC<IDropDown> = ({
         </span>
       </div>
       {drop.open && (
-        <div className="w-full h-auto flex flex-col  items-end pt-18px bg-gray_shade-800 absolute top-0 right-0 mt-50px border-b border-r border-l border-primary-700 rounded-b">
+        <div className="w-full h-auto flex flex-col items-end z-50 pt-18px bg-gray_shade-800 absolute top-0 right-0 mt-50px border-b border-r border-l border-primary-700 rounded-b">
           {options.map((option, index) => (
             <span
               className="pb-18px pr-20px cursor-pointer text-gray_shade-300 text-14px"
