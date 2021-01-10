@@ -1,5 +1,4 @@
 export * from './AngleDoubleLeft';
-export * from './AngleDown';
 export * from './AngleLeft';
 export * from './AngleRight';
 export * from './AngleUp';

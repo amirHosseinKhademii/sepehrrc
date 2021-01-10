@@ -1,5 +1,6 @@
-import { Drop } from 'components';
+//import { Drop } from 'components';
 import { FC } from 'react';
+import { DropDown } from 'components';
 
 interface IDrawerHeader {
   setting?: boolean;
@@ -10,7 +11,7 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
   text = 'تنظیمات قالب',
 }) => {
   return (
-    <div className="flex items-center border-b border-gray_shade-800 px-20px pb-16px justify-between">
+    <div className="flex items-center border-b border-gray_shade-800 px-20px pb-17px justify-between">
       <button className="focus:outline-none rounded-full bg-gray_shade-800 px-2 mr-20px text-white_shade-100">
         ؟
       </button>
@@ -19,20 +20,20 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
           {text}
         </p>
       ) : (
-        <Drop
+        <DropDown
+          className="h-50px"
+          defaultValue="صفحه اصلی سایت"
           options={[
-            'صفحه اصلی سایت',
-            'صفحه آرشیو محصولات',
-            'صفحه خبر وبلاگ',
-            'صفحه آرشیو اخبار وبلاگ',
-            'صفحه سوالات متداول',
-            'صفحه تماس با ما',
-            'صفحه درباره ما',
+            { id: 'main-page', title: 'صفحه اصلی سایت' },
+            { id: 'main-page', title: 'صفحه  محصول' },
+            { id: 'main-page', title: 'صفحه  آرشیو محصولات' },
+            { id: 'main-page', title: 'صفحه خبر وبلاگ' },
+            { id: 'main-page', title: 'صفحه آرشیو اخبار وبلاگ ' },
+            { id: 'main-page', title: 'صفحه  سوالات متداول  ' },
+            { id: 'main-page', title: 'صفحه   تماس با ما ' },
+            { id: 'main-page', title: 'صفحه   درباره ما ' },
           ]}
         />
-        // <DropDown className="h-50px">
-        //   <option className="text-14px">صفحه اصلی سایت</option>
-        // </DropDown>
       )}
     </div>
   );
