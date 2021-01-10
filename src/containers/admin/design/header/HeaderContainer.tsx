@@ -43,7 +43,7 @@ const item = {
 };
 export const DesignHeader = ({ backgroundColor = 'bg-white' }) => {
   return (
-    <div className={`${backgroundColor} shadow-large-1`}>
+    <div className={`${backgroundColor} shadow-2xl`}>
       <div
         className={`container mx-auto   w-full h-122px grid  grid-cols-12`}
         style={{ direction: 'rtl' }}

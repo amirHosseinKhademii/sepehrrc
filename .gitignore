@@ -34,3 +34,6 @@ yarn-error.log*
 .vercel
 
 tailwind-full.ts
+
+/src/styles/index.css
+./src/styles/index.css
