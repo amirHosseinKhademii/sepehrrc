@@ -1,24 +1,19 @@
-import * as React from 'react';
-
-function SvgAngleDown(props: React.SVGProps<SVGSVGElement>) {
-
- 
+export const ICAngelDown = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
-      {...props}
     >
-      <path data-name="Rectangle 28" fill="none" d="M0 0h24v24H0z" />
-      <path
-        data-name="angle-down"
-        d="M17.119 9.72a1 1 0 00-1.41 0l-3.59 3.54-3.54-3.54a1 1 0 10-1.41 1.42l4.24 4.24a1 1 0 001.42 0l4.29-4.24a1 1 0 000-1.42z"
-        fill='current'
-      />
+      <g>
+        <path fill="none" d="M0 0H24V24H0z" />
+        <path
+          fill="#9ba3b5"
+          d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1 1 0 0 0 1.42 0L17 10.59a1 1 0 0 0 0-1.42z"
+          transform="translate(.119 .55)"
+        />
+      </g>
     </svg>
   );
-}
-
-export default SvgAngleDown;
+};
