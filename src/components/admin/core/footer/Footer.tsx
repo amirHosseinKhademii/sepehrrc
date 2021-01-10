@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IFooter } from './interface';
-import { ICPhone } from 'icons/Library2';
+import { ICPhone } from 'icons';
 import Link from 'next/link';
 
 export const Footer: FC<IFooter> = ({ phone }) => {
