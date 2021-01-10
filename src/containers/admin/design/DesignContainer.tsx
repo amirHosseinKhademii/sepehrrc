@@ -10,25 +10,26 @@ export const DesignContainer = () => {
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
 
   return (
-    <div>
-      <Container
-        groupName="ADMIN_DESIGN"
-        dragClass="bg-red-600"
-        onDrop={onHorizontalDrop(drop)}
-        getChildPayload={(index) => setChildPayload(index, designState.page)}
-        onDragEnd={(e) => setDrop(e)}
-        style={{ height: '80vh', width: '100%' }}
-      >
-        {designState.page.map((item, index) => (
-          <Fragment key={index}>
-            {item.type == 'products' && (
-              <CardContainer items={item.items} title="جدیدترین محصولات ما" />
-            )}
-            {item.type == 'slider' && <Slider />}
-            {item.type == 'banner' && <BannerContainer item={item} />}
-          </Fragment>
-        ))}
-      </Container>
-    </div>
+    <Container
+      groupName="ADMIN_DESIGN"
+      dragClass="bg-red-600"
+      onDrop={onHorizontalDrop(drop)}
+      getChildPayload={(index) => setChildPayload(index, designState.page)}
+      onDragEnd={(e) => setDrop(e)}
+      style={{
+        width: '100%',
+        minHeight: '60vh',
+      }}
+    >
+      {designState.page.map((item, index) => (
+        <Fragment key={index}>
+          {item.type == 'products' && (
+            <CardContainer items={item.items} title="جدیدترین محصولات ما" />
+          )}
+          {item.type == 'slider' && <Slider />}
+          {item.type == 'banner' && <BannerContainer item={item} />}
+        </Fragment>
+      ))}
+    </Container>
   );
 };
