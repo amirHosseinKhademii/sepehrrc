@@ -15,6 +15,30 @@
 .designWidthSection {
   width: calc(100% - 378px);
 }
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2e323d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #414655;
+  /* border-radius: 10px; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2e323d;
+}
+
+html {
+  scrollbar-width: none;
+}
 
 @layer base {
   @font-face {

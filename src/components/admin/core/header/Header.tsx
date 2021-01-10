@@ -105,6 +105,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
+
   const FourthVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>
@@ -125,6 +126,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
+
   const FifthVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>
@@ -159,6 +161,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
+
   const SixthVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>
@@ -193,6 +196,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
+  
   const SeventhVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>

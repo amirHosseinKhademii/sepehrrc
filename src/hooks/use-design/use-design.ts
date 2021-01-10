@@ -55,11 +55,11 @@ export const useDesign = () => {
     },
     setPureImage: async (file, number) => {
       const result = await upload(file);
-      toggleModal(true);
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
         payload: { value: result.data.secure_url, number },
       });
+      toggleModal(true);
     },
     setImage: (payload) => {
       designDispatch({
