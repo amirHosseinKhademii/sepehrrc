@@ -9,6 +9,7 @@ import {
   HeaderDrawer,
   Button,
   BannerDashboard,
+  HeaderDashboard,
 } from 'components';
 
 export const DrawerDynamic: FC<IDrawer> = () => {
@@ -181,7 +182,8 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
-      {uiState.drawer.style && <BannerDashboard />}
+      {/* {uiState.drawer.style && <BannerDashboard />} */}
+      {uiState.drawer.style && <HeaderDashboard />}
     </Fragment>
   );
 };

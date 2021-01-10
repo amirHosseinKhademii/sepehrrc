@@ -2,7 +2,7 @@
 
 interface IHeader {
     children?:any;
-    variation:'first'|'second'|'third'|'fourth'|'fifth'|'sixth'|'seventh';
+    variation:'first'|'second'|'third'|'fourth'|'fifth'|'sixth'|'seventh'|'eighth'|'ninth';
     item:{};
     
  }
@@ -25,7 +25,8 @@ interface IHeader {
     children?: any;
     className?: string;
     tel?:string;
-    variation:'first'|'second'|'third'|'fourth'|'fifth'|'social'|'Tel'
+    variation:'first'|'second'|'third'|'fourth'|'fifth'|'social'|'Tel';
+    iconColor?:string
  
    }
  
