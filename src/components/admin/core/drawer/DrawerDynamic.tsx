@@ -8,7 +8,6 @@ import {
   ButtonGroupDrawer,
   HeaderDrawer,
   Button,
-  Drop,
   BannerDashboard,
 } from 'components';
 
@@ -153,7 +152,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
             انتخاب فونت تیتر ها
           </p>
           <div className="felx flex-col mt-20px">
-            <Drop options={['یکان بخ']} />
+            {/* <Drop options={['یکان بخ']} /> */}
           </div>
         </div>
         <div className="flex flex-col px-20px pt-30px">
@@ -161,7 +160,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
             انتخاب فونت نوشته ها
           </p>
           <div className="felx flex-col mt-20px">
-            <Drop options={['یکان بخ']} />
+            {/* <Drop options={['یکان بخ']} /> */}
           </div>
         </div>
       </>
