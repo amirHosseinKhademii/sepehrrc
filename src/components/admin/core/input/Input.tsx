@@ -11,6 +11,8 @@ export const Input: FC<IInput> = ({
   onBlur,
   value,
   variant,
+  withLink,
+  fontFamily = 'font-body',
 }) => {
   const { join } = useClass();
 
@@ -32,14 +34,16 @@ export const Input: FC<IInput> = ({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
-            className="focus:outline-none w-full h-54px px-4 text-right rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500"
+            dir={withLink ? 'ltr' : 'rtl'}
+            className={`${fontFamily} focus:outline-none w-full h-54px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           />
         </div>
       ) : variant === 'inputIcon' ? (
         <div className={join('relative h-54px w-full rounded', className)}>
           <input
-            className={`placeholder-gray_shade-300 text-right rounded focus:outline-none h-full pl-4 pr-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
+            className={`${fontFamily} placeholder-gray_shade-300 rounded focus:outline-none h-full pl-4 pr-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
             placeholder={placeholder}
+            dir={withLink ? 'ltr' : 'rtl'}
           />
           <div className="absolute inset-y-0 right-4 flex items-center ">
             <ICLinkH fill="#9ba3b5" />
