@@ -44,6 +44,8 @@ export const Input: FC<IInput> = ({
             className={`${fontFamily} placeholder-gray_shade-300 rounded focus:outline-none h-full pl-4 pr-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
             placeholder={placeholder}
             dir={withLink ? 'ltr' : 'rtl'}
+            onChange={onChange}
+            onBlur={onBlur}
           />
           <div className="absolute inset-y-0 right-4 flex items-center ">
             <ICLinkH fill="#9ba3b5" />

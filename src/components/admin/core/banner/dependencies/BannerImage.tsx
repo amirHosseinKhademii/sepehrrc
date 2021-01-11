@@ -4,11 +4,13 @@ import { IBanner } from '../interfaces';
 
 export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
   const { join } = useClass();
-  if (item.images && item.images[number])
+  const itemImage = item.images.find((img) => img.number == number);
+
+  if (item.images && itemImage)
     return (
       <img
         className={join('w-full rounded object-cover object-center', className)}
-        src={item.images[number]}
+        src={itemImage.value}
       />
     );
   else

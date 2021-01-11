@@ -51,9 +51,8 @@ const initialState = {
       id: '2',
       type: 'banner',
       title: 'بنر',
-      images: {},
+      images: [],
     },
-
     {
       id: '3',
       type: 'slider',
@@ -85,10 +84,25 @@ const initialState = {
       title: 'لیست محصولات',
     },
   ],
-  pageItems: [],
+  pageItems: [
+    {
+      uuid: 'HEADER',
+      type: 'header',
+      title: 'هدر',
+    },
+    {
+      uuid: 'FOOTER',
+      type: 'footer',
+      title: 'فوتر',
+    },
+  ],
   pageKey: 'main',
-  current: { uuid: '', settings: {}, images: {} },
-  pureImage: { number: '', value: '' },
+  current: {
+    uuid: '',
+    settings: {},
+    images: [{ number: 'one', value: 'sfdsf', newTab: false, link: '' }],
+  },
+  pureImage: { number: '', value: '', newTab: false, link: '' },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -142,18 +156,38 @@ const reducer = (state = initialState, { type, payload }) => {
     case designTypes.ON_SET_PURE_IMAGE:
       return {
         ...state,
-        pureImage: { number: payload.number, value: payload.value },
+        pureImage: {
+          number: payload.number,
+          value: payload.value,
+          newTab: payload.newTab,
+          link: payload.link,
+        },
       };
     case designTypes.ON_SET_ITEM_IMAGES:
-      pageCurrent.images = {
-        ...pageCurrent.images,
-        [state.pureImage.number]: payload,
-      };
-      cloneCurrent.images = {
-        ...cloneCurrent.images,
-        [state.pureImage.number]: payload,
-      };
-      console.log(state);
+      // pageCurrent.images = {
+      //   ...pageCurrent.images,
+      //   [state.pureImage.number]: payload,
+      // };
+      // cloneCurrent.images = {
+      //   ...cloneCurrent.images,
+      //   [state.pureImage.number]: payload,
+      // };
+      pageCurrent.images
+        .filter((item) => item.number !== payload.number)
+        .push({
+          number: state.pureImage.number,
+          newTab: state.pureImage.newTab,
+          link: state.pureImage.newTab,
+          value: payload,
+        });
+      cloneCurrent.images
+        .filter((item) => item.number !== payload.number)
+        .push({
+          number: state.pureImage.number,
+          newTab: state.pureImage.newTab,
+          link: state.pureImage.newTab,
+          value: payload,
+        });
       return {
         ...state,
         pageItems: clonePage,
