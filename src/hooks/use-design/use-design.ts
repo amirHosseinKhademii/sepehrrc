@@ -56,12 +56,23 @@ export const useDesign = () => {
         payload,
       });
     },
-    setPureImage: (file, number) => {
+    setPureImage: (props: {
+      value?: any;
+      number?: any;
+      newTab?: boolean;
+      link?: string;
+    }) => {
+      const { value, number, newTab, link } = props;
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
-        payload: { value: file, number },
+        payload: {
+          value: value ? value : designState.pureImage.value,
+          number: number ? number : designState.number,
+          newTab: newTab ? newTab : designState.pureImage.newTab,
+          link: link ? link : designState.pureImage.link,
+        },
       });
-      toggleModal(true);
+      // toggleModal(true);
     },
     setImage: async (payload) => {
       const result = await upload(payload);

@@ -16,19 +16,17 @@ export const ModalCrop = () => {
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
-    console.log(croppedArea);
-    console.log(croppedAreaPixels);
   }, []);
 
   const showCroppedImage = useCallback(async () => {
     try {
-      // const croppedImage = await GetCroppedImg(
-      //   URL.createObjectURL(designState.pureImage.value),
-      //   croppedAreaPixels,
-      //   rotation
-      // );
-      // console.log('donee', { croppedImage });
-      // setCroppedImage(croppedImage);
+      const croppedImage = await GetCroppedImg(
+        URL.createObjectURL(designState.pureImage.value),
+        croppedAreaPixels,
+        rotation
+      );
+      console.log('donee', { croppedImage });
+      setCroppedImage(croppedImage);
     } catch (e) {
       console.error(e);
     }
@@ -40,7 +38,8 @@ export const ModalCrop = () => {
         <div className="flex flex-col">
           <div className="relative w-full h-96 bg-gray-700">
             <Cropper
-              image={URL.createObjectURL(designState.pureImage.value)}
+              //image={URL.createObjectURL(designState.pureImage.value)}
+              image="https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"
               crop={crop}
               zoom={zoom}
               aspect={4 / 3}
