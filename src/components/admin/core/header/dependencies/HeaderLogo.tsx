@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useClass } from 'hooks';
-import { IHeaderLogo } from './interface';
+import { IHeaderLogo } from '../interface';
 
 export const HeaderLogo: FC<IHeaderLogo> = ({ className, src }) => {
   const { join } = useClass();
