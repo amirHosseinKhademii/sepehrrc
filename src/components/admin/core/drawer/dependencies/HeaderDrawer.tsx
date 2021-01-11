@@ -11,8 +11,7 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
   setting = false,
   text = 'تنظیمات قالب',
 }) => {
-  const { onPageKey, designState } = useDesign();
-  console.log(designState);
+  const { onPageKey } = useDesign();
 
   return (
     <div className="flex items-center border-b border-gray_shade-800 px-20px pb-17px justify-between">
