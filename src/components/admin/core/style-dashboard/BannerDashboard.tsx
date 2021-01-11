@@ -27,7 +27,13 @@ export const BannerDashboard = () => {
             text="انتخاب تصویر"
             onUpload={(file) => setPureImage(file, number)}
           />
-          <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
+          <Input
+            withLink
+            placeholder="http://localhost"
+            variant="inputIcon"
+            className="mt-14px"
+            fontFamily="font-lato"
+          />
           <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
         </div>
       );
