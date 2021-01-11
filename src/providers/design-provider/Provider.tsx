@@ -153,6 +153,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...cloneCurrent.images,
         [state.pureImage.number]: payload,
       };
+      console.log(state);
       return {
         ...state,
         pageItems: clonePage,

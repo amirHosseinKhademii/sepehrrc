@@ -56,18 +56,18 @@ export const useDesign = () => {
         payload,
       });
     },
-    setPureImage: async (file, number) => {
-      const result = await upload(file);
+    setPureImage: (file, number) => {
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
-        payload: { value: result.data.secure_url, number },
+        payload: { value: file, number },
       });
       toggleModal(true);
     },
-    setImage: (payload) => {
+    setImage: async (payload) => {
+      const result = await upload(payload);
       designDispatch({
         type: designTypes.ON_SET_ITEM_IMAGES,
-        payload,
+        payload: result.data.secure_url,
       });
       toggleModal(false);
     },
