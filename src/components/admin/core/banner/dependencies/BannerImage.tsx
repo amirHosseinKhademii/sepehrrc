@@ -4,7 +4,6 @@ import { IBanner } from '../interfaces';
 
 export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
   const { join } = useClass();
-
   if (item.images && item.images[number])
     return (
       <img

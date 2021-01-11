@@ -46,7 +46,7 @@ export const ButtonDrawer: FC<IButton> = ({
         )}
         {withIcon && children}
         {withUpload && (
-          <div className="  w-81px flex items-center justify-center">
+          <div className="w-81px flex items-center justify-center">
             <input
               type="file"
               id="actual-btn"
