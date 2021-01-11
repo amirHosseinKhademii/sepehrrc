@@ -16,17 +16,19 @@ export const ModalCrop = () => {
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
+    console.log(croppedArea);
+    console.log(croppedAreaPixels);
   }, []);
 
   const showCroppedImage = useCallback(async () => {
     try {
-      const croppedImage = await GetCroppedImg(
-        URL.createObjectURL(designState.pureImage.value),
-        croppedAreaPixels,
-        rotation
-      );
-      console.log('donee', { croppedImage });
-      setCroppedImage(croppedImage);
+      // const croppedImage = await GetCroppedImg(
+      //   URL.createObjectURL(designState.pureImage.value),
+      //   croppedAreaPixels,
+      //   rotation
+      // );
+      // console.log('donee', { croppedImage });
+      // setCroppedImage(croppedImage);
     } catch (e) {
       console.error(e);
     }
