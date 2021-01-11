@@ -1,19 +1,10 @@
 
 
 interface IHeader {
-    children?:any;
-    variation:'first'|'second'|'third'|'fourth'|'fifth'|'sixth'|'seventh'|'eighth'|'ninth';
-    item:{};
+    item:{menuItems:{text:string,link:string}[],Button:{text:'string'}};
     
  }
- 
- 
- interface IHeaderButton {
-     children: any;
-     className?: string;
-     variant: 'contained' | 'outline';
-   }
- 
+  
  
  interface IHeaderInput {
      onClick?:Function;
@@ -39,15 +30,14 @@ interface IHeader {
     src?:string;
    }
  
-  interface IContained{
-     children: any;
-     className?: string;
-  } 
-  interface IOutline{
-     children: any;
-     className?: string;
-  } 
+
+   interface IHeaderButton {
+      children: any;
+      className?: string;
+      outline?:boolean
+ 
+   }
  
  
-  export {IHeaderButton,IContained,IOutline,IHeaderActions,IHeaderLogo,IHeader,IHeaderInput,IShoppingCart}
+  export {IHeaderButton,IHeaderButton,IHeaderActions,IHeaderLogo,IHeader,IHeaderInput,IShoppingCart}
  
