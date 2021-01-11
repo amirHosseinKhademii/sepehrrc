@@ -1,3 +1,5 @@
+import { FC, Fragment } from 'react';
+
 import {
   ICSearch,
   ICShoppingCart,
@@ -9,10 +11,7 @@ import {
   ICWhatsapp,
 } from 'icons';
 import { useClass } from 'hooks';
-import { HeaderButton } from './HeaderButton';
-import { FC, Fragment } from 'react';
-import { IHeaderActions, IShoppingCart } from './interface';
-import { stringify } from 'postcss';
+import { IHeaderActions, IShoppingCart } from '../interface';
 export const HeaderActions: FC<IHeaderActions> = ({
   className,
   tel,

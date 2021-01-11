@@ -6,10 +6,10 @@ import {
   HeaderActions,
   HeaderButton,
   HeaderInput,
-} from 'components';
+} from './dependencies';
 const logo = '/assets/images/logo.png';
 
-export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
+export const Header: FC<IHeader> = ({ item }) => {
   const FirstVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>
@@ -25,9 +25,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <HeaderActions variation="first" tel="0659565878" />
-            <HeaderButton variant="contained" className="mr-35px">
-              محصولات فروشگاه
-            </HeaderButton>
+            <HeaderButton className="mr-35px">محصولات فروشگاه</HeaderButton>
           </div>
         </div>
       </div>
@@ -50,7 +48,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             </div>
             <div className="col-span-4 flex items-center justify-end">
               <HeaderActions variation="second" tel="0659565878" />
-              <HeaderButton variant="contained">وروود/عضویت</HeaderButton>
+              <HeaderButton>ورود یاعضویت</HeaderButton>
             </div>
           </div>
         </div>
@@ -85,7 +83,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             </div>
             <div className="col-span-4 flex items-center justify-end">
               <HeaderActions variation="first" />
-              <HeaderButton variant="contained" className="mr-35px">
+              <HeaderButton className="mr-35px">
                 {item.Button.text}
               </HeaderButton>
             </div>
@@ -143,7 +141,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             </div>
             <div className="col-span-4 flex items-center justify-end">
               <HeaderActions variation="fourth" />
-              <HeaderButton variant="contained">ورود/عضویت</HeaderButton>
+              <HeaderButton>ورود/عضویت</HeaderButton>
             </div>
           </div>
         </div>
@@ -178,7 +176,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             </div>
             <div className="col-span-4 flex items-center justify-end">
               <HeaderActions variation="fifth" />
-              <HeaderButton variant="contained">ورود/عضویت</HeaderButton>
+              <HeaderButton>ورود/عضویت</HeaderButton>
             </div>
           </div>
         </div>
@@ -196,7 +194,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
       </div>
     );
   };
-  
+
   const SeventhVariation = ({ backgroundColor = 'bg-white', item }) => {
     return (
       <div className={`${backgroundColor} shadow-large-1`}>
@@ -305,7 +303,7 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
             </div>
             <div className="col-span-4 flex items-center justify-end ">
               <HeaderActions variation="fourth" className="ml-4" />
-              <HeaderButton variant="contained">ورود/عضویت</HeaderButton>
+              <HeaderButton>ورود/عضویت</HeaderButton>
             </div>
           </div>
         </div>
@@ -324,17 +322,5 @@ export const Header: FC<IHeader> = ({ variation = 'first', item }) => {
     );
   };
 
-  return (
-    <Fragment>
-      {variation === 'first' && <FirstVariation item={item} />}
-      {variation === 'second' && <SecondVariation item={item} />}
-      {variation === 'third' && <ThirdVariation item={item} />}
-      {variation === 'fourth' && <FourthVariation item={item} />}
-      {variation === 'fifth' && <FifthVariation item={item} />}
-      {variation === 'sixth' && <SixthVariation item={item} />}
-      {variation === 'seventh' && <SeventhVariation item={item} />}
-      {variation === 'eighth' && <EightsVariation item={item} />}
-      {variation === 'ninth' && <NinthVariation item={item} />}
-    </Fragment>
-  );
+  return <Fragment></Fragment>;
 };
