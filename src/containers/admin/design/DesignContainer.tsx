@@ -21,7 +21,7 @@ export const DesignContainer = () => {
         minHeight: '60vh',
       }}
     >
-      {designState.page.map((item, index) => (
+      {designState.pageItems.map((item, index) => (
         <Fragment key={index}>
           {item.type == 'products' && (
             <CardContainer items={item.items} title="جدیدترین محصولات ما" />

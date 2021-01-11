@@ -6,7 +6,7 @@ import { applyDrag } from 'utils';
 export const DesignContext = createContext(undefined);
 
 const initialState = {
-  menu: [
+  menuItems: [
     {
       id: '0',
       type: 'slider',
@@ -85,30 +85,36 @@ const initialState = {
       title: 'لیست محصولات',
     },
   ],
-  page: [],
+  pageItems: [],
+  pageKey: 'main',
   current: { uuid: '', settings: {}, images: {} },
   pureImage: { number: '', value: '' },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-  let clonePage = clone(state.page);
+  let clonePage = clone(state.pageItems);
   let cloneCurrent = clone(state.current);
   let pageCurrent = clonePage.find((item) => item.uuid === state.current.uuid);
   switch (type) {
     case designTypes.ON_HORIZONTAL_DROP:
       return {
         ...state,
-        page: applyDrag(state.page, payload),
+        pageItems: applyDrag(state.pageItems, payload),
       };
     case designTypes.ON_VERTICAL_DROP:
       return {
         ...state,
-        page: applyDrag(state.page, payload),
+        pageItems: applyDrag(state.pageItems, payload),
+      };
+    case designTypes.ON_CHANGE_PAGE_KEY:
+      return {
+        ...state,
+        pageKey: payload,
       };
     case designTypes.ON_DELETE_ITEM:
       return {
         ...state,
-        page: clonePage.filter((item) => item.uuid != payload.uuid),
+        pageItems: clonePage.filter((item) => item.uuid != payload.uuid),
       };
     case designTypes.ON_SETTING_CLICK:
       return {
@@ -122,7 +128,7 @@ const reducer = (state = initialState, { type, payload }) => {
       cloneCurrent.settings = { ...cloneCurrent.settings, ...payload };
       return {
         ...state,
-        page: clonePage,
+        pageItems: clonePage,
         current: cloneCurrent,
       };
     case designTypes.ON_SET_ITEM_PROPS:
@@ -130,7 +136,7 @@ const reducer = (state = initialState, { type, payload }) => {
       cloneCurrent[payload.key] = payload.value;
       return {
         ...state,
-        page: clonePage,
+        pageItems: clonePage,
         current: cloneCurrent,
       };
     case designTypes.ON_SET_PURE_IMAGE:
@@ -149,7 +155,7 @@ const reducer = (state = initialState, { type, payload }) => {
       };
       return {
         ...state,
-        page: clonePage,
+        pageItems: clonePage,
         current: cloneCurrent,
       };
     default:

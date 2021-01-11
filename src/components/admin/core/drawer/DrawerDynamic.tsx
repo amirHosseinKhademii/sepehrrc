@@ -3,13 +3,12 @@ import { Draggable, Container } from 'react-smooth-dnd';
 import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components/admin/layouts';
 import { IDrawer } from './interfaces';
+import { HeaderDrawer } from './dependencies';
 import {
   ButtonDrawer,
   ButtonGroupDrawer,
-  HeaderDrawer,
   Button,
-  BannerDashboard,
-  HeaderDashboard,
+  StyleDashboard,
 } from 'components';
 
 export const DrawerDynamic: FC<IDrawer> = () => {
@@ -26,11 +25,13 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       <div className="flex flex-col items-center px-20px pt-30px">
         <Container
           groupName="ADMIN_DESIGN"
-          getChildPayload={(index) => setChildPayload(index, designState.menu)}
+          getChildPayload={(index) =>
+            setChildPayload(index, designState.menuItems)
+          }
           style={{ width: 270 }}
           behaviour="copy"
         >
-          {(designState.menu || []).map((item, index) => (
+          {(designState.menuItems || []).map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
                 text={item.title}
@@ -83,7 +84,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
           onDrop={onVerticalDrop}
           getChildPayload={(index) => setChildPayload(index, designState.page)}
         >
-          {designState.page.map((item, index) => (
+          {designState.pageItems.map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
                 withDelete
@@ -182,8 +183,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       {uiState.drawer.sections && <DrawerSections />}
       {uiState.drawer.add && <DrawerAdd />}
       {uiState.drawer.settings && <DrawerSettings />}
-      {/* {uiState.drawer.style && <BannerDashboard />} */}
-      {uiState.drawer.style && <HeaderDashboard />}
+      {uiState.drawer.style && <StyleDashboard />}
     </Fragment>
   );
 };
