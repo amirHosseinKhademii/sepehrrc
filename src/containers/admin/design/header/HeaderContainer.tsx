@@ -1,4 +1,15 @@
-import { Header } from 'components';
+import {
+  Header,
+  HeaderFirst,
+  HeaderSecond,
+  HeaderThird,
+  HeaderFourth,
+  HeaderFifth,
+  HeaderSixth,
+  HeaderSeventh,
+  HeaderEighth,
+} from 'components';
+import { Fragment } from 'react';
 interface IHeader {
   children?: any;
   item: {};
@@ -11,6 +22,9 @@ const item = {
   type: 'header',
   title: 'هدر',
   hasButton: true,
+  settings: {
+    style: 'seventh',
+  },
   Button: { text: 'محصولات فروشگاه', link: '#' },
   order: ['logo', 'menu', 'icons'],
   logo: {
@@ -38,6 +52,25 @@ const item = {
     },
   ],
 };
-export const DesignHeader = ({ backgroundColor = 'bg-white' }) => {
-  return <Header variation="ninth" item={item} />;
+
+const Headers = ({ item }) => {
+  if (!item.settings || !item.settings.style || item.settings.style === 'first')
+    return <HeaderFirst item={item} />;
+  else if (item.settings.style === 'second')
+    return <HeaderSecond item={item} />;
+  else if (item.settings.style === 'third') return <HeaderThird item={item} />;
+  else if (item.settings.style === 'fourth')
+    return <HeaderFourth item={item} />;
+  else if (item.settings.style === 'fifth') return <HeaderFifth item={item} />;
+  else if (item.settings.style === 'sixth') return <HeaderSixth item={item} />;
+  else if (item.settings.style === 'seventh')
+    return <HeaderSixth item={item} />;
+  else if (item.settings.style === 'eighth') return <HeaderSixth item={item} />;
+};
+export const DesignHeader = () => {
+  return (
+    <Fragment>
+      <Headers item={item} />
+    </Fragment>
+  );
 };

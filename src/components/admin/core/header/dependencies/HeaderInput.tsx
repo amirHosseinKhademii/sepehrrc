@@ -1,5 +1,5 @@
 import { ICSearch } from 'icons';
-import { IHeaderInput } from './interface';
+import { IHeaderInput } from '../interface';
 import { FC } from 'react';
 import { useClass } from 'hooks';
 export const HeaderInput: FC<IHeaderInput> = ({

@@ -4,4 +4,10 @@ interface IStyleBox {
   className?: string;
   onClick?: any;
 }
-export { IStyleBox };
+interface IStyleBoxHeader {
+  variation?: 'first' | 'second' | 'third' | 'forth' | 'fifth' | 'sixth'|'seventh'|'eighth';
+  onEdit?: any;
+  className?: string;
+  onClick?: any;
+}
+export { IStyleBox,IStyleBoxHeader };

@@ -6,7 +6,7 @@ import {
   Input,
   CheckBox,
   ButtonDrawer,
-  StyleBoxBanner,
+  StyleBoxHeader,
   HeaderDrawer,
   ButtonGroupDrawer,
 } from 'components';
@@ -89,7 +89,7 @@ export const HeaderDashboard = () => {
 
   const StyleParts = () => (
     <div className="flex flex-col items-end pt-30px px-20px">
-      <StyleBoxBanner />
+      <StyleBoxHeader />
       {/* <UploadButtonGroup /> */}
     </div>
   );
