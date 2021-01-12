@@ -134,7 +134,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     >
       <div className="flex items-center h-27px w-full  bg-primary-700 px-9px">
         <BlueBox className="w-80px h-9px  rounded-5px" />
-        <BlueBox className="w-30px h-9px mr-15px rounded-7px" />
+        <BlueBox className="w-30px h-9px mx-15px rounded-7px" />
         <BlueBox className="w-80px h-9px  rounded-5px" />
       </div>
       <BlueBox className="w-full h-13px "></BlueBox>
@@ -166,7 +166,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     if (!style || style === 'first') return <FirstVariation />;
     else if (style === 'second') return <SecondVariation />;
     else if (style === 'third') return <ThirdVariation />;
-    else if (style === 'forth') return <FourthVariation />;
+    else if (style === 'fourth') return <FourthVariation />;
     else if (style === 'fifth') return <FifthVariation />;
     else if (style === 'sixth') return <SixthVariation />;
     else if (style === 'seventh') return <SeventhVariation />;
@@ -185,58 +185,37 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 2</p>
 
-        <SecondVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'second' })}
-        />
+        <SecondVariation onClick={() => onSelectClick({ style: 'second' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 3</p>
 
-        <ThirdVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'third' })}
-        />
+        <ThirdVariation onClick={() => onSelectClick({ style: 'third' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 4</p>
 
-        <FourthVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'fourth' })}
-        />
+        <FourthVariation onClick={() => onSelectClick({ style: 'fourth' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 5</p>
 
-        <FifthVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'fifth' })}
-        />
+        <FifthVariation onClick={() => onSelectClick({ style: 'fifth' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 6</p>
 
-        <SixthVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'sixth' })}
-        />
+        <SixthVariation onClick={() => onSelectClick({ style: 'sixth' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 7</p>
 
-        <SeventhVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'seventh' })}
-        />
+        <SeventhVariation onClick={() => onSelectClick({ style: 'seventh' })} />
       </div>
       <div>
         <p className="mb-10px text-gray_shade-300 text-14px">استایل 8</p>
 
-        <EighthVariation
-          className=" border-t  border-gray-400"
-          onClick={() => onSelectClick({ style: 'eighth' })}
-        />
+        <EighthVariation onClick={() => onSelectClick({ style: 'eighth' })} />
       </div>
     </div>
   );
@@ -247,7 +226,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     if (!style || style === 'first') return '1 نمایش : استایل ';
     else if (style === 'second') return '2 نمایش : استایل ';
     else if (style === 'third') return '3 نمایش : استایل ';
-    else if (style === 'forth') return '4 نمایش : استایل ';
+    else if (style === 'fourth') return '4 نمایش : استایل ';
     else if (style === 'fifth') return '5 نمایش : استایل ';
     else if (style === 'sixth') return '6 نمایش : استایل ';
     else if (style === 'seventh') return '7 نمایش : استایل ';

@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
 import {
@@ -10,25 +10,32 @@ import {
   HeaderDrawer,
   ButtonGroupDrawer,
 } from 'components';
-import { Button } from '../button';
 
 export const HeaderDashboard = () => {
   const { designState, setProps, setPureImage } = useDesign();
-  const { join } = useClass();
+  const [status, setStatus] = useState({ hasButton: false, hasTel: false });
 
-  const DashboardButton = ({ className, onClick, children }) => {
-    return (
-      <div
-        className={join(
-          'focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px',
-          className
-        )}
-        onClick={onClick}
-      >
-        {children}
-      </div>
-    );
-  };
+  useEffect(() => {
+    if (
+      designState.current.settings.style !== 'first' &&
+      designState.current.settings.style !== 'second' &&
+      designState.current.settings.style !== 'fourth'
+    ) {
+      setStatus({ ...status, hasTel: true });
+    } else {
+      setStatus({ ...status, hasTel: false });
+    }
+    if (
+      designState.current.settings.style !== 'second' &&
+      designState.current.settings.style !== 'seventh'
+    ) {
+      setStatus({ ...status, hasButton: true });
+    } else {
+      setStatus({ ...status, hasButton: false });
+    }
+  }, [designState]);
+
+  const { join } = useClass();
 
   const PageButtonGroup = () => {
     return (
@@ -60,9 +67,14 @@ export const HeaderDashboard = () => {
         <ButtonDrawer
           withUpload
           text="انتخاب لوگو"
-          onUpload={(file) => setPureImage(file, number)}
+          onUpload={(value) => setPureImage({ value, number })}
         />
-        <ButtonDrawer withLink link="Http:localhost" className="mt-14px" />
+        <Input
+          variant="inputIcon"
+          className="mt-15px"
+          placeholder={designState.pureImage.link}
+          onBlur={(event) => setPureImage({ link: event.target.value })}
+        />
         <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
       </div>
     );
@@ -72,17 +84,31 @@ export const HeaderDashboard = () => {
     label,
     placeholder,
     className,
+    type,
   }: {
     className?: string;
     placeholder: string;
     label: string;
+    type: string;
   }) => {
     return (
       <div className={join('w-full px-20px pb-30px ', className)}>
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
-        <Input placeholder={placeholder} variant="input" />
+        {type === 'tel' ? (
+          <Input
+            placeholder={placeholder}
+            variant="input"
+            onBlur={(event) => setProps({ tel: event.target.value })}
+          />
+        ) : (
+          <Input
+            placeholder={placeholder}
+            variant="input"
+            onBlur={(event) => setProps({ buttonText: event.target.value })}
+          />
+        )}
       </div>
     );
   };
@@ -90,7 +116,6 @@ export const HeaderDashboard = () => {
   const StyleParts = () => (
     <div className="flex flex-col items-end pt-30px px-20px">
       <StyleBoxHeader />
-      {/* <UploadButtonGroup /> */}
     </div>
   );
 
@@ -99,9 +124,17 @@ export const HeaderDashboard = () => {
       <HeaderDrawer setting text="تنظیمات هدر" />
       <StyleParts />
       <PageButtonGroup />
-      <ButtonBox label="لوگو" />
-      <InputBox label="شماره تلفن" placeholder="0519876543" />
-      <InputBox label="دکمه هدر" placeholder="محصولات فروشگاه" />
+      <ButtonBox label="لوگو" number="1" />
+      {status.hasTel && (
+        <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
+      )}
+      {status.hasButton && (
+        <InputBox
+          label="دکمه هدر"
+          type="button"
+          placeholder="محصولات فروشگاه"
+        />
+      )}
       <ButtonGroupDrawer />
     </DrawerLayout>
   );
