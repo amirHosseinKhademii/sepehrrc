@@ -72,7 +72,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       <div className="flex flex-col items-center pt-30px px-20px">
         <ButtonDrawer
           withSetting
-          className="mb-25px cursor-move"
+          className="mb-25px "
           text={headerItem.title}
           onDelete={() => onDeleteItem(headerItem)}
           onSetting={() =>
@@ -109,7 +109,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
         </Container>
         <ButtonDrawer
           withSetting
-          className="mb-25px cursor-move"
+          className=""
           text={footerItem.title}
           onDelete={() => onDeleteItem(footerItem)}
           onSetting={() =>

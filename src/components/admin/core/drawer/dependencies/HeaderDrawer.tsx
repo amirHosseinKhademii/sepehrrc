@@ -11,7 +11,7 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
   setting = false,
   text = 'تنظیمات قالب',
 }) => {
-  const { onPageKey } = useDesign();
+  const { onPageKey, designState } = useDesign();
 
   return (
     <div className="flex items-center border-b border-gray_shade-800 px-20px pb-17px justify-between">
@@ -25,7 +25,7 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
       ) : (
         <DropDown
           className="h-50px"
-          defaultValue="صفحه اصلی سایت"
+          selected={designState.pageKey}
           onSelect={(payload) => onPageKey(payload)}
           options={[
             { id: 'main', title: 'صفحه اصلی سایت' },

@@ -17,10 +17,12 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     toggleDropdown();
   };
 
-  const BlueBox = ({ className, number }) => (
+  const BlueBox = ({ className, number, dropDown = false }) => (
     <div
       className={join(
-        'bg-primary-700  rounded flex items-center justify-center',
+        `rounded flex items-center justify-center ${
+          dropDown ? 'bg-gray_shade-900' : 'bg-primary-700'
+        }`,
         className
       )}
     >
@@ -28,103 +30,145 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     </div>
   );
 
-  const FirstVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join('grid grid-cols-3 w-full mt-16px  mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" col-span-1 grid grid-cols-1 mr-6px">
-        <BlueBox className=" h-35px" number="2" />
-        <BlueBox className=" h-35px mt-5px" number="3" />
-      </div>
-      <div className=" col-span-2">
-        <BlueBox className=" h-75px" number="1" />
-      </div>
-    </div>
-  );
-
-  const SecondVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join('grid grid-cols-4 w-full  mt-16px  mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" col-span-1 grid grid-cols-1 ">
-        <BlueBox className=" h-35px" number="4" />
-        <BlueBox className=" h-35px mt-5px" number="5" />
-      </div>
-      <div className=" col-span-2 mx-6px">
-        <BlueBox className=" h-75px" number="1" />
-      </div>
-      <div className=" grid grid-cols-1">
-        <BlueBox className=" h-35px" number="2" />
-        <BlueBox className="h-35px mt-5px" number="3" />
+  const FirstVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 1
+        </p>
+      )}
+      <div
+        className={join('grid grid-cols-3 w-full mt-16px  mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" col-span-1 grid grid-cols-1 mr-6px">
+          <BlueBox className=" h-35px" number="2" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="3" dropDown={dropDown} />
+        </div>
+        <div className=" col-span-2">
+          <BlueBox className=" h-75px" number="1" dropDown={dropDown} />
+        </div>
       </div>
     </div>
   );
 
-  const ThirdVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" grid grid-cols-1 ">
-        <BlueBox className="  h-35px" number="4" />
-        <BlueBox className=" h-35px mt-5px" number="5" />
-      </div>
-      <div className=" grid grid-cols-1  mx-4px ">
-        <BlueBox className=" h-35px" number="4" />
-        <BlueBox className=" h-35px mt-5px" number="5" />
-      </div>
-      <div className=" grid grid-cols-1  ">
-        <BlueBox className=" h-35px" number="4" />
-        <BlueBox className=" h-35px mt-5px" number="5" />
-      </div>
-    </div>
-  );
-
-  const ForthVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" grid grid-cols-1 ">
-        <BlueBox className="  h-35px" number="4" />
-        <BlueBox className="h-35px mt-5px" number="5" />
-      </div>
-      <div className=" grid grid-cols-1 ml-6px ">
-        <BlueBox className=" h-35px" number="4" />
-        <BlueBox className=" h-35px mt-5px" number="5" />
+  const SecondVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 2
+        </p>
+      )}
+      <div
+        className={join('grid grid-cols-4 w-full  mt-16px  mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" col-span-1 grid grid-cols-1 ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
+        <div className=" col-span-2 mx-6px">
+          <BlueBox className=" h-75px" number="1" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1">
+          <BlueBox className=" h-35px" number="2" dropDown={dropDown} />
+          <BlueBox className="h-35px mt-5px" number="3" dropDown={dropDown} />
+        </div>
       </div>
     </div>
   );
 
-  const FifthVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" grid grid-cols-1 ">
-        <BlueBox className="  h-35px" number="4" />
-      </div>
-      <div className=" grid grid-cols-1 ml-6px ">
-        <BlueBox className=" h-35px" number="4" />
+  const ThirdVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 3
+        </p>
+      )}
+      <div
+        className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" grid grid-cols-1 ">
+          <BlueBox className="  h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1  mx-4px ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1  ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
       </div>
     </div>
   );
 
-  const SixthVariation: FC<IStyleBox> = ({ className, onClick }) => (
-    <div
-      className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
-      onClick={onClick}
-    >
-      <div className=" grid grid-cols-1 ">
-        <BlueBox className="  h-35px" number="4" />
+  const ForthVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 4
+        </p>
+      )}
+      <div
+        className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" grid grid-cols-1 ">
+          <BlueBox className="  h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className="h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1 ml-6px ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+          <BlueBox className=" h-35px mt-5px" number="5" dropDown={dropDown} />
+        </div>
       </div>
-      <div className=" grid grid-cols-1  mx-4px ">
-        <BlueBox className=" h-35px" number="4" />
+    </div>
+  );
+
+  const FifthVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 5
+        </p>
+      )}
+      <div
+        className={join(' grid grid-cols-2 w-full mt-16px mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" grid grid-cols-1 ">
+          <BlueBox className="  h-35px" number="4" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1 ml-6px ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+        </div>
       </div>
-      <div className=" grid grid-cols-1  ">
-        <BlueBox className=" h-35px" number="4" />
+    </div>
+  );
+
+  const SixthVariation: FC<IStyleBox> = ({ className, onClick, dropDown }) => (
+    <div>
+      {dropDown && (
+        <p className="pt-15px text-14px text-gray_shade-300 text-right">
+          استایل 6
+        </p>
+      )}
+      <div
+        className={join(' grid grid-cols-3 w-full mt-16px  mx-auto', className)}
+        onClick={onClick}
+      >
+        <div className=" grid grid-cols-1 ">
+          <BlueBox className="  h-35px" number="4" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1  mx-4px ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+        </div>
+        <div className=" grid grid-cols-1  ">
+          <BlueBox className=" h-35px" number="4" dropDown={dropDown} />
+        </div>
       </div>
     </div>
   );
@@ -142,26 +186,34 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
 
   const DropDown = () => (
     <div className="grid grid-cols-1 gap-y-2  focus:ring-2 focus:ring-blue-500">
-      <FirstVariation onClick={() => onSelectClick({ style: 'first' })} />
+      <FirstVariation
+        onClick={() => onSelectClick({ style: 'first' })}
+        dropDown
+      />
       <SecondVariation
-        className=" border-t pt-4 border-gray-400"
+        className=" "
         onClick={() => onSelectClick({ style: 'second' })}
+        dropDown
       />
       <ThirdVariation
-        className=" border-t pt-4 border-gray-400"
+        className=""
         onClick={() => onSelectClick({ style: 'third' })}
+        dropDown
       />
       <ForthVariation
-        className=" border-t pt-4 border-gray-400"
+        className=" "
         onClick={() => onSelectClick({ style: 'forth' })}
+        dropDown
       />
       <FifthVariation
-        className=" border-t pt-4 border-gray-400"
+        className=" "
         onClick={() => onSelectClick({ style: 'fifth' })}
+        dropDown
       />
       <SixthVariation
-        className=" border-t pt-4 border-gray-400"
+        className=""
         onClick={() => onSelectClick({ style: 'sixth' })}
+        dropDown
       />
     </div>
   );
