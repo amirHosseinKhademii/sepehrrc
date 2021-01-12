@@ -10,7 +10,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
       <Drawer />
       <div className="z-0 min-h-screen relative">
         <DesignHeader />
-        <div className="pt-8 pb-28 w-full h-full">{children}</div>
+        <div className=" pb-28 w-full h-full">{children}</div>
         <DesignFooter />
       </div>
       <ModalCrop />
