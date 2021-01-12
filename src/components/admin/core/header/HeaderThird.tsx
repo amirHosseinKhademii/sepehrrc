@@ -1,18 +1,25 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import {
-  HeaderButton,
-  Navbar,
-  HeaderLogo,
-  HeaderActions,
-  HeaderInput,
-} from './dependencies';
+import { HeaderButton, Navbar, HeaderLogo, HeaderInput } from './dependencies';
+import { ICShoppingCart, ICPhoneVolume } from 'icons';
 
 const logo = '/assets/images/logo.png';
 
 export const HeaderThird: FC<IHeader> = ({ item }) => {
+  const Actions = () => {
+    return (
+      <>
+        <div className={'relative ml-23px '}>
+          <ICShoppingCart />
+          <div className="absolute  -right-8px -top-6px  w-18px h-18px bg-red-600 text-white rounded-full">
+            <span className="mr-3px">5</span>
+          </div>
+        </div>
+      </>
+    );
+  };
   return (
-    <div className="bg-white shadow-large-1">
+    <div className="bg-white shadow-custom-1">
       <div className="border-2">
         <div
           className={` grid  grid-cols-12   w-full h-122px container mx-auto `}
@@ -25,7 +32,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
             <HeaderInput className="w-535px" />
           </div>
           <div className="col-span-4 flex items-center justify-end">
-            <HeaderActions variation="fifth" />
+            <Actions />
             <HeaderButton>ورود/عضویت</HeaderButton>
           </div>
         </div>
@@ -38,7 +45,8 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
         <div className="col-span-3 flex items-center justify-end">
-          <HeaderActions variation="Tel" tel="09365689556" />
+          <div className="text-16px">09365464683</div>
+          <ICPhoneVolume className="mr-4" />
         </div>
       </div>
     </div>

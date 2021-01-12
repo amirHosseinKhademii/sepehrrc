@@ -1,18 +1,42 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
+import { HeaderButton, Navbar, HeaderLogo, HeaderInput } from './dependencies';
 import {
-  HeaderButton,
-  Navbar,
-  HeaderLogo,
-  HeaderActions,
-  HeaderInput,
-} from './dependencies';
+  ICSearch,
+  ICShoppingCart,
+  ICUsersAlt,
+  ICWhatsapp,
+  ICTwitter,
+  ICTelegram,
+  ICInstagram,
+} from 'icons';
 
 const logo = '/assets/images/logo.png';
 
 export const HeaderFourth: FC<IHeader> = ({ item }) => {
+  const Actions = () => {
+    return (
+      <>
+        <ICSearch className="mx-2" />
+        <ICShoppingCart className="mx-2" />
+        <ICUsersAlt className="mx-2" />
+      </>
+    );
+  };
+
+  const Social = () => {
+    return (
+      <>
+        <ICWhatsapp className="mx-4" />
+        <ICTwitter className="mx-4" />
+        <ICInstagram className="mx-4" />
+        <ICTelegram className="mr-4" />
+      </>
+    );
+  };
+
   return (
-    <div className=" bg-white shadow-large-1">
+    <div className=" bg-white shadow-custom-1">
       <div className="border-b-2">
         <div
           className={`container mx-auto   w-full h-122px grid  grid-cols-12`}
@@ -25,7 +49,7 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
             <HeaderInput className="w-450px" />
           </div>
           <div className="col-span-4 flex items-center justify-end">
-            <HeaderActions variation="first" />
+            <Actions />
             <HeaderButton className="mr-35px">{item.Button.text}</HeaderButton>
           </div>
         </div>
@@ -37,8 +61,8 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
         <div className="col-span-9  flex items-center ">
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
-        <div className="col-span-3 flex items-center justify-end">
-          <HeaderActions variation="social" />
+        <div className="col-span-3 flex items-center justify-end text-24px">
+          <Social />
         </div>
       </div>
     </div>

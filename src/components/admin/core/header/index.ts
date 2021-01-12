@@ -6,4 +6,3 @@ export * from './HeaderFifth';
 export * from './HeaderSixth';
 export * from './HeaderSeventh';
 export * from './HeaderEighth';
-export * from './Header';
