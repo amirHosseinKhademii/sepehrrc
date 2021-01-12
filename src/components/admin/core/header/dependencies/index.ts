@@ -1,6 +1,5 @@
 
 export * from './HeaderButton'
-export * from './NavBar'
-export * from './HeaderActions'
+export * from './Navbar'
 export * from './HeaderLogo'
 export * from './HeaderInput'

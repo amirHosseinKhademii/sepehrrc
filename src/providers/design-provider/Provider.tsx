@@ -89,6 +89,13 @@ const initialState = {
       uuid: 'HEADER',
       type: 'header',
       title: 'هدر',
+      Button: { text: 'محصولات فروشگاه' },
+      menuItems: [
+        { text: 'صفحه اصلی', link: './admin/design' },
+        { text: 'محصولات فروشگاه', link: './admin/design' },
+        { text: 'درباره ما', link: './admin/design' },
+        { text: 'تماس باما', link: './admin/design' },
+      ],
     },
     {
       uuid: 'FOOTER',
