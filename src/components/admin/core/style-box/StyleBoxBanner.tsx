@@ -168,31 +168,26 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
       <SecondVariation
         className="border-gray-400"
         onClick={() => onSelectClick({ style: 'second' })}
-        dropDown
       />
       <LabelBox label="استایل 3" />
       <ThirdVariation
         className=" border-gray-400"
         onClick={() => onSelectClick({ style: 'third' })}
-        dropDown
       />
       <LabelBox label="استایل 4" />
       <ForthVariation
         className=" border-gray-400"
         onClick={() => onSelectClick({ style: 'forth' })}
-        dropDown
       />
       <LabelBox label="استایل 5" />
       <FifthVariation
         className=" border-gray-400"
         onClick={() => onSelectClick({ style: 'fifth' })}
-        dropDown
       />
       <LabelBox label="استایل 6" />
       <SixthVariation
         className=" border-gray-400"
         onClick={() => onSelectClick({ style: 'sixth' })}
-        dropDown
       />
     </div>
   );

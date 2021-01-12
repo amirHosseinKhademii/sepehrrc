@@ -1,6 +1,6 @@
 import { useClass, useDesign } from 'hooks';
 
-export const BannerLayout = ({ children, className, onClick }) => {
+export const BannerLayout = ({ children, className, onClick, item }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
 
@@ -9,7 +9,8 @@ export const BannerLayout = ({ children, className, onClick }) => {
       className={toggle(
         'pt-12',
         'relative pt-12 pb-8 border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
-        designState.current.type == 'banner'
+        designState.current.type == 'banner' &&
+          item.uuid == designState.current.uuid
       )}
       // onClick={onClick}
     >
@@ -18,9 +19,11 @@ export const BannerLayout = ({ children, className, onClick }) => {
       </div>
       <div
         className={toggle(
-          'hidden',
+          '',
           'absolute top-0 left-0 opacity-10 w-full h-full bg-primary-700',
-          designState.current.type == 'banner'
+          designState.current.type == 'banner' &&
+            item.uuid == designState.current.uuid,
+          'hidden'
         )}
       ></div>
     </div>
