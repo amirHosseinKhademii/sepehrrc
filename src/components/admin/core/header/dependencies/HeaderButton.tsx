@@ -1,7 +1,6 @@
 import { Button } from 'components';
 import { useClass } from 'hooks';
 import { Children, FC, Fragment } from 'react';
-
 import { IHeaderButton } from '../interface';
 
 export const HeaderButton: FC<IHeaderButton> = ({
@@ -16,7 +15,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
       {!outline ? (
         <Button
           className={join(
-            'px-8 bg-red-600 text-white  py-4 rounded-full   text-16px',
+            'h-50px px-8 bg-red-600 text-white  py-4 rounded-full   text-16px ',
             className
           )}
         >

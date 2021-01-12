@@ -1,16 +1,22 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import {
-  HeaderButton,
-  Navbar,
-  HeaderLogo,
-  HeaderActions,
-} from './dependencies';
+import { HeaderButton, Navbar, HeaderLogo } from './dependencies';
+import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 const logo = '/assets/images/logo.png';
 
 export const HeaderFirst: FC<IHeader> = ({ item }) => {
+  const Actions = () => {
+    return (
+      <>
+        <ICSearch className="mx-2" />
+        <ICShoppingCart className="mx-2" />
+        <ICUsersAlt className="mx-2" />
+      </>
+    );
+  };
+
   return (
-    <div className={`bg-white shadow-large-1`}>
+    <div className={`bg-white shadow-custom-1`}>
       <div
         className={` grid  grid-cols-12 w-full h-122px container mx-auto     `}
         style={{ direction: 'rtl' }}
@@ -22,8 +28,7 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
         <div className="col-span-4 flex items-center justify-end">
-          <HeaderActions variation="first" tel="0659565878" />
-
+          <Actions />
           <HeaderButton className="mr-35px">محصولات فروشگاه</HeaderButton>
         </div>
       </div>
