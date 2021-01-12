@@ -12,9 +12,8 @@ import {
 } from 'components';
 
 export const BannerDashboard = () => {
-  const { designState, setProps, setPureImage } = useDesign();
   const { join } = useClass();
-  console.log(designState);
+  const { designState, setProps, setPureImage } = useDesign();
 
   const UploadButtonGroup = () => {
     const ButtonBox: FC<IBannerDashboard> = ({ label, number, className }) => {
