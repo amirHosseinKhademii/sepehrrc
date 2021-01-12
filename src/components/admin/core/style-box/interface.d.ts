@@ -3,7 +3,7 @@ interface IStyleBox {
   onEdit?: any;
   className?: string;
   onClick?: any;
-  dropDown?: boolean;
+  active?: boolean;
 }
 interface IStyleBoxHeader {
   variation?:
