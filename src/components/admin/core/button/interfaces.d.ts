@@ -7,7 +7,7 @@ interface IButton {
   onDelete?: any;
   onSetting?: any;
   text?: string;
-  textCenter?:boolean;
+  textCenter?: boolean;
   onCancel?: any;
   onSave?: any;
   withIcon?: boolean;
@@ -16,6 +16,7 @@ interface IButton {
   withUpload?: boolean;
   onUpload?: any;
   label?: string;
+  groupClass?: string;
 }
 
 export { IButton };
