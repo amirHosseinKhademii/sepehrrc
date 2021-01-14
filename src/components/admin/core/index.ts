@@ -12,3 +12,4 @@ export * from './text';
 export * from './style-dashboard';
 export * from './modal';
 export * from './checkbox';
+export * from './switch';
