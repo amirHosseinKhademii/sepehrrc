@@ -1,6 +1,6 @@
 import { FC, Fragment } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderButton } from './dependencies';
+import { Navbar, HeaderLogo, HeaderButton, MegaMenu } from './dependencies';
 
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 const logo = '/assets/images/logo.png';
@@ -45,7 +45,8 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <MegaMenu />
+          {/* <Navbar direction="horizental" items={item.menuItems} /> */}
         </div>
         <div className="col-span-3 flex items-center justify-end">
           <div className="text-16px">09365464683</div>

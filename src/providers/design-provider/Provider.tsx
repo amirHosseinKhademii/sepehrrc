@@ -96,6 +96,155 @@ const initialState = {
         { text: 'درباره ما', link: './admin/design' },
         { text: 'تماس باما', link: './admin/design' },
       ],
+
+      megaMenu: [
+        {
+          text: 'محصولات نظافت خودرو',
+          link: '',
+          hasSub: true,
+          subMenus: [
+            {
+              text: 'نظاافت الفا',
+              link: '',
+              hasSub: true,
+              subMenus: [
+                {
+                  text: 'نظافت 1',
+                  link: '',
+                },
+                {
+                  text: 'نظافت 1',
+                  link: '',
+                },
+                {
+                  text: 'نظافت 1',
+                  link: '',
+                },
+                {
+                  text: 'نظافت 1',
+                  link: '',
+                },
+              ],
+            },
+            {
+              text: 'نظافت 2',
+              link: '',
+            },
+            {
+              text: 'نظافت 3',
+              link: '',
+            },
+            {
+              text: 'نظافت 4',
+              link: '',
+            },
+            {
+              text: 'نظافت 5',
+              link: '',
+            },
+          ],
+        },
+        {
+          text: 'محصولات نرم افزاری',
+          link: '',
+          hasSub: true,
+          subMenus: [
+            {
+              text: 'نرم افزار الفا',
+              link: '',
+              hasSub: true,
+              subMenus: [
+                {
+                  text: 'نرم افزار 1',
+                  link: '',
+                },
+                {
+                  text: 'نرم افزار 1',
+                  link: '',
+                },
+                {
+                  text: 'نرم افزار 1',
+                  link: '',
+                },
+                {
+                  text: 'نرم افزار 1',
+                  link: '',
+                },
+              ],
+            },
+            {
+              text: 'نرم افزار 2',
+              link: '',
+            },
+            {
+              text: 'نرم افزار 3',
+              link: '',
+            },
+            {
+              text: 'نرم افزار 4',
+              link: '',
+            },
+            {
+              text: 'نرم افزار 5',
+              link: '',
+            },
+          ],
+        },
+        {
+          text: ' ابزار تعمیرات خودرو',
+          link: '',
+          hasSub: true,
+          subMenus: [
+            {
+              text: 'ابزار  الفا',
+              link: '',
+              hasSub: true,
+              subMenus: [
+                {
+                  text: 'ابزار 1',
+                  link: '',
+                },
+                {
+                  text: 'ابزار 1',
+                  link: '',
+                },
+                {
+                  text: 'ابزار 1',
+                  link: '',
+                },
+                {
+                  text: 'ابزار 1',
+                  link: '',
+                },
+              ],
+            },
+            {
+              text: 'ابزار 2',
+              link: '',
+            },
+            {
+              text: 'ابزار 3',
+              link: '',
+            },
+            {
+              text: 'ابزار 4',
+              link: '',
+            },
+            {
+              text: 'ابزار 5',
+              link: '',
+            },
+          ],
+        },
+        {
+          text: ' درباره ما',
+          link: '',
+        },
+        {
+          text: ' ارتباط با ما',
+          link: '',
+        },
+      ],
     },
     {
       uuid: 'FOOTER',
