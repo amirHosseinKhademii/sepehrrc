@@ -10,11 +10,18 @@ interface IButton {
   textCenter?: boolean;
   onCancel?: any;
   onSave?: any;
+  onUpload?: any;
+  onDelete?: any;
+  onSetting?: any;
+  withDelete?: boolean;
+  withSetting?: boolean;
+  withUpload?: boolean;
+  withRouter?: boolean;
   withIcon?: boolean;
   withLink?: boolean;
+  text?: string;
   link?: string;
-  withUpload?: boolean;
-  onUpload?: any;
+  href?: string;
   label?: string;
   groupClass?: string;
 }
