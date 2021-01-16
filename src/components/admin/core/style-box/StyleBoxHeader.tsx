@@ -171,6 +171,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     else if (style === 'sixth') return <SixthVariation />;
     else if (style === 'seventh') return <SeventhVariation />;
     else if (style === 'eighth') return <EighthVariation />;
+    else return <FirstVariation />;
   };
 
   const DropDown = () => (

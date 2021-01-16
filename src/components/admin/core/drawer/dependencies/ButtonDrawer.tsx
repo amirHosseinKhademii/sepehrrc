@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { useClass } from 'hooks';
 import { ICLink, ICSettingCog, ICTrash } from 'icons';
-import { IButton } from './interfaces';
-import { Button } from './Button';
-import { ButtonIcon } from './ButtonIcon';
+import { IButton } from '../../button/interfaces';
+import { Button } from '../../button/Button';
+import { ButtonIcon } from '../../button/ButtonIcon';
 import Link from 'next/link';
-
 export const ButtonDrawer: FC<IButton> = ({
   text,
   withDelete,

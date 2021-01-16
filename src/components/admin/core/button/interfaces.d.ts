@@ -2,6 +2,12 @@ interface IButton {
   children?: any;
   className?: string;
   onClick?: any;
+  withDelete?: boolean;
+  withSetting?: boolean;
+  onDelete?: any;
+  onSetting?: any;
+  text?: string;
+  textCenter?: boolean;
   onCancel?: any;
   onSave?: any;
   onUpload?: any;
@@ -17,6 +23,7 @@ interface IButton {
   link?: string;
   href?: string;
   label?: string;
+  groupClass?: string;
 }
 
 export { IButton };

@@ -22,16 +22,14 @@ export const DropDown: FC<IDropDown> = ({
       : '';
 
   return (
-    <div
-      className={toggle(
-        'flex flex-col w-full relative',
-        ' border border-primary-700 rounded',
-        drop.open
-      )}
-    >
+    <div className={toggle('flex flex-col w-full relative', ' ', drop.open)}>
       <div
         className={join(
-          `focus:outline-none w-full flex items-center justify-between pr-20px cursor-pointer border-b border-gray_shade-900 bg-gray_shade-800 rounded-t  text-gray_shade-300`,
+          `focus:outline-none w-full flex items-center justify-between pr-20px cursor-pointer  bg-gray_shade-800 rounded-t  text-gray_shade-300 ${
+            drop.open
+              ? 'border-primary-700 border-r border-l border-t'
+              : 'border-b  border-gray_shade-900'
+          }`,
           className
         )}
         onClick={() => setDrop((prev) => ({ ...prev, open: !prev.open }))}
@@ -44,8 +42,8 @@ export const DropDown: FC<IDropDown> = ({
       {drop.open && (
         <div className="w-full h-auto flex flex-col items-end z-50 pt-18px bg-gray_shade-800 absolute top-0 right-0 mt-50px border-b border-r border-l border-primary-700 rounded-b">
           {options.map((option, index) => (
-            <span
-              className="pb-18px pr-20px cursor-pointer text-gray_shade-300 text-14px"
+            <p
+              className=" w-full pb-18px pr-20px text-right cursor-pointer text-gray_shade-300 text-14px"
               key={index}
               onClick={() => {
                 setDrop((prev) => ({ ...prev, selected: option, open: false }));
@@ -53,7 +51,7 @@ export const DropDown: FC<IDropDown> = ({
               }}
             >
               {option.title}
-            </span>
+            </p>
           ))}
         </div>
       )}
