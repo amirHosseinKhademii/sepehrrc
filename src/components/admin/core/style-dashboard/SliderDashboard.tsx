@@ -5,6 +5,7 @@ import { HeaderDrawer, ButtonGroupDrawer, ButtonGroup, Text } from 'components';
 import { DropDown } from '../drop-down';
 import { ButtonDrawer } from '../drawer';
 import { Switch } from '../switch';
+import { ICPlus } from 'icons';
 
 export const SliderDashboard = () => {
   const { join, toggle } = useClass();
@@ -23,6 +24,44 @@ export const SliderDashboard = () => {
         {text}
       </button>
     );
+
+    const PictureButton: FC<{
+      withPicture?: boolean;
+      withAdd?: boolean;
+      picture?: any;
+    }> = ({ withPicture, withAdd, picture }) => {
+      if (withAdd)
+        return (
+          <div className="w-full h-full flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer ">
+            <ICPlus fill="#fff" />
+          </div>
+        );
+      else if (withPicture)
+        return <img className="w-60px h-60px rounded  " src={picture} />;
+      else
+        return (
+          <div className="w-full h-full rounded bg-gray_shade-800 opacity-30"></div>
+        );
+    };
+
+    const PictureContainer = () => (
+      <div className="w-full felx flex-col  ">
+        <Text className=" mb-6px text-14px text-white_shade-100 text-right">
+          تصاویر اسلایدر
+        </Text>
+        <div className="w-full h-140px grid grid-cols-4 grid-rows-2 gap-10px">
+          <PictureButton />
+          <PictureButton />
+          <PictureButton />
+          <PictureButton withAdd />
+          <PictureButton />
+          <PictureButton />
+          <PictureButton />
+          <PictureButton />
+        </div>
+      </div>
+    );
+
     const SpeedButtonGroup = () => (
       <ButtonGroup
         label="سرعت اسلاید ها"
@@ -89,11 +128,12 @@ export const SliderDashboard = () => {
     );
 
     const MobileSwitch = () => (
-      <Switch label="نمایش فقط در موبایل" className=" mt-35px" />
+      <Switch label="نمایش فقط در موبایل" className=" mt-35px mb-116px" />
     );
 
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
+        <PictureContainer />
         <SpeedButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />
