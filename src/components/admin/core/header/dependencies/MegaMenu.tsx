@@ -1,18 +1,19 @@
-import { ICArrowDown, ICArrowLeft } from 'icons';
+import { ICArrowDown, ICArrowLeft, ICAngleDown } from 'icons';
 
 export const MegaMenu = () => {
   return (
     <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
       <li>
-        <div className="flex">
+        <div className="flex justify-between w-full">
           <span>محصولات نظافت خودرو</span>
-          <ICArrowDown />
+          <ICAngleDown className=" text-24px mr-20px" />
         </div>
         <ul className="invisible firstLevel">
           <li>
-            <div className="flex">
-              <span>نظاافت الفا</span>
-              <ICArrowDown />
+            <div className="flex justify-between w-full">
+              <div>نظاافت الفا</div>
+
+              <ICAngleDown className=" text-24px mx-20px" />
             </div>
             <ul className=" invisible  second-level">
               <li>نظافت 1</li>
@@ -26,15 +27,15 @@ export const MegaMenu = () => {
         </ul>
       </li>
       <li>
-        <div className="flex">
+        <div className="flex justify-between w-full">
           <span> محصولات نرم افزاری</span>
-          <ICArrowDown />
+          <ICAngleDown className=" text-24px mr-20px" />
         </div>
         <ul className="invisible firstLevel">
           <li>
-            <div className="flex">
+            <div className="flex justify-between w-full">
               <span>نرم افزار الفا</span>
-              <ICArrowDown />
+              <ICAngleDown className=" text-24px mx-20px" />
             </div>
             <ul className="invisible second-level">
               <li>الفا 1</li>
@@ -49,15 +50,15 @@ export const MegaMenu = () => {
         </ul>
       </li>
       <li>
-        <div className="flex">
+        <div className="flex  justify-between w-full">
           <span> ابزار تعمیرات خودرو</span>
-          <ICArrowDown />
+          <ICAngleDown className=" text-24px mr-20px" />
         </div>
         <ul className="invisible firstLevel">
           <li>
-            <div className="flex">
+            <div className="flex  justify-between w-full">
               <span> تعمیرات الفا</span>
-              <ICArrowDown />
+              <ICAngleDown className=" text-24px mx-20px" />
             </div>
             <ul className="invisible second-level">
               <li>الفا1</li>
@@ -70,15 +71,15 @@ export const MegaMenu = () => {
       </li>
 
       <li>
-        <div className="flex">
+        <div className="flex justify-between w-full">
           <span> لوازم تخصصی تعمیرات خودرو</span>
-          <ICArrowDown />
+          <ICAngleDown className=" text-24px mr-20px" />
         </div>
         <ul className="invisible firstLevel">
           <li>
-            <div className="flex">
+            <div className="flex justify-between w-full">
               <span> نرم افزار الفا</span>
-              <ICArrowDown />
+              <ICAngleDown className=" text-24px mx-20px" />
             </div>
             <ul className="invisible second-level">
               <li>
@@ -104,16 +105,32 @@ export const MegaMenu = () => {
         {`
           .MegaMenu {
             display: flex;
+            flex-wrap: wrap;
             width: 100%;
+            height: 100%;
             font-weight: bold;
           }
 
+          .MegaMenu > li {
+            padding: 20px;
+            padding-right: 0;
+          }
+
+          .MegaMenu > li:before {
+            position: absolute;
+            top: -2px;
+            content: '';
+            display: none;
+            width: 100%;
+            height: 2px;
+            background-color: #2e323d;
+          }
+
+          .MegaMenu > li:hover:before {
+            display: block;
+          }
           .MegaMenu li {
             position: relative;
-            display: flex;
-            align-items: center;
-            height: 40px;
-            margin-left: 10px;
           }
           .MegaMenu li:first-child {
             margin-right: 0px;
@@ -131,12 +148,11 @@ export const MegaMenu = () => {
             right: 0;
             opacity: 0;
             pointer-events: none;
-            width: 250px;
-            padding: 10px;
+
+            width: 100%;
             padding-left: 0px;
             background-color: white;
             box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.16);
-            border-radius: 25px;
             transition: all 0.3s;
             z-index: 50;
           }
@@ -147,11 +163,17 @@ export const MegaMenu = () => {
           }
 
           .MegaMenu li ul li {
+            padding: 20px;
+            padding-left: 0;
             margin-left: 0;
             transition: all 0.3s;
+            border-bottom: 1px solid #d3d7e1;
+          }
+          .MegaMenu li ul li:last-child {
+            border: none;
           }
           .MegaMenu li ul li:hover {
-            margin-right: 10px;
+            padding-right: 30px;
           }
         `}
       </style>

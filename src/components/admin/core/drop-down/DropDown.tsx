@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useClass } from 'hooks';
-import { ICAngelDown, ICAngelUp } from 'icons';
+import { ICAngleDown, ICAngelUp } from 'icons';
 import { IDropDown } from './interfaces';
 
 export const DropDown: FC<IDropDown> = ({
@@ -36,8 +36,8 @@ export const DropDown: FC<IDropDown> = ({
         )}
         onClick={() => setDrop((prev) => ({ ...prev, open: !prev.open }))}
       >
-        <div className="flex items-center justify-center h-full w-50px border-r border-gray_shade-900">
-          {drop.open ? <ICAngelUp /> : <ICAngelDown />}
+        <div className="flex items-center justify-center h-full w-50px border-r border-gray_shade-900 text-24px">
+          {drop.open ? <ICAngelUp /> : <ICAngleDown className="fill-current" />}
         </div>
         <span className=" text-14px text-gray_shade-300 ">{current}</span>
       </div>
