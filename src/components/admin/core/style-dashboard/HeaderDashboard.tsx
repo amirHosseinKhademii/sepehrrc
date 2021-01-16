@@ -1,4 +1,4 @@
-import { FC, Fragment, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
 import {
@@ -9,6 +9,7 @@ import {
   StyleBoxHeader,
   HeaderDrawer,
   ButtonGroupDrawer,
+  Redirect,
 } from 'components';
 
 export const HeaderDashboard = () => {
@@ -41,17 +42,20 @@ export const HeaderDashboard = () => {
     return (
       <div className="flex flex-col px-20px py-30px">
         <ButtonDrawer
-          textCenter
+          withRouter
+          href="./"
           text="ویرایش منوی سایت "
           className="justify-center mb-15px"
         />
         <ButtonDrawer
-          textCenter
+          withRouter
+          href="./"
           text="ویرایش منوی محصولات "
           className="justify-center mb-15px"
         />
         <ButtonDrawer
-          textCenter
+          withRouter
+          href="./"
           text="ویرایش شبکه های اجتماعی "
           className="justify-center"
         />
@@ -64,6 +68,7 @@ export const HeaderDashboard = () => {
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
+
         <ButtonDrawer
           withUpload
           text="انتخاب لوگو"

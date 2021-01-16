@@ -4,12 +4,13 @@ import { ICLink, ICSettingCog, ICTrash } from 'icons';
 import { IButton } from '../../button/interfaces';
 import { Button } from '../../button/Button';
 import { ButtonIcon } from '../../button/ButtonIcon';
-
+import Link from 'next/link';
 export const ButtonDrawer: FC<IButton> = ({
-  textCenter,
   text,
   withDelete,
   withSetting,
+  withRouter,
+  href,
   onDelete,
   onSetting,
   className,
@@ -66,10 +67,12 @@ export const ButtonDrawer: FC<IButton> = ({
         <ICLink />
       ) : withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
-      ) : textCenter ? (
-        <p className="text-white_shade-100 text-14px mx-auto cursor-pointer">
-          {text}
-        </p>
+      ) : withRouter ? (
+        <Link href={href}>
+          <a className="text-white_shade-100 text-14px mx-auto cursor-pointer">
+            {text}
+          </a>
+        </Link>
       ) : (
         <p className="text-white_shade-100 text-14px">{text}</p>
       )}
