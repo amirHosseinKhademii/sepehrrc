@@ -13,7 +13,6 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
   };
 
   const onSelectClick = (payload) => {
-    console.log(payload);
     setSetting(payload);
     toggleDropdown();
   };

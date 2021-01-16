@@ -143,7 +143,7 @@ const reducer = (state = initialState, { type, payload }) => {
         current: { ...state.current, ...payload.current },
       };
     case designTypes.ON_SET_ITEM_SETTING:
-      pageCurrent.settings = pageCurrent.setting
+      pageCurrent.settings = pageCurrent.settings
         ? { ...pageCurrent.settings, ...payload }
         : { ...payload };
       cloneCurrent.settings = { ...cloneCurrent.settings, ...payload };
