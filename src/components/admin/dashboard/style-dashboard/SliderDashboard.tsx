@@ -1,10 +1,15 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
-import { HeaderDrawer, ButtonGroupDrawer, ButtonGroup, Text } from 'components';
-import { DropDown } from '../drop-down';
-import { ButtonDrawer } from '../drawer';
-import { Switch } from '../switch';
+import {
+  HeaderDrawer,
+  ButtonGroupDrawer,
+  ButtonGroup,
+  Text,
+  Switch,
+  DropDown,
+  ButtonDrawer,
+} from 'components';
 import { ICPlus } from 'icons';
 
 export const SliderDashboard = () => {
@@ -16,7 +21,7 @@ export const SliderDashboard = () => {
     const SettingButton = ({ text, active, className, onClick }) => (
       <button
         className={toggle(
-          'h-54px',
+          'h-54px focus:outline-none',
           `bg-primary-700 text-white_shade-100 text-14px ${className}`,
           active,
           ` bg-gray_shade-800 text-gray-300 text-14px ${className}`
@@ -51,7 +56,7 @@ export const SliderDashboard = () => {
         <Text className=" mb-6px text-14px text-white_shade-100 text-right">
           تصاویر اسلایدر
         </Text>
-        <div className="w-full h-140px grid grid-cols-4 grid-rows-2 gap-10px">
+        <div className="w-full h-130px grid grid-cols-4 grid-rows-2 gap-10px">
           <PictureButton />
           <PictureButton />
           <PictureButton />
