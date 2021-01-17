@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { HeaderButton, Navbar, HeaderLogo } from './dependencies';
+import { HeaderButton, Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 const logo = '/assets/images/logo.png';
 
@@ -16,7 +16,7 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <div className={`bg-white shadow-custom-1`}>
+    <HeaderLayout>
       <div
         className={` grid  grid-cols-12 w-full h-122px container mx-auto     `}
         style={{ direction: 'rtl' }}
@@ -32,6 +32,6 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
           <HeaderButton className="mr-35px">محصولات فروشگاه</HeaderButton>
         </div>
       </div>
-    </div>
+    </HeaderLayout>
   );
 };

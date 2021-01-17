@@ -1,6 +1,12 @@
 import { FC, Fragment } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderButton, MegaMenu } from './dependencies';
+import {
+  Navbar,
+  HeaderLogo,
+  HeaderButton,
+  MegaMenu,
+  HeaderLayout,
+} from './dependencies';
 
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 const logo = '/assets/images/logo.png';
@@ -22,7 +28,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
     );
   };
   return (
-    <div className={`bg-white shadow-custom-1`}>
+    <HeaderLayout>
       <div className="border-b-2">
         <div
           className={` grid  grid-cols-12  w-full h-122px container mx-auto   `}
@@ -53,6 +59,6 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
           <ICPhoneVolume className="mr-4" />
         </div>
       </div>
-    </div>
+    </HeaderLayout>
   );
 };

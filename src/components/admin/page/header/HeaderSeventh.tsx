@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo } from './dependencies';
+import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 const logo = '/assets/images/logo.png';
 
@@ -21,7 +21,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <div className="bg-white shadow-custom-1">
+    <HeaderLayout>
       <div className="border-b-2">
         <div
           className={` grid  grid-cols-12 container mx-auto  w-full h-122px `}
@@ -52,6 +52,6 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           </div>
         </div>
       </div>
-    </div>
+    </HeaderLayout>
   );
 };
