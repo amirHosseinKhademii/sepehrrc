@@ -23,7 +23,7 @@ export const ButtonDrawer: FC<IButton> = ({
   const { join } = useClass();
   const { push } = useRouter();
 
-  const RightSection = () => (
+  const StartItem = () => (
     <div className="flex flex-row items-center">
       {withSetting && (
         <ButtonIcon onClick={onSetting} className="pr-13px">
@@ -47,7 +47,7 @@ export const ButtonDrawer: FC<IButton> = ({
     </div>
   );
 
-  const LeftSection = () => (
+  const EndItem = () => (
     <div>
       {withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
@@ -72,8 +72,8 @@ export const ButtonDrawer: FC<IButton> = ({
       )}
       onClick={onClick}
     >
-      <RightSection />
-      <LeftSection />
+      <StartItem />
+      <EndItem />
     </div>
   );
 };
