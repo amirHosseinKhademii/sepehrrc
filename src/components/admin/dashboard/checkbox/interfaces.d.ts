@@ -3,6 +3,7 @@ interface ICheckbox {
   label?: string;
   onChange?: any;
   checked?: boolean;
+  onClick?: any;
 }
 
 export { ICheckbox };

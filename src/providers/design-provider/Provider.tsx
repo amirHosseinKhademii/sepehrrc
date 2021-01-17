@@ -320,30 +320,28 @@ const reducer = (state = initialState, { type, payload }) => {
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:
-      // pageCurrent.images = {
-      //   ...pageCurrent.images,
-      //   [state.pureImage.number]: payload,
-      // };
-      // cloneCurrent.images = {
-      //   ...cloneCurrent.images,
-      //   [state.pureImage.number]: payload,
-      // };
-      pageCurrent.images
-        .filter((item) => item.number !== payload.number)
-        .push({
+      pageCurrent.images = [
+        ...pageCurrent.images.filter(
+          (item) => item.number !== state.pureImage.number
+        ),
+        {
           number: state.pureImage.number,
           newTab: state.pureImage.newTab,
           link: state.pureImage.newTab,
           value: payload,
-        });
-      cloneCurrent.images
-        .filter((item) => item.number !== payload.number)
-        .push({
+        },
+      ];
+      cloneCurrent.images = [
+        ...cloneCurrent.images.filter(
+          (item) => item.number !== state.pureImage.number
+        ),
+        {
           number: state.pureImage.number,
           newTab: state.pureImage.newTab,
           link: state.pureImage.newTab,
           value: payload,
-        });
+        },
+      ];
       return {
         ...state,
         pageItems: clonePage,
