@@ -24,6 +24,7 @@ interface IButton {
   href?: string;
   label?: string;
   groupClass?: string;
+  disabled?: boolean;
 }
 
 export { IButton };
