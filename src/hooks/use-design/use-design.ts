@@ -72,7 +72,7 @@ export const useDesign = () => {
           link: link ? link : designState.pureImage.link,
         },
       });
-      // toggleModal(true);
+      if (value) toggleModal(true);
     },
     setImage: async (payload) => {
       const result = await upload(payload);

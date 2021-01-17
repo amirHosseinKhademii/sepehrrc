@@ -50,7 +50,7 @@ export const ButtonDrawer: FC<IButton> = ({
           <input
             type="file"
             id="actual-btn"
-            className=" w-81px h-22px rounded text-14px"
+            className=" w-81px h-22px rounded text-14px cursor-pointer"
             onChange={(e) => onUpload(e.target.files[0])}
           />
         )}
