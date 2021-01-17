@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
 import {
@@ -9,66 +9,43 @@ import {
   StyleBoxHeader,
   HeaderDrawer,
   ButtonGroupDrawer,
-  Redirect,
 } from 'components';
 
 export const HeaderDashboard = () => {
-  const { designState, setProps, setPureImage } = useDesign();
-  const [status, setStatus] = useState({ hasButton: false, hasTel: false });
-
-  useEffect(() => {
-    if (
-      designState.current.settings.style !== 'first' &&
-      designState.current.settings.style !== 'second' &&
-      designState.current.settings.style !== 'fourth'
-    ) {
-      setStatus({ ...status, hasTel: true });
-    } else {
-      setStatus({ ...status, hasTel: false });
-    }
-    if (
-      designState.current.settings.style !== 'second' &&
-      designState.current.settings.style !== 'seventh'
-    ) {
-      setStatus({ ...status, hasButton: true });
-    } else {
-      setStatus({ ...status, hasButton: false });
-    }
-  }, [designState]);
-
   const { join } = useClass();
+  const { designState, setProps, setPureImage } = useDesign();
 
   const PageButtonGroup = () => {
     return (
-      <div className="flex flex-col px-20px py-30px">
+      <div className="w-full flex flex-col my-30px">
         <ButtonDrawer
-          withRouter
-          href="./"
+          withPush
+          onPush="./"
           text="ویرایش منوی سایت "
           className="justify-center mb-15px"
         />
         <ButtonDrawer
-          withRouter
-          href="./"
+          withPush
+          onPush="./"
           text="ویرایش منوی محصولات "
           className="justify-center mb-15px"
         />
         <ButtonDrawer
-          withRouter
-          href="./"
+          withPush
+          onPush="./"
           text="ویرایش شبکه های اجتماعی "
           className="justify-center"
         />
       </div>
     );
   };
+
   const ButtonBox: FC<IBannerDashboard> = ({ label, number, className }) => {
     return (
-      <div className={join('w-full px-20px pb-30px ', className)}>
+      <div className={join('w-full  mb-30px ', className)}>
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
-
         <ButtonDrawer
           withUpload
           text="انتخاب لوگو"
@@ -97,7 +74,7 @@ export const HeaderDashboard = () => {
     type: string;
   }) => {
     return (
-      <div className={join('w-full px-20px pb-30px ', className)}>
+      <div className={join('w-full  mb-30px ', className)}>
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
@@ -119,8 +96,12 @@ export const HeaderDashboard = () => {
   };
 
   const StyleParts = () => (
-    <div className="flex flex-col items-end pt-30px px-20px">
+    <div className="w-full flex flex-col items-end pt-30px px-20px">
       <StyleBoxHeader />
+      <PageButtonGroup />
+      <ButtonBox label="لوگو" number="one" />
+      <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
+      <InputBox label="دکمه هدر" type="button" placeholder="محصولات فروشگاه" />
     </div>
   );
 
@@ -128,18 +109,6 @@ export const HeaderDashboard = () => {
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات هدر" />
       <StyleParts />
-      <PageButtonGroup />
-      <ButtonBox label="لوگو" number="1" />
-      {status.hasTel && (
-        <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
-      )}
-      {status.hasButton && (
-        <InputBox
-          label="دکمه هدر"
-          type="button"
-          placeholder="محصولات فروشگاه"
-        />
-      )}
       <ButtonGroupDrawer />
     </DrawerLayout>
   );

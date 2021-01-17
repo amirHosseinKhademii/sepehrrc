@@ -16,12 +16,10 @@ interface IButton {
   withDelete?: boolean;
   withSetting?: boolean;
   withUpload?: boolean;
-  withRouter?: boolean;
+  withPush?: boolean;
   withIcon?: boolean;
-  withLink?: boolean;
   text?: string;
-  link?: string;
-  href?: string;
+  onPush?: string;
   label?: string;
   groupClass?: string;
   disabled?: boolean;
