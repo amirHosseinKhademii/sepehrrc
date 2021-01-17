@@ -12,16 +12,12 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
 
   return (
     <div className="flex justify-between px-20px fixed bottom-0  mb-20px">
-      <ButtonAction
-        className="bg-gradient-200 mr-10px"
-        text="ذخیره تغییرات"
-        onClick={onSave}
-      />
-      <ButtonAction
-        className="bg-gray_shade-400"
-        text="لغو تغییرات"
-        onClick={onCancelClick}
-      />
+      <ButtonAction className="bg-gradient-200 mr-10px" onClick={onSave}>
+        ذخیره تغییرات
+      </ButtonAction>
+      <ButtonAction className="bg-gray_shade-400" onClick={onCancelClick}>
+        لغو تغییرات
+      </ButtonAction>
     </div>
   );
 };
