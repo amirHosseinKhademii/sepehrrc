@@ -30,11 +30,11 @@ export const BannerDashboard = () => {
           />
           <Input
             withLink
-            placeholder={pureImage.link}
+            placeholder={pureImage.number == number ? pureImage.link : ''}
             variant="inputIcon"
             className="mt-14px"
             fontFamily="font-lato"
-            onBlur={(e) => setPureImage({ link: e.target.value })}
+            onBlur={(e) => setPureImage({ number, link: e.target.value })}
           />
           <CheckBox
             className="mt-15px"

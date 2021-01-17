@@ -327,7 +327,7 @@ const reducer = (state = initialState, { type, payload }) => {
         {
           number: state.pureImage.number,
           newTab: state.pureImage.newTab,
-          link: state.pureImage.newTab,
+          link: state.pureImage.link,
           value: payload,
         },
       ];
@@ -338,7 +338,7 @@ const reducer = (state = initialState, { type, payload }) => {
         {
           number: state.pureImage.number,
           newTab: state.pureImage.newTab,
-          link: state.pureImage.newTab,
+          link: state.pureImage.link,
           value: payload,
         },
       ];

@@ -2,7 +2,12 @@ import { useClass } from 'hooks';
 import { FC } from 'react';
 import { IButton } from './interfaces';
 
-export const Button: FC<IButton> = ({ className, children, onClick }) => {
+export const Button: FC<IButton> = ({
+  className,
+  children,
+  onClick,
+  disabled,
+}) => {
   const { join } = useClass();
   return (
     <button
@@ -11,6 +16,7 @@ export const Button: FC<IButton> = ({ className, children, onClick }) => {
         className
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

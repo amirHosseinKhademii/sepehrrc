@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { Drawer } from 'components';
+import { Drawer, ModalCrop } from 'components';
 import { ILayout } from './interfaces';
 import { DesignHeader, DesignFooter } from 'containers';
-import { ModalCrop } from 'components';
+import { useUi } from 'hooks';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
+  const { uiState } = useUi();
+
   return (
     <div>
       <Drawer />
@@ -13,7 +15,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
         <div className=" pb-28 w-full h-full">{children}</div>
         <DesignFooter />
       </div>
-      <ModalCrop />
+      {uiState.modal.open && <ModalCrop />}
     </div>
   );
 };
