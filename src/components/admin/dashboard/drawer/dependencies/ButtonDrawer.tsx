@@ -1,28 +1,69 @@
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 import { useClass } from 'hooks';
-import { ICLink, ICSettingCog, ICTrash } from 'icons';
+import { ButtonIcon } from 'components';
+import { ICSettingCog, ICTrash } from 'icons';
 import { IButton } from '../../button/interfaces';
-import { Button } from '../../button/Button';
-import { ButtonIcon } from '../../button/ButtonIcon';
-import Link from 'next/link';
+
 export const ButtonDrawer: FC<IButton> = ({
-  text,
   withDelete,
   withSetting,
-  withRouter,
-  href,
+  withPush,
+  withUpload,
+  withIcon,
   onDelete,
   onSetting,
-  className,
-  withIcon,
-  children,
-  withLink,
-  link,
-  withUpload,
   onUpload,
   onClick,
+  onPush,
+  className,
+  children,
+  text,
 }) => {
   const { join } = useClass();
+  const { push } = useRouter();
+
+  const RightSection = () => (
+    <div className="flex flex-row items-center">
+      {withSetting && (
+        <ButtonIcon onClick={onSetting} className="pr-13px">
+          <ICSettingCog fill="#b8bdca" />
+        </ButtonIcon>
+      )}
+      {withDelete && (
+        <ButtonIcon onClick={onDelete}>
+          <ICTrash fill="#b8bdca" />
+        </ButtonIcon>
+      )}
+      {withUpload && (
+        <input
+          type="file"
+          id="actual-btn"
+          className=" w-81px h-22px rounded text-14px cursor-pointer"
+          onChange={(e) => onUpload(e.target.files[0])}
+        />
+      )}
+      {withIcon && children}
+    </div>
+  );
+
+  const LeftSection = () => (
+    <div>
+      {withUpload ? (
+        <p className="text-14px text-gray_shade-300">{text}</p>
+      ) : withPush ? (
+        <p
+          className="text-white_shade-100 text-14px mx-auto cursor-pointer"
+          onClick={() => push(onPush)}
+        >
+          {text}
+        </p>
+      ) : (
+        <p className="text-white_shade-100 text-14px">{text}</p>
+      )}
+    </div>
+  );
+
   return (
     <div
       className={join(
@@ -31,43 +72,8 @@ export const ButtonDrawer: FC<IButton> = ({
       )}
       onClick={onClick}
     >
-      <div className="flex flex-row items-center">
-        {withLink && (
-          <p className="text-left text-12px text-gray-500">{link}</p>
-        )}
-        {withSetting && (
-          <ButtonIcon onClick={onSetting} className="pr-13px">
-            <ICSettingCog fill="#b8bdca" />
-          </ButtonIcon>
-        )}
-        {withDelete && (
-          <ButtonIcon onClick={onDelete}>
-            <ICTrash fill="#b8bdca" />
-          </ButtonIcon>
-        )}
-        {withIcon && children}
-        {withUpload && (
-          <input
-            type="file"
-            id="actual-btn"
-            className=" w-81px h-22px rounded text-14px cursor-pointer"
-            onChange={(e) => onUpload(e.target.files[0])}
-          />
-        )}
-      </div>
-      {withLink ? (
-        <ICLink />
-      ) : withUpload ? (
-        <p className="text-14px text-gray_shade-300">{text}</p>
-      ) : withRouter ? (
-        <Link href={href}>
-          <a className="text-white_shade-100 text-14px mx-auto cursor-pointer">
-            {text}
-          </a>
-        </Link>
-      ) : (
-        <p className="text-white_shade-100 text-14px">{text}</p>
-      )}
+      <RightSection />
+      <LeftSection />
     </div>
   );
 };
