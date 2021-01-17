@@ -47,20 +47,12 @@ export const ButtonDrawer: FC<IButton> = ({
         )}
         {withIcon && children}
         {withUpload && (
-          <div className="w-81px flex items-center justify-center">
-            <input
-              type="file"
-              id="actual-btn"
-              className="mt-1 py-1"
-              onChange={(e) => onUpload(e.target.files[0])}
-            />
-            {/* <label
-              htmlFor="actual-btn"
-              className="text-gray_shade-300 text-12px pt-1 cursor-pointer"
-            >
-              Browse
-            </label> */}
-          </div>
+          <input
+            type="file"
+            id="actual-btn"
+            className=" w-81px h-22px rounded text-14px"
+            onChange={(e) => onUpload(e.target.files[0])}
+          />
         )}
       </div>
       {withLink ? (

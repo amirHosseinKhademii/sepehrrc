@@ -68,7 +68,7 @@ export const useDesign = () => {
         payload: {
           value: value ? value : designState.pureImage.value,
           number: number ? number : designState.number,
-          newTab: newTab ? newTab : designState.pureImage.newTab,
+          newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
           link: link ? link : designState.pureImage.link,
         },
       });

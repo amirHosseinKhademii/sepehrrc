@@ -14,6 +14,7 @@ import {
 export const BannerDashboard = () => {
   const { join } = useClass();
   const { designState, setProps, setPureImage } = useDesign();
+  const { pureImage } = designState;
 
   const UploadButtonGroup = () => {
     const ButtonBox: FC<IBannerDashboard> = ({ label, number, className }) => {
@@ -29,7 +30,7 @@ export const BannerDashboard = () => {
           />
           <Input
             withLink
-            placeholder={designState.pureImage.link}
+            placeholder={pureImage.link}
             variant="inputIcon"
             className="mt-14px"
             fontFamily="font-lato"
@@ -38,9 +39,13 @@ export const BannerDashboard = () => {
           <CheckBox
             className="mt-15px"
             label="باز کردن صفحه در تب جدید "
-            //onChange={(e) => console.log(e.target.checked)}
-            // onChange={(e) => setPureImage({ newTab: e.target.checked })}
-            //checked={designState.pureImage.newTab}
+            onClick={() => {
+              setPureImage({
+                number,
+                newTab: pureImage.newTab ? false : true,
+              });
+            }}
+            checked={pureImage.number == number && pureImage.newTab}
           />
         </div>
       );
