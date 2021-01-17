@@ -6,7 +6,7 @@ import { IButton } from './interfaces';
 export const ButtonAction: FC<IButton> = ({
   onClick,
   className,
-  text,
+  children,
   disabled,
 }) => {
   const { join } = useClass();
@@ -16,7 +16,7 @@ export const ButtonAction: FC<IButton> = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {text}
+      {children}
     </Button>
   );
 };

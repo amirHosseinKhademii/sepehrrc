@@ -37,14 +37,20 @@ export const ModalCrop = () => {
           </div>
           <div className="flex items-center w-full h-85px pl-35px bg-gray-800">
             <ButtonAction
-              text={isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
-              className={toggle('  bg-primary-600', 'opacity-30', isLoading)}
+              className={toggle(
+                '',
+                'opacity-30 bg-gray-500',
+                isLoading,
+                'bg-primary-600'
+              )}
               disabled={isLoading}
               onClick={() => {
                 setisLoading(true);
                 setImage(designState.pureImage.value);
               }}
-            />
+            >
+              {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
+            </ButtonAction>
           </div>
         </div>
       </Modal>
