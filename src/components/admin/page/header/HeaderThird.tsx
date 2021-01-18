@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { IHeader } from './interface';
 import { HeaderButton, Navbar, HeaderLogo, HeaderInput } from './dependencies';
 import { ICShoppingCart, ICPhoneVolume } from 'icons';
+import { Badge } from 'components';
 
 const logo = '/assets/images/logo.png';
 
@@ -9,12 +10,13 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <div className={'relative ml-23px '}>
+        <Badge
+          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          badgeContent="6"
+          root="ml-20px"
+        >
           <ICShoppingCart />
-          <div className="absolute  -right-8px -top-6px  w-18px h-18px bg-red-600 text-white rounded-full">
-            <span className="mr-3px">5</span>
-          </div>
-        </div>
+        </Badge>
       </>
     );
   };
