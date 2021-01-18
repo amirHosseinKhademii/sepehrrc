@@ -42,7 +42,6 @@ export * from './HomeAlt';
 export * from './ImageV';
 export * from './Import';
 export * from './InfoCircle';
-export * from './LinkH';
 export * from './LocationPinAlt';
 export * from './LocationPoint';
 export * from './Lock';

@@ -1,5 +1,6 @@
+import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
-import { IIcon } from '../interfaces';
+
 
 export const ICLinkH: FC<IIcon> = ({
   className,

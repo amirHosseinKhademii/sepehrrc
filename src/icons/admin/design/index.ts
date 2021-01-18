@@ -11,3 +11,4 @@ export * from './arrow-right';
 export * from './edit-setting';
 export * from './angle-up';
 export * from './angle-down';
+export * from './link-h'
