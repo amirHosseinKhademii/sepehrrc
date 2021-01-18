@@ -7,6 +7,7 @@ import {
   HeaderInput,
   HeaderLayout,
 } from './dependencies';
+import { Badge } from 'components';
 import {
   ICSearch,
   ICShoppingCart,
