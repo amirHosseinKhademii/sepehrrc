@@ -10,6 +10,7 @@ import {
   ICTelegram,
   ICInstagram,
 } from 'icons';
+import { Badge } from 'components';
 
 const logo = '/assets/images/logo.png';
 
@@ -18,7 +19,13 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
     return (
       <>
         <ICSearch className="mx-2" />
-        <ICShoppingCart className="mx-2" />
+        <Badge
+          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          badgeContent="6"
+          root="mx-2"
+        >
+          <ICShoppingCart />
+        </Badge>
         <ICUsersAlt className="mx-2" />
       </>
     );
