@@ -1,7 +1,7 @@
 import { useClass } from 'hooks';
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import { IInput } from './interface';
-import { ICLinkH } from 'icons';
+import { ICLink } from 'icons';
 
 export const Input: FC<IInput> = ({
   className,
@@ -48,7 +48,7 @@ export const Input: FC<IInput> = ({
             onBlur={onBlur}
           />
           <div className="absolute inset-y-0 right-4 flex items-center ">
-            <ICLinkH fill="#9ba3b5" />
+            <ICLink fill="#9ba3b5" />
           </div>
         </div>
       ) : null}

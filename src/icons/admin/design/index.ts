@@ -11,6 +11,7 @@ export * from './arrow-right';
 export * from './edit-setting';
 export * from './angle-up';
 export * from './angle-down';
+<<<<<<< HEAD
 export * from './angle-down'
 export * from './arrow-left'
 export * from './arrow-right'
@@ -25,3 +26,8 @@ export * from './twitter'
 export * from './user-alt'
 export * from './whatsapp'
 export * from './search'
+=======
+export * from './link-h'
+export * from './phone'
+export * from './search'
+>>>>>>> 41822ce51d6d0af0e8ac9539ec90c49968e2b3f6
