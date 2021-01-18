@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart } from 'icons';
+import { Badge } from 'components';
 const logo = '/assets/images/logo.png';
 
 export const HeaderSecond: FC<IHeader> = ({ item }) => {
@@ -10,12 +11,12 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
       <>
         <div className="ml-8px">ورود/عضویت در سایت</div>
         <ICSearch className="mx-4" />
-        <div className={'relative mr-4 '}>
+        <Badge
+          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          badgeContent="6"
+        >
           <ICShoppingCart />
-          <div className="absolute  -right-8px -top-6px  w-18px h-18px bg-red-600 text-white rounded-full">
-            <span className="mr-3px">5</span>
-          </div>
-        </div>
+        </Badge>
       </>
     );
   };

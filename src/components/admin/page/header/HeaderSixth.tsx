@@ -15,6 +15,8 @@ import {
   ICTelegram,
   ICInstagram,
 } from 'icons';
+import { Badge } from 'components';
+
 const logo = '/assets/images/logo.png';
 
 export const HeaderSixth: FC<IHeader> = ({ item }) => {
@@ -23,14 +25,13 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
       <>
         <div className="text-16px">09365464683</div>
         <ICPhoneVolume className="mr-4" />
-        <div className="relative mr-20px ">
+        <Badge
+          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          badgeContent="6"
+          root="mr-20px"
+        >
           <ICShoppingCart />
-          <div className="absolute  -right-8px -top-6px  w-18px h-18px bg-red-600 text-white rounded-full">
-            <div className="h-full w-full flex justify-center items-center mt-2px  text-xs">
-              25
-            </div>
-          </div>
-        </div>
+        </Badge>
       </>
     );
   };
