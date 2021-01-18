@@ -1,8 +1,7 @@
 import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
-
-export const ICArrowRight: FC<IIcon> = ({
+export const ICLinkH: FC<IIcon> = ({
   className,
   onClick,
   height,
@@ -20,8 +19,8 @@ export const ICArrowRight: FC<IIcon> = ({
     >
       <path data-name="Rectangle 37" fill="none" d="M0 0h24v24H0z" />
       <path
-        data-name="arrow-right"
-        d="M17.487 12.054a1 1 0 00-.21-.33l-5-5a1.004 1.004 0 00-1.42 1.42l3.3 3.29h-7.59a1 1 0 000 2h7.59l-3.3 3.29a1.004 1.004 0 101.42 1.42l5-5a1.034 1.034 0 00.21-1.09z"
+        data-name="link-h"
+        d="M7.99 12.143a1 1 0 001 1h6a1 1 0 000-2h-6a1 1 0 00-1 1zm2 3h-3a3 3 0 010-6h3a1 1 0 000-2h-3a5 5 0 000 10h3a1 1 0 000-2zm7-8h-3a1 1 0 000 2h3a3 3 0 010 6h-3a1 1 0 000 2h3a5 5 0 000-10z"
         fill={fill ? fill : 'current'}
       />
     </svg>

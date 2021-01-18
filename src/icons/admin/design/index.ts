@@ -11,3 +11,17 @@ export * from './arrow-right';
 export * from './edit-setting';
 export * from './angle-up';
 export * from './angle-down';
+export * from './angle-down'
+export * from './arrow-left'
+export * from './arrow-right'
+export * from './arrow-up'
+export * from './instagram'
+export * from './link-h'
+export * from './phone-volume'
+export * from './phone'
+export * from './shoping-cart'
+export * from './telegram'
+export * from './twitter'
+export * from './user-alt'
+export * from './whatsapp'
+export * from './search'

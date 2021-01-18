@@ -1,4 +1,5 @@
-import { IIcon } from '../interfaces';
+
+import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
 export const ICTwitter: FC<IIcon> = ({
