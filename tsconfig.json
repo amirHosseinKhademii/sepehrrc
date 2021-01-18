@@ -1,29 +1,64 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "alwaysStrict": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "noFallthroughCasesInSwitch": true,
+    //"noUnusedLocals": true,
+    //"noUnusedParameters": true,
+    //"strict": true,
+    "target": "esnext",
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["./components/*"],
-      "containers/*": ["./containers/*"],
-      "helper/*": ["./helper/*"],
-      "hooks/*": ["./hooks/*"],
-      "providers/*": ["./providers/*"],
-      "utils/*": ["./utils/*"],
-      "icons/*": ["./icons/*"]
-    }
+      "components/*": [
+        "./components/*"
+      ],
+      "containers/*": [
+        "./containers/*"
+      ],
+      "helper/*": [
+        "./helper/*"
+      ],
+      "hooks/*": [
+        "./hooks/*"
+      ],
+      "providers/*": [
+        "./providers/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ],
+      "icons/*": [
+        "./icons/*"
+      ]
+    },
+    "strict": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "next.config.js",
+    "src/pages/_app.tsx",
+    "public/Icons/HeaderLogo.jsx",
+    "src/services/ApolloClient.js",
+    "src/hooks/use-crud.js",
+    "pages/profile/[id].jsx",
+    "pages/profile/[id].jsx"
+  ]
 }

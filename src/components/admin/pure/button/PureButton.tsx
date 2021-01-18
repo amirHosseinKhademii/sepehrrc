@@ -1,4 +1,4 @@
-const PureButton = ({ className, layout, text, onClick }) => {
+export const PureButton = ({ className, layout, text, onClick }) => {
   return (
     <button className={layout ? className : ''} onClick={onClick}>
       {text}

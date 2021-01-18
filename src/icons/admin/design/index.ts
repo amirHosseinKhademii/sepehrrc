@@ -7,7 +7,6 @@ export * from './setting-cog';
 export * from './trash';
 export * from './logo';
 export * from './link';
-export * from './arrow-right';
 export * from './edit-setting';
 export * from './angle-up';
 export * from './angle-down';
@@ -25,3 +24,4 @@ export * from './twitter'
 export * from './user-alt'
 export * from './whatsapp'
 export * from './search'
+export * from './arrow-down'
