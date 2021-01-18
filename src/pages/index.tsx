@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Sepehr Page Builder</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main></main>
