@@ -65,7 +65,6 @@ export * from './Radio';
 export * from './Redo';
 export * from './Refresh';
 export * from './Rss';
-export * from './Search';
 export * from './ShieldCheck';
 export * from './ShoppingBag';
 export * from './ShoppingCart';
