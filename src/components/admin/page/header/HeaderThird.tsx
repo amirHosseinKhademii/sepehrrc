@@ -1,6 +1,12 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { HeaderButton, Navbar, HeaderLogo, HeaderInput } from './dependencies';
+import {
+  HeaderButton,
+  Navbar,
+  HeaderLogo,
+  HeaderInput,
+  HeaderLayout,
+} from './dependencies';
 import { ICShoppingCart, ICPhoneVolume } from 'icons';
 import { Badge } from 'components';
 
@@ -21,7 +27,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
     );
   };
   return (
-    <div className="bg-white shadow-custom-1">
+    <HeaderLayout>
       <div className="border-2">
         <div
           className={` grid  grid-cols-12   w-full h-122px container mx-auto `}
@@ -51,6 +57,6 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           <ICPhoneVolume className="mr-4" />
         </div>
       </div>
-    </div>
+    </HeaderLayout>
   );
 };
