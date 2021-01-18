@@ -1,7 +1,6 @@
 import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
-
 export const ICArrowRight: FC<IIcon> = ({
   className,
   onClick,
@@ -12,17 +11,16 @@ export const ICArrowRight: FC<IIcon> = ({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width ? width : 24}
-      height={height ? height : 24}
-      viewBox="0 0 24 24"
+      width="11.995"
+      height="12.01"
+      viewBox="0 0 11.995 12.01"
       className={className}
       onClick={onClick}
     >
-      <path data-name="Rectangle 37" fill="none" d="M0 0h24v24H0z" />
       <path
-        data-name="arrow-right"
-        d="M17.487 12.054a1 1 0 00-.21-.33l-5-5a1.004 1.004 0 00-1.42 1.42l3.3 3.29h-7.59a1 1 0 000 2h7.59l-3.3 3.29a1.004 1.004 0 101.42 1.42l5-5a1.034 1.034 0 00.21-1.09z"
-        fill={fill ? fill : 'current'}
+        fill='#fff'
+        d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 1 0 1.42 1.42l5-5a1.034 1.034 0 0 0 .21-1.09z"
+        transform="translate(-6 -5.996)"
       />
     </svg>
   );
