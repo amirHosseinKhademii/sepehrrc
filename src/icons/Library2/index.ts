@@ -55,7 +55,6 @@ export * from './Multiply';
 export * from './Notes';
 export * from './Paperclip';
 export * from './PhoneVolume';
-export * from './Phone';
 export * from './PlayCircle';
 export * from './Play';
 export * from './PlusCircle';
