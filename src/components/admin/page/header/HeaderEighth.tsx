@@ -1,6 +1,12 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
+import {
+  Navbar,
+  HeaderLogo,
+  HeaderInput,
+  HeaderLayout,
+  MegaMenu,
+} from './dependencies';
 import { Badge, PureButton } from 'components';
 import {
   ICSearch,
@@ -90,7 +96,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center">
-            <HeaderLogo src={logo} />
+            <HeaderLogo src={item.images} />
           </div>
           <div className="col-span-7 flex items-center justify-center ">
             <HeaderInput className="w-535px" />
@@ -110,7 +116,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <MegaMenu />
         </div>
         <div className="col-span-3 ">
           <Link href="./">

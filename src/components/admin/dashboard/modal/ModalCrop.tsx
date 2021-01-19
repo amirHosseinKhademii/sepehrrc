@@ -60,7 +60,7 @@ export const ModalCrop = () => {
       initialAspectRatio: 16 / 9,
       crop(event) {},
       cropend: () => {
-        console.log(cropper.getCroppedCanvas().toDataURL());
+        // console.log(cropper.getCroppedCanvas().toDataURL());
       },
     });
   }, []);

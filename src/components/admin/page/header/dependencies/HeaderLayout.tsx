@@ -1,29 +1,22 @@
 import React from 'react';
-import { useClass, useDesign } from 'hooks';
+import { useUi, useDesign } from 'hooks';
+import { BorderShadow } from 'components';
 
 export const HeaderLayout = ({ children }) => {
-  const { join, toggle } = useClass();
   const { designState } = useDesign();
+  const { uiState } = useUi();
 
   return (
-    <div
-      className={toggle(
-        '',
-        'relative pt-12 pb-8 border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
+    <BorderShadow
+      active={
+        uiState.drawer.style &&
         designState.current.type == 'header' &&
-          designState.current.uuid == 'HEADER'
-      )}
+        'HEADER' == designState.current.uuid
+          ? true
+          : false
+      }
     >
-      <div
-        className={toggle(
-          '',
-          'absolute top-0 left-0 opacity-10 w-full h-full bg-primary-700 ',
-          designState.current.type == 'header' &&
-            designState.current.uuid == 'HEADER',
-          'hidden'
-        )}
-      ></div>
       <div className={`bg-white shadow-custom-1`}>{children}</div>
-    </div>
+    </BorderShadow>
   );
 };

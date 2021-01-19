@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useClass } from 'hooks';
+import { useClass, useDesign } from 'hooks';
 import { IHeaderLogo } from '../interface';
 import Link from 'next/link';
 
@@ -8,10 +8,14 @@ export const HeaderLogo: FC<IHeaderLogo> = ({ className, src }) => {
   const { join } = useClass();
 
   return (
-    <Link href="./">
+    <Link href="/">
       <a>
         <div className={join('flex items-center', className)}>
-          <img className="w-full h-full" src={src ? src : logoAlt} alt="logo" />
+          <img
+            className="w-140px h-70px object-cover"
+            src={src.length === 0 ? logoAlt : src[0].value}
+            alt="logo"
+          />
         </div>
       </a>
     </Link>
