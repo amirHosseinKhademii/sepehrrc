@@ -4,8 +4,8 @@ import { DesignContext, designTypes } from 'providers/design-provider';
 
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
-  const { toggleModal } = useUi();
   const { upload } = useService();
+  const { toggleModal } = useUi();
 
   return {
     onInject: (arr, dragResult) => {
