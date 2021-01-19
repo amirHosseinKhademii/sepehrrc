@@ -28,6 +28,7 @@ export * from './arrow-down';
 export * from './redo';
 export * from './rotateHorizontal';
 export * from './rotateVertical';
+export * from './crop-alt';
 export * from './product-list';
 export * from './slider';
 export * from './text';

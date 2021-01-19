@@ -1,5 +1,5 @@
 import { useClass } from 'hooks';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { IInput } from './interface';
 import { ICLink } from 'icons';
 
@@ -50,6 +50,26 @@ export const Input: FC<IInput> = ({
           <div className="absolute inset-y-0 right-4 flex items-center ">
             <ICLink fill="#9ba3b5" />
           </div>
+        </div>
+      ) : variant === 'textArea' ? (
+        <div className={join('w-full flex flex-col items-end', className)}>
+          {label && (
+            <label
+              htmlFor={label}
+              className="mb-14px text-14px text-white_shade-100"
+            >
+              {label}
+            </label>
+          )}
+          <textarea
+            id={label}
+            placeholder={placeholder}
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            dir={withLink ? 'ltr' : 'rtl'}
+            className={`${fontFamily} p-16px focus:outline-none w-full h-145px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
+          ></textarea>
         </div>
       ) : null}
     </div>
