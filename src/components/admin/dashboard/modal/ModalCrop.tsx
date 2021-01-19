@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Modal, ButtonAction } from 'components';
+import { Modal, ButtonAction, InputSlider } from 'components';
 import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
@@ -40,6 +40,8 @@ export const ModalCrop = () => {
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
       </ButtonAction>
+      <InputSlider title="چرخش تصویر" />
+      <InputSlider title="زوم" />
     </div>
   );
 
