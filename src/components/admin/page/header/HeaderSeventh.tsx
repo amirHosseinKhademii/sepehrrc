@@ -3,6 +3,7 @@ import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 import { Badge } from 'components';
+import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
@@ -11,13 +12,21 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
     return (
       <>
         <div className="ml-8px">ورود/عضویت در سایت</div>
-        <ICSearch className="mx-4" />
+        <Link href="./">
+          <a>
+            <ICSearch className="mx-4" />
+          </a>
+        </Link>
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-4"
         >
-          <ICShoppingCart />
+          <Link href="./">
+            <a>
+              <ICShoppingCart />
+            </a>
+          </Link>
         </Badge>
       </>
     );
@@ -49,9 +58,13 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           <div className="col-span-9  flex items-center ">
             <Navbar direction="horizental" items={item.menuItems} />
           </div>
-          <div className="col-span-3 flex items-center justify-end">
-            <div className="text-16px">09365464683</div>
-            <ICPhoneVolume className="mr-4" fill="#fff" />
+          <div className="col-span-3">
+            <Link href="./">
+              <a className="h-full flex items-center justify-end">
+                <div className="text-16px">09365464683</div>
+                <ICPhoneVolume className="mr-4" fill="#fff" />
+              </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,12 +1,6 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import {
-  HeaderButton,
-  Navbar,
-  HeaderLogo,
-  HeaderInput,
-  HeaderLayout,
-} from './dependencies';
+import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
 import {
   ICSearch,
   ICShoppingCart,
@@ -16,7 +10,8 @@ import {
   ICTelegram,
   ICInstagram,
 } from 'icons';
-import { Badge } from 'components';
+import { Badge, PureButton } from 'components';
+import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
@@ -24,15 +19,27 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <ICSearch className="mx-2" />
+        <Link href="./">
+          <a>
+            <ICSearch className="mx-2" />
+          </a>
+        </Link>
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mx-2"
         >
-          <ICShoppingCart />
+          <Link href="./">
+            <a>
+              <ICShoppingCart />
+            </a>
+          </Link>
         </Badge>
-        <ICUsersAlt className="mx-2" />
+        <Link href="./">
+          <a>
+            <ICUsersAlt className="mx-2" />
+          </a>
+        </Link>
       </>
     );
   };
@@ -40,10 +47,26 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
   const Social = () => {
     return (
       <>
-        <ICWhatsapp className="mx-4" />
-        <ICTwitter className="mx-4" />
-        <ICInstagram className="mx-4" />
-        <ICTelegram className="mr-4" />
+        <Link href="./">
+          <a>
+            <ICWhatsapp className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICTwitter className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICInstagram className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICTelegram className="mr-4" />{' '}
+          </a>
+        </Link>
       </>
     );
   };
@@ -63,7 +86,11 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <HeaderButton className="mr-35px">{item.Button.text}</HeaderButton>
+            <PureButton
+              layout={true}
+              className="h-50px mr-35px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+              text={item.Button.text}
+            />
           </div>
         </div>
       </div>

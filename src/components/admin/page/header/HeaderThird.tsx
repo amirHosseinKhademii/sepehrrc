@@ -1,14 +1,9 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import {
-  HeaderButton,
-  Navbar,
-  HeaderLogo,
-  HeaderInput,
-  HeaderLayout,
-} from './dependencies';
+import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
+import Link from 'next/link';
 import { ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge } from 'components';
+import { Badge, PureButton } from 'components';
 
 const logo = '/assets/images/logo.png';
 
@@ -21,7 +16,11 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           badgeContent="6"
           root="ml-20px"
         >
-          <ICShoppingCart />
+          <Link href="./">
+            <a>
+              <ICShoppingCart />
+            </a>
+          </Link>
         </Badge>
       </>
     );
@@ -41,7 +40,11 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <HeaderButton>ورود/عضویت</HeaderButton>
+            <PureButton
+              layout={true}
+              className="h-50px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+              text=" ورود/عضویت"
+            />
           </div>
         </div>
       </div>
@@ -52,9 +55,13 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
         <div className="col-span-9  flex items-center ">
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
-        <div className="col-span-3 flex items-center justify-end">
-          <div className="text-16px">09365464683</div>
-          <ICPhoneVolume className="mr-4" />
+        <div className="col-span-3 ">
+          <Link href="./">
+            <a className="h-full flex items-center justify-end">
+              <div className="text-16px">09365464683</div>
+              <ICPhoneVolume className="mr-4" />
+            </a>
+          </Link>
         </div>
       </div>
     </HeaderLayout>

@@ -15,7 +15,8 @@ import {
   ICTelegram,
   ICInstagram,
 } from 'icons';
-import { Badge } from 'components';
+import { Badge, PureButton } from 'components';
+import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
@@ -23,14 +24,23 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <div className="text-16px">09365464683</div>
-        <ICPhoneVolume className="mr-4" />
+        <Link href="./">
+          <a>
+            <div className="text-16px">09365464683</div>
+            <ICPhoneVolume className="mr-4" />
+          </a>
+        </Link>
+
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-20px"
         >
-          <ICShoppingCart />
+          <Link href="./">
+            <a>
+              <ICShoppingCart />
+            </a>
+          </Link>
         </Badge>
       </>
     );
@@ -39,10 +49,26 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
   const Social = () => {
     return (
       <>
-        <ICWhatsapp className="mx-4" />
-        <ICTwitter className="mx-4" />
-        <ICInstagram className="mx-4" />
-        <ICTelegram className="mr-4" />
+        <Link href="./">
+          <a>
+            <ICWhatsapp className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICTwitter className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICInstagram className="mx-4" />{' '}
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICTelegram className="mr-4" />{' '}
+          </a>
+        </Link>
       </>
     );
   };
@@ -62,8 +88,11 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-
-            <HeaderButton className="mr-25px">ورود یاعضویت</HeaderButton>
+            <PureButton
+              layout={true}
+              className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+              text="ورود/عضویت"
+            />
           </div>
         </div>
       </div>

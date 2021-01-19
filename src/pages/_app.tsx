@@ -14,6 +14,14 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
           rel="stylesheet"
         ></link>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.css"
+        ></link>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        ></link>
       </Head>
       <main>
         <QueryClientProvider client={new QueryClient()}>
