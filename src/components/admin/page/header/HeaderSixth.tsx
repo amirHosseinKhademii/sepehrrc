@@ -81,7 +81,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center justify-start ">
-            <HeaderLogo src={logo} />
+            <HeaderLogo src={item.images} />
           </div>
           <div className="col-span-7 flex items-center  justify-center ">
             <HeaderInput className="w-450px" />

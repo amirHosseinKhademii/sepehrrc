@@ -39,7 +39,7 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
         <div className="col-span-1  flex items-center ">
-          <HeaderLogo src={logo} />
+          <HeaderLogo src={item.images} />
         </div>
         <div className="col-span-5 flex items-center justify-end">
           <Actions />
