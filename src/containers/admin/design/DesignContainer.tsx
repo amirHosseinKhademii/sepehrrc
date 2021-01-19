@@ -26,7 +26,7 @@ export const DesignContainer = () => {
           {item.type == 'products' && (
             <CardContainer items={item.items} title="جدیدترین محصولات ما" />
           )}
-          {item.type == 'slider' && <Slider />}
+          {item.type == 'slider' && <Slider item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
         </Fragment>
       ))}

@@ -1,9 +1,16 @@
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
-import 'react-awesome-slider/dist/styles.css';
-import Sliderx from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+  Autoplay,
+} from 'swiper';
+import { BorderShadow } from 'components';
+import { useClass, useDesign, useUi } from 'hooks';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]);
 
 const img1 = '/assets/images/slider1.jpg';
 const img2 = '/assets/images/slider2.jpg';
@@ -27,37 +34,47 @@ const data = [
   },
 ];
 
-export const Slider = () => {
-  const AutoplaySlider = withAutoplay(AwesomeSlider);
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+export const Slider = ({ item }) => {
+  const { designState } = useDesign();
+  const { uiState } = useUi();
+
+  const handelChild = () => {
+    const arr = [];
+    data.map((item, index) => {
+      arr.push(
+        <SwiperSlide className="swiper-slide" key={index}>
+          <img src={item.url} className="h-full w-full" />
+        </SwiperSlide>
+      );
+    });
+    return arr;
   };
 
   return (
-    <div className="container mx-auto mt-45px">
-      <AutoplaySlider
-        className="h-450px rounded-lg"
-        play={true}
-        cancelOnInteraction={false} // should stop playing on user interaction
-        interval={6000}
-      >
-        {data.map((item, index) => (
-          <div className="rounded-xl" data-src={item.url} />
-        ))}
-      </AutoplaySlider>
-      {/* REACT SLICK */}
-      {/* <Sliderx {...settings}>
-        <div>
-          <img src={img1} />
-        </div>
-        <div>
-          <img src={img2} />
-        </div>
-      </Sliderx> */}
-    </div>
+    <BorderShadow
+      active={
+        uiState.drawer.style &&
+        designState.current.type == 'slider' &&
+        item.uuid == designState.current.uuid
+          ? true
+          : false
+      }
+    >
+      <div className="container mx-auto">
+        <Swiper
+          effect="fade"
+          spaceBetween={30}
+          navigation
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          // scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+          className="h-450px rounded"
+        >
+          {handelChild()}
+        </Swiper>
+      </div>
+    </BorderShadow>
   );
 };
