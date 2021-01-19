@@ -3,7 +3,7 @@ import { IHeader } from './interface';
 import {
   Navbar,
   HeaderLogo,
-  HeaderButton,
+  MegaMenu,
   HeaderInput,
   HeaderLayout,
 } from './dependencies';
@@ -25,7 +25,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
     return (
       <>
         <Link href="./">
-          <a>
+          <a className="flex">
             <div className="text-16px">09365464683</div>
             <ICPhoneVolume className="mr-4" />
           </a>
@@ -81,7 +81,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center justify-start ">
-            <HeaderLogo src={logo} />
+            <HeaderLogo src={item.images} />
           </div>
           <div className="col-span-7 flex items-center  justify-center ">
             <HeaderInput className="w-450px" />
@@ -101,7 +101,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <MegaMenu />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">
           <Social />

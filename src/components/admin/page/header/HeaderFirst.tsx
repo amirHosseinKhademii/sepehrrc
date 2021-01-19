@@ -35,10 +35,10 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
         className=" grid  grid-cols-12 w-full h-122px container mx-auto     "
         style={{ direction: 'rtl' }}
       >
-        <div className="col-span-1  flex items-center ">
-          <HeaderLogo src={logo} />
+        <div className="col-span-2  flex items-center ">
+          <HeaderLogo src={item.images} />
         </div>
-        <div className="col-span-7 flex items-center mr-6 ">
+        <div className="col-span-6 flex items-center mr-6 ">
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
         <div className="col-span-4 flex items-center justify-end">

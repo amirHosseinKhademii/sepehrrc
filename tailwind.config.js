@@ -1,8 +1,5 @@
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.tsx',
-  ],
+  purge: ['./src/**/*.html', './src/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -152,6 +149,9 @@ module.exports = {
         '450px': '450px',
         '535px': '535px',
         '557px': '557px',
+      },
+      minHeight: {
+        '58px': '58px',
       },
       fontFamily: {
         body: ['YekanBakhFA'],
