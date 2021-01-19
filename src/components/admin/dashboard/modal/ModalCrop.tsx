@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal, ButtonAction, InputSlider } from 'components';
+import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
 import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
@@ -24,7 +25,10 @@ export const ModalCrop = () => {
   );
 
   const ModalFooter = () => (
-    <div className="flex items-center w-full h-85px pl-35px bg-gray-800">
+    <div
+      className="flex items-center w-full h-85px pl-35px opacity-70"
+      style={{ backgroundColor: '#1a191d    ' }}
+    >
       <ButtonAction
         className={toggle(
           '',
@@ -40,8 +44,13 @@ export const ModalCrop = () => {
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
       </ButtonAction>
-      <InputSlider title="چرخش تصویر" />
-      <InputSlider title="زوم" />
+      <div className="flex text-24px  text-white mx-20px">
+        <ICRotateHorizontal className="fill-current mx-20px cursor-pointer" />
+        <ICRotateVertical className="fill-current cursor-pointer" />
+        <ICRedo className="fill-current mx-20px cursor-pointer" />
+      </div>
+      <InputSlider title="چرخش تصویر" className="w-378px mr-20px" />
+      <InputSlider title="زوم تصویر" unit="%" className="w-378px" />
     </div>
   );
 
