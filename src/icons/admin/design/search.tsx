@@ -1,7 +1,6 @@
 import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
-
 export const ICSearch: FC<IIcon> = ({
   className,
   onClick,
@@ -20,8 +19,8 @@ export const ICSearch: FC<IIcon> = ({
     >
       <path data-name="Rectangle 37" fill="none" d="M0 0h24v24H0z" />
       <path
-        data-name="arrow-up"
-        d="M17.714 11.715l-5-5a1.034 1.034 0 00-1.42 0l-5 5a1.004 1.004 0 001.42 1.42l3.29-3.3v7.59a1 1 0 002 0v-7.59l3.29 3.3a1.004 1.004 0 101.42-1.42z"
+        data-name="search"
+        d="M21.721 20.741l-3.71-3.68a9 9 0 10-1.39 1.39l3.68 3.68a.994.994 0 101.42-1.39zm-10.71-2.29a7 7 0 117-7 7 7 0 01-7 7z"
         fill={fill ? fill : 'current'}
       />
     </svg>
