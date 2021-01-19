@@ -60,7 +60,7 @@ export const Slider = ({ item }) => {
           : false
       }
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto py-10">
         <Swiper
           effect="fade"
           spaceBetween={30}

@@ -170,3 +170,10 @@ html {
 .sm-li {
   @apply text-white text-xl font-semibold py-2 w-full cursor-pointer;
 }
+
+.drop-preview {
+  background-color: rgba(150, 150, 200, 0.1);
+  border: 1px dashed #abc;
+  margin: 5px;
+  padding: 15px 0 15px 0;
+}
