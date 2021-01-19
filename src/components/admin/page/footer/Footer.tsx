@@ -15,7 +15,7 @@ export const Footer: FC<IFooter> = ({ phone }) => {
               height="19px"
               width="19px"
             />
-            <span className="mt-1 ml-1">09354120076</span>
+            <span className="mt-1 ml-1 font-iransans text-sm">09354120076</span>
           </button>
         </div>
         <div className="col-span-3 flex flex-row-reverse items-center">
