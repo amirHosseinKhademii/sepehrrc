@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
 import {
@@ -10,7 +10,8 @@ import {
   DropDown,
   ButtonDrawer,
 } from 'components';
-import { ICPlus } from 'icons';
+import { ICCropAlt, ICEditAlt, ICEditSettings, ICPlus } from 'icons';
+import { Input } from '../input';
 
 export const SliderDashboard = () => {
   const { join, toggle } = useClass();
@@ -216,10 +217,66 @@ export const SliderDashboard = () => {
     );
   };
 
+  const ImageSettings = () => {
+    const ImageBox = () => (
+      <Fragment>
+        <div className="w-full h-90px bg-gray-400 rounded"></div>
+        <div className="w-full flex justify-between  mt-9px">
+          <div className="flex items-center mr-auto">
+            <Text className="text-14px text-gray_shade-300 pr-12px">
+              ویرایش تصویر
+            </Text>
+            <ICEditSettings fill="#fff" />
+          </div>
+          <div className="flex items-center ">
+            <Text className="text-14px text-gray_shade-300 pr-12px">
+              برش تصویر
+            </Text>
+            <ICEditSettings fill="#fff" />
+          </div>
+        </div>
+      </Fragment>
+    );
+
+    const InputBox = () => (
+      <Fragment>
+        <Input
+          label="عنوان تصویر"
+          className="mt-25px"
+          variant="input"
+          placeholder="عنوان را اینجا بنویسید"
+        />
+        <Input
+          label="توضیحات تصویر"
+          className="mt-25px"
+          variant="textArea"
+          placeholder="توضیحات را اینجا بنویسید"
+        />
+        <Input
+          withLink
+          // placeholder={pureImage.number == number ? pureImage.link : ''}
+          variant="inputIcon"
+          label="لینک تصویر"
+          className="mt-25px"
+          fontFamily="font-lato"
+          //onBlur={(e) => setPureImage({ number, link: e.target.value })}
+        />
+      </Fragment>
+    );
+
+    return (
+      <div className="flex flex-col items-end pt-30px px-20px">
+        <ImageBox />
+        <InputBox />
+      </div>
+    );
+  };
+
   return (
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات اسلایدر " />
-      <StyleParts />
+      {/* <StyleParts /> */}
+      <ImageSettings />
       <ButtonGroupDrawer />
     </DrawerLayout>
   );
