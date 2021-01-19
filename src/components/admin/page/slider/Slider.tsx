@@ -33,15 +33,6 @@ const data = [
 ];
 
 export const Slider = () => {
-  const AutoplaySlider = withAutoplay(AwesomeSlider);
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   const handelChild = () => {
     const arr = [];
     data.map((item, index) => {
