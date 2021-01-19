@@ -48,12 +48,12 @@ export const ButtonDrawer: FC<IButton> = ({
   );
 
   const EndItem = () => (
-    <div>
+    <div className="w-full" style={{ direction: 'rtl' }}>
       {withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
       ) : withPush ? (
         <p
-          className="text-white_shade-100 text-14px mx-auto cursor-pointer"
+          className="text-center text-white_shade-100 text-14px mx-auto cursor-pointer"
           onClick={() => push(onPush)}
         >
           {text}
