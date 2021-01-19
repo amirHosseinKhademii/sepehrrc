@@ -9,7 +9,8 @@ import {
 } from './dependencies';
 
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge } from 'components';
+import { Badge, PureButton } from 'components';
+import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
@@ -17,13 +18,21 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <ICSearch className="mx-4" />
+        <Link href="./">
+          <a>
+            <ICSearch className="mx-4" />
+          </a>
+        </Link>
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-4"
         >
-          <ICShoppingCart />
+          <Link href="./">
+            <a>
+              <ICShoppingCart />
+            </a>
+          </Link>
         </Badge>
       </>
     );
@@ -43,7 +52,11 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <HeaderButton className="mr-25px">ورود/عضویت</HeaderButton>
+            <PureButton
+              layout={true}
+              className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+              text="ورود/عضویت"
+            />
           </div>
         </div>
       </div>
@@ -53,11 +66,14 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
       >
         <div className="col-span-9  flex items-center ">
           <MegaMenu />
-          {/* <Navbar direction="horizental" items={item.menuItems} /> */}
         </div>
-        <div className="col-span-3 flex items-center justify-end">
-          <div className="text-16px">09365464683</div>
-          <ICPhoneVolume className="mr-4" />
+        <div className="col-span-3 ">
+          <Link href="./">
+            <a className="h-full flex items-center justify-end">
+              <div className="text-16px">09365464683</div>
+              <ICPhoneVolume className="mr-4" />
+            </a>
+          </Link>
         </div>
       </div>
     </HeaderLayout>
