@@ -6,7 +6,7 @@ interface IInput {
   onChange?: any;
   value?: any;
   onBlur?;
-  variant?: 'input' | 'inputIcon';
+  variant?: 'input' | 'inputIcon' | 'textArea';
   withLink?: boolean;
   fontFamily?: 'font-body' | 'font-yekanbakh' | 'font-iransans' | 'font-lato';
 }

@@ -252,5 +252,13 @@ export const designInitialState = {
     settings: {},
     images: [{ number: 'one', value: 'sfdsf', newTab: false, link: '' }],
   },
-  pureImage: { number: '', value: '', newTab: false, link: '' },
+  pureImage: {
+    number: '',
+    value: '',
+    newTab: false,
+    link: '',
+    onUpload: false,
+    title: '',
+    description: '',
+  },
 };
