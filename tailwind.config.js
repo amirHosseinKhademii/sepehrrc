@@ -152,6 +152,9 @@ module.exports = {
         '535px': '535px',
         '557px': '557px',
       },
+      minHeight: {
+        '58px': '58px',
+      },
       fontFamily: {
         body: ['YekanBakhFA'],
         iransans: ['IRANSansFaNum'],

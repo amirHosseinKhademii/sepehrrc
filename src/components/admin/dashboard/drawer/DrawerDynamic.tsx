@@ -10,6 +10,7 @@ import {
   Button,
   StyleDashboard,
 } from 'components';
+import { ICProductList, ICSlider, ICText } from 'icons';
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState, toggleStyleDrawer } = useUi();
@@ -19,6 +20,21 @@ export const DrawerDynamic: FC<IDrawer> = () => {
     onVerticalDrop,
     onDeleteItem,
   } = useDesign();
+
+  const AddItemIC = (type) => {
+    switch (type) {
+      case 'slider':
+        return <ICSlider />;
+      case 'products':
+        return <ICProductList />;
+      case 'banner':
+        return <ICProductList />;
+      case 'text':
+        return <ICText />;
+      default:
+      // code block
+    }
+  };
 
   const DrawerAdd = () => {
     const AddParts = () => (
@@ -41,10 +57,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
                   className="mb-25px cursor-move"
                   withIcon
                 >
-                  <div className="bg-gray_shade-700 flex items-center justify-between rounded h-22px w-45px px-6px ">
-                    <span className="text-gray_shade-300 font-bold">{'<'}</span>
-                    <span className="text-gray_shade-300 font-bold">{'>'}</span>
-                  </div>
+                  {AddItemIC(item.type)}
                 </ButtonDrawer>
               </Draggable>
             ))}
@@ -72,7 +85,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       <div className="flex flex-col items-center pt-30px px-20px">
         <ButtonDrawer
           withSetting
-          className="mb-25px "
+          className="mb-25px"
           text={headerItem.title}
           onDelete={() => onDeleteItem(headerItem)}
           onSetting={() =>
