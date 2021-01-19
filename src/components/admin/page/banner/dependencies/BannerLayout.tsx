@@ -16,7 +16,12 @@ export const BannerLayout = ({ children, className, onClick, item }) => {
           : false
       }
     >
-      <div className={join('grid w-5/6 h-full mx-auto gap-x-20px', className)}>
+      <div
+        className={join(
+          'py-10 grid w-5/6 h-full mx-auto gap-x-20px',
+          className
+        )}
+      >
         {children}
       </div>
     </BorderShadow>

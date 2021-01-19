@@ -20,6 +20,11 @@ export const DesignContainer = () => {
         width: '100%',
         minHeight: '60vh',
       }}
+      dropPlaceholder={{
+        animationDuration: 150,
+        showOnTop: true,
+        className: 'drop-preview',
+      }}
     >
       {designState.pageItems.map((item, index) => (
         <Fragment key={index}>
