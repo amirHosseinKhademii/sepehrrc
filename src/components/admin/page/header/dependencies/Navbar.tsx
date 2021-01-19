@@ -27,7 +27,7 @@ export const Navbar: FC<INavbar> = ({
             className={toggle('', 'pr-0 pl-6', index === 0, 'px-6')}
             key={index}
           >
-            <Link href="./">
+            <Link href="/">
               <a className="font-bold text-16px">{item.text}</a>
             </Link>
           </li>

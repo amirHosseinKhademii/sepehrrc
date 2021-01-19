@@ -25,7 +25,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
     return (
       <>
         <Link href="./">
-          <a>
+          <a className="flex">
             <div className="text-16px">09365464683</div>
             <ICPhoneVolume className="mr-4" />
           </a>
