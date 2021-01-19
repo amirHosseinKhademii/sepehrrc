@@ -3,7 +3,7 @@ import { IHeader } from './interface';
 import {
   Navbar,
   HeaderLogo,
-  HeaderButton,
+  MegaMenu,
   HeaderInput,
   HeaderLayout,
 } from './dependencies';
@@ -101,7 +101,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <MegaMenu />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">
           <Social />

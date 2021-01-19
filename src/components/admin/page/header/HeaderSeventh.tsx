@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
+import { Navbar, HeaderLogo, HeaderLayout, MegaMenu } from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 import { Badge } from 'components';
 import Link from 'next/link';
@@ -52,11 +52,11 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
       </div>
       <div className="bg-red-600 text-white">
         <div
-          className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+          className={`grid  grid-cols-12    w-full  min-h-58px container mx-auto `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <Navbar direction="horizental" items={item.menuItems} />
+            <MegaMenu />
           </div>
           <div className="col-span-3">
             <Link href="./">

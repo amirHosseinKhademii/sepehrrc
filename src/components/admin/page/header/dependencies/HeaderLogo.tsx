@@ -11,7 +11,11 @@ export const HeaderLogo: FC<IHeaderLogo> = ({ className, src }) => {
     <Link href="./">
       <a>
         <div className={join('flex items-center', className)}>
-          <img className="w-full h-full" src={src ? src : logoAlt} alt="logo" />
+          <img
+            className="w-full h-full"
+            src={src ? logoAlt : logoAlt}
+            alt="logo"
+          />
         </div>
       </a>
     </Link>
