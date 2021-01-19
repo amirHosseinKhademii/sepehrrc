@@ -61,8 +61,9 @@ export const useDesign = () => {
       number?: any;
       newTab?: boolean;
       link?: string;
+      onUpload?: boolean;
     }) => {
-      const { value, number, newTab, link } = props;
+      const { value, number, newTab, link, onUpload } = props;
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
         payload: {
@@ -70,6 +71,7 @@ export const useDesign = () => {
           number: number ? number : designState.number,
           newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
           link: link ? link : designState.pureImage.link,
+          onUpload: onUpload ? onUpload : designState.pureImage.onUpload,
         },
       });
       if (value) toggleModal(true);

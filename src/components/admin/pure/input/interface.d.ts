@@ -3,7 +3,7 @@ interface IPureInput {
   className?: string;
   onClick?: any;
   onChange?: any;
-  onBlure?: any;
+  onBlur?: any;
   placeholder?: string;
 }
 export { IPureInput };

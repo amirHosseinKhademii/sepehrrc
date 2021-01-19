@@ -144,7 +144,6 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
 
   const ShowBox = () => {
     const { style } = designState.current.settings;
-
     if (!style || style === 'first')
       return <FirstVariation className="mt-17px" active />;
     else if (style === 'second')
@@ -157,6 +156,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
       return <FifthVariation className="mt-17px" active />;
     else if (style === 'sixth')
       return <SixthVariation className="mt-17px" active />;
+    else return <FirstVariation className="mt-17px" active />;
   };
 
   const DropDown = () => (

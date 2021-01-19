@@ -12,13 +12,14 @@ import {
 } from 'components';
 import { ICCropAlt, ICEditAlt, ICEditSettings, ICPlus } from 'icons';
 import { Input } from '../input';
+import { CheckBox } from '../checkbox';
 
 export const SliderDashboard = () => {
   const { join, toggle } = useClass();
   const { designState, setProps, setPureImage, setSetting } = useDesign();
   const { settings } = designState.current;
 
-  const StyleParts = () => {
+  const BaseSettings = () => {
     const SettingButton = ({ text, active, className, onClick }) => (
       <button
         className={toggle(
@@ -252,6 +253,9 @@ export const SliderDashboard = () => {
           variant="textArea"
           placeholder="توضیحات را اینجا بنویسید"
         />
+        <label className=" text-white_shade-100 text-12px mt-25px -mb-8px">
+          لینک تصویر
+        </label>
         <Input
           withLink
           // placeholder={pureImage.number == number ? pureImage.link : ''}
@@ -261,6 +265,7 @@ export const SliderDashboard = () => {
           fontFamily="font-lato"
           //onBlur={(e) => setPureImage({ number, link: e.target.value })}
         />
+        <CheckBox label="باز کردن در تب جدید" className="mt-15px" />
       </Fragment>
     );
 
@@ -275,8 +280,8 @@ export const SliderDashboard = () => {
   return (
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات اسلایدر " />
-      {/* <StyleParts /> */}
-      <ImageSettings />
+      <BaseSettings />
+      {/* <ImageSettings /> */}
       <ButtonGroupDrawer />
     </DrawerLayout>
   );

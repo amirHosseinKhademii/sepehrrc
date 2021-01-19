@@ -3,7 +3,7 @@ import { IPureInput } from './interface';
 export const PureInput: FC<IPureInput> = ({
   onClick,
   onChange,
-  onBlure,
+  onBlur,
   placeholder,
   layout,
   className,
@@ -14,7 +14,7 @@ export const PureInput: FC<IPureInput> = ({
       className={layout ? className : ''}
       onChange={onChange}
       onClick={onClick}
-      onBlur={onBlure}
+      onBlur={onBlur}
       placeholder={placeholder}
     />
   );
