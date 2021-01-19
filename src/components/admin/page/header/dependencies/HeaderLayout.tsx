@@ -11,7 +11,7 @@ export const HeaderLayout = ({ children }) => {
       active={
         uiState.drawer.style &&
         designState.current.type == 'header' &&
-        'Header' == designState.current.uuid
+        'HEADER' == designState.current.uuid
           ? true
           : false
       }
