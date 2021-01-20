@@ -44,7 +44,7 @@ interface IShoppingCart {
 }
 interface IHeaderLogo {
   className?: string;
-  src?: { value: string }[];
+  src?: { value: string; link?: string; newTab?: boolean }[];
 }
 
 interface IHeaderButton {
