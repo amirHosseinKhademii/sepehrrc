@@ -18,5 +18,6 @@ interface IStyleBoxHeader {
   onEdit?: any;
   className?: string;
   onClick?: any;
+  active?: boolean;
 }
 export { IStyleBox, IStyleBoxHeader };
