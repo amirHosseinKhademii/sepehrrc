@@ -43,7 +43,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
             <PureButton
               layout={true}
               className="h-50px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text=" ورود/عضویت"
+              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>
@@ -56,12 +56,14 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           <Navbar direction="horizental" items={item.menuItems} />
         </div>
         <div className="col-span-3 ">
-          <Link href="./">
-            <a className="h-full flex items-center justify-end">
-              <div className="text-16px">09365464683</div>
-              <ICPhoneVolume className="mr-4" />
-            </a>
-          </Link>
+          <a
+            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+            className="text-16px h-full flex items-center justify-end"
+          >
+            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+            <ICPhoneVolume className="mr-4" />
+          </a>
         </div>
       </div>
     </HeaderLayout>

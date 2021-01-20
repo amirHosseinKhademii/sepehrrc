@@ -105,9 +105,16 @@ export const designInitialState = {
                 {
                   text: 'نظافت 1',
                   link: '',
+                  hasSub: true,
+                  subMenus: [
+                    {
+                      text: 'نظافت 4',
+                      link: '',
+                    },
+                  ],
                 },
                 {
-                  text: 'نظافت 1',
+                  text: 'نظافت 2',
                   link: '',
                 },
                 {

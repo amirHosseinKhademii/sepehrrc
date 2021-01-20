@@ -4,7 +4,7 @@ import { ICEditSettings } from 'icons';
 import { IStyleBoxHeader } from './interface';
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
-  const { join } = useClass();
+  const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
 
@@ -17,160 +17,277 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     toggleDropdown();
   };
 
-  const BlueBox = ({ className }) => (
-    <div className={join('bg-primary-300', className)}> </div>
-  );
-
-  const FirstVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
-    <div
-      className={join(
-        ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  bg-primary-700 ',
-        className
-      )}
-      onClick={onClick}
-      style={{ direction: 'rtl' }}
-    >
-      <BlueBox className="w-30px h-9px  rounded-7px" />
-      <BlueBox className="w-80px h-9px mr-5px rounded-5px" />
-      <BlueBox className="w-30px h-9px mr-75px rounded-7px" />
+  const BlueBox = ({ className, active }) => (
+    <div className={toggle(className, 'bg-primary-300', active, 'bg-gray-500')}>
+      {' '}
     </div>
   );
 
-  const SecondVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
+  const FirstVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
     <div
-      className={join(
-        ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  bg-primary-700 ',
-        className
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
       )}
       onClick={onClick}
       style={{ direction: 'rtl' }}
     >
-      <BlueBox className="w-80px h-9px  rounded-5px" />
-      <BlueBox className="w-30px h-9px mr-14px rounded-7px" />
-      <BlueBox className="w-80px h-9px mr-14px rounded-5px" />
+      <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+      <BlueBox active={active} className="w-80px h-9px mr-5px rounded-5px" />
+      <BlueBox active={active} className="w-30px h-9px mr-75px rounded-7px" />
     </div>
   );
 
-  const ThirdVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
+  const SecondVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
     <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
       )}
-      style={{ direction: 'rtl' }}
       onClick={onClick}
+      style={{ direction: 'rtl' }}
     >
-      <div className="flex items-center h-27px w-full  bg-primary-700 px-9px">
-        <BlueBox className="w-30px h-9px  rounded-7px" />
-        <BlueBox className="w-80px h-9px mr-40px rounded-5px" />
-        <BlueBox className="w-30px h-9px mr-40px rounded-7px" />
+      <BlueBox active={active} className="w-80px h-9px  rounded-5px" />
+      <BlueBox active={active} className="w-30px h-9px mr-14px rounded-7px" />
+      <BlueBox active={active} className="w-80px h-9px mr-14px rounded-5px" />
+    </div>
+  );
+
+  const ThirdVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
+    <div
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
+      )}
+      onClick={onClick}
+      style={{ direction: 'rtl' }}
+    >
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px mr-40px rounded-5px" />
+        <BlueBox active={active} className="w-30px h-9px mr-40px rounded-7px" />
       </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
     </div>
   );
 
-  const FourthVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
+  const FourthVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
     <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
-      )}
-      style={{ direction: 'rtl' }}
-      onClick={onClick}
-    >
-      <div className="flex items-center h-27px w-full px-9px  bg-primary-700">
-        <BlueBox className="w-30px h-9px  rounded-7px" />
-        <BlueBox className="w-80px h-9px mr-40px rounded-5px" />
-        <BlueBox className="w-9px h-9px mr-25px rounded-full" />
-        <BlueBox className="w-30px h-9px mr-5px rounded-7px" />
-      </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
-    </div>
-  );
-
-  const FifthVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
-    <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
-      )}
-      style={{ direction: 'rtl' }}
-      onClick={onClick}
-    >
-      <div className="flex items-center h-27px w-full px-9px  bg-primary-700">
-        <BlueBox className="w-30px h-9px  rounded-7px" />
-        <BlueBox className="w-80px h-9px mr-5px rounded-5px" />
-        <BlueBox className="w-30px h-9px mr-75px rounded-7px" />
-      </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
-    </div>
-  );
-
-  const SixthVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
-    <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
-      )}
-      onClick={onClick}
-    >
-      <div className="flex items-center h-27px w-full px-9px bg-primary-700">
-        <BlueBox className="w-30px h-9px  rounded-7px" />
-        <BlueBox className="w-80px h-9px mr-5px rounded-5px" />
-        <BlueBox className="w-9px h-9px mr-61px rounded-full" />
-        <BlueBox className="w-30px h-9px mr-5px rounded-7px" />
-      </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
-    </div>
-  );
-  const SeventhVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
-    <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
-      )}
-      style={{ direction: 'rtl' }}
-      onClick={onClick}
-    >
-      <div className="flex items-center h-27px w-full  bg-primary-700 px-9px">
-        <BlueBox className="w-80px h-9px  rounded-5px" />
-        <BlueBox className="w-30px h-9px mx-15px rounded-7px" />
-        <BlueBox className="w-80px h-9px  rounded-5px" />
-      </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
-    </div>
-  );
-  const EighthVariation: FC<IStyleBoxHeader> = ({ className, onClick }) => (
-    <div
-      className={join(
-        ' flex flex-col items-center w-full h-40px  rounded-2px mx-auto   ',
-        className
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
       )}
       onClick={onClick}
       style={{ direction: 'rtl' }}
     >
-      <BlueBox className="w-full h-13px "></BlueBox>
-
-      <div className="flex items-center h-27px w-full px-9px bg-primary-700 ">
-        <BlueBox className="w-30px h-9px  rounded-7px" />
-        <BlueBox className="w-80px h-9px mx-40px rounded-5px" />
-        <BlueBox className="w-30px h-9px rounded-7px" />
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px mr-40px rounded-5px" />
+        <BlueBox active={active} className="w-9px h-9px mr-25px rounded-full" />
+        <BlueBox active={active} className="w-30px h-9px mr-5px rounded-7px" />
       </div>
-      <BlueBox className="w-full h-13px "></BlueBox>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
+    </div>
+  );
+
+  const FifthVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
+    <div
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
+      )}
+      onClick={onClick}
+      style={{ direction: 'rtl' }}
+    >
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px mr-5px rounded-5px" />
+        <BlueBox active={active} className="w-30px h-9px mr-75px rounded-7px" />
+      </div>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
+    </div>
+  );
+
+  const SixthVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
+    <div
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
+      )}
+      onClick={onClick}
+      style={{ direction: 'rtl' }}
+    >
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px mr-5px rounded-5px" />
+        <BlueBox active={active} className="w-9px h-9px mr-61px rounded-full" />
+        <BlueBox active={active} className="w-30px h-9px mr-5px rounded-7px" />
+      </div>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
+    </div>
+  );
+  const SeventhVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
+    <div
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
+      )}
+      onClick={onClick}
+      style={{ direction: 'rtl' }}
+    >
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-80px h-9px  rounded-5px" />
+        <BlueBox active={active} className="w-30px h-9px mx-15px rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px  rounded-5px" />
+      </div>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
+    </div>
+  );
+  const EighthVariation: FC<IStyleBoxHeader> = ({
+    className,
+    onClick,
+    active,
+  }) => (
+    <div
+      className={toggle(
+        join(
+          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  ',
+          className
+        ),
+        'bg-primary-700',
+        active,
+        'bg-gray-800'
+      )}
+      onClick={onClick}
+      style={{ direction: 'rtl' }}
+    >
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
+
+      <div
+        className={toggle(
+          'flex items-center h-27px w-full px-9px',
+          'bg-primary-700',
+          active,
+          'bg-gray-800'
+        )}
+      >
+        <BlueBox active={active} className="w-30px h-9px  rounded-7px" />
+        <BlueBox active={active} className="w-80px h-9px mx-40px rounded-5px" />
+        <BlueBox active={active} className="w-30px h-9px rounded-7px" />
+      </div>
+      <BlueBox active={active} className="w-full h-13px "></BlueBox>
     </div>
   );
 
   const ShowBox = () => {
     const { style } = designState.current.settings;
 
-    if (!style || style === 'first') return <FirstVariation />;
-    else if (style === 'second') return <SecondVariation />;
-    else if (style === 'third') return <ThirdVariation />;
-    else if (style === 'fourth') return <FourthVariation />;
-    else if (style === 'fifth') return <FifthVariation />;
-    else if (style === 'sixth') return <SixthVariation />;
-    else if (style === 'seventh') return <SeventhVariation />;
-    else if (style === 'eighth') return <EighthVariation />;
+    if (!style || style === 'first') return <FirstVariation active />;
+    else if (style === 'second') return <SecondVariation active />;
+    else if (style === 'third') return <ThirdVariation active />;
+    else if (style === 'fourth') return <FourthVariation active />;
+    else if (style === 'fifth') return <FifthVariation active />;
+    else if (style === 'sixth') return <SixthVariation active />;
+    else if (style === 'seventh') return <SeventhVariation active />;
+    else if (style === 'eighth') return <EighthVariation active />;
     else return <FirstVariation />;
   };
 

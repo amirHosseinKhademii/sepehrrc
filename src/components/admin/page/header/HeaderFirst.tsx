@@ -28,6 +28,7 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
       </>
     );
   };
+  console.log(item, 'item');
 
   return (
     <HeaderLayout>
@@ -46,7 +47,7 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
           <PureButton
             layout={true}
             className="h-50px px-8 mr-35px  py-4 text-16px rounded-full bg-red-600 text-white     "
-            text="محصولات فروشگاه"
+            text={!item.buttonText ? 'محصولات فروشگاه' : item.buttonText}
           />
         </div>
       </div>

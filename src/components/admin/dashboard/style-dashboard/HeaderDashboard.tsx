@@ -14,6 +14,7 @@ import {
 export const HeaderDashboard = () => {
   const { join } = useClass();
   const { designState, setProps, setPureImage } = useDesign();
+  const { pureImage } = designState;
 
   const PageButtonGroup = () => {
     return (
@@ -52,12 +53,25 @@ export const HeaderDashboard = () => {
           onUpload={(value) => setPureImage({ value, number })}
         />
         <Input
+          withLink
           variant="inputIcon"
           className="mt-15px"
-          placeholder={designState.pureImage.link}
-          onBlur={(event) => setPureImage({ link: event.target.value })}
+          placeholder={pureImage.number == number ? pureImage.link : ''}
+          onBlur={(event) => {
+            setPureImage({ number, link: event.target.value });
+          }}
         />
-        <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
+        <CheckBox
+          className="mt-15px"
+          label="باز کردن صفحه در تب جدید "
+          onClick={() => {
+            setPureImage({
+              number,
+              newTab: pureImage.newTab ? false : true,
+            });
+          }}
+          checked={pureImage.number == number && pureImage.newTab}
+        />
       </div>
     );
   };
@@ -73,26 +87,56 @@ export const HeaderDashboard = () => {
     label: string;
     type: string;
   }) => {
-    return (
-      <div className={join('w-full  mb-30px ', className)}>
-        <Text className=" mb-14px text-14px text-white_shade-100 text-right">
-          {label}
-        </Text>
-        {type === 'tel' ? (
+    const currentStyle = designState.current.settings.style;
+
+    if (
+      type === 'tel' &&
+      currentStyle !== 'first' &&
+      currentStyle !== 'second' &&
+      currentStyle !== 'fourth' &&
+      currentStyle
+    ) {
+      return (
+        <div className={join('w-full  mb-30px ', className)}>
+          <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+            {label}
+          </Text>
+
           <Input
-            placeholder={placeholder}
+            placeholder="910000000"
+            maxLength={15}
             variant="input"
-            onBlur={(event) => setProps({ tel: event.target.value })}
+            withNumber
+            onBlur={(event) =>
+              setProps({ key: 'telNumber', value: event.target.value })
+            }
           />
-        ) : (
+        </div>
+      );
+    } else if (
+      type === 'button' &&
+      currentStyle !== 'second' &&
+      currentStyle !== 'seventh'
+    ) {
+      return (
+        <div className={join('w-full  mb-30px ', className)}>
+          <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+            {label}
+          </Text>
+
           <Input
-            placeholder={placeholder}
+            maxLength={30}
+            placeholder="وروود یا عضویت"
             variant="input"
-            onBlur={(event) => setProps({ buttonText: event.target.value })}
+            onBlur={(event) =>
+              setProps({ key: 'buttonText', value: event.target.value })
+            }
           />
-        )}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return null;
+    }
   };
 
   const StyleParts = () => (

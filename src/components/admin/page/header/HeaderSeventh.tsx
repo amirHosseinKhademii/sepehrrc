@@ -58,13 +58,15 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           <div className="col-span-9  flex items-center ">
             <MegaMenu />
           </div>
-          <div className="col-span-3">
-            <Link href="./">
-              <a className="h-full flex items-center justify-end">
-                <div className="text-16px">09365464683</div>
-                <ICPhoneVolume className="mr-4" fill="#fff" />
-              </a>
-            </Link>
+          <div className="col-span-3 ">
+            <a
+              href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+              className=" h-full flex items-center justify-end text-16px"
+            >
+              <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+              <ICPhoneVolume className="mr-4 fill-current" />
+            </a>
           </div>
         </div>
       </div>
