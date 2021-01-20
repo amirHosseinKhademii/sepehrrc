@@ -1,106 +1,76 @@
 import { ICAngleDown } from 'icons';
+import Link from 'next/link';
 
-export const MegaMenu = () => {
+export const MegaMenu = ({ item }) => {
+  console.log(item, 'item');
   return (
     <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
-      <li>
-        <div className="flex justify-between w-full">
-          <span>محصولات نظافت خودرو</span>
-          <ICAngleDown className=" text-24px mr-20px fill-current" />
-        </div>
-        <ul>
+      {item.map((firstLevel) => {
+        return (
           <li>
-            <div className="flex justify-between w-full">
-              <div>نظاافت الفا</div>
+            <Link href={firstLevel.link}>
+              <a className="flex  w-full">
+                <span className="text-16px">{firstLevel.text}</span>{' '}
+                {!firstLevel.hasSub ? null : (
+                  <ICAngleDown className=" text-24px  mr-20px fill-current" />
+                )}
+              </a>
+            </Link>
+            {!firstLevel.hasSub ? null : (
+              <ul>
+                {firstLevel.subMenus.map((secondLevel) => {
+                  return (
+                    <li>
+                      <Link href={secondLevel.link}>
+                        <a className="flex justify-between w-full">
+                          <span>{secondLevel.text}</span>{' '}
+                          {!secondLevel.hasSub ? null : (
+                            <ICAngleDown className=" text-24px  fill-current" />
+                          )}
+                        </a>
+                      </Link>
+                      {!secondLevel.hasSub ? null : (
+                        <ul>
+                          {secondLevel.subMenus.map((thirdLevel) => {
+                            return (
+                              <li>
+                                <Link href={thirdLevel.link}>
+                                  <a className="flex justify-between w-full">
+                                    <span>{thirdLevel.text}</span>
+                                    {!thirdLevel.hasSub ? null : (
+                                      <ICAngleDown className=" text-24px  fill-current" />
+                                    )}
+                                  </a>
+                                </Link>
 
-              <ICAngleDown className=" text-24px mx-20px" />
-            </div>
-            <ul>
-              <li>نظافت 1</li>
-              <li>نظافت 2</li>
-              <li>نظافت 3</li>
-            </ul>
+                                {!thirdLevel.hasSub ? null : (
+                                  <ul>
+                                    {thirdLevel.subMenus.map((fourthLevel) => {
+                                      return (
+                                        <li>
+                                          <Link href={fourthLevel.link}>
+                                            <a className="flex justify-between w-full">
+                                              <span>{fourthLevel.text}</span>
+                                            </a>
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </li>
-          <li>نظافت بتا</li>
-          <li>نظافت بتا</li>
-          <li>نظافت بتا</li>
-        </ul>
-      </li>
-      <li>
-        <div className="flex justify-between w-full">
-          <span> محصولات نرم افزاری</span>
-          <ICAngleDown className=" text-24px mr-20px fill-current" />
-        </div>
-        <ul>
-          <li>
-            <div className="flex justify-between w-full">
-              <span>نرم افزار الفا</span>
-              <ICAngleDown className=" text-24px mx-20px" />
-            </div>
-            <ul>
-              <li>الفا 1</li>
-              <li>الفا 2</li>
-              <li>الفا 3</li>
-            </ul>
-          </li>
-          <li>بتا</li>
-          <li>بتا</li>
-          <li>بتا</li>
-          <li>بتا</li>
-        </ul>
-      </li>
-      <li>
-        <div className="flex justify-between w-full">
-          <span> ابزار تعمیرات خودرو</span>
-          <ICAngleDown className=" text-24px mr-20px fill-current" />
-        </div>
-        <ul>
-          <li>
-            <div className="flex  justify-between w-full">
-              <span> تعمیرات الفا</span>
-              <ICAngleDown className=" text-24px mx-20px" />
-            </div>
-            <ul>
-              <li>الفا1</li>
-              <li>الفا1</li>
-              <li>الفا1</li>
-              <li>الفا1</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <div className="flex justify-between w-full">
-          <span> لوازم تخصصی تعمیرات خودرو</span>
-          <ICAngleDown className=" text-24px mr-20px fill-current" />
-        </div>
-        <ul>
-          <li>
-            <div className="flex justify-between w-full">
-              <span> نرم افزار الفا</span>
-              <ICAngleDown className=" text-24px mx-20px" />
-            </div>
-            <ul>
-              <li>
-                الفا 1
-                <ul>
-                  <li>test</li>
-                  <li>test</li>
-                </ul>
-              </li>
-              <li>الفا 2</li>
-              <li>الفا 3</li>
-            </ul>
-          </li>
-          <li>بتا</li>
-          <li>بتا</li>
-          <li>بتا</li>
-          <li>بتا</li>
-        </ul>
-      </li>
-      <li>درباره ما</li>
-      <li>درباره شما</li>
+        );
+      })}
       <style jsx>
         {`
           .MegaMenu {
@@ -168,7 +138,7 @@ export const MegaMenu = () => {
 
           .MegaMenu li ul li {
             padding: 20px;
-            padding-left: 0;
+            // padding-left: 0;
             margin-left: 0;
             transition: all 0.3s;
             border-bottom: 1px solid #d3d7e1;
