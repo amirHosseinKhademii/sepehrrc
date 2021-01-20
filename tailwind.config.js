@@ -155,6 +155,10 @@ module.exports = {
       minHeight: {
         '58px': '58px',
       },
+      width: {
+        drawerFix: 'calc(100% - 68px)',
+        drawerDynamic: 'calc(100% - 378px)',
+      },
       fontFamily: {
         body: ['YekanBakhFA'],
         iransans: ['IRANSansFaNum'],
