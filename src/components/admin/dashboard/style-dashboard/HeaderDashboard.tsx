@@ -14,6 +14,7 @@ import {
 export const HeaderDashboard = () => {
   const { join } = useClass();
   const { designState, setProps, setPureImage } = useDesign();
+  const { pureImage } = designState;
 
   const PageButtonGroup = () => {
     return (
@@ -52,12 +53,25 @@ export const HeaderDashboard = () => {
           onUpload={(value) => setPureImage({ value, number })}
         />
         <Input
+          withLink
           variant="inputIcon"
           className="mt-15px"
-          placeholder={designState.pureImage.link}
-          onBlur={(event) => setPureImage({ link: event.target.value })}
+          placeholder={pureImage.number == number ? pureImage.link : ''}
+          onBlur={(event) => {
+            setPureImage({ number, link: event.target.value });
+          }}
         />
-        <CheckBox className="mt-15px" label="باز کردن صفحه در تب جدید " />
+        <CheckBox
+          className="mt-15px"
+          label="باز کردن صفحه در تب جدید "
+          onClick={() => {
+            setPureImage({
+              number,
+              newTab: pureImage.newTab ? false : true,
+            });
+          }}
+          checked={pureImage.number == number && pureImage.newTab}
+        />
       </div>
     );
   };
