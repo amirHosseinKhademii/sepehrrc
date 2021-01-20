@@ -87,26 +87,49 @@ export const HeaderDashboard = () => {
     label: string;
     type: string;
   }) => {
-    return (
-      <div className={join('w-full  mb-30px ', className)}>
-        <Text className=" mb-14px text-14px text-white_shade-100 text-right">
-          {label}
-        </Text>
-        {type === 'tel' ? (
+    const currentStyle = designState.current.settings.style;
+
+    if (
+      type === 'tel' &&
+      currentStyle !== 'first' &&
+      currentStyle !== 'second' &&
+      currentStyle !== 'fourth' &&
+      currentStyle
+    ) {
+      return (
+        <div className={join('w-full  mb-30px ', className)}>
+          <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+            {label}
+          </Text>
+
           <Input
             placeholder={placeholder}
             variant="input"
             onBlur={(event) => setProps({ tel: event.target.value })}
           />
-        ) : (
+        </div>
+      );
+    } else if (
+      type === 'button' &&
+      currentStyle !== 'second' &&
+      currentStyle !== 'seventh'
+    ) {
+      return (
+        <div className={join('w-full  mb-30px ', className)}>
+          <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+            {label}
+          </Text>
+
           <Input
             placeholder={placeholder}
             variant="input"
             onBlur={(event) => setProps({ buttonText: event.target.value })}
           />
-        )}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return null;
+    }
   };
 
   const StyleParts = () => (
