@@ -1,6 +1,8 @@
 interface IHeader {
   item: {
     menuItems: { text: string; link: string }[];
+    buttonText?: string;
+    telNumber?: string;
     megaMenu: {
       text: string;
       link: string;
