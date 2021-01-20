@@ -62,6 +62,9 @@ export const designReducer = (
           value: payload.value,
           newTab: payload.newTab,
           link: payload.link,
+          onUpload: payload.onUpload,
+          description: payload.description,
+          title: payload.title,
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:
@@ -74,6 +77,8 @@ export const designReducer = (
           newTab: state.pureImage.newTab,
           link: state.pureImage.link,
           value: payload,
+          title: state.pureImage.title,
+          description: state.pureImage.description,
         },
       ];
       cloneCurrent.images = [
@@ -85,6 +90,8 @@ export const designReducer = (
           newTab: state.pureImage.newTab,
           link: state.pureImage.link,
           value: payload,
+          title: state.pureImage.title,
+          description: state.pureImage.description,
         },
       ];
       return {

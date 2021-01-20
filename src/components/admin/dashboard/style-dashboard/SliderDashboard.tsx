@@ -245,27 +245,48 @@ export const SliderDashboard = () => {
           label="عنوان تصویر"
           className="mt-25px"
           variant="input"
-          placeholder="عنوان را اینجا بنویسید"
+          onBlur={(e) => setPureImage({ title: e.target.value })}
+          placeholder={
+            designState.pureImage.title
+              ? designState.pureImage.title
+              : 'عنوان را اینجا بنویسید'
+          }
         />
         <Input
           label="توضیحات تصویر"
           className="mt-25px"
           variant="textArea"
-          placeholder="توضیحات را اینجا بنویسید"
+          onBlur={(e) => setPureImage({ description: e.target.value })}
+          placeholder={
+            designState.pureImage.description
+              ? designState.pureImage.description
+              : 'توضیحات را اینجا بنویسید'
+          }
         />
         <label className=" text-white_shade-100 text-12px mt-25px -mb-8px">
           لینک تصویر
         </label>
         <Input
           withLink
-          // placeholder={pureImage.number == number ? pureImage.link : ''}
+          placeholder={
+            designState.pureImage.link ? designState.pureImage.link : ''
+          }
           variant="inputIcon"
           label="لینک تصویر"
           className="mt-25px"
           fontFamily="font-lato"
-          //onBlur={(e) => setPureImage({ number, link: e.target.value })}
+          onBlur={(e) => setPureImage({ link: e.target.value })}
         />
-        <CheckBox label="باز کردن در تب جدید" className="mt-15px" />
+        <CheckBox
+          label="باز کردن در تب جدید"
+          className="mt-15px"
+          onClick={() => {
+            setPureImage({
+              newTab: designState.pureImage.newTab ? false : true,
+            });
+          }}
+          checked={designState.pureImage.newTab}
+        />
       </Fragment>
     );
 
