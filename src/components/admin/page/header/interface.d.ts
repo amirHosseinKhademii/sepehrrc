@@ -1,7 +1,8 @@
 interface IHeader {
   item: {
     menuItems: { text: string; link: string }[];
-    Button: { text: string };
+    buttonText?: string;
+    telNumber?: string;
     images: { value: string }[];
   };
 }

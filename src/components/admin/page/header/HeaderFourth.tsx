@@ -89,7 +89,7 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
             <PureButton
               layout={true}
               className="h-50px mr-35px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text={item.Button.text}
+              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>

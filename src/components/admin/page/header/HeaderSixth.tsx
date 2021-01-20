@@ -24,12 +24,14 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <Link href="./">
-          <a className="flex">
-            <div className="text-16px">09365464683</div>
-            <ICPhoneVolume className="mr-4" />
-          </a>
-        </Link>
+        <a
+          href={`tel:+98${!item.telNumber ? '09000000000' : item.telNumber}`}
+          className="flex text-16px"
+        >
+          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+          <ICPhoneVolume className="mr-4" />
+        </a>
 
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
@@ -91,7 +93,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
             <PureButton
               layout={true}
               className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text="ورود/عضویت"
+              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>

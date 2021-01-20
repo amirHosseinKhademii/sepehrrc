@@ -103,9 +103,13 @@ export const HeaderDashboard = () => {
           </Text>
 
           <Input
-            placeholder={placeholder}
+            placeholder="910000000"
+            maxLength={15}
             variant="input"
-            onBlur={(event) => setProps({ tel: event.target.value })}
+            withNumber
+            onBlur={(event) =>
+              setProps({ key: 'telNumber', value: event.target.value })
+            }
           />
         </div>
       );
@@ -121,9 +125,12 @@ export const HeaderDashboard = () => {
           </Text>
 
           <Input
-            placeholder={placeholder}
+            maxLength={30}
+            placeholder="وروود یا عضویت"
             variant="input"
-            onBlur={(event) => setProps({ buttonText: event.target.value })}
+            onBlur={(event) =>
+              setProps({ key: 'buttonText', value: event.target.value })
+            }
           />
         </div>
       );
