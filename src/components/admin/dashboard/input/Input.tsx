@@ -2,6 +2,7 @@ import { useClass } from 'hooks';
 import { FC, Fragment } from 'react';
 import { IInput } from './interface';
 import { ICLink } from 'icons';
+import { Text } from 'components';
 
 export const Input: FC<IInput> = ({
   className,
@@ -10,7 +11,7 @@ export const Input: FC<IInput> = ({
   onChange,
   onBlur,
   value,
-  variant,
+  variant = 'input',
   maxLength,
   withNumber,
   withLink,
@@ -23,12 +24,9 @@ export const Input: FC<IInput> = ({
       {variant === 'input' ? (
         <div className={join('w-full flex flex-col items-end', className)}>
           {label && (
-            <label
-              htmlFor={label}
-              className="mb-14px text-14px text-white_shade-100"
-            >
+            <Text className="mb-14px text-14px text-white_shade-100">
               {label}
-            </label>
+            </Text>
           )}
           <input
             maxLength={maxLength}
@@ -59,12 +57,9 @@ export const Input: FC<IInput> = ({
       ) : variant === 'textArea' ? (
         <div className={join('w-full flex flex-col items-end', className)}>
           {label && (
-            <label
-              htmlFor={label}
-              className="mb-14px text-14px text-white_shade-100"
-            >
+            <Text className="mb-14px text-14px text-white_shade-100">
               {label}
-            </label>
+            </Text>
           )}
           <textarea
             id={label}
