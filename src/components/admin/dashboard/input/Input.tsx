@@ -11,6 +11,8 @@ export const Input: FC<IInput> = ({
   onBlur,
   value,
   variant,
+  maxLength,
+  withNumber,
   withLink,
   fontFamily = 'font-body',
 }) => {
@@ -29,8 +31,10 @@ export const Input: FC<IInput> = ({
             </label>
           )}
           <input
+            maxLength={maxLength}
             id={label}
             placeholder={placeholder}
+            type={withNumber ? 'number' : 'text'}
             onChange={onChange}
             onBlur={onBlur}
             value={value}
@@ -44,6 +48,7 @@ export const Input: FC<IInput> = ({
             className={`${fontFamily} placeholder-gray_shade-300 rounded focus:outline-none h-full pl-4 pr-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
             placeholder={placeholder}
             dir={withLink ? 'ltr' : 'rtl'}
+            type={withLink ? 'url' : 'text'}
             onChange={onChange}
             onBlur={onBlur}
           />
@@ -72,6 +77,20 @@ export const Input: FC<IInput> = ({
           ></textarea>
         </div>
       ) : null}
+      <style jsx>
+        {`
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          /* Firefox */
+          input[type='number'] {
+            -moz-appearance: textfield;
+          }
+        `}
+      </style>
     </div>
   );
 };
