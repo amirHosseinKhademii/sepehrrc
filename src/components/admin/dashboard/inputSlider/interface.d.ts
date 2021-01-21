@@ -3,6 +3,7 @@ interface IInputSlider {
   title?: string;
   unit?: string;
   className?: string;
+  value?: any;
 }
 
 export { IInputSlider };

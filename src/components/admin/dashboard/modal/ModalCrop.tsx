@@ -7,6 +7,10 @@ import 'cropperjs/dist/cropper.css';
 
 export const ModalCrop = () => {
   const [isLoading, setisLoading] = useState(false);
+  const [operations, setOperations] = useState({
+    zoom: 0,
+    rotate: 0,
+  });
   const { designState, setImage } = useDesign();
   const { uiState } = useUi();
   const { toggle } = useClass();
@@ -49,8 +53,22 @@ export const ModalCrop = () => {
         <ICRotateVertical className="fill-current cursor-pointer" />
         <ICRedo className="fill-current mx-20px cursor-pointer" />
       </div>
-      <InputSlider title="چرخش تصویر" className="w-378px mr-20px" />
-      <InputSlider title="زوم تصویر" unit="%" className="w-378px" />
+      <InputSlider
+        title="چرخش تصویر"
+        className="w-378px mr-20px"
+        onChange={(value) => {
+          console.log(value);
+        }}
+      />
+      <InputSlider
+        title="زوم تصویر"
+        unit="%"
+        className="w-378px"
+        value={operations.zoom}
+        onChange={(value) => {
+          setOperations((prev) => ({ ...prev, zoom: parseInt(value) }));
+        }}
+      />
     </div>
   );
 
@@ -60,10 +78,12 @@ export const ModalCrop = () => {
       initialAspectRatio: 16 / 9,
       crop(event) {},
       cropend: () => {
-       // console.log(cropper.getCroppedCanvas().toDataURL());
+        // console.log(cropper.getCroppedCanvas().toDataURL());
       },
     });
-  }, []);
+
+    // operations.zoom && cropper.zoom(0.1);
+  }, [operations]);
 
   if (designState.pureImage.value)
     return (
