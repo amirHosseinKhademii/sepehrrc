@@ -47,10 +47,8 @@ export const designReducer = (
         current: cloneCurrent,
       };
     case designTypes.ON_SET_ITEM_PROPS:
-      console.log(payload, 'payload');
       pageCurrent[payload.key] = payload.value;
       cloneCurrent[payload.key] = payload.value;
-      console.log(cloneCurrent, 'clonCurrent');
       return {
         ...state,
         pageItems: clonePage,

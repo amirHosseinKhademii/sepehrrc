@@ -2,7 +2,6 @@ import { ICAngleDown } from 'icons';
 import Link from 'next/link';
 
 export const MegaMenu = ({ item }) => {
-  console.log(item, 'item');
   return (
     <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
       {item.map((firstLevel) => {

@@ -33,6 +33,9 @@ export const DesignContainer = () => {
           )}
           {item.type == 'slider' && <Slider item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
+          {item.type == 'brands' && (
+            <p className="text-center text-lg my-10">برندها</p>
+          )}
         </Fragment>
       ))}
     </Container>

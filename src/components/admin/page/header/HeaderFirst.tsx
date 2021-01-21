@@ -28,7 +28,6 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
       </>
     );
   };
-  console.log(item, 'item');
 
   return (
     <HeaderLayout>

@@ -49,7 +49,7 @@ export const designInitialState = {
     },
     {
       id: '3',
-      type: 'slider',
+      type: 'brands',
       title: 'برندها',
     },
     {

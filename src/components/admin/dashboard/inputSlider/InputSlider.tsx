@@ -6,8 +6,9 @@ export const InputSlider: FC<IInputSlider> = ({
   unit,
   onChange,
   className,
+  value,
 }) => {
-  const [value, setValue] = useState('50');
+  // const [value, setValue] = useState('50');
   const { join } = useClass();
   return (
     <div
@@ -24,8 +25,9 @@ export const InputSlider: FC<IInputSlider> = ({
       <input
         type="range"
         className="bg-blue-600"
+        value={value}
         onChange={(e) => {
-          setValue(e.target.value);
+          // setValue(e.target.value);
           if (onChange) {
             onChange(e.target.value);
           }
