@@ -1,7 +1,9 @@
-import { Text, DropDown } from 'components';
-import { Input } from 'components/admin/dashboard/input';
+import { Text, DropDown, Input } from 'components';
+import { useDesign } from 'hooks';
 
 export const DropDownGroup = () => {
+  const { setSetting, designState } = useDesign();
+
   const ShowDrop = () => (
     <div className="w-full col-span-2">
       <Text className="  mt-30px text-14px text-white_shade-100 text-right">
@@ -13,15 +15,28 @@ export const DropDownGroup = () => {
           { id: 'random', title: ' تصادفی' },
           { id: 'simple', title: 'ساده' },
         ]}
-        //    onSelect={(effect) => setSetting({ effect })}
-        //    selected={settings && settings.effect}
+        onSelect={(show) => setSetting({ show })}
+        selected={
+          designState.current.settings && designState.current.settings.show
+        }
       />
     </div>
   );
 
   const TotalInput = () => (
     <div className="w-full col-span-1">
-      <Input label="تعداد کل" variant="input" className="" />
+      <Input
+        label="تعداد کل"
+        variant="input"
+        className=""
+        withNumber
+        onBlur={(e) => setSetting({ total: e.target.value })}
+        placeholder={
+          designState.current.settings && designState.current.settings.total
+            ? designState.current.settings.total
+            : ''
+        }
+      />
     </div>
   );
 
@@ -36,8 +51,10 @@ export const DropDownGroup = () => {
           { id: '12', title: ' 12' },
           { id: '1', title: '1' },
         ]}
-        //    onSelect={(effect) => setSetting({ effect })}
-        //    selected={settings && settings.effect}
+        onSelect={(col) => setSetting({ col })}
+        selected={
+          designState.current.settings && designState.current.settings.col
+        }
       />
     </div>
   );

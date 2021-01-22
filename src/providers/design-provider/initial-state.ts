@@ -51,6 +51,7 @@ export const designInitialState = {
       id: '3',
       type: 'brands',
       title: 'برندها',
+      images: [],
     },
     {
       id: '4',

@@ -1,5 +1,5 @@
 import { useClass } from 'hooks';
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import { IInput } from './interface';
 import { ICLink } from 'icons';
 import { Text } from 'components';
