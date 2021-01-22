@@ -62,6 +62,9 @@ export const designReducer = (
           value: payload.value,
           newTab: payload.newTab,
           link: payload.link,
+          onUpload: payload.onUpload,
+          title: payload.title,
+          description: payload.description,
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:

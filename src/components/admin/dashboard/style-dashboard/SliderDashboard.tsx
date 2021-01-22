@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useCallback } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useClass, useDesign } from 'hooks';
 import {
@@ -13,6 +13,7 @@ import {
 import { ICCropAlt, ICEditAlt, ICEditSettings, ICPlus } from 'icons';
 import { Input } from '../input';
 import { CheckBox } from '../checkbox';
+import Dropzone from 'react-dropzone';
 
 export const SliderDashboard = () => {
   const { join, toggle } = useClass();
@@ -35,40 +36,86 @@ export const SliderDashboard = () => {
     );
 
     const PictureButton: FC<{
-      withPicture?: boolean;
       withAdd?: boolean;
       picture?: any;
-    }> = ({ withPicture, withAdd, picture }) => {
+      number?: any;
+    }> = ({ withAdd, picture, number }) => {
       if (withAdd)
         return (
-          <div className="w-full h-full flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer ">
+          <div
+            onClick={() => setPureImage({ onUpload: true, number })}
+            className="w-full h-full flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer "
+          >
             <ICPlus fill="#fff" />
           </div>
         );
-      else if (withPicture)
-        return <img className="w-60px h-60px rounded  " src={picture} />;
+      else if (picture)
+        return (
+          <img
+            onClick={() => setSetting({ imageSetting: true })}
+            className="w-full h-full rounded cursor-pointer"
+            src={picture}
+          />
+        );
       else
         return (
           <div className="w-full h-full rounded bg-gray_shade-800 opacity-30"></div>
         );
     };
 
-    const PictureContainer = () => (
-      <div className="w-full felx flex-col  ">
-        <Text className=" mb-6px text-14px text-white_shade-100 text-right">
-          تصاویر اسلایدر
-        </Text>
-        <div className="w-full h-130px grid grid-cols-4 grid-rows-2 gap-10px">
-          <PictureButton />
-          <PictureButton />
-          <PictureButton />
-          <PictureButton withAdd />
-          <PictureButton />
-          <PictureButton />
-          <PictureButton />
-          <PictureButton />
+    const PictureContainer = () => {
+      let imagesData = designState.current.images;
+      const imagesDataLength = imagesData.length;
+      const need = 8 - imagesDataLength;
+      const arr = Array.from(Array(need).keys());
+      const newArr = [...imagesData, ...arr];
+      return (
+        <div className="w-full felx flex-col  ">
+          <Text className=" mb-6px text-14px text-white_shade-100 text-right">
+            تصاویر اسلایدر
+          </Text>
+          <div
+            dir="rtl"
+            className="w-full h-130px grid grid-cols-4 grid-rows-2 gap-10px"
+          >
+            {newArr.map((item, index) => {
+              return (
+                <PictureButton
+                  withAdd={index === imagesDataLength ? true : false}
+                  picture={item.value}
+                  number={index}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      );
+    };
+
+    const DndUploadBox = () => (
+      <Dropzone
+        onDrop={(acceptedFiles) =>
+          setPureImage({
+            value: acceptedFiles[0],
+            onUpload: false,
+          })
+        }
+      >
+        {({ getRootProps, getInputProps }) => (
+          <div
+            className="h-90px w-full flex flex-col justify-center items-center bg-gray_shade-800 border-2 border-gray_shade-600 border-dashed cursor-pointer focus:outline-none"
+            {...getRootProps()}
+          >
+            <input {...getInputProps()} />
+            <span className="text-14px text-gray_shade-200 font-iransans font-light">
+              تصاویر اسلایدر را اینجا آپلود کنید
+            </span>
+            <span className="text-14px text-gray_shade-200 font-iransans font-light pt-3">
+              ( سایز مناسب عکس 1326 در 442 پیکسل )
+            </span>
+          </div>
+        )}
+      </Dropzone>
     );
 
     const SpeedButtonGroup = () => {
@@ -206,7 +253,11 @@ export const SliderDashboard = () => {
 
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
-        <PictureContainer />
+        {designState.pureImage.onUpload ? (
+          <DndUploadBox />
+        ) : (
+          <PictureContainer />
+        )}
         <SpeedButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />
@@ -280,8 +331,11 @@ export const SliderDashboard = () => {
   return (
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات اسلایدر " />
-      <BaseSettings />
-      {/* <ImageSettings /> */}
+      {designState.current.settings.imageSetting ? (
+        <ImageSettings />
+      ) : (
+        <BaseSettings />
+      )}
       <ButtonGroupDrawer />
     </DrawerLayout>
   );

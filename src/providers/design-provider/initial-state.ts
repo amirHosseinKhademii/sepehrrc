@@ -249,7 +249,7 @@ export const designInitialState = {
   pageKey: 'main',
   current: {
     uuid: '',
-    settings: {},
+    settings: { imageSetting: false },
     images: [{ number: 'one', value: 'sfdsf', newTab: false, link: '' }],
   },
   pureImage: {
