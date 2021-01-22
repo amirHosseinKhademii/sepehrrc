@@ -78,7 +78,7 @@ export const useDesign = () => {
         type: designTypes.ON_SET_PURE_IMAGE,
         payload: {
           value: value ? value : designState.pureImage.value,
-          number: number ? number : designState.number,
+          number: number !== undefined ? number : designState.pureImage.number,
           newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
           link: link ? link : designState.pureImage.link,
           onUpload: onUpload ? onUpload : designState.pureImage.onUpload,

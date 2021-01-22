@@ -40,10 +40,10 @@ export const Slider = ({ item }) => {
 
   const handelChild = () => {
     const arr = [];
-    data.map((item, index) => {
+    item.images.map((item, index) => {
       arr.push(
         <SwiperSlide className="swiper-slide" key={index}>
-          <img src={item.url} className="h-full w-full" />
+          <img src={item.value} className="h-full w-full" />
         </SwiperSlide>
       );
     });
@@ -68,8 +68,8 @@ export const Slider = ({ item }) => {
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           // scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log('slide change')}
           className="h-450px rounded"
         >
           {handelChild()}
