@@ -4,8 +4,8 @@ import { DesignContext, designTypes } from 'providers/design-provider';
 
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
-  const { toggleModal } = useUi();
   const { upload } = useService();
+  const { toggleModal } = useUi();
 
   return {
     onInject: (arr, dragResult) => {
@@ -62,9 +62,18 @@ export const useDesign = () => {
       newTab?: boolean;
       link?: string;
       onUpload?: boolean;
+      description?: string;
+      title?: string;
     }) => {
-      const { value, number, newTab, link, onUpload } = props;
-      console.log(number);
+      const {
+        value,
+        number,
+        newTab,
+        link,
+        onUpload,
+        description,
+        title,
+      } = props;
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
         payload: {
@@ -72,8 +81,11 @@ export const useDesign = () => {
           number: number !== undefined ? number : designState.pureImage.number,
           newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
           link: link ? link : designState.pureImage.link,
-          onUpload:
-            onUpload !== undefined ? onUpload : designState.pureImage.onUpload,
+          onUpload: onUpload ? onUpload : designState.pureImage.onUpload,
+          description: description
+            ? description
+            : designState.pureImage.description,
+          title: title ? title : designState.pureImage.title,
         },
       });
       if (value) toggleModal(true);

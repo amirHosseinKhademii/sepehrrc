@@ -32,7 +32,7 @@ export const DrawerDynamic: FC<IDrawer> = () => {
       case 'text':
         return <ICText />;
       default:
-      // code block
+        return <ICSlider />;
     }
   };
 

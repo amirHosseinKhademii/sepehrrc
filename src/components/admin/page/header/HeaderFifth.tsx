@@ -55,7 +55,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
             <PureButton
               layout={true}
               className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text="ورود/عضویت"
+              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>
@@ -65,15 +65,16 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu />
+          <MegaMenu item={item.megaMenu} />
         </div>
-        <div className="col-span-3 ">
-          <Link href="./">
-            <a className="h-full flex items-center justify-end">
-              <div className="text-16px">09365464683</div>
-              <ICPhoneVolume className="mr-4" />
-            </a>
-          </Link>
+        <div className="col-span-3  ">
+          <a
+            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+            className=" h-full flex items-center justify-end text-16px "
+          >
+            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+            <ICPhoneVolume className="mr-4" />
+          </a>
         </div>
       </div>
     </HeaderLayout>
