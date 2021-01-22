@@ -10,6 +10,7 @@ export const designInitialState = {
       id: '1',
       type: 'products',
       title: 'لیست محصولات',
+      images: [],
       items: [
         {
           id: 0,
