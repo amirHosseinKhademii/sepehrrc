@@ -12,12 +12,14 @@ export const GridDrops = () => {
       <DropDown
         className="w-full h-54px mt-15px"
         options={[
-          { id: '12', title: ' 12' },
-          { id: '1', title: '1' },
+          { id: '1', title: ' 1' },
+          { id: '2', title: '2' },
+          { id: '3', title: ' 3' },
+          { id: '4', title: '4' },
         ]}
-        onSelect={(row) => setSetting({ row })}
+        onSelect={(rows) => setSetting({ rows })}
         selected={
-          designState.current.settings && designState.current.settings.row
+          designState.current.settings && designState.current.settings.rows
         }
       />
     </div>
@@ -31,12 +33,15 @@ export const GridDrops = () => {
       <DropDown
         className="w-full h-54px mt-15px"
         options={[
+          { id: '2', title: '2' },
+          { id: '3', title: '3' },
+          { id: '4', title: ' 4' },
+          { id: '6', title: '6' },
           { id: '12', title: ' 12' },
-          { id: '1', title: '1' },
         ]}
-        onSelect={(col) => setSetting({ col })}
+        onSelect={(cols) => setSetting({ cols })}
         selected={
-          designState.current.settings && designState.current.settings.col
+          designState.current.settings && designState.current.settings.cols
         }
       />
     </div>

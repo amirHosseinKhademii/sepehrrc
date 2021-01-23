@@ -1,5 +1,5 @@
 export * from './header';
-export * from './card';
+export * from './product';
 export * from './badge';
 export * from './slider';
 export * from './footer';
