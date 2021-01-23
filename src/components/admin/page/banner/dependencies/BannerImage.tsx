@@ -1,6 +1,7 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
 import { IBanner } from '../interfaces';
+import Link from 'next/link';
 
 export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
   const { join } = useClass();
@@ -8,10 +9,17 @@ export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
 
   if (item.images && itemImage)
     return (
-      <img
-        className={join('w-full rounded object-cover object-center', className)}
-        src={itemImage.value}
-      />
+      <Link href={itemImage.link}>
+        <a target={itemImage.newTab ? '_blank' : ''}>
+          <img
+            className={join(
+              'w-full rounded object-cover object-center',
+              className
+            )}
+            src={itemImage.value}
+          />
+        </a>
+      </Link>
     );
   else
     return (

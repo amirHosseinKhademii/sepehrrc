@@ -20,7 +20,7 @@ export const PictureButton: FC<{
   else if (picture)
     return (
       <img
-        onClick={() => setSetting({ imageSetting: true })}
+        onClick={() => setSetting({ imageSetting: true, number })}
         className="w-full h-full rounded cursor-pointer"
         src={picture}
       />

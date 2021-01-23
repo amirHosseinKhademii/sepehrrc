@@ -5,10 +5,15 @@ import { ICEditSettings } from 'icons';
 
 export const ImageSettings = () => {
   const { designState, setPureImage } = useDesign();
+  const imagesData = designState.current.images;
+  const { selectedNumber } = designState.current.settings;
 
   const ImageBox = () => (
     <Fragment>
-      <div className="w-full h-90px bg-gray-400 rounded"></div>
+      <img
+        className="w-full h-90px rounded"
+        src={imagesData[selectedNumber].value}
+      />
       <div className="w-full flex justify-between  mt-9px">
         <div className="flex items-center mr-auto">
           <Text className="text-14px text-gray_shade-300 pr-12px">
