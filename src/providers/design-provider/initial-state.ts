@@ -94,6 +94,43 @@ export const designInitialState = {
         },
       ],
     },
+    {
+      id: '2',
+      type: 'banner',
+      title: 'بنر',
+      images: [],
+    },
+    {
+      id: '3',
+      type: 'brands',
+      title: 'برندها',
+      images: [],
+    },
+    {
+      id: '4',
+      type: 'slider',
+      title: 'لیست اخبار',
+    },
+    {
+      id: '5',
+      type: 'slider',
+      title: 'متن با تصویر',
+    },
+    {
+      id: '6',
+      type: 'slider',
+      title: 'نظرات مشتریان',
+    },
+    {
+      id: '7',
+      type: 'text',
+      title: 'متن',
+    },
+    {
+      id: '8',
+      type: 'slider',
+      title: 'لیست محصولات',
+    },
   ],
   pageItems: [
     {
