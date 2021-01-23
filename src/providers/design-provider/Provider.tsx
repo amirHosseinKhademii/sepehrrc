@@ -10,8 +10,6 @@ export const DesignProvider = ({ children }) => {
     designInitialState
   );
 
-  console.log(designState);
-
   return (
     <DesignContext.Provider value={{ designState, designDispatch }}>
       {children}

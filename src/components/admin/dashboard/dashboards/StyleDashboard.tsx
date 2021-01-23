@@ -1,8 +1,9 @@
 import { useDesign } from 'hooks';
-import { BannerDashboard } from './BannerDashboard';
+import { BannerDashboard } from './banner-dashboard';
 import { HeaderDashboard } from './HeaderDashboard';
 import { SliderDashboard } from './SliderDashboard';
-import { CustomerDashboard } from '.';
+import { CustomerDashboard } from './brand-dashboard';
+import { ProductDashboard } from './product-dashboard';
 
 export const StyleDashboard = () => {
   const { designState } = useDesign();
@@ -13,7 +14,11 @@ export const StyleDashboard = () => {
       return <BannerDashboard />;
     case 'slider':
       return <SliderDashboard />;
-    default:
+    case 'products':
+      return <ProductDashboard />;
+    case 'brands':
       return <CustomerDashboard />;
+    default:
+      return null;
   }
 };
