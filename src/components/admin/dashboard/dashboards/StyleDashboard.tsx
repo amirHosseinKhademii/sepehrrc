@@ -1,7 +1,7 @@
 import { useDesign } from 'hooks';
 import { BannerDashboard } from './banner-dashboard';
 import { HeaderDashboard } from './header-dashboard';
-import { SliderDashboard } from './SliderDashboard';
+import { SliderDashboard } from './slider-dashboard';
 import { BrandDashboard } from './brand-dashboard';
 import { ProductDashboard } from './product-dashboard';
 
