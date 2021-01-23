@@ -88,28 +88,29 @@ export const Slider = ({ item }) => {
       }
     >
       <div className={`${handleScreen()} py-10`}>
-        <div>{settings.speed}</div>
         {settings.effect === 'simple' ? (
-          <Swiper
-            effect="slide"
-            spaceBetween={30}
-            speed={1000}
-            pagination={{
-              el: '.swiper-paginations',
-              type: 'bullets',
-              clickable: true,
-            }}
-            navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            }}
-            autoplay={{ delay: 200, disableOnInteraction: false }}
-            className={`h-450px w-full rounded swiper-pagination-hidden`}
-          >
-            {handleChild()}
-          </Swiper>
+          <div className="w-full">
+            <Swiper
+              effect="slide"
+              spaceBetween={30}
+              speed={1000}
+              pagination={{
+                el: '.swiper-paginations',
+                type: 'bullets',
+                clickable: true,
+              }}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              autoplay={{ delay: 200, disableOnInteraction: false }}
+              className={`h-450px w-full rounded swiper-pagination-hidden`}
+            >
+              {handleChild()}
+            </Swiper>
+          </div>
         ) : (
-          <div>
+          <div className="w-full">
             <Swiper
               effect="fade"
               spaceBetween={30}
