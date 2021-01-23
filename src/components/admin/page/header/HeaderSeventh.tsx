@@ -56,7 +56,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <MegaMenu />
+            <MegaMenu item={item.megaMenu} />
           </div>
           <div className="col-span-3 ">
             <a
