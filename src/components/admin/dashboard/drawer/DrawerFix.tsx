@@ -8,7 +8,7 @@ import {
   ICLogo,
   ICArrowRight,
 } from 'icons';
-import { useClass, useUi } from 'hooks';
+import { useClass, useUi, useDesign } from 'hooks';
 import { Fragment } from 'react';
 
 export const DrawerFix = () => {
@@ -20,11 +20,18 @@ export const DrawerFix = () => {
     toggleSectionsDrawer,
     toggleSettingsDrawer,
   } = useUi();
+  const { designState, setSetting } = useDesign();
+
+  const handleClickBackButton = () => {
+    toggleSectionsDrawer(true);
+    if (designState.current.type === 'slider')
+      setSetting({ imageSetting: false });
+  };
 
   const BackButton = () => (
     <ButtonIcon
       className="flex justify-center items-center h-82px w-68px py-17px"
-      onClick={() => toggleSectionsDrawer(true)}
+      onClick={() => handleClickBackButton()}
     >
       <ICArrowRight />
     </ButtonIcon>

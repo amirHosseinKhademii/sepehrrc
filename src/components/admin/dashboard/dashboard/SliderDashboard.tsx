@@ -180,14 +180,14 @@ export const SliderDashboard = () => {
             { id: 'simple', title: 'ساده' },
           ]}
           onSelect={(effect) => setSetting({ effect })}
-          selected={settings && settings.effect}
+          selected={settings.effect}
         />
       </div>
     );
 
     const ShowTypeButtonGroup = () => (
       <ButtonGroup
-        label="  حالت نمایش قبلی / بعدی"
+        label="حالت نمایش قبلی / بعدی"
         groupClass="grid grid-cols-3"
         className="mt-30px"
       >
@@ -351,13 +351,21 @@ export const SliderDashboard = () => {
 
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text="تنظیمات اسلایدر " />
       {designState.current.settings.imageSetting ? (
-        <ImageSettings />
+        <>
+          <HeaderDrawer setting text="تنظیمات تصویر" />
+          <ImageSettings />
+          <ButtonGroupDrawer
+            onCancel={() => setSetting({ imageSetting: false })}
+          />
+        </>
       ) : (
-        <BaseSettings />
+        <>
+          <HeaderDrawer setting text="تنظیمات اسلایدر " />
+          <BaseSettings />
+          <ButtonGroupDrawer />
+        </>
       )}
-      <ButtonGroupDrawer />
     </DrawerLayout>
   );
 };
