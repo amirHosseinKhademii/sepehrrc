@@ -81,7 +81,8 @@ export const useDesign = () => {
           number: number !== undefined ? number : designState.pureImage.number,
           newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
           link: link ? link : designState.pureImage.link,
-          onUpload: onUpload ? onUpload : designState.pureImage.onUpload,
+          onUpload:
+            onUpload !== undefined ? onUpload : designState.pureImage.onUpload,
           description: description
             ? description
             : designState.pureImage.description,

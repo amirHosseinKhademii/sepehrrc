@@ -7,7 +7,9 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
   const { uiDispatch } = useContext(UIContext);
 
   const onCancelClick = () => {
-    uiDispatch({ type: uiTypes.DRAWER_CLOSE });
+    if (onCancel) {
+      onCancel();
+    } else uiDispatch({ type: uiTypes.DRAWER_CLOSE });
   };
 
   return (
