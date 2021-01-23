@@ -9,7 +9,7 @@ import {
   TitleInput,
 } from './dependencies';
 
-export const CustomerDashboard = () => {
+export const BrandDashboard = () => {
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">

@@ -1,8 +1,8 @@
 import { useDesign } from 'hooks';
 import { BannerDashboard } from './banner-dashboard';
-import { HeaderDashboard } from './HeaderDashboard';
+import { HeaderDashboard } from './header-dashboard';
 import { SliderDashboard } from './slider-dashboard';
-import { CustomerDashboard } from './brand-dashboard';
+import { BrandDashboard } from './brand-dashboard';
 import { ProductDashboard } from './product-dashboard';
 
 export const StyleDashboard = () => {
@@ -17,7 +17,7 @@ export const StyleDashboard = () => {
     case 'products':
       return <ProductDashboard />;
     case 'brands':
-      return <CustomerDashboard />;
+      return <BrandDashboard />;
     default:
       return null;
   }
