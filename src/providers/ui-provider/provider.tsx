@@ -14,6 +14,9 @@ const uiInitialState = {
   modal: {
     open: false,
   },
+  container: {
+    padding: 'p-20px',
+  },
 };
 
 const uiReducer = (state = uiInitialState, { type, payload }) => {
