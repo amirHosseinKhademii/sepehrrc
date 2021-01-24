@@ -33,11 +33,8 @@ export const GridDrops = () => {
       <DropDown
         className="w-full h-54px mt-15px"
         options={[
-          { id: '2', title: '2' },
           { id: '3', title: '3' },
           { id: '4', title: ' 4' },
-          { id: '6', title: '6' },
-          { id: '12', title: ' 12' },
         ]}
         onSelect={(cols) => setSetting({ cols })}
         selected={

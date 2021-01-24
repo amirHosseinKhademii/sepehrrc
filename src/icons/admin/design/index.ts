@@ -32,3 +32,4 @@ export * from './crop-alt';
 export * from './product-list';
 export * from './slider';
 export * from './text';
+export * from './ellipsis-h';

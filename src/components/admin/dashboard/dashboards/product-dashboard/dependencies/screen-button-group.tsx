@@ -28,7 +28,7 @@ export const ScreenButtonGroup = () => {
     >
       <SettingButton
         text=" لیست"
-        active={settings && settings.screen && settings.screen == 'list'}
+        active={settings && settings.screen !== 'slider'}
         className=" rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ screen: 'list' })}
       />
