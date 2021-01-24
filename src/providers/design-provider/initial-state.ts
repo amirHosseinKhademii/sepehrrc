@@ -341,8 +341,8 @@ export const designInitialState = {
   ],
   pageSettings: {
     key: 'main',
-    titleFont: 'یکان بخ',
-    textFont: '',
+    titleFont: 'yekan',
+    textFont: 'yekan',
     primary: '',
     secondary: '',
   },
