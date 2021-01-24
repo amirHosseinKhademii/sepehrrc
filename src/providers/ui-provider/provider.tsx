@@ -15,6 +15,9 @@ const uiInitialState = {
     open: false,
     editImage: false,
   },
+  container: {
+    padding: 'p-20px',
+  },
 };
 
 const uiReducer = (state = uiInitialState, { type, payload }) => {

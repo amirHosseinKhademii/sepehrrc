@@ -7,7 +7,7 @@ import {
   HeaderLayout,
   MegaMenu,
 } from './dependencies';
-import { Badge, PureButton } from 'components';
+import { Badge, HeaderButton } from 'components';
 import {
   ICSearch,
   ICShoppingCart,
@@ -92,7 +92,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
 
       <div className="border-b-2">
         <div
-          className={`grid  grid-cols-12   w-full h-122px container mx-auto  `}
+          className={`grid  grid-cols-12   w-full h-122px container mx-auto p-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center">
@@ -103,20 +103,19 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end ">
             <Actions />
-            <PureButton
-              layout={true}
-              className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+            <HeaderButton
+              className="mr-25px"
               text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+        className={`grid  grid-cols-12    w-full h-58px  container mx-auto p-20px`}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu />
+          <MegaMenu item={item.megaMenu} />
         </div>
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a

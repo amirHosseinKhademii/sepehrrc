@@ -13,8 +13,11 @@ import {
   ScreenButtonGroup,
   PageButtonGroup,
 } from './dependencies';
+import { useDesign } from 'hooks';
 
 export const ProductDashboard = () => {
+  const { designState } = useDesign();
+  const displayInList = designState.current.settings?.screen !== 'slider';
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px overflow-auto">
@@ -22,8 +25,12 @@ export const ProductDashboard = () => {
         <CategoryDrop />
         <ShowDrop />
         <ScreenButtonGroup />
-        <GridDrops />
-        <PageButtonGroup />
+        {displayInList && (
+          <>
+            <GridDrops />
+            <PageButtonGroup />
+          </>
+        )}
         <ImageUploader />
         <BackgroundColor />
         <ResponsiveSwitchs />

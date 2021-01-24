@@ -14,7 +14,9 @@ export const CategoryDrop = () => {
           className="w-full h-54px mt-15px"
           options={[
             { id: 'all', title: ' همه دسته ها' },
-            { id: 'simple', title: 'ساده' },
+            { id: 'simple', title: 'کیف و کفش' },
+            { id: 'simple', title: 'پوشاک' },
+            { id: 'simple', title: 'دیجیتال' },
           ]}
           onSelect={(category) => setSetting({ category })}
           selected={

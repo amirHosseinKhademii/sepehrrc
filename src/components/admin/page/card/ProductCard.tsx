@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IProductCard } from '../interface';
+import { IProductCard } from './interfaces';
 import { useClass } from 'hooks';
 export const ProductCard: FC<IProductCard> = ({
   layout = true,
@@ -8,7 +8,7 @@ export const ProductCard: FC<IProductCard> = ({
   children,
   style,
 }) => {
-  const { toggle, join } = useClass();
+  const { toggle } = useClass();
 
   return (
     <div
