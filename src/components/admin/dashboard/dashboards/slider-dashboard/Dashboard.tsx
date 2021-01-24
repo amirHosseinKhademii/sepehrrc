@@ -1,15 +1,13 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign } from 'hooks';
 import { HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { ResponsiveSwitchs, ImageUploader } from '../common';
 import {
   DndUploadBox,
   SpeedButtonGroup,
   WidthButtonGroup,
   EffectDrop,
   ShowTypeButtonGroup,
-  BackgroundUploader,
-  MobileSwitch,
-  MonitorSwitch,
   PictureContainer,
   ImageBox,
   InputBox,
@@ -30,9 +28,8 @@ export const SliderDashboard = () => {
         <WidthButtonGroup />
         <EffectDrop />
         <ShowTypeButtonGroup />
-        <BackgroundUploader />
-        <MobileSwitch />
-        <MonitorSwitch />
+        <ImageUploader />
+        <ResponsiveSwitchs />
       </div>
     );
   };

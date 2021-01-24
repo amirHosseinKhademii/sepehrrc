@@ -52,6 +52,38 @@ export const designInitialState = {
               prevPrice: '3/500/000',
               discount: '500000',
             },
+            {
+              id: 0,
+              name: 'کیت کلاچ میتسوبیشی لنسر',
+              cover: '/assets/images/product.png',
+              price: '3/000/000',
+              prevPrice: null,
+              discount: '500000',
+            },
+            {
+              id: 0,
+              name: 'کیت کلاچ میتسوبیشی لنسر',
+              cover: '/assets/images/product.png',
+              price: '3/000/000',
+              prevPrice: null,
+              discount: '500000',
+            },
+            {
+              id: 0,
+              name: 'کیت کلاچ میتسوبیشی لنسر',
+              cover: '/assets/images/product.png',
+              price: '3/000/000',
+              prevPrice: null,
+              discount: '500000',
+            },
+            {
+              id: 0,
+              name: 'کیت کلاچ میتسوبیشی لنسر',
+              cover: '/assets/images/product.png',
+              price: '2/500/000',
+              prevPrice: '3/500/000',
+              discount: '500000',
+            },
           ],
         },
 
@@ -307,7 +339,13 @@ export const designInitialState = {
       title: 'فوتر',
     },
   ],
-  pageKey: 'main',
+  pageSettings: {
+    key: 'main',
+    titleFont: '',
+    textFont: '',
+    primary: '',
+    secondary: '',
+  },
   current: {
     uuid: '',
     settings: {

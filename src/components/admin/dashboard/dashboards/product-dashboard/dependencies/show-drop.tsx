@@ -14,7 +14,7 @@ export const ShowDrop = () => {
           className="w-full h-54px mt-15px"
           options={[
             { id: 'new', title: '   جدیدترین محصولات' },
-            { id: 'simple', title: 'ساده' },
+            { id: 'simple', title: 'پرفروش ترین ها' },
           ]}
           onSelect={(show) => setSetting({ show })}
           selected={

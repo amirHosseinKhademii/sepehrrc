@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IProductCard, IProductPrice } from '../interface';
+import { IPrice } from './interfaces';
 import { useClass } from 'hooks';
-export const ProductPrice: FC<IProductPrice> = ({
+export const Price: FC<IPrice> = ({
   layout = true,
   className,
   onClick,

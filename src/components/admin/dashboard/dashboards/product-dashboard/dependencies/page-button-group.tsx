@@ -5,7 +5,6 @@ export const PageButtonGroup = () => {
   const { toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const { settings } = designState.current;
-
   const SettingButton = ({ text, active, className, onClick }) => (
     <button
       className={toggle(
@@ -24,17 +23,17 @@ export const PageButtonGroup = () => {
     <ButtonGroup
       label="  نمایش صفحه بندی "
       groupClass="grid grid-cols-2"
-      className="mt-30px"
+      className="my-30px"
     >
       <SettingButton
         text=" غیر فعال"
-        active={settings && settings.screen && settings.page == 'disabled'}
+        active={settings && settings.page == 'disabled'}
         className="rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ page: 'disabled' })}
       />
       <SettingButton
         text=" فعال"
-        active={settings && settings.screen && settings.page == 'enabled'}
+        active={settings && settings.page !== 'disabled'}
         className=" rounded-r "
         onClick={() => setSetting({ page: 'enabled' })}
       />

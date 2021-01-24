@@ -16,9 +16,7 @@ export const HeaderLayout = ({ children }) => {
           : false
       }
     >
-      <div className={`bg-white shadow-custom-1`}>
-        <div className="mx-auto container  p-20px">{children}</div>
-      </div>
+      <div className={`bg-white shadow-custom-1`}>{children} </div>
     </BorderShadow>
   );
 };
