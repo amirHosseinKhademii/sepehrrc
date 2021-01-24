@@ -11,8 +11,9 @@ import {
   MobileSwitch,
   MonitorSwitch,
   PictureContainer,
+  ImageBox,
+  InputBox,
 } from './dependencies';
-import { ImageSettings } from './image-dashboard';
 
 export const SliderDashboard = () => {
   const { designState, setSetting } = useDesign();
@@ -36,6 +37,15 @@ export const SliderDashboard = () => {
     );
   };
 
+  const ImageSettings = () => {
+    return (
+      <div className="flex flex-col items-end pt-30px px-20px">
+        <ImageBox />
+        <InputBox />
+      </div>
+    );
+  };
+
   return (
     <DrawerLayout>
       {designState.current.settings.imageSetting ? (
@@ -43,7 +53,7 @@ export const SliderDashboard = () => {
           <HeaderDrawer setting text="تنظیمات تصویر" />
           <ImageSettings />
           <ButtonGroupDrawer
-            onCancel={() => setSetting({ imageSetting: false })}
+            onCancel={() => setSetting({ imageSetting: false, number: -1 })}
           />
         </>
       ) : (

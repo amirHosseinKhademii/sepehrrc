@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import { ProductContainer } from './product';
-import { Slider } from 'components';
+import { SliderContainer } from './slider';
 import { BannerContainer } from './banner';
 
 export const DesignContainer = () => {
@@ -29,7 +29,7 @@ export const DesignContainer = () => {
       {designState.pageItems.map((item, index) => (
         <Fragment key={index}>
           {item.type == 'products' && <ProductContainer items={item} />}
-          {item.type == 'slider' && <Slider item={item} />}
+          {item.type == 'slider' && <SliderContainer item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
           {item.type == 'brands' && (
             <p className="text-center text-lg my-10">برندها</p>
