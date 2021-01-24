@@ -1,18 +1,18 @@
 import { Fragment } from 'react';
 import { useDesign } from 'hooks';
-import { Input, CheckBox } from 'components';
+import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
   const { designState, setPureImage } = useDesign();
   const { pureImage } = designState;
-  const selectedImageNumber = designState.current.settings.number;
+  const { number } = designState.current.settings;
   return (
     <Fragment>
       <Input
         label="عنوان تصویر"
         className="mt-25px"
         variant="input"
-        onBlur={(e) => setPureImage({ title: e.target.value })}
+        onBlur={(e) => setPureImage({ title: e.target.value, number })}
         placeholder={
           pureImage.title ? pureImage.title : 'عنوان را اینجا بنویسید'
         }
@@ -21,24 +21,23 @@ export const InputBox = () => {
         label="توضیحات تصویر"
         className="mt-25px"
         variant="textArea"
-        onBlur={(e) => setPureImage({ description: e.target.value })}
+        onBlur={(e) => setPureImage({ description: e.target.value, number })}
         placeholder={
           pureImage.description
             ? pureImage.description
             : 'توضیحات را اینجا بنویسید'
         }
       />
-      <label className=" text-white_shade-100 text-12px mt-25px -mb-8px">
-        لینک تصویر
-      </label>
+
+      <Text className="mt-25px text-14px text-white_shade-100">لینک تصویر</Text>
       <Input
         withLink
         placeholder={pureImage.link ? pureImage.link : ''}
         variant="inputIcon"
         label="لینک تصویر"
-        className="mt-25px"
+        className="mt-14px"
         fontFamily="font-lato"
-        onBlur={(e) => setPureImage({ link: e.target.value })}
+        onBlur={(e) => setPureImage({ link: e.target.value, number })}
       />
       <CheckBox
         label="باز کردن در تب جدید"
@@ -46,6 +45,7 @@ export const InputBox = () => {
         onClick={() => {
           setPureImage({
             newTab: pureImage.newTab ? false : true,
+            number,
           });
         }}
         checked={pureImage.newTab}
