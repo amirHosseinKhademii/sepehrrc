@@ -23,7 +23,7 @@ export const PageButtonGroup = () => {
     <ButtonGroup
       label="  نمایش صفحه بندی "
       groupClass="grid grid-cols-2"
-      className="mt-30px"
+      className="my-30px"
     >
       <SettingButton
         text=" غیر فعال"

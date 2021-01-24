@@ -13,6 +13,7 @@ const uiInitialState = {
   },
   modal: {
     open: false,
+    editImage: false,
   },
   container: {
     padding: 'p-20px',
@@ -91,7 +92,11 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
     case uiTypes.MODAL_TOGGLE:
       return {
         ...state,
-        modal: { ...state.modal, open: payload },
+        modal: {
+          ...state.modal,
+          open: payload.open,
+          editImage: payload.editImage,
+        },
       };
     default:
       return state;

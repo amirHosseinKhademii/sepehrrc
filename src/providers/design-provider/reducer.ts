@@ -21,10 +21,10 @@ export const designReducer = (
         ...state,
         pageItems: applyDrag(state.pageItems, payload),
       };
-    case designTypes.ON_CHANGE_PAGE_KEY:
+    case designTypes.ON_CHANGE_PAGE_Settings:
       return {
         ...state,
-        pageKey: payload,
+        pageSettings: { ...state.pageSettings, [payload.key]: payload.value },
       };
     case designTypes.ON_DELETE_ITEM:
       return {

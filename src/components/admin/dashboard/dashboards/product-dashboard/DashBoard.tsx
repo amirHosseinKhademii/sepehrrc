@@ -1,15 +1,17 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { HeaderDrawer, ButtonGroupDrawer } from 'components';
 import {
+  BackgroundColor,
+  TitleInput,
+  ResponsiveSwitchs,
+  ImageUploader,
+} from '../common';
+import {
   CategoryDrop,
   GridDrops,
   ShowDrop,
-  TitleInput,
   ScreenButtonGroup,
   PageButtonGroup,
-  ImageUploader,
-  BackgroundColor,
-  ResponsiveSwitchs,
 } from './dependencies';
 import { useDesign } from 'hooks';
 

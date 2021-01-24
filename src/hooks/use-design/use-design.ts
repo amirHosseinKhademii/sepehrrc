@@ -8,23 +8,6 @@ export const useDesign = () => {
   const { toggleModal } = useUi();
 
   return {
-    onInject: (arr, dragResult) => {
-      const { removedIndex, addedIndex, payload } = dragResult;
-      if (removedIndex === null && addedIndex === null) return arr;
-
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-
-      return result;
-    },
     onHorizontalDrop: (drop) => (dropResult) => {
       if (drop.willAcceptDrop && drop.payload === dropResult.payload)
         designDispatch({
@@ -35,8 +18,8 @@ export const useDesign = () => {
     onVerticalDrop: (payload) => {
       designDispatch({ type: designTypes.ON_VERTICAL_DROP, payload });
     },
-    onPageKey: (payload) => {
-      designDispatch({ type: designTypes.ON_CHANGE_PAGE_KEY, payload });
+    onPageSetting: (payload) => {
+      designDispatch({ type: designTypes.ON_CHANGE_PAGE_Settings, payload });
     },
     onDeleteItem: (payload) => {
       designDispatch({ type: designTypes.ON_DELETE_ITEM, payload });
@@ -89,7 +72,7 @@ export const useDesign = () => {
           title: title ? title : designState.pureImage.title,
         },
       });
-      if (value) toggleModal(true);
+      if (value) toggleModal({ open: true });
     },
     setImage: async (payload) => {
       const result = await upload(payload);
@@ -97,7 +80,7 @@ export const useDesign = () => {
         type: designTypes.ON_SET_ITEM_IMAGES,
         payload: result.data.secure_url,
       });
-      toggleModal(false);
+      toggleModal({ open: false });
     },
     designState,
   };

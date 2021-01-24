@@ -1,14 +1,20 @@
+import { FC } from 'react';
 import Dropzone from 'react-dropzone';
 import { useDesign } from 'hooks';
 
-export const DndUploadBox = () => {
-  const { setPureImage } = useDesign();
+interface IDropZone {
+  number?: number;
+}
+
+export const DndUploadBox: FC<IDropZone> = ({ number }) => {
+  const { designState, setPureImage } = useDesign();
   return (
     <Dropzone
       onDrop={(acceptedFiles) =>
         setPureImage({
           value: acceptedFiles[0],
           onUpload: false,
+          number: number !== undefined ? number : undefined,
         })
       }
     >
