@@ -309,7 +309,7 @@ export const designInitialState = {
   ],
   pageSettings: {
     key: 'main',
-    titleFont: '',
+    titleFont: 'یکان بخ',
     textFont: '',
     primary: '',
     secondary: '',
