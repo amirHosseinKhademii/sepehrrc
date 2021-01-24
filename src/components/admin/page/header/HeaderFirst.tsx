@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { HeaderButton, Navbar, HeaderLogo, HeaderLayout } from './dependencies';
+import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { PureButton } from 'components';
+import { HeaderButton } from 'components';
+import { useUi } from 'hooks';
 import Link from 'next/link';
 const logo = '/assets/images/logo.png';
 
 export const HeaderFirst: FC<IHeader> = ({ item }) => {
+  const { uiState } = useUi();
+  const { container } = uiState;
   const Actions = () => {
     return (
       <>
@@ -32,7 +35,7 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
   return (
     <HeaderLayout>
       <div
-        className=" grid  grid-cols-12 w-full h-122px container mx-auto     "
+        className={` grid  grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-2  flex items-center ">
@@ -43,9 +46,9 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
         </div>
         <div className="col-span-4 flex items-center justify-end">
           <Actions />
-          <PureButton
-            layout={true}
-            className="h-50px px-8 mr-35px  py-4 text-16px rounded-full bg-red-600 text-white     "
+
+          <HeaderButton
+            className=" mr-35px"
             text={!item.buttonText ? 'محصولات فروشگاه' : item.buttonText}
           />
         </div>

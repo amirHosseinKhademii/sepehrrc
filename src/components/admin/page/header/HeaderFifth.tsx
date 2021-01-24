@@ -1,15 +1,9 @@
 import { FC, Fragment } from 'react';
 import { IHeader } from './interface';
-import {
-  Navbar,
-  HeaderLogo,
-  HeaderButton,
-  MegaMenu,
-  HeaderLayout,
-} from './dependencies';
+import { Navbar, HeaderLogo, MegaMenu, HeaderLayout } from './dependencies';
 
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge, PureButton } from 'components';
+import { Badge, HeaderButton } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
@@ -41,7 +35,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12  w-full h-122px container mx-auto   `}
+          className={` grid  grid-cols-12  w-full h-122px container mx-auto p-20px   `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
@@ -52,16 +46,15 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <PureButton
-              layout={true}
-              className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
+            <HeaderButton
+              className="mr-25px"
               text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px   container mx-auto `}
+        className={`grid  grid-cols-12   w-full h-58px   container mx-auto p-20px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">

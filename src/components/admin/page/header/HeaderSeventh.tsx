@@ -36,7 +36,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12 container mx-auto  w-full h-122px `}
+          className={` grid  grid-cols-12 container mx-auto  w-full h-122px p-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-6 flex items-center ">
@@ -52,7 +52,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
       </div>
       <div className="bg-red-600 text-white">
         <div
-          className={`grid  grid-cols-12    w-full  min-h-58px container mx-auto `}
+          className={`grid  grid-cols-12    w-full  min-h-58px container mx-auto  p-20px`}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">

@@ -4,3 +4,6 @@ export * from './badge';
 export * from './slider';
 export * from './footer';
 export * from './banner';
+export * from './price';
+export * from './card';
+export * from './button';
