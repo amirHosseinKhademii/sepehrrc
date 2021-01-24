@@ -7,3 +7,5 @@ export * from './banner';
 export * from './price';
 export * from './card';
 export * from './button';
+export * from './pagination';
+export * from './display';
