@@ -72,7 +72,7 @@ export const useDesign = () => {
           title: title ? title : designState.pureImage.title,
         },
       });
-      if (value) toggleModal(true);
+      if (value) toggleModal({ open: true });
     },
     setImage: async (payload) => {
       const result = await upload(payload);
@@ -80,7 +80,7 @@ export const useDesign = () => {
         type: designTypes.ON_SET_ITEM_IMAGES,
         payload: result.data.secure_url,
       });
-      toggleModal(false);
+      toggleModal({ open: false });
     },
     designState,
   };
