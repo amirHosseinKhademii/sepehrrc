@@ -1,8 +1,11 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { HeaderDrawer } from '.';
 import { ButtonGroupDrawer, Button, DropDown } from 'components';
+import { useDesign } from 'hooks';
 
 export const SettingsDashboard = () => {
+  const { onPageSetting, designState } = useDesign();
+
   const ColorsButtons = () => (
     <div className="flex flex-col px-20px pt-30px">
       <p className="text-right text-white_shade-100 pt-15px">رنگ ها</p>
@@ -33,6 +36,10 @@ export const SettingsDashboard = () => {
           <DropDown
             options={[{ id: 'yekan', title: 'یکان یخ' }]}
             className="h-58px"
+            onSelect={(value) => onPageSetting({ key: 'titleFont', value })}
+            selected={
+              designState.pageSettings && designState.pageSettings.titleFont
+            }
           />
         </div>
       </div>
@@ -44,6 +51,10 @@ export const SettingsDashboard = () => {
           <DropDown
             options={[{ id: 'yekan', title: 'یکان یخ' }]}
             className="h-58px"
+            onSelect={(value) => onPageSetting({ key: 'textFont', value })}
+            selected={
+              designState.pageSettings && designState.pageSettings.textFont
+            }
           />
         </div>
       </div>

@@ -307,7 +307,13 @@ export const designInitialState = {
       title: 'فوتر',
     },
   ],
-  pageKey: 'main',
+  pageSettings: {
+    key: 'main',
+    titleFont: '',
+    textFont: '',
+    primary: '',
+    secondary: '',
+  },
   current: {
     uuid: '',
     settings: {

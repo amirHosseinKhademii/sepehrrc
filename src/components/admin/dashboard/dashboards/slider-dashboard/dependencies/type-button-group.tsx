@@ -9,7 +9,7 @@ export const ShowTypeButtonGroup = () => {
     <ButtonGroup
       label="حالت نمایش قبلی / بعدی"
       groupClass="grid grid-cols-3"
-      className="mt-30px"
+      className="my-30px"
     >
       <SettingButton
         text="..."
