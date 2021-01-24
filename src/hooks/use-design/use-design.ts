@@ -35,8 +35,8 @@ export const useDesign = () => {
     onVerticalDrop: (payload) => {
       designDispatch({ type: designTypes.ON_VERTICAL_DROP, payload });
     },
-    onPageKey: (payload) => {
-      designDispatch({ type: designTypes.ON_CHANGE_PAGE_KEY, payload });
+    onPageSetting: (payload) => {
+      designDispatch({ type: designTypes.ON_CHANGE_PAGE_Settings, payload });
     },
     onDeleteItem: (payload) => {
       designDispatch({ type: designTypes.ON_DELETE_ITEM, payload });
