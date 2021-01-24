@@ -12,13 +12,13 @@ export const WidthButtonGroup = () => {
       className="mt-30px"
     >
       <SettingButton
-        text="تمام صفحه"
+        child="تمام صفحه"
         active={settings && settings.screen && settings.screen == 'full'}
         className=" rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ screen: 'full' })}
       />
       <SettingButton
-        text=" ساده"
+        child="ساده"
         active={settings && settings.screen && settings.screen == 'simple'}
         className="rounded-r"
         onClick={() => setSetting({ screen: 'simple' })}

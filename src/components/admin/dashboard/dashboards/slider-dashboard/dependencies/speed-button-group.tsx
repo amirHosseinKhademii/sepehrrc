@@ -12,19 +12,19 @@ export const SpeedButtonGroup = () => {
       className="mt-30px"
     >
       <SettingButton
-        text="سریع"
+        child="سریع"
         active={settings && settings.speed && settings.speed == 'fast'}
         className=" rounded-l"
         onClick={() => setSetting({ speed: 'fast' })}
       />
       <SettingButton
-        text="آرام"
+        child="آرام"
         active={settings && settings.speed && settings.speed == 'slow'}
         className=" border-r border-l border-gray_shade-900"
         onClick={() => setSetting({ speed: 'slow' })}
       />
       <SettingButton
-        text="متوسط"
+        child="متوسط"
         active={settings && settings.speed && settings.speed == 'normal'}
         className="rounded-r"
         onClick={() => setSetting({ speed: 'normal' })}
