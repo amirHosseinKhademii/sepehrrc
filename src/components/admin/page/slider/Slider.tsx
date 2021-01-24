@@ -35,8 +35,8 @@ export const Slider = ({ child, speed, button, effect }) => {
           clickable: true,
         }}
         navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-nexts',
+          prevEl: '.swiper-button-prevs',
         }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
         className={`h-450px w-full rounded swiper-pagination-hidden`}
@@ -45,10 +45,10 @@ export const Slider = ({ child, speed, button, effect }) => {
       </Swiper>
 
       <div
-        className={`swiper-button-next ${button === 'first' ? 'hidden' : ''}`}
+        className={`swiper-button-nexts ${button === 'first' ? 'hidden' : ''}`}
       ></div>
       <div
-        className={`swiper-button-prev ${button === 'first' ? 'hidden' : ''}`}
+        className={`swiper-button-prevs ${button === 'first' ? 'hidden' : ''}`}
       ></div>
       <div
         className={`swiper-paginations ${
