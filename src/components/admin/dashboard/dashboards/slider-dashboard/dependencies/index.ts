@@ -9,3 +9,5 @@ export * from './mobile-switch';
 export * from './monitor-switch';
 export * from './picture-button';
 export * from './picture-container';
+export * from './image-box';
+export * from './input-box';
