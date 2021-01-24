@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useClass, useDesign } from 'hooks';
+import { useClass } from 'hooks';
 import { IHeaderLogo } from '../interface';
 import Link from 'next/link';
 
@@ -8,7 +8,7 @@ export const HeaderLogo: FC<IHeaderLogo> = ({ className, src }) => {
   const { join } = useClass();
   const [data] = src;
   return (
-    <Link href={data ? data.link : ''}>
+    <Link href={data ? data.link : '/'}>
       <a target={`${data ? `${data.newTab ? '_target' : '_self'}` : '_self'}`}>
         <div className={join('flex items-center', className)}>
           <img
