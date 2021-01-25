@@ -14,6 +14,8 @@ export const HeaderDashboard = () => {
           number="one"
           text="انتخاب لوگو"
           className="mb-30px"
+          withLink
+          withNewTab
         />
         <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
         <InputBox

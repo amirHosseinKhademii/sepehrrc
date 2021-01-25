@@ -15,6 +15,7 @@ export const ResponsiveSwitchs = () => {
             mobile: settings && settings.mobile ? !settings.mobile : true,
           })
         }
+        disabled={settings && settings.monitor && settings.monitor === true}
         checked={settings && settings.mobile && settings.mobile === true}
       />
     );
@@ -30,6 +31,7 @@ export const ResponsiveSwitchs = () => {
             monitor: settings && settings.monitor ? !settings.monitor : true,
           })
         }
+        disabled={settings && settings.mobile && settings.mobile === true}
         checked={settings && settings.monitor && settings.monitor === true}
       />
     );

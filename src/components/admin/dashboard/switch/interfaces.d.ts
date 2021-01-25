@@ -3,4 +3,5 @@ interface ISwitch {
   label?: string;
   checked?: boolean;
   onClick?: any;
+  disabled?: boolean;
 }
