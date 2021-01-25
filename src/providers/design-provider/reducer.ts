@@ -73,12 +73,11 @@ export const designReducer = (
           (item) => item.number !== state.pureImage.number
         ),
         {
+          ...pageCurrent.images.find(
+            (item) => item.number == state.pureImage.number
+          ),
           number: state.pureImage.number,
-          newTab: state.pureImage.newTab,
-          link: state.pureImage.link,
-          value: payload,
-          title: state.pureImage.title,
-          description: state.pureImage.description,
+          ...payload,
         },
       ];
       cloneCurrent.images = [
@@ -86,12 +85,11 @@ export const designReducer = (
           (item) => item.number !== state.pureImage.number
         ),
         {
+          ...cloneCurrent.images.find(
+            (item) => item.number == state.pureImage.number
+          ),
           number: state.pureImage.number,
-          newTab: state.pureImage.newTab,
-          link: state.pureImage.link,
-          value: payload,
-          title: state.pureImage.title,
-          description: state.pureImage.description,
+          ...payload,
         },
       ];
       return {

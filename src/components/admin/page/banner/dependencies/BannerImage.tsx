@@ -9,7 +9,7 @@ export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
 
   if (item.images && itemImage)
     return (
-      <Link href={itemImage.link}>
+      <Link href={itemImage.link ? itemImage.link : ''}>
         <a target={itemImage.newTab ? '_blank' : ''}>
           <img
             className={join(

@@ -17,7 +17,6 @@ export const ModalCrop = () => {
   const cropperRef = useRef(null);
   const currentImages = designState.current.images;
   const selectedImage = designState.current.settings.number;
-  console.log(selectedImage);
 
   const ModalImage = ({ src }) => (
     <div className="relative w-full bg-gray-700">
@@ -46,7 +45,7 @@ export const ModalCrop = () => {
         disabled={isLoading}
         onClick={() => {
           setisLoading(true);
-          setImage(designState.pureImage.value);
+          setImage({ type: 'value', payload: designState.pureImage.value });
         }}
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}

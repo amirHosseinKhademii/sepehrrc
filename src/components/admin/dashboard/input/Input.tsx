@@ -16,6 +16,7 @@ export const Input: FC<IInput> = ({
   withNumber,
   withLink,
   fontFamily = 'font-body',
+  disabled,
 }) => {
   const { join } = useClass();
 
@@ -36,6 +37,7 @@ export const Input: FC<IInput> = ({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            disabled={disabled}
             dir={withLink ? 'ltr' : 'rtl'}
             className={`${fontFamily} focus:outline-none w-full h-54px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           />
@@ -49,6 +51,7 @@ export const Input: FC<IInput> = ({
             type={withLink ? 'url' : 'text'}
             onChange={onChange}
             onBlur={onBlur}
+            disabled={disabled}
           />
           <div className="absolute inset-y-0 right-4 flex items-center ">
             <ICLink fill="#9ba3b5" />
@@ -67,6 +70,7 @@ export const Input: FC<IInput> = ({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            disabled={disabled}
             dir={withLink ? 'ltr' : 'rtl'}
             className={`${fontFamily} p-16px focus:outline-none w-full h-145px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           ></textarea>

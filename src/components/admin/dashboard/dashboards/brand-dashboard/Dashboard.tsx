@@ -5,7 +5,7 @@ import {
   BackgroundColor,
   TitleInput,
   ResponsiveSwitchs,
-  ImageUploader,
+  GenericUploader,
 } from '../common';
 
 export const BrandDashboard = () => {
@@ -15,7 +15,7 @@ export const BrandDashboard = () => {
         <TitleInput />
         <ImageButtons />
         <DropDownGroup />
-        <ImageUploader />
+        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" />
         <BackgroundColor />
         <ResponsiveSwitchs />
       </div>

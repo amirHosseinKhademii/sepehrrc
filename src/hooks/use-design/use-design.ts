@@ -74,11 +74,14 @@ export const useDesign = () => {
       });
       if (value) toggleModal({ open: true });
     },
-    setImage: async (payload) => {
-      const result = await upload(payload);
+    setImage: async ({ type, payload }) => {
+      const result =
+        type == 'value' ? await upload(payload) : { data: { secure_url: '' } };
       designDispatch({
         type: designTypes.ON_SET_ITEM_IMAGES,
-        payload: result.data.secure_url,
+        payload: {
+          [type]: type === 'value' ? result.data.secure_url : payload,
+        },
       });
       toggleModal({ open: false });
     },

@@ -4,7 +4,7 @@ import {
   BackgroundColor,
   TitleInput,
   ResponsiveSwitchs,
-  ImageUploader,
+  GenericUploader,
 } from '../common';
 import {
   CategoryDrop,
@@ -31,7 +31,7 @@ export const ProductDashboard = () => {
             <PageButtonGroup />
           </>
         )}
-        <ImageUploader />
+        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" />
         <BackgroundColor />
         <ResponsiveSwitchs />
       </div>
