@@ -8,4 +8,4 @@ export * from './dashboards';
 export * from './modal';
 export * from './checkbox';
 export * from './switch';
-export * from './inputSlider';
+export * from './range';

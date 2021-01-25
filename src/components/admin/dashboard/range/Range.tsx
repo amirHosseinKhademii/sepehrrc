@@ -1,7 +1,6 @@
-import { useState, FC } from 'react';
-import { IInputSlider } from './interface';
+import { FC } from 'react';
 import { useClass } from 'hooks';
-export const InputSlider: FC<IInputSlider> = ({
+export const Range: FC<IRange> = ({
   title,
   unit,
   onChange,
