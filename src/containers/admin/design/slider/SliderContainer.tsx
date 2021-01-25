@@ -14,7 +14,7 @@ export const SliderContainer = ({ item }) => {
   const handleScreen = () => {
     switch (settings.screen) {
       case 'full':
-        return 'w-screen';
+        return 'w-full';
       case 'simple':
         return 'container mx-auto';
       default:

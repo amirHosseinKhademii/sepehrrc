@@ -181,3 +181,7 @@ html {
 .swiper-pagination-bullet {
   margin: 0 4px;
 }
+
+.swiper-slide {
+  width: 100% !important;
+}

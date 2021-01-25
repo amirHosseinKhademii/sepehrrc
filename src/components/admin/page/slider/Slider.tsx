@@ -39,9 +39,7 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
           prevEl: '.swiper-button-prev',
         }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
-        className={`h-450px ${
-          screen === 'full' ? 'w-screen' : 'w-full'
-        } rounded`}
+        className={`h-450px w-full rounded`}
       >
         {child}
         <div
