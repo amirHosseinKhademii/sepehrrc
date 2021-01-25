@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Modal, ButtonAction, InputSlider } from 'components';
+import { Modal, ButtonAction, Range } from 'components';
 import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
 import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
@@ -55,12 +55,12 @@ export const ModalCrop = () => {
         <ICRotateVertical className="fill-current cursor-pointer" />
         <ICRedo className="fill-current mx-20px cursor-pointer" />
       </div>
-      <InputSlider
+      <Range
         title="چرخش تصویر"
         className="w-378px mr-20px"
         onChange={(value) => {}}
       />
-      <InputSlider
+      <Range
         title="زوم تصویر"
         unit="%"
         className="w-378px"
