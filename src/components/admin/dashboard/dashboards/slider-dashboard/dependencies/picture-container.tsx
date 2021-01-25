@@ -21,6 +21,7 @@ export const PictureContainer = () => {
         {newArr.map((item, index) => {
           return (
             <PictureButton
+              key={index}
               withAdd={index === imagesDataLength ? true : false}
               picture={item.value}
               number={index}

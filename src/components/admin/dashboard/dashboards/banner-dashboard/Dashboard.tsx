@@ -2,8 +2,7 @@ import { Fragment } from 'react';
 import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign } from 'hooks';
 import { StyleBoxBanner, HeaderDrawer, ButtonGroupDrawer } from 'components';
-import { ImageUploader } from './dependencies';
-import { TitleInput } from '../common';
+import { ImageUploader, TitleInput } from '../common';
 
 export const BannerDashboard = () => {
   const { designState } = useDesign();
