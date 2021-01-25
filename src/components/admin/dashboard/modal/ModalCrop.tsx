@@ -58,9 +58,7 @@ export const ModalCrop = () => {
       <InputSlider
         title="چرخش تصویر"
         className="w-378px mr-20px"
-        onChange={(value) => {
-          console.log(value);
-        }}
+        onChange={(value) => {}}
       />
       <InputSlider
         title="زوم تصویر"

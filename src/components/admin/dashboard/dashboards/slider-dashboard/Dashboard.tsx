@@ -1,7 +1,7 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign } from 'hooks';
 import { HeaderDrawer, ButtonGroupDrawer } from 'components';
-import { ResponsiveSwitchs, GenericUploader } from '../common';
+import { ResponsiveSwitchs, BackgroundUploader } from '../common';
 import {
   DndUploadBox,
   SpeedButtonGroup,
@@ -28,7 +28,7 @@ export const SliderDashboard = () => {
         <WidthButtonGroup />
         <EffectDrop />
         <ShowTypeButtonGroup />
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" />
+        <BackgroundUploader />
         <ResponsiveSwitchs />
       </div>
     );

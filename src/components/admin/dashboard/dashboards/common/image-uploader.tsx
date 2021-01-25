@@ -1,19 +1,44 @@
-import { ButtonDrawer, Text } from 'components';
-import { useDesign } from 'hooks';
+import { ButtonDrawer, Text, CheckBox, Input } from 'components';
+import { useClass, useDesign } from 'hooks';
+import { FC } from 'react';
 
-export const ImageUploader = () => {
-  const { setPureImage } = useDesign();
-
+export const ImageUploader: FC<IBannerDashboard> = ({
+  label,
+  number,
+  className,
+  uploaderLabel = 'انتخاب تصویر',
+}) => {
+  const { join } = useClass();
+  const { designState, setPureImage } = useDesign();
+  const { pureImage } = designState;
   return (
-    <div className="w-full ">
-      <Text className="  text-14px text-white_shade-100 text-right">
-        تصویر زمینه
+    <div className={join('w-full', className)}>
+      <Text className="mt-30px mb-14px text-14px text-white_shade-100 text-right">
+        {label}
       </Text>
       <ButtonDrawer
         withUpload
-        text="انتخاب تصویر"
+        text={uploaderLabel}
+        onUpload={(value) => setPureImage({ value, number })}
+      />
+      <Input
+        withLink
+        placeholder={pureImage.number == number ? pureImage.link : ''}
+        variant="inputIcon"
+        className="mt-14px"
+        fontFamily="font-lato"
+        onBlur={(e) => setPureImage({ number, link: e.target.value })}
+      />
+      <CheckBox
         className="mt-15px"
-        onUpload={(value) => setPureImage({ value, number: 'one' })}
+        label="باز کردن صفحه در تب جدید "
+        onClick={() => {
+          setPureImage({
+            number,
+            newTab: pureImage.newTab ? false : true,
+          });
+        }}
+        checked={pureImage.number == number && pureImage.newTab}
       />
     </div>
   );

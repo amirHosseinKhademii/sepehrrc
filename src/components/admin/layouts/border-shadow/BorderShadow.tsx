@@ -7,7 +7,7 @@ export const BorderShadow: FC<IShadow> = ({ children, active }) => {
   return (
     <div
       className={toggle(
-        '',
+        'my-20px',
         'relative pt-12 pb-8 border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
         active
       )}

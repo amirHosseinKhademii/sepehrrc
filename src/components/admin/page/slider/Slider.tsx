@@ -22,7 +22,7 @@ SwiperCore.use([
   EffectFlip,
 ]);
 
-export const Slider = ({ child, speed, button, effect }) => {
+export const Slider = ({ child, speed, screen, button, effect }) => {
   return (
     <Fragment>
       <Swiper
@@ -35,21 +35,22 @@ export const Slider = ({ child, speed, button, effect }) => {
           clickable: true,
         }}
         navigation={{
-          nextEl: '.swiper-button-nexts',
-          prevEl: '.swiper-button-prevs',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
-        className={`h-450px w-full rounded swiper-pagination-hidden`}
+        className={`h-450px ${
+          screen === 'full' ? 'w-screen' : 'w-full'
+        } rounded`}
       >
         {child}
+        <div
+          className={`swiper-button-next ${button === 'first' ? 'hidden' : ''}`}
+        ></div>
+        <div
+          className={`swiper-button-prev ${button === 'first' ? 'hidden' : ''}`}
+        ></div>
       </Swiper>
-
-      <div
-        className={`swiper-button-nexts ${button === 'first' ? 'hidden' : ''}`}
-      ></div>
-      <div
-        className={`swiper-button-prevs ${button === 'first' ? 'hidden' : ''}`}
-      ></div>
       <div
         className={`swiper-paginations ${
           button === 'second'

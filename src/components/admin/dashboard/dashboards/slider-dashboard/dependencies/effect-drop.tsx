@@ -16,7 +16,7 @@ export const EffectDrop = () => {
           { id: 'simple', title: 'ساده' },
         ]}
         onSelect={(effect) => setSetting({ effect })}
-        selected={settings.effect}
+        selected={settings && settings.effect ? settings.effect : 'fade'}
       />
     </div>
   );

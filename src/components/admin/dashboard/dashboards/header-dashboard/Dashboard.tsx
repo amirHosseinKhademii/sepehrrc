@@ -1,7 +1,7 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { StyleBoxHeader, HeaderDrawer, ButtonGroupDrawer } from 'components';
-import { MenuEditGroup, LogoUploader, InputBox } from './dependencies';
-import { GenericUploader } from '../common';
+import { MenuEditGroup, InputBox } from './dependencies';
+import { ImageUploader } from '../common';
 
 export const HeaderDashboard = () => {
   const BaseSetttings = () => {
@@ -9,7 +9,7 @@ export const HeaderDashboard = () => {
       <div className="w-full flex flex-col items-end pt-30px px-20px">
         <StyleBoxHeader />
         <MenuEditGroup />
-        <GenericUploader label="لوگو" text="انتخاب لوگو" withLink withNewTab />
+        <ImageUploader label="لوگو" number="one" uploaderLabel="انتخاب لوگو" />
         <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
         <InputBox
           label="دکمه هدر"
