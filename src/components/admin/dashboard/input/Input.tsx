@@ -18,10 +18,10 @@ export const Input: FC<IInput> = ({
   fontFamily = 'font-body',
   disabled,
 }) => {
-  const { join } = useClass();
+  const { join, toggle } = useClass();
 
   return (
-    <div className="w-full">
+    <div className={toggle('w-full', 'opacity-30', disabled)}>
       {variant === 'input' ? (
         <div className={join('w-full flex flex-col items-end', className)}>
           {label && (
