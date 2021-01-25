@@ -4,6 +4,7 @@ interface ICheckbox {
   onChange?: any;
   checked?: boolean;
   onClick?: any;
+  disabled?: boolean;
 }
 
 export { ICheckbox };

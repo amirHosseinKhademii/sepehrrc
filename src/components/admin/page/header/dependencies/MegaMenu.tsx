@@ -7,7 +7,7 @@ export const MegaMenu = ({ item }) => {
       {item.map((firstLevel) => {
         return (
           <li>
-            <Link href={firstLevel.link}>
+            <Link href={firstLevel.link||''}>
               <a className="flex  w-full">
                 <span className="text-16px">{firstLevel.text}</span>{' '}
                 {!firstLevel.hasSub ? null : (
@@ -20,7 +20,7 @@ export const MegaMenu = ({ item }) => {
                 {firstLevel.subMenus.map((secondLevel) => {
                   return (
                     <li>
-                      <Link href={secondLevel.link}>
+                      <Link href={secondLevel.link||''}>
                         <a className="flex justify-between w-full">
                           <span>{secondLevel.text}</span>{' '}
                           {!secondLevel.hasSub ? null : (
@@ -33,7 +33,7 @@ export const MegaMenu = ({ item }) => {
                           {secondLevel.subMenus.map((thirdLevel) => {
                             return (
                               <li>
-                                <Link href={thirdLevel.link}>
+                                <Link href={thirdLevel.link||''}>
                                   <a className="flex justify-between w-full">
                                     <span>{thirdLevel.text}</span>
                                     {!thirdLevel.hasSub ? null : (
@@ -47,7 +47,7 @@ export const MegaMenu = ({ item }) => {
                                     {thirdLevel.subMenus.map((fourthLevel) => {
                                       return (
                                         <li>
-                                          <Link href={fourthLevel.link}>
+                                          <Link href={fourthLevel.link||''}>
                                             <a className="flex justify-between w-full">
                                               <span>{fourthLevel.text}</span>
                                             </a>

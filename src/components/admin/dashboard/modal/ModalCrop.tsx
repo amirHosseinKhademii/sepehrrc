@@ -45,7 +45,7 @@ export const ModalCrop = () => {
         disabled={isLoading}
         onClick={() => {
           setisLoading(true);
-          setImage(designState.pureImage.value);
+          setImage({ type: 'value', payload: designState.pureImage.value });
         }}
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
