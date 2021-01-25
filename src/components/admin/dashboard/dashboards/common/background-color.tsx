@@ -9,12 +9,12 @@ export const BackgroundColor = () => {
       <div className="flex items-center">
         <input
           type="color"
-          onChange={(e) => setSetting({ 'background-color': e.target.value })}
-          value={designState.current.settings['background-color'] || '#000'}
+          onChange={(e) => setSetting({ backgroundColor: e.target.value })}
+          value={designState.current.settings.backgroundColor || '#fff'}
           className="w-30px h-30px rounded"
         />
         <Text className=" text-white_shade-100 ml-10px">
-          {designState.current.settings['background-color'] || '#D3D546'}
+          {designState.current.settings.backgroundColor || '#fff'}
         </Text>
       </div>
       <Text className=" text-white_shade-100">رنگ زمینه</Text>
