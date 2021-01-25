@@ -17,10 +17,16 @@ export const ProductContainer = ({ items }) => {
   const showPagination = settings && settings?.page !== 'disabled';
 
   const displaySlide = current.settings?.screen == 'slider';
-
   const ProductList = () => {
     return (
-      <div className="container mx-auto p-20px flex flex-col w-full">
+      <div
+        className="container mx-auto p-20px flex flex-col w-full"
+        style={{
+          backgroundColor: `${
+            settings?.backgroundColor ? settings.backgroundColor : '#fff'
+          }`,
+        }}
+      >
         <ProductTitle text={items.title} />
         <ProductGrid
           col={!!items.settings.cols ? items.settings.cols : null}
@@ -50,7 +56,10 @@ export const ProductContainer = ({ items }) => {
           : false
       }
     >
-      <Display>
+      <Display
+        mobile={settings && settings?.mobile}
+        desktop={settings && settings?.monitor}
+      >
         {!displaySlide ? <ProductList /> : <ProductSlider items={items} />}
       </Display>
     </BorderShadow>
