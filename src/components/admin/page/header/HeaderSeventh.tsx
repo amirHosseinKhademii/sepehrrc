@@ -40,7 +40,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-6 flex items-center ">
-            <Navbar direction="horizental" items={item.menuItems} />
+            <Navbar direction="horizental" />
           </div>
           <div className="col-span-1  flex items-center ">
             <HeaderLogo src={item.images} />
@@ -52,11 +52,11 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
       </div>
       <div className="bg-red-600 text-white">
         <div
-          className={`grid  grid-cols-12    w-full  min-h-58px container mx-auto  p-20px`}
+          className={`grid  grid-cols-12    w-full container mx-auto  p-20px`}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <MegaMenu item={item.megaMenu} />
+            <MegaMenu />
           </div>
           <div className="col-span-3 ">
             <a

@@ -1,13 +1,167 @@
 import { ICAngleDown } from 'icons';
 import Link from 'next/link';
-
-export const MegaMenu = ({ item }) => {
+const item = [
+  {
+    text: 'محصولات نظافت خودرو',
+    link: '',
+    hasSub: true,
+    subMenus: [
+      {
+        text: 'نظاافت الفا',
+        link: '',
+        hasSub: true,
+        subMenus: [
+          {
+            text: 'نظافت 1',
+            link: '',
+            hasSub: true,
+            subMenus: [
+              {
+                text: 'نظافت 4',
+                link: '',
+              },
+            ],
+          },
+          {
+            text: 'نظافت 2',
+            link: '',
+          },
+          {
+            text: 'نظافت 1',
+            link: '',
+          },
+          {
+            text: 'نظافت 1',
+            link: '',
+          },
+        ],
+      },
+      {
+        text: 'نظافت 2',
+        link: '',
+      },
+      {
+        text: 'نظافت 3',
+        link: '',
+      },
+      {
+        text: 'نظافت 4',
+        link: '',
+      },
+      {
+        text: 'نظافت 5',
+        link: '',
+      },
+    ],
+  },
+  {
+    text: 'محصولات نرم افزاری',
+    link: '',
+    hasSub: true,
+    subMenus: [
+      {
+        text: 'نرم افزار الفا',
+        link: '',
+        hasSub: true,
+        subMenus: [
+          {
+            text: 'نرم افزار 1',
+            link: '',
+          },
+          {
+            text: 'نرم افزار 1',
+            link: '',
+          },
+          {
+            text: 'نرم افزار 1',
+            link: '',
+          },
+          {
+            text: 'نرم افزار 1',
+            link: '',
+          },
+        ],
+      },
+      {
+        text: 'نرم افزار 2',
+        link: '',
+      },
+      {
+        text: 'نرم افزار 3',
+        link: '',
+      },
+      {
+        text: 'نرم افزار 4',
+        link: '',
+      },
+      {
+        text: 'نرم افزار 5',
+        link: '',
+      },
+    ],
+  },
+  {
+    text: ' ابزار تعمیرات خودرو',
+    link: '',
+    hasSub: true,
+    subMenus: [
+      {
+        text: 'ابزار  الفا',
+        link: '',
+        hasSub: true,
+        subMenus: [
+          {
+            text: 'ابزار 1',
+            link: '',
+          },
+          {
+            text: 'ابزار 1',
+            link: '',
+          },
+          {
+            text: 'ابزار 1',
+            link: '',
+          },
+          {
+            text: 'ابزار 1',
+            link: '',
+          },
+        ],
+      },
+      {
+        text: 'ابزار 2',
+        link: '',
+      },
+      {
+        text: 'ابزار 3',
+        link: '',
+      },
+      {
+        text: 'ابزار 4',
+        link: '',
+      },
+      {
+        text: 'ابزار 5',
+        link: '',
+      },
+    ],
+  },
+  {
+    text: ' درباره ما',
+    link: '',
+  },
+  {
+    text: ' ارتباط با ما',
+    link: '',
+  },
+];
+export const MegaMenu = () => {
   return (
     <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
-      {item.map((firstLevel) => {
+      {item.map((firstLevel, index) => {
         return (
-          <li>
-            <Link href={firstLevel.link||''}>
+          <li key={index}>
+            <Link href={firstLevel.link || ''}>
               <a className="flex  w-full">
                 <span className="text-16px">{firstLevel.text}</span>{' '}
                 {!firstLevel.hasSub ? null : (
@@ -17,10 +171,10 @@ export const MegaMenu = ({ item }) => {
             </Link>
             {!firstLevel.hasSub ? null : (
               <ul>
-                {firstLevel.subMenus.map((secondLevel) => {
+                {firstLevel.subMenus.map((secondLevel, index) => {
                   return (
-                    <li>
-                      <Link href={secondLevel.link||''}>
+                    <li key={index}>
+                      <Link href={secondLevel.link || ''}>
                         <a className="flex justify-between w-full">
                           <span>{secondLevel.text}</span>{' '}
                           {!secondLevel.hasSub ? null : (
@@ -30,10 +184,10 @@ export const MegaMenu = ({ item }) => {
                       </Link>
                       {!secondLevel.hasSub ? null : (
                         <ul>
-                          {secondLevel.subMenus.map((thirdLevel) => {
+                          {secondLevel.subMenus.map((thirdLevel, index) => {
                             return (
-                              <li>
-                                <Link href={thirdLevel.link||''}>
+                              <li key={index}>
+                                <Link href={thirdLevel.link || ''}>
                                   <a className="flex justify-between w-full">
                                     <span>{thirdLevel.text}</span>
                                     {!thirdLevel.hasSub ? null : (
@@ -44,17 +198,19 @@ export const MegaMenu = ({ item }) => {
 
                                 {!thirdLevel.hasSub ? null : (
                                   <ul>
-                                    {thirdLevel.subMenus.map((fourthLevel) => {
-                                      return (
-                                        <li>
-                                          <Link href={fourthLevel.link||''}>
-                                            <a className="flex justify-between w-full">
-                                              <span>{fourthLevel.text}</span>
-                                            </a>
-                                          </Link>
-                                        </li>
-                                      );
-                                    })}
+                                    {thirdLevel.subMenus.map(
+                                      (fourthLevel, index) => {
+                                        return (
+                                          <li key={index}>
+                                            <Link href={fourthLevel.link || ''}>
+                                              <a className="flex justify-between w-full">
+                                                <span>{fourthLevel.text}</span>
+                                              </a>
+                                            </Link>
+                                          </li>
+                                        );
+                                      }
+                                    )}
                                   </ul>
                                 )}
                               </li>

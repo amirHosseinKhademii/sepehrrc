@@ -79,7 +79,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12    w-full h-122px  container mx-auto p-20px`}
+          className={` grid  grid-cols-12    w-full h-122px  container mx-auto px-20px`}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center justify-start ">
@@ -92,19 +92,19 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
             <Actions />
             <HeaderButton
               className="mr-25px"
-              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px  container mx-auto p-20px `}
+        className={`grid  grid-cols-12   w-full   container mx-auto px-20px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu item={item.megaMenu} />
+          <MegaMenu />
         </div>
-        <div className="col-span-3 flex items-center justify-end text-24px">
+        <div className="col-span-3 flex  justify-end text-24px mt-20px">
           <Social />
         </div>
       </div>

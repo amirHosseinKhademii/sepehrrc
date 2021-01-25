@@ -42,14 +42,14 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
           <HeaderLogo src={item.images} />
         </div>
         <div className="col-span-6 flex items-center mr-6 ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-4 flex items-center justify-end">
           <Actions />
 
           <HeaderButton
             className=" mr-35px"
-            text={!item.buttonText ? 'محصولات فروشگاه' : item.buttonText}
+            text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
           />
         </div>
       </div>

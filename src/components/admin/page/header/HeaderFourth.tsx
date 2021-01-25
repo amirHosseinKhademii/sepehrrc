@@ -75,7 +75,7 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={`grid  grid-cols-12 w-full h-122px container mx-auto     p-20px `}
+          className={`grid  grid-cols-12 w-full h-122px container mx-auto     px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
@@ -88,17 +88,17 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
             <Actions />
             <HeaderButton
               className=" mr-35px  "
-              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px   container mx-auto p-20px`}
+        className={`grid  grid-cols-12   w-full h-58px   container mx-auto px-20px`}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">
           <Social />
