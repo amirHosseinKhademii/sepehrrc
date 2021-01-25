@@ -1,21 +1,22 @@
 import { FC } from 'react';
-import { IProductImage } from '../interface';
+import { IProductName } from '../interfaces';
 import { useClass } from 'hooks';
-export const ProductImage: FC<IProductImage> = ({
+export const ProductName: FC<IProductName> = ({
   layout = true,
   className,
   onClick,
-  src,
+  text,
   style,
 }) => {
-  const { toggle } = useClass();
+  const { toggle, join } = useClass();
+
   return (
-    <img
+    <div
       className={toggle('', className, layout)}
       onClick={onClick}
-      src={src}
-      alt="عکس محصول"
       style={style}
-    />
+    >
+      {text}
+    </div>
   );
 };

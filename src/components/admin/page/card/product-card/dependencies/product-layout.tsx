@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IProductCard } from './interfaces';
+import { IProductLayout } from '../interfaces';
 import { useClass } from 'hooks';
-export const ProductCard: FC<IProductCard> = ({
+export const ProductLayout: FC<IProductLayout> = ({
   layout = true,
   className,
   onClick,
