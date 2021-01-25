@@ -9,14 +9,25 @@ export const SliderContainer = ({ item }) => {
   const { uiState } = useUi();
   const { settings } = designState.current;
 
-  useEffect(() => {}, [settings.effect]);
+  useEffect(() => {}, [settings.effect, settings.screen]);
+
+  const handleScreen = () => {
+    switch (settings.screen) {
+      case 'full':
+        return 'w-screen';
+      case 'simple':
+        return 'container mx-auto';
+      default:
+        return 'container mx-auto';
+    }
+  };
 
   const handleChild = () => {
     const arr = [];
     item.images.map((item, index) => {
       arr.push(
-        <SwiperSlide className="swiper-slide" key={index}>
-          <img src={item.value} className="h-full w-full" />
+        <SwiperSlide className="w-full" key={index}>
+          <img src={item.value} className={`h-full w-full`} />
         </SwiperSlide>
       );
     });
@@ -46,17 +57,6 @@ export const SliderContainer = ({ item }) => {
     }
   };
 
-  const handleScreen = () => {
-    switch (settings.screen) {
-      case 'full':
-        return 'w-screen';
-      case 'simple':
-        return 'container mx-auto';
-      default:
-        return 'container mx-auto';
-    }
-  };
-
   return (
     <BorderShadow
       active={
@@ -71,7 +71,8 @@ export const SliderContainer = ({ item }) => {
         {settings.effect === 'simple' ? (
           <Slider
             child={handleChild()}
-            speed={handleSpeed}
+            speed={handleSpeed()}
+            screen={settings.screen}
             button={settings.button}
             effect="slide"
           />
@@ -79,7 +80,8 @@ export const SliderContainer = ({ item }) => {
           <div className="w-full">
             <Slider
               child={handleChild()}
-              speed={handleSpeed}
+              speed={handleSpeed()}
+              screen={settings.screen}
               button={settings.button}
               effect="fade"
             />
