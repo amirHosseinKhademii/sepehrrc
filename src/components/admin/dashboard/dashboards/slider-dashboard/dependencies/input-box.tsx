@@ -3,16 +3,17 @@ import { useDesign } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
-  const { designState, setPureImage } = useDesign();
+  const { designState, setPureImage, setImage } = useDesign();
   const { pureImage } = designState;
   const { number } = designState.current.settings;
+
   return (
     <Fragment>
       <Input
         label="عنوان تصویر"
         className="mt-25px"
         variant="input"
-        onBlur={(e) => setPureImage({ title: e.target.value, number })}
+        onBlur={(e) => setImage({ type: 'title', payload: e.target.value })}
         placeholder={
           pureImage.title ? pureImage.title : 'عنوان را اینجا بنویسید'
         }
@@ -21,7 +22,9 @@ export const InputBox = () => {
         label="توضیحات تصویر"
         className="mt-25px"
         variant="textArea"
-        onBlur={(e) => setPureImage({ description: e.target.value, number })}
+        onBlur={(e) =>
+          setImage({ payload: e.target.value, type: 'description' })
+        }
         placeholder={
           pureImage.description
             ? pureImage.description
@@ -37,15 +40,15 @@ export const InputBox = () => {
         label="لینک تصویر"
         className="mt-14px"
         fontFamily="font-lato"
-        onBlur={(e) => setPureImage({ link: e.target.value, number })}
+        onBlur={(e) => setImage({ type: 'link', payload: e.target.value })}
       />
       <CheckBox
         label="باز کردن در تب جدید"
         className="mt-15px"
         onClick={() => {
-          setPureImage({
-            newTab: pureImage.newTab ? false : true,
-            number,
+          setImage({
+            payload: pureImage.newTab ? false : true,
+            type: 'newTab',
           });
         }}
         checked={pureImage.newTab}
