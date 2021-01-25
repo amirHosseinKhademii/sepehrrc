@@ -2,8 +2,10 @@ import { DrawerLayout } from 'components/admin/layouts';
 import { StyleBoxHeader, HeaderDrawer, ButtonGroupDrawer } from 'components';
 import { MenuEditGroup, InputBox } from './dependencies';
 import { GenericUploader } from '../common';
-
+import { useDesign } from 'hooks';
 export const HeaderDashboard = () => {
+  const { designState } = useDesign();
+  const { current } = designState;
   const BaseSetttings = () => {
     return (
       <div className="w-full flex flex-col items-end pt-30px px-20px">
@@ -17,11 +19,15 @@ export const HeaderDashboard = () => {
           withLink
           withNewTab
         />
-        <InputBox label="شماره تلفن" type="tel" placeholder="0519876543" />
+        <InputBox
+          label="شماره تلفن"
+          type="tel"
+          placeholder={current?.telNumber ? current.telNumber : '02152895658'}
+        />
         <InputBox
           label="دکمه هدر"
           type="button"
-          placeholder="محصولات فروشگاه"
+          placeholder={current?.buttonText ? current.buttonText : 'ورود/عضویت'}
         />
       </div>
     );

@@ -82,7 +82,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <Navbar direction="horizental" items={item.menuItems} />
+            <Navbar direction="horizental" />
           </div>
           <div className="col-span-3 flex items-center justify-end text-24px">
             <Social />
@@ -105,17 +105,17 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
             <Actions />
             <HeaderButton
               className="mr-25px"
-              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12    w-full h-58px  container mx-auto p-20px`}
+        className={`grid  grid-cols-12    w-full container mx-auto `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu item={item.megaMenu} />
+          <MegaMenu />
         </div>
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a

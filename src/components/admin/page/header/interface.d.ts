@@ -1,22 +1,5 @@
 interface IHeader {
-  item: {
-    menuItems: { text: string; link: string }[];
-    buttonText?: string;
-    telNumber?: string;
-    megaMenu: {
-      text: string;
-      link: string;
-      hasSub?: boolean;
-      subMenus?: {
-        text: string;
-        link: string;
-        hasSub?: boolean;
-        subMenus?: {}[];
-      }[];
-    };
-    Button: { text: string };
-    images: { value: string }[];
-  };
+  item: any;
 }
 
 interface IHeaderInput {

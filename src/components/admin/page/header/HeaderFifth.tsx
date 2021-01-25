@@ -35,35 +35,35 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12  w-full h-122px container mx-auto p-20px   `}
+          className={` grid  grid-cols-12  w-full h-122px container mx-auto px-20px   `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
             <HeaderLogo src={item.images} />
           </div>
           <div className="col-span-7 flex items-center mr-6 ">
-            <Navbar direction="horizental" items={item.menuItems} />
+            <Navbar direction="horizental" />
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
             <HeaderButton
               className="mr-25px"
-              text={!item.buttonText ? 'ورود/عضویت' : item.buttonText}
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px   container mx-auto p-20px `}
+        className={`grid  grid-cols-12   w-full   container mx-auto px-20px`}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu item={item.megaMenu} />
+          <MegaMenu />
         </div>
-        <div className="col-span-3  ">
+        <div className="col-span-3 mt-20px ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className=" h-full flex items-center justify-end text-16px "
+            className="  flex items-center justify-end text-16px mt-20px"
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
             <ICPhoneVolume className="mr-4" />

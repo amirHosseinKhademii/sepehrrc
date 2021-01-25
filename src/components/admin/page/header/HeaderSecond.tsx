@@ -32,11 +32,11 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
   return (
     <HeaderLayout>
       <div
-        className={` grid  grid-cols-12 container mx-auto p-20px  w-full h-122px `}
+        className={` grid  grid-cols-12 container mx-auto px-20px  w-full h-122px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-6 flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-1  flex items-center ">
           <HeaderLogo src={item.images} />

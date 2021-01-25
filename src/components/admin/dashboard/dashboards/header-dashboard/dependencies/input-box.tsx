@@ -9,7 +9,7 @@ export const InputBox = ({
   label: string;
   type: string;
 }) => {
-  const { designState, setProps } = useDesign();
+  const { designState, setProps, setSetting } = useDesign();
   const currentStyle = designState.current.settings.style;
 
   if (
@@ -26,7 +26,7 @@ export const InputBox = ({
         </Text>
 
         <Input
-          placeholder="910000000"
+          placeholder={placeholder}
           maxLength={15}
           variant="input"
           withNumber
@@ -42,14 +42,14 @@ export const InputBox = ({
     currentStyle !== 'seventh'
   ) {
     return (
-      <div className="w-full  mb-30px ">
+      <div className="w-full  mb-70px ">
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
 
         <Input
           maxLength={30}
-          placeholder="ورود یا عضویت"
+          placeholder={placeholder}
           variant="input"
           onBlur={(event) =>
             setProps({ key: 'buttonText', value: event.target.value })
