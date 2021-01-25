@@ -15,7 +15,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
   const { current } = designState;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
-  
+
   return (
     <div className={join('w-full', className)}>
       {label && (
