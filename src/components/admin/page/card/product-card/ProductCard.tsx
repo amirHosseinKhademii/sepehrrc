@@ -1,13 +1,13 @@
-import { ProductButton, ProductCard, Price } from 'components';
-import { ProductImage, ProductName } from './dependencies';
+import { ProductButton, Price } from 'components';
+import { ProductImage, ProductName, ProductLayout } from './dependencies';
 
 import { useDesign, useUi } from 'hooks';
 
-export const Product = ({ item }) => {
+export const ProductCard = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   return (
-    <ProductCard
+    <ProductLayout
       className={
         ' bg-white border-2 border-gray-100 shadow-lg rounded-xl  p-40px'
       }
@@ -35,6 +35,6 @@ export const Product = ({ item }) => {
         />
       </div>
       <ProductButton text="افزون به سبد خرید" />
-    </ProductCard>
+    </ProductLayout>
   );
 };

@@ -1,10 +1,8 @@
-interface IProducts {
-  data?: any;
-  title?: string;
-  onlyAvailable?: boolean;
-  onlyDiscounted?: boolean;
-  columnCount?: number;
-  slider?: boolean;
+interface IProductLayout {
+  className?: string;
+  onClick?: any;
+  children?: any;
+  layout?: boolean;
   style?: any;
 }
 
@@ -49,7 +47,7 @@ interface IProductButton {
 }
 
 export {
-  IProducts,
+  IProductLayout,
   IProductCard,
   IProductImage,
   IProductName,

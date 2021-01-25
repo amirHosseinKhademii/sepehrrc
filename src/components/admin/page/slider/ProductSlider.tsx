@@ -1,6 +1,6 @@
 import { Children, FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Product } from 'components';
+import { ProductCard } from 'components';
 interface IProductSlider {
   items: any;
 }
@@ -10,7 +10,7 @@ export const ProductSlider: FC<IProductSlider> = ({ items }) => {
     arr = items.groups[0].groupItems.map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
-          <Product item={item} />
+          <ProductCard item={item} />
         </SwiperSlide>
       );
     });
