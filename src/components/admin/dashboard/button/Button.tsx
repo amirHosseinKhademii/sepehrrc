@@ -7,18 +7,36 @@ export const Button: FC<IButton> = ({
   children,
   onClick,
   disabled,
+  style,
+  withLabel,
+  htmlFor,
 }) => {
   const { join } = useClass();
-  return (
-    <button
-      className={join(
-        'focus:outline-none rounded flex items-center justify-center text-white_shade-100',
-        className
-      )}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </button>
-  );
+  if (withLabel)
+    return (
+      <label
+        htmlFor={htmlFor}
+        className={join(
+          'focus:outline-none rounded flex items-center justify-center text-white_shade-100',
+          className
+        )}
+        style={style}
+      >
+        {children}
+      </label>
+    );
+  else
+    return (
+      <button
+        className={join(
+          'focus:outline-none rounded flex items-center justify-center text-white_shade-100',
+          className
+        )}
+        onClick={onClick}
+        disabled={disabled}
+        style={style}
+      >
+        {children}
+      </button>
+    );
 };

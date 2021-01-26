@@ -11,15 +11,43 @@ export const SettingsDashboard = () => {
       <p className="text-right text-white_shade-100 pt-15px">رنگ ها</p>
       <div className="flex justify-between mt-20px">
         <div className="flex flex-col items-center">
-          <Button className="h-50px bg-alert-900 mr-10px text-14px w-130px ">
-            #de4437
+          <Button
+            className="h-50px mr-10px text-14px w-130px "
+            style={{ backgroundColor: designState.pageSettings.secondary }}
+            withLabel
+            htmlFor="secondary"
+          >
+            {designState.pageSettings.secondary}
           </Button>
+          <input
+            type="color"
+            id="secondary"
+            className="hidden"
+            value={designState.pageSettings.secondary}
+            onChange={(e) =>
+              onPageSetting({ key: 'secondary', value: e.target.value })
+            }
+          />
           <p className="text-gray_shade-300 pt-8px text-14px">رنگ دوم</p>
         </div>
         <div className="flex flex-col items-center">
-          <Button className="h-50px bg-alert-300 text-14px w-130px">
-            #de4437
+          <Button
+            className="h-50px mr-10px text-14px w-130px "
+            style={{ backgroundColor: designState.pageSettings.primary }}
+            withLabel
+            htmlFor="primary"
+          >
+            {designState.pageSettings.primary}
           </Button>
+          <input
+            type="color"
+            id="primary"
+            className="hidden"
+            value={designState.pageSettings.primary}
+            onChange={(e) =>
+              onPageSetting({ key: 'primary', value: e.target.value })
+            }
+          />
           <p className="text-gray_shade-300 pt-8px text-14px">رنگ اصلی</p>
         </div>
       </div>
