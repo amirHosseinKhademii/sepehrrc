@@ -14,14 +14,16 @@ export const CategoryDrop = () => {
           className="w-full h-54px mt-15px"
           options={[
             { id: 'all', title: ' همه دسته ها' },
-            { id: 'simple', title: 'کیف و کفش' },
-            { id: 'simple', title: 'پوشاک' },
-            { id: 'simple', title: 'دیجیتال' },
+            { id: 'bags', title: 'کیف ' },
+            { id: 'clothes', title: 'پوشاک' },
+            { id: 'digital', title: 'دیجیتال' },
           ]}
           onSelect={(category) => setSetting({ category })}
           selected={
             designState.current.settings &&
             designState.current.settings.category
+              ? designState.current.settings.category
+              : 'all'
           }
         />
       </div>
