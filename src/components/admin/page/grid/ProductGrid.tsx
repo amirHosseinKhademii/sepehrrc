@@ -9,13 +9,11 @@ export const ProductGrid: FC<IProductGrid> = ({
   return (
     <div
       className={`grid  
-                 grid-cols-${col ? col : 4} grid-rows-${
-        row ? row : 1
-      } gap-${`${gap}px`}
-      overflow-y-hidden 
+             xs:grid-cols-1  md:grid-cols-2   lg:grid-cols-${
+               col ? col : 4
+             } grid-rows-${row ? row : 1} gap-${`${gap}px`}
       
       `}
-      style={{ gridAutoRows: '0' }}
     >
       {children}
     </div>
