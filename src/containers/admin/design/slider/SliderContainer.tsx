@@ -3,6 +3,7 @@ import { BorderShadow } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
 import { Slider } from 'components';
+import Link from 'next/link';
 
 export const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
@@ -27,7 +28,16 @@ export const SliderContainer = ({ item }) => {
     item.images.map((item, index) => {
       arr.push(
         <SwiperSlide className="w-full" key={index}>
-          <img src={item.value} className={`h-full w-full`} />
+          <Link href={item.link ? item.link : '#'}>
+            <a target={item.newTab ? '_blank' : ''}>
+              <img
+                src={item.value}
+                className={`h-full w-full`}
+                alt={item.title}
+                about={item.description}
+              />
+            </a>
+          </Link>
         </SwiperSlide>
       );
     });
