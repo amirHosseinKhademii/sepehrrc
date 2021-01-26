@@ -14,13 +14,16 @@ export const GridDrops = () => {
         options={[
           { id: '1', title: ' 1' },
           { id: '2', title: '2' },
-          { id: '3', title: ' 3' },
+          { id: '3', title: '3' },
           { id: '4', title: '4' },
         ]}
         onSelect={(rows) => setSetting({ rows })}
         selected={
           designState.current.settings && designState.current.settings.rows
+            ? designState.current.settings.rows
+            : '1'
         }
+        defaultValue="1"
       />
     </div>
   );
@@ -39,6 +42,8 @@ export const GridDrops = () => {
         onSelect={(cols) => setSetting({ cols })}
         selected={
           designState.current.settings && designState.current.settings.cols
+            ? designState.current.settings.cols
+            : '4'
         }
       />
     </div>

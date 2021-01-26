@@ -13,12 +13,16 @@ export const ShowDrop = () => {
         <DropDown
           className="w-full h-54px mt-15px"
           options={[
-            { id: 'new', title: '   جدیدترین محصولات' },
-            { id: 'simple', title: 'پرفروش ترین ها' },
+            { id: 'all', title: 'همه' },
+            { id: 'newests', title: '   جدیدترین محصولات' },
+            { id: 'bestSellers', title: 'پرفروش ترین ها' },
           ]}
-          onSelect={(show) => setSetting({ show })}
+          defaultValue="bestSellers"
+          onSelect={(showby) => setSetting({ showby })}
           selected={
-            designState.current.settings && designState.current.settings.show
+            designState.current.settings && designState.current.settings.showby
+              ? designState.current.settings.showby
+              : 'all'
           }
         />
       </div>

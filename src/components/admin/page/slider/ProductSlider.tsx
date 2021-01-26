@@ -1,17 +1,18 @@
 import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCard } from 'components';
+import { ProductCard, ProductTitle } from 'components';
 import { useDesign } from 'hooks';
 interface IProductSlider {
   items: any;
+  title: string;
 }
 
-export const ProductSlider: FC<IProductSlider> = ({ items }) => {
+export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
   const { designState } = useDesign();
   const { settings } = designState.current;
   const handleChild = () => {
     let arr = [];
-    arr = items.groups[0].groupItems.map((item, index) => {
+    arr = items.map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
           <ProductCard item={item} />
@@ -35,9 +36,7 @@ export const ProductSlider: FC<IProductSlider> = ({ items }) => {
         `}
       ></div>
 
-      <div className="text-center text-4xl font-medium mt-16 mb-12 ">
-        {items.title}
-      </div>
+      <ProductTitle text={title} />
       <Swiper
         slidesPerView={4}
         effect="slide"

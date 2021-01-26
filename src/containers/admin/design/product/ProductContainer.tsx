@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import {
   BorderShadow,
   Display,
@@ -8,6 +10,7 @@ import {
   ProductSlider,
 } from 'components';
 import { useDesign, useUi } from 'hooks';
+import { data } from './data';
 
 export const ProductContainer = ({ items }) => {
   const { designState } = useDesign();
@@ -15,8 +18,52 @@ export const ProductContainer = ({ items }) => {
   const { current } = designState;
   const { settings } = designState.current;
   const showPagination = settings && settings?.page !== 'disabled';
-
   const displaySlide = current.settings?.screen == 'slider';
+
+  const [productData, setproductData] = useState([]);
+
+  const CategoryHandler: Function = (current) => {
+    let productGroup = {};
+    if (
+      current?.settings &&
+      current.settings?.category &&
+      current.settings.category !== 'all'
+    ) {
+      const { category } = current.settings;
+
+      let selectedGroup = data.groups.find((item) => {
+        return item.type === category;
+      });
+      productGroup = selectedGroup;
+    } else {
+      let selectedGroup = data.groups.find((item) => {
+        return item.type === 'all';
+      });
+      productGroup = selectedGroup;
+    }
+    return productGroup;
+  };
+
+  const ShowbyHandler: Function = (current, group) => {
+    let productsToShow = [];
+    if (
+      current?.settings &&
+      current.settings?.showby &&
+      current.settings.showby !== 'all'
+    ) {
+      productsToShow = group[current.settings.showby];
+    } else {
+      productsToShow = group.all;
+    }
+    return productsToShow;
+  };
+
+  useEffect(() => {
+    let productGroup = CategoryHandler(current);
+    let productsToshow = ShowbyHandler(current, productGroup);
+    setproductData(productsToshow);
+  }, [designState]);
+
   const ProductList = () => {
     return (
       <div
@@ -32,7 +79,7 @@ export const ProductContainer = ({ items }) => {
           col={!!items.settings.cols ? items.settings.cols : null}
           row={!!items.settings.rows ? items.settings.rows : null}
         >
-          {items.groups[0].groupItems.map((item, index) => (
+          {productData?.map((item, index) => (
             <ProductCard item={item} key={index} />
           ))}
         </ProductGrid>
@@ -60,7 +107,11 @@ export const ProductContainer = ({ items }) => {
         mobile={settings && settings?.mobile}
         desktop={settings && settings?.monitor}
       >
-        {!displaySlide ? <ProductList /> : <ProductSlider items={items} />}
+        {!displaySlide ? (
+          <ProductList />
+        ) : (
+          <ProductSlider items={productData} title={items.title} />
+        )}
       </Display>
     </BorderShadow>
   );
