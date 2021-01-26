@@ -11,7 +11,7 @@ export const BorderShadow: FC<IShadow> = ({
   return (
     <div
       style={{
-        backgroundImage: `url(${backgroundUrl})`,
+        backgroundImage: `url(${backgroundUrl ? backgroundUrl : ''})`,
         backgroundPosition: 'center center',
       }}
       className={toggle(
