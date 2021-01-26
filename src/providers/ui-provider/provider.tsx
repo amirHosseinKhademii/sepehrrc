@@ -96,6 +96,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.modal,
           open: payload.open,
           editImage: payload.editImage,
+          isBackground: payload.isBackground,
         },
       };
     default:

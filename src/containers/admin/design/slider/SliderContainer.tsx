@@ -66,8 +66,9 @@ export const SliderContainer = ({ item }) => {
           ? true
           : false
       }
+      backgroundUrl={settings.backgroundUrl}
     >
-      <div className={`${handleScreen()} py-10`}>
+      <div className={`${handleScreen()} py-25px `}>
         {settings.effect === 'simple' ? (
           <Slider
             child={handleChild()}

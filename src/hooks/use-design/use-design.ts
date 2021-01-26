@@ -47,6 +47,7 @@ export const useDesign = () => {
       onUpload?: boolean;
       description?: string;
       title?: string;
+      isBackground?: boolean;
     }) => {
       const {
         value,
@@ -56,6 +57,7 @@ export const useDesign = () => {
         onUpload,
         description,
         title,
+        isBackground,
       } = props;
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
@@ -72,7 +74,7 @@ export const useDesign = () => {
           title: title ? title : designState.pureImage.title,
         },
       });
-      if (value) toggleModal({ open: true });
+      if (value) toggleModal({ open: true, isBackground });
     },
     setImage: async ({ type, payload }) => {
       const result =
