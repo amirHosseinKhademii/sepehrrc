@@ -9,6 +9,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
   withNewTab,
   withLink,
   className,
+  isBackground,
 }) => {
   const { join } = useClass();
   const { setPureImage, designState, setImage } = useDesign();
@@ -26,7 +27,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
       <ButtonDrawer
         withUpload
         text={text}
-        onUpload={(value) => setPureImage({ value, number })}
+        onUpload={(value) => setPureImage({ value, number, isBackground })}
       />
       {withLink && (
         <Input

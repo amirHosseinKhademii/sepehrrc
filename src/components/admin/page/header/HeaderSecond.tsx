@@ -10,7 +10,9 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <div className="ml-8px">ورود/عضویت در سایت</div>
+        <Link href="./">
+          <a className="cursor-pointer ml-8px font-bold">ورود/عضویت در سایت</a>
+        </Link>
         <Link href="./">
           <a>
             <ICSearch className="mx-4" />

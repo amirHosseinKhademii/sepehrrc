@@ -11,7 +11,11 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <div className="ml-8px">ورود/عضویت در سایت</div>
+        <Link href="./">
+          <a>
+            <div className="ml-8px cursor-pointer">ورود/عضویت در سایت</div>
+          </a>
+        </Link>
         <Link href="./">
           <a>
             <ICSearch className="mx-4" />
@@ -20,7 +24,6 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mr-4"
         >
           <Link href="./">
             <a>
@@ -36,7 +39,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12 container mx-auto  w-full h-122px p-20px `}
+          className={` grid  grid-cols-12 container mx-auto  w-full h-122px px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-6 flex items-center ">
@@ -50,9 +53,9 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="bg-red-600 text-white">
+      <div className="bg-red-600 text-white ">
         <div
-          className={`grid  grid-cols-12    w-full container mx-auto  p-20px`}
+          className={`grid  grid-cols-12    w-full container mx-auto  px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">

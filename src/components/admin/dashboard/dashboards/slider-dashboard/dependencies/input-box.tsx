@@ -4,8 +4,10 @@ import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
   const { designState, setPureImage, setImage } = useDesign();
-  const { pureImage } = designState;
+  const { pureImage, current } = designState;
   const { number } = designState.current.settings;
+  const currentImage =
+    current.images && current.images.find((item) => item.number == number);
 
   return (
     <Fragment>
@@ -26,8 +28,8 @@ export const InputBox = () => {
           setImage({ payload: e.target.value, type: 'description' })
         }
         placeholder={
-          pureImage.description
-            ? pureImage.description
+          currentImage && currentImage.description
+            ? currentImage.description
             : 'توضیحات را اینجا بنویسید'
         }
       />
@@ -35,7 +37,7 @@ export const InputBox = () => {
       <Text className="mt-25px text-14px text-white_shade-100">لینک تصویر</Text>
       <Input
         withLink
-        placeholder={pureImage.link ? pureImage.link : ''}
+        placeholder={currentImage && currentImage.link ? currentImage.link : ''}
         variant="inputIcon"
         label="لینک تصویر"
         className="mt-14px"
@@ -47,11 +49,12 @@ export const InputBox = () => {
         className="mt-15px"
         onClick={() => {
           setImage({
-            payload: pureImage.newTab ? false : true,
             type: 'newTab',
+            // payload: pureImage.newTab ? false : true,
+            payload: !currentImage || !currentImage.newTab ? true : false,
           });
         }}
-        checked={pureImage.newTab}
+        checked={currentImage && currentImage.newTab}
       />
     </Fragment>
   );

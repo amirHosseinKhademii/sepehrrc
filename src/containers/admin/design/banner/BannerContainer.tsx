@@ -66,7 +66,7 @@ export const BannerContainer = ({ item }) => {
       );
   };
   return (
-    <div className="">
+    <div className="py-25px">
       <Banners />
     </div>
   );

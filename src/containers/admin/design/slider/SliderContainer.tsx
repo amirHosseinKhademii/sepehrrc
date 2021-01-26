@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { BorderShadow } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
-import { Slider } from 'components';
+import { Slider, Display } from 'components';
+import Link from 'next/link';
 
 export const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
@@ -27,7 +28,16 @@ export const SliderContainer = ({ item }) => {
     item.images.map((item, index) => {
       arr.push(
         <SwiperSlide className="w-full" key={index}>
-          <img src={item.value} className={`h-full w-full`} />
+          <Link href={item.link ? item.link : '#'}>
+            <a target={item.newTab ? '_blank' : ''}>
+              <img
+                src={item.value}
+                className={`h-full w-full`}
+                alt={item.title}
+                about={item.description}
+              />
+            </a>
+          </Link>
         </SwiperSlide>
       );
     });
@@ -58,36 +68,39 @@ export const SliderContainer = ({ item }) => {
   };
 
   return (
-    <BorderShadow
-      active={
-        uiState.drawer.style &&
-        designState.current.type == 'slider' &&
-        item.uuid == designState.current.uuid
-          ? true
-          : false
-      }
-    >
-      <div className={`${handleScreen()} py-10`}>
-        {settings.effect === 'simple' ? (
-          <Slider
-            child={handleChild()}
-            speed={handleSpeed()}
-            screen={settings.screen}
-            button={settings.button}
-            effect="slide"
-          />
-        ) : (
-          <div className="w-full">
+    <Display mobile={settings.mobile} desktop={settings.monitor}>
+      <BorderShadow
+        active={
+          uiState.drawer.style &&
+          designState.current.type == 'slider' &&
+          item.uuid == designState.current.uuid
+            ? true
+            : false
+        }
+        backgroundUrl={settings.backgroundUrl}
+      >
+        <div className={`${handleScreen()} py-25px `}>
+          {settings.effect === 'simple' ? (
             <Slider
               child={handleChild()}
               speed={handleSpeed()}
               screen={settings.screen}
               button={settings.button}
-              effect="fade"
+              effect="slide"
             />
-          </div>
-        )}
-      </div>
-    </BorderShadow>
+          ) : (
+            <div className="w-full">
+              <Slider
+                child={handleChild()}
+                speed={handleSpeed()}
+                screen={settings.screen}
+                button={settings.button}
+                effect="fade"
+              />
+            </div>
+          )}
+        </div>
+      </BorderShadow>
+    </Display>
   );
 };
