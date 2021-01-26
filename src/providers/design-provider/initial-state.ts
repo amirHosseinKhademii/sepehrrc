@@ -68,8 +68,8 @@ export const designInitialState = {
     key: 'main',
     titleFont: 'yekan',
     textFont: 'yekan',
-    primary: '',
-    secondary: '',
+    primary: '#f3f3f3',
+    secondary: '#000',
   },
   current: {
     uuid: '',

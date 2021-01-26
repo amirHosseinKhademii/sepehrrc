@@ -23,6 +23,9 @@ interface IButton {
   label?: string;
   groupClass?: string;
   disabled?: boolean;
+  style?: any;
+  withLabel?: boolean;
+  htmlFor?: string;
 }
 
 export { IButton };
