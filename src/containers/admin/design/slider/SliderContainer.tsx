@@ -8,9 +8,9 @@ import Link from 'next/link';
 export const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
-  const { settings } = designState.current;
+  const { settings } = item;
 
-  useEffect(() => {}, [settings.effect, settings.screen]);
+  useEffect(() => {}, [settings]);
 
   const handleScreen = () => {
     switch (settings.screen) {
@@ -56,19 +56,19 @@ export const SliderContainer = ({ item }) => {
         return 2500;
     }
   };
-  const handleEffect = () => {
-    switch (settings.effect) {
-      case 'fade':
-        return 'fade';
-      case 'simple':
-        return 'slide';
-      default:
-        return 'fade';
-    }
-  };
+  // const handleEffect = () => {
+  //   switch (settings.effect) {
+  //     case 'fade':
+  //       return 'fade';
+  //     case 'simple':
+  //       return 'slide';
+  //     default:
+  //       return 'fade';
+  //   }
+  // };
 
   return (
-    <Display mobile={settings.mobile} desktop={settings.monitor}>
+    <Display mobile={settings?.mobile} desktop={settings?.monitor}>
       <BorderShadow
         active={
           uiState.drawer.style &&
@@ -77,15 +77,19 @@ export const SliderContainer = ({ item }) => {
             ? true
             : false
         }
-        backgroundUrl={settings.backgroundUrl}
+        backgroundUrl={item.backgroundImage}
       >
-        <div className={`${handleScreen()} py-25px `}>
-          {settings.effect === 'simple' ? (
+        <div
+          className={`${
+            settings.screen ? handleScreen() : 'container mx-auto'
+          } py-25px `}
+        >
+          {settings?.effect === 'simple' ? (
             <Slider
               child={handleChild()}
-              speed={handleSpeed()}
-              screen={settings.screen}
-              button={settings.button}
+              speed={settings.speed ? handleSpeed() : 2500}
+              screen={settings?.screen}
+              button={settings?.button}
               effect="slide"
             />
           ) : (
@@ -93,8 +97,8 @@ export const SliderContainer = ({ item }) => {
               <Slider
                 child={handleChild()}
                 speed={handleSpeed()}
-                screen={settings.screen}
-                button={settings.button}
+                screen={settings?.screen}
+                button={settings?.button}
                 effect="fade"
               />
             </div>

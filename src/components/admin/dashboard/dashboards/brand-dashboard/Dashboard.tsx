@@ -15,7 +15,7 @@ export const BrandDashboard = () => {
         <TitleInput />
         <ImageButtons />
         <DropDownGroup />
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" />
+        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
         <BackgroundColor />
         <ResponsiveSwitchs />
       </div>

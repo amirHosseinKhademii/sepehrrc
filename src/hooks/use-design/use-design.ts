@@ -6,7 +6,7 @@ export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
   const { upload } = useService();
   const { toggleModal } = useUi();
-
+  
   return {
     onHorizontalDrop: (drop) => (dropResult) => {
       if (drop.willAcceptDrop && drop.payload === dropResult.payload)
@@ -72,19 +72,33 @@ export const useDesign = () => {
             ? description
             : designState.pureImage.description,
           title: title ? title : designState.pureImage.title,
+          isBackground:
+            isBackground !== undefined
+              ? isBackground
+              : designState.pureImage.isBackground,
         },
       });
-      if (value) toggleModal({ open: true, isBackground });
+      if (value) toggleModal({ open: true });
     },
-    setImage: async ({ type, payload }) => {
+    setImage: async ({ key, payload }) => {
       const result =
-        type == 'value' ? await upload(payload) : { data: { secure_url: '' } };
-      designDispatch({
-        type: designTypes.ON_SET_ITEM_IMAGES,
-        payload: {
-          [type]: type === 'value' ? result.data.secure_url : payload,
-        },
-      });
+        key == 'value' || key === 'backgroundImage'
+          ? await upload(payload)
+          : { data: { secure_url: '' } };
+
+      if (key == 'backgroundImage') {
+        designDispatch({
+          type: designTypes.ON_SET_ITEM_PROPS,
+          payload: { key, value: result.data.secure_url },
+        });
+      }
+      else
+        designDispatch({
+          type: designTypes.ON_SET_ITEM_IMAGES,
+          payload: {
+            [key]: key === 'value' ? result.data.secure_url : payload,
+          },
+        });
       toggleModal({ open: false });
     },
     designState,

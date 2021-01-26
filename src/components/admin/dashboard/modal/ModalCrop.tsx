@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal, ButtonAction, Range } from 'components';
 import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
-import { useClass, useDesign, useUi, useService } from 'hooks';
+import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 
@@ -11,22 +11,23 @@ export const ModalCrop = () => {
     zoom: 0,
     rotate: 0,
   });
-  const { designState, setImage, setSetting } = useDesign();
-  const { uiState, toggleModal } = useUi();
+  const { designState, setImage } = useDesign();
+  const { uiState } = useUi();
   const { toggle } = useClass();
-  const { upload } = useService();
   const cropperRef = useRef(null);
   const currentImages = designState.current.images;
   const selectedImage = designState.current.settings.number;
 
   const handleSubmit = async () => {
     setisLoading(true);
-    if (uiState.modal.isBackground) {
-      const resualt = await upload(designState.pureImage.value);
-      setSetting({ backgroundUrl: resualt.data.secure_url });
-      toggleModal({ open: false });
-    } else setImage({ type: 'value', payload: designState.pureImage.value });
+    if (designState.pureImage.isBackground) {
+      setImage({
+        key: 'backgroundImage',
+        payload: designState.pureImage.value,
+      });
+    } else setImage({ key: 'value', payload: designState.pureImage.value });
   };
+
   const ModalImage = ({ src }) => (
     <div className="relative w-full bg-gray-700">
       <img
@@ -90,6 +91,7 @@ export const ModalCrop = () => {
 
     // operations.zoom && cropper.zoom(0.1);
   }, [operations]);
+
   if (uiState.modal.editImage) {
     return (
       <Modal open={uiState.modal.open}>
