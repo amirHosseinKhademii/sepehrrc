@@ -5,4 +5,5 @@ interface IGenericUploader {
   withNewTab?: boolean;
   withLink?: boolean;
   className?: string;
+  isBackground?: boolean;
 }
