@@ -35,7 +35,6 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mr-4"
         >
           <Link href="./">
             <a>
@@ -78,7 +77,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="bg-gray_shade-700 text-white">
         <div
-          className={`grid  grid-cols-12    w-full h-58px  container mx-auto `}
+          className={`grid  grid-cols-12    w-full h-58px  container mx-auto px-20px`}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
@@ -92,7 +91,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
 
       <div className="border-b-2">
         <div
-          className={`grid  grid-cols-12   w-full h-122px container mx-auto p-20px `}
+          className={`grid  grid-cols-12   w-full h-122px container mx-auto px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center">
@@ -111,7 +110,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12    w-full container mx-auto `}
+        className={`grid  grid-cols-12    w-full container mx-auto px-20px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">

@@ -1,14 +1,19 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
 import {
-  ICSearch,
+  Navbar,
+  HeaderLogo,
+  HeaderInput,
+  HeaderLayout,
+  HeaderCategory,
+} from './dependencies';
+import {
   ICShoppingCart,
-  ICUsersAlt,
   ICWhatsapp,
   ICTwitter,
   ICTelegram,
   ICInstagram,
+  ICPhoneVolume,
 } from 'icons';
 import { Badge, HeaderButton } from 'components';
 import Link from 'next/link';
@@ -19,15 +24,19 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <Link href="./">
-          <a>
-            <ICSearch className="mx-2" />
-          </a>
-        </Link>
+        <a
+          href={`tel:+98${!item.telNumber ? '09100000000' : item.telNumber}`}
+          className="flex text-16px"
+        >
+          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+          <ICPhoneVolume className="mr-4" />
+        </a>
+
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mx-2"
+          root="mr-20px"
         >
           <Link href="./">
             <a>
@@ -35,11 +44,6 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
             </a>
           </Link>
         </Badge>
-        <Link href="./">
-          <a>
-            <ICUsersAlt className="mx-2" />
-          </a>
-        </Link>
       </>
     );
   };
@@ -98,6 +102,8 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
+          <HeaderCategory />
+
           <Navbar direction="horizental" />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">

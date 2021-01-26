@@ -1,6 +1,12 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
+import {
+  Navbar,
+  HeaderLogo,
+  HeaderInput,
+  HeaderLayout,
+  HeaderCategory,
+} from './dependencies';
 import Link from 'next/link';
 import { ICShoppingCart, ICPhoneVolume } from 'icons';
 import { Badge, HeaderButton } from 'components';
@@ -51,6 +57,8 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
+          <HeaderCategory />
+
           <Navbar direction="horizental" />
         </div>
         <div className="col-span-3 ">
