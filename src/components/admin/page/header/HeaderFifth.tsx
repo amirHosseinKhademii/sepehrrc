@@ -20,7 +20,6 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mr-4"
         >
           <Link href="./">
             <a>
@@ -60,7 +59,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         <div className="col-span-9  flex items-center ">
           <MegaMenu />
         </div>
-        <div className="col-span-3 mt-20px ">
+        <div className="col-span-3 ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
             className="  flex items-center justify-end text-16px mt-20px"

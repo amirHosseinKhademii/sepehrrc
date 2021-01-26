@@ -22,7 +22,7 @@ export const HeaderDashboard = () => {
         <InputBox
           label="شماره تلفن"
           type="tel"
-          placeholder={current?.telNumber ? current.telNumber : '02152895658'}
+          placeholder={current?.telNumber ? current.telNumber : '09100000000'}
         />
         <InputBox
           label="دکمه هدر"

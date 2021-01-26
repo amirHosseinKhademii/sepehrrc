@@ -1,5 +1,6 @@
 export * from './edit-alt';
 export * from './plus';
+export * from './bars';
 export * from './setting';
 export * from './menu';
 export * from './multiply';

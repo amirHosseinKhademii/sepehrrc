@@ -16,7 +16,6 @@ export const InputBox = ({
     type === 'tel' &&
     currentStyle !== 'first' &&
     currentStyle !== 'second' &&
-    currentStyle !== 'fourth' &&
     currentStyle
   ) {
     return (
