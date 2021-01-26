@@ -50,20 +50,20 @@ export const ModalCrop = () => {
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
       </ButtonAction>
-      <div className="flex text-24px  text-white mx-20px">
+      <div className="flex text-24px  text-white mx-10px">
         <ICRotateHorizontal className="fill-current mx-20px cursor-pointer" />
         <ICRotateVertical className="fill-current cursor-pointer" />
         <ICRedo className="fill-current mx-20px cursor-pointer" />
       </div>
       <Range
         title="چرخش تصویر"
-        className="w-378px mr-20px"
+        className="w-370px mr-20px"
         onChange={(value) => {}}
       />
       <Range
         title="زوم تصویر"
         unit="%"
-        className="w-378px"
+        className="w-370px mr-20px"
         value={operations.zoom}
         onChange={(value) => {
           setOperations((prev) => ({ ...prev, zoom: parseInt(value) }));
