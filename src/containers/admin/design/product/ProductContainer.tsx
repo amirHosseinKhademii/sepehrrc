@@ -76,8 +76,12 @@ export const ProductContainer = ({ items }) => {
       >
         <ProductTitle text={items.title} />
         <ProductGrid
-          col={!!items.settings.cols ? items.settings.cols : null}
-          row={!!items.settings.rows ? items.settings.rows : null}
+          col={
+            items?.settings && items.settings?.cols ? items.settings.cols : null
+          }
+          row={
+            items.settings && items.settings?.rows ? items.settings.rows : null
+          }
         >
           {productData?.map((item, index) => (
             <ProductCard item={item} key={index} />
