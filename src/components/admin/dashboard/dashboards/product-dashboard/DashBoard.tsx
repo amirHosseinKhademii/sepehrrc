@@ -31,7 +31,7 @@ export const ProductDashboard = () => {
             <PageButtonGroup />
           </>
         )}
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" />
+        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
         <BackgroundColor />
         <ResponsiveSwitchs />
       </div>

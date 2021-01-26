@@ -65,6 +65,7 @@ export const designReducer = (
           onUpload: payload.onUpload,
           description: payload.description,
           title: payload.title,
+          isBackground: payload.isBackground,
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:

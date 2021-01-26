@@ -5,6 +5,7 @@ export const designInitialState = {
       type: 'slider',
       title: 'اسلایدر',
       images: [],
+      settings: {},
     },
     {
       id: '1',
@@ -85,5 +86,6 @@ export const designInitialState = {
     onUpload: false,
     title: '',
     description: '',
+    isBackground: false,
   },
 };

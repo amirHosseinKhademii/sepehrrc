@@ -38,7 +38,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
             currentImage && currentImage.link ? currentImage.link : ''
           }
           onBlur={(event) => {
-            setImage({ type: 'link', payload: event.target.value });
+            setImage({ key: 'link', payload: event.target.value });
           }}
           disabled={!currentImage || currentImage.value === ''}
         />
@@ -49,7 +49,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
           label="باز کردن صفحه در تب جدید "
           onClick={() => {
             setImage({
-              type: 'newTab',
+              key: 'newTab',
               payload: !currentImage || !currentImage.newTab ? true : false,
             });
           }}
