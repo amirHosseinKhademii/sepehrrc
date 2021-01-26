@@ -11,14 +11,14 @@ export const useUi = () => {
       uiDispatch({ type: uiTypes.DRAWER_MENU });
       uiDispatch({ type: uiTypes.DRAWER_CLOSE });
     },
-    toggleSectionsDrawer: (payload) => {
-      uiDispatch({ type: uiTypes.DRAWER_SECTIONS, payload });
+    toggleSectionsDrawer: () => {
+      uiDispatch({ type: uiTypes.DRAWER_SECTIONS });
     },
-    toggleAddDrawer: (payload) => {
-      uiDispatch({ type: uiTypes.DRAWER_ADD, payload });
+    toggleAddDrawer: () => {
+      uiDispatch({ type: uiTypes.DRAWER_ADD });
     },
-    toggleSettingsDrawer: (payload) => {
-      uiDispatch({ type: uiTypes.DRAWER_SETTINGS, payload });
+    toggleSettingsDrawer: () => {
+      uiDispatch({ type: uiTypes.DRAWER_SETTINGS });
     },
     toggleStyleDrawer: (payload) => {
       uiDispatch({ type: uiTypes.DRAWER_STYLE, payload });

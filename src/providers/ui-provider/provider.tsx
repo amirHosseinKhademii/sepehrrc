@@ -41,7 +41,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           settings: false,
           add: false,
-          sections: payload,
+          sections: !state.drawer.sections,
           style: false,
         },
       };
@@ -52,7 +52,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           sections: false,
           settings: false,
-          add: payload,
+          add: !state.drawer.add,
           style: false,
         },
       };
@@ -63,7 +63,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           sections: false,
           add: false,
-          settings: payload,
+          settings: !state.drawer.settings,
           style: false,
         },
       };

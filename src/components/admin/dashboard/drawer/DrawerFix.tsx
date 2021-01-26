@@ -23,7 +23,7 @@ export const DrawerFix = () => {
   const { designState, setSetting } = useDesign();
 
   const handleClickBackButton = () => {
-    toggleSectionsDrawer(true);
+    toggleSectionsDrawer();
     if (designState.current.type === 'slider')
       setSetting({ imageSetting: false });
   };
@@ -57,7 +57,7 @@ export const DrawerFix = () => {
         ' bg-gray_shade-900',
         uiState.drawer.sections
       )}
-      onClick={() => toggleSectionsDrawer(true)}
+      onClick={() => toggleSectionsDrawer()}
     >
       <ICEditAlt
         className={toggle(
@@ -87,7 +87,7 @@ export const DrawerFix = () => {
         ' bg-gray_shade-900',
         uiState.drawer.add
       )}
-      onClick={() => toggleAddDrawer(true)}
+      onClick={() => toggleAddDrawer()}
     >
       <ICPlus
         className={toggle(
@@ -117,7 +117,7 @@ export const DrawerFix = () => {
         ' bg-gray_shade-900',
         uiState.drawer.settings
       )}
-      onClick={() => toggleSettingsDrawer(true)}
+      onClick={() => toggleSettingsDrawer()}
     >
       <ICSetting
         className={toggle(
