@@ -23,7 +23,7 @@ export const ProductCard = ({ item }) => {
           <Price
             prev
             text={item.price}
-            className=" ml-5px mt-20px text-lg font-bold font-iransans text-red-600 "
+            className=" ml-5px mt-20px text-lg font-bold font-iransans  "
           />
         )}
 
