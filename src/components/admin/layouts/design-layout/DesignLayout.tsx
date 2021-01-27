@@ -20,6 +20,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
             uiState.drawer.style,
           'w-drawerFix'
         )}
+        style={{ backgroundColor: '#ebedf0' }}
       >
         <DesignHeader />
         <div className=" pb-28 w-full h-full">{children}</div>

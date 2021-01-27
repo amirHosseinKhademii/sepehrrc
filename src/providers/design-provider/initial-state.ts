@@ -68,7 +68,7 @@ export const designInitialState = {
     key: 'main',
     titleFont: 'yekanbakh',
     textFont: 'yekanbakh',
-    primary: '#f3f3f3',
+    primary: '#ed1c24',
     secondary: '#000',
   },
   current: {

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-
+import { settings } from 'cluster';
 import {
   BorderShadow,
   Display,
@@ -12,25 +11,28 @@ import {
 import { useDesign, useUi } from 'hooks';
 import { data } from './data';
 
-export const ProductContainer = ({ items }) => {
+export const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { current } = designState;
   const { pageSettings } = designState;
-  const { settings } = designState.current;
-  const showPagination = settings && settings?.page !== 'disabled';
-  const displaySlide = current.settings?.screen == 'slider';
 
-  const [productData, setproductData] = useState([]);
-
-  const CategoryHandler: Function = (current) => {
+  const showPagination =
+    (item?.settings &&
+      item.settings?.page &&
+      item.settings.page !== 'disabled') ||
+    !item?.settings ||
+    !item.settings?.page;
+  const displaySlide =
+    item?.settings && item.settings?.screen && item.settings.screen == 'slider';
+  const CategoryHandler: Function = () => {
     let productGroup = {};
     if (
-      current?.settings &&
-      current.settings?.category &&
-      current.settings.category !== 'all'
+      item?.settings &&
+      item.settings?.category &&
+      item.settings.category !== 'all'
     ) {
-      const { category } = current.settings;
+      const { category } = item.settings;
 
       let selectedGroup = data.groups.find((item) => {
         return item.type === category;
@@ -44,56 +46,67 @@ export const ProductContainer = ({ items }) => {
     }
     return productGroup;
   };
-
-  const ShowbyHandler: Function = (current, group) => {
+  const ShowbyHandler: Function = (group) => {
     let productsToShow = [];
     if (
-      current?.settings &&
-      current.settings?.showby &&
-      current.settings.showby !== 'all'
+      item?.settings &&
+      item.settings?.showby &&
+      item.settings.showby !== 'all'
     ) {
-      productsToShow = group[current.settings.showby];
+      productsToShow = group[item.settings.showby];
     } else {
       productsToShow = group.all;
     }
     return productsToShow;
   };
 
-  useEffect(() => {
-    let productGroup = CategoryHandler(current);
-    let productsToshow = ShowbyHandler(current, productGroup);
-    setproductData(productsToshow);
-  }, [designState]);
+  let productGroup = CategoryHandler();
+  let productsToshow = ShowbyHandler(productGroup);
 
   const ProductList = () => {
     return (
       <div
-        className="container mx-auto p-20px flex flex-col w-full"
+        className="  my-25px  w-full bg-no-repeat"
         style={{
           backgroundColor: `${
-            settings?.backgroundColor ? settings.backgroundColor : '#fff'
+            item?.settings && item.settings?.backgroundColor
+              ? item.settings.backgroundColor
+              : '#ebedf0'
           }`,
+
+          backgroundImage: `url(${
+            item?.backgroundImage ? item.backgroundImage : 'unset'
+          })`,
+          backgroundSize: '100% 100%',
         }}
       >
-        <ProductTitle text={items.title} />
-        <ProductGrid
-          col={
-            items?.settings && items.settings?.cols ? items.settings.cols : null
-          }
-          row={
-            items.settings && items.settings?.rows ? items.settings.rows : null
-          }
-        >
-          {productData?.map((item, index) => (
-            <ProductCard item={item} key={index} />
-          ))}
-        </ProductGrid>
+        <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
+          <ProductTitle
+            text={
+              item?.settings && item.settings?.title
+                ? item.settings.title
+                : item.title
+            }
+          />
+          <ProductGrid
+            col={
+              item?.settings && item.settings?.cols ? item.settings.cols : null
+            }
+            row={
+              item?.settings && item.settings?.rows ? item.settings.rows : null
+            }
+          >
+            {productsToshow?.map((item, index) => (
+              <ProductCard item={item} key={index} />
+            ))}
+          </ProductGrid>
 
-        {showPagination && (
-          <div className="flex justify-center w-full my-20px">
-            <Pagination />
-          </div>
-        )}
+          {showPagination && (
+            <div className="flex justify-center w-full mt-20px">
+              <Pagination />
+            </div>
+          )}
+        </div>
       </div>
     );
   };
@@ -103,7 +116,7 @@ export const ProductContainer = ({ items }) => {
       active={
         uiState.drawer.style &&
         current.type == 'products' &&
-        items.uuid == current.uuid
+        item.uuid == current.uuid
           ? true
           : false
       }
@@ -111,13 +124,21 @@ export const ProductContainer = ({ items }) => {
       fontFamily={pageSettings.textFont}
     >
       <Display
-        mobile={settings && settings?.mobile}
-        desktop={settings && settings?.monitor}
+        mobile={item?.settings && item.settings?.mobile}
+        desktop={item?.settings && item.settings?.monitor}
       >
         {!displaySlide ? (
           <ProductList />
         ) : (
-          <ProductSlider items={productData} title={items.title} />
+          <ProductSlider
+            data={productsToshow}
+            item={item}
+            title={
+              item?.settings && item.settings?.title
+                ? item.settings.title
+                : item.title
+            }
+          />
         )}
       </Display>
     </BorderShadow>
