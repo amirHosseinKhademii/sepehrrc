@@ -1,28 +1,37 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign } from 'hooks';
 import { HeaderDrawer, ButtonGroupDrawer } from 'components';
-import { ResponsiveSwitchs, GenericUploader } from '../common';
 import {
+  ResponsiveSwitchs,
+  GenericUploader,
+  PictureContainer,
   DndUploadBox,
+} from '../common';
+import {
   SpeedButtonGroup,
   WidthButtonGroup,
   EffectDrop,
   ShowTypeButtonGroup,
-  PictureContainer,
   ImageBox,
   InputBox,
 } from './dependencies';
 
 export const SliderDashboard = () => {
-  const { designState, setSetting } = useDesign();
+  const { designState, setSetting, setPureImage } = useDesign();
 
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
         {designState.pureImage.onUpload ? (
-          <DndUploadBox />
+          <DndUploadBox
+            placeholder={{
+              text: 'تصاویر اسلایدر را اینجا آپلود کنید',
+              width: 1326,
+              height: 442,
+            }}
+          />
         ) : (
-          <PictureContainer />
+          <PictureContainer title="تصاویر اسلایدر" count={8} />
         )}
         <SpeedButtonGroup />
         <WidthButtonGroup />
@@ -57,7 +66,9 @@ export const SliderDashboard = () => {
         <>
           <HeaderDrawer setting text="تنظیمات اسلایدر " />
           <BaseSettings />
-          <ButtonGroupDrawer />
+          <ButtonGroupDrawer
+            onCancel={() => setPureImage({ onUpload: false })}
+          />
         </>
       )}
     </DrawerLayout>

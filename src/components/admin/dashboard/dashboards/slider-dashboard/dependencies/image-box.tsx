@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { useDesign, useUi } from 'hooks';
 import { Text } from 'components';
 import { ICEditSettings, ICCropAlt } from 'icons';
-import { DndUploadBox } from './drop-zone';
+import { DndUploadBox } from '../../common/';
 
 export const ImageBox = () => {
   const { designState, setPureImage } = useDesign();
@@ -12,7 +12,14 @@ export const ImageBox = () => {
   return (
     <Fragment>
       {designState.pureImage.onUpload ? (
-        <DndUploadBox number={number} />
+        <DndUploadBox
+          number={number}
+          placeholder={{
+            text: 'تصاویر اسلایدر را اینجا آپلود کنید',
+            width: 1326,
+            height: 442,
+          }}
+        />
       ) : (
         <>
           <img
