@@ -38,6 +38,9 @@ interface IHeaderButton {
   outline?: boolean;
 }
 
+interface IMegaMenu {
+  listClassName?: any;
+}
 export {
   IHeaderButton,
   IHeaderButton,
@@ -46,4 +49,5 @@ export {
   IHeader,
   IHeaderInput,
   IShoppingCart,
+  IMegaMenu,
 };

@@ -11,11 +11,13 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
     return (
       <>
         <Link href="./">
-          <a className="cursor-pointer ml-8px font-bold">ورود/عضویت در سایت</a>
+          <a className="cursor-pointer ml-8px font-bold fill-current">
+            ورود/عضویت در سایت
+          </a>
         </Link>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
         <Badge
@@ -24,7 +26,7 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>

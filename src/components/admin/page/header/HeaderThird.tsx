@@ -24,7 +24,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -68,7 +68,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-            <ICPhoneVolume className="mr-4" />
+            <ICPhoneVolume className="mr-4 fill-current " />
           </a>
         </div>
       </div>
