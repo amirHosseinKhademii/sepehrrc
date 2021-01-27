@@ -7,89 +7,17 @@ interface IProductSlider {
   data: any;
   title: string;
 }
-const bestSellers = [
-  {
-    id: 0,
-    name: 'پرفروش  1 ',
-    cover: '/assets/images/iphone.png',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 1,
 
-    name: 'پرفروش  2 ',
-    cover: '/assets/images/bag.jpg',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 2,
-
-    name: 'پرفروش 3 ',
-    cover: '/assets/images/product.png',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 3,
-
-    name: 'پرفروش 4',
-    cover: '/assets/images/clothes.jpg',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 0,
-    name: 'پرفروش  1 ',
-    cover: '/assets/images/iphone.png',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 1,
-
-    name: 'پرفروش  2 ',
-    cover: '/assets/images/bag.jpg',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 2,
-
-    name: 'پرفروش 3 ',
-    cover: '/assets/images/product.png',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-  {
-    id: 3,
-
-    name: 'پرفروش 4',
-    cover: '/assets/images/clothes.jpg',
-    price: '3/000/000',
-    prevPrice: null,
-    discount: '500000',
-  },
-];
 export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
   const handleChild = () => {
     let arr = [];
-    arr = bestSellers.map((item, index) => {
+    arr = data.map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
           <ProductCard item={item} />
         </SwiperSlide>
       );
     });
-    console.log(arr, 'arr');
     return arr;
   };
 
@@ -128,9 +56,9 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
         className={`h-full w-full rounded  relative swiper-pagination-hidden p-20px`}
       >
         {handleChild()}
-        <div className={`swiper-button-next`}></div>
-        <div className={`swiper-button-prev`}></div>
       </Swiper>
+      <div className={`swiper-button-next`}></div>
+      <div className={`swiper-button-prev`}></div>
     </div>
   );
 };

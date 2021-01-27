@@ -105,6 +105,7 @@ export const ProductContainer = ({ item }) => {
           ? true
           : false
       }
+      backgroundUrl={item.backgroundImage}
       color={pageSettings.secondary}
       fontFamily={pageSettings.textFont}
     >
