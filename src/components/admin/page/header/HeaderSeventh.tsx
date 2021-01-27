@@ -2,12 +2,16 @@ import { FC } from 'react';
 import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout, MegaMenu } from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
+import { useDesign } from 'hooks';
 import { Badge } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
 export const HeaderSeventh: FC<IHeader> = ({ item }) => {
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
+
   const Actions = () => {
     return (
       <>
@@ -18,7 +22,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
         </Link>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
         <Badge
@@ -27,7 +31,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -53,13 +57,16 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="bg-red-600 text-white ">
+      <div
+        className=" text-white "
+        style={{ backgroundColor: `${pageSettings.primary}` }}
+      >
         <div
           className={`grid  grid-cols-12    w-full container mx-auto  px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <MegaMenu />
+            <MegaMenu listClassName="text-black" />
           </div>
           <div className="col-span-3 ">
             <a

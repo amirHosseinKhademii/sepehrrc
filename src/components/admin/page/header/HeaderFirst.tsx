@@ -3,29 +3,32 @@ import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 import { HeaderButton } from 'components';
-import { useUi } from 'hooks';
+import { useUi, useDesign } from 'hooks';
 import Link from 'next/link';
+
 const logo = '/assets/images/logo.png';
 
 export const HeaderFirst: FC<IHeader> = ({ item }) => {
   const { uiState } = useUi();
   const { container } = uiState;
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
   const Actions = () => {
     return (
       <>
         <Link href="/">
           <a>
-            <ICSearch className="mx-2" />
+            <ICSearch className="mx-2 fill-current" />
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICShoppingCart className="mx-2" />{' '}
+            <ICShoppingCart className="mx-2 fill-current" />{' '}
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICUsersAlt className="mx-2" />
+            <ICUsersAlt className="mx-2 fill-current" />
           </a>
         </Link>
       </>

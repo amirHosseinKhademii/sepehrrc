@@ -62,7 +62,10 @@ export const SettingsDashboard = () => {
         </p>
         <div className="felx flex-col mt-20px">
           <DropDown
-            options={[{ id: 'yekan', title: 'یکان یخ' }]}
+            options={[
+              { id: 'yekanbakh', title: 'یکان بخ' },
+              { id: 'iransans', title: 'ایران سنس' },
+            ]}
             className="h-58px"
             onSelect={(value) => onPageSetting({ key: 'titleFont', value })}
             selected={
@@ -72,12 +75,15 @@ export const SettingsDashboard = () => {
         </div>
       </div>
       <div className="flex flex-col px-20px pt-30px">
-        <p className="text-right text-white_shade-100 pt-15px text-14px">
+        <p className="text-right  text-white_shade-100 pt-15px text-14px">
           انتخاب فونت نوشته ها
         </p>
         <div className="felx flex-col mt-20px">
           <DropDown
-            options={[{ id: 'yekan', title: 'یکان یخ' }]}
+            options={[
+              { id: 'yekanbakh', title: 'یکان بخ' },
+              { id: 'iransans', title: 'ایران سنس' },
+            ]}
             className="h-58px"
             onSelect={(value) => onPageSetting({ key: 'textFont', value })}
             selected={

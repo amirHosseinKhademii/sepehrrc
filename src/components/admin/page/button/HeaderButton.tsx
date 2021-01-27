@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { PureButton } from 'components';
-import { useClass } from 'hooks';
+import { useClass, useDesign } from 'hooks';
+
 import { IHeaderButton } from './interfaces';
+
 export const HeaderButton: FC<IHeaderButton> = ({
   text,
   layout = true,
@@ -9,12 +11,18 @@ export const HeaderButton: FC<IHeaderButton> = ({
   className,
 }) => {
   const { join } = useClass();
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
   return (
     <PureButton
       className={join(
-        ' h-50px bg-red-600 text-white px-20px rounded-25px   text-16px border-2 border-red-600 ',
+        ' h-50px  text-white px-20px rounded-25px   text-16px border-2',
         className
       )}
+      style={{
+        backgroundColor: `${pageSettings.primary}`,
+        borderColor: `${pageSettings.primary}`,
+      }}
       text={text}
       layout={layout}
       onClick={onCLick}

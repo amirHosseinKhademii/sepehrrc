@@ -30,7 +30,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
         >
           <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-          <ICPhoneVolume className="mr-4" />
+          <ICPhoneVolume className="mr-4 fill-current" />
         </a>
 
         <Badge
@@ -40,7 +40,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -53,22 +53,22 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
       <>
         <Link href="./">
           <a>
-            <ICWhatsapp className="mx-4" />{' '}
+            <ICWhatsapp className="mx-4  fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTwitter className="mx-4" />{' '}
+            <ICTwitter className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICInstagram className="mx-4" />{' '}
+            <ICInstagram className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTelegram className="mr-4" />{' '}
+            <ICTelegram className="mr-4 fill-current" />{' '}
           </a>
         </Link>
       </>
