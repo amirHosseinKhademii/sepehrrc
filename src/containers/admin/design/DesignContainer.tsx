@@ -28,7 +28,7 @@ export const DesignContainer = () => {
     >
       {designState.pageItems.map((item, index) => (
         <Fragment key={index}>
-          {item.type == 'products' && <ProductContainer items={item} />}
+          {item.type == 'products' && <ProductContainer item={item} />}
           {item.type == 'slider' && <SliderContainer item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
           {item.type == 'brands' && (

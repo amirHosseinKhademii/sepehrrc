@@ -3,22 +3,93 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign } from 'hooks';
 interface IProductSlider {
-  items: any;
+  item: any;
+  data: any;
   title: string;
 }
+const bestSellers = [
+  {
+    id: 0,
+    name: 'پرفروش  1 ',
+    cover: '/assets/images/iphone.png',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 1,
 
-export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
-  const { designState } = useDesign();
-  const { settings } = designState.current;
+    name: 'پرفروش  2 ',
+    cover: '/assets/images/bag.jpg',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 2,
+
+    name: 'پرفروش 3 ',
+    cover: '/assets/images/product.png',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 3,
+
+    name: 'پرفروش 4',
+    cover: '/assets/images/clothes.jpg',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 0,
+    name: 'پرفروش  1 ',
+    cover: '/assets/images/iphone.png',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 1,
+
+    name: 'پرفروش  2 ',
+    cover: '/assets/images/bag.jpg',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 2,
+
+    name: 'پرفروش 3 ',
+    cover: '/assets/images/product.png',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+  {
+    id: 3,
+
+    name: 'پرفروش 4',
+    cover: '/assets/images/clothes.jpg',
+    price: '3/000/000',
+    prevPrice: null,
+    discount: '500000',
+  },
+];
+export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
   const handleChild = () => {
     let arr = [];
-    arr = items.map((item, index) => {
+    arr = bestSellers.map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
           <ProductCard item={item} />
         </SwiperSlide>
       );
     });
+    console.log(arr, 'arr');
     return arr;
   };
 
@@ -27,7 +98,9 @@ export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
       className="container relative  mx-auto p-20px  flex flex-col"
       style={{
         backgroundColor: `${
-          settings?.backgroundColor ? settings.backgroundColor : '#fff'
+          item?.settings && item.settings?.backgroundColor
+            ? item.settings.backgroundColor
+            : '#fff'
         }`,
       }}
     >
