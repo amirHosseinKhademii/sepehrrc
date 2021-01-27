@@ -1,13 +1,17 @@
 import { FC } from 'react';
 import { ICEllipsisH } from 'icons';
-
+import { useDesign } from 'hooks';
 export const Pagination: FC = () => {
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
+
   const PageBox = ({ number, active = false }) => {
     return (
       <div
         className={`w-50px h-50px flex justify-center items-center mx-5px shadow-custom-1 rounded-7px cursor-pointer ${
-          active ? 'bg-red-500 text-white' : 'bg-white text-black'
+          active ? ' text-white' : ' text-black'
         }`}
+        style={{ backgroundColor: `${active ? pageSettings.primary : '#fff'}` }}
       >
         <span className="font-iransans">{number} </span>
       </div>
