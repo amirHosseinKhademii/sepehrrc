@@ -1,48 +1,23 @@
 import { Brand } from 'components';
 import { SwiperSlide } from 'swiper/react';
+import { useDesign, useUi } from 'hooks';
+import { BorderShadow } from 'components';
+import { Display } from 'components';
 
 export const BrandContainer = ({ item }) => {
-  const data = [
-    {
-      id: 0,
-      name: 'test',
-    },
-    {
-      id: 1,
-      name: 'test1',
-    },
-    {
-      id: 2,
-      name: 'test2',
-    },
-    {
-      id: 3,
-      name: 'test3',
-    },
-    {
-      id: 4,
-      name: 'test4',
-    },
-    {
-      id: 5,
-      name: 'test5',
-    },
-    {
-      id: 6,
-      name: 'test6',
-    },
-    {
-      id: 7,
-      name: 'test7',
-    },
-  ];
+  const { designState } = useDesign();
+  const { uiState } = useUi();
+  const { settings } = item;
 
   const handleChild = () => {
     const arr = [];
-    data.map((item, index) => {
+    item.images.map((item, index) => {
       arr.push(
-        <SwiperSlide key={index} className="flex bg-blue-500">
-          {item.name}
+        <SwiperSlide
+          key={index}
+          className="flex justify-center items-center bg-white h-107px rounded-lg"
+        >
+          <img src={item.value} className={`h-54px w-121px `} />
         </SwiperSlide>
       );
     });
@@ -50,8 +25,29 @@ export const BrandContainer = ({ item }) => {
   };
 
   return (
-    <div className={`container mx-auto py-25px`}>
-      <Brand child={handleChild()} />
-    </div>
+    <Display mobile={settings?.mobile} desktop={settings?.monitor}>
+      <BorderShadow
+        active={
+          uiState.drawer.style &&
+          designState.current.type == 'slider' &&
+          item.uuid == designState.current.uuid
+            ? true
+            : false
+        }
+        backgroundUrl={item.backgroundImage}
+        backgroundColor={
+          item.settings?.backgroundColor
+            ? item.settings.backgroundColor
+            : 'bg-gray_shade-100'
+        }
+      >
+        <div
+          style={{ width: '1326px' }}
+          className={`h-224px flex justify-center items-center mx-auto my-25px`}
+        >
+          <Brand child={handleChild()} slidesPerView={settings?.col} />
+        </div>
+      </BorderShadow>
+    </Display>
   );
 };

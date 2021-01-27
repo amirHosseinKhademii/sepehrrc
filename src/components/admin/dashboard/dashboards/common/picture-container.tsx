@@ -2,22 +2,27 @@ import { useDesign } from 'hooks';
 import { Text } from 'components';
 import { PictureButton } from './picture-button';
 
-export const PictureContainer = () => {
+export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
   const { designState } = useDesign();
+  let newArr = [];
+  let arr = [];
   let imagesData = designState.current.images;
   const imagesDataLength = imagesData.length;
-  const need = 8 - imagesDataLength;
-  const arr = Array.from(Array(need).keys());
-  const newArr = [...imagesData, ...arr];
+  let need = 8 - imagesDataLength;
+  if (imagesDataLength > 8) {
+    arr = Array.from(Array(1).keys());
+  } else if (imagesDataLength === count) {
+    arr = [];
+  } else {
+    arr = Array.from(Array(need).keys());
+  }
+  newArr = [...imagesData, ...arr];
   return (
-    <div className="w-full felx flex-col  ">
+    <div className={`mt-${marginTop} w-full felx flex-col`}>
       <Text className=" mb-6px text-14px text-white_shade-100 text-right">
-        تصاویر اسلایدر
+        {title}
       </Text>
-      <div
-        dir="rtl"
-        className="w-full h-130px grid grid-cols-4 grid-rows-2 gap-10px"
-      >
+      <div dir="rtl" className={`w-full h-auto grid grid-cols-4 gap-10px`}>
         {newArr.map((item, index) => {
           return (
             <PictureButton

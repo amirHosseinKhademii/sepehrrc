@@ -22,16 +22,15 @@ SwiperCore.use([
   EffectFlip,
 ]);
 
-export const Brand = ({ child }) => {
+export const Brand = ({ child, slidesPerView = 4 }) => {
   return (
     <Swiper
-      slidesPerView={4}
-      spaceBetween={100}
-      //   effect="slide"
       grabCursor
+      slidesPerView={slidesPerView}
+      spaceBetween={30}
       speed={2500}
-      // autoplay={{ delay: 200, disableOnInteraction: false }}
-      className={`h-450px w-full rounded`}
+      autoplay={{ delay: 200, disableOnInteraction: false }}
+      className={`h-107px w-full rounded`}
     >
       {child}
     </Swiper>

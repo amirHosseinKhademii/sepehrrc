@@ -11,8 +11,10 @@ export const PictureButton: FC<{
   if (withAdd)
     return (
       <div
-        onClick={() => setPureImage({ onUpload: true, number })}
-        className="w-full h-full flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer "
+        onClick={() =>
+          setPureImage({ onUpload: true, number, isBackground: false })
+        }
+        className="w-full h-60px flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer "
       >
         <ICPlus fill="#fff" />
       </div>
@@ -20,13 +22,15 @@ export const PictureButton: FC<{
   else if (picture)
     return (
       <img
-        onClick={() => setSetting({ imageSetting: true, number })}
-        className="w-full h-full rounded cursor-pointer"
+        onClick={() =>
+          setSetting({ imageSetting: true, number, isBackground: false })
+        }
+        className="w-full h-60px rounded cursor-pointer"
         src={picture}
       />
     );
   else
     return (
-      <div className="w-full h-full rounded bg-gray_shade-800 opacity-30"></div>
+      <div className="h-60px flex rounded bg-gray_shade-800 opacity-30"></div>
     );
 };
