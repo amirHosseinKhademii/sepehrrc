@@ -10,7 +10,7 @@ export const HeaderCategory: FC<IHEaderCategory> = () => {
     <div>
       <Link href="./">
         <a>
-          <div className="text-black flex ml-30px category ">
+          <div className=" flex ml-30px category ">
             <ICBars className="text-24px fill-current" />
             <div className="mr-5px text-16px font-bold"> دسته بندی محصولت</div>
           </div>

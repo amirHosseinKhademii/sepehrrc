@@ -18,17 +18,19 @@ import {
   ICWhatsapp,
 } from 'icons';
 import Link from 'next/link';
-import { PureInput } from 'components/admin/pure';
-
+import { useDesign } from 'hooks';
 const logo = '/assets/images/logo.png';
 
 export const HeaderEighth: FC<IHeader> = ({ item }) => {
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
+
   const Actions = () => {
     return (
       <>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
 
@@ -38,7 +40,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -75,7 +77,10 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
 
   return (
     <HeaderLayout>
-      <div className="bg-gray_shade-700 text-white">
+      <div
+        className=" text-white"
+        style={{ backgroundColor: `${pageSettings.primary}` }}
+      >
         <div
           className={`grid  grid-cols-12    w-full h-58px  container mx-auto px-20px`}
           style={{ direction: 'rtl' }}
@@ -122,7 +127,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
             className=" h-full flex items-center justify-end  text-16px"
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4" />
+            <ICPhoneVolume className="mr-4 fill-current" />
           </a>
         </div>
       </div>

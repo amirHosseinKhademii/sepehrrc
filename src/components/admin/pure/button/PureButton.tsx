@@ -5,9 +5,14 @@ export const PureButton: FC<IPureButton> = ({
   layout = true,
   text,
   onClick,
+  style,
 }) => {
   return (
-    <button className={layout ? className : ''} onClick={onClick}>
+    <button
+      className={layout ? className : ''}
+      onClick={onClick}
+      style={layout ? style : null}
+    >
       {text}
     </button>
   );

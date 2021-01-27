@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IPrice } from './interfaces';
-import { useClass } from 'hooks';
+import { useClass, useDesign } from 'hooks';
 export const Price: FC<IPrice> = ({
   layout = true,
   className,
@@ -13,12 +13,16 @@ export const Price: FC<IPrice> = ({
   text,
 }) => {
   const { toggle, join } = useClass();
-
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
+  let color = {
+    color: `${prev ? pageSettings.primary : 'inherit'}`,
+  };
   return (
     <div
-      className={toggle(`${prev ? 'line-through' : ''}`, className, layout)}
+      className={toggle(`${prev ? 'line-through ' : ''}`, className, layout)}
       onClick={onClick}
-      style={style}
+      style={{ ...color, ...style }}
     >
       {text}
       {withUnit && (

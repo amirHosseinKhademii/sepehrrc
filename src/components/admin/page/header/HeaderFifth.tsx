@@ -14,7 +14,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
       <>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
         <Badge
@@ -23,7 +23,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -65,7 +65,7 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
             className="  flex items-center justify-end text-16px mt-20px"
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4" />
+            <ICPhoneVolume className="mr-4 fill-current" />
           </a>
         </div>
       </div>

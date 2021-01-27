@@ -1,4 +1,6 @@
 import { ICAngleDown } from 'icons';
+import { FC } from 'react';
+import { IMegaMenu } from '../interface';
 import Link from 'next/link';
 const item = [
   {
@@ -155,7 +157,8 @@ const item = [
     link: '',
   },
 ];
-export const MegaMenu = () => {
+
+export const MegaMenu: FC<IMegaMenu> = ({ listClassName }) => {
   return (
     <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
       {item.map((firstLevel, index) => {
@@ -170,7 +173,7 @@ export const MegaMenu = () => {
               </a>
             </Link>
             {!firstLevel.hasSub ? null : (
-              <ul>
+              <ul className={listClassName}>
                 {firstLevel.subMenus.map((secondLevel, index) => {
                   return (
                     <li key={index}>
@@ -283,7 +286,7 @@ export const MegaMenu = () => {
             box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.16);
             transition: all 0.3s;
             z-index: 50;
-            color: black;
+            // color: black;
           }
 
           .MegaMenu ul ul {

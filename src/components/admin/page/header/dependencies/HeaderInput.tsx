@@ -17,7 +17,10 @@ export const HeaderInput: FC<IHeaderInput> = ({
         placeholder="جستجو کنید"
         onChange={onChange}
       />
-      <ICSearch className="absolute top-16px right-20px" onClick={onClick} />
+      <ICSearch
+        className="absolute top-16px right-20px fill-current"
+        onClick={onClick}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { BorderShadow } from 'components';
 export const HeaderLayout = ({ children }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
-
+  const { pageSettings } = designState;
   return (
     <BorderShadow
       active={
@@ -16,7 +16,12 @@ export const HeaderLayout = ({ children }) => {
           : false
       }
     >
-      <div className={`bg-white shadow-custom-1`}>{children} </div>
+      <div
+        className={`bg-white shadow-custom-1 font-${pageSettings.textFont}`}
+        style={{ color: `${pageSettings.secondary}` }}
+      >
+        {children}{' '}
+      </div>
     </BorderShadow>
   );
 };

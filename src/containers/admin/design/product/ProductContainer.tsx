@@ -14,6 +14,8 @@ export const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { current } = designState;
+  const { pageSettings } = designState;
+
   const showPagination =
     (item?.settings &&
       item.settings?.page &&
@@ -21,7 +23,6 @@ export const ProductContainer = ({ item }) => {
     !item?.settings;
   const displaySlide =
     item?.settings && item.settings?.screen && item.settings.screen == 'slider';
-
   const CategoryHandler: Function = () => {
     let productGroup = {};
     if (
@@ -104,6 +105,8 @@ export const ProductContainer = ({ item }) => {
           ? true
           : false
       }
+      color={pageSettings.secondary}
+      fontFamily={pageSettings.textFont}
     >
       <Display
         mobile={item?.settings && item.settings?.mobile}
