@@ -2,13 +2,21 @@ import { FC } from 'react';
 import { IFooter } from './interface';
 import { ICPhone } from 'icons';
 import Link from 'next/link';
-
+import { useDesign } from 'hooks';
 export const Footer: FC<IFooter> = ({ phone }) => {
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
   return (
     <div className="container mx-auto h-full">
       <div className="grid grid-cols-6 h-full">
         <div className="col-span-3 flex items-center">
-          <button className="focus:outline-none flex justify-center items-center h-9 bg-red-500 rounded-full px-3 py-2 text-white">
+          <button
+            className="focus:outline-none flex justify-center items-center h-9 rounded-full px-3 py-2 text-white"
+            style={{
+              backgroundColor: `${pageSettings.primary}`,
+              borderColor: `${pageSettings.primary}`,
+            }}
+          >
             <ICPhone
               fill="white"
               className="text-xl"

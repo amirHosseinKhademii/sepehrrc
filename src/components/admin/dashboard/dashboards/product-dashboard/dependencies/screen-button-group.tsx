@@ -24,7 +24,7 @@ export const ScreenButtonGroup = () => {
     <ButtonGroup
       label=" حالت نمایش "
       groupClass="grid grid-cols-2"
-      className="mt-30px"
+      className="mt-30px mb-30px"
     >
       <SettingButton
         text=" لیست"

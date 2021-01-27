@@ -50,7 +50,7 @@ export const GridDrops = () => {
   );
 
   return (
-    <div className="w-full grid grid-cols-2 grid-rows-1 gap-x-30px mt-30px">
+    <div className="w-full grid grid-cols-2 grid-rows-1 gap-x-30px ">
       <ColDrop />
       <RowDrop />
     </div>

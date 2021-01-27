@@ -3,16 +3,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign } from 'hooks';
 interface IProductSlider {
-  items: any;
+  item: any;
+  data: any;
   title: string;
 }
 
-export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
-  const { designState } = useDesign();
-  const { settings } = designState.current;
+export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
   const handleChild = () => {
     let arr = [];
-    arr = items.map((item, index) => {
+    arr = data.map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
           <ProductCard item={item} />
@@ -27,8 +26,14 @@ export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
       className="container relative  mx-auto p-20px  flex flex-col"
       style={{
         backgroundColor: `${
-          settings?.backgroundColor ? settings.backgroundColor : '#fff'
+          item?.settings && item.settings?.backgroundColor
+            ? item.settings.backgroundColor
+            : '#fff'
         }`,
+        backgroundImage: `url(${
+          item?.backgroundImage ? item.backgroundImage : 'unset'
+        })`,
+        backgroundSize: '100% 100%',
       }}
     >
       <div
@@ -55,9 +60,9 @@ export const ProductSlider: FC<IProductSlider> = ({ items, title }) => {
         className={`h-full w-full rounded  relative swiper-pagination-hidden p-20px`}
       >
         {handleChild()}
-        <div className={`swiper-button-next`}></div>
-        <div className={`swiper-button-prev`}></div>
       </Swiper>
+      <div className={`swiper-button-next`}></div>
+      <div className={`swiper-button-prev`}></div>
     </div>
   );
 };

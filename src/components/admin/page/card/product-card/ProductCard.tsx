@@ -9,7 +9,7 @@ export const ProductCard = ({ item }) => {
   return (
     <ProductLayout
       className={
-        ' bg-white border-2 border-gray-100 shadow-lg rounded-xl  p-40px'
+        ' bg-white border-2 border-gray-100 shadow-lg rounded-xl   p-40px'
       }
       style={{ direction: 'rtl' }}
     >
