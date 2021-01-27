@@ -174,6 +174,7 @@ module.exports = {
         '18px': '18px',
         '20px': '20px',
         '24px': '24px',
+        '32px': '32px',
       },
       borderRadius: {
         '2px': '2px',

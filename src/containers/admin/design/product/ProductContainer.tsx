@@ -66,12 +66,12 @@ export const ProductContainer = ({ item }) => {
   const ProductList = () => {
     return (
       <div
-        className="container mx-auto p-20px flex flex-col w-full   bg-no-repeat"
+        className="  my-25px  w-full bg-no-repeat"
         style={{
           backgroundColor: `${
             item?.settings && item.settings?.backgroundColor
               ? item.settings.backgroundColor
-              : '#fff'
+              : '#ebedf0'
           }`,
 
           backgroundImage: `url(${
@@ -80,31 +80,33 @@ export const ProductContainer = ({ item }) => {
           backgroundSize: '100% 100%',
         }}
       >
-        <ProductTitle
-          text={
-            item?.settings && item.settings?.title
-              ? item.settings.title
-              : item.title
-          }
-        />
-        <ProductGrid
-          col={
-            item?.settings && item.settings?.cols ? item.settings.cols : null
-          }
-          row={
-            item?.settings && item.settings?.rows ? item.settings.rows : null
-          }
-        >
-          {productsToshow?.map((item, index) => (
-            <ProductCard item={item} key={index} />
-          ))}
-        </ProductGrid>
+        <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
+          <ProductTitle
+            text={
+              item?.settings && item.settings?.title
+                ? item.settings.title
+                : item.title
+            }
+          />
+          <ProductGrid
+            col={
+              item?.settings && item.settings?.cols ? item.settings.cols : null
+            }
+            row={
+              item?.settings && item.settings?.rows ? item.settings.rows : null
+            }
+          >
+            {productsToshow?.map((item, index) => (
+              <ProductCard item={item} key={index} />
+            ))}
+          </ProductGrid>
 
-        {showPagination && (
-          <div className="flex justify-center w-full my-20px">
-            <Pagination />
-          </div>
-        )}
+          {showPagination && (
+            <div className="flex justify-center w-full mt-20px">
+              <Pagination />
+            </div>
+          )}
+        </div>
       </div>
     );
   };

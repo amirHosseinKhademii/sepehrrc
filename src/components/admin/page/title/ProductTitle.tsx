@@ -13,7 +13,7 @@ export const ProductTitle: FC<IProductTitle> = ({ text, className }) => {
   return (
     <div
       className={join(
-        `font-${pageSettings.titleFont} text-center text-4xl font-medium mt-16 mb-12`,
+        `font-${pageSettings.titleFont} text-center text-32px font-medium  mb-40px`,
         className
       )}
     >

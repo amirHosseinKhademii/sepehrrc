@@ -7,7 +7,7 @@ export const Footer: FC<IFooter> = ({ phone }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
   return (
-    <div className="container mx-auto h-full">
+    <div className="container mx-auto h-full px-20px">
       <div className="grid grid-cols-6 h-full">
         <div className="col-span-3 flex items-center">
           <button
