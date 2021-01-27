@@ -6,6 +6,8 @@ export const BorderShadow: FC<IShadow> = ({
   children,
   active,
   backgroundUrl,
+  color,
+  fontFamily,
 }) => {
   const { join, toggle } = useClass();
   return (
@@ -13,9 +15,10 @@ export const BorderShadow: FC<IShadow> = ({
       style={{
         backgroundImage: `url(${backgroundUrl ? backgroundUrl : ''})`,
         backgroundPosition: 'center center',
+        color: color,
       }}
       className={toggle(
-        '',
+        `font-${fontFamily}`,
         'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
         active
       )}

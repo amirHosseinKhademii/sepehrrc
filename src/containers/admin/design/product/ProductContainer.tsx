@@ -16,6 +16,7 @@ export const ProductContainer = ({ items }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { current } = designState;
+  const { pageSettings } = designState;
   const { settings } = designState.current;
   const showPagination = settings && settings?.page !== 'disabled';
   const displaySlide = current.settings?.screen == 'slider';
@@ -106,6 +107,8 @@ export const ProductContainer = ({ items }) => {
           ? true
           : false
       }
+      color={pageSettings.secondary}
+      fontFamily={pageSettings.textFont}
     >
       <Display
         mobile={settings && settings?.mobile}
