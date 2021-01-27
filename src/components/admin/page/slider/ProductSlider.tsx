@@ -30,6 +30,10 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
             ? item.settings.backgroundColor
             : '#fff'
         }`,
+        backgroundImage: `url(${
+          item?.backgroundImage ? item.backgroundImage : 'unset'
+        })`,
+        backgroundSize: '100% 100%',
       }}
     >
       <div

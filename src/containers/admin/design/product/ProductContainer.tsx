@@ -1,3 +1,4 @@
+import { settings } from 'cluster';
 import {
   BorderShadow,
   Display,
@@ -20,7 +21,8 @@ export const ProductContainer = ({ item }) => {
     (item?.settings &&
       item.settings?.page &&
       item.settings.page !== 'disabled') ||
-    !item?.settings;
+    !item?.settings ||
+    !item.settings?.page;
   const displaySlide =
     item?.settings && item.settings?.screen && item.settings.screen == 'slider';
   const CategoryHandler: Function = () => {
@@ -64,16 +66,27 @@ export const ProductContainer = ({ item }) => {
   const ProductList = () => {
     return (
       <div
-        className="container mx-auto p-20px flex flex-col w-full"
+        className="container mx-auto p-20px flex flex-col w-full   bg-no-repeat"
         style={{
           backgroundColor: `${
             item?.settings && item.settings?.backgroundColor
               ? item.settings.backgroundColor
               : '#fff'
           }`,
+
+          backgroundImage: `url(${
+            item?.backgroundImage ? item.backgroundImage : 'unset'
+          })`,
+          backgroundSize: '100% 100%',
         }}
       >
-        <ProductTitle text={item.title} />
+        <ProductTitle
+          text={
+            item?.settings && item.settings?.title
+              ? item.settings.title
+              : item.title
+          }
+        />
         <ProductGrid
           col={
             item?.settings && item.settings?.cols ? item.settings.cols : null
@@ -105,7 +118,6 @@ export const ProductContainer = ({ item }) => {
           ? true
           : false
       }
-      backgroundUrl={item.backgroundImage}
       color={pageSettings.secondary}
       fontFamily={pageSettings.textFont}
     >
@@ -116,7 +128,15 @@ export const ProductContainer = ({ item }) => {
         {!displaySlide ? (
           <ProductList />
         ) : (
-          <ProductSlider data={productsToshow} item={item} title={item.title} />
+          <ProductSlider
+            data={productsToshow}
+            item={item}
+            title={
+              item?.settings && item.settings?.title
+                ? item.settings.title
+                : item.title
+            }
+          />
         )}
       </Display>
     </BorderShadow>

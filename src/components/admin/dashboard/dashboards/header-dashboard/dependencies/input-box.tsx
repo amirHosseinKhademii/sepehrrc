@@ -41,7 +41,7 @@ export const InputBox = ({
     currentStyle !== 'seventh'
   ) {
     return (
-      <div className="w-full  mb-70px ">
+      <div className="w-full  mb-90px ">
         <Text className=" mb-14px text-14px text-white_shade-100 text-right">
           {label}
         </Text>
