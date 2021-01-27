@@ -4,6 +4,7 @@ import { useDesign } from 'hooks';
 import { ProductContainer } from './product';
 import { SliderContainer } from './slider';
 import { BannerContainer } from './banner';
+import { BrandContainer } from './brand/';
 
 export const DesignContainer = () => {
   const [drop, setDrop] = useState({});
@@ -31,9 +32,7 @@ export const DesignContainer = () => {
           {item.type == 'products' && <ProductContainer items={item} />}
           {item.type == 'slider' && <SliderContainer item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
-          {item.type == 'brands' && (
-            <p className="text-center text-lg my-10">برندها</p>
-          )}
+          {item.type == 'brands' && <BrandContainer item={item} />}
         </Fragment>
       ))}
     </Container>
