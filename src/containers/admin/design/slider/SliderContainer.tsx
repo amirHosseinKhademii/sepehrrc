@@ -27,7 +27,7 @@ export const SliderContainer = ({ item }) => {
     const arr = [];
     item.images.map((item, index) => {
       arr.push(
-        <SwiperSlide className="w-full" key={index}>
+        <SwiperSlide className="w-full originalSlider" key={index}>
           <Link href={item.link ? item.link : '#'}>
             <a target={item.newTab ? '_blank' : ''}>
               <img

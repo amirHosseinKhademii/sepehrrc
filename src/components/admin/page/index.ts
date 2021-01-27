@@ -10,3 +10,4 @@ export * from './pagination';
 export * from './display';
 export * from './grid';
 export * from './title';
+export * from './brand';
