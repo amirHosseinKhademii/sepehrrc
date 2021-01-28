@@ -2,13 +2,26 @@ import { FC, Fragment } from 'react';
 import { IShadow } from './interface';
 import { useClass } from 'hooks';
 
-export const BorderShadow: FC<IShadow> = ({ children, active }) => {
+export const BorderShadow: FC<IShadow> = ({
+  children,
+  active,
+  backgroundUrl,
+  backgroundColor,
+  color,
+  fontFamily,
+}) => {
   const { join, toggle } = useClass();
   return (
     <div
+      style={{
+        backgroundImage: `url(${backgroundUrl ? backgroundUrl : ''})`,
+        backgroundPosition: 'center center',
+        color: color,
+        backgroundColor: `${backgroundColor}`,
+      }}
       className={toggle(
-        '',
-        'relative pt-12 pb-8 border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
+        `font-${fontFamily} ${backgroundColor}`,
+        'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
         active
       )}
     >

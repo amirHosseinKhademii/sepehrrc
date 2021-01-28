@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Modal, ButtonAction, InputSlider } from 'components';
+import { Modal, ButtonAction, Range } from 'components';
 import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
 import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
@@ -7,15 +7,31 @@ import 'cropperjs/dist/cropper.css';
 
 export const ModalCrop = () => {
   const [isLoading, setisLoading] = useState(false);
+  const [operations, setOperations] = useState({
+    zoom: 0,
+    rotate: 0,
+  });
   const { designState, setImage } = useDesign();
   const { uiState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
+  const currentImages = designState.current.images;
+  const selectedImage = designState.current.settings.number;
 
-  const ModalImage = () => (
+  const handleSubmit = async () => {
+    setisLoading(true);
+    if (designState.pureImage.isBackground) {
+      setImage({
+        key: 'backgroundImage',
+        payload: designState.pureImage.value,
+      });
+    } else setImage({ key: 'value', payload: designState.pureImage.value });
+  };
+
+  const ModalImage = ({ src }) => (
     <div className="relative w-full bg-gray-700">
       <img
-        src={URL.createObjectURL(designState.pureImage.value)}
+        src={src}
         className="w-full h-557px object-cover object-center overflow-hidden"
         id="cropper"
         ref={cropperRef}
@@ -37,20 +53,29 @@ export const ModalCrop = () => {
           'bg-primary-600'
         )}
         disabled={isLoading}
-        onClick={() => {
-          setisLoading(true);
-          setImage(designState.pureImage.value);
-        }}
+        onClick={() => handleSubmit()}
       >
         {isLoading ? 'در حال بارگزاری' : 'ذخیره تغییرات'}
       </ButtonAction>
-      <div className="flex text-24px  text-white mx-20px">
+      <div className="flex text-24px  text-white mx-10px">
         <ICRotateHorizontal className="fill-current mx-20px cursor-pointer" />
         <ICRotateVertical className="fill-current cursor-pointer" />
         <ICRedo className="fill-current mx-20px cursor-pointer" />
       </div>
-      <InputSlider title="چرخش تصویر" className="w-378px mr-20px" />
-      <InputSlider title="زوم تصویر" unit="%" className="w-378px" />
+      <Range
+        title="چرخش تصویر"
+        className="w-370px mr-20px"
+        onChange={(value) => {}}
+      />
+      <Range
+        title="زوم تصویر"
+        unit="%"
+        className="w-370px mr-20px"
+        value={operations.zoom}
+        onChange={(value) => {
+          setOperations((prev) => ({ ...prev, zoom: parseInt(value) }));
+        }}
+      />
     </div>
   );
 
@@ -60,19 +85,30 @@ export const ModalCrop = () => {
       initialAspectRatio: 16 / 9,
       crop(event) {},
       cropend: () => {
-       // console.log(cropper.getCroppedCanvas().toDataURL());
+        // console.log(cropper.getCroppedCanvas().toDataURL());
       },
     });
-  }, []);
 
-  if (designState.pureImage.value)
+    // operations.zoom && cropper.zoom(0.1);
+  }, [operations]);
+
+  if (uiState.modal.editImage) {
     return (
       <Modal open={uiState.modal.open}>
         <div className="flex flex-col">
-          <ModalImage />
+          <ModalImage src={currentImages[selectedImage].value} />
           <ModalFooter />
         </div>
       </Modal>
     );
-  else return null;
+  } else if (designState.pureImage.value) {
+    return (
+      <Modal open={uiState.modal.open}>
+        <div className="flex flex-col">
+          <ModalImage src={URL.createObjectURL(designState.pureImage.value)} />
+          <ModalFooter />
+        </div>
+      </Modal>
+    );
+  } else return null;
 };

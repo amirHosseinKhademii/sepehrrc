@@ -34,7 +34,7 @@ export const ICSlider: FC<IIcon> = ({
           transform="translate(12178 -11667)"
           fill="none"
           stroke="#9ba3b5"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <path
           id="Path_5699"
@@ -43,7 +43,7 @@ export const ICSlider: FC<IIcon> = ({
           transform="translate(12205.877 -11667)"
           fill="none"
           stroke="#9ba3b5"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </g>
     </svg>

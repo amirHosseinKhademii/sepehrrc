@@ -38,7 +38,7 @@ export const ICProductList: FC<IIcon> = ({
           transform="translate(12173 -11590)"
           fill="none"
           stroke="#9ba3b5"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <path
           id="Path_5701"
@@ -47,7 +47,7 @@ export const ICProductList: FC<IIcon> = ({
           transform="translate(12211.999 -11590)"
           fill="none"
           stroke="#9ba3b5"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <rect
           id="Rectangle_11557"

@@ -5,41 +5,13 @@ export const designInitialState = {
       type: 'slider',
       title: 'اسلایدر',
       images: [],
+      settings: {},
     },
     {
       id: '1',
       type: 'products',
       title: 'لیست محصولات',
-      items: [
-        {
-          id: 0,
-          name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: '/assets/images/product.png',
-          price: '3/000/000',
-          discount: '500000',
-        },
-        {
-          id: 1,
-          name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: '/assets/images/product.png',
-          price: '3/000/000',
-          discount: '500000',
-        },
-        {
-          id: 2,
-          name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: '/assets/images/product.png',
-          price: '3/000/000',
-          discount: '500000',
-        },
-        {
-          id: 3,
-          name: 'کیت کلاچ میتسوبیشی لنسر',
-          cover: '/assets/images/product.png',
-          price: '3/000/000',
-          discount: '500000',
-        },
-      ],
+      images: [],
     },
     {
       id: '2',
@@ -49,8 +21,9 @@ export const designInitialState = {
     },
     {
       id: '3',
-      type: 'slider',
+      type: 'brands',
       title: 'برندها',
+      images: [],
     },
     {
       id: '4',
@@ -84,161 +57,6 @@ export const designInitialState = {
       type: 'header',
       title: 'هدر',
       images: [],
-      Button: { text: 'محصولات فروشگاه' },
-      menuItems: [
-        { text: 'صفحه اصلی', link: './admin/design' },
-        { text: 'محصولات فروشگاه', link: './admin/design' },
-        { text: 'درباره ما', link: './admin/design' },
-        { text: 'تماس باما', link: './admin/design' },
-      ],
-      megaMenu: [
-        {
-          text: 'محصولات نظافت خودرو',
-          link: '',
-          hasSub: true,
-          subMenus: [
-            {
-              text: 'نظاافت الفا',
-              link: '',
-              hasSub: true,
-              subMenus: [
-                {
-                  text: 'نظافت 1',
-                  link: '',
-                },
-                {
-                  text: 'نظافت 1',
-                  link: '',
-                },
-                {
-                  text: 'نظافت 1',
-                  link: '',
-                },
-                {
-                  text: 'نظافت 1',
-                  link: '',
-                },
-              ],
-            },
-            {
-              text: 'نظافت 2',
-              link: '',
-            },
-            {
-              text: 'نظافت 3',
-              link: '',
-            },
-            {
-              text: 'نظافت 4',
-              link: '',
-            },
-            {
-              text: 'نظافت 5',
-              link: '',
-            },
-          ],
-        },
-        {
-          text: 'محصولات نرم افزاری',
-          link: '',
-          hasSub: true,
-          subMenus: [
-            {
-              text: 'نرم افزار الفا',
-              link: '',
-              hasSub: true,
-              subMenus: [
-                {
-                  text: 'نرم افزار 1',
-                  link: '',
-                },
-                {
-                  text: 'نرم افزار 1',
-                  link: '',
-                },
-                {
-                  text: 'نرم افزار 1',
-                  link: '',
-                },
-                {
-                  text: 'نرم افزار 1',
-                  link: '',
-                },
-              ],
-            },
-            {
-              text: 'نرم افزار 2',
-              link: '',
-            },
-            {
-              text: 'نرم افزار 3',
-              link: '',
-            },
-            {
-              text: 'نرم افزار 4',
-              link: '',
-            },
-            {
-              text: 'نرم افزار 5',
-              link: '',
-            },
-          ],
-        },
-        {
-          text: ' ابزار تعمیرات خودرو',
-          link: '',
-          hasSub: true,
-          subMenus: [
-            {
-              text: 'ابزار  الفا',
-              link: '',
-              hasSub: true,
-              subMenus: [
-                {
-                  text: 'ابزار 1',
-                  link: '',
-                },
-                {
-                  text: 'ابزار 1',
-                  link: '',
-                },
-                {
-                  text: 'ابزار 1',
-                  link: '',
-                },
-                {
-                  text: 'ابزار 1',
-                  link: '',
-                },
-              ],
-            },
-            {
-              text: 'ابزار 2',
-              link: '',
-            },
-            {
-              text: 'ابزار 3',
-              link: '',
-            },
-            {
-              text: 'ابزار 4',
-              link: '',
-            },
-            {
-              text: 'ابزار 5',
-              link: '',
-            },
-          ],
-        },
-        {
-          text: ' درباره ما',
-          link: '',
-        },
-        {
-          text: ' ارتباط با ما',
-          link: '',
-        },
-      ],
     },
     {
       uuid: 'FOOTER',
@@ -246,10 +64,18 @@ export const designInitialState = {
       title: 'فوتر',
     },
   ],
-  pageKey: 'main',
+  pageSettings: {
+    key: 'main',
+    titleFont: 'yekanbakh',
+    textFont: 'yekanbakh',
+    primary: '#ed1c24',
+    secondary: '#000',
+  },
   current: {
     uuid: '',
-    settings: {},
+    settings: {
+      imageSetting: false,
+    },
     images: [{ number: 'one', value: 'sfdsf', newTab: false, link: '' }],
   },
   pureImage: {
@@ -260,5 +86,6 @@ export const designInitialState = {
     onUpload: false,
     title: '',
     description: '',
+    isBackground: false,
   },
 };

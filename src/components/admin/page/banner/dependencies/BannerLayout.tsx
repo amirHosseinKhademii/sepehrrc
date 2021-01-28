@@ -18,7 +18,7 @@ export const BannerLayout = ({ children, className, onClick, item }) => {
     >
       <div
         className={join(
-          'py-10 grid w-5/6 h-full mx-auto gap-x-20px',
+          'grid gap-x-20px h-full container mx-auto px-20px py-25px my-25px',
           className
         )}
       >

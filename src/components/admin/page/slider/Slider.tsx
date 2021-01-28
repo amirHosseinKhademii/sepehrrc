@@ -1,4 +1,5 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Fragment } from 'react';
+import { Swiper } from 'swiper/react';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -6,75 +7,55 @@ import SwiperCore, {
   A11y,
   EffectFade,
   Autoplay,
+  EffectCube,
+  EffectFlip,
 } from 'swiper';
-import { BorderShadow } from 'components';
-import { useClass, useDesign, useUi } from 'hooks';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]);
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+  EffectFade,
+  EffectCube,
+  EffectFlip,
+]);
 
-const img1 = '/assets/images/slider1.jpg';
-const img2 = '/assets/images/slider2.jpg';
-const img3 = '/assets/images/slider3.jpg';
-
-const data = [
-  {
-    id: '0',
-    name: 'slider1',
-    url: img1,
-  },
-  {
-    id: '1',
-    name: 'slider2',
-    url: img2,
-  },
-  {
-    id: '2',
-    name: 'slider3',
-    url: img3,
-  },
-];
-
-export const Slider = ({ item }) => {
-  const { designState } = useDesign();
-  const { uiState } = useUi();
-
-  const handelChild = () => {
-    const arr = [];
-    data.map((item, index) => {
-      arr.push(
-        <SwiperSlide className="swiper-slide" key={index}>
-          <img src={item.url} className="h-full w-full" />
-        </SwiperSlide>
-      );
-    });
-    return arr;
-  };
-
+export const Slider = ({ child, speed, screen, button, effect }) => {
   return (
-    <BorderShadow
-      active={
-        uiState.drawer.style &&
-        designState.current.type == 'slider' &&
-        item.uuid == designState.current.uuid
-          ? true
-          : false
-      }
-    >
-      <div className="container mx-auto py-10">
-        <Swiper
-          effect="fade"
-          spaceBetween={30}
-          navigation
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          // scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
-          className="h-450px rounded"
-        >
-          {handelChild()}
-        </Swiper>
-      </div>
-    </BorderShadow>
+    <Fragment>
+      <Swiper
+        effect={effect}
+        spaceBetween={30}
+        speed={speed}
+        pagination={{
+          el: '.swiper-paginations',
+          type: 'bullets',
+          clickable: true,
+        }}
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        autoplay={{ delay: 200, disableOnInteraction: false }}
+        className={`h-450px w-full rounded`}
+      >
+        {child}
+        <div
+          className={`swiper-button-next ${button === 'first' ? 'hidden' : ''}`}
+        ></div>
+        <div
+          className={`swiper-button-prev ${button === 'first' ? 'hidden' : ''}`}
+        ></div>
+      </Swiper>
+      <div
+        className={`swiper-paginations ${
+          button === 'second'
+            ? 'hidden'
+            : 'absolute inset-x-0 mx-auto flex justify-center items-center h-4 focus:outline-none'
+        }`}
+      ></div>
+    </Fragment>
   );
 };

@@ -1,9 +1,5 @@
 interface IHeader {
-  item: {
-    menuItems: { text: string; link: string }[];
-    Button: { text: string };
-    images: { value: string }[];
-  };
+  item: any;
 }
 
 interface IHeaderInput {
@@ -33,7 +29,7 @@ interface IShoppingCart {
 }
 interface IHeaderLogo {
   className?: string;
-  src?: { value: string }[];
+  src?: { value: string; link?: string; newTab?: boolean }[];
 }
 
 interface IHeaderButton {
@@ -42,6 +38,9 @@ interface IHeaderButton {
   outline?: boolean;
 }
 
+interface IMegaMenu {
+  listClassName?: any;
+}
 export {
   IHeaderButton,
   IHeaderButton,
@@ -50,4 +49,5 @@ export {
   IHeader,
   IHeaderInput,
   IShoppingCart,
+  IMegaMenu,
 };

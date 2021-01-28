@@ -21,10 +21,10 @@ export const designReducer = (
         ...state,
         pageItems: applyDrag(state.pageItems, payload),
       };
-    case designTypes.ON_CHANGE_PAGE_KEY:
+    case designTypes.ON_CHANGE_PAGE_Settings:
       return {
         ...state,
-        pageKey: payload,
+        pageSettings: { ...state.pageSettings, [payload.key]: payload.value },
       };
     case designTypes.ON_DELETE_ITEM:
       return {
@@ -62,6 +62,10 @@ export const designReducer = (
           value: payload.value,
           newTab: payload.newTab,
           link: payload.link,
+          onUpload: payload.onUpload,
+          description: payload.description,
+          title: payload.title,
+          isBackground: payload.isBackground,
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:
@@ -70,10 +74,11 @@ export const designReducer = (
           (item) => item.number !== state.pureImage.number
         ),
         {
+          ...pageCurrent.images.find(
+            (item) => item.number == state.pureImage.number
+          ),
           number: state.pureImage.number,
-          newTab: state.pureImage.newTab,
-          link: state.pureImage.link,
-          value: payload,
+          ...payload,
         },
       ];
       cloneCurrent.images = [
@@ -81,10 +86,11 @@ export const designReducer = (
           (item) => item.number !== state.pureImage.number
         ),
         {
+          ...cloneCurrent.images.find(
+            (item) => item.number == state.pureImage.number
+          ),
           number: state.pureImage.number,
-          newTab: state.pureImage.newTab,
-          link: state.pureImage.link,
-          value: payload,
+          ...payload,
         },
       ];
       return {

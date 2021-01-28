@@ -10,10 +10,14 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <div className="ml-8px">ورود/عضویت در سایت</div>
+        <Link href="./">
+          <a className="cursor-pointer ml-8px font-bold fill-current">
+            ورود/عضویت در سایت
+          </a>
+        </Link>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
         <Badge
@@ -22,7 +26,7 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -32,11 +36,11 @@ export const HeaderSecond: FC<IHeader> = ({ item }) => {
   return (
     <HeaderLayout>
       <div
-        className={` grid  grid-cols-12 container mx-auto  w-full h-122px `}
+        className={` grid  grid-cols-12 container mx-auto px-20px  w-full h-122px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-6 flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-1  flex items-center ">
           <HeaderLogo src={item.images} />

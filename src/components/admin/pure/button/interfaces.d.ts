@@ -3,5 +3,6 @@ interface IPureButton {
   onClick?: any;
   layout?: boolean;
   text: string;
+  style?: any;
 }
 export { IPureButton };

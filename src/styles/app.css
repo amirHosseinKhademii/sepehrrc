@@ -177,3 +177,11 @@ html {
   margin: 5px;
   padding: 15px 0 15px 0;
 }
+
+.swiper-pagination-bullet {
+  margin: 0 4px;
+}
+
+.originalSlider {
+  width: 100% !important;
+}

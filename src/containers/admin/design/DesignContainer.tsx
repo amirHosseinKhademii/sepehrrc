@@ -1,9 +1,10 @@
 import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
-import { CardContainer } from './card';
-import { Slider } from 'components';
+import { ProductContainer } from './product';
+import { SliderContainer } from './slider';
 import { BannerContainer } from './banner';
+import { BrandContainer } from './brand/';
 
 export const DesignContainer = () => {
   const [drop, setDrop] = useState({});
@@ -28,11 +29,10 @@ export const DesignContainer = () => {
     >
       {designState.pageItems.map((item, index) => (
         <Fragment key={index}>
-          {item.type == 'products' && (
-            <CardContainer items={item.items} title="جدیدترین محصولات ما" />
-          )}
-          {item.type == 'slider' && <Slider item={item} />}
+          {item.type == 'products' && <ProductContainer item={item} />}
+          {item.type == 'slider' && <SliderContainer item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
+          {item.type == 'brands' && <BrandContainer item={item} />}
         </Fragment>
       ))}
     </Container>

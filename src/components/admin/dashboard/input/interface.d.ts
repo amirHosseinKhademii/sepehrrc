@@ -1,4 +1,5 @@
 interface IInput {
+  maxLength?: number;
   item?: any;
   placeholder?: string;
   className?: string;
@@ -8,7 +9,9 @@ interface IInput {
   onBlur?;
   variant?: 'input' | 'inputIcon' | 'textArea';
   withLink?: boolean;
+  withNumber?: boolean;
   fontFamily?: 'font-body' | 'font-yekanbakh' | 'font-iransans' | 'font-lato';
+  disabled?: boolean;
 }
 
 export { IInput };

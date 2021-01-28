@@ -1,5 +1,6 @@
 export * from './edit-alt';
 export * from './plus';
+export * from './bars';
 export * from './setting';
 export * from './menu';
 export * from './multiply';
@@ -32,3 +33,7 @@ export * from './crop-alt';
 export * from './product-list';
 export * from './slider';
 export * from './text';
+export * from './slider-button-three';
+export * from './slider-button-two';
+export * from './slider-button-one';
+export * from './ellipsis-h';

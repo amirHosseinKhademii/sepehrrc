@@ -2,29 +2,36 @@ import { FC } from 'react';
 import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout, MegaMenu } from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
+import { useDesign } from 'hooks';
 import { Badge } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
 export const HeaderSeventh: FC<IHeader> = ({ item }) => {
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
+
   const Actions = () => {
     return (
       <>
-        <div className="ml-8px">ورود/عضویت در سایت</div>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4" />
+            <div className="ml-8px cursor-pointer">ورود/عضویت در سایت</div>
+          </a>
+        </Link>
+        <Link href="./">
+          <a>
+            <ICSearch className="mx-4 fill-current" />
           </a>
         </Link>
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mr-4"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -36,11 +43,11 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12 container mx-auto  w-full h-122px `}
+          className={` grid  grid-cols-12 container mx-auto  w-full h-122px px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-6 flex items-center ">
-            <Navbar direction="horizental" items={item.menuItems} />
+            <Navbar direction="horizental" />
           </div>
           <div className="col-span-1  flex items-center ">
             <HeaderLogo src={item.images} />
@@ -50,21 +57,26 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="bg-red-600 text-white">
+      <div
+        className=" text-white "
+        style={{ backgroundColor: `${pageSettings.primary}` }}
+      >
         <div
-          className={`grid  grid-cols-12    w-full  min-h-58px container mx-auto `}
+          className={`grid  grid-cols-12    w-full container mx-auto  px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <MegaMenu />
+            <MegaMenu listClassName="text-black" />
           </div>
-          <div className="col-span-3">
-            <Link href="./">
-              <a className="h-full flex items-center justify-end">
-                <div className="text-16px">09365464683</div>
-                <ICPhoneVolume className="mr-4" fill="#fff" />
-              </a>
-            </Link>
+          <div className="col-span-3 ">
+            <a
+              href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+              className=" h-full flex items-center justify-end text-16px"
+            >
+              <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+              <ICPhoneVolume className="mr-4 fill-current" />
+            </a>
           </div>
         </div>
       </div>

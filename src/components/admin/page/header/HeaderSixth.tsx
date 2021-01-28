@@ -15,7 +15,7 @@ import {
   ICTelegram,
   ICInstagram,
 } from 'icons';
-import { Badge, PureButton } from 'components';
+import { Badge, HeaderButton } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
@@ -24,12 +24,14 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <Link href="./">
-          <a className="flex">
-            <div className="text-16px">09365464683</div>
-            <ICPhoneVolume className="mr-4" />
-          </a>
-        </Link>
+        <a
+          href={`tel:+98${!item.telNumber ? '09000000000' : item.telNumber}`}
+          className="flex text-16px"
+        >
+          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+          <ICPhoneVolume className="mr-4 fill-current" />
+        </a>
 
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
@@ -38,7 +40,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
@@ -51,22 +53,22 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
       <>
         <Link href="./">
           <a>
-            <ICWhatsapp className="mx-4" />{' '}
+            <ICWhatsapp className="mx-4  fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTwitter className="mx-4" />{' '}
+            <ICTwitter className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICInstagram className="mx-4" />{' '}
+            <ICInstagram className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTelegram className="mr-4" />{' '}
+            <ICTelegram className="mr-4 fill-current" />{' '}
           </a>
         </Link>
       </>
@@ -77,7 +79,7 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12    w-full h-122px  container mx-auto`}
+          className={` grid  grid-cols-12    w-full h-122px  container mx-auto px-20px`}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center justify-start ">
@@ -88,22 +90,21 @@ export const HeaderSixth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <PureButton
-              layout={true}
-              className="h-50px mr-25px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text="ورود/عضویت"
+            <HeaderButton
+              className="mr-25px"
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px  container mx-auto `}
+        className={`grid  grid-cols-12   w-full   container mx-auto px-20px `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
           <MegaMenu />
         </div>
-        <div className="col-span-3 flex items-center justify-end text-24px">
+        <div className="col-span-3 flex  justify-end text-24px mt-20px">
           <Social />
         </div>
       </div>

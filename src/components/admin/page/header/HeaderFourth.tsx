@@ -1,16 +1,21 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderInput, HeaderLayout } from './dependencies';
 import {
-  ICSearch,
+  Navbar,
+  HeaderLogo,
+  HeaderInput,
+  HeaderLayout,
+  HeaderCategory,
+} from './dependencies';
+import {
   ICShoppingCart,
-  ICUsersAlt,
   ICWhatsapp,
   ICTwitter,
   ICTelegram,
   ICInstagram,
+  ICPhoneVolume,
 } from 'icons';
-import { Badge, PureButton } from 'components';
+import { Badge, HeaderButton } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
@@ -19,27 +24,26 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
-        <Link href="./">
-          <a>
-            <ICSearch className="mx-2" />
-          </a>
-        </Link>
+        <a
+          href={`tel:+98${!item.telNumber ? '09100000000' : item.telNumber}`}
+          className="flex text-16px"
+        >
+          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+
+          <ICPhoneVolume className="mr-4 fill-current" />
+        </a>
+
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mx-2"
+          root="mr-20px"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart />
+              <ICShoppingCart className="fill-current" />
             </a>
           </Link>
         </Badge>
-        <Link href="./">
-          <a>
-            <ICUsersAlt className="mx-2" />
-          </a>
-        </Link>
       </>
     );
   };
@@ -49,22 +53,22 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
       <>
         <Link href="./">
           <a>
-            <ICWhatsapp className="mx-4" />{' '}
+            <ICWhatsapp className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTwitter className="mx-4" />{' '}
+            <ICTwitter className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICInstagram className="mx-4" />{' '}
+            <ICInstagram className="mx-4 fill-current" />{' '}
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICTelegram className="mr-4" />{' '}
+            <ICTelegram className="mr-4 fill-current" />{' '}
           </a>
         </Link>
       </>
@@ -75,7 +79,7 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
     <HeaderLayout>
       <div className="border-b-2">
         <div
-          className={`container mx-auto   w-full h-122px grid  grid-cols-12`}
+          className={`grid  grid-cols-12 w-full h-122px container mx-auto     px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
@@ -86,20 +90,21 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
-            <PureButton
-              layout={true}
-              className="h-50px mr-35px px-8  py-4 text-16px rounded-full bg-red-600 text-white     "
-              text={item.Button.text}
+            <HeaderButton
+              className=" mr-35px  "
+              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px   container mx-auto `}
+        className={`grid  grid-cols-12   w-full h-58px   container mx-auto px-20px`}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <HeaderCategory />
+
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">
           <Social />

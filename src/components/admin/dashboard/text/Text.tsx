@@ -1,5 +1,12 @@
 import { useClass } from 'hooks';
-export const Text = ({ children, className }) => {
+import { FC } from 'react';
+import { IText } from './interfaces';
+
+export const Text: FC<IText> = ({ children, className, onClick }) => {
   const { join } = useClass();
-  return <h1 className={join('font-iransans', className)}>{children}</h1>;
+  return (
+    <p onClick={onClick} className={join('font-iransans', className)}>
+      {children}
+    </p>
+  );
 };

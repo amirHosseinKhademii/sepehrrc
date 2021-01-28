@@ -1,28 +1,34 @@
 import { FC } from 'react';
 import { IHeader } from './interface';
-import { HeaderButton, Navbar, HeaderLogo, HeaderLayout } from './dependencies';
+import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { PureButton } from 'components';
+import { HeaderButton } from 'components';
+import { useUi, useDesign } from 'hooks';
 import Link from 'next/link';
+
 const logo = '/assets/images/logo.png';
 
 export const HeaderFirst: FC<IHeader> = ({ item }) => {
+  const { uiState } = useUi();
+  const { container } = uiState;
+  const { designState } = useDesign();
+  const { pageSettings } = designState;
   const Actions = () => {
     return (
       <>
         <Link href="/">
           <a>
-            <ICSearch className="mx-2" />
+            <ICSearch className="mx-2 fill-current" />
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICShoppingCart className="mx-2" />{' '}
+            <ICShoppingCart className="mx-2 fill-current" />{' '}
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICUsersAlt className="mx-2" />
+            <ICUsersAlt className="mx-2 fill-current" />
           </a>
         </Link>
       </>
@@ -32,21 +38,21 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
   return (
     <HeaderLayout>
       <div
-        className=" grid  grid-cols-12 w-full h-122px container mx-auto     "
+        className={` grid  grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-2  flex items-center ">
           <HeaderLogo src={item.images} />
         </div>
         <div className="col-span-6 flex items-center mr-6 ">
-          <Navbar direction="horizental" items={item.menuItems} />
+          <Navbar direction="horizental" />
         </div>
         <div className="col-span-4 flex items-center justify-end">
           <Actions />
-          <PureButton
-            layout={true}
-            className="h-50px px-8 mr-35px  py-4 text-16px rounded-full bg-red-600 text-white     "
-            text="محصولات فروشگاه"
+
+          <HeaderButton
+            className=" mr-35px"
+            text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
           />
         </div>
       </div>

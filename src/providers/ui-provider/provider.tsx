@@ -13,6 +13,10 @@ const uiInitialState = {
   },
   modal: {
     open: false,
+    editImage: false,
+  },
+  container: {
+    padding: 'p-20px',
   },
 };
 
@@ -37,7 +41,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           settings: false,
           add: false,
-          sections: payload,
+          sections: !state.drawer.sections,
           style: false,
         },
       };
@@ -48,7 +52,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           sections: false,
           settings: false,
-          add: payload,
+          add: !state.drawer.add,
           style: false,
         },
       };
@@ -59,7 +63,7 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
           ...state.drawer,
           sections: false,
           add: false,
-          settings: payload,
+          settings: !state.drawer.settings,
           style: false,
         },
       };
@@ -88,7 +92,12 @@ const uiReducer = (state = uiInitialState, { type, payload }) => {
     case uiTypes.MODAL_TOGGLE:
       return {
         ...state,
-        modal: { ...state.modal, open: payload },
+        modal: {
+          ...state.modal,
+          open: payload.open,
+          editImage: payload.editImage,
+          isBackground: payload.isBackground,
+        },
       };
     default:
       return state;
