@@ -11,4 +11,4 @@ interface IHeaderButton {
   text: string;
 }
 
-export { IProductButton, IHeaderButton };
+

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { PureButton } from 'components';
 import { useDesign } from 'hooks';
-import { IProductButton } from './interfaces';
+
 export const ProductButton: FC<IProductButton> = ({
   text,
   layout = true,

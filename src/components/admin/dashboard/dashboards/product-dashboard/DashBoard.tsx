@@ -1,5 +1,4 @@
-import { DrawerLayout } from 'components/admin/layouts';
-import { HeaderDrawer } from 'components';
+import { HeaderDrawer, DrawerLayout } from 'components';
 import {
   BackgroundColor,
   TitleInput,

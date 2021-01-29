@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { PureButton } from 'components';
 import { useClass, useDesign } from 'hooks';
 
-import { IHeaderButton } from './interfaces';
 
 export const HeaderButton: FC<IHeaderButton> = ({
   text,
