@@ -1,4 +1,5 @@
 export const uiTypes = {
+  TOGGLE_DRAWER: 'Toggle drawer by type',
   DRAWER_MENU: 'Toggle drawer menu',
   DRAWER_SECTIONS: 'Toggle drawer sections',
   DRAWER_ADD: 'Toggle drawer add',

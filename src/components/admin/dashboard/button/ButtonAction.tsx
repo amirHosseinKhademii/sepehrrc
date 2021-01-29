@@ -1,7 +1,7 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
 import { Button } from './Button';
-import { IButton } from './interfaces';
+
 
 export const ButtonAction: FC<IButton> = ({
   onClick,

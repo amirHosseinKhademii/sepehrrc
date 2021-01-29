@@ -1,7 +1,6 @@
 import { UIContext, uiTypes } from 'providers/ui-provider';
 import { FC, useContext } from 'react';
-import { ButtonAction } from '../../button/ButtonAction';
-import { IButton } from '../../button/interfaces';
+import { ButtonAction } from 'components';
 
 export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
   const { uiDispatch } = useContext(UIContext);

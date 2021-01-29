@@ -1,6 +1,5 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
-import { IButton } from './interfaces';
 
 export const ButtonIcon: FC<IButton> = ({ className, children, onClick }) => {
   const { join } = useClass();

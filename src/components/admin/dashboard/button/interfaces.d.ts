@@ -27,5 +27,3 @@ interface IButton {
   withLabel?: boolean;
   htmlFor?: string;
 }
-
-export { IButton };

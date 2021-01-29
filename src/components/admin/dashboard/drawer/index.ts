@@ -1,2 +1,6 @@
 export { Drawer } from './Drawer';
-export * from './dependencies';
+export {
+  ButtonDrawer,
+  ButtonGroupDrawer,
+  HeaderDrawer,
+} from './drawer-dynamic/dependencies';

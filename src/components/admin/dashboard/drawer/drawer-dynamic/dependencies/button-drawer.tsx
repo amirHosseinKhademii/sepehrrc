@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useClass } from 'hooks';
 import { ButtonIcon } from 'components';
 import { ICSettingCog, ICTrash } from 'icons';
-import { IButton } from '../../button/interfaces';
 
 export const ButtonDrawer: FC<IButton> = ({
   withDelete,
