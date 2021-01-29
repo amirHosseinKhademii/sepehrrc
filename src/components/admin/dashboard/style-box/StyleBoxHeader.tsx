@@ -1,7 +1,6 @@
 import { useClass, useDesign } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
-import { IStyleBoxHeader } from './interface';
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
   const { join, toggle } = useClass();
