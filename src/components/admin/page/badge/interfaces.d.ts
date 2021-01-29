@@ -7,4 +7,3 @@ interface IBadge {
   badgeContent?: string | number;
 }
 
-export { IBadge };

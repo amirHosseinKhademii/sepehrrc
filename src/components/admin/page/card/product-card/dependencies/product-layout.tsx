@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { IProductLayout } from '../interfaces';
 import { useClass } from 'hooks';
+
 export const ProductLayout: FC<IProductLayout> = ({
   layout = true,
   className,

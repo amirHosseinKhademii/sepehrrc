@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { IProductImage } from '../interfaces';
 import { useClass } from 'hooks';
+
 export const ProductImage: FC<IProductImage> = ({
   layout = true,
   className,

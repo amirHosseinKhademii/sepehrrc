@@ -1,6 +1,6 @@
-import { Children, FC } from 'react';
+import {  FC } from 'react';
 import { useClass, useDesign } from 'hooks';
-import { IBadge } from './interfaces';
+
 
 export const Badge: FC<IBadge> = ({
   children,

@@ -46,11 +46,3 @@ interface IProductButton {
   style?: any;
 }
 
-export {
-  IProductLayout,
-  IProductCard,
-  IProductImage,
-  IProductName,
-  IProductButton,
-  IProductPrice,
-};

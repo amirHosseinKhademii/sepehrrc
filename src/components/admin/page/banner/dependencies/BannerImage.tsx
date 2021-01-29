@@ -1,6 +1,5 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
-import { IBanner } from '../interfaces';
 import Link from 'next/link';
 
 export const BannerImage: FC<IBanner> = ({ className, number, item }) => {

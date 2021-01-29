@@ -6,8 +6,6 @@ import {
   ProductPrice,
 } from './dependencies';
 
-import { useDesign, useUi } from 'hooks';
-
 export const ProductCard = ({ item }) => {
   return (
     <ProductLayout
