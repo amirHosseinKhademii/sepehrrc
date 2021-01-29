@@ -6,10 +6,11 @@ export const HeaderLayout = ({ children }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { pageSettings } = designState;
+
   return (
     <BorderShadow
       active={
-        uiState.drawer.style &&
+        uiState.drawer.type === 'style' &&
         designState.current.type == 'header' &&
         'HEADER' == designState.current.uuid
           ? true

@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+import { useDesign } from 'hooks';
 import {
   HeaderFirst,
   HeaderSecond,
@@ -8,15 +10,6 @@ import {
   HeaderSeventh,
   HeaderEighth,
 } from 'components';
-import { Fragment } from 'react';
-import { useDesign } from 'hooks';
-
-interface IHeader {
-  children?: any;
-  item: {};
-  backgroundColor?: string;
-}
-const logo = '/assets/images/logo.png';
 
 export const DesignHeader = () => {
   const { designState } = useDesign();

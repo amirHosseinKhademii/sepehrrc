@@ -4,6 +4,7 @@ interface IStyleBox {
   className?: string;
   onClick?: any;
   active?: boolean;
+  join?: any;
 }
 interface IStyleBoxHeader {
   variation?:
@@ -20,4 +21,3 @@ interface IStyleBoxHeader {
   onClick?: any;
   active?: boolean;
 }
-export { IStyleBox, IStyleBoxHeader };

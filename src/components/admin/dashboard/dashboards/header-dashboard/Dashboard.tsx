@@ -3,9 +3,11 @@ import { StyleBoxHeader, HeaderDrawer, ButtonGroupDrawer } from 'components';
 import { MenuEditGroup, InputBox } from './dependencies';
 import { GenericUploader } from '../common';
 import { useDesign } from 'hooks';
+
 export const HeaderDashboard = () => {
   const { designState } = useDesign();
   const { current } = designState;
+
   const BaseSetttings = () => {
     return (
       <div className="w-full flex flex-col items-end pt-30px px-20px">

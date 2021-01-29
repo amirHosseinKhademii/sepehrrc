@@ -71,7 +71,7 @@ export const SliderContainer = ({ item }) => {
     <Display mobile={settings?.mobile} desktop={settings?.monitor}>
       <BorderShadow
         active={
-          uiState.drawer.style &&
+          uiState.drawer.type === 'style' &&
           designState.current.type == 'slider' &&
           item.uuid == designState.current.uuid
             ? true

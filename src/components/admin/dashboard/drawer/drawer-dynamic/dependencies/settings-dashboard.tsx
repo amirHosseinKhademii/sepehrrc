@@ -1,7 +1,8 @@
 import { DrawerLayout } from 'components/admin/layouts';
 import { HeaderDrawer } from '.';
-import { ButtonGroupDrawer, Button, DropDown } from 'components';
+import { Button, DropDown } from 'components';
 import { useDesign } from 'hooks';
+import { ButtonGroupDrawer } from '.';
 
 export const SettingsDashboard = () => {
   const { onPageSetting, designState } = useDesign();

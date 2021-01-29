@@ -1,15 +1,8 @@
 import { useDesign } from 'hooks';
 import { Text, Input } from 'components';
-export const InputBox = ({
-  label,
-  placeholder,
-  type,
-}: {
-  placeholder: string;
-  label: string;
-  type: string;
-}) => {
-  const { designState, setProps, setSetting } = useDesign();
+
+export const InputBox = ({ label, placeholder, type }) => {
+  const { designState, setProps } = useDesign();
   const currentStyle = designState.current.settings.style;
 
   if (

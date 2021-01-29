@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { BannerImage, BannerLayout } from './dependencies';
-import { IBanner } from './interfaces';
 
 export const BannerFirst: FC<IBanner> = ({ item, onClick }) => {
   return (

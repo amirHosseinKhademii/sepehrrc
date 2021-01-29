@@ -27,7 +27,7 @@ export const SectionsDashboard = () => {
         className="mb-25px"
         text={headerItem.title}
         onDelete={() => onDeleteItem(headerItem)}
-        onSetting={() => toggleStyleDrawer({ open: true, current: headerItem })}
+        onSetting={() => toggleStyleDrawer('style', headerItem)}
       />
       <Container
         groupName="1"
@@ -50,9 +50,7 @@ export const SectionsDashboard = () => {
                 className="mb-25px cursor-move"
                 text={item.title}
                 onDelete={() => onDeleteItem(item)}
-                onSetting={() =>
-                  toggleStyleDrawer({ open: true, current: item })
-                }
+                onSetting={() => toggleStyleDrawer('style', item)}
               />
             </Draggable>
           ))}
@@ -62,7 +60,7 @@ export const SectionsDashboard = () => {
         className=""
         text={footerItem.title}
         onDelete={() => onDeleteItem(footerItem)}
-        onSetting={() => toggleStyleDrawer({ open: true, current: footerItem })}
+        onSetting={() => toggleStyleDrawer('style', footerItem)}
       />
     </div>
   );

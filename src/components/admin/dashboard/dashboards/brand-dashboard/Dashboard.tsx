@@ -12,7 +12,7 @@ import {
 } from '../common';
 
 export const BrandDashboard = () => {
-  const { designState, setSetting, setPureImage } = useDesign();
+  const { designState,  setPureImage } = useDesign();
 
   const BaseSettings = () => {
     return (

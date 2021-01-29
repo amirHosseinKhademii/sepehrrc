@@ -34,7 +34,7 @@ export const designReducer = (
     case designTypes.ON_SETTING_CLICK:
       return {
         ...state,
-        current: { ...state.current, ...payload.current },
+        current: { ...state.current, ...payload },
       };
     case designTypes.ON_SET_ITEM_SETTING:
       pageCurrent.settings = pageCurrent.settings

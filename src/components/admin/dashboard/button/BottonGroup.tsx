@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { IButton } from './interfaces';
 import { Text } from 'components';
 import { useClass } from 'hooks';
 

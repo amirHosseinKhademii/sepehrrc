@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { BannerImage, BannerLayout } from './dependencies';
 
-export const BannerFifth = ({ item, onClick }) => {
+export const BannerFifth:FC<IBanner> = ({ item, onClick }) => {
   return (
     <BannerLayout className="grid-cols-2" onClick={onClick} item={item}>
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
