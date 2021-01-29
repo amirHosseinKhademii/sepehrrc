@@ -3,16 +3,13 @@ import { IHeader } from './interface';
 import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 import { HeaderButton } from 'components';
-import { useUi, useDesign } from 'hooks';
+import { useUi } from 'hooks';
 import Link from 'next/link';
-
-const logo = '/assets/images/logo.png';
 
 export const HeaderFirst: FC<IHeader> = ({ item }) => {
   const { uiState } = useUi();
   const { container } = uiState;
-  const { designState } = useDesign();
-  const { pageSettings } = designState;
+
   const Actions = () => {
     return (
       <>

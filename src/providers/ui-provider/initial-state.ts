@@ -1,10 +1,5 @@
 export const uiInitialState = {
   drawer: {
-    menu: false,
-    sections: false,
-    add: false,
-    settings: false,
-    style: false,
     type: '',
     open: false,
   },

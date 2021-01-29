@@ -1,14 +1,15 @@
-import { UIContext, uiTypes } from 'providers/ui-provider';
-import { FC, useContext } from 'react';
+import { uiTypes } from 'providers/ui-provider';
+import { FC } from 'react';
 import { ButtonAction } from 'components';
+import { useUi } from 'hooks';
 
 export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
-  const { uiDispatch } = useContext(UIContext);
+  const { toggleDrawer } = useUi();
 
   const onCancelClick = () => {
     if (onCancel) {
       onCancel();
-    } else uiDispatch({ type: uiTypes.DRAWER_CLOSE });
+    } else toggleDrawer({ type: '', open: false });
   };
 
   return (

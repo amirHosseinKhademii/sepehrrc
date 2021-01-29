@@ -10,7 +10,12 @@ export const SectionButton: FC<IDrawerFix> = memo(
         ' bg-gray_shade-900',
         drawer.type === 'sections' && drawer.open
       )}
-      onClick={() => toggleDrawer({ type: 'sections', open: true })}
+      onClick={() =>
+        toggleDrawer({
+          type: 'sections',
+          open: drawer.type === 'sections' ? false : true,
+        })
+      }
     >
       <ICEditAlt
         className={toggle(

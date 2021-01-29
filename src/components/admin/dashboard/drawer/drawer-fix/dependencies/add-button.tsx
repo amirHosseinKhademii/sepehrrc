@@ -10,7 +10,12 @@ export const AddButton: FC<IDrawerFix> = memo(
         ' bg-gray_shade-900',
         drawer.open && drawer.type === 'add'
       )}
-      onClick={() => toggleDrawer({ type: 'add', open: true })}
+      onClick={() =>
+        toggleDrawer({
+          type: 'add',
+          open: drawer.type === 'add' ? false : true,
+        })
+      }
     >
       <ICPlus
         className={toggle(

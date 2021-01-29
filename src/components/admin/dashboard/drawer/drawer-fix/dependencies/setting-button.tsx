@@ -10,7 +10,12 @@ export const SettingButton: FC<IDrawerFix> = memo(
         ' bg-gray_shade-900',
         drawer.open && drawer.type === 'settings'
       )}
-      onClick={() => toggleDrawer({ type: 'settings', open: true })}
+      onClick={() =>
+        toggleDrawer({
+          type: 'settings',
+          open: drawer.type === 'settings' ? false : true,
+        })
+      }
     >
       <ICSetting
         className={toggle(

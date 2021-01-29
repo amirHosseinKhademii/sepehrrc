@@ -17,19 +17,6 @@ export const useUi = () => {
       },
       [uiState.drawer]
     ),
-    toggleMenu: () => {
-      uiDispatch({ type: uiTypes.DRAWER_MENU });
-      uiDispatch({ type: uiTypes.DRAWER_CLOSE });
-    },
-    toggleSectionsDrawer: () => {
-      uiDispatch({ type: uiTypes.DRAWER_SECTIONS });
-    },
-    toggleAddDrawer: () => {
-      uiDispatch({ type: uiTypes.DRAWER_ADD });
-    },
-    toggleSettingsDrawer: () => {
-      uiDispatch({ type: uiTypes.DRAWER_SETTINGS });
-    },
     toggleStyleDrawer: (type, current) => {
       uiDispatch({
         type: uiTypes.TOGGLE_DRAWER,

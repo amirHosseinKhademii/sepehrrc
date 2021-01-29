@@ -4,4 +4,3 @@ interface IBanner {
   number?: string | number;
   onClick?: any;
 }
-export { IBanner };

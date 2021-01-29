@@ -9,7 +9,7 @@ export const BannerLayout = ({ children, className, onClick, item }) => {
   return (
     <BorderShadow
       active={
-        uiState.drawer.style &&
+        uiState.drawer.type === 'style' &&
         designState.current.type == 'banner' &&
         item.uuid == designState.current.uuid
           ? true

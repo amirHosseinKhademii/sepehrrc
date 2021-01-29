@@ -23,8 +23,10 @@ export const ProductContainer = ({ item }) => {
       item.settings.page !== 'disabled') ||
     !item?.settings ||
     !item.settings?.page;
+    
   const displaySlide =
     item?.settings && item.settings?.screen && item.settings.screen == 'slider';
+
   const CategoryHandler: Function = () => {
     let productGroup = {};
     if (
@@ -46,6 +48,7 @@ export const ProductContainer = ({ item }) => {
     }
     return productGroup;
   };
+
   const ShowbyHandler: Function = (group) => {
     let productsToShow = [];
     if (
@@ -114,7 +117,7 @@ export const ProductContainer = ({ item }) => {
   return (
     <BorderShadow
       active={
-        uiState.drawer.style &&
+        uiState.drawer.type === 'style' &&
         current.type == 'products' &&
         item.uuid == current.uuid
           ? true
