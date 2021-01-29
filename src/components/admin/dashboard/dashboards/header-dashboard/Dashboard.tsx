@@ -1,11 +1,9 @@
-import { DrawerLayout } from 'components/admin/layouts';
-import { StyleBoxHeader, HeaderDrawer } from 'components';
+import { StyleBoxHeader, HeaderDrawer, DrawerLayout } from 'components';
 import { MenuEditGroup, InputBox } from './dependencies';
 import { GenericUploader } from '../common';
-import { useDesign } from 'hooks';
+import { FC, memo } from 'react';
 
-export const HeaderDashboard = () => {
-  const { designState } = useDesign();
+export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
   const { current } = designState;
 
   const BaseSetttings = () => {
@@ -40,4 +38,4 @@ export const HeaderDashboard = () => {
       <BaseSetttings />
     </DrawerLayout>
   );
-};
+});

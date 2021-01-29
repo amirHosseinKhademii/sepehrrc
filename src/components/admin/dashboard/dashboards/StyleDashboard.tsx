@@ -9,9 +9,9 @@ export const StyleDashboard = () => {
   const { designState } = useDesign();
   switch (designState.current.type) {
     case 'header':
-      return <HeaderDashboard />;
+      return <HeaderDashboard designState={designState} />;
     case 'banner':
-      return <BannerDashboard designState={designState}/>;
+      return <BannerDashboard designState={designState} />;
     case 'slider':
       return <SliderDashboard />;
     case 'products':
