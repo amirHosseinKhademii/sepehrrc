@@ -1,5 +1,5 @@
 import { DrawerLayout } from 'components/admin/layouts';
-import { StyleBoxHeader, HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { StyleBoxHeader, HeaderDrawer } from 'components';
 import { MenuEditGroup, InputBox } from './dependencies';
 import { GenericUploader } from '../common';
 import { useDesign } from 'hooks';
@@ -38,7 +38,6 @@ export const HeaderDashboard = () => {
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات هدر" />
       <BaseSetttings />
-      <ButtonGroupDrawer />
     </DrawerLayout>
   );
 };

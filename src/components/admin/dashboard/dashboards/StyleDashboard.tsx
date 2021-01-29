@@ -11,7 +11,7 @@ export const StyleDashboard = () => {
     case 'header':
       return <HeaderDashboard />;
     case 'banner':
-      return <BannerDashboard />;
+      return <BannerDashboard designState={designState}/>;
     case 'slider':
       return <SliderDashboard />;
     case 'products':

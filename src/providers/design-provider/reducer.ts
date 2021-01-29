@@ -98,6 +98,16 @@ export const designReducer = (
         pageItems: clonePage,
         current: cloneCurrent,
       };
+    case designTypes.ON_CLEAR_CURRENT: {
+      return {
+        ...state,
+        current: {
+          uuid: '',
+          images: [{ number: 'one', value: '', newTab: false, link: '' }],
+          settings: {},
+        },
+      };
+    }
     default:
       return state;
   }

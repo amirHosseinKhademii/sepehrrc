@@ -1,29 +1,16 @@
-import { BorderShadow } from 'components';
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass } from 'hooks';
 
-export const BannerLayout = ({ children, className, onClick, item }) => {
+export const BannerLayout = ({ children, className }) => {
   const { join } = useClass();
-  const { designState } = useDesign();
-  const { uiState } = useUi();
 
   return (
-    <BorderShadow
-      active={
-        uiState.drawer.type === 'style' &&
-        designState.current.type == 'banner' &&
-        item.uuid == designState.current.uuid
-          ? true
-          : false
-      }
+    <div
+      className={join(
+        'grid gap-x-20px h-full container mx-auto px-20px py-25px my-25px',
+        className
+      )}
     >
-      <div
-        className={join(
-          'grid gap-x-20px h-full container mx-auto px-20px py-25px my-25px',
-          className
-        )}
-      >
-        {children}
-      </div>
-    </BorderShadow>
+      {children}
+    </div>
   );
 };

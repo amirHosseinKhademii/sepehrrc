@@ -1,6 +1,6 @@
 import { DrawerLayout } from 'components/admin/layouts';
-import { useDesign } from 'hooks';
-import { HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { useDesign, useUi } from 'hooks';
+import { HeaderDrawer } from 'components';
 import {
   ResponsiveSwitchs,
   GenericUploader,
@@ -17,7 +17,8 @@ import {
 } from './dependencies';
 
 export const SliderDashboard = () => {
-  const { designState, setSetting, setPureImage } = useDesign();
+  const { designState } = useDesign();
+  const { uiState } = useUi();
 
   const BaseSettings = () => {
     return (
@@ -54,22 +55,11 @@ export const SliderDashboard = () => {
 
   return (
     <DrawerLayout>
-      {designState.current.settings.imageSetting ? (
-        <>
-          <HeaderDrawer setting text="تنظیمات تصویر" />
-          <ImageSettings />
-          <ButtonGroupDrawer
-            onCancel={() => setSetting({ imageSetting: false, number: -1 })}
-          />
-        </>
+      <HeaderDrawer setting text="تنظیمات تصویر" />
+      {uiState.setting.type === 'picture' && uiState.setting.open ? (
+        <ImageSettings />
       ) : (
-        <>
-          <HeaderDrawer setting text="تنظیمات اسلایدر " />
-          <BaseSettings />
-          <ButtonGroupDrawer
-            onCancel={() => setPureImage({ onUpload: false })}
-          />
-        </>
+        <BaseSettings />
       )}
     </DrawerLayout>
   );

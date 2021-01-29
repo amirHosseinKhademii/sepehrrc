@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { useDesign } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 import { ICPlus } from 'icons';
 
-export const PictureButton: FC<{
-  withAdd?: boolean;
-  picture?: any;
-  number?: any;
-}> = ({ withAdd, picture, number }) => {
+export const PictureButton: FC<IPictureButton> = ({
+  withAdd,
+  picture,
+  number,
+}) => {
   const { setSetting, setPureImage } = useDesign();
+  const { toggleSettingState } = useUi();
+
   if (withAdd)
     return (
       <div
@@ -23,7 +25,7 @@ export const PictureButton: FC<{
     return (
       <img
         onClick={() =>
-          setSetting({ imageSetting: true, number, isBackground: false })
+          toggleSettingState({ type: 'picture', number, open: true })
         }
         className="w-full h-60px rounded cursor-pointer"
         src={picture}

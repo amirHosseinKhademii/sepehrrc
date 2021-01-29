@@ -5,9 +5,13 @@ import {
   BannerForth,
   BannerSixth,
   BannerThird,
+  BorderShadow,
 } from 'components';
+import { useDesign, useUi } from 'hooks';
 
 export const BannerContainer = ({ item }) => {
+  const { uiState } = useUi();
+  const { designState } = useDesign();
   const Banners = () => {
     if (item.settings && item.settings.style)
       switch (item.settings.style) {
@@ -28,10 +32,18 @@ export const BannerContainer = ({ item }) => {
       }
     else return <BannerFirst item={item} />;
   };
-  
+
   return (
-    <div className="py-25px">
+    <BorderShadow
+      active={
+        uiState.drawer.type === 'style' &&
+        designState.current.type == 'banner' &&
+        item.uuid == designState.current.uuid
+          ? true
+          : false
+      }
+    >
       <Banners />
-    </div>
+    </BorderShadow>
   );
 };

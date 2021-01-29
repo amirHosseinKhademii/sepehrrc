@@ -8,4 +8,5 @@ export const designTypes = {
   ON_SET_ITEM_IMAGES: 'On Set Item Images',
   ON_SET_PURE_IMAGE: 'On Set Pure Image',
   ON_CHANGE_PAGE_Settings: 'On Change Page Settings',
+  ON_CLEAR_CURRENT: 'On clear current',
 };

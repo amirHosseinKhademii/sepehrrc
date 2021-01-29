@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IPrice } from './interfaces';
 import { useClass, useDesign } from 'hooks';
-export const Price: FC<IPrice> = ({
+
+export const ProductPrice: FC<IPrice> = ({
   layout = true,
   className,
   onClick,

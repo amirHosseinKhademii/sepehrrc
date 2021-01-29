@@ -15,8 +15,8 @@ export const ModalCrop = () => {
   const { uiState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
-  const currentImages = designState.current.images;
-  const selectedImage = designState.current.settings.number;
+  const { images } = designState.current;
+  const { number } = uiState.setting;
 
   const handleSubmit = async () => {
     setisLoading(true);
@@ -96,7 +96,7 @@ export const ModalCrop = () => {
     return (
       <Modal open={uiState.modal.open}>
         <div className="flex flex-col">
-          <ModalImage src={currentImages[selectedImage].value} />
+          <ModalImage src={images[number] ? images[number].value : ''} />
           <ModalFooter />
         </div>
       </Modal>

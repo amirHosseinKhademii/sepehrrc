@@ -11,14 +11,18 @@ import {
 
 export const DrawerFix = () => {
   const { toggle } = useClass();
-  const { uiState, toggleDrawer } = useUi();
-  const { designState, setSetting } = useDesign();
+  const { uiState, toggleDrawer, toggleSettingState } = useUi();
+  const { clearCurrent } = useDesign();
   const { drawer } = uiState;
 
   const handleClickBackButton = () => {
-    toggleDrawer({ type: 'sections', open: true });
-    if (designState.current.type === 'slider')
-      setSetting({ imageSetting: false });
+    if (uiState.setting.open && uiState.setting.type === 'picture') {
+      toggleDrawer({ type: 'style', open: true });
+      toggleSettingState({ type: '', open: false });
+    } else {
+      toggleDrawer({ type: 'sections', open: true });
+      clearCurrent();
+    }
   };
 
   return (

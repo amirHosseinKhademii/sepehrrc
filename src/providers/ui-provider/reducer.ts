@@ -21,6 +21,15 @@ export const uiReducer = (state = uiInitialState, { type, payload }) => {
           isBackground: payload.isBackground,
         },
       };
+    case uiTypes.TOGGLE_SETTING_STATE:
+      return {
+        ...state,
+        setting: {
+          type: payload.type,
+          open: payload.open,
+          number: payload.number,
+        },
+      };
     default:
       return state;
   }

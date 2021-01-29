@@ -10,5 +10,3 @@ interface IPrice {
   style?: any;
   unit?: string;
 }
-
-export { IPrice };

@@ -19,7 +19,10 @@ export const WidthButtonGroup = () => {
       />
       <SettingButton
         child="ساده"
-        active={settings && settings.screen && settings.screen == 'simple'}
+        active={
+          (settings && settings.screen && settings.screen == 'simple') ||
+          !settings.screen
+        }
         className="rounded-r"
         onClick={() => setSetting({ screen: 'simple' })}
       />

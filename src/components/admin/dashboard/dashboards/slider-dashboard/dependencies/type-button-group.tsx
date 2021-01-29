@@ -44,7 +44,10 @@ export const ShowTypeButtonGroup = () => {
             <ICSliderBtnThree />
           )
         }
-        active={settings && settings.button && settings.button == 'third'}
+        active={
+          (settings && settings.button && settings.button == 'third') ||
+          !settings.button
+        }
         className="rounded-r"
         onClick={() => setSetting({ button: 'third' })}
       />

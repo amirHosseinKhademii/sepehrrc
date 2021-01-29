@@ -17,6 +17,7 @@ export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
     arr = Array.from(Array(need).keys());
   }
   newArr = [...imagesData, ...arr];
+
   return (
     <div className={`mt-${marginTop} w-full felx flex-col`}>
       <Text className=" mb-6px text-14px text-white_shade-100 text-right">

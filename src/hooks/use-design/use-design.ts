@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { useService, useUi } from 'hooks';
 import { DesignContext, designTypes } from 'providers/design-provider';
 
@@ -6,7 +6,7 @@ export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
   const { upload } = useService();
   const { toggleModal } = useUi();
-  
+
   return {
     onHorizontalDrop: (drop) => (dropResult) => {
       if (drop.willAcceptDrop && drop.payload === dropResult.payload)
@@ -91,8 +91,7 @@ export const useDesign = () => {
           type: designTypes.ON_SET_ITEM_PROPS,
           payload: { key, value: result.data.secure_url },
         });
-      }
-      else
+      } else
         designDispatch({
           type: designTypes.ON_SET_ITEM_IMAGES,
           payload: {
@@ -101,6 +100,9 @@ export const useDesign = () => {
         });
       toggleModal({ open: false });
     },
-    designState,
+    clearCurrent: useCallback(() => {
+      designDispatch({ type: designTypes.ON_CLEAR_CURRENT });
+    }, []),
+    designState: useMemo(() => designState, [designState]),
   };
 };

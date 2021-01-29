@@ -1,5 +1,5 @@
 import { DrawerLayout } from 'components/admin/layouts';
-import { HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { HeaderDrawer } from 'components';
 import {
   BackgroundColor,
   TitleInput,
@@ -42,7 +42,6 @@ export const ProductDashboard = () => {
     <DrawerLayout>
       <HeaderDrawer setting text=" تنظیمات  لیست محصولات " />
       <BaseSettings />
-      <ButtonGroupDrawer />
     </DrawerLayout>
   );
 };
