@@ -1,5 +1,5 @@
 import { DrawerLayout } from 'components/admin/layouts';
-import { HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { HeaderDrawer } from 'components';
 import { DropDownGroup } from './dependencies';
 import { useDesign } from 'hooks';
 import {
@@ -12,7 +12,7 @@ import {
 } from '../common';
 
 export const BrandDashboard = () => {
-  const { designState,  setPureImage } = useDesign();
+  const { designState } = useDesign();
 
   const BaseSettings = () => {
     return (
@@ -46,7 +46,6 @@ export const BrandDashboard = () => {
     <DrawerLayout>
       <HeaderDrawer setting text=" تنظیمات لوگو مشتریان " />
       <BaseSettings />
-      <ButtonGroupDrawer onCancel={() => setPureImage({ onUpload: false })} />
     </DrawerLayout>
   );
 };

@@ -7,3 +7,9 @@ interface IGenericUploader {
   className?: string;
   isBackground?: boolean;
 }
+
+interface IPictureButton {
+  withAdd?: boolean;
+  picture?: any;
+  number?: any;
+}

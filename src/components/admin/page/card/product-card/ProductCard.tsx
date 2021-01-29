@@ -1,11 +1,14 @@
-import { ProductButton, Price } from 'components';
-import { ProductImage, ProductName, ProductLayout } from './dependencies';
+import { ProductButton } from 'components';
+import {
+  ProductImage,
+  ProductName,
+  ProductLayout,
+  ProductPrice,
+} from './dependencies';
 
 import { useDesign, useUi } from 'hooks';
 
 export const ProductCard = ({ item }) => {
-  const { designState } = useDesign();
-  const { uiState } = useUi();
   return (
     <ProductLayout
       className={
@@ -20,14 +23,14 @@ export const ProductCard = ({ item }) => {
       <ProductName text={item.name} className="text-18px mt-20px" />
       <div className="flex">
         {item.prevPrice && (
-          <Price
+          <ProductPrice
             prev
             text={item.price}
             className=" ml-5px mt-20px text-lg font-bold font-iransans  "
           />
         )}
 
-        <Price
+        <ProductPrice
           withUnit
           text={item.price}
           className=" mt-20px text-lg font-bold font-iransans "

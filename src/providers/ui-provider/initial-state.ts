@@ -10,4 +10,9 @@ export const uiInitialState = {
   container: {
     padding: 'p-20px',
   },
+  setting: {
+    type: '',
+    open: false,
+    number: '',
+  },
 };

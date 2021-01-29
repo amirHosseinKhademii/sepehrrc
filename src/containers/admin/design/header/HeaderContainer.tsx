@@ -1,5 +1,4 @@
-import { Fragment } from 'react';
-import { useDesign } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 import {
   HeaderFirst,
   HeaderSecond,
@@ -9,9 +8,11 @@ import {
   HeaderSixth,
   HeaderSeventh,
   HeaderEighth,
+  BorderShadow,
 } from 'components';
 
 export const DesignHeader = () => {
+  const { uiState } = useUi();
   const { designState } = useDesign();
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
 
@@ -38,8 +39,16 @@ export const DesignHeader = () => {
       return <HeaderEighth item={item} />;
   };
   return (
-    <Fragment>
+    <BorderShadow
+      active={
+        uiState.drawer.type === 'style' &&
+        designState.current.type == 'header' &&
+        'HEADER' == designState.current.uuid
+          ? true
+          : false
+      }
+    >
       <Headers item={item} />
-    </Fragment>
+    </BorderShadow>
   );
 };

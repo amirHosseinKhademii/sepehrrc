@@ -6,9 +6,10 @@ import { DndUploadBox } from '../../common/';
 
 export const ImageBox = () => {
   const { designState, setPureImage } = useDesign();
-  const { toggleModal } = useUi();
-  const imagesData = designState.current.images;
-  const { number } = designState.current.settings;
+  const { toggleModal, uiState } = useUi();
+  const { images } = designState.current;
+  const { number } = uiState.setting;
+
   return (
     <Fragment>
       {designState.pureImage.onUpload ? (
@@ -24,7 +25,7 @@ export const ImageBox = () => {
         <>
           <img
             className="w-full h-90px rounded"
-            src={imagesData[number] ? imagesData[number].value : ''}
+            src={images[number] ? images[number].value : ''}
           />
           <div className="w-full flex justify-between  mt-9px">
             <div className="flex items-center mr-auto">

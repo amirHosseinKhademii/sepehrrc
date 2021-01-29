@@ -12,43 +12,41 @@ export const designInitialState = {
       type: 'products',
       title: 'لیست محصولات',
       images: [],
+      settings: {},
     },
     {
       id: '2',
       type: 'banner',
       title: 'بنر',
       images: [],
+      settings: {},
     },
     {
       id: '3',
       type: 'brands',
       title: 'برندها',
       images: [],
+      settings: {},
     },
     {
       id: '4',
-      type: 'slider',
+      type: 'news',
       title: 'لیست اخبار',
     },
     {
       id: '5',
-      type: 'slider',
+      type: 'textImage',
       title: 'متن با تصویر',
     },
     {
       id: '6',
-      type: 'slider',
+      type: 'comments',
       title: 'نظرات مشتریان',
     },
     {
       id: '7',
       type: 'text',
       title: 'متن',
-    },
-    {
-      id: '8',
-      type: 'slider',
-      title: 'لیست محصولات',
     },
   ],
   pageItems: [
@@ -73,10 +71,8 @@ export const designInitialState = {
   },
   current: {
     uuid: '',
-    settings: {
-      imageSetting: false,
-    },
-    images: [{ number: 'one', value: 'sfdsf', newTab: false, link: '' }],
+    images: [{ number: 'one', value: '', newTab: false, link: '' }],
+    settings: {},
   },
   pureImage: {
     number: '',

@@ -1,14 +1,15 @@
 import { DrawerLayout } from 'components/admin/layouts';
-import { StyleBoxBanner, HeaderDrawer, ButtonGroupDrawer } from 'components';
+import { StyleBoxBanner, HeaderDrawer } from 'components';
 import { TitleInput } from '../common';
 import { UploadButtonGroup } from './dependencies';
+import { FC, memo } from 'react';
 
-export const BannerDashboard = () => {
+export const BannerDashboard: FC<IBannerDashboard> = memo(({ designState }) => {
   const BaseSettings = () => (
     <div className="flex flex-col items-end pt-30px px-20px">
       <TitleInput />
       <StyleBoxBanner />
-      <UploadButtonGroup />
+      <UploadButtonGroup designState={designState} />
     </div>
   );
 
@@ -16,7 +17,6 @@ export const BannerDashboard = () => {
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
       <BaseSettings />
-      <ButtonGroupDrawer />
     </DrawerLayout>
   );
-};
+});

@@ -27,6 +27,12 @@ export const useUi = () => {
     toggleModal: (payload) => {
       uiDispatch({ type: uiTypes.MODAL_TOGGLE, payload });
     },
+    toggleSettingState: useCallback(
+      (payload) => {
+        uiDispatch({ type: uiTypes.TOGGLE_SETTING_STATE, payload });
+      },
+      [uiState.setting]
+    ),
     uiState: useMemo(() => uiState, [uiState]),
     uiTypes,
   };

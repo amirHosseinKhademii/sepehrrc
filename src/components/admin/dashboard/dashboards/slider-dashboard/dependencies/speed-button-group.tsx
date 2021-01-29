@@ -5,6 +5,7 @@ import { SettingButton } from './setting-button';
 export const SpeedButtonGroup = () => {
   const { designState, setSetting } = useDesign();
   const { settings } = designState.current;
+
   return (
     <ButtonGroup
       label="سرعت اسلاید ها"
@@ -18,16 +19,19 @@ export const SpeedButtonGroup = () => {
         onClick={() => setSetting({ speed: 'fast' })}
       />
       <SettingButton
-        child="آرام"
-        active={settings && settings.speed && settings.speed == 'slow'}
-        className=" border-r border-l border-gray_shade-900"
-        onClick={() => setSetting({ speed: 'slow' })}
+        child="متوسط"
+        active={
+          (settings && settings.speed && settings.speed == 'normal') ||
+          !settings.speed
+        }
+        className="border-r border-l border-gray_shade-900"
+        onClick={() => setSetting({ speed: 'normal' })}
       />
       <SettingButton
-        child="متوسط"
-        active={settings && settings.speed && settings.speed == 'normal'}
+        child="آرام"
+        active={settings && settings.speed && settings.speed == 'slow'}
         className="rounded-r"
-        onClick={() => setSetting({ speed: 'normal' })}
+        onClick={() => setSetting({ speed: 'slow' })}
       />
     </ButtonGroup>
   );
