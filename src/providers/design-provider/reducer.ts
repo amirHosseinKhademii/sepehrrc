@@ -2,6 +2,7 @@ import { designInitialState } from './initial-state';
 import { clone } from 'ramda';
 import { designTypes } from './types';
 import { applyDrag } from 'utils';
+import { v4 as uuidv4 } from 'uuid';
 
 export const designReducer = (
   state = designInitialState,
@@ -12,15 +13,16 @@ export const designReducer = (
   let cloneItem = clonePage.find((item) => item.uuid === state.current.uuid);
   switch (type) {
     case designTypes.ON_HORIZONTAL_DROP:
+      const uuid = uuidv4();
       return {
         ...state,
-        pageItems: applyDrag(state.pageItems, payload),
-        current: payload.payload,
+        pageItems: applyDrag(state.pageItems, payload, uuid),
+        current: { ...payload.payload, uuid },
       };
     case designTypes.ON_VERTICAL_DROP:
       return {
         ...state,
-        pageItems: applyDrag(state.pageItems, payload),
+        pageItems: applyDrag(state.pageItems, payload, payload.uuid),
       };
     case designTypes.ON_CHANGE_PAGE_Settings:
       return {
