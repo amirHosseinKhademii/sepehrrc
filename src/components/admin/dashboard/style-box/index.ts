@@ -1,2 +1,2 @@
-export * from './style-box-banner';
-export * from './StyleBoxHeader';
+export { StyleBoxBanner } from './style-box-banner';
+export { StyleBoxHeader } from './style-box-header';

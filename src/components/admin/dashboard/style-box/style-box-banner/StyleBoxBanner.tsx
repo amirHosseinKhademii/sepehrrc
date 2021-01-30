@@ -45,45 +45,55 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     }
   };
 
-  const DropDown = () => (
-    <div className="grid grid-cols-1 gap-y-7px focus:ring-2 focus:ring-blue-500">
-      <LabelBox label="استایل 1" />
-      <BannerFirst
-        onClick={() => onSelectClick({ style: 'first' })}
-        join={join}
-      />
-      <LabelBox label="استایل 2" />
-      <BannerSecond
-        className="border-gray-400"
-        onClick={() => onSelectClick({ style: 'second' })}
-        join={join}
-      />
-      <LabelBox label="استایل 3" />
-      <BannerThird
-        className=" border-gray-400"
-        onClick={() => onSelectClick({ style: 'third' })}
-        join={join}
-      />
-      <LabelBox label="استایل 4" />
-      <BannerForth
-        className=" border-gray-400"
-        onClick={() => onSelectClick({ style: 'forth' })}
-        join={join}
-      />
-      <LabelBox label="استایل 5" />
-      <BannerFifth
-        className=" border-gray-400"
-        onClick={() => onSelectClick({ style: 'fifth' })}
-        join={join}
-      />
-      <LabelBox label="استایل 6" />
-      <BannerSixth
-        className=" border-gray-400"
-        onClick={() => onSelectClick({ style: 'sixth' })}
-        join={join}
-      />
-    </div>
-  );
+  const DropDown = () => {
+    const { style } = designState.current.settings;
+
+    return (
+      <div className="grid grid-cols-1 gap-y-7px focus:ring-2 focus:ring-blue-500">
+        <LabelBox label="استایل 1" />
+        <BannerFirst
+          onClick={() => onSelectClick({ style: 'first' })}
+          join={join}
+          active={!style || style === 'first'}
+        />
+        <LabelBox label="استایل 2" />
+        <BannerSecond
+          className="border-gray-400"
+          onClick={() => onSelectClick({ style: 'second' })}
+          join={join}
+          active={style === 'second'}
+        />
+        <LabelBox label="استایل 3" />
+        <BannerThird
+          className=" border-gray-400"
+          onClick={() => onSelectClick({ style: 'third' })}
+          join={join}
+          active={style === 'third'}
+        />
+        <LabelBox label="استایل 4" />
+        <BannerForth
+          className=" border-gray-400"
+          onClick={() => onSelectClick({ style: 'forth' })}
+          join={join}
+          active={style === 'forth'}
+        />
+        <LabelBox label="استایل 5" />
+        <BannerFifth
+          className=" border-gray-400"
+          onClick={() => onSelectClick({ style: 'fifth' })}
+          join={join}
+          active={style === 'fifth'}
+        />
+        <LabelBox label="استایل 6" />
+        <BannerSixth
+          className=" border-gray-400"
+          onClick={() => onSelectClick({ style: 'sixth' })}
+          join={join}
+          active={style === 'sixth'}
+        />
+      </div>
+    );
+  };
 
   const styleTitle = () => {
     const { style } = designState.current.settings;
@@ -101,7 +111,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
           {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
           <span className="text-14px font-iransans text-gray_shade-300">
-            {open ? 'ذخیره' : 'ویرایش'}
+            {open ? 'بازگشت' : 'ویرایش'}
           </span>
         </div>
         <span className="text-16px font-iransans font-light text-white_shade-100 ">

@@ -4,7 +4,10 @@ import { BlueBox } from './blue-box';
 export const BannerSecond: FC<IStyleBox> = memo(
   ({ className, onClick, active, join }) => (
     <div
-      className={join('grid grid-cols-4 w-full mx-auto', className)}
+      className={join(
+        'grid grid-cols-4 w-full mx-auto cursor-pointer',
+        className
+      )}
       onClick={onClick}
     >
       <div className=" col-span-1 grid grid-cols-1 ">
