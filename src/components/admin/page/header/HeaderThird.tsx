@@ -53,7 +53,7 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
         </div>
       </div>
       <div
-        className={` grid  grid-cols-12    w-full h-58px   container mx-auto px-20px`}
+        className={` grid  grid-cols-12    w-full h-58px   container mx-auto px-20px relative`}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
