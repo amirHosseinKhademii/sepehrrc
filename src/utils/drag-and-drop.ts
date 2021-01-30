@@ -1,5 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
-export const applyDrag = (arr, dragResult) => {
+export const applyDrag = (arr, dragResult, uuid) => {
   const { removedIndex, addedIndex, payload } = dragResult;
   if (removedIndex === null && addedIndex === null) return arr;
 
@@ -11,7 +10,7 @@ export const applyDrag = (arr, dragResult) => {
   }
 
   if (addedIndex !== null) {
-    result.splice(addedIndex, 0, { ...itemToAdd, uuid: uuidv4() });
+    result.splice(addedIndex, 0, { ...itemToAdd, uuid });
   }
 
   return result;
