@@ -9,6 +9,7 @@ import {
   HeaderSeventh,
   HeaderEighth,
   BorderShadow,
+  General,
 } from 'components';
 
 export const DesignHeader = () => {
@@ -48,7 +49,9 @@ export const DesignHeader = () => {
           : false
       }
     >
-      <Headers item={item} />
+      <General>
+        <Headers item={item} />
+      </General>
     </BorderShadow>
   );
 };

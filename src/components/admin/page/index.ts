@@ -9,3 +9,4 @@ export * from './pagination';
 export * from './display';
 export * from './grid';
 export * from './brand';
+export * from './general';
