@@ -2,7 +2,7 @@ export const BlueBox = ({ className, number, active = false, join }) => (
   <div
     className={join(
       `${
-        active ? 'bg-primary-700' : 'bg-gray_shade-900'
+        active ? 'bg-primary-700' : 'bg-gray_shade-900 '
       } rounded flex items-center justify-center`,
       className
     )}
@@ -10,7 +10,7 @@ export const BlueBox = ({ className, number, active = false, join }) => (
     <span
       className={`${
         active ? 'text-primary-400' : 'text-gray_shade-500'
-      } text-14px`}
+      } text-14px font-iransans`}
     >
       {number}
     </span>

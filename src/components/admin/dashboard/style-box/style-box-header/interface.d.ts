@@ -20,4 +20,6 @@ interface IStyleBoxHeader {
   className?: string;
   onClick?: any;
   active?: boolean;
+  join?: any;
+  toggle?: any;
 }
