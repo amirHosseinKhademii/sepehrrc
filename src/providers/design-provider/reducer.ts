@@ -15,6 +15,7 @@ export const designReducer = (
       return {
         ...state,
         pageItems: applyDrag(state.pageItems, payload),
+        current: payload.payload,
       };
     case designTypes.ON_VERTICAL_DROP:
       return {

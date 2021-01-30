@@ -5,7 +5,7 @@ import { DesignHeader, DesignFooter } from 'containers';
 import { useUi, useClass } from 'hooks';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
-  const { uiState } = useUi();
+  const { uiState, toggleDrawer } = useUi();
   const { toggle } = useClass();
   return (
     <div>
@@ -21,6 +21,11 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
           'w-drawerFix'
         )}
         style={{ backgroundColor: '#ebedf0' }}
+        onClick={
+          uiState.drawer.open
+            ? () => toggleDrawer({ type: '', open: false })
+            : () => {}
+        }
       >
         <DesignHeader />
         <div className=" pb-28 w-full h-full">{children}</div>

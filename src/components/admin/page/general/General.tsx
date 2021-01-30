@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { useDesign, useClass } from 'hooks';
+import { useDesign, useClass, useUi } from 'hooks';
 import { IGeneral } from './interfaces';
 export const General: FC<IGeneral> = ({ children, item, className }) => {
   const { join } = useClass();
   const { designState } = useDesign();
+  const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
 
   return (
     <div
+      onClick={() => toggleStyleDrawer('style', item)}
       className={join(
         `w-full bg-no-repeat  font-${pageSettings.textFont}`,
         className
