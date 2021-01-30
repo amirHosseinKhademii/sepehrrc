@@ -15,7 +15,7 @@ export const StyleDashboard = () => {
     case 'slider':
       return <SliderDashboard />;
     case 'products':
-      return <ProductDashboard />;
+      return <ProductDashboard designState={designState} />;
     case 'brands':
       return <BrandDashboard />;
     default:
