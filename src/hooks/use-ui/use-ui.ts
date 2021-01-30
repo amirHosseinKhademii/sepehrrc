@@ -15,15 +15,21 @@ export const useUi = () => {
           payload: { type, open: open ? open : !uiState.drawer.open },
         });
       },
-      [uiState.drawer]
+      [uiState.drawer.type]
     ),
-    toggleStyleDrawer: (type, current) => {
-      uiDispatch({
-        type: uiTypes.TOGGLE_DRAWER,
-        payload: { type, open: true },
-      });
-      designDispatch({ type: designTypes.ON_SETTING_CLICK, payload: current });
-    },
+    toggleStyleDrawer: useCallback(
+      (type, current) => {
+        uiDispatch({
+          type: uiTypes.TOGGLE_DRAWER,
+          payload: { type, open: true },
+        });
+        designDispatch({
+          type: designTypes.ON_SETTING_CLICK,
+          payload: current,
+        });
+      },
+      [uiState.drawer.type]
+    ),
     toggleModal: (payload) => {
       uiDispatch({ type: uiTypes.MODAL_TOGGLE, payload });
     },
