@@ -13,7 +13,7 @@ export const SettingButton: FC<IDrawerFix> = memo(
       onClick={() =>
         toggleDrawer({
           type: 'settings',
-          open: drawer.type === 'settings' ? false : true,
+          open: drawer.open && drawer.type === 'settings' ? false : true,
         })
       }
     >
