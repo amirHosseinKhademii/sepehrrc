@@ -6,6 +6,7 @@ import {
   BannerSixth,
   BannerThird,
   BorderShadow,
+  General,
 } from 'components';
 import { useDesign, useUi } from 'hooks';
 
@@ -43,7 +44,9 @@ export const BannerContainer = ({ item }) => {
           : false
       }
     >
-      <Banners />
+      <General item={item}>
+        <Banners />
+      </General>
     </BorderShadow>
   );
 };

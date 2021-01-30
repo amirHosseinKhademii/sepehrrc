@@ -1,9 +1,11 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { useService, useUi } from 'hooks';
 import { DesignContext, designTypes } from 'providers/design-provider';
+import { UIContext, uiTypes } from 'providers/ui-provider';
 
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
+  const { uiDispatch } = useContext(UIContext);
   const { upload } = useService();
   const { toggleModal } = useUi();
 
@@ -14,6 +16,10 @@ export const useDesign = () => {
           type: designTypes.ON_HORIZONTAL_DROP,
           payload: dropResult,
         });
+      uiDispatch({
+        type: uiTypes.TOGGLE_DRAWER,
+        payload: { type: 'style', open: true },
+      });
     },
     onVerticalDrop: (payload) => {
       designDispatch({ type: designTypes.ON_VERTICAL_DROP, payload });

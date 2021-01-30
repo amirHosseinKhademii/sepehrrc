@@ -39,6 +39,7 @@ export const DesignHeader = () => {
     else if (item.settings.style === 'eighth')
       return <HeaderEighth item={item} />;
   };
+
   return (
     <BorderShadow
       active={
@@ -49,7 +50,7 @@ export const DesignHeader = () => {
           : false
       }
     >
-      <General>
+      <General item={item}>
         <Headers item={item} />
       </General>
     </BorderShadow>
