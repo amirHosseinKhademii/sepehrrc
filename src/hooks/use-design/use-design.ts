@@ -103,6 +103,12 @@ export const useDesign = () => {
     clearCurrent: useCallback(() => {
       designDispatch({ type: designTypes.ON_CLEAR_CURRENT });
     }, []),
+    deleteImage: useCallback(
+      (payload) => {
+        designDispatch({ type: designTypes.ON_DELETE_ITEM_IMAGE, payload });
+      },
+      [designState.current]
+    ),
     designState: useMemo(() => designState, [designState]),
   };
 };

@@ -68,6 +68,7 @@ export const designInitialState = {
     textFont: 'yekanbakh',
     primary: '#ed1c24',
     secondary: '#000',
+    language: 'pr',
   },
   current: {
     uuid: '',

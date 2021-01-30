@@ -12,11 +12,11 @@ import {
   ScreenButtonGroup,
   PageButtonGroup,
 } from './dependencies';
-import { useDesign } from 'hooks';
+import { FC, memo } from 'react';
 
-export const ProductDashboard = () => {
-  const { designState } = useDesign();
-  const displayInList = designState.current.settings?.screen !== 'slider';
+export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
+  const isSlider = designState.current.settings?.screen !== 'slider';
+
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px overflow-auto">
@@ -24,7 +24,7 @@ export const ProductDashboard = () => {
         <CategoryDrop />
         <ShowDrop />
         <ScreenButtonGroup />
-        {displayInList && (
+        {isSlider && (
           <>
             <GridDrops />
             <PageButtonGroup />
@@ -43,4 +43,4 @@ export const ProductDashboard = () => {
       <BaseSettings />
     </DrawerLayout>
   );
-};
+});

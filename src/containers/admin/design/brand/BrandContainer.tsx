@@ -23,8 +23,7 @@ export const BrandContainer = ({ item }) => {
     });
     return arr;
   };
-  console.log(uiState, 'uistate');
-  console.log(designState, 'designStatetate');
+
   return (
     <BorderShadow
       active={
