@@ -5,7 +5,7 @@ import {
   BannerForth,
   BannerSixth,
   BannerThird,
-  BorderShadow,
+  Wrapper,
 } from 'components';
 import { useDesign, useUi } from 'hooks';
 
@@ -34,7 +34,7 @@ export const BannerContainer = ({ item }) => {
   };
 
   return (
-    <BorderShadow
+    <Wrapper
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'banner' &&
@@ -42,8 +42,9 @@ export const BannerContainer = ({ item }) => {
           ? true
           : false
       }
+      item={item}
     >
       <Banners />
-    </BorderShadow>
+    </Wrapper>
   );
 };

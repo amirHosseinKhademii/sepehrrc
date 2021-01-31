@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BorderShadow } from 'components';
+import { Wrapper } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
 import { Slider, Display } from 'components';
@@ -68,17 +68,17 @@ export const SliderContainer = ({ item }) => {
   // };
 
   return (
-    <Display mobile={settings?.mobile} desktop={settings?.monitor}>
-      <BorderShadow
-        active={
-          uiState.drawer.type === 'style' &&
-          designState.current.type == 'slider' &&
-          item.uuid == designState.current.uuid
-            ? true
-            : false
-        }
-        backgroundUrl={item.backgroundImage}
-      >
+    <Wrapper
+      active={
+        uiState.drawer.type === 'style' &&
+        designState.current.type == 'slider' &&
+        item.uuid == designState.current.uuid
+          ? true
+          : false
+      }
+      item={item}
+    >
+      <Display mobile={settings?.mobile} desktop={settings?.monitor}>
         <div
           className={`${
             settings.screen ? handleScreen() : 'container mx-auto'
@@ -104,7 +104,7 @@ export const SliderContainer = ({ item }) => {
             </div>
           )}
         </div>
-      </BorderShadow>
-    </Display>
+      </Display>
+    </Wrapper>
   );
 };

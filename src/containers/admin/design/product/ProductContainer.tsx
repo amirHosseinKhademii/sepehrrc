@@ -1,6 +1,6 @@
 import { settings } from 'cluster';
 import {
-  BorderShadow,
+  Wrapper,
   Display,
   ProductTitle,
   ProductGrid,
@@ -23,7 +23,7 @@ export const ProductContainer = ({ item }) => {
       item.settings.page !== 'disabled') ||
     !item?.settings ||
     !item.settings?.page;
-    
+
   const displaySlide =
     item?.settings && item.settings?.screen && item.settings.screen == 'slider';
 
@@ -63,59 +63,52 @@ export const ProductContainer = ({ item }) => {
     return productsToShow;
   };
 
+  const SyncWithColRow = (data) => {
+    const col = item?.settings && item.settings?.cols ? item.settings.cols : 4;
+    const row = item?.settings && item.settings?.rows ? item.settings.rows : 1;
+    const calculateItems = col * row;
+    const orderArr = data.slice(0, calculateItems);
+    return orderArr;
+  };
+
   let productGroup = CategoryHandler();
   let productsToshow = ShowbyHandler(productGroup);
+  let productsOrdered = SyncWithColRow(productsToshow);
 
   const ProductList = () => {
     return (
-      <div
-        className="  my-25px  w-full bg-no-repeat"
-        style={{
-          backgroundColor: `${
-            item?.settings && item.settings?.backgroundColor
-              ? item.settings.backgroundColor
-              : '#ebedf0'
-          }`,
+      <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
+        <ProductTitle
+          text={
+            item?.settings && item.settings?.title
+              ? item.settings.title
+              : item.title
+          }
+        />
+        <ProductGrid
+          col={
+            item?.settings && item.settings?.cols ? item.settings.cols : null
+          }
+          // row={
+          //   item?.settings && item.settings?.rows ? item.settings.rows : null
+          // }
+        >
+          {productsOrdered?.map((item, index) => (
+            <ProductCard item={item} key={index} />
+          ))}
+        </ProductGrid>
 
-          backgroundImage: `url(${
-            item?.backgroundImage ? item.backgroundImage : 'unset'
-          })`,
-          backgroundSize: '100% 100%',
-        }}
-      >
-        <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
-          <ProductTitle
-            text={
-              item?.settings && item.settings?.title
-                ? item.settings.title
-                : item.title
-            }
-          />
-          <ProductGrid
-            col={
-              item?.settings && item.settings?.cols ? item.settings.cols : null
-            }
-            row={
-              item?.settings && item.settings?.rows ? item.settings.rows : null
-            }
-          >
-            {productsToshow?.map((item, index) => (
-              <ProductCard item={item} key={index} />
-            ))}
-          </ProductGrid>
-
-          {showPagination && (
-            <div className="flex justify-center w-full mt-20px">
-              <Pagination />
-            </div>
-          )}
-        </div>
+        {showPagination && (
+          <div className="flex justify-center w-full mt-20px">
+            <Pagination />
+          </div>
+        )}
       </div>
     );
   };
 
   return (
-    <BorderShadow
+    <Wrapper
       active={
         uiState.drawer.type === 'style' &&
         current.type == 'products' &&
@@ -123,8 +116,8 @@ export const ProductContainer = ({ item }) => {
           ? true
           : false
       }
-      color={pageSettings.secondary}
-      fontFamily={pageSettings.textFont}
+      className="my-25px"
+      item={item}
     >
       <Display
         mobile={item?.settings && item.settings?.mobile}
@@ -144,6 +137,6 @@ export const ProductContainer = ({ item }) => {
           />
         )}
       </Display>
-    </BorderShadow>
+    </Wrapper>
   );
 };

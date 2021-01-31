@@ -2,6 +2,7 @@ import { designInitialState } from './initial-state';
 import { clone } from 'ramda';
 import { designTypes } from './types';
 import { applyDrag } from 'utils';
+import { v4 as uuidv4 } from 'uuid';
 
 export const designReducer = (
   state = designInitialState,
@@ -9,17 +10,19 @@ export const designReducer = (
 ) => {
   let clonePage = clone(state.pageItems);
   let cloneCurrent = clone(state.current);
-  let pageCurrent = clonePage.find((item) => item.uuid === state.current.uuid);
+  let cloneItem = clonePage.find((item) => item.uuid === state.current.uuid);
   switch (type) {
     case designTypes.ON_HORIZONTAL_DROP:
+      const uuid = uuidv4();
       return {
         ...state,
-        pageItems: applyDrag(state.pageItems, payload),
+        pageItems: applyDrag(state.pageItems, payload, uuid),
+        current: { ...payload.payload, uuid },
       };
     case designTypes.ON_VERTICAL_DROP:
       return {
         ...state,
-        pageItems: applyDrag(state.pageItems, payload),
+        pageItems: applyDrag(state.pageItems, payload, payload.uuid),
       };
     case designTypes.ON_CHANGE_PAGE_Settings:
       return {
@@ -37,8 +40,8 @@ export const designReducer = (
         current: { ...state.current, ...payload },
       };
     case designTypes.ON_SET_ITEM_SETTING:
-      pageCurrent.settings = pageCurrent.settings
-        ? { ...pageCurrent.settings, ...payload }
+      cloneItem.settings = cloneItem.settings
+        ? { ...cloneItem.settings, ...payload }
         : { ...payload };
       cloneCurrent.settings = { ...cloneCurrent.settings, ...payload };
       return {
@@ -47,7 +50,7 @@ export const designReducer = (
         current: cloneCurrent,
       };
     case designTypes.ON_SET_ITEM_PROPS:
-      pageCurrent[payload.key] = payload.value;
+      cloneItem[payload.key] = payload.value;
       cloneCurrent[payload.key] = payload.value;
       return {
         ...state,
@@ -69,12 +72,12 @@ export const designReducer = (
         },
       };
     case designTypes.ON_SET_ITEM_IMAGES:
-      pageCurrent.images = [
-        ...pageCurrent.images.filter(
+      cloneItem.images = [
+        ...cloneItem.images.filter(
           (item) => item.number !== state.pureImage.number
         ),
         {
-          ...pageCurrent.images.find(
+          ...cloneItem.images.find(
             (item) => item.number == state.pureImage.number
           ),
           number: state.pureImage.number,
@@ -98,7 +101,7 @@ export const designReducer = (
         pageItems: clonePage,
         current: cloneCurrent,
       };
-    case designTypes.ON_CLEAR_CURRENT: {
+    case designTypes.ON_CLEAR_CURRENT:
       return {
         ...state,
         current: {
@@ -107,7 +110,18 @@ export const designReducer = (
           settings: {},
         },
       };
-    }
+    case designTypes.ON_DELETE_ITEM_IMAGE:
+      cloneItem.images = cloneItem.images.filter(
+        (item) => item.number !== payload
+      );
+      cloneCurrent.images = cloneCurrent.images.filter(
+        (item) => item.number !== payload
+      );
+      return {
+        ...state,
+        pageItems: clonePage,
+        current: cloneCurrent,
+      };
     default:
       return state;
   }

@@ -8,7 +8,7 @@ import {
   HeaderSixth,
   HeaderSeventh,
   HeaderEighth,
-  BorderShadow,
+  Wrapper,
 } from 'components';
 
 export const DesignHeader = () => {
@@ -38,8 +38,9 @@ export const DesignHeader = () => {
     else if (item.settings.style === 'eighth')
       return <HeaderEighth item={item} />;
   };
+
   return (
-    <BorderShadow
+    <Wrapper
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'header' &&
@@ -47,8 +48,9 @@ export const DesignHeader = () => {
           ? true
           : false
       }
+      item={item}
     >
       <Headers item={item} />
-    </BorderShadow>
+    </Wrapper>
   );
 };

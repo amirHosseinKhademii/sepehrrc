@@ -1,5 +1,5 @@
 import { DesignContainer } from 'containers';
-import { DesignLayout } from 'components/admin/layouts';
+import { DesignLayout } from 'components';
 
 const index = () => {
   return (
