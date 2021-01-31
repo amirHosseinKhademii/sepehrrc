@@ -6,11 +6,11 @@ export const GridDrops = () => {
 
   const RowDrop = () => (
     <div className="w-full col-span-1">
-      <Text className=" text-14px text-white_shade-100 text-right">
+      <Text className="mb-15px text-14px text-white_shade-100 text-right">
         تعداد سطر
       </Text>
       <DropDown
-        className="w-full h-54px mt-15px"
+        className="w-full h-54px"
         options={[
           { id: '1', title: ' 1' },
           { id: '2', title: '2' },
@@ -30,11 +30,11 @@ export const GridDrops = () => {
 
   const ColDrop = () => (
     <div className="w-full col-span-1">
-      <Text className=" text-14px text-white_shade-100 text-right">
+      <Text className="mb-15px text-14px text-white_shade-100 text-right">
         تعداد ستون
       </Text>
       <DropDown
-        className="w-full h-54px mt-15px"
+        className="w-full h-54px"
         options={[
           { id: '3', title: '3' },
           { id: '4', title: ' 4' },

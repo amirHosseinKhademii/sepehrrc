@@ -6,11 +6,11 @@ export const EffectDrop = () => {
   const { settings } = designState.current;
   return (
     <div className="w-full">
-      <Text className="  mt-30px text-14px text-white_shade-100 text-right">
+      <Text className="  mt-30px mb-15px text-14px text-white_shade-100 text-right">
         افکت تعویض اسلایدرها
       </Text>
       <DropDown
-        className="w-full h-54px mt-15px"
+        className="w-full"
         options={[
           { id: 'fade', title: 'محو شونده' },
           { id: 'simple', title: 'ساده' },

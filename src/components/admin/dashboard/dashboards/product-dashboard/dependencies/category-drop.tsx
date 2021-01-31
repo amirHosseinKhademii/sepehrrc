@@ -7,11 +7,11 @@ export const CategoryDrop = () => {
   return (
     <div className="w-full ">
       <div className="w-full ">
-        <Text className="  mt-30px text-14px text-white_shade-100 text-right">
+        <Text className="mt-30px mb-15px text-14px text-white_shade-100 text-right">
           دسته بندی محصولات
         </Text>
         <DropDown
-          className="w-full h-54px mt-15px"
+          className="w-full h-54px"
           options={[
             { id: 'all', title: ' همه دسته ها' },
             { id: 'bags', title: 'کیف ' },

@@ -5,6 +5,7 @@ interface IDropDown {
   onSelect?: any;
   defaultValue?: string;
   selected?: any;
+  height?: string;
 }
 
 export { IDropDown };

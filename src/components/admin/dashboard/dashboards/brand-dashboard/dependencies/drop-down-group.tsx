@@ -42,11 +42,11 @@ export const DropDownGroup = () => {
 
   const ColDrop = () => (
     <div className="w-full col-span-2">
-      <Text className="mt-30px text-14px text-white_shade-100 text-right">
+      <Text className="mt-30px mb-15px text-14px text-white_shade-100 text-right">
         تعداد ستون
       </Text>
       <DropDown
-        className="w-full h-54px mt-15px"
+        className="w-full h-54px"
         options={[
           { id: '4', title: '4' },
           { id: '6', title: '6' },
