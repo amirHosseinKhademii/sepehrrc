@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useUi } from 'hooks';
 
 export const Wrapper: FC<IWrapper> = ({
   children,
@@ -9,6 +9,7 @@ export const Wrapper: FC<IWrapper> = ({
 }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
+  const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
   return (
     <div
@@ -34,6 +35,7 @@ export const Wrapper: FC<IWrapper> = ({
           active
         )
       )}
+      onClick={() => toggleStyleDrawer('style', item)}
     >
       {children}
       <div
