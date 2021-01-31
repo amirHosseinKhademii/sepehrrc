@@ -86,7 +86,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 1,
           name: 'لباس',
           cover: '/assets/images/clothes.jpg',
           price: '3/000/000',
@@ -94,7 +94,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 2,
           name: 'موبایل',
           cover: '/assets/images/iphone.png',
           price: '3/000/000',
@@ -102,7 +102,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 3,
           name: 'کیت کلاچ میتسوبیشی لنسر',
           cover: '/assets/images/product.png',
           price: '2/500/000',
@@ -110,7 +110,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 4,
           name: 'کیف',
           cover: '/assets/images/bag.jpg',
           price: '3/000/000',
@@ -118,7 +118,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 5,
           name: 'کیت کلاچ میتسوبیشی لنسر',
           cover: '/assets/images/product.png',
           price: '3/000/000',
@@ -126,7 +126,7 @@ export const data = {
           discount: '500000',
         },
         {
-          id: 0,
+          id: 6,
           name: 'موبایل',
           cover: '/assets/images/iphone.png',
           price: '3/000/000',
@@ -135,7 +135,47 @@ export const data = {
         },
 
         {
-          id: 0,
+          id: 7,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '2/500/000',
+          prevPrice: '3/500/000',
+          discount: '500000',
+        },
+        {
+          id: 8,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '2/500/000',
+          prevPrice: '3/500/000',
+          discount: '500000',
+        },
+        {
+          id: 9,
+          name: 'موبایل',
+          cover: '/assets/images/iphone.png',
+          price: '3/000/000',
+          prevPrice: null,
+          discount: '500000',
+        },
+        {
+          id: 10,
+          name: 'کیت کلاچ میتسوبیشی لنسر',
+          cover: '/assets/images/product.png',
+          price: '3/000/000',
+          prevPrice: null,
+          discount: '500000',
+        },
+        {
+          id: 11,
+          name: 'موبایل',
+          cover: '/assets/images/iphone.png',
+          price: '3/000/000',
+          prevPrice: null,
+          discount: '500000',
+        },
+        {
+          id: 12,
           name: 'کیت کلاچ میتسوبیشی لنسر',
           cover: '/assets/images/product.png',
           price: '2/500/000',

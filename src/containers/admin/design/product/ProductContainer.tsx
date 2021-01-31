@@ -64,8 +64,17 @@ export const ProductContainer = ({ item }) => {
     return productsToShow;
   };
 
+  const SyncWithColRow = (data) => {
+    const col = item?.settings && item.settings?.cols ? item.settings.cols : 4;
+    const row = item?.settings && item.settings?.rows ? item.settings.rows : 1;
+    const calculateItems = col * row;
+    const orderArr = data.slice(0, calculateItems);
+    return orderArr;
+  };
+
   let productGroup = CategoryHandler();
   let productsToshow = ShowbyHandler(productGroup);
+  let productsOrdered = SyncWithColRow(productsToshow);
 
   const ProductList = () => {
     return (
@@ -81,11 +90,11 @@ export const ProductContainer = ({ item }) => {
           col={
             item?.settings && item.settings?.cols ? item.settings.cols : null
           }
-          row={
-            item?.settings && item.settings?.rows ? item.settings.rows : null
-          }
+          // row={
+          //   item?.settings && item.settings?.rows ? item.settings.rows : null
+          // }
         >
-          {productsToshow?.map((item, index) => (
+          {productsOrdered?.map((item, index) => (
             <ProductCard item={item} key={index} />
           ))}
         </ProductGrid>
