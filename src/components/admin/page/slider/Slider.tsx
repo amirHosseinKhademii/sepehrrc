@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -41,7 +41,13 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
         autoplay={{ delay: 200, disableOnInteraction: false }}
         className={`h-450px w-full rounded`}
       >
-        {child}
+        {child.length > 0 ? (
+          child
+        ) : (
+          <SwiperSlide className="bg-gray_shade-200 flex justify-center items-center">
+            <span className="text-2xl text-gray-700">اسلایدر</span>
+          </SwiperSlide>
+        )}
         <div
           className={`swiper-button-next ${button === 'first' ? 'hidden' : ''}`}
         ></div>
