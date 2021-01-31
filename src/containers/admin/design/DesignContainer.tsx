@@ -4,7 +4,7 @@ import { useDesign } from 'hooks';
 import { ProductContainer } from './product';
 import { SliderContainer } from './slider';
 import { BannerContainer } from './banner';
-import { BrandContainer } from './brand/';
+import { BrandContainer } from './brand';
 
 export const DesignContainer = () => {
   const [drop, setDrop] = useState({});
