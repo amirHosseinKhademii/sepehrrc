@@ -1,3 +1,3 @@
 export { DesignLayout } from './design-layout';
-export { BorderShadow } from './border-shadow';
+export { Wrapper } from './wrapper';
 export * from './drawer-layout';

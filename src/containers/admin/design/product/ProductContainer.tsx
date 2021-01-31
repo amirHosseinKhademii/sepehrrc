@@ -1,13 +1,12 @@
 import { settings } from 'cluster';
 import {
-  BorderShadow,
+  Wrapper,
   Display,
   ProductTitle,
   ProductGrid,
   ProductCard,
   Pagination,
   ProductSlider,
-  General,
 } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { data } from './data';
@@ -109,7 +108,7 @@ export const ProductContainer = ({ item }) => {
   };
 
   return (
-    <BorderShadow
+    <Wrapper
       active={
         uiState.drawer.type === 'style' &&
         current.type == 'products' &&
@@ -117,27 +116,27 @@ export const ProductContainer = ({ item }) => {
           ? true
           : false
       }
+      className="my-25px"
+      item={item}
     >
       <Display
         mobile={item?.settings && item.settings?.mobile}
         desktop={item?.settings && item.settings?.monitor}
       >
-        <General className="my-25px" item={item}>
-          {!displaySlide ? (
-            <ProductList />
-          ) : (
-            <ProductSlider
-              data={productsToshow}
-              item={item}
-              title={
-                item?.settings && item.settings?.title
-                  ? item.settings.title
-                  : item.title
-              }
-            />
-          )}
-        </General>
+        {!displaySlide ? (
+          <ProductList />
+        ) : (
+          <ProductSlider
+            data={productsToshow}
+            item={item}
+            title={
+              item?.settings && item.settings?.title
+                ? item.settings.title
+                : item.title
+            }
+          />
+        )}
       </Display>
-    </BorderShadow>
+    </Wrapper>
   );
 };

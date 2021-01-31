@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { BorderShadow } from 'components';
+import { Wrapper } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
-import { Slider, Display, General } from 'components';
+import { Slider, Display } from 'components';
 import Link from 'next/link';
 
 export const SliderContainer = ({ item }) => {
@@ -68,7 +68,7 @@ export const SliderContainer = ({ item }) => {
   // };
 
   return (
-    <BorderShadow
+    <Wrapper
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'slider' &&
@@ -76,36 +76,35 @@ export const SliderContainer = ({ item }) => {
           ? true
           : false
       }
+      item={item}
     >
       <Display mobile={settings?.mobile} desktop={settings?.monitor}>
-        <General item={item}>
-          <div
-            className={`${
-              settings.screen ? handleScreen() : 'container mx-auto'
-            } py-25px `}
-          >
-            {settings?.effect === 'simple' ? (
+        <div
+          className={`${
+            settings.screen ? handleScreen() : 'container mx-auto'
+          } py-25px `}
+        >
+          {settings?.effect === 'simple' ? (
+            <Slider
+              child={handleChild()}
+              speed={settings.speed ? handleSpeed() : 2500}
+              screen={settings?.screen}
+              button={settings?.button}
+              effect="slide"
+            />
+          ) : (
+            <div className="w-full">
               <Slider
                 child={handleChild()}
-                speed={settings.speed ? handleSpeed() : 2500}
+                speed={handleSpeed()}
                 screen={settings?.screen}
                 button={settings?.button}
-                effect="slide"
+                effect="fade"
               />
-            ) : (
-              <div className="w-full">
-                <Slider
-                  child={handleChild()}
-                  speed={handleSpeed()}
-                  screen={settings?.screen}
-                  button={settings?.button}
-                  effect="fade"
-                />
-              </div>
-            )}
-          </div>
-        </General>
+            </div>
+          )}
+        </div>
       </Display>
-    </BorderShadow>
+    </Wrapper>
   );
 };
