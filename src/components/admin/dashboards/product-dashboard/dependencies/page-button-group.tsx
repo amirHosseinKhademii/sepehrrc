@@ -1,11 +1,10 @@
-import { ButtonGroup } from 'components/admin/dashboard/button';
+import { ButtonGroup } from 'components';
 import { useClass, useDesign } from 'hooks';
 
-export const ScreenButtonGroup = () => {
+export const PageButtonGroup = () => {
   const { toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const { settings } = designState.current;
-
   const SettingButton = ({ text, active, className, onClick }) => (
     <button
       className={toggle(
@@ -22,21 +21,21 @@ export const ScreenButtonGroup = () => {
 
   return (
     <ButtonGroup
-      label=" حالت نمایش "
+      label="  نمایش صفحه بندی "
       groupClass="grid grid-cols-2"
-      className="mt-30px mb-30px"
+      className="my-30px"
     >
       <SettingButton
-        text=" لیست"
-        active={settings && settings.screen !== 'slider'}
-        className=" rounded-l border-r border-gray_shade-900"
-        onClick={() => setSetting({ screen: 'list' })}
+        text=" غیر فعال"
+        active={settings && settings.page == 'disabled'}
+        className="rounded-l border-r border-gray_shade-900"
+        onClick={() => setSetting({ page: 'disabled' })}
       />
       <SettingButton
-        text=" اسلایدر"
-        active={settings && settings.screen && settings.screen == 'slider'}
-        className="rounded-r "
-        onClick={() => setSetting({ screen: 'slider' })}
+        text=" فعال"
+        active={settings && settings.page !== 'disabled'}
+        className=" rounded-r "
+        onClick={() => setSetting({ page: 'enabled' })}
       />
     </ButtonGroup>
   );

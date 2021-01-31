@@ -1,8 +1,7 @@
 import { Draggable, Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
-import { DrawerLayout } from 'components/admin/layouts';
 import { HeaderDrawer } from '.';
-import { ButtonDrawer, ButtonGroupDrawer } from 'components';
+import { ButtonDrawer, ButtonGroupDrawer, DrawerLayout } from 'components';
 import { ICProductList, ICSlider, ICText } from 'icons';
 
 export const AddDashboard = () => {

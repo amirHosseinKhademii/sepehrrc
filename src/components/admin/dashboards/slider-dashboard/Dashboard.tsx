@@ -1,6 +1,5 @@
-import { DrawerLayout } from 'components/admin/layouts';
 import { useDesign, useUi } from 'hooks';
-import { HeaderDrawer } from 'components';
+import { HeaderDrawer, DrawerLayout } from 'components';
 import {
   ResponsiveSwitchs,
   GenericUploader,
