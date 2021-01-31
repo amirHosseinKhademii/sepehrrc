@@ -1,7 +1,6 @@
-import { HeaderDrawer } from '.';
 import { Button, DropDown, DrawerLayout } from 'components';
+import { ButtonGroupDrawer, HeaderDrawer } from '../common';
 import { useDesign } from 'hooks';
-import { ButtonGroupDrawer } from '.';
 
 export const SettingsDashboard = () => {
   const { onPageSetting, designState } = useDesign();
