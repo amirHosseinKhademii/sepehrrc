@@ -1,6 +1,7 @@
 import { useClass, useDesign } from 'hooks';
-import { Text, ButtonDrawer, Input, CheckBox } from 'components';
+import { Text, Input, CheckBox } from 'components';
 import { FC } from 'react';
+import { ButtonDrawer } from '.';
 
 export const GenericUploader: FC<IGenericUploader> = ({
   label,

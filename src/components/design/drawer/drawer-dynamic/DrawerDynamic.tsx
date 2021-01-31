@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useUi } from 'hooks';
-import { StyleDashboard } from 'components';
 import {
+  StyleDashboard,
   AddDashboard,
   SectionsDashboard,
   SettingsDashboard,
-} from './dependencies';
+} from 'components';
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState } = useUi();

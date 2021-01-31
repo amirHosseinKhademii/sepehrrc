@@ -1,8 +1,7 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
-import { MenuEditGroup, InputBox } from './dependencies';
+import { MenuEditGroup, InputBox, StyleBoxHeader } from './dependencies';
 import { GenericUploader } from '../common';
 import { FC, memo } from 'react';
-import { StyleBoxHeader } from '../style-box';
 
 export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
   const { current } = designState;

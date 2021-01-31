@@ -1,7 +1,7 @@
 import { Draggable, Container } from 'react-smooth-dnd';
 import { useDesign, useUi } from 'hooks';
-import { HeaderDrawer } from '.';
-import { ButtonDrawer, ButtonGroupDrawer, DrawerLayout } from 'components';
+import { DrawerLayout } from 'components';
+import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
 
 export const SectionsDashboard = () => {
   const { toggleStyleDrawer } = useUi();
