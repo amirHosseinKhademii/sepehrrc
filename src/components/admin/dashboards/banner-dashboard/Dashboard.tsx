@@ -1,7 +1,8 @@
-import { StyleBoxBanner, HeaderDrawer, DrawerLayout } from 'components';
+import { HeaderDrawer, DrawerLayout } from 'components';
 import { TitleInput } from '../common';
 import { UploadButtonGroup } from './dependencies';
 import { FC, memo } from 'react';
+import { StyleBoxBanner } from '../style-box';
 
 export const BannerDashboard: FC<IBannerDashboard> = memo(({ designState }) => {
   const BaseSettings = () => (

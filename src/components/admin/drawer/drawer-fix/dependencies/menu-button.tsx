@@ -1,4 +1,4 @@
-import { ButtonIcon } from 'components/admin/dashboard/button';
+import { ButtonIcon } from 'components';
 import { ICMenu, ICMultiply } from 'icons';
 import { FC, memo } from 'react';
 
