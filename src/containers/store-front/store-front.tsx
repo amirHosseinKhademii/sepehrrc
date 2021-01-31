@@ -6,7 +6,7 @@ import { SliderContainer } from './slider';
 import { BannerContainer } from './banner';
 import { BrandContainer } from './brand';
 
-export const DesignContainer = () => {
+export const StoreFrontContainer = () => {
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
 
