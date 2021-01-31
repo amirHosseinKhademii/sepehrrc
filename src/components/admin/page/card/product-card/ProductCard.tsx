@@ -16,7 +16,7 @@ export const ProductCard = ({ item }) => {
     >
       <ProductImage
         src={item.cover}
-        className=" h-188px w-188px object-contain"
+        className="h-188px w-188px object-contain"
       />
       <ProductName text={item.name} className="text-18px mt-20px" />
       <div className="flex">

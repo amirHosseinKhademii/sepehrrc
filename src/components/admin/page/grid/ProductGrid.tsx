@@ -8,12 +8,13 @@ export const ProductGrid: FC<IProductGrid> = ({
 }) => {
   return (
     <div
-      className={`grid  
+      className={`grid
              xs:grid-cols-1  md:grid-cols-2   lg:grid-cols-${
                col ? col : 4
-             } grid-rows-${row ? row : 1} gap-${`${gap}px`}
+             }  gap-${`${gap}px`}
       
       `}
+      dir="rtl"
     >
       {children}
     </div>

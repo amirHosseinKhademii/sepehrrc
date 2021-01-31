@@ -48,8 +48,8 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
       >
         {handleChild()}
       </Swiper>
-      <div className={`swiper-button-next`}></div>
-      <div className={`swiper-button-prev`}></div>
+      <div className={`swiper-button-next mt-20px mr-2`}></div>
+      <div className={`swiper-button-prev mt-20px ml-2`}></div>
     </div>
   );
 };
