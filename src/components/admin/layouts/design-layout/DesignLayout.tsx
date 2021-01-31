@@ -6,6 +6,7 @@ import { useUi, useClass } from 'hooks';
 
 export const DesignLayout: FC<ILayout> = ({ children }) => {
   const { uiState, toggleDrawer } = useUi();
+  const { open, type } = uiState.drawer;
   const { toggle } = useClass();
   return (
     <div>
@@ -14,10 +15,7 @@ export const DesignLayout: FC<ILayout> = ({ children }) => {
         className={toggle(
           `z-0 min-h-screen relative `,
           'xl:w-drawerDynamic',
-          uiState.drawer.settings ||
-            uiState.drawer.sections ||
-            uiState.drawer.add ||
-            uiState.drawer.style,
+          open && type !== 'menu',
           'w-drawerFix'
         )}
         style={{ backgroundColor: '#ebedf0' }}
