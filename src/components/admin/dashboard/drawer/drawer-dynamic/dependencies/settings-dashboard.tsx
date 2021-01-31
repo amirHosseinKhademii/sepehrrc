@@ -67,7 +67,7 @@ export const SettingsDashboard = () => {
               { id: 'yekanbakh', title: 'یکان بخ' },
               { id: 'iransans', title: 'ایران سنس' },
             ]}
-            className="h-58px"
+            height="54px"
             onSelect={(value) => onPageSetting({ key: 'titleFont', value })}
             selected={
               designState.pageSettings && designState.pageSettings.titleFont
@@ -85,7 +85,7 @@ export const SettingsDashboard = () => {
               { id: 'yekanbakh', title: 'یکان بخ' },
               { id: 'iransans', title: 'ایران سنس' },
             ]}
-            className="h-58px"
+            height="54px"
             onSelect={(value) => onPageSetting({ key: 'textFont', value })}
             selected={
               designState.pageSettings && designState.pageSettings.textFont

@@ -24,7 +24,7 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
         </p>
       ) : (
         <DropDown
-          className="h-50px"
+          height="50px"
           selected={designState.pageSettings && designState.pageSettings.key}
           onSelect={(value) => onPageSetting({ key: 'key', value })}
           options={[
