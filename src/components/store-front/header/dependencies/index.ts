@@ -1,7 +1,7 @@
-export { HeaderNavbar } from './HeaderNavbar';
-export { HeaderCascadingMenu } from './HeaderCascadingMenu';
-export { HeaderLogo } from './HeaderLogo';
-export { HeaderInput } from './HeaderInput';
-export { HeaderLayout } from './HeaderLayout';
-export { HeaderMegaMenu } from './HeaderMegaMenu';
-export { HeaderButton } from './HeaderButton';
+export { HeaderNavbar } from './header-navbar';
+export { HeaderCascadingMenu } from './header-cascading-menu';
+export { HeaderLogo } from './header-logo';
+export { HeaderInput } from './header-input';
+export { HeaderLayout } from './header-layout';
+export { HeaderMegaMenu } from './header-mega-menu';
+export { HeaderButton } from './header-button';
