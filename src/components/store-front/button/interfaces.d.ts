@@ -9,6 +9,5 @@ interface IHeaderButton {
   layout?: boolean;
   className?: string;
   text: string;
+  cssAlt?: string;
 }
-
-

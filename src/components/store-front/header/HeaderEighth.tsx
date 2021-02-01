@@ -1,13 +1,13 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
 import {
-  Navbar,
+  HeaderNavbar,
   HeaderLogo,
   HeaderInput,
   HeaderLayout,
-  MegaMenu,
+  HeaderButton,
+  HeaderCascadingMenu,
 } from './dependencies';
-import { Badge, HeaderButton } from 'components';
+import { Badge } from 'components';
 import {
   ICSearch,
   ICShoppingCart,
@@ -18,12 +18,13 @@ import {
   ICWhatsapp,
 } from 'icons';
 import Link from 'next/link';
-import { useDesign } from 'hooks';
+import { useDesign, useClass } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-export const HeaderEighth: FC<IHeader> = ({ item }) => {
+export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
+  const { join, toggle } = useClass();
 
   const Actions = () => {
     return (
@@ -76,7 +77,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div
         className=" text-white"
         style={{ backgroundColor: `${pageSettings.primary}` }}
@@ -86,7 +87,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <Navbar direction="horizental" />
+            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
           <div className="col-span-3 flex items-center justify-end text-24px">
             <Social />
@@ -100,16 +101,23 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center">
-            <HeaderLogo src={item.images} />
+            <HeaderLogo src={item.images} join={join} />
           </div>
           <div className="col-span-7 flex items-center justify-center ">
-            <HeaderInput className="w-535px" />
+            <HeaderInput
+              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              layout={layout}
+              toggle={toggle}
+            />
           </div>
           <div className="col-span-4 flex items-center justify-end ">
             <Actions />
             <HeaderButton
-              className="mr-25px"
+              layout={layout}
+              className=" mr-25px rounded-25px  text-white "
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              toggle={toggle}
+              designState={designState}
             />
           </div>
         </div>
@@ -119,7 +127,7 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu />
+          <HeaderCascadingMenu designState={designState} />
         </div>
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a

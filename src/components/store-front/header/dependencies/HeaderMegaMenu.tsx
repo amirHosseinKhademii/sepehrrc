@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { ICBars } from 'icons';
 import Link from 'next/link';
+import { useDesign } from 'hooks';
 interface IHEaderCategory {
-  className?: string;
+  designState?: any;
 }
 const item = {
   text: 'دسته بندی ها',
@@ -216,12 +217,13 @@ const item = {
   ],
 };
 
-export const HeaderCategory: FC<IHEaderCategory> = () => {
+export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
+  const { pageSettings } = designState;
   return (
-    <div className="flex items-center justify-center h-full   root">
-      <div className=" flex ml-30px  ">
+    <div className="headerMegaMenu flex items-center justify-center h-full ">
+      <div className=" flex ml-30px   ">
         <ICBars className="text-24px fill-current" />
-        <div className="  mr-5px text-16px font-bold   category">
+        <div className="  mr-5px text-16px font-bold   headerMegaMenuPanel">
           <Link href={item.link}>
             <a> {item.text} </a>
           </Link>
@@ -229,7 +231,7 @@ export const HeaderCategory: FC<IHEaderCategory> = () => {
             {item.subMenus.map((firstLevel, index) => {
               return (
                 <ul key={index} className="flex flex-col mb-4">
-                  <li className={'text-red-600 text-16px '}>
+                  <li className={'listTitle  text-16px '}>
                     <Link href={firstLevel.link}>
                       <a>{firstLevel.text}</a>
                     </Link>
@@ -255,20 +257,15 @@ export const HeaderCategory: FC<IHEaderCategory> = () => {
       </div>
       <style jsx>
         {`
-          .categoryList::after {
-            display: inline-block;
-            content: '';
-            width: 1px;
-            height: 20px;
-            background-color: #e2e4e9;
-            margin-right: 30px;
-          }
-
-          .root:hover .category > div {
+          .headerMegaMenu:hover .headerMegaMenuPanel > div {
             visibility: visible;
             pointer-events: all;
             opacity: 1;
             transition: all 0.3s;
+          }
+
+          .listTitle {
+            color: ${pageSettings.primary ? pageSettings.primary : 'inherit'};
           }
         `}
       </style>

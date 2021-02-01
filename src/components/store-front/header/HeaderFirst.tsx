@@ -1,14 +1,19 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
+import {
+  HeaderNavbar,
+  HeaderLogo,
+  HeaderLayout,
+  HeaderButton,
+} from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { HeaderButton } from 'components';
-import { useUi } from 'hooks';
+import { useUi, useClass, useDesign } from 'hooks';
 import Link from 'next/link';
 
-export const HeaderFirst: FC<IHeader> = ({ item }) => {
+export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   const { uiState } = useUi();
   const { container } = uiState;
+  const { join, toggle } = useClass();
+  const { designState } = useDesign();
 
   const Actions = () => {
     return (
@@ -33,23 +38,26 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div
-        className={` grid  grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
+        className={` grid grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-2  flex items-center ">
-          <HeaderLogo src={item.images} />
+          <HeaderLogo src={item.images} join={join} />
         </div>
         <div className="col-span-6 flex items-center mr-6 ">
-          <Navbar direction="horizental" />
+          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
         <div className="col-span-4 flex items-center justify-end">
           <Actions />
 
           <HeaderButton
-            className=" mr-35px"
+            layout={true}
+            className=" mr-35px  rounded-25px  text-white"
             text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
+            toggle={toggle}
+            designState={designState}
           />
         </div>
       </div>
