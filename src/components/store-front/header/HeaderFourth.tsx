@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
 import {
-  Navbar,
+  HeaderNavbar,
   HeaderLogo,
   HeaderInput,
   HeaderLayout,
-  HeaderCategory,
+  HeaderMegaMenu,
+  HeaderButton,
 } from './dependencies';
 import {
   ICShoppingCart,
@@ -15,12 +15,16 @@ import {
   ICInstagram,
   ICPhoneVolume,
 } from 'icons';
-import { Badge, HeaderButton } from 'components';
+import { Badge } from 'components';
+import { useClass, useDesign } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFourth: FC<IHeader> = ({ item }) => {
+export const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
+  const { join, toggle } = useClass();
+  const { designState } = useDesign();
+
   const Actions = () => {
     return (
       <>
@@ -76,23 +80,30 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
           className={`grid  grid-cols-12 w-full h-122px container mx-auto     px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} />
+            <HeaderLogo src={item.images} join={join} />
           </div>
           <div className="col-span-7 flex items-center justify-center ">
-            <HeaderInput className="w-450px" />
+            <HeaderInput
+              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              layout={layout}
+              toggle={toggle}
+            />
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
             <HeaderButton
-              className=" mr-35px  "
+              layout={layout}
+              className=" mr-35px rounded-25px  text-white "
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              toggle={toggle}
+              designState={designState}
             />
           </div>
         </div>
@@ -102,9 +113,9 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center  ">
-          <HeaderCategory />
+          <HeaderMegaMenu />
 
-          <Navbar direction="horizental" />
+          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
         <div className="col-span-3 flex items-center justify-end text-24px">
           <Social />

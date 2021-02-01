@@ -1,6 +1,5 @@
-import {  FC } from 'react';
+import { FC } from 'react';
 import { useClass, useDesign } from 'hooks';
-
 
 export const Badge: FC<IBadge> = ({
   children,
@@ -8,18 +7,22 @@ export const Badge: FC<IBadge> = ({
   badgeContent,
   onClick,
   root,
+  cssAlt,
+  layout = true,
 }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
 
-  const { join } = useClass();
+  const { toggle, join } = useClass();
   return (
     <span className={join('relative inline-block', root)} onClick={onClick}>
       {children}
       <span
-        className={join(
+        className={toggle(
           ' absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans ',
-          className
+          className,
+          layout,
+          cssAlt
         )}
         style={{ backgroundColor: `${pageSettings.primary}` }}
       >

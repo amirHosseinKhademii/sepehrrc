@@ -1,6 +1,5 @@
 import { ICAngleDown } from 'icons';
 import { FC } from 'react';
-import { IMegaMenu } from '../interface';
 import Link from 'next/link';
 const item = [
   {
@@ -158,9 +157,13 @@ const item = [
   },
 ];
 
-export const MegaMenu: FC<IMegaMenu> = ({ listClassName }) => {
+export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
+  listClassName,
+  designState,
+}) => {
+  const { pageSettings } = designState;
   return (
-    <ul className=" MegaMenu " style={{ direction: 'rtl' }}>
+    <ul className=" headerCascadingMenu " style={{ direction: 'rtl' }}>
       {item.map((firstLevel, index) => {
         return (
           <li key={index}>
@@ -231,7 +234,7 @@ export const MegaMenu: FC<IMegaMenu> = ({ listClassName }) => {
       })}
       <style jsx>
         {`
-          .MegaMenu {
+          .headerCascadingMenu {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
@@ -239,41 +242,41 @@ export const MegaMenu: FC<IMegaMenu> = ({ listClassName }) => {
             font-weight: bold;
           }
 
-          .MegaMenu > li {
+          .headerCascadingMenu > li {
             height: 58px;
             display: flex;
             align-items: center;
             margin-left: 20px;
           }
 
-          .MegaMenu > li:before {
+          .headerCascadingMenu > li:before {
             position: absolute;
             top: -2px;
             content: '';
             display: none;
             width: 100%;
             height: 2px;
-            background-color: #2e323d;
+            background-color: ${pageSettings.primary};
           }
 
-          .MegaMenu > li:hover:before {
+          .headerCascadingMenu > li:hover:before {
             display: block;
           }
-          .MegaMenu li {
+          .headerCascadingMenu li {
             position: relative;
           }
 
-          .MegaMenu li:first-child {
+          .headerCascadingMenu li:first-child {
             margin-right: 0px;
           }
 
-          .MegaMenu li:hover > ul {
+          .headerCascadingMenu li:hover > ul {
             visibility: visible;
             opacity: 1;
             pointer-events: all;
           }
 
-          .MegaMenu ul {
+          .headerCascadingMenu ul {
             position: absolute;
             top: 100%;
             right: 0;
@@ -289,22 +292,22 @@ export const MegaMenu: FC<IMegaMenu> = ({ listClassName }) => {
             // color: black;
           }
 
-          .MegaMenu ul ul {
+          .headerCascadingMenu ul ul {
             right: 100%;
             top: 0;
           }
 
-          .MegaMenu li ul li {
+          .headerCascadingMenu li ul li {
             padding: 20px;
             // padding-left: 0;
             margin-left: 0;
             transition: all 0.3s;
             border-bottom: 1px solid #d3d7e1;
           }
-          .MegaMenu li ul li:last-child {
+          .headerCascadingMenu li ul li:last-child {
             border: none;
           }
-          .MegaMenu li ul li:hover {
+          .headerCascadingMenu li ul li:hover {
             padding-right: 30px;
           }
         `}

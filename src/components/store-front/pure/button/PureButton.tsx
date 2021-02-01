@@ -6,10 +6,11 @@ export const PureButton: FC<IPureButton> = ({
   text,
   onClick,
   style,
+  cssAlt,
 }) => {
   return (
     <button
-      className={layout ? className : ''}
+      className={layout ? className : cssAlt}
       onClick={onClick}
       style={layout ? style : null}
     >

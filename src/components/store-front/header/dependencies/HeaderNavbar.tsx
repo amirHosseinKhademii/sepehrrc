@@ -1,27 +1,22 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { useClass } from 'hooks';
 
-interface INavbar {
-  items?: { text: string; link: string }[];
-  direction: 'vertical' | 'horizental';
-  className?: string;
-}
 const items = [
   { text: 'صفحه اصلی', link: './admin/design' },
   { text: 'محصولات فروشگاه', link: './admin/design' },
   { text: 'درباره ما', link: './admin/design' },
   { text: 'تماس باما', link: './admin/design' },
 ];
-export const Navbar: FC<INavbar> = ({
+export const HeaderNavbar: FC<IHeaderNavbar> = ({
   direction = 'horizental',
   className,
+  join,
+  toggle,
 }) => {
-  const { toggle, join } = useClass();
   return (
     <ul
       className={join(
-        toggle('flex', 'flex-col', direction === 'vertical'),
+        toggle('headerNavbar flex', 'flex-col', direction === 'vertical'),
         className
       )}
     >

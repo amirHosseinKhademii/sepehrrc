@@ -4,5 +4,6 @@ interface IPureButton {
   layout?: boolean;
   text: string;
   style?: any;
+  cssAlt?: string;
 }
 export { IPureButton };

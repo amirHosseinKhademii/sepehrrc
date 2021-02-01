@@ -1,17 +1,21 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderLayout, MegaMenu } from './dependencies';
+import {
+  HeaderNavbar,
+  HeaderLogo,
+  HeaderLayout,
+  HeaderCascadingMenu,
+} from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import { useDesign } from 'hooks';
+import { useDesign, useClass } from 'hooks';
 import { Badge } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderSeventh: FC<IHeader> = ({ item }) => {
+export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
-
+  const { join, toggle } = useClass();
   const Actions = () => {
     return (
       <>
@@ -40,17 +44,17 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
           className={` grid  grid-cols-12 container mx-auto  w-full h-122px px-20px `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-6 flex items-center ">
-            <Navbar direction="horizental" />
+            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
           <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} />
+            <HeaderLogo src={item.images} join={join} />
           </div>
           <div className="col-span-5 flex items-center justify-end">
             <Actions />
@@ -66,7 +70,10 @@ export const HeaderSeventh: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <MegaMenu listClassName="text-black" />
+            <HeaderCascadingMenu
+              listClassName="text-black"
+              designState={designState}
+            />
           </div>
           <div className="col-span-3 ">
             <a

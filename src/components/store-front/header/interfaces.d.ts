@@ -1,11 +1,15 @@
 interface IHeader {
   item: any;
+  layout?: boolean;
 }
 
 interface IHeaderInput {
   onClick?: Function;
   onChange?: any;
   className?: string;
+  layout?: boolean;
+  cssAlt?: string;
+  toggle: any;
 }
 
 interface IHeaderActions {
@@ -30,24 +34,35 @@ interface IShoppingCart {
 interface IHeaderLogo {
   className?: string;
   src?: { value: string; link?: string; newTab?: boolean }[];
+  join: any;
 }
 
 interface IHeaderButton {
-  children: any;
+  onClick?: any;
+  layout?: boolean;
   className?: string;
-  outline?: boolean;
+  text: string;
+  cssAlt?: string;
+  toggle: any;
+  designState: any;
 }
 
-interface IMegaMenu {
+interface IHeaderCascadingMenu {
   listClassName?: any;
+  designState: any;
 }
-export {
-  IHeaderButton,
-  IHeaderButton,
-  IHeaderActions,
-  IHeaderLogo,
-  IHeader,
-  IHeaderInput,
-  IShoppingCart,
-  IMegaMenu,
-};
+
+interface IHeaderLayout {
+  children: any;
+  layout?: boolean;
+  cssAlt?: string;
+  toggle: any;
+}
+
+interface IHeaderNavbar {
+  items?: { text: string; link: string }[];
+  direction: 'vertical' | 'horizental';
+  className?: string;
+  join: any;
+  toggle: any;
+}
