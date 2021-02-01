@@ -7,12 +7,17 @@ export const ProductLayout: FC<IProductLayout> = ({
   onClick,
   children,
   style,
+  cssAlt,
+  toggle,
 }) => {
-  const { toggle } = useClass();
-
   return (
     <div
-      className={toggle('flex flex-col  items-center', className, layout)}
+      className={toggle(
+        'productLayout flex flex-col  items-center',
+        className,
+        layout,
+        cssAlt
+      )}
       onClick={onClick}
       style={style}
     >
