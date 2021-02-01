@@ -7,14 +7,14 @@ import {
   Pagination,
   ProductSlider,
 } from 'components';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useClass } from 'hooks';
 import { data } from './data';
 
 export const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
+  const { join } = useClass();
   const { current } = designState;
-  const { pageSettings } = designState;
 
   const showPagination =
     (item?.settings &&
@@ -83,6 +83,9 @@ export const ProductContainer = ({ item }) => {
               ? item.settings.title
               : item.title
           }
+          layout={true}
+          designState={designState}
+          join={join}
         />
         <ProductGrid
           col={
@@ -93,7 +96,7 @@ export const ProductContainer = ({ item }) => {
           // }
         >
           {productsOrdered?.map((item, index) => (
-            <ProductCard item={item} key={index} />
+            <ProductCard item={item} key={index} layout={true} />
           ))}
         </ProductGrid>
 
