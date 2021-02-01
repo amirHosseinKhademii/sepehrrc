@@ -8,7 +8,7 @@ import {
 import { useClass, useDesign } from 'hooks';
 
 export const ProductCard = ({ item, layout = true }) => {
-  const { join, toggle } = useClass();
+  const { toggle } = useClass();
   const { designState } = useDesign();
   return (
     <ProductLayout
