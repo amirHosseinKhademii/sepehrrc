@@ -28,24 +28,10 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
   const visibility = DisplayHandler();
   return (
     <div
-      style={{
-        color: `${pageSettings.secondary}`,
-        backgroundColor: `${
-          item?.settings && item.settings?.backgroundColor
-            ? item.settings.backgroundColor
-            : '#ebedf0'
-        }`,
-        backgroundImage: `url(${
-          item?.backgroundImage ? item.backgroundImage : ''
-        })`,
-        backgroundSize: '100% 100%',
-
-        backgroundPosition: 'center center',
-      }}
       className={join(
         join(className, visibility),
         toggle(
-          `w-full bg-no-repeat font-${pageSettings.textFont} `,
+          `generalLayout w-full bg-no-repeat font-${pageSettings.textFont} `,
           'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
           active
         )
@@ -61,6 +47,22 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
           'hidden'
         )}
       ></div>
+      <style jsx>
+        {`
+          .generalLayout {
+            color: ${pageSettings.secondary};
+            background-color: ${
+              item?.settings && item.settings?.backgroundColor
+                ? item.settings.backgroundColor
+                : '#ebedf0'
+            };
+            background-image: url(${
+              item?.backgroundImage ? item.backgroundImage : ''
+            });
+            background-size: 100% 100%;
+            background-position: center center;
+        `}
+      </style>
     </div>
   );
 };
