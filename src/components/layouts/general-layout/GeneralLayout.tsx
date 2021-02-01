@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useClass, useDesign, useUi } from 'hooks';
 
-export const Wrapper: FC<IWrapper> = ({
+export const GeneralLayout: FC<IGeneralLayout> = ({
   children,
   active,
   item,
@@ -11,6 +11,21 @@ export const Wrapper: FC<IWrapper> = ({
   const { designState } = useDesign();
   const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
+  const DisplayHandler = () => {
+    if (item?.settings) {
+      if (item.settings?.mobile) {
+        return 'block md:hidden';
+      } else if (item.settings?.monitor) {
+        return 'hidden md:block';
+      } else {
+        return '';
+      }
+    } else {
+      return '';
+    }
+  };
+
+  const visibility = DisplayHandler();
   return (
     <div
       style={{
@@ -28,7 +43,7 @@ export const Wrapper: FC<IWrapper> = ({
         backgroundPosition: 'center center',
       }}
       className={join(
-        className,
+        join(className, visibility),
         toggle(
           `w-full bg-no-repeat font-${pageSettings.textFont} `,
           'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',

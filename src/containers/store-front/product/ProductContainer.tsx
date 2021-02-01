@@ -1,7 +1,6 @@
 import { settings } from 'cluster';
 import {
-  Wrapper,
-  Display,
+  GeneralLayout,
   ProductTitle,
   ProductGrid,
   ProductCard,
@@ -108,7 +107,7 @@ export const ProductContainer = ({ item }) => {
   };
 
   return (
-    <Wrapper
+    <GeneralLayout
       active={
         uiState.drawer.type === 'style' &&
         current.type == 'products' &&
@@ -119,24 +118,19 @@ export const ProductContainer = ({ item }) => {
       className="my-25px"
       item={item}
     >
-      <Display
-        mobile={item?.settings && item.settings?.mobile}
-        desktop={item?.settings && item.settings?.monitor}
-      >
-        {!displaySlide ? (
-          <ProductList />
-        ) : (
-          <ProductSlider
-            data={productsToshow}
-            item={item}
-            title={
-              item?.settings && item.settings?.title
-                ? item.settings.title
-                : item.title
-            }
-          />
-        )}
-      </Display>
-    </Wrapper>
+      {!displaySlide ? (
+        <ProductList />
+      ) : (
+        <ProductSlider
+          data={productsToshow}
+          item={item}
+          title={
+            item?.settings && item.settings?.title
+              ? item.settings.title
+              : item.title
+          }
+        />
+      )}
+    </GeneralLayout>
   );
 };

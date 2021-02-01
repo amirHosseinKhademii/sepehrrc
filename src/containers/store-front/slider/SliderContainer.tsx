@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Wrapper } from 'components';
+import { GeneralLayout } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
 import { Slider, Display } from 'components';
@@ -68,7 +68,7 @@ export const SliderContainer = ({ item }) => {
   // };
 
   return (
-    <Wrapper
+    <GeneralLayout
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'slider' &&
@@ -105,6 +105,6 @@ export const SliderContainer = ({ item }) => {
           )}
         </div>
       </Display>
-    </Wrapper>
+    </GeneralLayout>
   );
 };

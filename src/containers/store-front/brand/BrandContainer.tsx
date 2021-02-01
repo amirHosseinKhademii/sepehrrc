@@ -1,7 +1,7 @@
 import { Brand } from 'components';
 import { SwiperSlide } from 'swiper/react';
 import { useDesign, useUi } from 'hooks';
-import { Wrapper } from 'components';
+import { GeneralLayout } from 'components';
 import { Display } from 'components';
 
 export const BrandContainer = ({ item }) => {
@@ -25,7 +25,7 @@ export const BrandContainer = ({ item }) => {
   };
 
   return (
-    <Wrapper
+    <GeneralLayout
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'brands' &&
@@ -43,6 +43,6 @@ export const BrandContainer = ({ item }) => {
           <Brand child={handleChild()} slidesPerView={settings?.col} />
         </div>
       </Display>
-    </Wrapper>
+    </GeneralLayout>
   );
 };

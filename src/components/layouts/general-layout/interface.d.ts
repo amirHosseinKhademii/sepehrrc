@@ -1,4 +1,4 @@
-interface IWrapper {
+interface IGeneralLayout {
   children?: any;
   active?: boolean;
   backgroundUrl?: string;

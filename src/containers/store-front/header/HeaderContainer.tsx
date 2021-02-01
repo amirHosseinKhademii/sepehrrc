@@ -8,7 +8,7 @@ import {
   HeaderSixth,
   HeaderSeventh,
   HeaderEighth,
-  Wrapper,
+  GeneralLayout,
 } from 'components';
 
 export const DesignHeader = () => {
@@ -40,7 +40,7 @@ export const DesignHeader = () => {
   };
 
   return (
-    <Wrapper
+    <GeneralLayout
       active={
         uiState.drawer.type === 'style' &&
         designState.current.type == 'header' &&
@@ -51,6 +51,6 @@ export const DesignHeader = () => {
       item={item}
     >
       <Headers item={item} />
-    </Wrapper>
+    </GeneralLayout>
   );
 };
