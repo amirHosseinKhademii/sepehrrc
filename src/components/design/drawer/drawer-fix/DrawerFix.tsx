@@ -14,6 +14,8 @@ export const DrawerFix = () => {
   const { uiState, toggleDrawer, toggleSettingState } = useUi();
   const { clearCurrent } = useDesign();
   const { drawer } = uiState;
+  const { designState } = useDesign();
+  const { direction } = designState.pageSettings;
 
   const handleClickBackButton = () => {
     if (uiState.setting.open && uiState.setting.type === 'picture') {
@@ -26,7 +28,11 @@ export const DrawerFix = () => {
   };
 
   return (
-    <div className="w-68px h-full fixed right-0 top-0 bg-gray_shade-800 flex flex-col items-center z-50">
+    <div
+      className={`w-68px h-full fixed   ${
+        direction === 'rtl' ? 'right-0' : 'left-0'
+      } top-0 bg-gray_shade-800 flex flex-col items-center z-50`}
+    >
       {drawer.open && drawer.type === 'style' ? (
         <BackButton handleClickBackButton={handleClickBackButton} />
       ) : (

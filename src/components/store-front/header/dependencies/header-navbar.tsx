@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-
+import { useDirection } from 'hooks';
 const items = [
   { text: 'صفحه اصلی', link: './admin/design' },
   { text: 'محصولات فروشگاه', link: './admin/design' },
@@ -13,13 +13,9 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
   join,
   toggle,
 }) => {
+  const { flexDirection } = useDirection();
   return (
-    <ul
-      className={join(
-        toggle('headerNavbar flex', 'flex-col', direction === 'vertical'),
-        className
-      )}
-    >
+    <ul className={join(` headerNavbar flex ${flexDirection}`, className)}>
       {items.map((item, index) => {
         return (
           <li

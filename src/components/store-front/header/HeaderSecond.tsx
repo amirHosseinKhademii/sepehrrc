@@ -2,17 +2,21 @@ import { FC } from 'react';
 import { HeaderNavbar, HeaderLogo, HeaderLayout } from './dependencies';
 import { ICSearch, ICShoppingCart } from 'icons';
 import { Badge } from 'components';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 const logo = '/assets/images/logo.png';
 
 export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
   const { join, toggle } = useClass();
+  const { flexDirection, marginLtr } = useDirection();
+
   const Actions = () => {
     return (
       <>
         <Link href="./">
-          <a className="cursor-pointer ml-8px font-bold fill-current">
+          <a
+            className={`cursor-pointer ${marginLtr}-8px font-bold fill-current`}
+          >
             ورود/عضویت در سایت
           </a>
         </Link>
@@ -38,16 +42,17 @@ export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
   return (
     <HeaderLayout layout={layout} toggle={toggle}>
       <div
-        className={` grid  grid-cols-12 container mx-auto px-20px  w-full h-122px `}
-        style={{ direction: 'rtl' }}
+        className={` flex  ${flexDirection} container mx-auto px-20px  w-full h-122px `}
       >
-        <div className="col-span-6 flex items-center ">
+        <div className={`w-6/12 flex ${flexDirection} items-center `}>
           <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
-        <div className="col-span-1  flex items-center ">
+        <div className={`w-1/12  flex ${flexDirection} items-center `}>
           <HeaderLogo src={item.images} join={join} />
         </div>
-        <div className="col-span-5 flex items-center justify-end">
+        <div
+          className={`w-5/12 flex ${flexDirection} items-center justify-end`}
+        >
           <Actions />
         </div>
       </div>

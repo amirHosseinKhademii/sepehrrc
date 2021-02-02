@@ -6,7 +6,7 @@ import {
   HeaderButton,
 } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { useUi, useClass, useDesign } from 'hooks';
+import { useUi, useClass, useDesign, useDirection } from 'hooks';
 import Link from 'next/link';
 
 export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
@@ -14,7 +14,7 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { designState } = useDesign();
-
+  const { flexDirection, marginRtl } = useDirection();
   const Actions = () => {
     return (
       <>
@@ -40,21 +40,24 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   return (
     <HeaderLayout layout={layout} toggle={toggle}>
       <div
-        className={` grid grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
-        style={{ direction: 'rtl' }}
+        className={`flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
       >
-        <div className="col-span-2  flex items-center ">
+        <div className={`w-1/5 ${flexDirection} flex items-center `}>
           <HeaderLogo src={item.images} join={join} />
         </div>
-        <div className="col-span-6 flex items-center mr-6 ">
+        <div
+          className={`w-3/5 flex ${flexDirection} items-center ${marginRtl}-6 `}
+        >
           <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
-        <div className="col-span-4 flex items-center justify-end">
+        <div
+          className={`w-1/5 flex ${flexDirection}  items-center justify-end `}
+        >
           <Actions />
 
           <HeaderButton
             layout={true}
-            className=" mr-35px  rounded-25px  text-white"
+            className={` ${marginRtl}-35px  rounded-25px  text-white`}
             text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
             toggle={toggle}
             designState={designState}
