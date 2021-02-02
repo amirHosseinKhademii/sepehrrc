@@ -23,8 +23,8 @@ export const ProductContainer = ({ item }) => {
     !item?.settings ||
     !item.settings?.page;
 
-  const displaySlide =
-    item?.settings && item.settings?.screen && item.settings.screen == 'slider';
+  const displayList =
+    item?.settings && item.settings?.screen && item.settings.screen == 'list';
 
   const CategoryHandler: Function = () => {
     let productGroup = {};
@@ -121,7 +121,7 @@ export const ProductContainer = ({ item }) => {
       className="my-25px"
       item={item}
     >
-      {!displaySlide ? (
+      {displayList ? (
         <ProductList />
       ) : (
         <ProductSlider

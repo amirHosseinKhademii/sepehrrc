@@ -11,11 +11,12 @@ import {
   ShowDrop,
   ScreenButtonGroup,
   PageButtonGroup,
+  SliderDrops,
 } from './dependencies';
 import { FC, memo } from 'react';
 
 export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
-  const isSlider = designState.current.settings?.screen !== 'slider';
+  const isList = designState.current.settings?.screen === 'list';
 
   const BaseSettings = () => {
     return (
@@ -24,11 +25,13 @@ export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
         <CategoryDrop />
         <ShowDrop />
         <ScreenButtonGroup />
-        {isSlider && (
+        {isList ? (
           <>
             <GridDrops />
             <PageButtonGroup />
           </>
+        ) : (
+          <SliderDrops />
         )}
         <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
         <BackgroundColor />
