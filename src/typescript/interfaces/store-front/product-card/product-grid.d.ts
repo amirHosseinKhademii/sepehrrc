@@ -4,5 +4,3 @@ interface IProductGrid {
   children: any;
   gap?: number | string;
 }
-
-export { IProductGrid };

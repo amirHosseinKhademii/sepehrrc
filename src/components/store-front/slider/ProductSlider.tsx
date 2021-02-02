@@ -17,7 +17,7 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
     let arr = [];
     arr = data.map((item, index) => {
       return (
-        <SwiperSlide className="swiper-slide" key={index}>
+        <SwiperSlide className="swiper-slide originalSlider" key={index}>
           <ProductCard item={item} />
         </SwiperSlide>
       );
