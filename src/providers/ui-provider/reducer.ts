@@ -4,7 +4,6 @@ import { uiTypes } from './types';
 export const uiReducer = (state = uiInitialState, { type, payload }) => {
   switch (type) {
     case uiTypes.TOGGLE_DRAWER:
-      console.log(payload, 'payload');
       return {
         ...state,
         drawer: {
