@@ -3,4 +3,4 @@ interface IText {
   children?: string;
   onClick?: any;
 }
-export { IText };
+

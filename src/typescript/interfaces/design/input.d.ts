@@ -14,4 +14,4 @@ interface IInput {
   disabled?: boolean;
 }
 
-export { IInput };
+

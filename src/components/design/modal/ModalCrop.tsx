@@ -88,9 +88,7 @@ export const ModalCrop = () => {
         // console.log(cropper.getCroppedCanvas().toDataURL());
       },
     });
-
-    // operations.zoom && cropper.zoom(0.1);
-  }, [operations]);
+  }, []);
 
   if (uiState.modal.editImage) {
     return (

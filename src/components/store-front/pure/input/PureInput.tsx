@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IPureInput } from './interface';
+
 export const PureInput: FC<IPureInput> = ({
   onClick,
   onChange,
