@@ -6,7 +6,10 @@ export const Modal: FC<IModal> = ({ children, open }) => {
   if (open)
     return (
       <Fragment>
-        <div className=" fixed top-0 left-0 w-3/5 h-437px mt-160px ml-188px z-50 shadow-lg rounded ">
+        <div
+          className=" fixed top-0 left-0 w-3/5 h-437px mt-160px z-50 shadow-lg rounded "
+          style={{ marginLeft: '10%' }}
+        >
           {children}
         </div>
         <div

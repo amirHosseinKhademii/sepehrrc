@@ -42,7 +42,7 @@ export const ModalCrop = () => {
 
   const ModalFooter = () => (
     <div
-      className="flex items-center w-full h-85px pl-35px opacity-70"
+      className="flex items-center w-full h-85px pl-35px opacity-70 rounded-b"
       style={{ backgroundColor: '#1a191d    ' }}
     >
       <ButtonAction
