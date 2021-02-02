@@ -6,4 +6,3 @@ interface IPureInput {
   onBlur?: any;
   placeholder?: string;
 }
-export { IPureInput };

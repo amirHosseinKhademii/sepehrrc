@@ -1,3 +1,7 @@
+interface IHeaderDashboard {
+  designState?: any;
+}
+
 interface IStyleBox {
   variation?: 'first' | 'second' | 'third' | 'forth' | 'fifth' | 'sixth';
   onEdit?: any;

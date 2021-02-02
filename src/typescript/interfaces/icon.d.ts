@@ -5,4 +5,3 @@ interface IIcon {
   width?: string;
   fill?: string;
 }
-export { IIcon };
