@@ -113,7 +113,7 @@ export const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center  ">
-          <HeaderMegaMenu />
+          <HeaderMegaMenu designState={designState}/>
 
           <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
