@@ -1,9 +1,9 @@
-import { ProductButton } from 'components';
 import {
   ProductImage,
   ProductName,
   ProductLayout,
   ProductPrice,
+  ProductButton,
 } from './dependencies';
 import { useClass, useDesign } from 'hooks';
 

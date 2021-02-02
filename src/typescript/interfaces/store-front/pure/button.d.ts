@@ -6,4 +6,3 @@ interface IPureButton {
   style?: any;
   cssAlt?: string;
 }
-export { IPureButton };
