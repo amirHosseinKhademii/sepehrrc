@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ICBars } from 'icons';
 import Link from 'next/link';
-import { useDesign } from 'hooks';
+import { useDirection } from 'hooks';
 interface IHEaderCategory {
   designState?: any;
 }
@@ -219,19 +219,35 @@ const item = {
 
 export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
   const { pageSettings } = designState;
+  const {
+    flexDirection,
+    marginLtr,
+    marginRtl,
+    absoluteRtl,
+    textAlign,
+  } = useDirection();
   return (
-    <div className="headerMegaMenu flex items-center justify-center h-full ">
-      <div className=" flex ml-30px   ">
+    <div
+      className={`headerMegaMenu flex ${flexDirection} items-center justify-center h-full `}
+    >
+      <div className={` flex ${flexDirection} ${marginLtr}-30px   `}>
         <ICBars className="text-24px fill-current" />
-        <div className="  mr-5px text-16px font-bold   headerMegaMenuPanel">
+        <div
+          className={`  ${marginRtl}-5px text-16px font-bold   headerMegaMenuPanel`}
+        >
           <Link href={item.link}>
             <a> {item.text} </a>
           </Link>
-          <div className="z-30 absolute top-full right-0  w-full grid lg:grid-cols-5  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md ">
+          <div
+            className={`z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
+          >
             {item.subMenus.map((firstLevel, index) => {
               return (
-                <ul key={index} className="flex flex-col mb-4">
-                  <li className={'listTitle  text-16px '}>
+                <ul
+                  key={index}
+                  className={`w-1/5 flex flex-col ${textAlign} mb-4 `}
+                >
+                  <li className={`listTitle  text-16px  `}>
                     <Link href={firstLevel.link}>
                       <a>{firstLevel.text}</a>
                     </Link>
