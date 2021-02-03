@@ -1,4 +1,5 @@
 import { useClass } from 'hooks';
+import { ICheck } from 'icons';
 import { FC } from 'react';
 
 export const CheckBox: FC<ICheckbox> = ({
@@ -21,9 +22,11 @@ export const CheckBox: FC<ICheckbox> = ({
         <div className="w-18px h-18px rounded bg-gray_shade-800 cursor-pointer" />
       ) : checked ? (
         <div
-          className="w-18px h-18px rounded bg-primary-700 cursor-pointer"
+          className="w-18px h-18px rounded bg-primary-700 cursor-pointer flex justify-center items-center"
           onClick={onClick}
-        />
+        >
+          <ICheck />
+        </div>
       ) : (
         <div
           className="w-18px h-18px rounded bg-gray_shade-800 cursor-pointer"
