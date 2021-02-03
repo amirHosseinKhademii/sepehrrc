@@ -25,7 +25,7 @@ export const ProductCard = ({ item, layout = true }) => {
       />
       <ProductName
         text={item.name}
-        className="text-18px mt-25px"
+        className="text-18px mt-25px font-iransans"
         toggle={toggle}
         layout={layout}
       />
@@ -52,7 +52,7 @@ export const ProductCard = ({ item, layout = true }) => {
         />
       </div>
       <ProductButton
-        text="افزون به سبد خرید"
+        text="افزودن به سبد خرید"
         layout={layout}
         toggle={toggle}
         designState={designState}

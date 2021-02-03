@@ -55,8 +55,8 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
         className={`h-full w-full rounded  relative swiper-pagination-hidden pb-35px`}
       >
         {handleChild()}
-        <div className={`swiper-button-next mt-20px mr-2`}></div>
-        <div className={`swiper-button-prev mt-20px ml-2`}></div>
+        <div className={`swiper-button-next mr-2`}></div>
+        <div className={`swiper-button-prev  ml-2`}></div>
         <div
           className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center h-2 focus:outline-none'
         `}

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 
 export const HeaderLogo: FC<IHeaderLogo> = ({ className, src, join }) => {
-  const logoAlt = '/assets/images/logo-dummy.png';
+  const logoAlt = '/assets/images/logo.png';
   const [data] = src;
   return (
     <div className="headerLogo">
@@ -13,7 +13,7 @@ export const HeaderLogo: FC<IHeaderLogo> = ({ className, src, join }) => {
         >
           <div className={join('flex items-center', className)}>
             <img
-              className="w-140px h-70px object-cover"
+              className="w-140px h-70px object-contain"
               src={data?.value ? data.value : logoAlt}
               alt="logo"
             />
