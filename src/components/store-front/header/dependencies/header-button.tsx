@@ -13,7 +13,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
   return (
     <button
       className={toggle(
-        'headerButton h-50px   px-20px text-16px border-2 text-white  cursor-pointer outline-none',
+        'headerButton h-50px w-155px px-15px  text-16px border-2 text-white  cursor-pointer outline-none',
         className,
         layout,
         cssAlt

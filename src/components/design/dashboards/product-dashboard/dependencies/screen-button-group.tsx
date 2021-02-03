@@ -28,13 +28,13 @@ export const ScreenButtonGroup = () => {
     >
       <SettingButton
         text=" لیست"
-        active={settings && settings.screen !== 'slider'}
+        active={settings && settings.screen && settings.screen == 'list'}
         className=" rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ screen: 'list' })}
       />
       <SettingButton
         text=" اسلایدر"
-        active={settings && settings.screen && settings.screen == 'slider'}
+        active={settings && settings.screen !== 'list'}
         className="rounded-r "
         onClick={() => setSetting({ screen: 'slider' })}
       />
