@@ -11,6 +11,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
   const { designState } = useDesign();
   const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
+
   const DisplayHandler = () => {
     if (item?.settings) {
       if (item.settings?.mobile) {
@@ -26,7 +27,10 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
   };
 
   const visibility = DisplayHandler();
+
+  
   return (
+
     <div
       className={join(
         join(className, visibility),
