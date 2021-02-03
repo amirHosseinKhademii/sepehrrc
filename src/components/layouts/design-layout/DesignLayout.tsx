@@ -10,7 +10,11 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { designState } = useDesign();
   const { direction } = designState.pageSettings;
   return (
-    <div className={` flex`}>
+    <div
+    // className={` flex ${
+    //   direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+    // }`}
+    >
       <Drawer />
       <div
         className={toggle(
