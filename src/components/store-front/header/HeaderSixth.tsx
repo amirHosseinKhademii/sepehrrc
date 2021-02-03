@@ -5,15 +5,9 @@ import {
   HeaderInput,
   HeaderLayout,
   HeaderButton,
+  Social,
 } from './dependencies';
-import {
-  ICPhoneVolume,
-  ICShoppingCart,
-  ICWhatsapp,
-  ICTwitter,
-  ICTelegram,
-  ICInstagram,
-} from 'icons';
+import { ICPhoneVolume, ICShoppingCart } from 'icons';
 import { Badge } from 'components';
 import { useClass, useDesign } from 'hooks';
 import Link from 'next/link';
@@ -29,51 +23,32 @@ export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
       <>
         <a
           href={`tel:+98${!item.telNumber ? '09000000000' : item.telNumber}`}
-          className="flex text-16px"
+          className="flex text-16px font-iransans"
         >
           <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-          <ICPhoneVolume className="mr-4 fill-current" />
+          <ICPhoneVolume
+            height="20px"
+            width="20px"
+            className="mr-10px fill-current text-20px"
+          />
         </a>
 
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-20px"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>
-      </>
-    );
-  };
-
-  const Social = () => {
-    return (
-      <>
-        <Link href="./">
-          <a>
-            <ICWhatsapp className="mx-4  fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTwitter className="mx-4 fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICInstagram className="mx-4 fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTelegram className="mr-4 fill-current" />{' '}
-          </a>
-        </Link>
       </>
     );
   };
@@ -114,7 +89,7 @@ export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
         <div className="col-span-9  flex items-center ">
           <HeaderCascadingMenu designState={designState} />
         </div>
-        <div className="col-span-3 flex  justify-end text-24px mt-20px">
+        <div className="col-span-3 flex  justify-end text-16px mt-20px">
           <Social />
         </div>
       </div>

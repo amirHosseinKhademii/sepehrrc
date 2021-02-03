@@ -12,11 +12,9 @@ export const ProductCard = ({ item, layout = true }) => {
   const { designState } = useDesign();
   return (
     <ProductLayout
-      className={
-        ' bg-white border-2 border-gray-100 shadow-lg rounded-xl   p-40px'
-      }
+      className={' bg-white h-450px py-40px'}
       layout={layout}
-      style={{ direction: 'rtl' }}
+      style={{ direction: 'rtl', borderRadius: '10px' }}
       toggle={toggle}
     >
       <ProductImage
@@ -27,7 +25,7 @@ export const ProductCard = ({ item, layout = true }) => {
       />
       <ProductName
         text={item.name}
-        className="text-18px mt-20px"
+        className="text-18px mt-25px"
         toggle={toggle}
         layout={layout}
       />
