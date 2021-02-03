@@ -28,9 +28,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
 
   const visibility = DisplayHandler();
 
-  
   return (
-
     <div
       className={join(
         join(className, visibility),

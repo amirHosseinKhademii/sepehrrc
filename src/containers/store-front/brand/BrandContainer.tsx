@@ -2,7 +2,6 @@ import { Brand } from 'components';
 import { SwiperSlide } from 'swiper/react';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
-import { Display } from 'components';
 
 export const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
@@ -35,14 +34,12 @@ export const BrandContainer = ({ item }) => {
       }
       item={item}
     >
-      <Display mobile={settings?.mobile} desktop={settings?.monitor}>
-        <div
-          style={{ width: '1326px' }}
-          className={`h-224px flex justify-center items-center mx-auto my-25px`}
-        >
-          <Brand child={handleChild()} slidesPerView={settings?.col} />
-        </div>
-      </Display>
+      <div
+        style={{ width: '1326px' }}
+        className={`h-224px flex justify-center items-center mx-auto my-25px`}
+      >
+        <Brand child={handleChild()} slidesPerView={settings?.col} />
+      </div>
     </GeneralLayout>
   );
 };

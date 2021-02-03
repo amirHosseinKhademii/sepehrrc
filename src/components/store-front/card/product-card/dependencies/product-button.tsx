@@ -15,7 +15,7 @@ export const ProductButton: FC<IProductButton> = ({
   return (
     <button
       className={toggle(
-        ` productButton   focus:outline-none mt-30px px-18px py-14px rounded-50px border-2  text-14px font-iransans  `,
+        ` productButton  h-50px  mt-30px flex px-15px items-center rounded-50px border-2  text-14px font-iransans  focus:outline-none `,
         className,
         layout,
         cssAlt
