@@ -109,6 +109,16 @@ export const designReducer = (
           images: [{ number: 'one', value: '', newTab: false, link: '' }],
           settings: {},
         },
+        pureImage: {
+          number: '',
+          value: '',
+          newTab: false,
+          link: '',
+          onUpload: false,
+          title: '',
+          description: '',
+          isBackground: false,
+        },
       };
     case designTypes.ON_DELETE_ITEM_IMAGE:
       cloneItem.images = cloneItem.images.filter(
