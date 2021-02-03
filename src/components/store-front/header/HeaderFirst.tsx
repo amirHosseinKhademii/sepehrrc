@@ -57,7 +57,7 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
 
           <HeaderButton
             layout={true}
-            className={` ${marginRtl}-35px  rounded-25px  text-white`}
+            className={` ${marginRtl}-30px  rounded-25px  text-white`}
             text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
             toggle={toggle}
             designState={designState}
