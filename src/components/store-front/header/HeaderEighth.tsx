@@ -6,17 +6,10 @@ import {
   HeaderLayout,
   HeaderButton,
   HeaderCascadingMenu,
+  Social,
 } from './dependencies';
 import { Badge } from 'components';
-import {
-  ICSearch,
-  ICShoppingCart,
-  ICPhoneVolume,
-  ICInstagram,
-  ICTelegram,
-  ICTwitter,
-  ICWhatsapp,
-} from 'icons';
+import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 import Link from 'next/link';
 import { useDesign, useClass } from 'hooks';
 const logo = '/assets/images/logo.png';
@@ -49,33 +42,6 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
     );
   };
 
-  const Social = () => {
-    return (
-      <>
-        <Link href="./">
-          <a>
-            <ICWhatsapp className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTwitter className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICInstagram className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTelegram className="mr-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-      </>
-    );
-  };
-
   return (
     <HeaderLayout layout={layout} toggle={toggle}>
       <div
@@ -89,7 +55,7 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
           <div className="col-span-9  flex items-center ">
             <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
-          <div className="col-span-3 flex items-center justify-end text-24px">
+          <div className="col-span-3 flex items-center justify-end text-16px text-white">
             <Social />
           </div>
         </div>
@@ -132,10 +98,16 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className=" h-full flex items-center justify-end  text-16px"
+            className=" h-full flex items-center justify-end  text-20px font-iransans"
           >
-            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4 fill-current" />
+            <span className="text-16px">
+              {!item.telNumber ? '0910000000' : item.telNumber}{' '}
+            </span>
+            <ICPhoneVolume
+              height="20px"
+              width="20px"
+              className="mr-10px fill-current"
+            />
           </a>
         </div>
       </div>

@@ -22,17 +22,25 @@ export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
         </Link>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-4 fill-current text-20px"
+            />
           </a>
         </Link>
         <Badge
           layout={layout}
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>

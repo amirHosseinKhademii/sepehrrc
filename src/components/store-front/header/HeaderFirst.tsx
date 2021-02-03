@@ -14,23 +14,35 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { designState } = useDesign();
-  const { flexDirection, marginRtl } = useDirection();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
   const Actions = () => {
     return (
       <>
         <Link href="/">
           <a>
-            <ICSearch className="mx-2 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-2 fill-current text-20px"
+            />
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICShoppingCart className="mx-2 fill-current" />{' '}
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="mx-2 fill-current text-20px"
+            />{' '}
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICUsersAlt className="mx-2 fill-current" />
+            <ICUsersAlt
+              height="20px"
+              width="20px"
+              className={`mr-2 ${marginLtr}-30px fill-current text-20px`}
+            />
           </a>
         </Link>
       </>
@@ -42,22 +54,22 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
       <div
         className={`flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
       >
-        <div className={`w-1/5 ${flexDirection} flex items-center `}>
+        <div className={`w-1/12 ${flexDirection} flex items-center `}>
           <HeaderLogo src={item.images} join={join} />
         </div>
         <div
-          className={`w-3/5 flex ${flexDirection} items-center ${marginRtl}-6 `}
+          className={`w-8/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
         >
           <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
         <div
-          className={`w-1/5 flex ${flexDirection}  items-center justify-end `}
+          className={`w-3/12 flex ${flexDirection}  items-center justify-end `}
         >
           <Actions />
 
           <HeaderButton
             layout={true}
-            className={` ${marginRtl}-30px  rounded-25px  text-white`}
+            className={`   rounded-25px  text-white`}
             text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
             toggle={toggle}
             designState={designState}

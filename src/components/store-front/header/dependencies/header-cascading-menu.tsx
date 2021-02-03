@@ -171,7 +171,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
               <a className="flex  w-full">
                 <span className="text-16px">{firstLevel.text}</span>{' '}
                 {!firstLevel.hasSub ? null : (
-                  <ICAngleDown className=" text-24px  mr-20px fill-current" />
+                  <ICAngleDown className=" text-24px  mr-5px fill-current" />
                 )}
               </a>
             </Link>

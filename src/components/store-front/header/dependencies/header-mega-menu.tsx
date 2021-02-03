@@ -6,7 +6,7 @@ interface IHEaderCategory {
   designState?: any;
 }
 const item = {
-  text: 'دسته بندی ها',
+  text: 'دسته بندی محصولات',
   link: '',
   hasSub: true,
   subMenus: [
@@ -236,7 +236,7 @@ export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
           className={`  ${marginRtl}-5px text-16px font-bold   headerMegaMenuPanel`}
         >
           <Link href={item.link}>
-            <a> {item.text} </a>
+            <a className="title"> {item.text} </a>
           </Link>
           <div
             className={`z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
@@ -283,6 +283,15 @@ export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
           .listTitle {
             color: ${pageSettings.primary ? pageSettings.primary : 'inherit'};
           }
+
+          // .title::before {
+          //   display: inline-block;
+          //   content: '';
+          //   width: 1px;
+          //   height: 20px;
+          //   background-color: #e2e4e9;
+          //   margin-right: 30px;
+          // }
         `}
       </style>
     </div>

@@ -22,16 +22,24 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
       <>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-4 fill-current text-20px"
+            />
           </a>
         </Link>
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>
@@ -48,7 +56,7 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
           <div className="col-span-1  flex items-center ">
             <HeaderLogo src={item.images} join={join} />
           </div>
-          <div className="col-span-7 flex items-center mr-6 ">
+          <div className="col-span-7 flex items-center mr-60px ">
             <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
           <div className="col-span-4 flex items-center justify-end">
@@ -73,10 +81,14 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
         <div className="col-span-3 ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className="  flex items-center justify-end text-16px mt-20px"
+            className="  flex items-center justify-end text-16px mt-20px font-iransans"
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4 fill-current" />
+            <ICPhoneVolume
+              height="20px"
+              width="20px"
+              className="mr-10px fill-current text-20px"
+            />
           </a>
         </div>
       </div>
