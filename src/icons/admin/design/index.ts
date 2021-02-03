@@ -37,3 +37,4 @@ export * from './slider-button-three';
 export * from './slider-button-two';
 export * from './slider-button-one';
 export * from './ellipsis-h';
+export * from './check';
