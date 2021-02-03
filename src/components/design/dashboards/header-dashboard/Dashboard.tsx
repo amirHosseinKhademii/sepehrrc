@@ -10,7 +10,7 @@ export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
     return (
       <div className="w-full flex flex-col items-end pt-30px px-20px">
         <StyleBoxHeader />
-        <MenuEditGroup />
+        <MenuEditGroup designState={designState} />
         <GenericUploader
           label="لوگو"
           number="one"

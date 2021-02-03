@@ -21,21 +21,31 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
       <>
         <Link href="./">
           <a>
-            <div className="ml-8px cursor-pointer">ورود/عضویت در سایت</div>
+            <div className="ml-8px cursor-pointer font-bold">
+              ورود/عضویت در سایت
+            </div>
           </a>
         </Link>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-4 fill-current text-20px"
+            />
           </a>
         </Link>
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
-          badgeContent="6"
+          className="text-white h-18px w-18px leading-tight "
+          badgeContent="2"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px "
+              />
             </a>
           </Link>
         </Badge>
@@ -56,7 +66,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
           <div className="col-span-1  flex items-center ">
             <HeaderLogo src={item.images} join={join} />
           </div>
-          <div className="col-span-5 flex items-center justify-end">
+          <div className="col-span-5 flex items-center justify-end ">
             <Actions />
           </div>
         </div>
@@ -78,11 +88,15 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
           <div className="col-span-3 ">
             <a
               href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-              className=" h-full flex items-center justify-end text-16px"
+              className=" h-full flex items-center justify-end text-16px font-iransans"
             >
               <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-              <ICPhoneVolume className="mr-4 fill-current" />
+              <ICPhoneVolume
+                height="20px"
+                width="20px"
+                className="mr-10px text-20px fill-current"
+              />
             </a>
           </div>
         </div>

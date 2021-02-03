@@ -12,7 +12,7 @@ export const ProductName: FC<IProductName> = ({
 }) => {
   return (
     <div
-      className={toggle('productName', className, layout, cssAlt)}
+      className={toggle('productName ', className, layout, cssAlt)}
       onClick={onClick}
       style={style}
     >

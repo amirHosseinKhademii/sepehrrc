@@ -7,4 +7,4 @@ interface ICheckbox {
   disabled?: boolean;
 }
 
-export { ICheckbox };
+

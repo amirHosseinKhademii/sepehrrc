@@ -1,7 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useClass } from 'hooks';
 import { ICAngleDown, ICAngelUp } from 'icons';
-import { IDropDown } from './interfaces';
 
 export const DropDown: FC<IDropDown> = ({
   className,

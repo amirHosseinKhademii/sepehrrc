@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { IFooter } from './interface';
 import { ICPhone } from 'icons';
 import Link from 'next/link';
 import { useDesign } from 'hooks';
+
 export const Footer: FC<IFooter> = ({ phone }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;

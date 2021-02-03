@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IPureButton } from './interfaces';
+
 export const PureButton: FC<IPureButton> = ({
   className,
   layout = true,

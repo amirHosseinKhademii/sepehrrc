@@ -15,11 +15,11 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
 }) => {
   const { flexDirection } = useDirection();
   return (
-    <ul className={join(` headerNavbar flex ${flexDirection}`, className)}>
+    <ul className={join(` headerNavbar flex `, className)}>
       {items.map((item, index) => {
         return (
           <li
-            className={toggle('', 'pr-0 pl-6', index === 0, 'px-6')}
+            className={toggle('', 'pr-0 pl-20px', index === 0, 'px-20px')}
             key={index}
           >
             <Link href="/">

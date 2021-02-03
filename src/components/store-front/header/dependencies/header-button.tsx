@@ -13,7 +13,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
   return (
     <button
       className={toggle(
-        'headerButton h-50px   px-20px text-16px border-2 text-white  cursor-pointer outline-none',
+        'headerButton px-25px py-14px  text-16px border-2 text-white  cursor-pointer focus:outline-none font-iransans font-light',
         className,
         layout,
         cssAlt
@@ -28,6 +28,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
             background-color:${` ${layout ? pageSettings.primary : 'initial'}`};
             border-color: ${`${layout ? pageSettings.primary : 'initial'} `};
             color: ${`${layout ? '#fff' : 'initial'}`};
+            border-radius:27px
                  `}
       </style>
     </button>

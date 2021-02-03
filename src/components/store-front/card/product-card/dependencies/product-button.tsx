@@ -10,11 +10,12 @@ export const ProductButton: FC<IProductButton> = ({
   cssAlt,
 }) => {
   const { pageSettings } = designState;
+  const { textFont } = pageSettings;
 
   return (
     <button
       className={toggle(
-        '  productButton p-14px  focus:outline-none mt-9 rounded-50px border-2  text-14px',
+        ` productButton   focus:outline-none mt-30px px-18px py-14px rounded-50px border-2  text-14px font-iransans  `,
         className,
         layout,
         cssAlt

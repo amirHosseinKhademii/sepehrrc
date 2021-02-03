@@ -1,6 +1,5 @@
 import { useClass } from 'hooks';
 import { FC } from 'react';
-import { ICheckbox } from './interfaces';
 
 export const CheckBox: FC<ICheckbox> = ({
   className,
