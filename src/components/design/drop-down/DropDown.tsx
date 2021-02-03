@@ -31,10 +31,10 @@ export const DropDown: FC<IDropDown> = ({
     >
       <div
         className={join(
-          `focus:outline-none  w-full flex items-center justify-between h-${height} pr-20px cursor-pointer bg-gray_shade-800 rounded-t  text-gray_shade-300 ${
+          `focus:outline-none  w-full flex items-center justify-between h-${height} pr-20px cursor-pointer bg-gray_shade-800 text-gray_shade-300 ${
             drop.open
-              ? 'border-primary-700 border-r-2 border-l-2 border-t-2'
-              : 'border-b  border-gray_shade-900'
+              ? 'border-primary-700 border-r-2 border-l-2 border-t-2 rounded-t'
+              : 'border-b  border-gray_shade-900 rounded'
           }`,
           className
         )}
