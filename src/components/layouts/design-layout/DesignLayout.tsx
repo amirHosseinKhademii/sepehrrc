@@ -11,9 +11,9 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { direction } = designState.pageSettings;
   return (
     <div
-      className={` flex ${
-        direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-      }`}
+    // className={` flex ${
+    //   direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+    // }`}
     >
       <Drawer />
       <div
