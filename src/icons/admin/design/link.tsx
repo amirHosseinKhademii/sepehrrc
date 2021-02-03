@@ -1,4 +1,3 @@
-import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
 export const ICLink: FC<IIcon> = ({ width, height, className, onClick }) => {
