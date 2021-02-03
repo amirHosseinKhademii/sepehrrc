@@ -1,4 +1,3 @@
-import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
 
 export const ICProductList: FC<IIcon> = ({

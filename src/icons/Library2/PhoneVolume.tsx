@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IIcon } from '../interfaces';
+
 export const ICPhoneVolume: FC<IIcon> = ({
   className,
   onClick,

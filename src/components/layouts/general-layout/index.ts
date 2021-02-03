@@ -1,1 +1,1 @@
-export { GeneralLayout } from './GEneralLayout';
+export { GeneralLayout } from './general-layout';
