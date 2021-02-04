@@ -6,8 +6,9 @@ import { UIContext, uiTypes } from 'providers/ui-provider';
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
   const { uiDispatch } = useContext(UIContext);
-  const { upload } = useService();
+  const { upload, onPost, onGet } = useService();
   const { toggleModal } = useUi();
+  const { mutate: onSave } = onPost({ url: '' });
 
   return {
     onHorizontalDrop: (drop) => (dropResult) => {
@@ -115,6 +116,17 @@ export const useDesign = () => {
       },
       [designState.current]
     ),
+    savePage: useCallback(() => {
+      onSave(
+        JSON.stringify({
+          pageItems: designState.pageItems,
+          pageSettings: designState.pageSettings,
+        })
+      );
+    }, [designState.pageItems]),
+    getPage: useCallback(() => {
+      return onGet({ url: '' });
+    }, []),
     designState: useMemo(() => designState, [designState]),
   };
 };
