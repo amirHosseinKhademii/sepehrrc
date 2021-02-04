@@ -6,8 +6,14 @@ export const TitleInput = () => {
   return (
     <Input
       label="عنوان بخش"
-      onBlur={(e) => setSetting({ title: e.target.value })}
-      placeholder={designState.current.title}
+      onBlur={(e) =>
+        e.target.value !== '' && setSetting({ title: e.target.value })
+      }
+      placeholder={
+        designState.current.settings && designState.current.settings.title
+          ? designState.current.settings.title
+          : 'عنوان بخش'
+      }
     />
   );
 };
