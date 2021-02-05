@@ -1,29 +1,45 @@
-import { FC, Fragment } from 'react';
-import { IHeader } from './interface';
-import { Navbar, HeaderLogo, MegaMenu, HeaderLayout } from './dependencies';
-
+import { FC } from 'react';
+import {
+  HeaderNavbar,
+  HeaderLogo,
+  HeaderCascadingMenu,
+  HeaderLayout,
+  HeaderButton,
+} from './dependencies';
 import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge, HeaderButton } from 'components';
+import { Badge } from 'components';
+import { useClass, useDesign } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFifth: FC<IHeader> = ({ item }) => {
+export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
+  const { join, toggle } = useClass();
+  const { designState } = useDesign();
+
   const Actions = () => {
     return (
       <>
         <Link href="./">
           <a>
-            <ICSearch className="mx-4 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-4 fill-current text-20px"
+            />
           </a>
         </Link>
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>
@@ -31,23 +47,26 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
     );
   };
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
           className={` grid  grid-cols-12  w-full h-122px container mx-auto px-20px   `}
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} />
+            <HeaderLogo src={item.images} join={join} />
           </div>
-          <div className="col-span-7 flex items-center mr-6 ">
-            <Navbar direction="horizental" />
+          <div className="col-span-7 flex items-center mr-60px ">
+            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
           <div className="col-span-4 flex items-center justify-end">
             <Actions />
             <HeaderButton
-              className="mr-25px"
+              layout={layout}
+              className=" mr-25px rounded-25px  text-white "
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              toggle={toggle}
+              designState={designState}
             />
           </div>
         </div>
@@ -57,15 +76,19 @@ export const HeaderFifth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu />
+          <HeaderCascadingMenu designState={designState} />
         </div>
         <div className="col-span-3 ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className="  flex items-center justify-end text-16px mt-20px"
+            className="  flex items-center justify-end text-16px mt-20px font-iransans"
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4 fill-current" />
+            <ICPhoneVolume
+              height="20px"
+              width="20px"
+              className="mr-10px fill-current text-20px"
+            />
           </a>
         </div>
       </div>

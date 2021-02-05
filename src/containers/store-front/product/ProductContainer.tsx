@@ -1,21 +1,20 @@
 import { settings } from 'cluster';
 import {
-  Wrapper,
-  Display,
+  GeneralLayout,
   ProductTitle,
   ProductGrid,
   ProductCard,
   Pagination,
   ProductSlider,
 } from 'components';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useClass } from 'hooks';
 import { data } from './data';
 
 export const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
+  const { join } = useClass();
   const { current } = designState;
-  const { pageSettings } = designState;
 
   const showPagination =
     (item?.settings &&
@@ -24,8 +23,8 @@ export const ProductContainer = ({ item }) => {
     !item?.settings ||
     !item.settings?.page;
 
-  const displaySlide =
-    item?.settings && item.settings?.screen && item.settings.screen == 'slider';
+  const displayList =
+    item?.settings && item.settings?.screen && item.settings.screen == 'list';
 
   const CategoryHandler: Function = () => {
     let productGroup = {};
@@ -84,6 +83,9 @@ export const ProductContainer = ({ item }) => {
               ? item.settings.title
               : item.title
           }
+          layout={true}
+          designState={designState}
+          join={join}
         />
         <ProductGrid
           col={
@@ -94,7 +96,7 @@ export const ProductContainer = ({ item }) => {
           // }
         >
           {productsOrdered?.map((item, index) => (
-            <ProductCard item={item} key={index} />
+            <ProductCard item={item} key={index} layout={true} />
           ))}
         </ProductGrid>
 
@@ -108,7 +110,7 @@ export const ProductContainer = ({ item }) => {
   };
 
   return (
-    <Wrapper
+    <GeneralLayout
       active={
         uiState.drawer.type === 'style' &&
         current.type == 'products' &&
@@ -119,24 +121,19 @@ export const ProductContainer = ({ item }) => {
       className="my-25px"
       item={item}
     >
-      <Display
-        mobile={item?.settings && item.settings?.mobile}
-        desktop={item?.settings && item.settings?.monitor}
-      >
-        {!displaySlide ? (
-          <ProductList />
-        ) : (
-          <ProductSlider
-            data={productsToshow}
-            item={item}
-            title={
-              item?.settings && item.settings?.title
-                ? item.settings.title
-                : item.title
-            }
-          />
-        )}
-      </Display>
-    </Wrapper>
+      {displayList ? (
+        <ProductList />
+      ) : (
+        <ProductSlider
+          data={productsToshow}
+          item={item}
+          title={
+            item?.settings && item.settings?.title
+              ? item.settings.title
+              : item.title
+          }
+        />
+      )}
+    </GeneralLayout>
   );
 };

@@ -7,11 +7,12 @@ export const ProductImage: FC<IProductImage> = ({
   onClick,
   src,
   style,
+  cssAlt,
+  toggle,
 }) => {
-  const { toggle } = useClass();
   return (
     <img
-      className={toggle('', className, layout)}
+      className={toggle('productImage', className, layout, cssAlt)}
       onClick={onClick}
       src={src}
       alt="عکس محصول"

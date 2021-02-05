@@ -1,3 +1,3 @@
 export { DesignLayout } from './design-layout';
-export { Wrapper } from './wrapper';
-export * from './drawer-layout';
+export { GeneralLayout } from './general-layout';
+export { DrawerLayout } from './drawer-layout';

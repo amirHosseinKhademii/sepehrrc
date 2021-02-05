@@ -1,30 +1,37 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
 import {
-  Navbar,
+  HeaderNavbar,
   HeaderLogo,
   HeaderInput,
   HeaderLayout,
-  HeaderCategory,
+  HeaderMegaMenu,
+  HeaderButton,
 } from './dependencies';
 import Link from 'next/link';
 import { ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge, HeaderButton } from 'components';
+import { Badge } from 'components';
+import { useClass, useDesign, useDirection } from 'hooks';
 
-const logo = '/assets/images/logo.png';
+export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
+  const { toggle, join } = useClass();
+  const { designState } = useDesign();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
 
-export const HeaderThird: FC<IHeader> = ({ item }) => {
   const Actions = () => {
     return (
       <>
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="ml-20px"
+          root={`${marginLtr}-20px`}
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>
@@ -32,43 +39,57 @@ export const HeaderThird: FC<IHeader> = ({ item }) => {
     );
   };
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-2">
         <div
-          className={` grid  grid-cols-12   w-full h-122px container mx-auto px-20px `}
-          style={{ direction: 'rtl' }}
+          className={`w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
         >
-          <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} />
+          <div
+            className={`w-1/12  flex ${flexDirection} items-center justify-start `}
+          >
+            <HeaderLogo src={item.images} join={join} />
           </div>
-          <div className="col-span-7 flex items-center justify-center">
-            <HeaderInput className="w-535px" />
+          <div className={`w-8/12 flex  items-center justify-center`}>
+            <HeaderInput
+              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              layout={layout}
+              toggle={toggle}
+            />
           </div>
-          <div className="col-span-4 flex items-center justify-end">
+          <div
+            className={`w-3/12 flex  ${flexDirection} items-center justify-end`}
+          >
             <Actions />
             <HeaderButton
+              toggle={toggle}
+              layout={layout}
+              className="   rounded-25px  text-white"
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              designState={designState}
             />
           </div>
         </div>
       </div>
       <div
-        className={` grid  grid-cols-12    w-full h-58px   container mx-auto px-20px relative`}
-        style={{ direction: 'rtl' }}
+        className={` w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
       >
-        <div className="col-span-9  flex items-center ">
-          <HeaderCategory />
+        <div className={`w-9/12 flex  ${flexDirection} items-center `}>
+          <HeaderMegaMenu designState={designState} />
 
-          <Navbar direction="horizental" />
+          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
-        <div className="col-span-3 ">
+        <div className={`w-3/12`}>
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className="text-16px h-full flex items-center justify-end"
+            className={` flex ${flexDirection} items-center justify-end text-16px h-full font-iransans`}
           >
             <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-            <ICPhoneVolume className="mr-4 fill-current " />
+            <ICPhoneVolume
+              height="20px"
+              width="20px"
+              className={`${marginRtl}-10px fill-current text-20px`}
+            />
           </a>
         </div>
       </div>

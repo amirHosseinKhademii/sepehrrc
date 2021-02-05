@@ -1,46 +1,53 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
 import {
-  Navbar,
+  HeaderNavbar,
   HeaderLogo,
   HeaderInput,
   HeaderLayout,
-  HeaderCategory,
+  HeaderMegaMenu,
+  HeaderButton,
+  Social,
 } from './dependencies';
-import {
-  ICShoppingCart,
-  ICWhatsapp,
-  ICTwitter,
-  ICTelegram,
-  ICInstagram,
-  ICPhoneVolume,
-} from 'icons';
-import { Badge, HeaderButton } from 'components';
+import { ICShoppingCart, ICPhoneVolume } from 'icons';
+import { Badge } from 'components';
+import { useClass, useDesign, useDirection } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFourth: FC<IHeader> = ({ item }) => {
+export const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
+  const { join, toggle } = useClass();
+  const { designState } = useDesign();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
+
   const Actions = () => {
     return (
       <>
         <a
           href={`tel:+98${!item.telNumber ? '09100000000' : item.telNumber}`}
-          className="flex text-16px"
+          className={`flex ${flexDirection} text-16px font-iransans`}
         >
           <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
 
-          <ICPhoneVolume className="mr-4 fill-current" />
+          <ICPhoneVolume
+            height="20px"
+            width="20px"
+            className="mr-10px  text-20px fill-current"
+          />
         </a>
 
         <Badge
-          className="bg-red-600 text-white h-18px w-18px leading-tight "
+          className="text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-20px"
         >
           <Link href="./">
             <a>
-              <ICShoppingCart className="fill-current" />
+              <ICShoppingCart
+                height="20px"
+                width="20px"
+                className="fill-current text-20px"
+              />
             </a>
           </Link>
         </Badge>
@@ -48,65 +55,49 @@ export const HeaderFourth: FC<IHeader> = ({ item }) => {
     );
   };
 
-  const Social = () => {
-    return (
-      <>
-        <Link href="./">
-          <a>
-            <ICWhatsapp className="mx-4 fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTwitter className="mx-4 fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICInstagram className="mx-4 fill-current" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTelegram className="mr-4 fill-current" />{' '}
-          </a>
-        </Link>
-      </>
-    );
-  };
-
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
-          className={`grid  grid-cols-12 w-full h-122px container mx-auto     px-20px `}
-          style={{ direction: 'rtl' }}
+          className={`flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
         >
-          <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} />
+          <div className={`w-1/12  flex ${flexDirection} items-center `}>
+            <HeaderLogo src={item.images} join={join} />
           </div>
-          <div className="col-span-7 flex items-center justify-center ">
-            <HeaderInput className="w-450px" />
+          <div
+            className={`w-7/12 flex ${flexDirection} items-center justify-center `}
+          >
+            <HeaderInput
+              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              layout={layout}
+              toggle={toggle}
+            />
           </div>
-          <div className="col-span-4 flex items-center justify-end">
+          <div
+            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+          >
             <Actions />
             <HeaderButton
-              className=" mr-35px  "
+              layout={layout}
+              className=" mr-35px rounded-25px  text-white "
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              toggle={toggle}
+              designState={designState}
             />
           </div>
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full h-58px   container mx-auto px-20px relative`}
-        style={{ direction: 'rtl' }}
+        className={`flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
       >
-        <div className="col-span-9  flex items-center  ">
-          <HeaderCategory />
+        <div className={`w-9/12  flex ${flexDirection} items-center  `}>
+          <HeaderMegaMenu designState={designState} />
 
-          <Navbar direction="horizental" />
+          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
-        <div className="col-span-3 flex items-center justify-end text-24px">
+        <div
+          className={`w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
+        >
           <Social />
         </div>
       </div>

@@ -44,7 +44,7 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
         {child.length > 0 ? (
           child
         ) : (
-          <SwiperSlide className="bg-gray_shade-200 flex justify-center items-center">
+          <SwiperSlide className="bg-gray_shade-200 originalSlider flex justify-center items-center">
             <span className="text-2xl text-gray-700">اسلایدر</span>
           </SwiperSlide>
         )}

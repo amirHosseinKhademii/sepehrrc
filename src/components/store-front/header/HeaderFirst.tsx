@@ -1,31 +1,48 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
-import { Navbar, HeaderLogo, HeaderLayout } from './dependencies';
+import {
+  HeaderNavbar,
+  HeaderLogo,
+  HeaderLayout,
+  HeaderButton,
+} from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { HeaderButton } from 'components';
-import { useUi } from 'hooks';
+import { useUi, useClass, useDesign, useDirection } from 'hooks';
 import Link from 'next/link';
 
-export const HeaderFirst: FC<IHeader> = ({ item }) => {
+export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   const { uiState } = useUi();
   const { container } = uiState;
-
+  const { join, toggle } = useClass();
+  const { designState } = useDesign();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
   const Actions = () => {
     return (
       <>
         <Link href="/">
           <a>
-            <ICSearch className="mx-2 fill-current" />
+            <ICSearch
+              height="20px"
+              width="20px"
+              className="mx-2 fill-current text-20px"
+            />
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICShoppingCart className="mx-2 fill-current" />{' '}
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="mx-2 fill-current text-20px"
+            />{' '}
           </a>
         </Link>
         <Link href="/">
           <a>
-            <ICUsersAlt className="mx-2 fill-current" />
+            <ICUsersAlt
+              height="20px"
+              width="20px"
+              className={`mr-2 ${marginLtr}-30px fill-current text-20px`}
+            />
           </a>
         </Link>
       </>
@@ -33,23 +50,29 @@ export const HeaderFirst: FC<IHeader> = ({ item }) => {
   };
 
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div
-        className={` grid  grid-cols-12 w-full h-122px container mx-auto ${container.padding}   `}
-        style={{ direction: 'rtl' }}
+        className={`flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
       >
-        <div className="col-span-2  flex items-center ">
-          <HeaderLogo src={item.images} />
+        <div className={`w-1/12 ${flexDirection} flex items-center `}>
+          <HeaderLogo src={item.images} join={join} />
         </div>
-        <div className="col-span-6 flex items-center mr-6 ">
-          <Navbar direction="horizental" />
+        <div
+          className={`w-8/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
+        >
+          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
         </div>
-        <div className="col-span-4 flex items-center justify-end">
+        <div
+          className={`w-3/12 flex ${flexDirection}  items-center justify-end `}
+        >
           <Actions />
 
           <HeaderButton
-            className=" mr-35px"
+            layout={true}
+            className={`   rounded-25px  text-white`}
             text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
+            toggle={toggle}
+            designState={designState}
           />
         </div>
       </div>

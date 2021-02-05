@@ -16,7 +16,7 @@ export const StoreFrontContainer = () => {
       dragClass="bg-red-600"
       onDrop={onHorizontalDrop(drop)}
       getChildPayload={(index) => setChildPayload(index, designState.page)}
-      onDragEnd={(e) => setDrop(e)}
+      onDragEnd={(e) => e && setDrop(e)}
       style={{
         width: '100%',
         minHeight: '60vh',

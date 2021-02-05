@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { IIcon } from '../interfaces';
 
 export const ICArrowUp: FC<IIcon> = ({
   className,

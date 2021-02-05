@@ -42,7 +42,7 @@ export const ModalCrop = () => {
 
   const ModalFooter = () => (
     <div
-      className="flex items-center w-full h-85px pl-35px opacity-70"
+      className="flex items-center w-full h-85px pl-35px opacity-70 rounded-b"
       style={{ backgroundColor: '#1a191d    ' }}
     >
       <ButtonAction
@@ -88,9 +88,7 @@ export const ModalCrop = () => {
         // console.log(cropper.getCroppedCanvas().toDataURL());
       },
     });
-
-    // operations.zoom && cropper.zoom(0.1);
-  }, [operations]);
+  }, []);
 
   if (uiState.modal.editImage) {
     return (

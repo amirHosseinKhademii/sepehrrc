@@ -1,29 +1,23 @@
 import { FC } from 'react';
-import { IHeader } from './interface';
 import {
-  Navbar,
+  HeaderNavbar,
   HeaderLogo,
   HeaderInput,
   HeaderLayout,
-  MegaMenu,
+  HeaderButton,
+  HeaderCascadingMenu,
+  Social,
 } from './dependencies';
-import { Badge, HeaderButton } from 'components';
-import {
-  ICSearch,
-  ICShoppingCart,
-  ICPhoneVolume,
-  ICInstagram,
-  ICTelegram,
-  ICTwitter,
-  ICWhatsapp,
-} from 'icons';
+import { Badge } from 'components';
+import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
 import Link from 'next/link';
-import { useDesign } from 'hooks';
+import { useDesign, useClass } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-export const HeaderEighth: FC<IHeader> = ({ item }) => {
+export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
+  const { join, toggle } = useClass();
 
   const Actions = () => {
     return (
@@ -48,35 +42,8 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
     );
   };
 
-  const Social = () => {
-    return (
-      <>
-        <Link href="./">
-          <a>
-            <ICWhatsapp className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTwitter className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICInstagram className="mx-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-        <Link href="./">
-          <a>
-            <ICTelegram className="mr-4" fill="#ffffff" />{' '}
-          </a>
-        </Link>
-      </>
-    );
-  };
-
   return (
-    <HeaderLayout>
+    <HeaderLayout layout={layout} toggle={toggle}>
       <div
         className=" text-white"
         style={{ backgroundColor: `${pageSettings.primary}` }}
@@ -86,9 +53,9 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-9  flex items-center ">
-            <Navbar direction="horizental" />
+            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
           </div>
-          <div className="col-span-3 flex items-center justify-end text-24px">
+          <div className="col-span-3 flex items-center justify-end text-16px text-white">
             <Social />
           </div>
         </div>
@@ -100,16 +67,23 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
           style={{ direction: 'rtl' }}
         >
           <div className="col-span-1  flex items-center">
-            <HeaderLogo src={item.images} />
+            <HeaderLogo src={item.images} join={join} />
           </div>
           <div className="col-span-7 flex items-center justify-center ">
-            <HeaderInput className="w-535px" />
+            <HeaderInput
+              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              layout={layout}
+              toggle={toggle}
+            />
           </div>
           <div className="col-span-4 flex items-center justify-end ">
             <Actions />
             <HeaderButton
-              className="mr-25px"
+              layout={layout}
+              className=" mr-25px rounded-25px  text-white "
               text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              toggle={toggle}
+              designState={designState}
             />
           </div>
         </div>
@@ -119,15 +93,21 @@ export const HeaderEighth: FC<IHeader> = ({ item }) => {
         style={{ direction: 'rtl' }}
       >
         <div className="col-span-9  flex items-center ">
-          <MegaMenu />
+          <HeaderCascadingMenu designState={designState} />
         </div>
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a
             href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className=" h-full flex items-center justify-end  text-16px"
+            className=" h-full flex items-center justify-end  text-20px font-iransans"
           >
-            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-            <ICPhoneVolume className="mr-4 fill-current" />
+            <span className="text-16px">
+              {!item.telNumber ? '0910000000' : item.telNumber}{' '}
+            </span>
+            <ICPhoneVolume
+              height="20px"
+              width="20px"
+              className="mr-10px fill-current"
+            />
           </a>
         </div>
       </div>

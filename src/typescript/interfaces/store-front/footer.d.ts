@@ -1,0 +1,5 @@
+interface IFooter {
+  phone?: string;
+}
+
+
