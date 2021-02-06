@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
@@ -12,6 +12,7 @@ interface IProductSlider {
 export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
   const { designState } = useDesign();
   const { join } = useClass();
+  const [state, setState] = useState(null);
 
   const handleChild = () => {
     let arr = [];
@@ -30,7 +31,11 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
   };
 
   return (
-    <div className="relative container mx-auto px-20px py-25px flex flex-col w-full">
+    <div
+      onMouseEnter={() => state.autoplay.stop()}
+      onMouseLeave={() => state.autoplay.start()}
+      className="relative container mx-auto px-20px py-25px flex flex-col w-full"
+    >
       <ProductTitle
         text={title}
         designState={designState}
@@ -52,17 +57,16 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
           prevEl: '.swiper-button-prev',
         }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
-        className={`h-full w-full rounded  relative swiper-pagination-hidden pb-35px`}
+        // onMouseEnter={(event) => alert('hi')}
+        onSwiper={(e) => setState(e)}
+        className={`h-full w-full rounded z-0  relative pb-35px`}
       >
         {handleChild()}
-        <div className={`swiper-button-next mr-2`}></div>
-        <div className={`swiper-button-prev  ml-2`}></div>
-        <div
-          className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center h-2 focus:outline-none'
-        `}
-          style={{ bottom: 0 }}
-        ></div>
       </Swiper>
+      <div
+        className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
+        `}
+      ></div>
     </div>
   );
 };

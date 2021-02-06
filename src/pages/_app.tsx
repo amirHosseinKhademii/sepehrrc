@@ -15,6 +15,7 @@ import 'swiper/components/a11y/a11y.scss';
 import 'swiper/components/controller/controller.scss';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
+import 'react-multi-carousel/lib/styles.css';
 
 function MyApp({ Component, pageProps }) {
   return (
