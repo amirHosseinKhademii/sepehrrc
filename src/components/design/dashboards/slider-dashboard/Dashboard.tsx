@@ -22,17 +22,8 @@ export const SliderDashboard = () => {
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
-        {designState.pureImage.onUpload ? (
-          <DndUploadBox
-            placeholder={{
-              text: 'تصاویر اسلایدر را اینجا آپلود کنید',
-              width: 1326,
-              height: 442,
-            }}
-          />
-        ) : (
-          <PictureContainer title="تصاویر اسلایدر" count={8} />
-        )}
+        {/* <DndUploadBox /> */}
+        <PictureContainer title="تصاویر اسلایدر" count={8} />
         <SpeedButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />

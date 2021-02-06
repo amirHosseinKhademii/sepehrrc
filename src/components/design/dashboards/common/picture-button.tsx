@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { useDesign, useUi } from 'hooks';
-import { ICPlus } from 'icons';
+import Dropzone, { useDropzone } from 'react-dropzone';
+import { ICPlus, ICTimesCircle } from 'icons';
 
 export const PictureButton: FC<IPictureButton> = ({
   withAdd,
@@ -12,24 +13,45 @@ export const PictureButton: FC<IPictureButton> = ({
 
   if (withAdd)
     return (
-      <div
-        onClick={() =>
-          setPureImage({ onUpload: true, number, isBackground: false })
+      <Dropzone
+        onDrop={(acceptedFiles) =>
+          setPureImage({
+            value: acceptedFiles[0],
+            onUpload: false,
+            number: number !== undefined ? number : undefined,
+            isBackground: false,
+          })
         }
-        className="w-full h-60px flex justify-center items-center rounded bg-gray_shade-800 cursor-pointer "
       >
-        <ICPlus fill="#fff" />
-      </div>
+        {({ getRootProps, getInputProps, isDragAccept }) => (
+          <div
+            {...getRootProps()}
+            className={`w-full h-60px flex justify-center items-center rounded ${
+              isDragAccept ? 'bg-primary-700' : 'bg-gray_shade-800'
+            } cursor-pointer focus:outline-none`}
+          >
+            <input {...getInputProps()} />
+            <ICPlus fill="#fff" />
+          </div>
+        )}
+      </Dropzone>
     );
   else if (picture)
     return (
-      <img
-        onClick={() =>
-          toggleSettingState({ type: 'picture', number, open: true })
-        }
-        className="w-full h-60px rounded cursor-pointer"
-        src={picture}
-      />
+      <div className="relative cover">
+        <img
+          onClick={() =>
+            toggleSettingState({ type: 'picture', number, open: true })
+          }
+          className=" w-full h-60px rounded cursor-pointer"
+          src={picture}
+        />
+        <ICTimesCircle
+          onClick={() => alert('coming soon')}
+          className="delIcon absolute top-1 right-1 cursor-pointer opacity-0"
+          fill="#ed1c24"
+        />
+      </div>
     );
   else
     return (
