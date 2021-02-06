@@ -22,7 +22,7 @@ export const SliderDrops = () => {
   );
 
   const ColDrop = () => (
-    <div className="w-full col-span-1">
+    <div className="w-full col-span-2">
       <Text className="mb-15px text-14px text-white_shade-100 text-right">
         تعداد ستون
       </Text>
@@ -45,7 +45,7 @@ export const SliderDrops = () => {
   return (
     <div className="w-full grid grid-cols-2 grid-rows-1 gap-x-30px  mb-30px">
       <ColDrop />
-      <TotalItems />
+      {/* <TotalItems /> */}
     </div>
   );
 };
