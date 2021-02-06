@@ -7,6 +7,7 @@ export const ColorPicker: FC<IColorPicker> = ({
   onChange,
   label,
   onClose,
+  open,
 }) => {
   return (
     <Fragment>
@@ -14,7 +15,12 @@ export const ColorPicker: FC<IColorPicker> = ({
         {label && <Text className="mb-6px">{label}</Text>}
         <SketchPicker color={value} onChangeComplete={onChange} width="100%" />
       </div>
-      <div className="z-0 absolute inset-0  opacity-0" onClick={onClose}></div>
+      {open && (
+        <div
+          className="z-0 absolute inset-0  opacity-0"
+          onClick={onClose}
+        ></div>
+      )}
     </Fragment>
   );
 };

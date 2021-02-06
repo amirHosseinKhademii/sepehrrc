@@ -15,6 +15,7 @@ export const BackgroundColor = () => {
             onClose={() => setOpen(false)}
             value={designState.current.settings.backgroundColor || '#fff'}
             label="رنگ زمینه"
+            open={open}
           />
         </div>
       ) : (
