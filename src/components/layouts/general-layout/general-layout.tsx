@@ -59,7 +59,9 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
                 : '#ebedf0'
             };
             background-image: url(${
-              item?.backgroundImage ? item.backgroundImage : ''
+              item.settings && item.settings.backgroundImage
+                ? item.settings.backgroundImage
+                : ''
             });
             background-size: 100% 100%;
             background-position: center center;
