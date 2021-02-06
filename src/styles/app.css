@@ -185,3 +185,7 @@ html {
 .originalSlider {
   width: 100% !important;
 }
+
+.cover:hover > .delIcon {
+  opacity: 1;
+}
