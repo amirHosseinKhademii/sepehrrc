@@ -2,7 +2,7 @@ import { useDesign } from 'hooks';
 import { Text, Input } from 'components';
 
 export const InputBox = ({ label, placeholder, type }) => {
-  const { designState, setProps } = useDesign();
+  const { designState, setSetting } = useDesign();
   const currentStyle = designState.current.settings.style;
 
   if (
@@ -22,9 +22,7 @@ export const InputBox = ({ label, placeholder, type }) => {
           maxLength={15}
           variant="input"
           withNumber
-          onBlur={(event) =>
-            setProps({ key: 'telNumber', value: event.target.value })
-          }
+          onBlur={(event) => setSetting({ tel: event.target.value })}
         />
       </div>
     );
@@ -43,9 +41,7 @@ export const InputBox = ({ label, placeholder, type }) => {
           maxLength={30}
           placeholder={placeholder}
           variant="input"
-          onBlur={(event) =>
-            setProps({ key: 'buttonText', value: event.target.value })
-          }
+          onBlur={(event) => setSetting({ button: event.target.value })}
         />
       </div>
     );

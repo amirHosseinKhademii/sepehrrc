@@ -87,10 +87,14 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
           </div>
           <div className="col-span-3 ">
             <a
-              href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+              href={`tel:+98${
+                item.settings?.tel ? item.settings.tel : '0910000000'
+              }`}
               className=" h-full flex items-center justify-end text-16px font-iransans"
             >
-              <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+              <span>
+                {item.settings?.tel ? item.settings.tel : '0910000000'}
+              </span>
 
               <ICPhoneVolume
                 height="20px"

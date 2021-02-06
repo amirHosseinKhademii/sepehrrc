@@ -22,10 +22,12 @@ export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
     return (
       <>
         <a
-          href={`tel:+98${!item.telNumber ? '09000000000' : item.telNumber}`}
+          href={`tel:+98${
+            item.settings?.tel ? item.settings.tel : '0910000000'
+          }`}
           className="flex text-16px font-iransans"
         >
-          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+          <span> {item.settings?.tel ? item.settings.tel : '0910000000'} </span>
 
           <ICPhoneVolume
             height="20px"
@@ -75,7 +77,7 @@ export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
             <HeaderButton
               layout={layout}
               className=" mr-25px rounded-25px  text-white "
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              text={item.settings?.button ? item.settings.button : 'ورود/عضویت'}
               toggle={toggle}
               designState={designState}
             />

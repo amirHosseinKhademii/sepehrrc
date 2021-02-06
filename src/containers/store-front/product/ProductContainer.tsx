@@ -18,10 +18,10 @@ export const ProductContainer = ({ item }) => {
 
   const showPagination =
     (item?.settings &&
-      item.settings?.page &&
-      item.settings.page !== 'disabled') ||
+      item.settings?.pagination &&
+      item.settings.pagination !== 'disabled') ||
     !item?.settings ||
-    !item.settings?.page;
+    !item.settings?.pagination;
 
   const displayList =
     item?.settings && item.settings?.screen && item.settings.screen == 'list';

@@ -4,7 +4,7 @@ import { GenericUploader } from '../common';
 import { FC, memo } from 'react';
 
 export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
-  const { current } = designState;
+  const { settings } = designState.current;
 
   const BaseSetttings = () => {
     return (
@@ -22,12 +22,12 @@ export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
         <InputBox
           label="شماره تلفن"
           type="tel"
-          placeholder={current?.telNumber ? current.telNumber : '09100000000'}
+          placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
         <InputBox
           label="دکمه هدر"
           type="button"
-          placeholder={current?.buttonText ? current.buttonText : 'ورود/عضویت'}
+          placeholder={settings?.button ? settings.button : 'ورود/عضویت'}
         />
       </div>
     );
