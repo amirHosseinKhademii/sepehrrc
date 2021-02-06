@@ -64,7 +64,7 @@ export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
               toggle={toggle}
               layout={layout}
               className="   rounded-25px  text-white"
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              text={item.settings?.button ? item.settings.button : 'ورود/عضویت'}
               designState={designState}
             />
           </div>
@@ -80,10 +80,12 @@ export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
         </div>
         <div className={`w-3/12`}>
           <a
-            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+            href={`tel:+98${
+              item.settings?.tel ? item.settings.tel : '0910000000'
+            }`}
             className={` flex ${flexDirection} items-center justify-end text-16px h-full font-iransans`}
           >
-            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
+            <span>{item.settings?.tel ? item.settings.tel : '0910000000'}</span>
 
             <ICPhoneVolume
               height="20px"

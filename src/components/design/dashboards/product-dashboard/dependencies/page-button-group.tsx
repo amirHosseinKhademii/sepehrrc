@@ -27,13 +27,13 @@ export const PageButtonGroup = () => {
     >
       <SettingButton
         text=" غیر فعال"
-        active={settings && settings.page == 'disabled'}
+        active={settings && settings.pagination == 'disabled'}
         className="rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ page: 'disabled' })}
       />
       <SettingButton
         text=" فعال"
-        active={settings && settings.page !== 'disabled'}
+        active={settings && settings.pagination !== 'disabled'}
         className=" rounded-r "
         onClick={() => setSetting({ page: 'enabled' })}
       />
