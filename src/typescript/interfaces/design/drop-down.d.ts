@@ -7,5 +7,3 @@ interface IDropDown {
   selected?: any;
   height?: string;
 }
-
-

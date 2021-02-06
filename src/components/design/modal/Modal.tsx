@@ -32,12 +32,7 @@ export const Modal: FC<IModal> = ({ children, open }) => {
         style={{ zIndex: 200 }}
         onClick={() => toggleModal({ open: false })}
       >
-        <div
-          className=" w-3/5 shadow-lg rounded
-              "
-        >
-          {children}
-        </div>
+        <div className=" w-3/5 shadow-lg rounded">{children}</div>
       </div>
       <BackDrop />
     </>
