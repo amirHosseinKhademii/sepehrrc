@@ -16,9 +16,7 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
 
   const handleChild = () => {
     let arr = [];
-    let totalItems = item.settings?.totalItems
-      ? item.settings.totalItems
-      : Infinity;
+    let totalItems = item.settings?.total ? item.settings.total : Infinity;
 
     arr = data.slice(0, totalItems).map((item, index) => {
       return (

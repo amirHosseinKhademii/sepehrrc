@@ -81,7 +81,7 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
             <HeaderButton
               layout={layout}
               className=" mr-25px rounded-25px  text-white "
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              text={item.settings?.button ? item.settings.button : 'ورود/عضویت'}
               toggle={toggle}
               designState={designState}
             />
@@ -97,12 +97,15 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
         </div>
         <div className="col-span-3 h-full flex items-center justify-end ">
           <a
-            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
+            href={`tel:+98${
+              item.settings?.tel ? item.settings.tel : '0910000000'
+            }`}
             className=" h-full flex items-center justify-end  text-20px font-iransans"
           >
             <span className="text-16px">
-              {!item.telNumber ? '0910000000' : item.telNumber}{' '}
+              {item.settings?.tel ? item.settings.tel : '0910000000'}
             </span>
+
             <ICPhoneVolume
               height="20px"
               width="20px"

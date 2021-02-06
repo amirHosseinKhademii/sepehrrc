@@ -14,9 +14,9 @@ export const SliderDrops = () => {
         className="w-full"
         withNumber
         onBlur={(event) => {
-          setSetting({ totalItems: event.target.value });
+          setSetting({ total: event.target.value });
         }}
-        placeholder={settings?.totalItems ? settings.totalItems : ''}
+        placeholder={settings?.total ? settings.total : ''}
       />
     </div>
   );

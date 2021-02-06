@@ -70,7 +70,9 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
           <HeaderButton
             layout={true}
             className={`   rounded-25px  text-white`}
-            text={item?.buttonText ? item.buttonText : 'محصولات فروشگاه'}
+            text={
+              item.settings?.button ? item.settings.button : 'محصولات فروشگاه'
+            }
             toggle={toggle}
             designState={designState}
           />
