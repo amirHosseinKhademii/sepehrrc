@@ -25,20 +25,20 @@ export const SliderContainer = ({ item }) => {
 
   const handleChild = () => {
     const arr = [];
+    const handleDragStart = (e) => e.preventDefault();
     item.images.map((item, index) => {
       arr.push(
-        <SwiperSlide className="w-full originalSlider" key={index}>
-          <Link href={item.link ? item.link : '#'}>
-            <a target={item.newTab ? '_blank' : ''}>
-              <img
-                src={item.value}
-                className={`h-full w-full`}
-                alt={item.title}
-                about={item.description}
-              />
-            </a>
-          </Link>
-        </SwiperSlide>
+        <Link href={item.link ? item.link : '#'} key={index}>
+          <a target={item.newTab ? '_blank' : ''}>
+            <img
+              src={item.value}
+              className={`h-450px w-full`}
+              alt={item.title}
+              about={item.description}
+              onDragStart={handleDragStart}
+            />
+          </a>
+        </Link>
       );
     });
     return arr;
@@ -68,41 +68,40 @@ export const SliderContainer = ({ item }) => {
   // };
 
   return (
-    <GeneralLayout
-      active={
-        uiState.drawer.type === 'style' &&
-        designState.current.type == 'slider' &&
-        item.uuid == designState.current.uuid
-          ? true
-          : false
-      }
-      item={item}
+    // <GeneralLayout
+    //   active={
+    //     uiState.drawer.type === 'style' &&
+    //     designState.current.type == 'slider' &&
+    //     item.uuid == designState.current.uuid
+    //       ? true
+    //       : false
+    //   }
+    //   item={item}
+    // >
+    <div
+      className={`${
+        settings.screen ? handleScreen() : 'container mx-auto'
+      } py-25px `}
     >
-      <div
-        className={`${
-          settings.screen ? handleScreen() : 'container mx-auto'
-        } py-25px `}
-      >
-        {settings?.effect === 'simple' ? (
+      {settings?.effect === 'simple' ? (
+        <Slider
+          child={handleChild()}
+          speed={settings.speed ? handleSpeed() : 2500}
+          screen={settings?.screen}
+          button={settings?.button}
+          effect="slide"
+        />
+      ) : (
+        <div className="w-full">
           <Slider
             child={handleChild()}
-            speed={settings.speed ? handleSpeed() : 2500}
+            speed={handleSpeed()}
             screen={settings?.screen}
             button={settings?.button}
-            effect="slide"
+            effect="fadeout"
           />
-        ) : (
-          <div className="w-full">
-            <Slider
-              child={handleChild()}
-              speed={handleSpeed()}
-              screen={settings?.screen}
-              button={settings?.button}
-              effect="fade"
-            />
-          </div>
-        )}
-      </div>
-    </GeneralLayout>
+        </div>
+      )}
+    </div>
   );
 };

@@ -38,3 +38,5 @@ export * from './slider-button-two';
 export * from './slider-button-one';
 export * from './ellipsis-h';
 export * from './check';
+export * from './angle-left';
+export * from './angle-right';
