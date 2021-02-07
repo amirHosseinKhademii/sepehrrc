@@ -71,7 +71,19 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
             layout={true}
             className={`   rounded-25px  text-white`}
             text={
-              item.settings?.button ? item.settings.button : 'محصولات فروشگاه'
+              item.settings?.button && item.settings.button?.text
+                ? item.settings.button.text
+                : 'محصولات فروشگاه'
+            }
+            link={
+              item.settings?.button && item.settings.button?.link
+                ? item.settings.button.link
+                : '/products'
+            }
+            newTab={
+              item.settings?.button && item.settings.button?.newTab
+                ? item.settings.button.newTab
+                : false
             }
             toggle={toggle}
             designState={designState}
