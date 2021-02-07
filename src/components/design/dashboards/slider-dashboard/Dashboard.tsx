@@ -18,12 +18,22 @@ import {
 export const SliderDashboard = () => {
   const { designState } = useDesign();
   const { uiState } = useUi();
+  const setting = uiState.setting;
 
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
-        {/* <DndUploadBox /> */}
-        <PictureContainer title="تصاویر اسلایدر" count={8} />
+        {setting.type === 'dropZone' && setting.open ? (
+          <DndUploadBox
+            placeholder={{
+              text: 'تصاویر اسلایدر را اینجا آپلود کنید',
+              width: 1326,
+              height: 442,
+            }}
+          />
+        ) : (
+          <PictureContainer title="تصاویر اسلایدر" count={8} />
+        )}
         <SpeedButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />

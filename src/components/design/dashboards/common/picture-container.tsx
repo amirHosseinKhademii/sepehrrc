@@ -1,9 +1,10 @@
-import { useDesign } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 import { Text } from 'components';
 import { PictureButton } from './picture-button';
 
 export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
-  const { designState } = useDesign();
+  const { designState, setPureImage } = useDesign();
+  const { toggleSettingState } = useUi();
   let newArr = [];
   let arr = [];
   let imagesData = designState.current.images;
@@ -18,8 +19,16 @@ export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
   }
   newArr = [...imagesData, ...arr];
 
+  const handleOnDragEnter = () => {
+    toggleSettingState({ type: 'dropZone', open: true });
+    setPureImage({ number: imagesDataLength, isBackground: false });
+  };
+
   return (
-    <div className={`mt-${marginTop} w-full felx flex-col`}>
+    <div
+      className={`mt-${marginTop} w-full felx flex-col`}
+      onDragEnter={() => handleOnDragEnter()}
+    >
       <Text className=" mb-6px text-14px text-white_shade-100 text-right">
         {title}
       </Text>

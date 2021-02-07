@@ -6,7 +6,6 @@ export const UIContext = createContext(undefined);
 
 export const UiProvider = ({ children }) => {
   const [uiState, uiDispatch] = useReducer(uiReducer, uiInitialState);
-
   return (
     <UIContext.Provider value={{ uiState, uiDispatch }}>
       {children}
