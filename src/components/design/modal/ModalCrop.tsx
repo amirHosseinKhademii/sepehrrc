@@ -12,7 +12,7 @@ export const ModalCrop = () => {
     rotate: 0,
   });
   const { designState, setImage } = useDesign();
-  const { uiState } = useUi();
+  const { uiState, toggleSettingState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
   const { images } = designState.current;
@@ -20,12 +20,16 @@ export const ModalCrop = () => {
 
   const handleSubmit = async () => {
     setisLoading(true);
+
     if (designState.pureImage.isBackground) {
       setImage({
         key: 'backgroundImage',
         payload: designState.pureImage.value,
       });
-    } else setImage({ key: 'value', payload: designState.pureImage.value });
+    } else {
+      setImage({ key: 'value', payload: designState.pureImage.value });
+      toggleSettingState({ type: 'dropZone', open: false });
+    }
   };
 
   const ModalImage = ({ src }) => (
