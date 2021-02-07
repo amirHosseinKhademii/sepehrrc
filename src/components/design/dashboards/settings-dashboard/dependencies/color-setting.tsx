@@ -18,6 +18,8 @@ export const ColorSetting = ({
               setColor({ type: '', open: false });
             }}
             label={color.type === 'secondary' ? 'رنگ دوم' : 'رنگ اصلی'}
+            onClose={() => setColor(false)}
+            open={color}
           />
         </div>
       ) : (

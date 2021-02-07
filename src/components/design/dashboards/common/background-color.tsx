@@ -12,8 +12,10 @@ export const BackgroundColor = () => {
         <div className="w-full  px-10px mt-32px">
           <ColorPicker
             onChange={(color) => setSetting({ backgroundColor: color.hex })}
+            onClose={() => setOpen(false)}
             value={designState.current.settings.backgroundColor || '#fff'}
             label="رنگ زمینه"
+            open={open}
           />
         </div>
       ) : (
