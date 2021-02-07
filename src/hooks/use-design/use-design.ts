@@ -92,12 +92,7 @@ export const useDesign = () => {
         key == 'value' || key === 'backgroundImage'
           ? await upload(payload)
           : { data: { secure_url: '' } };
-
       if (key == 'backgroundImage') {
-        // designDispatch({
-        //   type: designTypes.ON_SET_ITEM_PROPS,
-        //   payload: { key, value: result.data.secure_url },
-        // });
         designDispatch({
           type: designTypes.ON_SET_ITEM_SETTING,
           payload: { [key]: result.data.secure_url },
