@@ -9,7 +9,7 @@ export const Modal: FC<IModal> = ({ children, open }) => {
     return (
       <div
         className={toggle(
-          'bg-black  opacity-50  fixed h-screen w-screen inset-0 transition-all duration-300',
+          'bg-black  fixed  inset-0 transition-all duration-300',
           'opacity-60 pointer-events-auto',
           open,
           'opacity-0 pointer-events-none'
@@ -24,15 +24,19 @@ export const Modal: FC<IModal> = ({ children, open }) => {
     <>
       <div
         className={toggle(
-          'w-screen h-screen fixed  inset-0 flex items-center justify-center transition-all duration-300 ',
-          'visible opacity-100 pointer-events-auto ',
+          ' fixed  flex items-center justify-center transition-all duration-300 ',
+          'visible opacity-100 pointer-events-auto  ',
           open,
           'invisible opacity-0 pointer-events-none '
         )}
-        style={{ zIndex: 200 }}
-        onClick={() => toggleModal({ open: false })}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
       >
-        <div className=" w-3/5 shadow-lg rounded">{children}</div>
+        <div className=" w-full h-full shadow-lg rounded">{children}</div>
       </div>
       <BackDrop />
     </>
