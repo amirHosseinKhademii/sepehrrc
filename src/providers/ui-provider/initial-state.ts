@@ -15,4 +15,5 @@ export const uiInitialState = {
     open: false,
     number: '',
   },
+  style: '.btn { background: red; color:yellow; padding:10px;  }',
 };

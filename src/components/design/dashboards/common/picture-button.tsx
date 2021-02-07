@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import { useDesign, useUi } from 'hooks';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import { ICPlus, ICTimesCircle } from 'icons';
@@ -8,7 +8,7 @@ export const PictureButton: FC<IPictureButton> = ({
   picture,
   number,
 }) => {
-  const { setSetting, setPureImage } = useDesign();
+  const { setPureImage, deleteImage } = useDesign();
   const { toggleSettingState } = useUi();
 
   if (withAdd)
@@ -50,7 +50,7 @@ export const PictureButton: FC<IPictureButton> = ({
           src={picture}
         />
         <ICTimesCircle
-          onClick={() => alert('coming soon')}
+          onClick={() => deleteImage(number)}
           className="delIcon absolute top-1 right-1 cursor-pointer opacity-0"
           fill="#ed1c24"
         />
