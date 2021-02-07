@@ -24,11 +24,7 @@ export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
           type="tel"
           placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
-        <InputBox
-          label="دکمه هدر"
-          type="button"
-          placeholder={settings?.button ? settings.button : 'ورود/عضویت'}
-        />
+        <InputBox label="دکمه هدر" type="button" />
       </div>
     );
   };

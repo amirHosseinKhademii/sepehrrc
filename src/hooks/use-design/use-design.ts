@@ -46,6 +46,12 @@ export const useDesign = () => {
         payload,
       });
     },
+    setButtonProps: (payload) => {
+      designDispatch({
+        type: designTypes.ON_SET_BUTTON_PROPS,
+        payload,
+      });
+    },
     setPureImage: (props: {
       value?: any;
       number?: any;

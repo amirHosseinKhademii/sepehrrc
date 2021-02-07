@@ -57,6 +57,25 @@ export const designReducer = (
         pageItems: clonePage,
         current: cloneCurrent,
       };
+    case designTypes.ON_SET_BUTTON_PROPS:
+      if (cloneCurrent.settings?.button) {
+        cloneItem.settings.button[payload.key] = payload.value;
+        cloneCurrent.settings.button[payload.key] = payload.value;
+      } else {
+        cloneItem.settings = {
+          ...cloneItem.settings,
+          button: { [payload.key]: payload.value },
+        };
+        cloneCurrent.settings = {
+          ...cloneCurrent.settings,
+          button: { [payload.key]: payload.value },
+        };
+      }
+      return {
+        ...state,
+        pageItems: clonePage,
+        current: cloneCurrent,
+      };
     case designTypes.ON_SET_PURE_IMAGE:
       return {
         ...state,
@@ -101,6 +120,7 @@ export const designReducer = (
         pageItems: clonePage,
         current: cloneCurrent,
       };
+
     case designTypes.ON_CLEAR_CURRENT:
       return {
         ...state,

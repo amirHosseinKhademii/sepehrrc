@@ -64,7 +64,21 @@ export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
               toggle={toggle}
               layout={layout}
               className="   rounded-25px  text-white"
-              text={item.settings?.button ? item.settings.button : 'ورود/عضویت'}
+              text={
+                item.settings?.button && item.settings.button?.text
+                  ? item.settings.button.text
+                  : 'ورود/عضویت'
+              }
+              link={
+                item.settings?.button && item.settings.button?.link
+                  ? item.settings.button.link
+                  : '/signup'
+              }
+              newTab={
+                item.settings?.button && item.settings.button?.newTab
+                  ? item.settings.button.newTab
+                  : false
+              }
               designState={designState}
             />
           </div>
