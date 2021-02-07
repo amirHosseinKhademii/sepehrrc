@@ -122,7 +122,7 @@ export const useDesign = () => {
           pageSettings: designState.pageSettings,
         })
       );
-    }, [designState.pageItems]),
+    }, [designState.pageItems, designState.pageSettings]),
     getPage: useCallback(() => {
       return onGet({ url: '' });
     }, []),
