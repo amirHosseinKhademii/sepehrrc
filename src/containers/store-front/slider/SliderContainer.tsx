@@ -53,13 +53,13 @@ export const SliderContainer = ({ item }) => {
   const handleSpeed = () => {
     switch (settings.speed) {
       case 'fast':
-        return 250;
+        return 3000;
       case 'slow':
-        return 3500;
+        return 7000;
       case 'normal':
-        return 2500;
+        return 5000;
       default:
-        return 2500;
+        return 5000;
     }
   };
   // const handleEffect = () => {

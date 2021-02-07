@@ -14,6 +14,9 @@ export const PictureButton: FC<IPictureButton> = ({
   if (withAdd)
     return (
       <Dropzone
+        multiple
+        maxFiles={8}
+        noDrag
         onDrop={(acceptedFiles) =>
           setPureImage({
             value: acceptedFiles[0],

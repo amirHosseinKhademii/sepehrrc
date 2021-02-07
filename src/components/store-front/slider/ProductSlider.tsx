@@ -2,6 +2,27 @@ import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+  Autoplay,
+  EffectCube,
+  EffectFlip,
+} from 'swiper';
+
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+  EffectFade,
+  EffectCube,
+  EffectFlip,
+]);
 
 interface IProductSlider {
   item: any;
