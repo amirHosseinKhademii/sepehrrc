@@ -1,29 +1,7 @@
 import { FC, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import AliceCarousel from 'react-alice-carousel';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  EffectFade,
-  Autoplay,
-  EffectCube,
-  EffectFlip,
-} from 'swiper';
-
-SwiperCore.use([
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-  EffectFade,
-  EffectCube,
-  EffectFlip,
-]);
-
 interface IProductSlider {
   item: any;
   data: any;
@@ -41,51 +19,41 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
 
     arr = data.slice(0, totalItems).map((item, index) => {
       return (
-        <SwiperSlide className="swiper-slide" key={index}>
+        <div className=" md:mr-30px" key={index}>
           <ProductCard item={item} />
-        </SwiperSlide>
+        </div>
       );
     });
     return arr;
   };
 
   return (
-    <div
-      onMouseEnter={() => state.autoplay.stop()}
-      onMouseLeave={() => state.autoplay.start()}
-      className="relative container mx-auto px-20px py-25px flex flex-col w-full"
-    >
+    <div className=" container mx-auto px-20px py-25px flex flex-col w-full">
       <ProductTitle
         text={title}
         designState={designState}
         layout={true}
         join={join}
       />
-      <Swiper
-        slidesPerView={item.settings?.cols ? item.settings.cols : 4}
-        effect="slide"
-        spaceBetween={30}
-        speed={2000}
-        pagination={{
-          el: '.swiper-paginations',
-          type: 'bullets',
-          clickable: true,
+      <AliceCarousel
+        items={handleChild()}
+        autoPlayInterval={2000}
+        autoPlayStrategy="default"
+        controlsStrategy="responsive"
+        animationDuration={2000}
+        disableButtonsControls
+        responsive={{
+          0: { items: 1 },
+          768: { items: 2 },
+          1024: {
+            items:
+              item?.settings && item.settings?.cols ? item.settings.cols : 4,
+          },
         }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        autoplay={{ delay: 200, disableOnInteraction: false }}
-        // onMouseEnter={(event) => alert('hi')}
-        onSwiper={(e) => setState(e)}
-        className={`h-full w-full rounded z-0  relative pb-35px`}
-      >
-        {handleChild()}
-      </Swiper>
-      <div
-        className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
-        `}
-      ></div>
+        autoPlay
+        infinite
+        paddingRight={30}
+      />
     </div>
   );
 };

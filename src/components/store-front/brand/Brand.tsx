@@ -1,38 +1,26 @@
-import { Fragment } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  EffectFade,
-  Autoplay,
-  EffectCube,
-  EffectFlip,
-} from 'swiper';
+import AliceCarousel from 'react-alice-carousel';
 
-SwiperCore.use([
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-  EffectFade,
-  EffectCube,
-  EffectFlip,
-]);
-
-export const Brand = ({ child, slidesPerView = 4 }) => {
+export const Brand = ({ child }) => {
   return (
-    <Swiper
-      grabCursor
-      slidesPerView={slidesPerView}
-      spaceBetween={30}
-      speed={2500}
-      autoplay={{ delay: 200, disableOnInteraction: false }}
-      className={`h-107px w-full rounded`}
+    <AliceCarousel
+      items={child}
+      autoPlayInterval={2000}
+      autoPlayStrategy="default"
+      controlsStrategy="responsive"
+      animationDuration={2000}
+      disableButtonsControls
+      responsive={{
+        0: { items: 1 },
+        768: { items: 2 },
+        1024: {
+          items: 4,
+        },
+      }}
+      autoPlay
+      infinite
+      paddingRight={30}
     >
       {child}
-    </Swiper>
+    </AliceCarousel>
   );
 };

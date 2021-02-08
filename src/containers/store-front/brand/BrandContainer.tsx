@@ -1,5 +1,4 @@
 import { Brand } from 'components';
-import { SwiperSlide } from 'swiper/react';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
 
@@ -12,12 +11,12 @@ export const BrandContainer = ({ item }) => {
     const arr = [];
     item.images.map((item, index) => {
       arr.push(
-        <SwiperSlide
+        <div
           key={index}
-          className="flex justify-center items-center bg-white h-107px rounded-lg"
+          className="flex justify-center items-center bg-white h-107px rounded-lg mr-30px"
         >
           <img src={item.value} className={`h-54px w-121px `} />
-        </SwiperSlide>
+        </div>
       );
     });
     return arr;
