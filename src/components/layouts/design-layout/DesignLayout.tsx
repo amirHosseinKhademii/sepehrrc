@@ -11,19 +11,18 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { direction } = designState.pageSettings;
   return (
     <div
-    // className={` flex ${
-    //   direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
-    // }`}
+      className={`h-screen  flex ${
+        direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
+      }`}
     >
       <Drawer />
       <div
         className={toggle(
-          `z-0 min-h-screen relative `,
+          `z-0 h-full flex flex-col bg-gray_tint-16`,
           'xl:w-drawerDynamic',
           open && type !== 'menu',
           'w-drawerFix'
         )}
-        style={{ backgroundColor: '#ebedf0' }}
         onClick={
           uiState.drawer.open
             ? () => toggleDrawer({ type: '', open: false })
@@ -31,8 +30,10 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
         }
       >
         <DesignHeader />
-        <div className=" pb-28 w-full h-full">{children}</div>
-        <DesignFooter />
+        <div className=" w-full flex-grow relative pb-28 bg-gray_tint-16">
+          {children}
+          <DesignFooter />
+        </div>
       </div>
       {uiState.modal.open && <ModalCrop />}
     </div>

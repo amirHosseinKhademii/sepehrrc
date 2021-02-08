@@ -62,16 +62,16 @@ export const SliderContainer = ({ item }) => {
         return 5000;
     }
   };
-  // const handleEffect = () => {
-  //   switch (settings.effect) {
-  //     case 'fade':
-  //       return 'fade';
-  //     case 'simple':
-  //       return 'slide';
-  //     default:
-  //       return 'fade';
-  //   }
-  // };
+  const handleEffect = () => {
+    switch (settings.effect) {
+      case 'fade':
+        return 'fadeout';
+      case 'simple':
+        return 'slide';
+      default:
+        return 'fadeout';
+    }
+  };
 
   return (
     <GeneralLayout
@@ -85,29 +85,21 @@ export const SliderContainer = ({ item }) => {
       item={item}
     >
       <div
-        className={`${
-          settings.screen ? handleScreen() : 'container mx-auto'
-        } py-25px `}
+        className={`${settings.screen ? handleScreen() : 'container mx-auto'} ${
+          uiState.drawer.type === 'style' &&
+          designState.current.type == 'slider' &&
+          item.uuid == designState.current.uuid
+            ? ''
+            : 'py-25px'
+        }  `}
       >
-        {settings?.effect === 'simple' ? (
-          <Slider
-            child={handleChild()}
-            speed={settings.speed ? handleSpeed() : 2500}
-            screen={settings?.screen}
-            button={settings?.button}
-            effect="slide"
-          />
-        ) : (
-          <div className="w-full">
-            <Slider
-              child={handleChild()}
-              speed={handleSpeed()}
-              screen={settings?.screen}
-              button={settings?.button}
-              effect="fadeout"
-            />
-          </div>
-        )}
+        <Slider
+          child={handleChild()}
+          speed={settings.speed ? handleSpeed() : 5000}
+          screen={settings?.screen}
+          button={settings?.button}
+          effect={settings.effect ? handleEffect() : 'fadeout'}
+        />
       </div>
     </GeneralLayout>
   );

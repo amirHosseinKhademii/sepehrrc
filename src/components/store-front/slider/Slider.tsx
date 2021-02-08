@@ -7,9 +7,9 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
 
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-800 -m-6"></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-800 "></div>
     ) : (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-600 -m-6 cursor-pointer"></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-600  cursor-pointer"></div>
     );
   };
   const renderPrevButton = ({ isDisabled }) => {
@@ -25,33 +25,31 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
 
   const renderNextButton = ({ isDisabled }) => {
     return (
-      <span
+      <div
         className="absolute top-0 right-0 h-450px text-white flex justify-center items-center cursor-pointer "
         style={{ opacity: isDisabled ? '0.5' : 1 }}
       >
         <ICAngelRight fill="white" />
-      </span>
+      </div>
     );
   };
   return (
-    <div className="relative">
-      <AliceCarousel
-        autoPlay
-        autoPlayStrategy="default"
-        autoPlayInterval={speed}
-        animationDuration={1000}
-        animationType={effect}
-        infinite
-        touchTracking={false}
-        mouseTracking={false}
-        renderDotsItem={renderDotsItem}
-        renderPrevButton={renderPrevButton}
-        renderNextButton={renderNextButton}
-        items={child}
-        ref={sliderRef}
-        disableDotsControls={button === 'second' ? true : false}
-        disableButtonsControls={button === 'first' ? true : false}
-      />
-    </div>
+    <AliceCarousel
+      autoPlay
+      autoPlayStrategy="default"
+      autoPlayInterval={speed}
+      animationDuration={1000}
+      animationType={effect}
+      infinite
+      touchTracking={false}
+      mouseTracking={false}
+      renderDotsItem={renderDotsItem}
+      renderPrevButton={renderPrevButton}
+      renderNextButton={renderNextButton}
+      items={child}
+      ref={sliderRef}
+      disableDotsControls={button === 'second' ? true : false}
+      disableButtonsControls={button === 'first' ? true : false}
+    />
   );
 };
