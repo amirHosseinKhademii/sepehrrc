@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDesign, useUi } from 'hooks';
 import Dropzone, { useDropzone } from 'react-dropzone';
-import { ICPlus, ICTimesCircle } from 'icons';
+import { ICPlus, ICMultiply } from 'icons';
 
 export const PictureButton: FC<IPictureButton> = ({
   withAdd,
@@ -41,19 +41,22 @@ export const PictureButton: FC<IPictureButton> = ({
     );
   else if (picture)
     return (
-      <div className="relative cover">
+      <div className="cover relative rounded ">
         <img
           onClick={() =>
             toggleSettingState({ type: 'picture', number, open: true })
           }
-          className=" w-full h-60px rounded cursor-pointer"
+          className="coverImage w-full h-60px rounded border-primary-700 cursor-pointer"
           src={picture}
         />
-        <ICTimesCircle
-          onClick={() => deleteImage(number)}
-          className="delIcon absolute top-1 right-1 cursor-pointer opacity-0"
-          fill="#ed1c24"
-        />
+        <div className="delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -right-1 bg-alert-300 rounded-full cursor-pointer opacity-0">
+          <ICMultiply
+            onClick={() => deleteImage(number)}
+            fill="white"
+            width="10px"
+            height="10px"
+          />
+        </div>
       </div>
     );
   else
