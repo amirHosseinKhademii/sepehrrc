@@ -33,7 +33,6 @@ export const StoreFrontContainer = () => {
           {item.type == 'slider' && <SliderContainer item={item} />}
           {item.type == 'banner' && <BannerContainer item={item} />}
           {item.type == 'brands' && <BrandContainer item={item} />}
-          <div className="btn">test test </div>
         </Fragment>
       ))}
     </Container>
