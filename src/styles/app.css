@@ -189,3 +189,6 @@ html {
 .cover:hover > .delIcon {
   opacity: 1;
 }
+.cover:hover > .coverImage {
+  border-width: 2px;
+}
