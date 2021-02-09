@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from 'react-query';
 import { repository } from './repository';
 import axios from 'axios';
+import { request, gql } from 'graphql-request';
 
 const useService = () => {
   return {
@@ -32,6 +33,17 @@ const useService = () => {
       data.append('upload_preset', 'xicq5r2v');
       return repository.uploader(data);
     },
+    useStyles: async () =>
+      await request(
+        'https://api-amirgraphql-v3.herokuapp.com/',
+        gql`
+          query {
+            getStyles {
+              style
+            }
+          }
+        `
+      ),
   };
 };
 export { useService };

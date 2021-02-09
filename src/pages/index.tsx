@@ -1,28 +1,16 @@
-import { useUi } from 'hooks';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { request, gql } from 'graphql-request';
+import { appendStyle } from 'utils';
 
-export default function Home() {
+export default function Home({ newStyle }) {
   const { push } = useRouter();
-  const { uiState } = useUi();
 
   useEffect(() => {
+    appendStyle({ theme: newStyle.getStyles[2].style });
     push('./admin/design');
   }, []);
-
-  useEffect(() => {
-    const css = uiState.style,
-      head = document.head || document.getElementsByTagName('head')[0],
-      style = document.createElement('style');
-    head.appendChild(style);
-    style.type = 'text/css';
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }
-  }, [uiState.style]);
 
   return (
     <div>
@@ -33,4 +21,20 @@ export default function Home() {
       <main></main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const newStyle = await request(
+    'https://api-amirgraphql-v3.herokuapp.com/',
+    gql`
+      query {
+        getStyles {
+          style
+        }
+      }
+    `
+  );
+  return {
+    props: { newStyle },
+  };
 }
