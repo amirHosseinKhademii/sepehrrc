@@ -160,10 +160,11 @@ const item = [
 export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
   listClassName,
   designState,
+  layout,
 }) => {
   const { pageSettings } = designState;
   return (
-    <ul className=" headerCascadingMenu " style={{ direction: 'rtl' }}>
+    <ul className=" header-cascading-menu " style={{ direction: 'rtl' }}>
       {item.map((firstLevel, index) => {
         return (
           <li key={index}>
@@ -234,7 +235,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
       })}
       <style jsx>
         {`
-          .headerCascadingMenu {
+          .header-cascading-menu {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
@@ -242,41 +243,41 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             font-weight: bold;
           }
 
-          .headerCascadingMenu > li {
+          .header-cascading-menu > li {
             height: 58px;
             display: flex;
             align-items: center;
             margin-left: 20px;
           }
 
-          .headerCascadingMenu > li:before {
+          .header-cascading-menu > li:before {
             position: absolute;
             top: -2px;
             content: '';
             display: none;
             width: 100%;
             height: 2px;
-            background-color: ${pageSettings.primary};
+            background-color: ${layout ? pageSettings.primary : '#414655'};
           }
 
-          .headerCascadingMenu > li:hover:before {
+          .header-cascading-menu > li:hover:before {
             display: block;
           }
-          .headerCascadingMenu li {
+          .header-cascading-menu li {
             position: relative;
           }
 
-          .headerCascadingMenu li:first-child {
+          .header-cascading-menu li:first-child {
             margin-right: 0px;
           }
 
-          .headerCascadingMenu li:hover > ul {
+          .header-cascading-menu li:hover > ul {
             visibility: visible;
             opacity: 1;
             pointer-events: all;
           }
 
-          .headerCascadingMenu ul {
+          .header-cascading-menu ul {
             position: absolute;
             top: 100%;
             right: 0;
@@ -292,22 +293,22 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             // color: black;
           }
 
-          .headerCascadingMenu ul ul {
+          .header-cascading-menu ul ul {
             right: 100%;
             top: 0;
           }
 
-          .headerCascadingMenu li ul li {
+          .header-cascading-menu li ul li {
             padding: 20px;
             // padding-left: 0;
             margin-left: 0;
             transition: all 0.3s;
             border-bottom: 1px solid #d3d7e1;
           }
-          .headerCascadingMenu li ul li:last-child {
+          .header-cascading-menu li ul li:last-child {
             border: none;
           }
-          .headerCascadingMenu li ul li:hover {
+          .header-cascading-menu li ul li:hover {
             padding-right: 30px;
           }
         `}

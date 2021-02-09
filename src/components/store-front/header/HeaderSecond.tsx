@@ -15,7 +15,7 @@ export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
       <>
         <Link href="./">
           <a
-            className={`cursor-pointer ${marginLtr}-8px font-bold fill-current`}
+            className={`cursor-pointer  ${layout && 'font-bold'} fill-current`}
           >
             ورود/عضویت در سایت
           </a>
@@ -53,13 +53,18 @@ export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
         className={` flex  ${flexDirection} container mx-auto px-20px  w-full h-122px `}
       >
         <div className={`w-6/12 flex ${flexDirection} items-center `}>
-          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <HeaderNavbar
+            className="font-bold text-16px"
+            layout={layout}
+            direction="horizental"
+            toggle={toggle}
+          />
         </div>
-        <div className={`w-1/12  flex ${flexDirection} items-center `}>
-          <HeaderLogo src={item.images} join={join} />
+        <div className={`w-2/12  flex ${flexDirection} items-center `}>
+          <HeaderLogo layout={layout} src={item.images} join={join} />
         </div>
         <div
-          className={`w-5/12 flex ${flexDirection} items-center justify-end`}
+          className={`w-4/12 flex ${flexDirection} items-center justify-end`}
         >
           <Actions />
         </div>

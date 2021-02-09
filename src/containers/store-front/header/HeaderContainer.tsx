@@ -10,33 +10,89 @@ import {
   HeaderEighth,
   GeneralLayout,
 } from 'components';
-
 export const DesignHeader = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
-
-  const Headers = ({ item }) => {
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? false : true;
+  const Headers = ({ item, layout }) => {
     if (
       !item.settings ||
       !item.settings.style ||
       item.settings.style === 'first'
     )
-      return <HeaderFirst item={item} />;
+      return (
+        <HeaderFirst
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'second')
-      return <HeaderSecond item={item} />;
+      return (
+        <HeaderSecond
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'third')
-      return <HeaderThird item={item} />;
+      return (
+        <HeaderThird
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'fourth')
-      return <HeaderFourth item={item} />;
+      return (
+        <HeaderFourth
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'fifth')
-      return <HeaderFifth item={item} />;
+      return (
+        <HeaderFifth
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'sixth')
-      return <HeaderSixth item={item} />;
+      return (
+        <HeaderSixth
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'seventh')
-      return <HeaderSeventh item={item} />;
+      return (
+        <HeaderSeventh
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
     else if (item.settings.style === 'eighth')
-      return <HeaderEighth item={item} />;
+      return (
+        <HeaderEighth
+          item={item}
+          layout={layout}
+          uiState={uiState}
+          designState={designState}
+        />
+      );
   };
 
   return (
@@ -50,7 +106,7 @@ export const DesignHeader = () => {
       }
       item={item}
     >
-      <Headers item={item} />
+      <Headers item={item} layout={layout} />
     </GeneralLayout>
   );
 };

@@ -2,9 +2,7 @@ import { FC } from 'react';
 import { ICBars } from 'icons';
 import Link from 'next/link';
 import { useDirection } from 'hooks';
-interface IHEaderCategory {
-  designState?: any;
-}
+
 const item = {
   text: 'دسته بندی محصولات',
   link: '',
@@ -217,7 +215,12 @@ const item = {
   ],
 };
 
-export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
+export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
+  designState,
+  layout,
+  toggle,
+  className,
+}) => {
   const { pageSettings } = designState;
   const {
     flexDirection,
@@ -228,13 +231,15 @@ export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
   } = useDirection();
   return (
     <div
-      className={`headerMegaMenu flex ${flexDirection} items-center justify-center h-full `}
+      className={toggle(
+        `header-mega-menu flex ${flexDirection} items-center justify-center h-full`,
+        className,
+        layout
+      )}
     >
       <div className={` flex ${flexDirection} ${marginLtr}-30px   `}>
         <ICBars className="text-24px fill-current" />
-        <div
-          className={`  ${marginRtl}-5px text-16px font-bold   headerMegaMenuPanel`}
-        >
+        <div className={`  ${marginRtl}-5px    header-mega-menu-panel`}>
           <Link href={item.link}>
             <a className="title"> {item.text} </a>
           </Link>
@@ -273,7 +278,7 @@ export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
       </div>
       <style jsx>
         {`
-          .headerMegaMenu:hover .headerMegaMenuPanel > div {
+          .header-mega-menu:hover .header-mega-menu-panel > div {
             visibility: visible;
             pointer-events: all;
             opacity: 1;

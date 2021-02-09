@@ -6,18 +6,23 @@ import {
   HeaderLayout,
   HeaderButton,
   HeaderCascadingMenu,
+  HeaderTel,
   Social,
 } from './dependencies';
 import { Badge } from 'components';
-import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
+import { ICSearch, ICShoppingCart } from 'icons';
 import Link from 'next/link';
-import { useDesign, useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
-  const { designState } = useDesign();
+export const HeaderEighth: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+}) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
+  const { flexDirection, marginLtr } = useDirection();
 
   const Actions = () => {
     return (
@@ -31,6 +36,7 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
+          layout={true}
         >
           <Link href="./">
             <a>
@@ -45,42 +51,56 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
   return (
     <HeaderLayout layout={layout} toggle={toggle}>
       <div
-        className=" text-white"
-        style={{ backgroundColor: `${pageSettings.primary}` }}
+        style={{
+          backgroundColor: `${layout ? `${pageSettings.primary}` : `#fff`}`,
+          color: `${layout ? `#fff` : 'initial'}`,
+        }}
       >
         <div
-          className={`grid  grid-cols-12    w-full h-58px  container mx-auto px-20px`}
-          style={{ direction: 'rtl' }}
+          className={`flex ${flexDirection}   w-full h-58px  container mx-auto px-20px`}
         >
-          <div className="col-span-9  flex items-center ">
-            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <div className={`w-9/12  flex ${flexDirection} items-center `}>
+            <HeaderNavbar
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+              className="font-bold text-16px"
+            />
           </div>
-          <div className="col-span-3 flex items-center justify-end text-16px text-white">
+          <div
+            className={`w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
+            style={{
+              color: `${layout ? `#fff` : 'initial'}`,
+            }}
+          >
             <Social />
           </div>
         </div>
       </div>
 
-      <div className="border-b-2">
+      <div className="border-b-2 border-t-2">
         <div
-          className={`grid  grid-cols-12   w-full h-122px container mx-auto px-20px `}
-          style={{ direction: 'rtl' }}
+          className={`flex ${flexDirection}  w-full h-122px container mx-auto px-20px `}
         >
-          <div className="col-span-1  flex items-center">
-            <HeaderLogo src={item.images} join={join} />
+          <div className={`w-2/12  flex ${flexDirection} items-center`}>
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className="col-span-7 flex items-center justify-center ">
+          <div
+            className={`w-6/12 flex ${flexDirection} items-center justify-center `}
+          >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="text-16px "
               layout={layout}
               toggle={toggle}
             />
           </div>
-          <div className="col-span-4 flex items-center justify-end ">
+          <div
+            className={`w-4/12 flex ${flexDirection} items-center justify-end `}
+          >
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-25px rounded-25px  text-white "
+              className="  rounded-25px  text-white "
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
@@ -103,29 +123,20 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12    w-full container mx-auto px-20px `}
-        style={{ direction: 'rtl' }}
+        className={`flex ${flexDirection}  items-center w-full container mx-auto px-20px `}
       >
-        <div className="col-span-9  flex items-center ">
-          <HeaderCascadingMenu designState={designState} />
+        <div className={`w-9/12  flex ${flexDirection} items-center `}>
+          <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div className="col-span-3 h-full flex items-center justify-end ">
-          <a
-            href={`tel:+98${
-              item.settings?.tel ? item.settings.tel : '0910000000'
-            }`}
-            className=" h-full flex items-center justify-end  text-20px font-iransans"
-          >
-            <span className="text-16px">
-              {item.settings?.tel ? item.settings.tel : '0910000000'}
-            </span>
-
-            <ICPhoneVolume
-              height="20px"
-              width="20px"
-              className="mr-10px fill-current"
-            />
-          </a>
+        <div
+          className={`w-3/12 h-full flex ${flexDirection} items-center justify-end `}
+        >
+          <HeaderTel
+            layout={layout}
+            className="text-16px font-bold"
+            item={item}
+            toggle={toggle}
+          />
         </div>
       </div>
     </HeaderLayout>

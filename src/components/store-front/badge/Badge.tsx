@@ -22,7 +22,7 @@ export const Badge: FC<IBadge> = ({
           ' absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px ',
           className,
           layout,
-          cssAlt
+          'hidden'
         )}
         style={{ backgroundColor: `${pageSettings.primary}` }}
       >

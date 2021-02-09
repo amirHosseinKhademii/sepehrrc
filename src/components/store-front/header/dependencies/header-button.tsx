@@ -17,7 +17,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
       <a
         target={newTab ? '_blank' : ''}
         className={toggle(
-          'headerButton h-50px px-25px flex items-center  text-16px border-2 text-white  cursor-pointer focus:outline-none font-iransans font-light',
+          'header-button h-50px px-25px mr-35px flex items-center  text-16px border-2   cursor-pointer focus:outline-none font-iransans font-light',
           className,
           layout,
           cssAlt
@@ -28,11 +28,11 @@ export const HeaderButton: FC<IHeaderButton> = ({
 
         <style jsx>
           {`
-          .headerButton {
-            background-color:${` ${layout ? pageSettings.primary : 'initial'}`};
-            border-color: ${`${layout ? pageSettings.primary : 'initial'} `};
-            color: ${`${layout ? '#fff' : 'initial'}`};
-            border-radius:27px
+          
+          .header-button {
+            background-color: ${layout ? pageSettings.primary : 'unset'};
+            border-color: ${layout ? pageSettings.primary : '#ced2da'};
+            color: ${layout ? '#fff' : '#51596a'};
                  `}
         </style>
       </a>

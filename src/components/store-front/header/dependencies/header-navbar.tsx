@@ -10,20 +10,31 @@ const items = [
 export const HeaderNavbar: FC<IHeaderNavbar> = ({
   direction = 'horizental',
   className,
-  join,
   toggle,
+  layout,
 }) => {
   const { flexDirection } = useDirection();
   return (
-    <ul className={join(` headerNavbar flex `, className)}>
+    <ul
+      className={toggle(
+        ` header-navbar flex ${flexDirection} `,
+        className,
+        layout
+      )}
+    >
       {items.map((item, index) => {
         return (
           <li
-            className={toggle('', 'pr-0 pl-20px', index === 0, 'px-20px')}
+            className={toggle(
+              'header-navbar-item',
+              'pr-0 pl-20px',
+              index === 0,
+              'px-20px'
+            )}
             key={index}
           >
             <Link href="/">
-              <a className="font-bold text-16px">{item.text}</a>
+              <a className="header-navabr-link">{item.text}</a>
             </Link>
           </li>
         );

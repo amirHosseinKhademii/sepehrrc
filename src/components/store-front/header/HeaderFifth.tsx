@@ -5,17 +5,22 @@ import {
   HeaderCascadingMenu,
   HeaderLayout,
   HeaderButton,
+  HeaderTel,
 } from './dependencies';
-import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
+import { ICSearch, ICShoppingCart } from 'icons';
 import { Badge } from 'components';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
+export const HeaderFifth: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+}) => {
   const { join, toggle } = useClass();
-  const { designState } = useDesign();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
 
   const Actions = () => {
     return (
@@ -30,6 +35,7 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
           </a>
         </Link>
         <Badge
+          layout={layout}
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
         >
@@ -50,20 +56,26 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
     <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12  w-full h-122px container mx-auto px-20px   `}
-          style={{ direction: 'rtl' }}
+          className={` flex ${flexDirection}  w-full h-122px container mx-auto px-20px   `}
         >
-          <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} join={join} />
+          <div className={`w-2/12  flex ${flexDirection} items-center `}>
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className="col-span-7 flex items-center mr-60px ">
-            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <div className={`w-6/12 flex ${flexDirection} items-center mr-60px `}>
+            <HeaderNavbar
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+              className="font-bold text-16px"
+            />
           </div>
-          <div className="col-span-4 flex items-center justify-end">
+          <div
+            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+          >
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-25px rounded-25px  text-white "
+              className="  rounded-25px  text-white "
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
@@ -86,26 +98,18 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full   container mx-auto px-20px`}
-        style={{ direction: 'rtl' }}
+        className={`flex ${flexDirection}  w-full   container mx-auto px-20px`}
       >
-        <div className="col-span-9  flex items-center ">
-          <HeaderCascadingMenu designState={designState} />
+        <div className={`w-9/12 flex ${flexDirection}  items-center `}>
+          <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div className="col-span-3 ">
-          <a
-            href={`tel:+98${
-              item.settings?.tel ? item.settings.tel : '0910000000'
-            }`}
-            className="  flex items-center justify-end text-16px mt-20px font-iransans"
-          >
-            <span>{item.settings?.tel ? item.settings.tel : '0910000000'}</span>
-            <ICPhoneVolume
-              height="20px"
-              width="20px"
-              className="mr-10px fill-current text-20px"
-            />
-          </a>
+        <div className={`w-3/12  flex ${flexDirection}  justify-end`}>
+          <HeaderTel
+            layout={layout}
+            className="text-16px font-bold"
+            item={item}
+            toggle={toggle}
+          />
         </div>
       </div>
     </HeaderLayout>

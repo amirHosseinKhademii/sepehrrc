@@ -4,26 +4,34 @@ import {
   HeaderLogo,
   HeaderLayout,
   HeaderCascadingMenu,
+  HeaderTel,
 } from './dependencies';
-import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import { useDesign, useClass } from 'hooks';
+import { ICSearch, ICShoppingCart } from 'icons';
+import { useClass, useDirection } from 'hooks';
 import { Badge } from 'components';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
-  const { designState } = useDesign();
+export const HeaderSeventh: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+}) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
+
   const Actions = () => {
     return (
       <>
         <Link href="./">
-          <a>
-            <div className="ml-8px cursor-pointer font-bold">
-              ورود/عضویت در سایت
-            </div>
+          <a
+            className={`cursor-pointerml-8px  ${
+              layout && 'font-bold'
+            } fill-current`}
+          >
+            ورود/عضویت در سایت
           </a>
         </Link>
         <Link href="./">
@@ -38,6 +46,7 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="2"
+          layout={layout}
         >
           <Link href="./">
             <a>
@@ -57,51 +66,51 @@ export const HeaderSeventh: FC<IHeader> = ({ item, layout = true }) => {
     <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12 container mx-auto  w-full h-122px px-20px `}
-          style={{ direction: 'rtl' }}
+          className={` flex ${flexDirection} container mx-auto  w-full h-122px px-20px `}
         >
-          <div className="col-span-6 flex items-center ">
-            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <div className={`w-6/12 flex ${flexDirection} items-center `}>
+            <HeaderNavbar
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+              className="font-bold text-16px"
+            />
           </div>
-          <div className="col-span-1  flex items-center ">
-            <HeaderLogo src={item.images} join={join} />
+          <div
+            className={`w-2/12  flex ${flexDirection} items-center justify-start `}
+          >
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className="col-span-5 flex items-center justify-end ">
+          <div
+            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+          >
             <Actions />
           </div>
         </div>
       </div>
       <div
-        className=" text-white "
-        style={{ backgroundColor: `${pageSettings.primary}` }}
+        style={{
+          backgroundColor: `${layout ? `${pageSettings.primary}` : `#fff`}`,
+          color: `${layout ? `#fff` : 'initial'}`,
+        }}
       >
         <div
-          className={`grid  grid-cols-12    w-full container mx-auto  px-20px `}
-          style={{ direction: 'rtl' }}
+          className={`flex ${flexDirection}   w-full container mx-auto  px-20px `}
         >
-          <div className="col-span-9  flex items-center ">
+          <div className={`w-9/12 ${flexDirection} flex items-center `}>
             <HeaderCascadingMenu
               listClassName="text-black"
               designState={designState}
+              layout={layout}
             />
           </div>
-          <div className="col-span-3 ">
-            <a
-              href={`tel:+98${
-                item.settings?.tel ? item.settings.tel : '0910000000'
-              }`}
-              className=" h-full flex items-center justify-end text-16px font-iransans"
-            >
-              <span>
-                {item.settings?.tel ? item.settings.tel : '0910000000'}
-              </span>
-
-              <ICPhoneVolume
-                height="20px"
-                width="20px"
-                className="mr-10px text-20px fill-current"
-              />
-            </a>
+          <div className={`w-9/12   flex  ${flexDirection} justify-end `}>
+            <HeaderTel
+              layout={layout}
+              className="text-16px font-bold"
+              item={item}
+              toggle={toggle}
+            />
           </div>
         </div>
       </div>
