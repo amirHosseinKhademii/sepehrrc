@@ -127,6 +127,7 @@ export const ProductContainer = ({ item }) => {
         <ProductSlider
           data={productsToshow}
           item={item}
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 4}
           title={
             item?.settings && item.settings?.title
               ? item.settings.title

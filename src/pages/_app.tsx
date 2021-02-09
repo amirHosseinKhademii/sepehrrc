@@ -6,6 +6,15 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import 'swiper/components/effect-fade/effect-fade.scss';
+import 'swiper/components/effect-flip/effect-flip.scss';
+import 'swiper/components/effect-coverflow/effect-coverflow.scss';
+import 'swiper/components/a11y/a11y.scss';
+import 'swiper/components/controller/controller.scss';
 
 function MyApp({ Component, pageProps }) {
   return (

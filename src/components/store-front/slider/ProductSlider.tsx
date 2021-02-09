@@ -1,14 +1,42 @@
 import { FC, useState } from 'react';
-import AliceCarousel from 'react-alice-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard, ProductTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+  Autoplay,
+  EffectCube,
+  EffectFlip,
+} from 'swiper';
+
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+  EffectFade,
+  EffectCube,
+  EffectFlip,
+]);
+
 interface IProductSlider {
   item: any;
   data: any;
   title: string;
+  col?: number;
 }
 
-export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
+export const ProductSlider: FC<IProductSlider> = ({
+  item,
+  title,
+  data,
+  col,
+}) => {
   const { designState } = useDesign();
   const { join } = useClass();
   const [state, setState] = useState(null);
@@ -19,41 +47,51 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
 
     arr = data.slice(0, totalItems).map((item, index) => {
       return (
-        <div className=" md:mr-30px" key={index}>
+        <SwiperSlide className="swiper-slide" key={index}>
           <ProductCard item={item} />
-        </div>
+        </SwiperSlide>
       );
     });
     return arr;
   };
 
   return (
-    <div className=" container mx-auto px-20px py-25px flex flex-col w-full">
+    <div
+      onMouseEnter={() => state.autoplay.stop()}
+      onMouseLeave={() => state.autoplay.start()}
+      className="relative container mx-auto px-20px py-25px flex flex-col w-full"
+    >
       <ProductTitle
         text={title}
         designState={designState}
         layout={true}
         join={join}
       />
-      <AliceCarousel
-        items={handleChild()}
-        autoPlayInterval={2000}
-        autoPlayStrategy="default"
-        controlsStrategy="responsive"
-        animationDuration={2000}
-        disableButtonsControls
-        responsive={{
-          0: { items: 1 },
-          768: { items: 2 },
-          1024: {
-            items:
-              item?.settings && item.settings?.cols ? item.settings.cols : 4,
-          },
+      <Swiper
+        key={col}
+        slidesPerView={col}
+        effect="slide"
+        spaceBetween={30}
+        speed={2000}
+        pagination={{
+          el: '.swiper-paginations',
+          type: 'bullets',
+          clickable: true,
         }}
-        autoPlay
-        infinite
-        paddingRight={30}
-      />
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        autoplay={{ delay: 200, disableOnInteraction: false }}
+        onSwiper={(e) => setState(e)}
+        className={`h-full w-full rounded z-0  relative pb-35px`}
+      >
+        {handleChild()}
+      </Swiper>
+      <div
+        className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
+        `}
+      ></div>
     </div>
   );
 };
