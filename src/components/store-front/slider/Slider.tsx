@@ -7,9 +7,9 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
 
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-800 "></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-primary-700 "></div>
     ) : (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-600  cursor-pointer"></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-400  cursor-pointer"></div>
     );
   };
   const renderPrevButton = ({ isDisabled }) => {
