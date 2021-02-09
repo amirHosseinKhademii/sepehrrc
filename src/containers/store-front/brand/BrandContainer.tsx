@@ -37,7 +37,10 @@ export const BrandContainer = ({ item }) => {
         style={{ width: '1326px' }}
         className={`h-224px flex justify-center items-center mx-auto my-25px`}
       >
-        <Brand child={handleChild()} slidesPerView={settings?.col} />
+        <Brand
+          child={handleChild()}
+          //slidesPerView={settings?.col}
+        />
       </div>
     </GeneralLayout>
   );
