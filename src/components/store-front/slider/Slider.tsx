@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { ICAngelLeft, ICAngelRight } from 'icons';
 import AliceCarousel from 'react-alice-carousel';
+import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
 
 export const Slider = ({ child, speed, screen, button, effect }) => {
   const sliderRef = useRef(null);

@@ -12,6 +12,15 @@ import SwiperCore, {
   EffectCube,
   EffectFlip,
 } from 'swiper';
+import 'swiper/swiper.min.css';
+import '../../../../node_modules/swiper/components/navigation/navigation.min.css';
+import '../../../../node_modules/swiper/components/pagination/pagination.min.css';
+import '../../../../node_modules/swiper/components/scrollbar/scrollbar.min.css';
+import '../../../../node_modules/swiper/components/effect-fade/effect-fade.min.css';
+import '../../../../node_modules/swiper/components/effect-flip/effect-flip.min.css';
+import '../../../../node_modules/swiper/components/effect-coverflow/effect-coverflow.min.css';
+import '../../../../node_modules/swiper/components/a11y/a11y.min.css';
+import '../../../../node_modules/swiper/components/controller/controller.min.css';
 
 SwiperCore.use([
   Navigation,
