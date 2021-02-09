@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { request, gql } from 'graphql-request';
-import { appendStyle } from 'utils';
+//import { appendStyle } from 'utils';
 
 export default function Home({ newStyle }) {
   const { push } = useRouter();
