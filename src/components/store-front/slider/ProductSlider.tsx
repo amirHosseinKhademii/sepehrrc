@@ -12,6 +12,15 @@ import SwiperCore, {
   EffectCube,
   EffectFlip,
 } from 'swiper';
+import 'swiper/swiper.min.css';
+import '../../../../node_modules/swiper/components/navigation/navigation.min.css';
+import '../../../../node_modules/swiper/components/pagination/pagination.min.css';
+import '../../../../node_modules/swiper/components/scrollbar/scrollbar.min.css';
+import '../../../../node_modules/swiper/components/effect-fade/effect-fade.min.css';
+import '../../../../node_modules/swiper/components/effect-flip/effect-flip.min.css';
+import '../../../../node_modules/swiper/components/effect-coverflow/effect-coverflow.min.css';
+import '../../../../node_modules/swiper/components/a11y/a11y.min.css';
+import '../../../../node_modules/swiper/components/controller/controller.min.css';
 
 SwiperCore.use([
   Navigation,
@@ -59,7 +68,7 @@ export const ProductSlider: FC<IProductSlider> = ({
     <div
       onMouseEnter={() => state.autoplay.stop()}
       onMouseLeave={() => state.autoplay.start()}
-      className="relative container mx-auto px-20px py-25px flex flex-col w-full"
+      className="relative container mx-auto px-20px pb-6  flex flex-col w-full"
     >
       <ProductTitle
         text={title}
@@ -84,12 +93,12 @@ export const ProductSlider: FC<IProductSlider> = ({
         }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
         onSwiper={(e) => setState(e)}
-        className={`h-full w-full rounded z-0  relative pb-35px`}
+        className={`h-full w-full rounded z-0  `}
       >
         {handleChild()}
       </Swiper>
       <div
-        className={`swiper-paginations  absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
+        className={`swiper-paginations absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
         `}
       ></div>
     </div>

@@ -1,15 +1,16 @@
 import { useRef } from 'react';
 import { ICAngelLeft, ICAngelRight } from 'icons';
 import AliceCarousel from 'react-alice-carousel';
+import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
 
 export const Slider = ({ child, speed, screen, button, effect }) => {
   const sliderRef = useRef(null);
 
   const renderDotsItem = ({ isActive }) => {
     return isActive ? (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-800 "></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-primary-700 "></div>
     ) : (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-600  cursor-pointer"></div>
+      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-400  cursor-pointer"></div>
     );
   };
   const renderPrevButton = ({ isDisabled }) => {
