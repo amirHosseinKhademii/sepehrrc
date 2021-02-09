@@ -8,7 +8,7 @@ export default function Home({ newStyle }) {
   const { push } = useRouter();
 
   useEffect(() => {
-    appendStyle({ theme: newStyle.getStyles[2].style });
+    //appendStyle({ theme: newStyle.getStyles[2].style });
     push('./admin/design');
   }, []);
 
