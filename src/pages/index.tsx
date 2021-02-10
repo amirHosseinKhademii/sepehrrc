@@ -23,18 +23,18 @@ export default function Home({ newStyle }) {
   );
 }
 
-export async function getServerSideProps() {
-  const newStyle = await request(
-    'https://api-amirgraphql-v3.herokuapp.com/',
-    gql`
-      query {
-        getStyles {
-          style
-        }
-      }
-    `
-  );
-  return {
-    props: { newStyle },
-  };
-}
+// export async function getServerSideProps() {
+//   const newStyle = await request(
+//     'https://api-amirgraphql-v3.herokuapp.com/',
+//     gql`
+//       query {
+//         getStyles {
+//           style
+//         }
+//       }
+//     `
+//   );
+//   return {
+//     props: { newStyle },
+//   };
+// }

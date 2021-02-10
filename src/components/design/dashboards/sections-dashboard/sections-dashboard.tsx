@@ -22,11 +22,12 @@ export const SectionsDashboard = () => {
   const SectionParts = () => (
     <div className="flex flex-col items-center pt-30px px-20px">
       <ButtonDrawer
-        withSetting
-        className="mb-25px"
+        //withSetting
+        className="mb-25px cursor-pointer"
         text={headerItem.title}
         onDelete={() => onDeleteItem(headerItem)}
-        onSetting={() => toggleStyleDrawer('style', headerItem)}
+        onClickCapture={() => toggleStyleDrawer('style', headerItem)}
+        onClick={() => console.log('e')}
       />
       <Container
         groupName="1"
@@ -37,6 +38,7 @@ export const SectionsDashboard = () => {
         getChildPayload={(index) =>
           setChildPayload(index, designState.pageItems)
         }
+      
       >
         {designState.pageItems
           .filter((item) => item.type !== 'header')
@@ -45,21 +47,21 @@ export const SectionsDashboard = () => {
             <Draggable key={index}>
               <ButtonDrawer
                 withDelete
-                withSetting
+                // withSetting
                 className="mb-25px cursor-move"
                 text={item.title}
                 onDelete={() => onDeleteItem(item)}
-                onSetting={() => toggleStyleDrawer('style', item)}
+                onClickCapture={() => toggleStyleDrawer('style', item)}
               />
             </Draggable>
           ))}
       </Container>
       <ButtonDrawer
-        withSetting
-        className=""
+        // withSetting
+        className=" cursor-pointer"
         text={footerItem.title}
         onDelete={() => onDeleteItem(footerItem)}
-        onSetting={() => toggleStyleDrawer('style', footerItem)}
+        onClickCapture={() => toggleStyleDrawer('style', footerItem)}
       />
     </div>
   );
