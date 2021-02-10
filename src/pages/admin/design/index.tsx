@@ -1,10 +1,10 @@
-import { StoreFrontContainer } from 'containers';
+import { StoreFrontDesignContainer } from 'containers';
 import { DesignLayout } from 'components';
 
 const index = () => {
   return (
     <DesignLayout>
-      <StoreFrontContainer />
+      <StoreFrontDesignContainer />
     </DesignLayout>
   );
 };
