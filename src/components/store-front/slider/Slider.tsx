@@ -10,7 +10,10 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
     return isActive ? (
       <div className="flex h-8px w-8px mx-1 rounded-full bg-primary-700 "></div>
     ) : (
-      <div className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-400  cursor-pointer"></div>
+      <div
+        className="flex h-8px w-8px mx-1 rounded-full bg-gray_shade-400  cursor-pointer"
+        onClick={(e) => e.stopPropagation()}
+      ></div>
     );
   };
   const renderPrevButton = ({ isDisabled }) => {
@@ -18,6 +21,7 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
       <div
         className="absolute top-0 left-0 h-450px text-white flex justify-center items-center cursor-pointer "
         style={{ opacity: isDisabled ? '0.5' : 1 }}
+        onClick={(e) => e.stopPropagation()}
       >
         <ICAngelLeft fill="white" />
       </div>
@@ -29,6 +33,7 @@ export const Slider = ({ child, speed, screen, button, effect }) => {
       <div
         className="absolute top-0 right-0 h-450px text-white flex justify-center items-center cursor-pointer "
         style={{ opacity: isDisabled ? '0.5' : 1 }}
+        onClick={(e) => e.stopPropagation()}
       >
         <ICAngelRight fill="white" />
       </div>
