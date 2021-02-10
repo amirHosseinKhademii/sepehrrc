@@ -26,4 +26,5 @@ interface IButton {
   style?: any;
   withLabel?: boolean;
   htmlFor?: string;
+  onClickCapture?: any;
 }

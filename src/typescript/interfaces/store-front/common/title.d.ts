@@ -1,4 +1,4 @@
-interface IProductTitle {
+interface IContainerTitle {
   text: string;
   className?: string;
   join: Function;

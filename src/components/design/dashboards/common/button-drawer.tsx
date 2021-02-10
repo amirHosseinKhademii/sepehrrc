@@ -14,6 +14,7 @@ export const ButtonDrawer: FC<IButton> = ({
   onSetting,
   onUpload,
   onClick,
+  onClickCapture,
   onPush,
   className,
   children,
@@ -47,7 +48,11 @@ export const ButtonDrawer: FC<IButton> = ({
   );
 
   const EndItem = () => (
-    <div className="w-full" style={{ direction: 'rtl' }}>
+    <div
+      className="w-full"
+      style={{ direction: 'rtl' }}
+      onClickCapture={onClickCapture}
+    >
       {withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
       ) : withPush ? (

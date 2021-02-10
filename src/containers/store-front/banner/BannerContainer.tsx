@@ -6,12 +6,15 @@ import {
   BannerSixth,
   BannerThird,
   GeneralLayout,
+  ContainerTitle,
 } from 'components';
-import { useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi } from 'hooks';
 
 export const BannerContainer = ({ item }) => {
   const { uiState } = useUi();
   const { designState } = useDesign();
+  const { join } = useClass();
+
   const Banners = () => {
     if (item.settings && item.settings.style)
       switch (item.settings.style) {
@@ -44,6 +47,15 @@ export const BannerContainer = ({ item }) => {
       }
       item={item}
     >
+      <ContainerTitle
+        designState={designState}
+        text={
+          item?.settings && item.settings?.title
+            ? item.settings.title
+            : item.title
+        }
+        join={join}
+      />
       <Banners />
     </GeneralLayout>
   );

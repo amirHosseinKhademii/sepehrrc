@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCard, ProductTitle } from 'components';
+import { ProductCard, ContainerTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
 import SwiperCore, {
   Navigation,
@@ -70,7 +70,7 @@ export const ProductSlider: FC<IProductSlider> = ({
       onMouseLeave={() => state.autoplay.start()}
       className="relative container mx-auto px-20px pb-6  flex flex-col w-full"
     >
-      <ProductTitle
+      <ContainerTitle
         text={title}
         designState={designState}
         layout={true}

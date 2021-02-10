@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { useClass, useDesign } from 'hooks';
 
-export const ProductTitle: FC<IProductTitle> = ({
+export const ContainerTitle: FC<IContainerTitle> = ({
   text,
   className,
   join,
@@ -12,7 +11,7 @@ export const ProductTitle: FC<IProductTitle> = ({
   return (
     <div
       className={join(
-        `productTitle font-${pageSettings.titleFont} text-center text-32px font-medium  mb-40px`,
+        `container-title font-${pageSettings.titleFont} text-center text-32px font-medium  mb-40px`,
         className
       )}
     >
