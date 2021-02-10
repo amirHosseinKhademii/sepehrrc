@@ -1,11 +1,10 @@
-import { settings } from 'cluster';
 import {
   GeneralLayout,
-  ProductTitle,
   ProductGrid,
   ProductCard,
   Pagination,
   ProductSlider,
+  ContainerTitle,
 } from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
 import { data } from './data';
@@ -76,8 +75,8 @@ export const ProductContainer = ({ item }) => {
 
   const ProductList = () => {
     return (
-      <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
-        <ProductTitle
+      <div className="container mx-auto flex flex-col w-full  px-20px pb-25px">
+        <ContainerTitle
           text={
             item?.settings && item.settings?.title
               ? item.settings.title
