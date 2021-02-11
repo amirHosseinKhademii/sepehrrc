@@ -4,13 +4,8 @@ import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
 
 export const SectionsDashboard = () => {
-  const { toggleStyleDrawer } = useUi();
-  const {
-    designState,
-    setChildPayload,
-    onVerticalDrop,
-    onDeleteItem,
-  } = useDesign();
+  const { toggleStyleDrawer, toggleModal } = useUi();
+  const { designState, setChildPayload, onVerticalDrop } = useDesign();
 
   const headerItem = designState.pageItems.find(
     (item) => item.type == 'header'
@@ -22,10 +17,8 @@ export const SectionsDashboard = () => {
   const SectionParts = () => (
     <div className="flex flex-col items-center pt-30px px-20px">
       <ButtonDrawer
-        //withSetting
         className="mb-25px cursor-pointer"
         text={headerItem.title}
-        onDelete={() => onDeleteItem(headerItem)}
         onClickCapture={() => toggleStyleDrawer('style', headerItem)}
         onClick={() => console.log('e')}
       />
@@ -38,7 +31,6 @@ export const SectionsDashboard = () => {
         getChildPayload={(index) =>
           setChildPayload(index, designState.pageItems)
         }
-      
       >
         {designState.pageItems
           .filter((item) => item.type !== 'header')
@@ -47,20 +39,24 @@ export const SectionsDashboard = () => {
             <Draggable key={index}>
               <ButtonDrawer
                 withDelete
-                // withSetting
-                className="mb-25px cursor-move"
+                className="mb-25px cursor-pointer"
                 text={item.title}
-                onDelete={() => onDeleteItem(item)}
+                onDelete={() =>
+                  toggleModal({
+                    type: 'confirm',
+                    open: true,
+                    number: item,
+                    target: 'sections',
+                  })
+                }
                 onClickCapture={() => toggleStyleDrawer('style', item)}
               />
             </Draggable>
           ))}
       </Container>
       <ButtonDrawer
-        // withSetting
         className=" cursor-pointer"
         text={footerItem.title}
-        onDelete={() => onDeleteItem(footerItem)}
         onClickCapture={() => toggleStyleDrawer('style', footerItem)}
       />
     </div>

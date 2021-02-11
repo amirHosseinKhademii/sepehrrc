@@ -96,7 +96,15 @@ export const ModalCrop = () => {
 
   if (uiState.modal.editImage) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
           <ModalImage src={images[number] ? images[number].value : ''} />
           <ModalFooter />
@@ -105,7 +113,15 @@ export const ModalCrop = () => {
     );
   } else if (designState.pureImage.value) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
           <ModalImage src={URL.createObjectURL(designState.pureImage.value)} />
           <ModalFooter />
