@@ -91,7 +91,7 @@ export const useDesign = () => {
               : designState.pureImage.isBackground,
         },
       });
-      if (value) toggleModal({ open: true });
+      if (value) toggleModal({ open: true,type:'image' });
     },
     setImage: async ({ key, payload }) => {
       const result =
@@ -110,7 +110,7 @@ export const useDesign = () => {
             [key]: key === 'value' ? result.data.secure_url : payload,
           },
         });
-      toggleModal({ open: false });
+      toggleModal({ open: false,type:'' });
     },
     clearCurrent: useCallback(() => {
       designDispatch({ type: designTypes.ON_CLEAR_CURRENT });

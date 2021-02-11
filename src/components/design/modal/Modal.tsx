@@ -1,7 +1,7 @@
 import { useUi, useClass } from 'hooks';
 import { FC, Fragment } from 'react';
 
-export const Modal: FC<IModal> = ({ children, open }) => {
+export const Modal: FC<IModal> = ({ children, open, style }) => {
   const { toggleModal } = useUi();
   const { toggle } = useClass();
 
@@ -29,12 +29,7 @@ export const Modal: FC<IModal> = ({ children, open }) => {
           open,
           'invisible opacity-0 pointer-events-none '
         )}
-        style={{
-          zIndex: 200,
-          left: '20%',
-          right: '20%',
-          top: '15%',
-        }}
+        style={style}
       >
         <div className=" w-full h-full shadow-lg rounded">{children}</div>
       </div>

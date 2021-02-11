@@ -1,10 +1,12 @@
 import { Fragment, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
-import { ProductContainer } from './product';
-import { SliderContainer } from './slider';
-import { BannerContainer } from './banner';
-import { BrandContainer } from './brand';
+import {
+  ProductContainer,
+  BrandContainer,
+  SliderContainer,
+  BannerContainer,
+} from '.';
 
 export const StoreFrontDesignContainer = () => {
   const [drop, setDrop] = useState({});

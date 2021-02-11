@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Drawer, ModalCrop } from 'components';
 import { DesignHeader, DesignFooter } from 'containers';
 import { useUi, useClass, useDesign } from 'hooks';
+import { ModalConfirm } from 'components/design';
 
 export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { uiState, toggleDrawer } = useUi();
@@ -9,6 +10,7 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { toggle } = useClass();
   const { designState } = useDesign();
   const { direction } = designState.pageSettings;
+
   return (
     <div
       className={`h-screen  flex ${
@@ -35,7 +37,10 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
           <DesignFooter />
         </div>
       </div>
-      {uiState.modal.open && <ModalCrop />}
+      {uiState.modal.type === 'image' && uiState.modal.open && <ModalCrop />}
+      {uiState.modal.type === 'confirm' && uiState.modal.open && (
+        <ModalConfirm />
+      )}
     </div>
   );
 };

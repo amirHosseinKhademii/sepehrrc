@@ -41,3 +41,4 @@ export * from './check';
 export * from './angle-left';
 export * from './angle-right';
 export * from './times-circle';
+export * from './warning';
