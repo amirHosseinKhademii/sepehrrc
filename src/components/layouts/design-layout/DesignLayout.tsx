@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { Drawer, ModalCrop } from 'components';
+import { Drawer, ModalCrop, ModalConfirm } from 'components';
 import { DesignHeader, DesignFooter } from 'containers';
 import { useUi, useClass, useDesign } from 'hooks';
-import { ModalConfirm } from 'components/design';
 
 export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { uiState, toggleDrawer } = useUi();

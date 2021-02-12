@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, memo, useState } from 'react';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import {
@@ -8,7 +8,7 @@ import {
   BannerContainer,
 } from '.';
 
-export const StoreFrontDesignContainer = () => {
+export const StoreFrontDesignContainer = memo(() => {
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
 
@@ -39,4 +39,4 @@ export const StoreFrontDesignContainer = () => {
       ))}
     </Container>
   );
-};
+});
