@@ -70,6 +70,7 @@ export const designInitialState = {
     primary: '#ed1c24',
     secondary: '#000',
     language: 'pr',
+    theme: 'default',
   },
   current: {
     uuid: '',
