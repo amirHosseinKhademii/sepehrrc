@@ -11,7 +11,7 @@ import {
   GeneralLayout,
 } from 'components';
 
-export const DesignHeader = () => {
+export const HeaderContainer = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');

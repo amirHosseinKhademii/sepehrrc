@@ -29,7 +29,9 @@ export const Drawer = memo(() => {
   return (
     <Fragment>
       <DrawerFix />
-      <DrawerDynamic />
+      {uiState.drawer.open && uiState.drawer.type !== 'menu' && (
+        <DrawerDynamic />
+      )}
       {uiState.drawer.open && uiState.drawer.type === 'menu' && <DrawerMenu />}
     </Fragment>
   );
