@@ -1,20 +1,26 @@
+import { DrawerLayout } from 'components';
 import { useDesign } from 'hooks';
 import dynamic from 'next/dynamic';
 
 const HeaderDashboard = dynamic(
-  () => import('components/design/dashboards/header-dashboard/Dashboard')
+  () => import('components/design/dashboards/header-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
 );
 const BannerDashboard = dynamic(
-  () => import('components/design/dashboards/banner-dashboard/Dashboard')
+  () => import('components/design/dashboards/banner-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
 );
 const SliderDashboard = dynamic(
-  () => import('components/design/dashboards/slider-dashboard/Dashboard')
+  () => import('components/design/dashboards/slider-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
 );
 const ProductDashboard = dynamic(
-  () => import('components/design/dashboards/product-dashboard/DashBoard')
+  () => import('components/design/dashboards/product-dashboard/DashBoard'),
+  { loading: () => <DrawerLayout /> }
 );
 const BrandDashboard = dynamic(
-  () => import('components/design/dashboards/brand-dashboard/Dashboard')
+  () => import('components/design/dashboards/brand-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
 );
 
 const StyleDashboard = () => {
