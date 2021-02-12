@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { GeneralLayout } from 'components';
 import { useDesign, useUi } from 'hooks';
-import { SwiperSlide } from 'swiper/react';
-import { Slider } from 'components';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const Slider = dynamic(
+  () => import('components/store-front/slider/ImageSlider')
+);
 
 const SliderContainer = ({ item }) => {
   const { designState } = useDesign();

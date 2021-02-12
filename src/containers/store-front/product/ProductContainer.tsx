@@ -1,13 +1,17 @@
-import {
-  GeneralLayout,
-  ProductGrid,
-  ProductCard,
-  Pagination,
-  ProductSlider,
-  ContainerTitle,
-} from 'components';
+import { GeneralLayout, ProductGrid, ContainerTitle } from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
+import dynamic from 'next/dynamic';
 import { data } from './data';
+
+const Pagination = dynamic(
+  () => import('components/store-front/pagination/Pagination')
+);
+const ProductSlider = dynamic(
+  () => import('components/store-front/slider/ProductSlider')
+);
+const ProductCard = dynamic(
+  () => import('components/store-front/card/product-card/ProductCard')
+);
 
 const ProductContainer = ({ item }) => {
   const { designState } = useDesign();

@@ -7,7 +7,7 @@ import {
 } from './dependencies';
 import { useClass, useDesign } from 'hooks';
 
-export const ProductCard = ({ item, layout = true }) => {
+const ProductCard = ({ item, layout = true }) => {
   const { toggle } = useClass();
   const { designState } = useDesign();
   return (
@@ -60,3 +60,5 @@ export const ProductCard = ({ item, layout = true }) => {
     </ProductLayout>
   );
 };
+
+export default ProductCard;
