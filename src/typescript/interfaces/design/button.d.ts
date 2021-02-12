@@ -27,4 +27,5 @@ interface IButton {
   withLabel?: boolean;
   htmlFor?: string;
   onClickCapture?: any;
+  withHover?: boolean;
 }
