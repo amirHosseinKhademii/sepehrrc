@@ -4,7 +4,7 @@ import { useDesign } from 'hooks';
 import { useState } from 'react';
 import { ColorSetting, FontSetting } from './dependencies';
 
-export const SettingsDashboard = () => {
+const SettingsDashboard = () => {
   const { onPageSetting, designState } = useDesign();
   const [color, setColor] = useState({
     type: '',
@@ -25,3 +25,5 @@ export const SettingsDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default SettingsDashboard;

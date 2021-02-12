@@ -3,7 +3,7 @@ import { MenuEditGroup, InputBox, StyleBoxHeader } from './dependencies';
 import { GenericUploader } from '../common';
 import { FC, memo } from 'react';
 
-export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
+const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
   const { settings } = designState.current;
 
   const BaseSetttings = () => {
@@ -35,3 +35,5 @@ export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
     </DrawerLayout>
   );
 });
+
+export default HeaderDashboard;
