@@ -79,8 +79,8 @@ export const ButtonDrawer: FC<IButton> = ({
         className
       )}
       onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={() => (withHover ? setHover(true) : {})}
+      onMouseLeave={() => (withHover ? setHover(false) : {})}
     >
       <StartItem />
       <EndItem />
