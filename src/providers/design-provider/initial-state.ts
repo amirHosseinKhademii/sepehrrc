@@ -32,21 +32,29 @@ export const designInitialState = {
       id: '4',
       type: 'news',
       title: 'لیست اخبار',
+      images: [],
+      settings: {},
     },
     {
       id: '5',
       type: 'textImage',
       title: 'متن با تصویر',
+      images: [],
+      settings: {},
     },
     {
       id: '6',
       type: 'comments',
       title: 'نظرات مشتریان',
+      images: [],
+      settings: {},
     },
     {
       id: '7',
       type: 'text',
       title: 'متن',
+      images: [],
+      settings: {},
     },
   ],
   pageItems: [
@@ -55,11 +63,13 @@ export const designInitialState = {
       type: 'header',
       title: 'هدر',
       images: [],
+      settings: {},
     },
     {
       uuid: 'FOOTER',
       type: 'footer',
       title: 'فوتر',
+      settings: {},
     },
   ],
   pageSettings: {

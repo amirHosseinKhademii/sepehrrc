@@ -1,10 +1,8 @@
+import dynamic from 'next/dynamic';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
-import dynamic from 'next/dynamic';
+import HeaderFirst from 'components/store-front/header/HeaderFirst';
 
-const HeaderFirst = dynamic(
-  () => import('components/store-front/header/HeaderFirst')
-);
 const HeaderSecond = dynamic(
   () => import('components/store-front/header/HeaderSecond')
 );
@@ -33,26 +31,26 @@ const HeaderContainer = () => {
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
 
   const Headers = ({ item }) => {
-    if (
-      !item.settings ||
-      !item.settings.style ||
-      item.settings.style === 'first'
-    )
-      return <HeaderFirst item={item} />;
-    else if (item.settings.style === 'second')
-      return <HeaderSecond item={item} />;
-    else if (item.settings.style === 'third')
-      return <HeaderThird item={item} />;
-    else if (item.settings.style === 'fourth')
-      return <HeaderFourth item={item} />;
-    else if (item.settings.style === 'fifth')
-      return <HeaderFifth item={item} />;
-    else if (item.settings.style === 'sixth')
-      return <HeaderSixth item={item} />;
-    else if (item.settings.style === 'seventh')
-      return <HeaderSeventh item={item} />;
-    else if (item.settings.style === 'eighth')
-      return <HeaderEighth item={item} />;
+    switch (item.settings.style) {
+      case 'first':
+        return <HeaderFirst item={item} />;
+      case 'second':
+        return <HeaderSecond item={item} />;
+      case 'third':
+        return <HeaderThird item={item} />;
+      case 'fourth':
+        return <HeaderFourth item={item} />;
+      case 'fifth':
+        return <HeaderFifth item={item} />;
+      case 'sixth':
+        return <HeaderSixth item={item} />;
+      case 'seventh':
+        return <HeaderSeventh item={item} />;
+      case 'eighth':
+        return <HeaderEighth item={item} />;
+      default:
+        return <HeaderFirst item={item} />;
+    }
   };
 
   return (
