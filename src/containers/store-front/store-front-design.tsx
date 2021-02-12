@@ -22,7 +22,7 @@ export const StoreFrontDesignContainer = memo(() => {
         dragClass="bg-red-600"
         onDrop={onHorizontalDrop(drop)}
         getChildPayload={(index) => setChildPayload(index, designState.page)}
-        onDragEnd={(e) => e && setDrop(e)}
+        onDragEnd={(e) => (e !== null ? setDrop(e) : {})}
         style={{
           width: '100%',
           minHeight: '60vh',
