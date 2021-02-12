@@ -17,9 +17,11 @@ const SectionsDashboard = () => {
   const SectionParts = () => (
     <div className="flex flex-col items-center pt-30px px-20px">
       <ButtonDrawer
+        withSetting
+        withHover
         className="mb-25px cursor-pointer"
         text={headerItem.title}
-        onClickCapture={() => toggleStyleDrawer('style', headerItem)}
+        onSetting={() => toggleStyleDrawer('style', headerItem)}
         onClick={() => console.log('e')}
       />
       <Container
@@ -38,8 +40,10 @@ const SectionsDashboard = () => {
           .map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
+                withHover
                 withDelete
-                className="mb-25px cursor-pointer"
+                withSetting
+                className="mb-25px cursor-move"
                 text={item.title}
                 onDelete={() =>
                   toggleModal({
@@ -49,15 +53,17 @@ const SectionsDashboard = () => {
                     target: 'sections',
                   })
                 }
-                onClickCapture={() => toggleStyleDrawer('style', item)}
+                onSetting={() => toggleStyleDrawer('style', item)}
               />
             </Draggable>
           ))}
       </Container>
       <ButtonDrawer
+        withSetting
+        withHover
         className=" cursor-pointer"
         text={footerItem.title}
-        onClickCapture={() => toggleStyleDrawer('style', footerItem)}
+        onSetting={() => toggleStyleDrawer('style', footerItem)}
       />
     </div>
   );
