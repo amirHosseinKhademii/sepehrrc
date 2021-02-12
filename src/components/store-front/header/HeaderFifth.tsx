@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
+ const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
 
@@ -111,3 +111,5 @@ export const HeaderFifth: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderFifth;

@@ -1,17 +1,33 @@
 import { useDesign, useUi } from 'hooks';
-import {
-  HeaderFirst,
-  HeaderSecond,
-  HeaderThird,
-  HeaderFourth,
-  HeaderFifth,
-  HeaderSixth,
-  HeaderSeventh,
-  HeaderEighth,
-  GeneralLayout,
-} from 'components';
+import { GeneralLayout } from 'components';
+import dynamic from 'next/dynamic';
 
-export const DesignHeader = () => {
+const HeaderFirst = dynamic(
+  () => import('components/store-front/header/HeaderFirst')
+);
+const HeaderSecond = dynamic(
+  () => import('components/store-front/header/HeaderSecond')
+);
+const HeaderThird = dynamic(
+  () => import('components/store-front/header/HeaderThird')
+);
+const HeaderFourth = dynamic(
+  () => import('components/store-front/header/HeaderFourth')
+);
+const HeaderFifth = dynamic(
+  () => import('components/store-front/header/HeaderFifth')
+);
+const HeaderSixth = dynamic(
+  () => import('components/store-front/header/HeaderSixth')
+);
+const HeaderSeventh = dynamic(
+  () => import('components/store-front/header/HeaderSeventh')
+);
+const HeaderEighth = dynamic(
+  () => import('components/store-front/header/HeaderEighth')
+);
+
+const HeaderContainer = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
@@ -54,3 +70,5 @@ export const DesignHeader = () => {
     </GeneralLayout>
   );
 };
+
+export default HeaderContainer;

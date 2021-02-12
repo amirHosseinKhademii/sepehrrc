@@ -12,7 +12,7 @@ import { ICShoppingCart, ICPhoneVolume } from 'icons';
 import { Badge } from 'components';
 import { useClass, useDesign, useDirection } from 'hooks';
 
-export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
   const { toggle, join } = useClass();
   const { designState } = useDesign();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
@@ -112,3 +112,5 @@ export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderThird;

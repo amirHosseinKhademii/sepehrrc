@@ -1,16 +1,27 @@
-import {
-  BannerFifth,
-  BannerFirst,
-  BannerSecond,
-  BannerForth,
-  BannerSixth,
-  BannerThird,
-  GeneralLayout,
-  ContainerTitle,
-} from 'components';
+import { GeneralLayout, ContainerTitle } from 'components';
 import { useClass, useDesign, useUi } from 'hooks';
+import dynamic from 'next/dynamic';
 
-export const BannerContainer = ({ item }) => {
+const BannerFirst = dynamic(
+  () => import('components/store-front/banner/BannerFirst')
+);
+const BannerSecond = dynamic(
+  () => import('components/store-front/banner/BannerSecond')
+);
+const BannerThird = dynamic(
+  () => import('components/store-front/banner/BannerThird')
+);
+const BannerForth = dynamic(
+  () => import('components/store-front/banner/BannerForth')
+);
+const BannerFifth = dynamic(
+  () => import('components/store-front/banner/BannerFifth')
+);
+const BannerSixth = dynamic(
+  () => import('components/store-front/banner/BannerSixth')
+);
+
+const BannerContainer = ({ item }) => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { join } = useClass();
@@ -60,3 +71,5 @@ export const BannerContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default BannerContainer;

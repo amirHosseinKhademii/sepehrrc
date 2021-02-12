@@ -14,7 +14,7 @@ import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
+ const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
 
@@ -112,3 +112,5 @@ export const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderSixth;

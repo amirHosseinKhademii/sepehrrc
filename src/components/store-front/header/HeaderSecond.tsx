@@ -6,7 +6,7 @@ import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 const logo = '/assets/images/logo.png';
 
-export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
+ const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
   const { join, toggle } = useClass();
   const { flexDirection, marginLtr } = useDirection();
 
@@ -67,3 +67,5 @@ export const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderSecond;

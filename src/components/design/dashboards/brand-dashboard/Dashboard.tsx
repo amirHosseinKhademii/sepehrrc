@@ -10,7 +10,7 @@ import {
   DndUploadBox,
 } from '../common';
 
-export const BrandDashboard = () => {
+const BrandDashboard = () => {
   const { designState } = useDesign();
 
   const BaseSettings = () => {
@@ -48,3 +48,5 @@ export const BrandDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default BrandDashboard;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BannerImage, BannerLayout } from './dependencies';
 
-export const BannerSixth: FC<IBanner> = ({ item }) => {
+const BannerSixth: FC<IBanner> = ({ item }) => {
   return (
     <BannerLayout className="grid-cols-3">
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
@@ -16,3 +16,4 @@ export const BannerSixth: FC<IBanner> = ({ item }) => {
     </BannerLayout>
   );
 };
+export default BannerSixth;

@@ -3,7 +3,7 @@ import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
 
-export const SectionsDashboard = () => {
+const SectionsDashboard = () => {
   const { toggleStyleDrawer, toggleModal } = useUi();
   const { designState, setChildPayload, onVerticalDrop } = useDesign();
 
@@ -70,3 +70,5 @@ export const SectionsDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default SectionsDashboard;

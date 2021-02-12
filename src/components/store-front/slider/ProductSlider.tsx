@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCard, ContainerTitle } from 'components';
+import { ContainerTitle } from 'components';
 import { useDesign, useClass } from 'hooks';
 import SwiperCore, {
   Navigation,
@@ -21,6 +21,7 @@ import '../../../../node_modules/swiper/components/effect-flip/effect-flip.min.c
 import '../../../../node_modules/swiper/components/effect-coverflow/effect-coverflow.min.css';
 import '../../../../node_modules/swiper/components/a11y/a11y.min.css';
 import '../../../../node_modules/swiper/components/controller/controller.min.css';
+import dynamic from 'next/dynamic';
 
 SwiperCore.use([
   Navigation,
@@ -40,12 +41,11 @@ interface IProductSlider {
   col?: number;
 }
 
-export const ProductSlider: FC<IProductSlider> = ({
-  item,
-  title,
-  data,
-  col,
-}) => {
+const ProductCard = dynamic(
+  () => import('components/store-front/card/product-card/ProductCard')
+);
+
+const ProductSlider: FC<IProductSlider> = ({ item, title, data, col }) => {
   const { designState } = useDesign();
   const { join } = useClass();
   const [state, setState] = useState(null);
@@ -104,3 +104,5 @@ export const ProductSlider: FC<IProductSlider> = ({
     </div>
   );
 };
+
+export default ProductSlider;

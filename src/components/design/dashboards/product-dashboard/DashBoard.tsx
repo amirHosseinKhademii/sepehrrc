@@ -15,7 +15,7 @@ import {
 } from './dependencies';
 import { FC, memo } from 'react';
 
-export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
+const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
   const isList = designState.current.settings?.screen === 'list';
 
   const BaseSettings = () => {
@@ -47,3 +47,5 @@ export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
     </DrawerLayout>
   );
 });
+
+export default ProductDashboard;

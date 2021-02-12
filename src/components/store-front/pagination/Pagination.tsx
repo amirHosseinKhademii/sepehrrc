@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ICEllipsisH } from 'icons';
 import { useDesign } from 'hooks';
-export const Pagination: FC = () => {
+const Pagination: FC = () => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
 
@@ -32,3 +32,5 @@ export const Pagination: FC = () => {
     </div>
   );
 };
+
+export default Pagination;
