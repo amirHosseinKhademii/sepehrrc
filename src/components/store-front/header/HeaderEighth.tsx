@@ -14,7 +14,7 @@ import Link from 'next/link';
 import { useDesign, useClass } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
@@ -131,3 +131,5 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderEighth;

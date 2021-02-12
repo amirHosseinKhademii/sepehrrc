@@ -10,7 +10,7 @@ import {
 } from 'components';
 import { useClass, useDesign, useUi } from 'hooks';
 
-export const BannerContainer = ({ item }) => {
+const BannerContainer = ({ item }) => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { join } = useClass();
@@ -60,3 +60,5 @@ export const BannerContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default BannerContainer;

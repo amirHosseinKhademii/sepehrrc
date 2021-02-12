@@ -9,7 +9,7 @@ import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
 import { useUi, useClass, useDesign, useDirection } from 'hooks';
 import Link from 'next/link';
 
-export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
+ const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
   const { uiState } = useUi();
   const { container } = uiState;
   const { join, toggle } = useClass();
@@ -93,3 +93,5 @@ export const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
     </HeaderLayout>
   );
 };
+
+export default HeaderFirst;

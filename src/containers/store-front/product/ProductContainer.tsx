@@ -9,7 +9,7 @@ import {
 import { useDesign, useUi, useClass } from 'hooks';
 import { data } from './data';
 
-export const ProductContainer = ({ item }) => {
+const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { join } = useClass();
@@ -137,3 +137,5 @@ export const ProductContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default ProductContainer;

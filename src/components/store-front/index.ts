@@ -1,4 +1,3 @@
-export * from './header';
 export * from './badge';
 export * from './slider';
 export * from './footer';

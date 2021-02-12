@@ -2,7 +2,7 @@ import { Brand } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
 
-export const BrandContainer = ({ item }) => {
+const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
@@ -45,3 +45,5 @@ export const BrandContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default BrandContainer;

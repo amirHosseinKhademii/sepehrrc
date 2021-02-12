@@ -1,14 +1,14 @@
 import { Fragment, memo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Container } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
-import {
-  ProductContainer,
-  BrandContainer,
-  SliderContainer,
-  BannerContainer,
-  HeaderContainer,
-  FooterContainer,
-} from '.';
+
+const ProductContainer = dynamic(() => import('./product/ProductContainer'));
+const BrandContainer = dynamic(() => import('./brand/BrandContainer'));
+const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
+const BannerContainer = dynamic(() => import('./banner/BannerContainer'));
+const HeaderContainer = dynamic(() => import('./header/HeaderContainer'));
+const FooterContainer = dynamic(() => import('./footer/FooterContainer'));
 
 export const StoreFrontDesignContainer = memo(() => {
   const [drop, setDrop] = useState({});

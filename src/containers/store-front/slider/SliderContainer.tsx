@@ -5,7 +5,7 @@ import { SwiperSlide } from 'swiper/react';
 import { Slider } from 'components';
 import Link from 'next/link';
 
-export const SliderContainer = ({ item }) => {
+const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
@@ -104,3 +104,5 @@ export const SliderContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default SliderContainer;
