@@ -5,7 +5,7 @@ import { useClass, useDesign, useUi } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 
-export const ModalCrop = () => {
+const ModalCrop = () => {
   const [isLoading, setisLoading] = useState(false);
   const [operations, setOperations] = useState({
     zoom: 0,
@@ -130,3 +130,5 @@ export const ModalCrop = () => {
     );
   } else return null;
 };
+
+export default ModalCrop;

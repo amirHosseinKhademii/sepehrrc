@@ -1,6 +1,12 @@
 import { FC } from 'react';
-import { Drawer, ModalCrop, ModalConfirm } from 'components';
+import { Drawer } from 'components';
 import { useUi, useClass, useDesign } from 'hooks';
+import dynamic from 'next/dynamic';
+
+const ModalCrop = dynamic(() => import('components/design/modal/ModalCrop'));
+const ModalConfirm = dynamic(
+  () => import('components/design/modal/ModalConfirm')
+);
 
 export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { uiState, toggleDrawer } = useUi();
