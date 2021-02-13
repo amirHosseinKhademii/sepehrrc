@@ -19,7 +19,7 @@ const ProductContainer = ({ item }) => {
   const { join } = useClass();
   const { current } = designState;
   const { theme } = designState.pageSettings;
-  const layout = theme === 'default' ? false : true;
+  const layout = theme === 'default' ? true : false;
 
   const showPagination =
     (item?.settings &&
@@ -112,7 +112,12 @@ const ProductContainer = ({ item }) => {
 
         {showPagination && (
           <div className="flex justify-center w-full mt-20px">
-            <Pagination />
+            <Pagination
+              className={`shadow-custom-1 rounded-7px `}
+              layout={layout}
+              designState={designState}
+              total={productsOrdered.length}
+            />
           </div>
         )}
       </div>

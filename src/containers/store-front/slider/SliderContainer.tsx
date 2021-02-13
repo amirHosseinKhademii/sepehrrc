@@ -8,7 +8,8 @@ const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
-
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? true : false;
   useEffect(() => {}, [settings]);
 
   const handleScreen = () => {
@@ -23,6 +24,8 @@ const SliderContainer = ({ item }) => {
   };
 
   const handleChild = () => {
+    const imgAlt = '/assets/images/themeImg.png';
+
     const arr = [];
     const handleDragStart = (e) => e.preventDefault();
     item.images.length > 0
@@ -42,8 +45,15 @@ const SliderContainer = ({ item }) => {
           );
         })
       : arr.push(
-          <div className="h-450px bg-gray_shade-200 flex justify-center items-center rounded">
-            <span className="text-2xl text-gray-700 mt-4">اسلایدر</span>
+          <div
+            className={
+              'h-450px w-full flex items-center justify-center bg-white rounded '
+            }
+          >
+            <img
+              className={'w-145px h-107px rounded object-contain object-center'}
+              src={imgAlt}
+            />
           </div>
         );
     return arr;
@@ -100,6 +110,7 @@ const SliderContainer = ({ item }) => {
           screen={settings?.screen}
           button={settings?.button}
           effect={settings.effect ? handleEffect() : 'fadeout'}
+          layout={layout}
         />
       </div>
     </GeneralLayout>

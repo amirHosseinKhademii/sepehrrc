@@ -25,7 +25,7 @@ const BannerContainer = ({ item }) => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
-  const layout = theme === 'default' ? false : true;
+  const layout = theme === 'default' ? true : false;
   const { join } = useClass();
 
   const Banners = () => {
@@ -68,6 +68,7 @@ const BannerContainer = ({ item }) => {
             : item.title
         }
         join={join}
+        layout={layout}
       />
       <Banners />
     </GeneralLayout>
