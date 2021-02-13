@@ -68,6 +68,7 @@ const BannerContainer = ({ item }) => {
             : item.title
         }
         join={join}
+        layout={layout}
       />
       <Banners />
     </GeneralLayout>
