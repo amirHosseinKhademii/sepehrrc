@@ -2,11 +2,7 @@ import { useEffect } from 'react';
 import { GeneralLayout } from 'components';
 import { useDesign, useUi } from 'hooks';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-
-const Slider = dynamic(
-  () => import('components/store-front/slider/ImageSlider')
-);
+import Slider from 'components/store-front/slider/ImageSlider';
 
 const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
@@ -88,7 +84,9 @@ const SliderContainer = ({ item }) => {
       item={item}
     >
       <div
-        className={`${settings.screen ? handleScreen() : 'container mx-auto'} ${
+        className={`${
+          settings.screen ? handleScreen() : 'container mx-auto px-20px'
+        } ${
           uiState.drawer.type === 'style' &&
           designState.current.type == 'slider' &&
           item.uuid == designState.current.uuid
