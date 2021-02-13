@@ -1,16 +1,19 @@
-import { settings } from 'cluster';
-import {
-  GeneralLayout,
-  ProductTitle,
-  ProductGrid,
-  ProductCard,
-  Pagination,
-  ProductSlider,
-} from 'components';
+import { GeneralLayout, ProductGrid, ContainerTitle } from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
+import dynamic from 'next/dynamic';
 import { data } from './data';
 
-export const ProductContainer = ({ item }) => {
+const Pagination = dynamic(
+  () => import('components/store-front/pagination/Pagination')
+);
+const ProductSlider = dynamic(
+  () => import('components/store-front/slider/ProductSlider')
+);
+const ProductCard = dynamic(
+  () => import('components/store-front/card/product-card/ProductCard')
+);
+
+const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { join } = useClass();
@@ -78,8 +81,8 @@ export const ProductContainer = ({ item }) => {
 
   const ProductList = () => {
     return (
-      <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
-        <ProductTitle
+      <div className="container mx-auto flex flex-col w-full  px-20px pb-25px">
+        <ContainerTitle
           text={
             item?.settings && item.settings?.title
               ? item.settings.title
@@ -136,6 +139,7 @@ export const ProductContainer = ({ item }) => {
           item={item}
           layout={layout}
           designState={designState}
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 4}
           title={
             item?.settings && item.settings?.title
               ? item.settings.title
@@ -146,3 +150,5 @@ export const ProductContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default ProductContainer;

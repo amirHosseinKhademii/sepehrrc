@@ -1,6 +1,6 @@
 interface IHeader {
   item: any;
   layout?: boolean;
-  uiState: any;
+  uiState?: any;
   designState: any;
 }

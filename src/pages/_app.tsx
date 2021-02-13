@@ -5,7 +5,6 @@ import { DesignProvider } from 'providers/design-provider';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Head from 'next/head';
 import { Fragment } from 'react';
-import 'react-alice-carousel/lib/alice-carousel.css';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,14 +15,6 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
           rel="stylesheet"
         ></link>
-        {/* <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.css"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
-        ></link> */}
       </Head>
       <main>
         <QueryClientProvider client={new QueryClient()}>

@@ -6,6 +6,9 @@ export const uiInitialState = {
   modal: {
     open: false,
     editImage: false,
+    type: '',
+    number: '',
+    target: '',
   },
   container: {
     padding: 'p-20px',

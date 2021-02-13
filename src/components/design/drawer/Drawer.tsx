@@ -1,12 +1,13 @@
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 import { useUi, useDesign } from 'hooks';
 import { DrawerFix } from './drawer-fix';
 import { DrawerDynamic } from './drawer-dynamic';
 
-export const Drawer = () => {
+export const Drawer = memo(() => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { direction } = designState.pageSettings;
+
   const DrawerMenu = () => (
     <div
       className={`w-216px h-216px pt-21px pb-35px fixed ${
@@ -28,8 +29,10 @@ export const Drawer = () => {
   return (
     <Fragment>
       <DrawerFix />
-      <DrawerDynamic />
+      {uiState.drawer.open && uiState.drawer.type !== 'menu' && (
+        <DrawerDynamic />
+      )}
       {uiState.drawer.open && uiState.drawer.type === 'menu' && <DrawerMenu />}
     </Fragment>
   );
-};
+});

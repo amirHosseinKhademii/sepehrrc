@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { Drawer, ModalCrop } from 'components';
-import { DesignHeader, DesignFooter } from 'containers';
+import { Drawer, ModalCrop, ModalConfirm } from 'components';
 import { useUi, useClass, useDesign } from 'hooks';
 
 export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
@@ -9,13 +8,13 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { toggle } = useClass();
   const { designState } = useDesign();
   const { direction } = designState.pageSettings;
+
   return (
     <div
       className={`h-screen  flex ${
         direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
       }`}
     >
-      <Drawer />
       <div
         className={toggle(
           `z-0 h-full flex flex-col bg-gray_tint-16`,
@@ -29,13 +28,15 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
             : () => {}
         }
       >
-        <DesignHeader />
         <div className=" w-full flex-grow relative pb-28 bg-gray_tint-16">
           {children}
-          <DesignFooter />
         </div>
       </div>
-      {uiState.modal.open && <ModalCrop />}
+      <Drawer />
+      {uiState.modal.type === 'image' && uiState.modal.open && <ModalCrop />}
+      {uiState.modal.type === 'confirm' && uiState.modal.open && (
+        <ModalConfirm />
+      )}
     </div>
   );
 };

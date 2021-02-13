@@ -1,11 +1,29 @@
+import { DrawerLayout } from 'components';
 import { useDesign } from 'hooks';
-import { BannerDashboard } from './banner-dashboard';
-import { HeaderDashboard } from './header-dashboard';
-import { SliderDashboard } from './slider-dashboard';
-import { BrandDashboard } from './brand-dashboard';
-import { ProductDashboard } from './product-dashboard';
+import dynamic from 'next/dynamic';
 
-export const StyleDashboard = () => {
+const HeaderDashboard = dynamic(
+  () => import('components/design/dashboards/header-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
+const BannerDashboard = dynamic(
+  () => import('components/design/dashboards/banner-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
+const SliderDashboard = dynamic(
+  () => import('components/design/dashboards/slider-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
+const ProductDashboard = dynamic(
+  () => import('components/design/dashboards/product-dashboard/DashBoard'),
+  { loading: () => <DrawerLayout /> }
+);
+const BrandDashboard = dynamic(
+  () => import('components/design/dashboards/brand-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
+
+const StyleDashboard = () => {
   const { designState } = useDesign();
   switch (designState.current.type) {
     case 'header':
@@ -19,6 +37,8 @@ export const StyleDashboard = () => {
     case 'brands':
       return <BrandDashboard />;
     default:
-      return null;
+      return <HeaderDashboard designState={designState} />;
   }
 };
+
+export default StyleDashboard;

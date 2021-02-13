@@ -1,4 +1,4 @@
-import { useDesign, useUi } from 'hooks';
+import { useUi } from 'hooks';
 import { HeaderDrawer, DrawerLayout } from 'components';
 import {
   ResponsiveSwitchs,
@@ -15,8 +15,7 @@ import {
   InputBox,
 } from './dependencies';
 
-export const SliderDashboard = () => {
-  const { designState } = useDesign();
+const SliderDashboard = () => {
   const { uiState } = useUi();
   const setting = uiState.setting;
 
@@ -64,3 +63,5 @@ export const SliderDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default SliderDashboard;

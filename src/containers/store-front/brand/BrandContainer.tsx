@@ -2,7 +2,7 @@ import { Brand } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
 
-export const BrandContainer = ({ item }) => {
+const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
@@ -35,10 +35,15 @@ export const BrandContainer = ({ item }) => {
     >
       <div
         style={{ width: '1326px' }}
-        className={`h-224px flex justify-center items-center mx-auto my-25px`}
+        className={` flex justify-center items-center mx-auto`}
       >
-        <Brand child={handleChild()} slidesPerView={settings?.col} />
+        {/* <Brand child={handleChild()} /> */}
+        <div className="flex justify-center items-center text-gray_shade-700 text-2xl">
+          برند
+        </div>
       </div>
     </GeneralLayout>
   );
 };
+
+export default BrandContainer;

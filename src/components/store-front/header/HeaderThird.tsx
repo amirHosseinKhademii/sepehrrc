@@ -13,11 +13,7 @@ import { ICShoppingCart } from 'icons';
 import { Badge } from 'components';
 import { useClass, useDirection } from 'hooks';
 
-export const HeaderThird: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-}) => {
+const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { toggle, join } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
 
@@ -118,3 +114,5 @@ export const HeaderThird: FC<IHeader> = ({
     </HeaderLayout>
   );
 };
+
+export default HeaderThird;

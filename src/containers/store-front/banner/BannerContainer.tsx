@@ -1,19 +1,32 @@
-import {
-  BannerFifth,
-  BannerFirst,
-  BannerSecond,
-  BannerForth,
-  BannerSixth,
-  BannerThird,
-  GeneralLayout,
-} from 'components';
-import { useDesign, useUi } from 'hooks';
+import { GeneralLayout, ContainerTitle } from 'components';
+import { useClass, useDesign, useUi } from 'hooks';
+import dynamic from 'next/dynamic';
 
-export const BannerContainer = ({ item }) => {
+const BannerFirst = dynamic(
+  () => import('components/store-front/banner/BannerFirst')
+);
+const BannerSecond = dynamic(
+  () => import('components/store-front/banner/BannerSecond')
+);
+const BannerThird = dynamic(
+  () => import('components/store-front/banner/BannerThird')
+);
+const BannerForth = dynamic(
+  () => import('components/store-front/banner/BannerForth')
+);
+const BannerFifth = dynamic(
+  () => import('components/store-front/banner/BannerFifth')
+);
+const BannerSixth = dynamic(
+  () => import('components/store-front/banner/BannerSixth')
+);
+
+const BannerContainer = ({ item }) => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
   const layout = theme === 'default' ? false : true;
+  const { join } = useClass();
 
   const Banners = () => {
     if (item.settings && item.settings.style)
@@ -47,7 +60,18 @@ export const BannerContainer = ({ item }) => {
       }
       item={item}
     >
+      <ContainerTitle
+        designState={designState}
+        text={
+          item?.settings && item.settings?.title
+            ? item.settings.title
+            : item.title
+        }
+        join={join}
+      />
       <Banners />
     </GeneralLayout>
   );
 };
+
+export default BannerContainer;

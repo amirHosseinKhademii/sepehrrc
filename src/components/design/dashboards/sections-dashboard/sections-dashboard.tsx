@@ -3,14 +3,9 @@ import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
 
-export const SectionsDashboard = () => {
-  const { toggleStyleDrawer } = useUi();
-  const {
-    designState,
-    setChildPayload,
-    onVerticalDrop,
-    onDeleteItem,
-  } = useDesign();
+const SectionsDashboard = () => {
+  const { toggleStyleDrawer, toggleModal } = useUi();
+  const { designState, setChildPayload, onVerticalDrop } = useDesign();
 
   const headerItem = designState.pageItems.find(
     (item) => item.type == 'header'
@@ -23,10 +18,11 @@ export const SectionsDashboard = () => {
     <div className="flex flex-col items-center pt-30px px-20px">
       <ButtonDrawer
         withSetting
-        className="mb-25px"
+        withHover
+        className="mb-25px cursor-pointer"
         text={headerItem.title}
-        onDelete={() => onDeleteItem(headerItem)}
         onSetting={() => toggleStyleDrawer('style', headerItem)}
+        onClick={() => console.log('e')}
       />
       <Container
         groupName="1"
@@ -44,11 +40,19 @@ export const SectionsDashboard = () => {
           .map((item, index) => (
             <Draggable key={index}>
               <ButtonDrawer
+                withHover
                 withDelete
                 withSetting
                 className="mb-25px cursor-move"
                 text={item.title}
-                onDelete={() => onDeleteItem(item)}
+                onDelete={() =>
+                  toggleModal({
+                    type: 'confirm',
+                    open: true,
+                    number: item,
+                    target: 'sections',
+                  })
+                }
                 onSetting={() => toggleStyleDrawer('style', item)}
               />
             </Draggable>
@@ -56,9 +60,9 @@ export const SectionsDashboard = () => {
       </Container>
       <ButtonDrawer
         withSetting
-        className=""
+        withHover
+        className=" cursor-pointer"
         text={footerItem.title}
-        onDelete={() => onDeleteItem(footerItem)}
         onSetting={() => toggleStyleDrawer('style', footerItem)}
       />
     </div>
@@ -72,3 +76,5 @@ export const SectionsDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default SectionsDashboard;

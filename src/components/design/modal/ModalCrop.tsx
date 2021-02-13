@@ -15,7 +15,7 @@ export const ModalCrop = () => {
   const { uiState, toggleSettingState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
-  const { images } = designState.current;
+  const pageItem = designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
 
   const handleSubmit = async () => {
@@ -96,16 +96,34 @@ export const ModalCrop = () => {
 
   if (uiState.modal.editImage) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
-          <ModalImage src={images[number] ? images[number].value : ''} />
+          <ModalImage
+            src={pageItem.images[number] ? pageItem.images[number].value : ''}
+          />
           <ModalFooter />
         </div>
       </Modal>
     );
   } else if (designState.pureImage.value) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
           <ModalImage src={URL.createObjectURL(designState.pureImage.value)} />
           <ModalFooter />

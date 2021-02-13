@@ -8,14 +8,14 @@ import {
 } from './dependencies';
 import { useClass } from 'hooks';
 
-export const ProductCard: FC<IProductCard> = ({
+const ProductCard: FC<IProductCard> = ({
   item,
   layout = true,
   designState,
 }) => {
   const { toggle } = useClass();
   return (
-    <ProductLayout className={`rounded-10px`} layout={layout} toggle={toggle}>
+    <ProductLayout className={`rounded-10px `} layout={layout} toggle={toggle}>
       <ProductImage
         src={item.cover}
         className="h-188px w-188px"
@@ -60,3 +60,5 @@ export const ProductCard: FC<IProductCard> = ({
     </ProductLayout>
   );
 };
+
+export default ProductCard;

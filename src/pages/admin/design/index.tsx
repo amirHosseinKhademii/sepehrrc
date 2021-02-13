@@ -1,12 +1,13 @@
-import { StoreFrontContainer } from 'containers';
+import { memo } from 'react';
+import { StoreFrontDesignContainer } from 'containers';
 import { DesignLayout } from 'components';
 
-const index = () => {
+const index = memo(() => {
   return (
     <DesignLayout>
-      <StoreFrontContainer />
+      <StoreFrontDesignContainer />
     </DesignLayout>
   );
-};
+});
 
 export default index;

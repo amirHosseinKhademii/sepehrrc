@@ -9,7 +9,7 @@ export const PictureButton: FC<IPictureButton> = ({
   number,
 }) => {
   const { setPureImage, deleteImage } = useDesign();
-  const { toggleSettingState } = useUi();
+  const { toggleSettingState, toggleModal } = useUi();
 
   if (withAdd)
     return (
@@ -51,7 +51,14 @@ export const PictureButton: FC<IPictureButton> = ({
         />
         <div className="delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -right-1 bg-alert-300 rounded-full cursor-pointer opacity-0">
           <ICMultiply
-            onClick={() => deleteImage(number)}
+            onClick={() =>
+              toggleModal({
+                open: true,
+                type: 'confirm',
+                target: 'image',
+                number,
+              })
+            }
             fill="white"
             width="10px"
             height="10px"

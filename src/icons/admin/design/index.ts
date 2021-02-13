@@ -42,3 +42,4 @@ export * from './angle-left';
 export * from './angle-right';
 export * from './times-circle';
 export * from './theme-logo';
+export * from './warning';
