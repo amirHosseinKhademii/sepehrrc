@@ -6,14 +6,13 @@ import {
   HeaderButton,
 } from './dependencies';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { useUi, useClass, useDesign, useDirection } from 'hooks';
+import { useClass, useUi, useDirection } from 'hooks';
 import Link from 'next/link';
 
- const HeaderFirst: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { uiState } = useUi();
   const { container } = uiState;
   const { join, toggle } = useClass();
-  const { designState } = useDesign();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
   const Actions = () => {
     return (
@@ -41,7 +40,7 @@ import Link from 'next/link';
             <ICUsersAlt
               height="20px"
               width="20px"
-              className={`mr-2 ${marginLtr}-30px fill-current text-20px`}
+              className={`mr-2  fill-current text-20px`}
             />
           </a>
         </Link>
@@ -54,13 +53,18 @@ import Link from 'next/link';
       <div
         className={`flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
       >
-        <div className={`w-1/12 ${flexDirection} flex items-center `}>
-          <HeaderLogo src={item.images} join={join} />
+        <div className={`w-2/12 ${flexDirection} flex items-center `}>
+          <HeaderLogo src={item.images} layout={layout} join={join} />
         </div>
         <div
-          className={`w-8/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
+          className={`w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
         >
-          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <HeaderNavbar
+            className="font-bold text-16px"
+            direction="horizental"
+            toggle={toggle}
+            layout={layout}
+          />
         </div>
         <div
           className={`w-3/12 flex ${flexDirection}  items-center justify-end `}
@@ -68,7 +72,7 @@ import Link from 'next/link';
           <Actions />
 
           <HeaderButton
-            layout={true}
+            layout={layout}
             className={`   rounded-25px  text-white`}
             text={
               item.settings?.button && item.settings.button?.text

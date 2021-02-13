@@ -12,7 +12,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
     <div className="relative ">
       <input
         className={toggle(
-          'headerInput text-16px px-12  py-4  focus:outline-none',
+          'header-input w-535px px-12  py-4 rounded-25px  bg-white_shade-200 border-white_shade-300 border-2  focus:outline-none',
           className,
           layout,
           cssAlt
@@ -22,7 +22,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
         style={{ direction: 'rtl' }}
       />
       <ICSearch
-        className="absolute top-16px right-20px fill-current"
+        className="IC-search absolute top-16px right-20px fill-current"
         onClick={onClick}
       />
     </div>

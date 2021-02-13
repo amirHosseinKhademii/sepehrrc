@@ -10,8 +10,8 @@ export const HeaderLayout: FC<IHeaderLayout> = ({
   return (
     <div
       className={toggle(
-        'headerLayout',
-        'bg-white shadow-custom-1',
+        'header-layout bg-white',
+        ' shadow-custom-1',
         layout,
         cssAlt
       )}

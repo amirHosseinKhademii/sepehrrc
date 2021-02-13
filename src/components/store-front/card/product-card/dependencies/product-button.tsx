@@ -10,12 +10,11 @@ export const ProductButton: FC<IProductButton> = ({
   cssAlt,
 }) => {
   const { pageSettings } = designState;
-  const { textFont } = pageSettings;
 
   return (
     <button
       className={toggle(
-        ` productButton  h-50px  mt-30px flex px-15px items-center rounded-50px border-2  text-14px font-iransans  focus:outline-none `,
+        ` product-button flex h-50px  mt-30px  px-15px items-center  border-2  text-14px font-iransans  focus:outline-none `,
         className,
         layout,
         cssAlt
@@ -25,9 +24,9 @@ export const ProductButton: FC<IProductButton> = ({
       {text}
       <style jsx>
         {`
-          .productButton {
-            color:${` ${layout ? pageSettings.primary : 'initial'}`};
-            border-color: ${`${layout ? pageSettings.primary : 'initial'} `};
+          .product-button {
+            color:${` ${layout ? pageSettings.primary : '#51596a'}`};
+            border-color: ${`${layout ? pageSettings.primary : '#ced2da'} `};
          
                  `}
       </style>

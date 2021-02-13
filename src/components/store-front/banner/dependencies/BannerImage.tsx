@@ -2,9 +2,15 @@ import { useClass } from 'hooks';
 import { FC } from 'react';
 import Link from 'next/link';
 
-export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
+export const BannerImage: FC<IBanner> = ({
+  className,
+  number,
+  item,
+  layout,
+}) => {
   const { join } = useClass();
   const itemImage = item.images.find((img) => img.number == number);
+  const imgAlt = '/assets/images/themeImg.png';
 
   if (item.images && itemImage)
     return (
@@ -24,11 +30,14 @@ export const BannerImage: FC<IBanner> = ({ className, number, item }) => {
     return (
       <div
         className={join(
-          ' flex items-center justify-center bg-gray-300 rounded ',
+          ' flex items-center justify-center bg-white rounded ',
           className
         )}
       >
-        <span className="text-white text-14px">{number}</span>
+        <img
+          className={'w-145px h-107px rounded object-contain object-center'}
+          src={imgAlt}
+        />
       </div>
     );
 };

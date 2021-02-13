@@ -18,15 +18,17 @@ export const ProductPrice: FC<IProductPrice> = ({
 }) => {
   const { pageSettings } = designState;
   let color = {
-    color: `${prev ? pageSettings.primary : 'inherit'}`,
+    color: `${prev ? pageSettings.primary : ''}`,
   };
   return (
     <div
       className={toggle(
-        `${prev ? 'productPrevPrice line-through ' : 'productPrice'}`,
+        `font-iransans mt-10px  ${
+          prev ? 'product-prev-price line-through ' : 'product-price'
+        }`,
         className,
         layout,
-        cssAlt
+        'text-14px '
       )}
       onClick={onClick}
       style={{ ...color, ...style }}
@@ -35,7 +37,7 @@ export const ProductPrice: FC<IProductPrice> = ({
       {withUnit && (
         <span
           className={toggle(
-            'productPriceUnit',
+            'product-price-unit',
             unitClassName,
             layout,
             unitClassNameAlt
@@ -44,6 +46,13 @@ export const ProductPrice: FC<IProductPrice> = ({
           {unit}
         </span>
       )}
+      <style jsx>
+        {`
+          .product-price {
+            color: ${layout ? '' : '#414655'};
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -6,3 +6,4 @@ export { HeaderLayout } from './header-layout';
 export { HeaderMegaMenu } from './header-mega-menu';
 export { HeaderButton } from './header-button';
 export { Social } from './social';
+export { HeaderTel } from './header-tel';

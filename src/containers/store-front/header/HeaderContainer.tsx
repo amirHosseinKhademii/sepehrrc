@@ -30,28 +30,52 @@ const HeaderEighth = dynamic(
 const HeaderContainer = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? false : true;
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
 
-  const Headers = ({ item }) => {
+  const Headers = ({ item, designState, layout }) => {
     switch (item.settings.style) {
       case 'first':
-        return <HeaderFirst item={item} />;
+        return (
+          <HeaderFirst item={item} layout={layout} designState={designState} />
+        );
       case 'second':
-        return <HeaderSecond item={item} />;
+        return (
+          <HeaderSecond item={item} layout={layout} designState={designState} />
+        );
       case 'third':
-        return <HeaderThird item={item} />;
+        return (
+          <HeaderThird item={item} layout={layout} designState={designState} />
+        );
       case 'fourth':
-        return <HeaderFourth item={item} />;
+        return (
+          <HeaderFourth item={item} layout={layout} designState={designState} />
+        );
       case 'fifth':
-        return <HeaderFifth item={item} />;
+        return (
+          <HeaderFifth item={item} layout={layout} designState={designState} />
+        );
       case 'sixth':
-        return <HeaderSixth item={item} />;
+        return (
+          <HeaderSixth item={item} layout={layout} designState={designState} />
+        );
       case 'seventh':
-        return <HeaderSeventh item={item} />;
+        return (
+          <HeaderSeventh
+            item={item}
+            layout={layout}
+            designState={designState}
+          />
+        );
       case 'eighth':
-        return <HeaderEighth item={item} />;
+        return (
+          <HeaderEighth item={item} layout={layout} designState={designState} />
+        );
       default:
-        return <HeaderFirst item={item} />;
+        return (
+          <HeaderFirst item={item} layout={layout} designState={designState} />
+        );
     }
   };
 
@@ -66,7 +90,7 @@ const HeaderContainer = () => {
       }
       item={item}
     >
-      <Headers item={item} />
+      <Headers item={item} layout={layout} designState={designState} />
     </GeneralLayout>
   );
 };

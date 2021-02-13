@@ -7,41 +7,34 @@ import {
   HeaderMegaMenu,
   HeaderButton,
   Social,
+  HeaderTel,
 } from './dependencies';
-import { ICShoppingCart, ICPhoneVolume } from 'icons';
+import { ICShoppingCart } from 'icons';
 import { Badge } from 'components';
-import { useClass, useDesign, useDirection } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { join, toggle } = useClass();
-  const { designState } = useDesign();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
 
   const Actions = () => {
     return (
       <>
-        <a
-          href={`tel:+98${
-            item.settings?.tel ? item.settings.tel : '0910000000'
-          }`}
-          className={`flex ${flexDirection} text-16px font-iransans`}
-        >
-          <span>{item.settings?.tel ? item.settings.tel : '0910000000'}</span>
-
-          <ICPhoneVolume
-            height="20px"
-            width="20px"
-            className="mr-10px  text-20px fill-current"
-          />
-        </a>
+        <HeaderTel
+          layout={layout}
+          className="text-16px font-bold"
+          item={item}
+          toggle={toggle}
+        />
 
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-20px"
+          layout={layout}
         >
           <Link href="./">
             <a>
@@ -64,13 +57,13 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
           className={`flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
         >
           <div className={`w-1/12  flex ${flexDirection} items-center `}>
-            <HeaderLogo src={item.images} join={join} />
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
             className={`w-7/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="text-16px  "
               layout={layout}
               toggle={toggle}
             />
@@ -81,7 +74,7 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-35px rounded-25px  text-white "
+              className="  rounded-25px  text-white "
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
@@ -107,9 +100,19 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
         className={`flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
       >
         <div className={`w-9/12  flex ${flexDirection} items-center  `}>
-          <HeaderMegaMenu designState={designState} />
+          <HeaderMegaMenu
+            designState={designState}
+            toggle={toggle}
+            className="font-bold text-16px"
+            layout={layout}
+          />
 
-          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <HeaderNavbar
+            direction="horizental"
+            toggle={toggle}
+            layout={layout}
+            className="font-bold text-16px"
+          />
         </div>
         <div
           className={`w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}

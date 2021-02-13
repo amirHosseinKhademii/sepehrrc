@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ContainerTitle } from 'components';
-import { useDesign, useClass } from 'hooks';
+import { useClass } from 'hooks';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -39,14 +39,22 @@ interface IProductSlider {
   data: any;
   title: string;
   col?: number;
+  layout: boolean;
+  designState: any;
 }
 
 const ProductCard = dynamic(
   () => import('components/store-front/card/product-card/ProductCard')
 );
 
-const ProductSlider: FC<IProductSlider> = ({ item, title, data, col }) => {
-  const { designState } = useDesign();
+const ProductSlider: FC<IProductSlider> = ({
+  item,
+  title,
+  data,
+  col,
+  designState,
+  layout,
+}) => {
   const { join } = useClass();
   const [state, setState] = useState(null);
 
@@ -57,7 +65,7 @@ const ProductSlider: FC<IProductSlider> = ({ item, title, data, col }) => {
     arr = data.slice(0, totalItems).map((item, index) => {
       return (
         <SwiperSlide className="swiper-slide" key={index}>
-          <ProductCard item={item} />
+          <ProductCard item={item} layout={layout} designState={designState} />
         </SwiperSlide>
       );
     });
@@ -73,7 +81,7 @@ const ProductSlider: FC<IProductSlider> = ({ item, title, data, col }) => {
       <ContainerTitle
         text={title}
         designState={designState}
-        layout={true}
+        layout={layout}
         join={join}
       />
       <Swiper

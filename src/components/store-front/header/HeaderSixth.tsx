@@ -6,40 +6,35 @@ import {
   HeaderLayout,
   HeaderButton,
   Social,
+  HeaderTel,
 } from './dependencies';
-import { ICPhoneVolume, ICShoppingCart } from 'icons';
+import { ICShoppingCart } from 'icons';
 import { Badge } from 'components';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
- const HeaderSixth: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
+  const { flexDirection, marginRtl, marginLtr } = useDirection();
+
   const { join, toggle } = useClass();
-  const { designState } = useDesign();
 
   const Actions = () => {
     return (
       <>
-        <a
-          href={`tel:+98${
-            item.settings?.tel ? item.settings.tel : '0910000000'
-          }`}
-          className="flex text-16px font-iransans"
-        >
-          <span> {item.settings?.tel ? item.settings.tel : '0910000000'} </span>
-
-          <ICPhoneVolume
-            height="20px"
-            width="20px"
-            className="mr-10px fill-current text-20px"
-          />
-        </a>
+        <HeaderTel
+          layout={layout}
+          className="text-16px font-bold"
+          item={item}
+          toggle={toggle}
+        />
 
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
           root="mr-20px"
+          layout={layout}
         >
           <Link href="./">
             <a>
@@ -59,24 +54,29 @@ const logo = '/assets/images/logo.png';
     <HeaderLayout layout={layout} toggle={toggle}>
       <div className="border-b-2">
         <div
-          className={` grid  grid-cols-12    w-full h-122px  container mx-auto px-20px`}
-          style={{ direction: 'rtl' }}
+          className={` flex ${flexDirection}     w-full h-122px  container mx-auto px-20px`}
         >
-          <div className="col-span-1  flex items-center justify-start ">
-            <HeaderLogo src={item.images} join={join} />
+          <div
+            className={`w-2/12  flex ${flexDirection} items-center justify-start `}
+          >
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className="col-span-7 flex items-center  justify-center ">
+          <div
+            className={`w-6/12 flex ${flexDirection} items-center  justify-center `}
+          >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="text-16px "
               layout={layout}
               toggle={toggle}
             />
           </div>
-          <div className="col-span-4 flex items-center justify-end">
+          <div
+            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+          >
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-25px rounded-25px  text-white "
+              className="  rounded-25px  text-white "
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
@@ -99,13 +99,14 @@ const logo = '/assets/images/logo.png';
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12   w-full   container mx-auto px-20px `}
-        style={{ direction: 'rtl' }}
+        className={` w-full  flex ${flexDirection}  container mx-auto px-20px `}
       >
-        <div className="col-span-9  flex items-center ">
-          <HeaderCascadingMenu designState={designState} />
+        <div className={`w-9/12  flex ${flexDirection} items-center `}>
+          <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div className="col-span-3 flex  justify-end text-16px mt-20px">
+        <div
+          className={`w-3/12 flex ${flexDirection}  justify-end text-16px mt-20px`}
+        >
           <Social />
         </div>
       </div>

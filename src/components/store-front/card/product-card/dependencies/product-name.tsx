@@ -12,11 +12,11 @@ export const ProductName: FC<IProductName> = ({
 }) => {
   return (
     <div
-      className={toggle('productName ', className, layout, cssAlt)}
+      className={toggle('productName ', className, layout, 'font-bold mt-80px')}
       onClick={onClick}
       style={style}
     >
-      {text}
+      {layout ? text : 'عنوان محصول در اینجا'}
     </div>
   );
 };

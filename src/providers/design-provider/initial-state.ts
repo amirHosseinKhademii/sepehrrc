@@ -78,6 +78,7 @@ export const designInitialState = {
     direction: 'rtl',
     textFont: 'yekanbakh',
     primary: '#ed1c24',
+    theme: 'default',
     secondary: '#000',
     language: 'pr',
     theme: 'default',

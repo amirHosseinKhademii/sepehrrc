@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   ProductImage,
   ProductName,
@@ -5,21 +6,19 @@ import {
   ProductPrice,
   ProductButton,
 } from './dependencies';
-import { useClass, useDesign } from 'hooks';
+import { useClass } from 'hooks';
 
-const ProductCard = ({ item, layout = true }) => {
+const ProductCard: FC<IProductCard> = ({
+  item,
+  layout = true,
+  designState,
+}) => {
   const { toggle } = useClass();
-  const { designState } = useDesign();
   return (
-    <ProductLayout
-      className={' bg-white h-450px py-40px'}
-      layout={layout}
-      style={{ direction: 'rtl', borderRadius: '10px' }}
-      toggle={toggle}
-    >
+    <ProductLayout className={`rounded-10px `} layout={layout} toggle={toggle}>
       <ProductImage
         src={item.cover}
-        className="h-188px w-188px object-contain"
+        className="h-188px w-188px"
         toggle={toggle}
         layout={layout}
       />
@@ -53,6 +52,7 @@ const ProductCard = ({ item, layout = true }) => {
       </div>
       <ProductButton
         text="افزودن به سبد خرید"
+        className="rounded-50px"
         layout={layout}
         toggle={toggle}
         designState={designState}
