@@ -1,15 +1,15 @@
 import { FC, useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { ProductCard, ProductTitle } from 'components';
-import { useDesign, useClass } from 'hooks';
-interface IProductSlider {
-  item: any;
-  data: any;
-  title: string;
-}
+import { useClass } from 'hooks';
 
-export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
-  const { designState } = useDesign();
+export const ProductSlider: FC<IProductSlider> = ({
+  item,
+  title,
+  data,
+  designState,
+  layout,
+}) => {
   const { join } = useClass();
   const [state, setState] = useState(null);
 
@@ -20,7 +20,7 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
     arr = data.slice(0, totalItems).map((item, index) => {
       return (
         <div className=" md:mr-30px" key={index}>
-          <ProductCard item={item} />
+          <ProductCard item={item} designState={designState} layout={layout} />
         </div>
       );
     });
@@ -32,7 +32,7 @@ export const ProductSlider: FC<IProductSlider> = ({ item, title, data }) => {
       <ProductTitle
         text={title}
         designState={designState}
-        layout={true}
+        layout={layout}
         join={join}
       />
       <AliceCarousel

@@ -15,6 +15,8 @@ export const ProductContainer = ({ item }) => {
   const { uiState } = useUi();
   const { join } = useClass();
   const { current } = designState;
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? false : true;
 
   const showPagination =
     (item?.settings &&
@@ -83,7 +85,7 @@ export const ProductContainer = ({ item }) => {
               ? item.settings.title
               : item.title
           }
-          layout={true}
+          layout={layout}
           designState={designState}
           join={join}
         />
@@ -96,7 +98,12 @@ export const ProductContainer = ({ item }) => {
           // }
         >
           {productsOrdered?.map((item, index) => (
-            <ProductCard item={item} key={index} layout={true} />
+            <ProductCard
+              item={item}
+              key={index}
+              layout={layout}
+              designState={designState}
+            />
           ))}
         </ProductGrid>
 
@@ -127,6 +134,8 @@ export const ProductContainer = ({ item }) => {
         <ProductSlider
           data={productsToshow}
           item={item}
+          layout={layout}
+          designState={designState}
           title={
             item?.settings && item.settings?.title
               ? item.settings.title

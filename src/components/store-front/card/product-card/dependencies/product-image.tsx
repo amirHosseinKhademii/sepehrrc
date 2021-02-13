@@ -1,6 +1,4 @@
 import { FC } from 'react';
-import { useClass } from 'hooks';
-
 export const ProductImage: FC<IProductImage> = ({
   layout = true,
   className,
@@ -10,11 +8,17 @@ export const ProductImage: FC<IProductImage> = ({
   cssAlt,
   toggle,
 }) => {
+  const productAlt = '/assets/images/themeImg.png';
   return (
     <img
-      className={toggle('productImage', className, layout, cssAlt)}
+      className={toggle(
+        'product-image h-107px w-155px object-contain',
+        className,
+        layout,
+        cssAlt
+      )}
       onClick={onClick}
-      src={src}
+      src={layout ? src : productAlt}
       alt="عکس محصول"
       style={style}
     />

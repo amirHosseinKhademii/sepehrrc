@@ -13,7 +13,7 @@ export const ProductLayout: FC<IProductLayout> = ({
   return (
     <div
       className={toggle(
-        'productLayout flex flex-col  items-center cursor-pointer',
+        'productLayout flex flex-col  items-center h-450px py-40px cursor-pointer bg-white',
         className,
         layout,
         cssAlt
