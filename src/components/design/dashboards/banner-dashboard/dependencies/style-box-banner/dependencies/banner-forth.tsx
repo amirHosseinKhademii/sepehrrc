@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import { BlueBox } from './blue-box';
 
-export const BannerForth: FC<IStyleBox> = memo(
+const BannerForth: FC<IStyleBox> = memo(
   ({ className, onClick, active, join }) => (
     <div
       className={join(
@@ -31,3 +31,5 @@ export const BannerForth: FC<IStyleBox> = memo(
     </div>
   )
 );
+
+export default BannerForth;
