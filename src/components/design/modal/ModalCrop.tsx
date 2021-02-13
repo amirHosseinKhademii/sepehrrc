@@ -15,7 +15,7 @@ export const ModalCrop = () => {
   const { uiState, toggleSettingState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
-  const { images } = designState.current;
+  const pageItem = designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
 
   const handleSubmit = async () => {
@@ -106,7 +106,9 @@ export const ModalCrop = () => {
         }}
       >
         <div className="flex flex-col">
-          <ModalImage src={images[number] ? images[number].value : ''} />
+          <ModalImage
+            src={pageItem.images[number] ? pageItem.images[number].value : ''}
+          />
           <ModalFooter />
         </div>
       </Modal>
