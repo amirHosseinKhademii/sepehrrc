@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic';
 import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
-import HeaderFirst from 'components/store-front/header/HeaderFirst';
 
+const HeaderFirst = dynamic(
+  () => import('components/store-front/header/HeaderFirst')
+);
 const HeaderSecond = dynamic(
   () => import('components/store-front/header/HeaderSecond')
 );
