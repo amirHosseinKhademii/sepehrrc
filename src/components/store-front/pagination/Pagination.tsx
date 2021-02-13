@@ -41,7 +41,7 @@ const Pagination: FC<IPagination> = ({
   };
 
   return (
-    <div className="flex">
+    <div className="flex z-10">
       <PageBox number={1} />
       <PageBox number={2} />
       <PageBox number={3} active />
