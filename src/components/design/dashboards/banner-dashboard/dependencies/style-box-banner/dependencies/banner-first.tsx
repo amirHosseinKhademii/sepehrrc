@@ -1,8 +1,10 @@
+import { useClass } from 'hooks';
 import { FC, memo } from 'react';
 import { BlueBox } from './blue-box';
 
-export const BannerFirst: FC<IStyleBox> = memo(
-  ({ className, onClick, active, join }) => (
+const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
+  const { join } = useClass();
+  return (
     <div
       className={join(
         'grid grid-cols-3 w-full mx-auto cursor-pointer',
@@ -23,5 +25,6 @@ export const BannerFirst: FC<IStyleBox> = memo(
         <BlueBox className=" h-75px" number="1" active={active} join={join} />
       </div>
     </div>
-  )
-);
+  );
+});
+export default BannerFirst;

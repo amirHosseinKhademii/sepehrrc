@@ -1,15 +1,27 @@
 import { useClass, useDesign } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
-import {
-  BannerFirst,
-  BannerSixth,
-  BannerFifth,
-  BannerThird,
-  BannerSecond,
-  BannerForth,
-  LabelBox,
-} from './dependencies';
+import dynamic from 'next/dynamic';
+import BannerFirst from './dependencies/banner-first';
+
+const BannerSecond = dynamic(() => import('./dependencies/banner-second'), {
+  loading: () => <BannerFirst />,
+});
+const BannerThird = dynamic(() => import('./dependencies/banner-third'), {
+  loading: () => <BannerFirst />,
+});
+const BannerForth = dynamic(() => import('./dependencies/banner-forth'), {
+  loading: () => <BannerFirst />,
+});
+const BannerFifth = dynamic(() => import('./dependencies/banner-fifth'), {
+  loading: () => <BannerFirst />,
+});
+const BannerSixth = dynamic(() => import('./dependencies/banner-sixth'), {
+  loading: () => <BannerFirst />,
+});
+const DropDown = dynamic(() => import('./dependencies/drop-down'), {
+  loading: () => <BannerFirst />,
+});
 
 export const StyleBoxBanner: FC<IStyleBox> = () => {
   const { join } = useClass();
@@ -29,7 +41,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return <BannerFirst className="mt-17px" active join={join} />;
+        return <BannerFirst active />;
       case 'second':
         return <BannerSecond className="mt-17px" active join={join} />;
       case 'third':
@@ -43,56 +55,6 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
       default:
         return <BannerFirst className="mt-17px" active join={join} />;
     }
-  };
-
-  const DropDown = () => {
-    const { style } = designState.current.settings;
-
-    return (
-      <div className="grid grid-cols-1 gap-y-7px focus:ring-2 focus:ring-blue-500">
-        <LabelBox label="استایل 1" />
-        <BannerFirst
-          onClick={() => onSelectClick({ style: 'first' })}
-          join={join}
-          active={!style || style === 'first'}
-        />
-        <LabelBox label="استایل 2" />
-        <BannerSecond
-          className="border-gray-400"
-          onClick={() => onSelectClick({ style: 'second' })}
-          join={join}
-          active={style === 'second'}
-        />
-        <LabelBox label="استایل 3" />
-        <BannerThird
-          className=" border-gray-400"
-          onClick={() => onSelectClick({ style: 'third' })}
-          join={join}
-          active={style === 'third'}
-        />
-        <LabelBox label="استایل 4" />
-        <BannerForth
-          className=" border-gray-400"
-          onClick={() => onSelectClick({ style: 'forth' })}
-          join={join}
-          active={style === 'forth'}
-        />
-        <LabelBox label="استایل 5" />
-        <BannerFifth
-          className=" border-gray-400"
-          onClick={() => onSelectClick({ style: 'fifth' })}
-          join={join}
-          active={style === 'fifth'}
-        />
-        <LabelBox label="استایل 6" />
-        <BannerSixth
-          className=" border-gray-400"
-          onClick={() => onSelectClick({ style: 'sixth' })}
-          join={join}
-          active={style === 'sixth'}
-        />
-      </div>
-    );
   };
 
   const styleTitle = () => {
@@ -118,7 +80,15 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
           {styleTitle()}
         </span>
       </div>
-      {open ? <DropDown /> : <ShowBox />}
+      {open ? (
+        <DropDown
+          designState={designState}
+          onSelectClick={onSelectClick}
+          join={join}
+        />
+      ) : (
+        <ShowBox />
+      )}
     </div>
   );
 };

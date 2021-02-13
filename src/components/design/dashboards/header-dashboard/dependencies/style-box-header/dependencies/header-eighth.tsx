@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BlueBox } from './blue-box';
 
-export const HeaderEighth: FC<IStyleBoxHeader> = ({
+const HeaderEighth: FC<IStyleBoxHeader> = ({
   className,
   onClick,
   active = false,
@@ -58,3 +58,5 @@ export const HeaderEighth: FC<IStyleBoxHeader> = ({
     ></BlueBox>
   </div>
 );
+
+export default HeaderEighth;

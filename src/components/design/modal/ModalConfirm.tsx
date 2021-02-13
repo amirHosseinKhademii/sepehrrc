@@ -2,7 +2,7 @@ import { Modal, Text, ButtonAction } from 'components';
 import { useDesign, useUi } from 'hooks';
 import { ICWarning } from 'icons';
 
-export const ModalConfirm = () => {
+const ModalConfirm = () => {
   const { uiState, toggleModal } = useUi();
   const { deleteImage, onDeleteItem } = useDesign();
 
@@ -50,3 +50,5 @@ export const ModalConfirm = () => {
     </Modal>
   );
 };
+
+export default ModalConfirm;

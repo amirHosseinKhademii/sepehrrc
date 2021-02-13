@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BlueBox } from './blue-box';
 
-export const HeaderSecond: FC<IStyleBoxHeader> = ({
+const HeaderSecond: FC<IStyleBoxHeader> = ({
   toggle,
   join,
   onClick,
@@ -40,3 +40,5 @@ export const HeaderSecond: FC<IStyleBoxHeader> = ({
     </div>
   );
 };
+
+export default HeaderSecond;
