@@ -1,17 +1,39 @@
 import { FC } from 'react';
 import { ICEllipsisH } from 'icons';
-import { useDesign } from 'hooks';
-const Pagination: FC = () => {
-  const { designState } = useDesign();
+import { useClass } from 'hooks';
+const Pagination: FC<IPagination> = ({
+  layout = true,
+  className,
+  designState,
+}) => {
   const { pageSettings } = designState;
-
+  const { toggle } = useClass();
   const PageBox = ({ number, active = false }) => {
+    let activeColor = null;
+    if (layout) {
+      if (active) {
+        activeColor = pageSettings.primary;
+      } else {
+        activeColor = '#fff';
+      }
+    } else {
+      if (active) {
+        activeColor = '#2e323d';
+      } else {
+        activeColor = '#fff';
+      }
+    }
+
     return (
       <div
-        className={`w-50px h-50px flex justify-center items-center mx-5px shadow-custom-1 rounded-7px cursor-pointer ${
-          active ? ' text-white' : ' text-black'
-        }`}
-        style={{ backgroundColor: `${active ? pageSettings.primary : '#fff'}` }}
+        className={toggle(
+          `w-50px h-50px flex justify-center items-center mx-5px cursor-pointer ${
+            active ? ' text-white' : ' text-black'
+          }`,
+          className,
+          layout
+        )}
+        style={{ backgroundColor: `${activeColor}` }}
       >
         <span className="font-iransans">{number} </span>
       </div>

@@ -112,7 +112,12 @@ const ProductContainer = ({ item }) => {
 
         {showPagination && (
           <div className="flex justify-center w-full mt-20px">
-            <Pagination />
+            <Pagination
+              className={`shadow-custom-1 rounded-7px `}
+              layout={layout}
+              designState={designState}
+              total={productsOrdered.length}
+            />
           </div>
         )}
       </div>
