@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BlueBox } from './blue-box';
 
-export const HeaderFifth: FC<IStyleBoxHeader> = ({
+const HeaderFifth: FC<IStyleBoxHeader> = ({
   className,
   onClick,
   active = false,
@@ -52,3 +52,5 @@ export const HeaderFifth: FC<IStyleBoxHeader> = ({
     ></BlueBox>
   </div>
 );
+
+export default HeaderFifth;
