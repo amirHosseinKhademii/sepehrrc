@@ -19,7 +19,7 @@ const ProductContainer = ({ item }) => {
   const { join } = useClass();
   const { current } = designState;
   const { theme } = designState.pageSettings;
-  const layout = theme === 'default' ? false : true;
+  const layout = theme === 'default' ? true : false;
 
   const showPagination =
     (item?.settings &&

@@ -31,7 +31,7 @@ const HeaderContainer = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
-  const layout = theme === 'default' ? false : true;
+  const layout = theme === 'default' ? true : false;
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
 
   const Headers = ({ item, designState, layout }) => {
