@@ -1,4 +1,4 @@
-import {  useUi } from 'hooks';
+import { useUi } from 'hooks';
 import { HeaderDrawer, DrawerLayout } from 'components';
 import {
   ResponsiveSwitchs,
