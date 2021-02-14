@@ -1,6 +1,11 @@
-import { DrawerLayout } from 'components';
-import { Input } from 'components/design/input';
-import { ButtonDrawer, HeaderDrawer } from '../common';
+import { DrawerLayout, Input, Switch } from 'components';
+
+import {
+  ButtonDrawer,
+  GenericUploader,
+  HeaderDrawer,
+  ResponsiveSwitchs,
+} from '../common';
 import { StyleBoxFooter } from './dependencies/style-box-footer';
 
 const Dashboard = ({ designState }) => {
@@ -27,9 +32,24 @@ const Dashboard = ({ designState }) => {
         <Input
           variant="input"
           withSwitch
-          className="mt-30px"
+          className="my-30px"
           label="تلفن تماس"
         />
+        <Switch label="نماد اعتماد" />
+        <ButtonDrawer
+          withSetting
+          text="تنظیمات نماد اعتماد"
+          className="my-14px"
+        />
+        <Switch label="اپلیکیشن موبایل" />
+        <ButtonDrawer
+          withSetting
+          text="تنظیمات  اپلیکیشن موبایل"
+          className="my-14px"
+        />
+        <Switch label="توصیر زمینه" />
+        <GenericUploader isBackground className="my-14px" />
+        <ResponsiveSwitchs />
       </div>
     );
   };
