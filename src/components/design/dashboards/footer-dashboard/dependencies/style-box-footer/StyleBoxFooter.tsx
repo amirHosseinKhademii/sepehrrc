@@ -4,7 +4,7 @@ import { ICEditSettings } from 'icons';
 import dynamic from 'next/dynamic';
 import FooterFirst from './dependencies/footer-first';
 
-const BannerSecond = dynamic(() => import('./dependencies/footer-second'), {
+const FooterSecond = dynamic(() => import('./dependencies/footer-second'), {
   loading: () => <FooterFirst />,
 });
 const DropDown = dynamic(() => import('./dependencies/drop-down'), {
@@ -29,11 +29,11 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return <FooterFirst active />;
+        return <FooterFirst className="" active />;
       case 'second':
-        return <BannerSecond className="mt-17px" active join={join} />;
+        return <FooterSecond className="" join={join} active />;
       default:
-        return <FooterFirst className="mt-17px" active join={join} />;
+        return <FooterFirst className="" join={join} active />;
     }
   };
 
@@ -44,7 +44,7 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
   };
 
   return (
-    <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px py-15px mt-30px">
+    <div className="flex flex-col justify-between w-full">
       <div className="flex justify-between">
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
           {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
@@ -56,15 +56,18 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
           {styleTitle()}
         </span>
       </div>
-      {open ? (
-        <DropDown
-          designState={designState}
-          onSelectClick={onSelectClick}
-          join={join}
-        />
-      ) : (
-        <ShowBox />
-      )}
+
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px mt-10px py-17px">
+        {open ? (
+          <DropDown
+            designState={designState}
+            onSelectClick={onSelectClick}
+            join={join}
+          />
+        ) : (
+          <ShowBox />
+        )}
+      </div>
     </div>
   );
 };
