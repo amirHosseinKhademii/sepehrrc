@@ -36,7 +36,7 @@ export const ICSepehr: FC<IIcon> = ({
           fill="none"
           stroke="#fff"
           strokeLinecap="round"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </g>
     </svg>

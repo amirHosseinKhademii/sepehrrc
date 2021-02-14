@@ -35,7 +35,7 @@ export const ButtonDrawer: FC<IButton> = ({
           )
         : withSetting && (
             <ButtonIcon onClick={onSetting} className="pr-13px">
-              <ICSettingCog fill="#fff" />
+              <ICSettingCog fill="#9ba3b5" />
             </ButtonIcon>
           )}
       {withDelete && hover && (
