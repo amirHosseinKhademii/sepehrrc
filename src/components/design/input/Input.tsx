@@ -26,14 +26,11 @@ export const Input: FC<IInput> = ({
     <div className={toggle('w-full', 'opacity-30', disabled)}>
       {variant === 'input' ? (
         <div className={join('w-full flex flex-col ', className)}>
-          <div className="flex justify-between w-full items-center">
-            {withSwitch ? <Switch className="mb-14px" /> : <div />}
-            {label && (
-              <Text className="mb-14px text-14px text-white_shade-100 text-right w-full">
-                {label}
-              </Text>
-            )}
-          </div>
+          {label && (
+            <Text className="mb-14px text-14px text-white_shade-100 text-right w-full">
+              {label}
+            </Text>
+          )}
           <input
             maxLength={maxLength}
             id={label}
