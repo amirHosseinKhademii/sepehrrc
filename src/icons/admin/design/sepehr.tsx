@@ -35,7 +35,7 @@ export const ICSepehr: FC<IIcon> = ({
           transform="translate(2801.751 2651.234)"
           fill="none"
           stroke="#fff"
-          stroke-linecap="round"
+          strokeLinecap="round"
           stroke-width="2"
         />
       </g>

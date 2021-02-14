@@ -12,6 +12,6 @@ interface IInput {
   withNumber?: boolean;
   fontFamily?: 'font-body' | 'font-yekanbakh' | 'font-iransans' | 'font-lato';
   disabled?: boolean;
+  height?: string;
+  withSwitch?: boolean;
 }
-
-

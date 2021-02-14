@@ -2,6 +2,7 @@ import { useClass } from 'hooks';
 import { FC } from 'react';
 import { ICLink } from 'icons';
 import { Text } from 'components';
+import { Switch } from '../switch';
 
 export const Input: FC<IInput> = ({
   className,
@@ -16,18 +17,23 @@ export const Input: FC<IInput> = ({
   withLink,
   fontFamily = 'font-body',
   disabled,
+  height = '145px',
+  withSwitch,
 }) => {
   const { join, toggle } = useClass();
 
   return (
     <div className={toggle('w-full', 'opacity-30', disabled)}>
       {variant === 'input' ? (
-        <div className={join('w-full flex flex-col items-end', className)}>
-          {label && (
-            <Text className="mb-14px text-14px text-white_shade-100">
-              {label}
-            </Text>
-          )}
+        <div className={join('w-full flex flex-col ', className)}>
+          <div className="flex justify-between w-full items-center">
+            {withSwitch ? <Switch className="mb-14px" /> : <div />}
+            {label && (
+              <Text className="mb-14px text-14px text-white_shade-100 text-right w-full">
+                {label}
+              </Text>
+            )}
+          </div>
           <input
             maxLength={maxLength}
             id={label}
@@ -71,7 +77,7 @@ export const Input: FC<IInput> = ({
             value={value}
             disabled={disabled}
             dir={withLink ? 'ltr' : 'rtl'}
-            className={`${fontFamily} p-16px focus:outline-none w-full h-145px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
+            className={`${fontFamily} h-${height} p-16px focus:outline-none w-full  px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           ></textarea>
         </div>
       ) : null}

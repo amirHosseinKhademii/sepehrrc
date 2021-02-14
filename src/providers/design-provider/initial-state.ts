@@ -81,7 +81,6 @@ export const designInitialState = {
     theme: 'default',
     secondary: '#000',
     language: 'pr',
-    theme: 'default',
   },
   current: {
     uuid: '',
