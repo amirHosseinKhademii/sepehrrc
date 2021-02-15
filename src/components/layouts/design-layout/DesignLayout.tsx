@@ -12,7 +12,7 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
   const { uiState, toggleDrawer } = useUi();
   const { open, type } = uiState.drawer;
   const { toggle } = useClass();
-  const { designState } = useDesign();
+  const { designState, clearCurrent } = useDesign();
   const { direction } = designState.pageSettings;
 
   return (
@@ -30,7 +30,10 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
         )}
         onClick={
           uiState.drawer.open
-            ? () => toggleDrawer({ type: '', open: false })
+            ? () => {
+                toggleDrawer({ type: '', open: false });
+                clearCurrent();
+              }
             : () => {}
         }
       >

@@ -10,7 +10,8 @@ export const ButtonBackground = ({
 }) => {
   return (
     <Fragment>
-      {settings.backgroundImage !== true && settings.backgroundImage !== '' ? (
+      {typeof settings.backgroundImage === 'string' &&
+      settings.backgroundImage !== '' ? (
         <div className="w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between ">
           <ICMultiply
             fill="#9ba3b5"
