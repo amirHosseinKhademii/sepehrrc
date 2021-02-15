@@ -4,4 +4,6 @@ interface IFooterTel {
   layout: boolean;
   flexDirection?: string;
   isDark: boolean;
+  marginRtl?: string;
+  cssClass?: string;
 }
