@@ -6,6 +6,7 @@ import {
   ResponsiveSwitchs,
 } from '../../common';
 import { StyleBoxFooter } from './style-box-footer';
+import SocialGroup from '../../common/social-group';
 
 const BaseSettings = ({ setSetting, settings }) => {
   return (
@@ -32,7 +33,7 @@ const BaseSettings = ({ setSetting, settings }) => {
         }
       />
       <Switch
-        label=" شماره تماس"
+        label=" تلفن تماس"
         className="mt-30px mb-20px"
         onClick={() => setSetting({ tel: !settings.tel })}
         checked={settings.tel}
@@ -42,9 +43,20 @@ const BaseSettings = ({ setSetting, settings }) => {
           variant="input"
           className="mb-30px text-center"
           onBlur={(e) => setSetting({ tel: e.target.value })}
-          placeholder={settings.tel ? settings.tel : ' 021-23456789'}
+          placeholder={settings.tel !== true ? settings.tel : ' 021-23456789'}
         />
       )}
+      <Switch
+        label=" شبکه های اجتماعی"
+        onClick={() => setSetting({ social: !settings.social })}
+        checked={settings.social}
+        className="mb-14px"
+      />
+
+      {settings.social && (
+        <SocialGroup setSetting={setSetting} settings={settings} />
+      )}
+
       <Switch
         label="نماد اعتماد"
         onClick={() => setSetting({ trust: !settings.trust })}

@@ -2,6 +2,7 @@ import { useClass, useDesign } from 'hooks';
 import { Text, Input, CheckBox } from 'components';
 import { FC } from 'react';
 import { ButtonDrawer } from '.';
+import { ButtonBackground } from './button-background';
 
 export const GenericUploader: FC<IGenericUploader> = ({
   label,
@@ -13,8 +14,9 @@ export const GenericUploader: FC<IGenericUploader> = ({
   isBackground,
 }) => {
   const { join } = useClass();
-  const { setPureImage, designState, setImage } = useDesign();
+  const { setPureImage, designState, setImage, setSetting } = useDesign();
   const { current } = designState;
+  const { settings } = current;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
 
@@ -25,11 +27,22 @@ export const GenericUploader: FC<IGenericUploader> = ({
           {label}
         </Text>
       )}
-      <ButtonDrawer
-        withUpload
-        text={text}
-        onUpload={(value) => setPureImage({ value, number, isBackground })}
-      />
+      {isBackground ? (
+        <ButtonBackground
+          setPureImage={setPureImage}
+          isBackground={isBackground}
+          number={number}
+          settings={settings}
+          setSetting={setSetting}
+        />
+      ) : (
+        <ButtonDrawer
+          withUpload
+          text={text}
+          onUpload={(value) => setPureImage({ value, number, isBackground })}
+        />
+      )}
+
       {withLink && (
         <Input
           withLink
