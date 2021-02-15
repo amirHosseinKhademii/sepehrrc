@@ -103,7 +103,10 @@ const BaseSettings = ({ setSetting, settings }) => {
         }
         checked={settings.backgroundColor}
       />
-      {settings.backgroundColor && <BackgroundColor className="mb-30px" />}
+      {settings.backgroundColor !== undefined &&
+        settings.backgroundColor !== false && (
+          <BackgroundColor className="mb-30px" />
+        )}
       <ResponsiveSwitchs className="mt-0px" />
     </div>
   );
