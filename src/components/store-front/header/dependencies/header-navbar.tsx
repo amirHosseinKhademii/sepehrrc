@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { useDirection } from 'hooks';
+import { GeneralLink } from 'components';
 const items = [
   { text: 'صفحه اصلی', link: './admin/design' },
   { text: 'محصولات فروشگاه', link: './admin/design' },
@@ -15,26 +16,22 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
 }) => {
   const { flexDirection } = useDirection();
   return (
-    <ul
-      className={toggle(
-        ` header-navbar flex ${flexDirection} `,
-        className,
-        layout
-      )}
-    >
+    <ul className={toggle(` navbar flex ${flexDirection} `, className, layout)}>
       {items.map((item, index) => {
         return (
           <li
             className={toggle(
-              'header-navbar-item',
+              'navbar__item',
               'pr-0 pl-20px',
               index === 0,
               'px-20px'
             )}
             key={index}
           >
-            <Link href="/">
-              <a className="header-navabr-link">{item.text}</a>
+            <Link href="/" passHref>
+              <GeneralLink cssClass="navbar__item__link">
+                {item.text}
+              </GeneralLink>
             </Link>
           </li>
         );

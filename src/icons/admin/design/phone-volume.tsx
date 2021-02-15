@@ -1,5 +1,5 @@
 import { FC } from 'react';
-
+import { useClass } from 'hooks';
 export const ICPhoneVolume: FC<IIcon> = ({
   className,
   onClick,
@@ -7,13 +7,14 @@ export const ICPhoneVolume: FC<IIcon> = ({
   width,
   fill,
 }) => {
+  const { join } = useClass();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width={width ? width : 24}
       height={height ? height : 24}
-      className={className}
+      className={join(`ic ic-phone-volume `, className)}
       onClick={onClick}
       fill={fill}
     >

@@ -92,6 +92,7 @@ const SliderContainer = ({ item }) => {
           : false
       }
       item={item}
+      layout={layout}
     >
       <div
         className={`${

@@ -10,7 +10,7 @@ import {
   HeaderTel,
 } from './dependencies';
 import { ICShoppingCart } from 'icons';
-import { Badge } from 'components';
+import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
 import Link from 'next/link';
 
@@ -22,7 +22,9 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
 
   const Actions = () => {
     return (
-      <>
+      <div
+        className={`header-actions flex ${flexDirection} items-center justify-center`}
+      >
         <HeaderTel
           layout={layout}
           className="text-16px font-bold"
@@ -35,41 +37,52 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
           badgeContent="6"
           root="mr-20px"
           layout={layout}
+          cssClass="header-actions__badge"
         >
-          <Link href="./">
-            <a>
+          <Link href="./" passHref>
+            <GeneralLink
+              cssClass="header-actions__shopping-cart-link"
+              layout={layout}
+            >
               <ICShoppingCart
                 height="20px"
                 width="20px"
                 className="fill-current text-20px"
               />
-            </a>
+            </GeneralLink>
           </Link>
         </Badge>
-      </>
+      </div>
     );
   };
 
   return (
-    <HeaderLayout layout={layout} toggle={toggle}>
-      <div className="border-b-2">
+    <HeaderLayout
+      layout={layout}
+      toggle={toggle}
+      cssClass="header--fourth"
+      id="headerFourth"
+    >
+      <div className="header__border border-b-2">
         <div
-          className={`flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
+          className={`header__row header__row--1 flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
         >
-          <div className={`w-1/12  flex ${flexDirection} items-center `}>
+          <div
+            className={`header__logo-box w-1/12  flex ${flexDirection} items-center `}
+          >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`w-7/12 flex ${flexDirection} items-center justify-center `}
+            className={`header__input-box w-7/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
-              className="text-16px  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
             />
           </div>
           <div
-            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+            className={`header__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
@@ -97,9 +110,11 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={`flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
+        className={`header__row header__row--1 flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
       >
-        <div className={`w-9/12  flex ${flexDirection} items-center  `}>
+        <div
+          className={`header__menu-box w-9/12  flex ${flexDirection} items-center  `}
+        >
           <HeaderMegaMenu
             designState={designState}
             toggle={toggle}
@@ -115,7 +130,7 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
           />
         </div>
         <div
-          className={`w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
+          className={`header__social-box w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
         >
           <Social />
         </div>

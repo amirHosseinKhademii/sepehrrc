@@ -6,6 +6,8 @@ const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? true : false;
 
   const handleChild = () => {
     const arr = [];
@@ -32,6 +34,7 @@ const BrandContainer = ({ item }) => {
           : false
       }
       item={item}
+      layout={layout}
     >
       <div
         style={{ width: '1326px' }}

@@ -8,4 +8,5 @@ interface IGeneralLayout {
   className?: string;
   children?: any;
   item?: any;
+  layout?: boolean;
 }

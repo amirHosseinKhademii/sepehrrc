@@ -3,4 +3,6 @@ interface IHeaderLayout {
   layout?: boolean;
   cssAlt?: string;
   toggle: any;
+  id: string;
+  cssClass?: string;
 }

@@ -6,6 +6,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
   active,
   item,
   className,
+  layout,
 }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
@@ -54,11 +55,11 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
       <style jsx>
         {`
           .generalLayout {
-            color: ${pageSettings.secondary};
+            color: ${layout ? pageSettings.secondary : ''};
             background-color: ${
-              item?.settings && item.settings?.backgroundColor
+              item?.settings && item.settings?.backgroundColor && layout
                 ? item.settings.backgroundColor
-                : '#ebedf0'
+                : ''
             };
             background-image: url(${
               item.settings && item.settings.backgroundImage

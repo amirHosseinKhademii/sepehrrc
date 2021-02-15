@@ -4,4 +4,5 @@ interface IIcon {
   height?: string;
   width?: string;
   fill?: string;
+  cssClass?: string;
 }

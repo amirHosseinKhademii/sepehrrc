@@ -135,6 +135,7 @@ const ProductContainer = ({ item }) => {
       }
       className="my-25px"
       item={item}
+      layout={layout}
     >
       {displayList ? (
         <ProductList />
