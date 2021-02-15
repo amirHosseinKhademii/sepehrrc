@@ -30,7 +30,7 @@ const HeaderEighth = dynamic(() => import('./dependencies/header-eighth'), {
 });
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
-  const { marginRtl } = useDirection();
+  const { marginRtl, flexDirection } = useDirection();
   const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -73,30 +73,44 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return '1 نمایش : استایل ';
+        return '1 استایل ';
       case 'second':
-        return '2 نمایش : استایل ';
+        return '2 استایل ';
       case 'third':
-        return '3 نمایش : استایل ';
+        return '3 استایل ';
       case 'fourth':
-        return '4 نمایش : استایل ';
+        return '4 استایل ';
       case 'fifth':
-        return '5 نمایش : استایل ';
+        return '5 استایل ';
       case 'sixth':
-        return '6 نمایش : استایل ';
+        return '6 استایل ';
       case 'seventh':
-        return '7 نمایش : استایل ';
+        return '7 استایل ';
       case 'eighth':
-        return '8 نمایش : استایل ';
+        return '8 استایل ';
       default:
-        return '1 نمایش : استایل ';
+        return '1 استایل ';
     }
   };
 
   return (
     <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
       <div className="flex justify-between pb-20px">
-        <div className="flex cursor-pointer" onClick={toggleDropdown}>
+        <div
+          className={`flex ${flexDirection} cursor-pointer`}
+          onClick={toggleDropdown}
+        >
+          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+            {open ? (
+              <span>'انتخاب کنید'</span>
+            ) : (
+              <div className={`flex ${flexDirection}`}>
+                <span>نمایش:</span> <span>{styleTitle()}</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={`flex ${flexDirection}`}>
           {!open && (
             <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
           )}
@@ -104,9 +118,6 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
             {open ? 'بازگشت' : 'ویرایش'}
           </span>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
-          {open ? 'انتخاب کنید' : styleTitle()}
-        </span>
       </div>
       {open ? (
         <DropDown

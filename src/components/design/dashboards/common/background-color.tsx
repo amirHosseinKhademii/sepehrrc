@@ -1,11 +1,12 @@
 import { Text, ColorPicker } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { ICEditAlt, ICEditSettings } from 'icons';
 import { Fragment, useState } from 'react';
 
 export const BackgroundColor = () => {
   const { setSetting, designState } = useDesign();
   const [open, setOpen] = useState(false);
+  const { paddingRtl } = useDirection();
 
   return (
     <Fragment>
@@ -31,8 +32,10 @@ export const BackgroundColor = () => {
                 designState.current.settings.backgroundColor || '#fff',
             }}
           />
-          <div className="flex pr-10px">
-            <Text className=" text-gray_shade-300 pr-5px"> ویرایش رنگ</Text>
+          <div className={`flex ${paddingRtl}-10px`}>
+            <Text className={` text-gray_shade-300 ${paddingRtl}-5px `}>
+              ویرایش رنگ
+            </Text>
             <ICEditSettings />
           </div>
         </div>

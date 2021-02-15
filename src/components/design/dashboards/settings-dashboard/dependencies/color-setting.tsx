@@ -6,7 +6,7 @@ export const ColorSetting = ({
   onPageSetting,
   designState,
 }) => {
-  const { marginRtl, textAlignRtl } = useDirection();
+  const { marginRtl, textAlignRtl, flexDirection } = useDirection();
 
   return (
     <div className="flex flex-col px-20px pt-30px">
@@ -25,17 +25,7 @@ export const ColorSetting = ({
           />
         </div>
       ) : (
-        <div className="flex justify-between mt-20px">
-          <div className="flex flex-col items-center">
-            <Button
-              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
-              style={{ backgroundColor: designState.pageSettings.secondary }}
-              onClick={() => setColor({ type: 'secondary', open: true })}
-            >
-              {designState.pageSettings.secondary}
-            </Button>
-            <p className="text-gray_shade-300 pt-8px text-14px">رنگ دوم</p>
-          </div>
+        <div className={`flex ${flexDirection} justify-between mt-20px`}>
           <div className="flex flex-col items-center">
             <Button
               className={`h-50px ${marginRtl}-10px text-14px w-130px `}
@@ -45,6 +35,16 @@ export const ColorSetting = ({
               {designState.pageSettings.primary}
             </Button>
             <p className="text-gray_shade-300 pt-8px text-14px">رنگ اصلی</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Button
+              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
+              style={{ backgroundColor: designState.pageSettings.secondary }}
+              onClick={() => setColor({ type: 'secondary', open: true })}
+            >
+              {designState.pageSettings.secondary}
+            </Button>
+            <p className="text-gray_shade-300 pt-8px text-14px">رنگ دوم</p>
           </div>
         </div>
       )}

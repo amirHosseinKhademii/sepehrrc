@@ -17,7 +17,7 @@ const ModalCrop = () => {
   const cropperRef = useRef(null);
   const pageItem = designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
-  const { marginRtl } = useDirection();
+  const { marginRtl, paddingLtr } = useDirection();
 
   const handleSubmit = async () => {
     setisLoading(true);
@@ -47,7 +47,7 @@ const ModalCrop = () => {
 
   const ModalFooter = () => (
     <div
-      className="flex items-center w-full h-85px pl-35px opacity-70 rounded-b"
+      className={`flex items-center w-full h-85px ${paddingLtr}-35px opacity-70 rounded-b`}
       style={{ backgroundColor: '#1a191d    ' }}
     >
       <ButtonAction

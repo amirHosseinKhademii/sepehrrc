@@ -8,13 +8,13 @@ export const HeaderFirst: FC<IStyleBoxHeader> = ({
   active,
 }) => {
   const { toggle, join } = useClass();
-  const { marginRtl } = useDirection();
+  const { marginRtl, flexDirection } = useDirection();
 
   return (
     <div
       className={toggle(
         join(
-          ' flex items-center w-full h-27px  rounded-2px mx-auto px-9px  cursor-pointer transition-all duration-200',
+          ` flex ${flexDirection} items-center w-full h-27px  rounded-2px mx-auto px-9px  cursor-pointer transition-all duration-200`,
           className
         ),
         'bg-primary-700 ',
@@ -22,7 +22,6 @@ export const HeaderFirst: FC<IStyleBoxHeader> = ({
         'bg-gray-800 hover:bg-primary-700 '
       )}
       onClick={onClick}
-      style={{ direction: 'rtl' }}
     >
       <BlueBox
         active={active}

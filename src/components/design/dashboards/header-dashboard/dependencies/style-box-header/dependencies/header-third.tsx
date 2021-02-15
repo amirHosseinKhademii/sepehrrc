@@ -8,7 +8,7 @@ const HeaderThird: FC<IStyleBoxHeader> = ({
   toggle,
   join,
 }) => {
-  const { marginRtl } = useDirection();
+  const { marginRtl, flexDirection } = useDirection();
 
   return (
     <div
@@ -22,11 +22,10 @@ const HeaderThird: FC<IStyleBoxHeader> = ({
         'bg-gray-800 '
       )}
       onClick={onClick}
-      style={{ direction: 'rtl' }}
     >
       <div
         className={toggle(
-          'flex items-center h-27px w-full px-9px',
+          `flex  ${flexDirection} items-center h-27px w-full px-9px`,
           'bg-primary-700',
           active,
           'bg-gray-800 hover:bg-primary-700'

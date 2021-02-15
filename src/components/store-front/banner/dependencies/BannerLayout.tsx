@@ -1,7 +1,8 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 
 export const BannerLayout = ({ children, className }) => {
   const { join } = useClass();
+  const { dirRtl } = useDirection();
 
   return (
     <div
@@ -9,6 +10,7 @@ export const BannerLayout = ({ children, className }) => {
         'grid gap-x-20px h-full container mx-auto px-20px',
         className
       )}
+      dir={dirRtl}
     >
       {children}
     </div>

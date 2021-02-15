@@ -4,7 +4,7 @@ import { BlueBox } from './blue-box';
 
 const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
   const { join } = useClass();
-  const { marginRtl } = useDirection();
+  const { marginRtl, marginLtr, dirRtl } = useDirection();
 
   return (
     <div
@@ -13,7 +13,11 @@ const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
         className
       )}
       onClick={onClick}
+      dir={dirRtl}
     >
+      <div className=" col-span-2">
+        <BlueBox className=" h-75px" number="1" active={active} join={join} />
+      </div>
       <div className={`col-span-1 grid grid-cols-1 ${marginRtl}-6px`}>
         <BlueBox className=" h-35px" number="2" active={active} join={join} />
         <BlueBox
@@ -22,9 +26,6 @@ const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
           active={active}
           join={join}
         />
-      </div>
-      <div className=" col-span-2">
-        <BlueBox className=" h-75px" number="1" active={active} join={join} />
       </div>
     </div>
   );

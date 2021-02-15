@@ -12,10 +12,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
   const { style } = designState.current.settings;
 
   return (
-    <div
-      className="grid grid-cols-1 gap-y-20px focus:ring-2 focus:ring-blue-500 "
-      style={{ direction: 'rtl' }}
-    >
+    <div className="grid grid-cols-1 gap-y-20px focus:ring-2 focus:ring-blue-500 ">
       <div>
         <LabelBox label="استایل 1" />
         <HeaderFirst

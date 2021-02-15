@@ -3,7 +3,7 @@ import { BlueBox } from './blue-box';
 import { useDirection } from 'hooks';
 const BannerForth: FC<IStyleBox> = memo(
   ({ className, onClick, active, join }) => {
-    const { marginLtr } = useDirection();
+    const { marginLtr, dirRtl } = useDirection();
 
     return (
       <div
@@ -12,7 +12,17 @@ const BannerForth: FC<IStyleBox> = memo(
           className
         )}
         onClick={onClick}
+        dir={dirRtl}
       >
+        <div className={`grid grid-cols-1 ${marginLtr}-6px `}>
+          <BlueBox className=" h-35px" number="1" active={active} join={join} />
+          <BlueBox
+            className=" h-35px mt-5px"
+            number="3"
+            active={active}
+            join={join}
+          />
+        </div>
         <div className=" grid grid-cols-1 ">
           <BlueBox
             className="  h-35px"
@@ -23,15 +33,6 @@ const BannerForth: FC<IStyleBox> = memo(
           <BlueBox
             className="h-35px mt-5px"
             number="4"
-            active={active}
-            join={join}
-          />
-        </div>
-        <div className={`grid grid-cols-1 ${marginLtr}-6px `}>
-          <BlueBox className=" h-35px" number="1" active={active} join={join} />
-          <BlueBox
-            className=" h-35px mt-5px"
-            number="3"
             active={active}
             join={join}
           />

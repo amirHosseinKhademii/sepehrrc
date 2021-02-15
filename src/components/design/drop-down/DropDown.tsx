@@ -9,7 +9,13 @@ export const DropDown: FC<IDropDown> = ({
   selected,
   height = '54px',
 }) => {
-  const { textAlignRtl, rightTL, paddingRtl } = useDirection();
+  const {
+    textAlignRtl,
+    rightTL,
+    paddingRtl,
+    paddingLtr,
+    flexDirection,
+  } = useDirection();
 
   const { join, toggle } = useClass();
   const [drop, setDrop] = useState({
@@ -25,7 +31,7 @@ export const DropDown: FC<IDropDown> = ({
   const DefaultBox = () => (
     <div
       className={join(
-        `focus:outline-none  w-full flex items-center justify-between h-${height} ${paddingRtl}-20px cursor-pointer bg-gray_shade-800 text-gray_shade-300 ${
+        `focus:outline-none  w-full flex ${flexDirection} items-center justify-between h-${height} ${paddingRtl}-20px cursor-pointer bg-gray_shade-800 text-gray_shade-300 ${
           drop.open
             ? 'border-primary-700 border-r-2 border-l-2 border-t-2 rounded-t'
             : 'border-b  border-gray_shade-900 rounded'
@@ -34,10 +40,10 @@ export const DropDown: FC<IDropDown> = ({
       )}
       onClick={() => setDrop((prev) => ({ ...prev, open: !prev.open }))}
     >
+      <span className=" text-14px text-gray_shade-300 ">{current}</span>
       <div className="flex items-center justify-center h-full w-50px border-r  border-gray_shade-900 text-24px">
         {drop.open ? <ICAngelUp /> : <ICAngleDown className="fill-current" />}
       </div>
-      <span className=" text-14px text-gray_shade-300 ">{current}</span>
     </div>
   );
 
@@ -47,7 +53,7 @@ export const DropDown: FC<IDropDown> = ({
     >
       {options.map((option, index) => (
         <p
-          className={`w-full pb-18px pr-20px ${textAlignRtl} cursor-pointer text-gray_shade-300 text-14px hover:text-white`}
+          className={`w-full pb-18px ${paddingRtl}-20px ${textAlignRtl} cursor-pointer text-gray_shade-300 text-14px hover:text-white`}
           key={index}
           onClick={() => {
             setDrop((prev) => ({

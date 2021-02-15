@@ -7,7 +7,7 @@ const BannerFifth: FC<IBanner> = ({ item, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="two"
+          number="one"
           item={item}
           layout={layout}
         />
@@ -15,7 +15,7 @@ const BannerFifth: FC<IBanner> = ({ item, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="one"
+          number="two"
           item={item}
           layout={layout}
         />

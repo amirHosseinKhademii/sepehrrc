@@ -5,13 +5,13 @@ import { DrawerDynamic } from './drawer-dynamic';
 import { useDirection } from 'hooks';
 export const Drawer = memo(() => {
   const { uiState } = useUi();
-  const { marginRtl, rightTL } = useDirection();
+  const { marginRtl, rightTL, paddingRtl } = useDirection();
 
   const DrawerMenu = () => (
     <div
       className={`w-216px h-216px pt-21px pb-35px fixed  ${rightTL}-0 ${marginRtl}-68px top-0  bg-gray_shade-800 z-50 shadow-custom-1`}
     >
-      <div className="flex flex-col items-end pr-29px">
+      <div className={`flex flex-col items-end ${paddingRtl}-29px`}>
         <button className="text-gray_shade-300 pb-20px">مشاهده وب سایت</button>
         <button className="text-gray_shade-300 pb-20px">بنل مدیریت سایت</button>
         <button className="text-gray_shade-300 pb-20px">

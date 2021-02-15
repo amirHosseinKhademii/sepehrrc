@@ -5,7 +5,7 @@ import { useUi, useDirection } from 'hooks';
 
 export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
   const { toggleDrawer } = useUi();
-  const { marginRtl } = useDirection();
+  const { marginLtr, flexDirection } = useDirection();
 
   const onCancelClick = () => {
     if (onCancel) {
@@ -14,9 +14,11 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
   };
 
   return (
-    <div className="flex justify-between px-20px fixed bottom-0  mb-20px">
+    <div
+      className={`flex ${flexDirection} justify-between px-20px fixed bottom-0  mb-20px`}
+    >
       <ButtonAction
-        className={`bg-gradient-200 ${marginRtl}-10px`}
+        className={`bg-gradient-200 ${marginLtr}-10px`}
         onClick={onSave}
       >
         ذخیره تغییرات

@@ -7,7 +7,7 @@ const BannerSixth: FC<IBanner> = ({ item, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="three"
+          number="one"
           item={item}
           layout={layout}
         />
@@ -23,7 +23,7 @@ const BannerSixth: FC<IBanner> = ({ item, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="one"
+          number="three"
           item={item}
           layout={layout}
         />

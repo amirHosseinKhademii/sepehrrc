@@ -6,7 +6,7 @@ import { DndUploadBox } from '../../common/';
 import Dropzone, { useDropzone } from 'react-dropzone';
 
 export const ImageBox = () => {
-  const { marginRtl } = useDirection();
+  const { marginRtl, paddingRtl } = useDirection();
   const { designState, setPureImage } = useDesign();
   const { toggleModal, uiState } = useUi();
   const { images } = designState.current;
@@ -50,7 +50,7 @@ export const ImageBox = () => {
                 >
                   <input {...getInputProps()} />
                   <Text
-                    className="text-14px text-gray_shade-300 pr-12px cursor-pointer"
+                    className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer`}
                     // onClick={() => setPureImage({ onUpload: true, number })}
                   >
                     ویرایش تصویر
@@ -61,7 +61,7 @@ export const ImageBox = () => {
             </Dropzone>
             <div className="flex items-center ">
               <Text
-                className="text-14px text-gray_shade-300 pr-12px cursor-pointer"
+                className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer `}
                 onClick={() =>
                   toggleModal({ open: true, editImage: true, type: 'image' })
                 }
