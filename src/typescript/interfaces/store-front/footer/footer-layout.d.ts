@@ -1,7 +1,8 @@
 interface IFooterLayout {
   children: any;
   layout?: boolean;
-  cssAlt?: string;
+  cssClass?: string;
   toggle: any;
   isDark: boolean;
+  id?: string;
 }

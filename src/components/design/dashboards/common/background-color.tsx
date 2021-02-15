@@ -1,9 +1,11 @@
 import { Text, ColorPicker } from 'components';
 import { useDesign, useDirection } from 'hooks';
-import { ICEditAlt, ICEditSettings } from 'icons';
-import { Fragment, useState } from 'react';
+import { ICEditSettings } from 'icons';
+import { FC, Fragment, useState } from 'react';
 
-export const BackgroundColor = () => {
+export const BackgroundColor: FC<{ className?: string }> = ({
+  className = 'mt-32px',
+}) => {
   const { setSetting, designState } = useDesign();
   const [open, setOpen] = useState(false);
   const { paddingRtl } = useDirection();
@@ -22,7 +24,7 @@ export const BackgroundColor = () => {
         </div>
       ) : (
         <div
-          className="w-full flex items-center justify-between mt-32px h-54px bg-gray_shade-800 rounded cursor-pointer"
+          className={`w-full flex items-center justify-between  h-54px bg-gray_shade-800 rounded cursor-pointer ${className}`}
           onClick={() => setOpen(true)}
         >
           <div

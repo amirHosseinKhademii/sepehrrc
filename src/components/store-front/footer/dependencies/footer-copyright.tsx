@@ -10,26 +10,16 @@ export const FooterCopyRight: FC<IFooterCopyRight> = ({
 }) => {
   return (
     <Fragment>
-      <div className={`flex ${flexDirection} justify-center items-center`}>
+      <div
+        className={`footer-copy-right flex ${flexDirection} justify-center items-center`}
+      >
         <span
-          className={`font-iransans font-light text-14px ${
+          className={`footer-copy-right__span font-light text-14px ${
             isDark ? 'text-gray_shade-200' : 'text-gray_shade-800'
           } ml-5px`}
         >
-          قدرت گرفته از
-        </span>
-        <ICSepehr className="text-xl" />
-        <span
-          className={toggle(
-            `font-iransans font-light text-14px ${
-              isDark ? 'text-gray_shade-100' : 'text-gray_shade-900'
-            } mr-5px`,
-            className,
-            layout,
-            ''
-          )}
-        >
-          فروشگاه ساز سپهر
+          ©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر
+          است. 1399
         </span>
       </div>
     </Fragment>

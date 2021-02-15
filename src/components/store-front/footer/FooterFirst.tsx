@@ -4,7 +4,7 @@ import {
   FooterLayout,
   FooterSocialMedia,
   FooterTel,
-  FooterCopyRight,
+  FooterPower,
 } from './dependencies';
 
 const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
@@ -15,11 +15,19 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
   const isDark = designState.pageItems.settings?.backgroundColor || false;
 
   return (
-    <FooterLayout layout={layout} toggle={toggle} isDark={isDark}>
+    <FooterLayout
+      layout={layout}
+      toggle={toggle}
+      isDark={isDark}
+      id="footerFirst"
+      cssClass="footer--first"
+    >
       <div
-        className={`flex ${flexDirection} w-full h-106px container mx-auto ${container.padding}  `}
+        className={`footer__row footer__row--1 flex ${flexDirection} w-full h-106px container mx-auto ${container.padding}  `}
       >
-        <div className={`w-3/12 flex ${flexDirection} items-center `}>
+        <div
+          className={`footer__social-tel-box w-3/12 flex ${flexDirection} items-center `}
+        >
           <FooterSocialMedia
             layout={layout}
             toggle={toggle}
@@ -27,19 +35,22 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
               isDark ? 'bg-gray_shade-800' : 'bg-gray_shade-50'
             }`}
             isDark={isDark}
+            marginRtl={marginRtl}
+            marginLtr={marginLtr}
           />
           <FooterTel
             layout={layout}
             toggle={toggle}
             flexDirection={flexDirection}
-            className="font-iransans font-bold text-16px"
+            className={`font-bold text-16px ${marginRtl}-23px`}
             isDark={isDark}
+            marginRtl={marginRtl}
           />
         </div>
         <div
-          className={`w-9/12 flex ${flexDirection} items-center justify-end  `}
+          className={`footer__copy-right-box w-9/12 flex ${flexDirection} items-center justify-end  `}
         >
-          <FooterCopyRight
+          <FooterPower
             layout={layout}
             toggle={toggle}
             flexDirection={flexDirection}

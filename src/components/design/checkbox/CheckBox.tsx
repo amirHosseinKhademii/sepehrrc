@@ -8,6 +8,7 @@ export const CheckBox: FC<ICheckbox> = ({
   checked,
   onClick,
   disabled,
+  secondary,
 }) => {
   const { marginRtl, flexDirection } = useDirection();
   const { join } = useClass();
@@ -24,7 +25,9 @@ export const CheckBox: FC<ICheckbox> = ({
         <div className="w-18px h-18px rounded bg-gray_shade-800 cursor-pointer" />
       ) : checked ? (
         <div
-          className="w-18px h-18px rounded bg-primary-700 cursor-pointer flex justify-center items-center"
+          className={`w-18px h-18px rounded cursor-pointer flex justify-center items-center ${
+            secondary ? 'bg-gray_shade-600' : 'bg-primary-700'
+          }`}
           onClick={onClick}
         >
           <ICheck />
