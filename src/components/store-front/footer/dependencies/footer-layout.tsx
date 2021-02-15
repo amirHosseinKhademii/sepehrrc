@@ -3,7 +3,6 @@ import { FC } from 'react';
 export const FooterLayout: FC<IFooterLayout> = ({
   children,
   layout = true,
-  cssAlt,
   toggle,
   isDark,
 }) => {
@@ -12,8 +11,7 @@ export const FooterLayout: FC<IFooterLayout> = ({
       className={toggle(
         `footer-layout ${isDark ? 'bg-gray_shade-900' : 'bg-white'}`,
         '',
-        layout,
-        cssAlt
+        layout
       )}
     >
       {children}
