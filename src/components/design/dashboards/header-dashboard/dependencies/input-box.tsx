@@ -1,10 +1,11 @@
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { Text, Input, CheckBox } from 'components';
 
 export const InputBox = ({ label, placeholder = '', type }) => {
   const { designState, setSetting, setButtonProps } = useDesign();
   const { settings } = designState.current;
   const currentStyle = designState.current.settings.style;
+  const { textAlignRtl } = useDirection();
 
   if (
     type === 'tel' &&
@@ -14,7 +15,9 @@ export const InputBox = ({ label, placeholder = '', type }) => {
   ) {
     return (
       <div className="w-full  mb-30px ">
-        <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+        <Text
+          className={` mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
+        >
           {label}
         </Text>
 
@@ -34,7 +37,9 @@ export const InputBox = ({ label, placeholder = '', type }) => {
   ) {
     return (
       <div className="w-full  mb-90px ">
-        <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+        <Text
+          className={` mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
+        >
           {label}
         </Text>
         <Input

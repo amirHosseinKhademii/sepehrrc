@@ -1,4 +1,4 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { FC } from 'react';
 import { ICLink } from 'icons';
 import { Text } from 'components';
@@ -21,13 +21,16 @@ export const Input: FC<IInput> = ({
   withSwitch,
 }) => {
   const { join, toggle } = useClass();
+  const { textAlignRtl, rightTL } = useDirection();
 
   return (
     <div className={toggle('w-full', 'opacity-30', disabled)}>
       {variant === 'input' ? (
         <div className={join('w-full flex flex-col ', className)}>
           {label && (
-            <Text className="mb-14px text-14px text-white_shade-100 text-right w-full">
+            <Text
+              className={`mb-14px text-14px text-white_shade-100 ${textAlignRtl} w-full`}
+            >
               {label}
             </Text>
           )}
@@ -55,7 +58,7 @@ export const Input: FC<IInput> = ({
             onBlur={onBlur}
             disabled={disabled}
           />
-          <div className="absolute inset-y-0 right-4 flex items-center ">
+          <div className={`absolute inset-y-0 ${rightTL}-4 flex items-center `}>
             <ICLink fill="#9ba3b5" />
           </div>
         </div>

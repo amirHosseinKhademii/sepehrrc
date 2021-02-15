@@ -6,7 +6,7 @@ import {
   ProductPrice,
   ProductButton,
 } from './dependencies';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 
 const ProductCard: FC<IProductCard> = ({
   item,
@@ -14,6 +14,8 @@ const ProductCard: FC<IProductCard> = ({
   designState,
 }) => {
   const { toggle } = useClass();
+  const { marginRtl, marginLtr } = useDirection();
+
   return (
     <ProductLayout className={`rounded-10px `} layout={layout} toggle={toggle}>
       <ProductImage
@@ -33,7 +35,7 @@ const ProductCard: FC<IProductCard> = ({
           <ProductPrice
             prev
             text={item.price}
-            className=" ml-5px mt-20px text-lg font-bold font-iransans  "
+            className={`${marginLtr}-5px mt-20px text-lg font-bold font-iransans  `}
             layout={layout}
             toggle={toggle}
             designState={designState}
@@ -44,7 +46,7 @@ const ProductCard: FC<IProductCard> = ({
           withUnit
           text={item.price}
           className=" mt-20px text-lg font-bold font-iransans "
-          unitClassName="text-sm font-bold mr-1 "
+          unitClassName={`text-sm font-bold ${marginRtl}-1 `}
           toggle={toggle}
           layout={layout}
           designState={designState}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { GeneralLink } from 'components';
 import { useDirection } from 'hooks';
 export const Social = () => {
-  const { flexDirection } = useDirection();
+  const { flexDirection, marginRtl } = useDirection();
   return (
     <div
       className={`header-social flex ${flexDirection} justify-center items-center `}
@@ -27,7 +27,7 @@ export const Social = () => {
 
       <Link href="./" passHref>
         <GeneralLink cssClass="header-social__whatsapp-link">
-          <ICWhatsapp className="mr-10px  fill-current" />
+          <ICWhatsapp className={`${marginRtl}-10px  fill-current`} />
         </GeneralLink>
       </Link>
     </div>

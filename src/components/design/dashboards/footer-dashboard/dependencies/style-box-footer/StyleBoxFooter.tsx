@@ -1,4 +1,4 @@
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
 import dynamic from 'next/dynamic';
@@ -12,6 +12,8 @@ const DropDown = dynamic(() => import('./dependencies/drop-down'), {
 });
 
 export const StyleBoxFooter: FC<IStyleBox> = () => {
+  const { marginRtl } = useDirection();
+
   const { join } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -47,7 +49,9 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
     <div className="flex flex-col justify-between w-full">
       <div className="flex justify-between">
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
-          {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
+          {!open && (
+            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
+          )}
           <span className="text-14px font-iransans text-gray_shade-300">
             {open ? 'بازگشت' : 'ویرایش'}
           </span>

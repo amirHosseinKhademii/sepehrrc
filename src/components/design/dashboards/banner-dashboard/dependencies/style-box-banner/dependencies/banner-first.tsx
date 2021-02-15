@@ -1,9 +1,11 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { FC, memo } from 'react';
 import { BlueBox } from './blue-box';
 
 const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
   const { join } = useClass();
+  const { marginRtl } = useDirection();
+
   return (
     <div
       className={join(
@@ -12,7 +14,7 @@ const BannerFirst: FC<IStyleBox> = memo(({ className, onClick, active }) => {
       )}
       onClick={onClick}
     >
-      <div className=" col-span-1 grid grid-cols-1 mr-6px">
+      <div className={`col-span-1 grid grid-cols-1 ${marginRtl}-6px`}>
         <BlueBox className=" h-35px" number="2" active={active} join={join} />
         <BlueBox
           className=" h-35px mt-5px"

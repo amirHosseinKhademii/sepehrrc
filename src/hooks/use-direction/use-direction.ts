@@ -14,6 +14,7 @@ export const useDirection = () => {
     paddingLtr: direction === 'rtl' ? 'pl' : 'pr',
     absoluteRtl: direction === 'rtl' ? 'right' : 'left',
     absoluteLtr: direction === 'rtl' ? 'text-left' : 'text-left',
-    textAlign: direction === 'rtl' ? 'text-right' : 'text-left',
+    textAlignRtl: direction === 'rtl' ? 'text-right' : 'text-left',
+    textAlignLtr: direction === 'rtl' ? 'text-left' : 'text-right',
   };
 };

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal, ButtonAction, Range } from 'components';
 import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi, useDirection } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 
@@ -17,6 +17,7 @@ const ModalCrop = () => {
   const cropperRef = useRef(null);
   const pageItem = designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
+  const { marginRtl } = useDirection();
 
   const handleSubmit = async () => {
     setisLoading(true);
@@ -68,13 +69,13 @@ const ModalCrop = () => {
       </div>
       <Range
         title="چرخش تصویر"
-        className="w-370px mr-20px"
+        className={`w-370px ${marginRtl}-20px`}
         onChange={(value) => {}}
       />
       <Range
         title="زوم تصویر"
         unit="%"
-        className="w-370px mr-20px"
+        className={`w-370px ${marginRtl}-20px`}
         value={operations.zoom}
         onChange={(value) => {
           setOperations((prev) => ({ ...prev, zoom: parseInt(value) }));

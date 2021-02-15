@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi, useDirection } from 'hooks';
 
 export const GeneralLayout: FC<IGeneralLayout> = ({
   children,
@@ -12,6 +12,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
   const { designState } = useDesign();
   const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
+  const { leftTR } = useDirection();
 
   const DisplayHandler = () => {
     if (item?.settings) {
@@ -47,7 +48,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
       <div
         className={toggle(
           '',
-          'absolute top-0 left-0 opacity-10 w-full h-full bg-primary-700',
+          `absolute top-0 ${leftTR}-0 opacity-10 w-full h-full bg-primary-700`,
           active,
           'hidden'
         )}

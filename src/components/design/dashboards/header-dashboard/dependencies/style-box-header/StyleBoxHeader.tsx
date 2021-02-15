@@ -1,4 +1,4 @@
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
 import { HeaderFirst } from './dependencies';
@@ -30,6 +30,7 @@ const HeaderEighth = dynamic(() => import('./dependencies/header-eighth'), {
 });
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
+  const { marginRtl } = useDirection();
   const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -96,7 +97,9 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
       <div className="flex justify-between pb-20px">
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
-          {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
+          {!open && (
+            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
+          )}
           <span className="text-14px text-gray_shade-300 ">
             {open ? 'بازگشت' : 'ویرایش'}
           </span>

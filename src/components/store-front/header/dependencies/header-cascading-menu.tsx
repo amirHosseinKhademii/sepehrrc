@@ -166,11 +166,11 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
   layout,
 }) => {
   const { join } = useClass();
-  const { flexDirection, rightTL, leftTR } = useDirection();
+  const { flexDirection, rightTL, leftTR, marginRtl } = useDirection();
 
   const { pageSettings } = designState;
   return (
-    <ul className="cascading-menu ">
+    <ul className={`cascading-menu flex ${flexDirection} flex-wrap font-bold`}>
       {item.map((firstLevel, index) => {
         return (
           <li key={index} className="cascading-menu__item">
@@ -183,7 +183,9 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                   {firstLevel.text}
                 </span>{' '}
                 {!firstLevel.hasSub ? null : (
-                  <ICAngleDown className=" text-24px  mr-5px fill-current" />
+                  <ICAngleDown
+                    className={` text-24px  ${marginRtl}-5px fill-current`}
+                  />
                 )}
               </GeneralLink>
             </Link>
@@ -271,14 +273,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
       })}
       <style jsx>
         {`
-          .cascading-menu {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 100%;
-            font-weight: bold;
-          }
-
+        
           .cascading-menu > li {
             height: 58px;
             display: flex;

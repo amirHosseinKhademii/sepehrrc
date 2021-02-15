@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 
 export const Badge: FC<IBadge> = ({
   children,
@@ -13,7 +13,7 @@ export const Badge: FC<IBadge> = ({
 }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
-
+  const { rightTL } = useDirection();
   const { toggle, join } = useClass();
   return (
     <div
@@ -23,7 +23,7 @@ export const Badge: FC<IBadge> = ({
       {children}
       <div
         className={toggle(
-          `badge ${cssClass} absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px `,
+          `badge ${cssClass} absolute ${rightTL}-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px `,
           className,
           layout,
           'hidden'

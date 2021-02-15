@@ -1,8 +1,7 @@
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 import { Text, Input, CheckBox } from 'components';
 import { FC } from 'react';
 import { ButtonDrawer } from '.';
-
 export const GenericUploader: FC<IGenericUploader> = ({
   label,
   text,
@@ -12,6 +11,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
   className,
   isBackground,
 }) => {
+  const { textAlignRtl } = useDirection();
   const { join } = useClass();
   const { setPureImage, designState, setImage } = useDesign();
   const { current } = designState;
@@ -21,7 +21,9 @@ export const GenericUploader: FC<IGenericUploader> = ({
   return (
     <div className={join('w-full', className)}>
       {label && (
-        <Text className=" mb-14px text-14px text-white_shade-100 text-right">
+        <Text
+          className={`mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
+        >
           {label}
         </Text>
       )}

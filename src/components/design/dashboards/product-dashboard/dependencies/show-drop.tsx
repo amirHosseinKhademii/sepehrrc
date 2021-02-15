@@ -1,13 +1,16 @@
 import { Text, DropDown } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 
 export const ShowDrop = () => {
   const { setSetting, designState } = useDesign();
+  const { textAlignRtl } = useDirection();
 
   return (
     <div className="w-full  gap-30px">
       <div className="w-full">
-        <Text className="mt-30px mb-15px text-14px text-white_shade-100 text-right">
+        <Text
+          className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+        >
           نمایش بر اساس
         </Text>
         <DropDown

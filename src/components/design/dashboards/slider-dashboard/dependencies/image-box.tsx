@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useDirection } from 'hooks';
 import { Text } from 'components';
 import { ICEditSettings, ICCropAlt } from 'icons';
 import { DndUploadBox } from '../../common/';
 import Dropzone, { useDropzone } from 'react-dropzone';
 
 export const ImageBox = () => {
+  const { marginRtl } = useDirection();
   const { designState, setPureImage } = useDesign();
   const { toggleModal, uiState } = useUi();
   const { images } = designState.current;
@@ -45,7 +46,7 @@ export const ImageBox = () => {
               {({ getRootProps, getInputProps, isDragAccept }) => (
                 <div
                   {...getRootProps()}
-                  className={`flex items-center mr-auto focus:outline-none`}
+                  className={`flex items-center ${marginRtl}-auto focus:outline-none`}
                 >
                   <input {...getInputProps()} />
                   <Text

@@ -1,14 +1,16 @@
 import { Button, ColorPicker } from 'components';
-
+import { useDirection } from 'hooks';
 export const ColorSetting = ({
   color,
   setColor,
   onPageSetting,
   designState,
 }) => {
+  const { marginRtl, textAlignRtl } = useDirection();
+
   return (
     <div className="flex flex-col px-20px pt-30px">
-      <p className="text-right text-white_shade-100 pt-15px">رنگ ها</p>
+      <p className={`${textAlignRtl} text-white_shade-100 pt-15px`}>رنگ ها</p>
       {color.open ? (
         <div className="px-10px">
           <ColorPicker
@@ -26,7 +28,7 @@ export const ColorSetting = ({
         <div className="flex justify-between mt-20px">
           <div className="flex flex-col items-center">
             <Button
-              className="h-50px mr-10px text-14px w-130px "
+              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
               style={{ backgroundColor: designState.pageSettings.secondary }}
               onClick={() => setColor({ type: 'secondary', open: true })}
             >
@@ -36,7 +38,7 @@ export const ColorSetting = ({
           </div>
           <div className="flex flex-col items-center">
             <Button
-              className="h-50px mr-10px text-14px w-130px "
+              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
               style={{ backgroundColor: designState.pageSettings.primary }}
               onClick={() => setColor({ type: 'primary', open: true })}
             >

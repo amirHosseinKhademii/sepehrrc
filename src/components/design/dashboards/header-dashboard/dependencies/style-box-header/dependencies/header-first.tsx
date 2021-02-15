@@ -1,4 +1,4 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { FC } from 'react';
 import { BlueBox } from './blue-box';
 
@@ -8,6 +8,8 @@ export const HeaderFirst: FC<IStyleBoxHeader> = ({
   active,
 }) => {
   const { toggle, join } = useClass();
+  const { marginRtl } = useDirection();
+
   return (
     <div
       className={toggle(
@@ -30,12 +32,12 @@ export const HeaderFirst: FC<IStyleBoxHeader> = ({
       <BlueBox
         active={active}
         toggle={toggle}
-        className="w-80px h-9px mr-5px rounded-5px"
+        className={` w-80px h-9px ${marginRtl}-5px rounded-5px`}
       />
       <BlueBox
         active={active}
         toggle={toggle}
-        className="w-30px h-9px mr-75px rounded-7px"
+        className={`w-30px h-9px ${marginRtl}-75px rounded-7px`}
       />
     </div>
   );
