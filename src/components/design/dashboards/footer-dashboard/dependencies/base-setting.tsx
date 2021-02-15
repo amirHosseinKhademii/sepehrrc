@@ -1,5 +1,4 @@
 import { Input, Switch } from 'components';
-import { useState } from 'react';
 import {
   BackgroundColor,
   ButtonDrawer,
@@ -9,15 +8,8 @@ import {
 import { StyleBoxFooter } from './style-box-footer';
 
 const BaseSettings = ({ setSetting, settings }) => {
-  const [local, setlocal] = useState({
-    tel: true,
-    trust: true,
-    mobileApp: true,
-    backgrundImage: true,
-    backgroundColor: true,
-  });
   return (
-    <div className="flex flex-col items-end pt-30px px-20px">
+    <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxFooter />
       <ButtonDrawer withSetting text="تنظیمات منوی سایت" className="mt-10px" />
       <Input
@@ -42,68 +34,65 @@ const BaseSettings = ({ setSetting, settings }) => {
       <Switch
         label=" شماره تماس"
         className="mt-30px mb-20px"
-        onClick={() => setlocal((prev) => ({ ...prev, tel: !prev.tel }))}
-        checked={local.tel}
+        onClick={() => setSetting({ tel: !settings.tel })}
+        checked={settings.tel}
       />
-
-      <Input
-        disabled={!local.tel}
-        variant="input"
-        className="mb-30px text-center"
-        onBlur={(e) => setSetting({ tel: e.target.value })}
-        placeholder={settings.tel ? settings.tel : ' 021-23456789'}
-      />
-
+      {settings.tel && (
+        <Input
+          variant="input"
+          className="mb-30px text-center"
+          onBlur={(e) => setSetting({ tel: e.target.value })}
+          placeholder={settings.tel ? settings.tel : ' 021-23456789'}
+        />
+      )}
       <Switch
         label="نماد اعتماد"
-        onClick={() => setlocal((prev) => ({ ...prev, trust: !prev.trust }))}
-        checked={local.trust}
+        onClick={() => setSetting({ trust: !settings.trust })}
+        checked={settings.trust}
+        className="mb-14px"
       />
-      <ButtonDrawer
-        disabled={!local.trust}
-        withSetting
-        text="تنظیمات نماد اعتماد"
-        className="mt-14px"
-      />
+      {settings.trust && (
+        <ButtonDrawer
+          withSetting
+          text="تنظیمات نماد اعتماد"
+          className="mb-30px"
+        />
+      )}
       <Switch
         label="اپلیکیشن موبایل"
-        className="mt-30px"
-        onClick={() =>
-          setlocal((prev) => ({ ...prev, mobileApp: !prev.mobileApp }))
-        }
-        checked={local.mobileApp}
+        className="mb-14px"
+        onClick={() => setSetting({ mobileApp: !settings.mobileApp })}
+        checked={settings.mobileApp}
       />
-      <ButtonDrawer
-        disabled={!local.mobileApp}
-        withSetting
-        text="تنظیمات  اپلیکیشن موبایل"
-        className="mt-14px"
-      />
+      {settings.mobileApp && (
+        <ButtonDrawer
+          withSetting
+          text="تنظیمات  اپلیکیشن موبایل"
+          className="mb-30px"
+        />
+      )}
       <Switch
-        className="mt-30px"
+        className="mb-14px"
         label="توصیر زمینه"
         onClick={() =>
-          setlocal((prev) => ({
-            ...prev,
-            backgrundImage: !prev.backgrundImage,
-          }))
+          setSetting({ backgroundImage: !settings.backgroundImage })
         }
-        checked={local.backgrundImage}
+        checked={settings.backgroundImage}
       />
-      <GenericUploader isBackground className="mt-14px" />
+      {settings.backgroundImage && (
+        <GenericUploader isBackground className="mb-30px" />
+      )}
+
       <Switch
         label="رنگ زمینه"
-        className="-mb-20px mt-30px"
+        className=" mb-14px"
         onClick={() =>
-          setlocal((prev) => ({
-            ...prev,
-            backgrundColor: !prev.backgroundColor,
-          }))
+          setSetting({ backgroundColor: !settings.backgroundColor })
         }
-        checked={local.backgroundColor}
+        checked={settings.backgroundColor}
       />
-      <BackgroundColor />
-      <ResponsiveSwitchs />
+      {settings.backgroundColor && <BackgroundColor className="mb-30px" />}
+      <ResponsiveSwitchs className="mt-0px" />
     </div>
   );
 };
