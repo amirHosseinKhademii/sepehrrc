@@ -16,7 +16,7 @@ export const Button: FC<IButton> = ({
       <label
         htmlFor={htmlFor}
         className={join(
-          'focus:outline-none rounded flex items-center justify-center text-white_shade-100',
+          'focus:outline-none rounded flex  items-center justify-center text-white_shade-100',
           className
         )}
         style={style}
@@ -28,7 +28,7 @@ export const Button: FC<IButton> = ({
     return (
       <button
         className={join(
-          'focus:outline-none rounded flex items-center justify-center text-white_shade-100',
+          'focus:outline-none rounded flex  items-center justify-center text-white_shade-100',
           className
         )}
         onClick={onClick}

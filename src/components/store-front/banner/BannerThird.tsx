@@ -7,13 +7,13 @@ const BannerThird: FC<IBanner> = ({ item, onClick, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="three"
+          number="one"
           item={item}
           layout={layout}
         />
         <BannerImage
           className="h-211px"
-          number="six"
+          number="four"
           item={item}
           layout={layout}
         />
@@ -32,16 +32,17 @@ const BannerThird: FC<IBanner> = ({ item, onClick, layout }) => {
           layout={layout}
         />
       </div>
+
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="one"
+          number="three"
           item={item}
           layout={layout}
         />
         <BannerImage
           className="h-211px"
-          number="four"
+          number="six"
           item={item}
           layout={layout}
         />

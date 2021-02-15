@@ -1,12 +1,15 @@
 import { Text, DropDown } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 
 export const GridDrops = () => {
   const { setSetting, designState } = useDesign();
+  const { textAlignRtl } = useDirection();
 
   const RowDrop = () => (
     <div className="w-full col-span-1">
-      <Text className="mb-15px text-14px text-white_shade-100 text-right">
+      <Text
+        className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         تعداد سطر
       </Text>
       <DropDown
@@ -30,7 +33,9 @@ export const GridDrops = () => {
 
   const ColDrop = () => (
     <div className="w-full col-span-1">
-      <Text className="mb-15px text-14px text-white_shade-100 text-right">
+      <Text
+        className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         تعداد ستون
       </Text>
       <DropDown

@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { ButtonIcon } from 'components';
 import { ICSettingCog, ICTrash } from 'icons';
 
@@ -21,20 +21,22 @@ export const ButtonDrawer: FC<IButton> = ({
   children,
   text,
 }) => {
+  const { paddingRtl, flexDirection } = useDirection();
+
   const { join } = useClass();
   const { push } = useRouter();
   const [hover, setHover] = useState(false);
 
-  const StartItem = () => (
-    <div className="flex flex-row items-center">
+  const EndItem = () => (
+    <div className={`flex ${flexDirection} items-center`}>
       {withSetting && withHover
         ? hover && (
-            <ButtonIcon onClick={onSetting} className="pr-13px">
+            <ButtonIcon onClick={onSetting} className={` ${paddingRtl}-13px `}>
               <ICSettingCog fill="#fff" />
             </ButtonIcon>
           )
         : withSetting && (
-            <ButtonIcon onClick={onSetting} className="pr-13px">
+            <ButtonIcon onClick={onSetting} className={`${paddingRtl}-13px`}>
               <ICSettingCog fill="#9ba3b5" />
             </ButtonIcon>
           )}
@@ -55,12 +57,8 @@ export const ButtonDrawer: FC<IButton> = ({
     </div>
   );
 
-  const EndItem = () => (
-    <div
-      className="w-full"
-      style={{ direction: 'rtl' }}
-      onClickCapture={onClickCapture}
-    >
+  const StartItem = () => (
+    <div onClickCapture={onClickCapture}>
       {withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
       ) : withPush ? (
@@ -79,7 +77,7 @@ export const ButtonDrawer: FC<IButton> = ({
   return (
     <div
       className={join(
-        `focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px ${
+        `focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex ${flexDirection} items-center justify-between px-16px ${
           withHover && 'hover:bg-primary-800'
         }`,
         className

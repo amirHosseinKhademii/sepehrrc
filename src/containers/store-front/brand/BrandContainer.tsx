@@ -1,10 +1,12 @@
 import { Brand } from 'components';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useDirection } from 'hooks';
 import { GeneralLayout } from 'components';
 
 const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
+  const { marginRtl } = useDirection();
+
   const { settings } = item;
   const { theme } = designState.pageSettings;
   const layout = theme === 'default' ? true : false;
@@ -15,7 +17,7 @@ const BrandContainer = ({ item }) => {
       arr.push(
         <div
           key={index}
-          className="flex justify-center items-center bg-white h-107px rounded-lg mr-30px"
+          className={`flex justify-center items-center bg-white h-107px rounded-lg ${marginRtl}-30px`}
         >
           <img src={item.value} className={`h-54px w-121px `} />
         </div>

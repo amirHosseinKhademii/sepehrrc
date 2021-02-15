@@ -1,13 +1,16 @@
 import { Text, DropDown, Input } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 
 export const SliderDrops = () => {
   const { setSetting, designState } = useDesign();
   const { settings } = designState.current;
+  const { textAlignRtl } = useDirection();
 
   const TotalItems = () => (
     <div className="w-full col-span-1">
-      <Text className="mb-15px text-14px text-white_shade-100 text-right">
+      <Text
+        className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         تعداد کل
       </Text>
       <Input
@@ -23,7 +26,9 @@ export const SliderDrops = () => {
 
   const ColDrop = () => (
     <div className="w-full col-span-2">
-      <Text className="mb-15px text-14px text-white_shade-100 text-right">
+      <Text
+        className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         تعداد ستون
       </Text>
       <DropDown

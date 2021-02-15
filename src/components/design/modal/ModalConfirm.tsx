@@ -1,10 +1,10 @@
 import { Modal, Text, ButtonAction } from 'components';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useDirection } from 'hooks';
 import { ICWarning } from 'icons';
-
 const ModalConfirm = () => {
   const { uiState, toggleModal } = useUi();
   const { deleteImage, onDeleteItem } = useDesign();
+  const { marginRtl } = useDirection();
 
   return (
     <Modal
@@ -27,7 +27,7 @@ const ModalConfirm = () => {
         </Text>
         <div className="flex justify-between px-20px mb-20px mt-35px">
           <ButtonAction
-            className="bg-white mr-10px text-gray_shade-400  border-gray_shade-400 border-2"
+            className={`bg-white ${marginRtl}-10px text-gray_shade-400  border-gray_shade-400 border-2`}
             onClick={() => {
               if (uiState.modal.target === 'image') {
                 deleteImage(uiState.modal.number);

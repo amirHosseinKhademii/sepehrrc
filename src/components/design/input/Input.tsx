@@ -1,4 +1,4 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { FC } from 'react';
 import { ICLink } from 'icons';
 import { Text } from 'components';
@@ -21,13 +21,23 @@ export const Input: FC<IInput> = ({
   withSwitch,
 }) => {
   const { join, toggle } = useClass();
+  const {
+    textAlignRtl,
+    rightTL,
+    paddingRtl,
+    paddingLtr,
+    dirLtr,
+    dirRtl,
+  } = useDirection();
 
   return (
     <div className={toggle('w-full', 'opacity-30', disabled)}>
       {variant === 'input' ? (
         <div className={join('w-full flex flex-col ', className)}>
           {label && (
-            <Text className="mb-14px text-14px text-white_shade-100 text-right w-full">
+            <Text
+              className={`mb-14px text-14px text-white_shade-100 ${textAlignRtl} w-full`}
+            >
               {label}
             </Text>
           )}
@@ -40,22 +50,22 @@ export const Input: FC<IInput> = ({
             onBlur={onBlur}
             value={value}
             disabled={disabled}
-            dir={withLink ? 'ltr' : 'rtl'}
+            dir={withLink ? `${dirLtr}` : `${dirRtl}`}
             className={`${fontFamily} focus:outline-none w-full h-54px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           />
         </div>
       ) : variant === 'inputIcon' ? (
         <div className={join('relative h-54px w-full rounded', className)}>
           <input
-            className={`${fontFamily} placeholder-gray_shade-300 rounded focus:outline-none h-full pl-4 pr-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
+            className={`${fontFamily} placeholder-gray_shade-300 rounded focus:outline-none h-full ${paddingLtr}-4 ${paddingRtl}-12 w-full bg-gray_shade-800 text-white focus:ring-2 focus:ring-blue-500`}
             placeholder={placeholder}
-            dir={withLink ? 'ltr' : 'rtl'}
+            dir={withLink ? `${dirLtr}` : `${dirRtl}`}
             type={withLink ? 'url' : 'text'}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
           />
-          <div className="absolute inset-y-0 right-4 flex items-center ">
+          <div className={`absolute inset-y-0 ${rightTL}-4 flex items-center `}>
             <ICLink fill="#9ba3b5" />
           </div>
         </div>
@@ -73,7 +83,7 @@ export const Input: FC<IInput> = ({
             onBlur={onBlur}
             value={value}
             disabled={disabled}
-            dir={withLink ? 'ltr' : 'rtl'}
+            dir={withLink ? `${dirLtr}` : `${dirRtl}`}
             className={`${fontFamily} h-${height} p-16px focus:outline-none w-full  px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           ></textarea>
         </div>

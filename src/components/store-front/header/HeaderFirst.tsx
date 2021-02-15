@@ -47,7 +47,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
             <ICUsersAlt
               height="20px"
               width="20px"
-              className={`mr-2  fill-current text-20px`}
+              className={`${marginRtl}-2  fill-current text-20px`}
             />
           </GeneralLink>
         </Link>

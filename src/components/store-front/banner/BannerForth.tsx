@@ -7,20 +7,6 @@ const BannerForth: FC<IBanner> = ({ item, layout }) => {
       <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
         <BannerImage
           className="h-211px"
-          number="two"
-          item={item}
-          layout={layout}
-        />
-        <BannerImage
-          className="h-211px"
-          number="four"
-          item={item}
-          layout={layout}
-        />
-      </div>
-      <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
-        <BannerImage
-          className="h-211px"
           number="one"
           item={item}
           layout={layout}
@@ -28,6 +14,20 @@ const BannerForth: FC<IBanner> = ({ item, layout }) => {
         <BannerImage
           className="h-211px"
           number="three"
+          item={item}
+          layout={layout}
+        />
+      </div>
+      <div className="grid grid-cols-1 col-span-1 gap-y-15px h-full">
+        <BannerImage
+          className="h-211px"
+          number="two"
+          item={item}
+          layout={layout}
+        />
+        <BannerImage
+          className="h-211px"
+          number="four"
           item={item}
           layout={layout}
         />

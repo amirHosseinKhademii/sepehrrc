@@ -1,4 +1,4 @@
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditSettings } from 'icons';
 import dynamic from 'next/dynamic';
@@ -24,6 +24,8 @@ const DropDown = dynamic(() => import('./dependencies/drop-down'), {
 });
 
 export const StyleBoxBanner: FC<IStyleBox> = () => {
+  const { marginRtl, flexDirection } = useDirection();
+
   const { join } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -59,26 +61,39 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
 
   const styleTitle = () => {
     const { style } = designState.current.settings;
-    if (!style || style === 'first') return '1 نمایش : استایل ';
-    else if (style === 'second') return '2 نمایش : استایل ';
-    else if (style === 'third') return '3 نمایش : استایل ';
-    else if (style === 'forth') return '4 نمایش : استایل ';
-    else if (style === 'fifth') return '5 نمایش : استایل ';
-    else if (style === 'sixth') return '6 نمایش : استایل ';
+    if (!style || style === 'first') return '1 استایل ';
+    else if (style === 'second') return '2 استایل ';
+    else if (style === 'third') return '3 استایل ';
+    else if (style === 'forth') return '4 استایل ';
+    else if (style === 'fifth') return '5 استایل ';
+    else if (style === 'sixth') return '6 استایل ';
   };
 
   return (
     <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px py-15px mt-30px">
       <div className="flex justify-between">
-        <div className="flex cursor-pointer" onClick={toggleDropdown}>
-          {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
-          <span className="text-14px font-iransans text-gray_shade-300">
+        <div
+          className={`flex ${flexDirection} cursor-pointer`}
+          onClick={toggleDropdown}
+        >
+          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+            {open ? (
+              <span>'انتخاب کنید'</span>
+            ) : (
+              <div className={`flex ${flexDirection}`}>
+                <span>نمایش:</span> <span>{styleTitle()}</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={`flex ${flexDirection}`}>
+          {!open && (
+            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
+          )}
+          <span className="text-14px text-gray_shade-300 ">
             {open ? 'بازگشت' : 'ویرایش'}
           </span>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
-          {styleTitle()}
-        </span>
       </div>
       {open ? (
         <DropDown

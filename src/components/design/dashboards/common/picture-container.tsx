@@ -1,8 +1,9 @@
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useDirection } from 'hooks';
 import { Text } from 'components';
 import { PictureButton } from './picture-button';
 
 export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
+  const { textAlignRtl } = useDirection();
   const { designState, setPureImage } = useDesign();
   const { toggleSettingState } = useUi();
   let newArr = [];
@@ -29,7 +30,9 @@ export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
       className={`mt-${marginTop} w-full felx flex-col`}
       onDragEnter={() => handleOnDragEnter()}
     >
-      <Text className=" mb-6px text-14px text-white_shade-100 text-right">
+      <Text
+        className={` mb-6px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         {title}
       </Text>
       <div dir="rtl" className={`w-full h-auto grid grid-cols-4 gap-10px`}>

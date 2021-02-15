@@ -1,7 +1,7 @@
 //import { Drop } from 'components';
 import { FC } from 'react';
 import { DropDown } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 
 interface IDrawerHeader {
   setting?: boolean;
@@ -12,14 +12,14 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
   text = 'تنظیمات قالب',
 }) => {
   const { onPageSetting, designState } = useDesign();
+  const { marginRtl, textAlignRtl, flexDirection } = useDirection();
 
   return (
-    <div className="flex items-center border-b border-gray_shade-800 px-20px pb-17px justify-between">
-      <button className="focus:outline-none rounded-full bg-gray_shade-800 px-2 mr-20px text-white_shade-100">
-        ؟
-      </button>
+    <div
+      className={`flex ${flexDirection} items-center border-b border-gray_shade-800 px-20px pb-17px justify-between`}
+    >
       {setting ? (
-        <p className="text-right text-white_shade-100 pt-10px pb-14px ">
+        <p className={`${textAlignRtl} text-white_shade-100 pt-10px pb-14px `}>
           {text}
         </p>
       ) : (
@@ -39,6 +39,11 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
           ]}
         />
       )}
+      <button
+        className={`align-middle focus:outline-none rounded-full bg-gray_shade-800 px-2 ${marginRtl}-20px text-white_shade-100`}
+      >
+        ؟
+      </button>
     </div>
   );
 };

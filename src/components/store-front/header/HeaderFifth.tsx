@@ -71,7 +71,7 @@ const HeaderFifth: FC<IHeader> = ({ item, layout = true, designState }) => {
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={` header__navbar-box w-6/12 flex ${flexDirection} items-center mr-60px `}
+            className={` header__navbar-box w-6/12 flex ${flexDirection} items-center ${marginRtl}-60px `}
           >
             <HeaderNavbar
               direction="horizental"

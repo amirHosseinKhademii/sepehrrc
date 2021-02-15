@@ -1,4 +1,4 @@
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { ICheck } from 'icons';
 import { FC } from 'react';
 
@@ -10,15 +10,17 @@ export const CheckBox: FC<ICheckbox> = ({
   disabled,
   secondary,
 }) => {
+  const { marginRtl, flexDirection } = useDirection();
   const { join } = useClass();
   return (
     <div
       className={join(
-        `flex items-center justify-end ${disabled && 'opacity-30'}`,
+        `flex ${flexDirection} items-center justify-start ${
+          disabled && 'opacity-30'
+        }`,
         className
       )}
     >
-      <span className="text-14px text-gray_shade-300 mr-2">{label}</span>
       {disabled ? (
         <div className="w-18px h-18px rounded bg-gray_shade-800 cursor-pointer" />
       ) : checked ? (
@@ -36,6 +38,9 @@ export const CheckBox: FC<ICheckbox> = ({
           onClick={onClick}
         />
       )}
+      <div className={`text-14px text-gray_shade-300 ${marginRtl}-2`}>
+        {label}
+      </div>
     </div>
   );
 };

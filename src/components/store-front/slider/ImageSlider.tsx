@@ -1,4 +1,5 @@
 import { Fragment, useRef, useState } from 'react';
+import { useDirection } from 'hooks';
 import { ICAngelLeft, ICAngelRight } from 'icons';
 import AliceCarousel from 'react-alice-carousel';
 import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
@@ -6,6 +7,7 @@ import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
 const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
   const sliderRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { rightTL, leftTR } = useDirection();
 
   const clickDots = (e, i) => {
     e.stopPropagation();
@@ -40,7 +42,7 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
   const renderPrevButton = ({ isDisabled }) => {
     return (
       <div
-        className="absolute top-0 left-0 h-450px text-white flex justify-center items-center cursor-pointer "
+        className={`absolute top-0 ${leftTR}-0 h-450px text-white flex justify-center items-center cursor-pointer `}
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickPrev(e)}
       >
@@ -52,7 +54,7 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
   const renderNextButton = ({ isDisabled }) => {
     return (
       <div
-        className="absolute top-0 right-0 h-450px text-white flex justify-center items-center cursor-pointer "
+        className={`absolute top-0 ${rightTL}-0 h-450px text-white flex justify-center items-center cursor-pointer `}
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickNext(e)}
       >

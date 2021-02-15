@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useDesign, useUi } from 'hooks';
+import { useDesign, useUi, useDirection } from 'hooks';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import { ICPlus, ICMultiply } from 'icons';
 
@@ -10,7 +10,7 @@ export const PictureButton: FC<IPictureButton> = ({
 }) => {
   const { setPureImage, deleteImage } = useDesign();
   const { toggleSettingState, toggleModal } = useUi();
-
+  const { rightTL } = useDirection();
   if (withAdd)
     return (
       <Dropzone
@@ -49,7 +49,9 @@ export const PictureButton: FC<IPictureButton> = ({
           className="coverImage w-full h-60px rounded border-primary-700 cursor-pointer"
           src={picture}
         />
-        <div className="delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -right-1 bg-alert-300 rounded-full cursor-pointer opacity-0">
+        <div
+          className={`delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -${rightTL}-1 bg-alert-300 rounded-full cursor-pointer opacity-0`}
+        >
           <ICMultiply
             onClick={() =>
               toggleModal({

@@ -1,12 +1,16 @@
 import { Text, DropDown } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 
 export const EffectDrop = () => {
   const { designState, setSetting } = useDesign();
   const { settings } = designState.current;
+  const { textAlignRtl } = useDirection();
+
   return (
     <div className="w-full">
-      <Text className="  mt-30px mb-15px text-14px text-white_shade-100 text-right">
+      <Text
+        className={`  mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+      >
         افکت تعویض اسلایدرها
       </Text>
       <DropDown
