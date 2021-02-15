@@ -5,4 +5,5 @@ interface IHeaderInput {
   layout?: boolean;
   cssAlt?: string;
   toggle: any;
+  style?: any;
 }

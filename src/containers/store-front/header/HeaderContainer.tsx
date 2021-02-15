@@ -89,6 +89,7 @@ const HeaderContainer = () => {
           : false
       }
       item={item}
+      layout={layout}
     >
       <Headers item={item} layout={layout} designState={designState} />
     </GeneralLayout>

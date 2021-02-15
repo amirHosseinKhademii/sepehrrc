@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { ICBars } from 'icons';
 import Link from 'next/link';
 import { useDirection } from 'hooks';
-
+import { GeneralLink } from 'components';
 const item = {
   text: 'دسته بندی محصولات',
   link: '',
@@ -232,39 +232,56 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
   return (
     <div
       className={toggle(
-        `header-mega-menu flex ${flexDirection} items-center justify-center h-full`,
+        `mega-menu flex ${flexDirection} items-center justify-center h-full`,
         className,
         layout
       )}
     >
-      <div className={` flex ${flexDirection} ${marginLtr}-30px   `}>
+      <div
+        className={` mega-menu__wrap flex ${flexDirection} ${marginLtr}-30px   `}
+      >
         <ICBars className="text-24px fill-current" />
-        <div className={`  ${marginRtl}-5px    header-mega-menu-panel`}>
-          <Link href={item.link}>
-            <a className="title"> {item.text} </a>
+        <div className={`mega-menu__title-box  ${marginRtl}-5px  `}>
+          <Link href={item.link} passHref>
+            <GeneralLink
+              layout={layout}
+              className="title"
+              cssClass={'link--mega-menu'}
+            >
+              {item.text}{' '}
+            </GeneralLink>
           </Link>
           <div
-            className={`z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
+            className={`mega-menu__panel z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
           >
             {item.subMenus.map((firstLevel, index) => {
               return (
                 <ul
                   key={index}
-                  className={`w-1/5 flex flex-col ${textAlign} mb-4 `}
+                  className={`w-1/5 flex flex-col ${textAlign} mb-4 mega-menu__list`}
                 >
-                  <li className={`listTitle  text-16px  `}>
-                    <Link href={firstLevel.link}>
-                      <a>{firstLevel.text}</a>
+                  <li className={` text-16px mega-menu__list-title `}>
+                    <Link href={firstLevel.link} passHref>
+                      <GeneralLink
+                        cssClass="link--mega-menu-list-title"
+                        layout={layout}
+                      >
+                        {firstLevel.text}
+                      </GeneralLink>
                     </Link>
                   </li>
-                  <ul>
+                  <ul className="mega-menu__list-items">
                     {firstLevel.subMenus.map((secondLevel, index) => {
                       return (
-                        <li key={index}>
-                          <Link href={secondLevel.link}>
-                            <a className="cursor-pointer opacity-80">
+                        <li key={index} className="mega-menu__list-item">
+                          <Link href={secondLevel.link} passHref>
+                            <GeneralLink
+                              className="cursor-pointer opacity-80"
+                              layout={layout}
+                              cssClass="link--mega-menu-list-item"
+                            >
                               {secondLevel.text}
-                            </a>
+                            </GeneralLink>
                           </Link>
                         </li>
                       );
@@ -278,14 +295,14 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
       </div>
       <style jsx>
         {`
-          .header-mega-menu:hover .header-mega-menu-panel > div {
+          .mega-menu:hover .mega-menu__panel {
             visibility: visible;
             pointer-events: all;
             opacity: 1;
             transition: all 0.3s;
           }
 
-          .listTitle {
+          .mega-menu__list-title {
             color: ${pageSettings.primary ? pageSettings.primary : 'inherit'};
           }
 

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useClass } from 'hooks';
 
 export const ICTelegram: FC<IIcon> = ({
   className,
@@ -7,13 +8,15 @@ export const ICTelegram: FC<IIcon> = ({
   width,
   fill,
 }) => {
+  const { join } = useClass();
+
   return (
     <svg
       width={width ? width : '1em'}
       height={height ? height : '1em'}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      className={className}
+      className={join('ic ic-telegram', className)}
       onClick={onClick}
     >
       <path fill="none" d="M0 0h24v24H0z" />

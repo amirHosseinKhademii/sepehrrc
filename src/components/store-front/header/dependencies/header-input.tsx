@@ -1,4 +1,5 @@
 import { ICSearch } from 'icons';
+import { GeneralInput } from 'components';
 import { FC } from 'react';
 export const HeaderInput: FC<IHeaderInput> = ({
   className,
@@ -7,23 +8,22 @@ export const HeaderInput: FC<IHeaderInput> = ({
   cssAlt,
   layout = true,
   toggle,
+  style,
 }) => {
   return (
     <div className="relative ">
-      <input
-        className={toggle(
-          'header-input w-535px px-12  py-4 rounded-25px  bg-white_shade-200 border-white_shade-300 border-2  focus:outline-none',
-          className,
-          layout,
-          cssAlt
-        )}
+      <GeneralInput
+        className={className}
+        cssClass="header-input"
+        layout={layout}
         placeholder="جستجو کنید"
         onChange={onChange}
         style={{ direction: 'rtl' }}
       />
       <ICSearch
-        className="IC-search absolute top-16px right-20px fill-current"
+        className="absolute top-16px right-20px fill-current"
         onClick={onClick}
+        cssClass="header-input__search"
       />
     </div>
   );

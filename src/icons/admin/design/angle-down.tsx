@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useClass } from 'hooks';
 
 export const ICAngleDown: FC<IIcon> = ({
   className,
@@ -6,12 +7,14 @@ export const ICAngleDown: FC<IIcon> = ({
   width,
   onClick,
 }) => {
+  const { join } = useClass();
+
   return (
     <svg
       width={width ? width : '1em'}
       height={height ? height : '1em'}
       viewBox="0 0 24 24"
-      className={className}
+      className={join('ic ic-angle-down', className)}
       onClick={onClick}
     >
       <g>

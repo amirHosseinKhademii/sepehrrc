@@ -59,6 +59,7 @@ const BannerContainer = ({ item }) => {
           : false
       }
       item={item}
+      layout={layout}
     >
       <ContainerTitle
         designState={designState}

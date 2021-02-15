@@ -9,17 +9,21 @@ export const Badge: FC<IBadge> = ({
   root,
   cssAlt,
   layout = true,
+  cssClass = '',
 }) => {
   const { designState } = useDesign();
   const { pageSettings } = designState;
 
   const { toggle, join } = useClass();
   return (
-    <span className={join('relative inline-block', root)} onClick={onClick}>
+    <div
+      className={join('badge__root relative inline-block', root)}
+      onClick={onClick}
+    >
       {children}
-      <span
+      <div
         className={toggle(
-          ' absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px ',
+          `badge ${cssClass} absolute right-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px `,
           className,
           layout,
           'hidden'
@@ -27,7 +31,7 @@ export const Badge: FC<IBadge> = ({
         style={{ backgroundColor: `${pageSettings.primary}` }}
       >
         {badgeContent}
-      </span>
-    </span>
+      </div>
+    </div>
   );
 };

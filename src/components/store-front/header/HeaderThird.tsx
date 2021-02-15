@@ -10,7 +10,7 @@ import {
 } from './dependencies';
 import Link from 'next/link';
 import { ICShoppingCart } from 'icons';
-import { Badge } from 'components';
+import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
 
 const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
@@ -19,45 +19,56 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
 
   const Actions = () => {
     return (
-      <>
+      <div className={`header-actions flex ${flexDirection}`}>
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
           layout={layout}
+          cssClass="header-actions__badge"
         >
-          <Link href="./">
-            <a>
+          <Link href="./" passHref>
+            <GeneralLink
+              cssClass="header-actions__shopping-cart-link"
+              layout={layout}
+            >
               <ICShoppingCart
                 height="20px"
                 width="20px"
                 className="fill-current text-20px"
               />
-            </a>
+            </GeneralLink>
           </Link>
         </Badge>
-      </>
+      </div>
     );
   };
   return (
-    <HeaderLayout layout={layout} toggle={toggle}>
-      <div className="border-2">
+    <HeaderLayout
+      layout={layout}
+      toggle={toggle}
+      id="headerThird"
+      cssClass="header--third"
+    >
+      <div className="header__border header__border--1 border-2">
         <div
-          className={`w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
+          className={`header__row header__row-1 w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
         >
           <div
-            className={`w-1/12  flex ${flexDirection} items-center justify-start `}
+            className={`header__logo-box w-1/12  flex ${flexDirection} items-center justify-start `}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className={`w-8/12 flex  items-center justify-center`}>
+          <div
+            className={`header__input-box w-8/12 flex  items-center justify-center`}
+          >
             <HeaderInput
-              className="text-16px  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
             />
           </div>
           <div
-            className={`w-3/12 flex  ${flexDirection} items-center justify-end`}
+            className={`header__actions-box w-3/12 flex  ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
@@ -85,9 +96,11 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={` w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
+        className={`header__row header__row--2 w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
       >
-        <div className={`w-9/12 flex  ${flexDirection} items-center `}>
+        <div
+          className={`header__menu-box w-9/12 flex  ${flexDirection} items-center `}
+        >
           <HeaderMegaMenu
             designState={designState}
             toggle={toggle}
@@ -102,7 +115,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             className="font-bold text-16px"
           />
         </div>
-        <div className={`w-3/12`}>
+        <div className={`header__tel-box w-3/12`}>
           <HeaderTel
             layout={layout}
             className="text-16px font-bold"
