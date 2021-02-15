@@ -5,6 +5,5 @@ interface ICheckbox {
   checked?: boolean;
   onClick?: any;
   disabled?: boolean;
+  secondary?: boolean;
 }
-
-
