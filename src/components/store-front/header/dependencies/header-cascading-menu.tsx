@@ -2,7 +2,7 @@ import { ICAngleDown } from 'icons';
 import { FC } from 'react';
 import Link from 'next/link';
 import { GeneralLink } from 'components';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 
 const item = [
   {
@@ -166,17 +166,18 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
   layout,
 }) => {
   const { join } = useClass();
+  const { flexDirection, rightTL, leftTR } = useDirection();
 
   const { pageSettings } = designState;
   return (
-    <ul className="cascading-menu " style={{ direction: 'rtl' }}>
+    <ul className="cascading-menu ">
       {item.map((firstLevel, index) => {
         return (
           <li key={index} className="cascading-menu__item">
             <Link href={firstLevel.link || ''} passHref>
               <GeneralLink
                 className=""
-                cssClass="cascading-menu__link flex  w-full"
+                cssClass={`cascading-menu__link flex ${flexDirection}  w-full`}
               >
                 <span className="cascading-menu__text text-16px">
                   {firstLevel.text}
@@ -189,7 +190,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             {!firstLevel.hasSub ? null : (
               <ul
                 className={join(
-                  'cascading-menu-list cascading-menu-list--1',
+                  'cascading-menu__list cascading-menu__list--1',
                   listClassName
                 )}
               >
@@ -200,7 +201,9 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                       className="cascading-menu__item cascading-menu__item--1"
                     >
                       <Link href={secondLevel.link || ''} passHref>
-                        <GeneralLink cssClass="cascading-menu__link cascading-menu__link--1 flex justify-between w-full">
+                        <GeneralLink
+                          cssClass={`cascading-menu__link cascading-menu__link--1 flex ${flexDirection} justify-between w-full`}
+                        >
                           <span>{secondLevel.text}</span>{' '}
                           {!secondLevel.hasSub ? null : (
                             <ICAngleDown className=" text-24px  fill-current" />
@@ -218,7 +221,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                                 <Link href={thirdLevel.link || ''} passHref>
                                   <GeneralLink
                                     className=""
-                                    cssClass="cascading-menu__link cascading-menu__link--2 flex justify-between w-full"
+                                    cssClass={`cascading-menu__link cascading-menu__link--2 flex ${flexDirection} justify-between w-full`}
                                   >
                                     <span>{thirdLevel.text}</span>
                                     {!thirdLevel.hasSub ? null : (
@@ -228,7 +231,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                                 </Link>
 
                                 {!thirdLevel.hasSub ? null : (
-                                  <ul className="cascading-menu-list cascading-menu-list--3">
+                                  <ul className="cascading-menu__list cascading-menu__list--3">
                                     {thirdLevel.subMenus.map(
                                       (fourthLevel, index) => {
                                         return (
@@ -242,7 +245,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                                             >
                                               <GeneralLink
                                                 className=""
-                                                cssClass="cascading-menu__link cascading-menu__link--3 flex justify-between w-full"
+                                                cssClass={`cascading-menu__link cascading-menu__link--3 flex ${flexDirection} justify-between w-full`}
                                               >
                                                 <span>{fourthLevel.text}</span>
                                               </GeneralLink>
@@ -280,7 +283,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             height: 58px;
             display: flex;
             align-items: center;
-            margin-left: 20px;
+            margin-${leftTR}: 20px;
           }
 
           .cascading-menu > li:before {
@@ -301,7 +304,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
           }
 
           .cascading-menu li:first-child {
-            margin-right: 0px;
+            margin-${rightTL}: 0px;
           }
 
           .cascading-menu li:hover > ul {
@@ -313,12 +316,12 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
           .cascading-menu ul {
             position: absolute;
             top: 100%;
-            right: 0;
+            ${rightTL}: 0;
             visibility: hidden;
             opacity: 0;
             pointer-events: none;
             width: 100%;
-            padding-left: 0px;
+            padding-${leftTR}: 0px;
             background-color: white;
             box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.16);
             transition: all 0.3s;
@@ -327,14 +330,13 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
           }
 
           .cascading-menu ul ul {
-            right: 100%;
+            ${rightTL}: 100%;
             top: 0;
           }
 
           .cascading-menu li ul li {
             padding: 20px;
-            // padding-left: 0;
-            margin-left: 0;
+            margin-${leftTR}: 0;
             transition: all 0.3s;
             border-bottom: 1px solid #d3d7e1;
           }
@@ -342,7 +344,7 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             border: none;
           }
           .cascading-menu li ul li:hover {
-            padding-right: 30px;
+            padding-${rightTL}: 30px;
           }
         `}
       </style>

@@ -5,6 +5,9 @@ export const useDirection = () => {
   const { direction } = designState.pageSettings;
   return {
     flexDirection: direction === 'rtl' ? 'flex-row-reverse' : 'flex-row',
+    dirRtl: direction === 'rtl' ? 'rtl' : 'ltr',
+    rightTL: direction === 'rtl' ? 'right' : 'left',
+    leftTR: direction === 'rtl' ? 'left' : 'right',
     marginRtl: direction === 'rtl' ? 'mr' : 'ml',
     marginLtr: direction === 'rtl' ? 'ml' : 'mr',
     paddingRtl: direction === 'rtl' ? 'pr' : 'pl',

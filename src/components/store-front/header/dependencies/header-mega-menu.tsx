@@ -226,7 +226,7 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
     flexDirection,
     marginLtr,
     marginRtl,
-    absoluteRtl,
+    rightTL,
     textAlign,
   } = useDirection();
   return (
@@ -252,7 +252,7 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
             </GeneralLink>
           </Link>
           <div
-            className={`mega-menu__panel z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
+            className={`mega-menu__panel z-30 absolute top-full ${rightTL}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
           >
             {item.subMenus.map((firstLevel, index) => {
               return (

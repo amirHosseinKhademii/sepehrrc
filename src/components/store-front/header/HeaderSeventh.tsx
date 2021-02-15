@@ -25,7 +25,7 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
       >
         <Link href="./" passHref>
           <GeneralLink
-            className={`cursor-pointer ml-8px  ${
+            className={`cursor-pointer ${marginLtr}-8px  ${
               layout && 'font-bold'
             } fill-current`}
             cssClass="header-actions__sign-link"

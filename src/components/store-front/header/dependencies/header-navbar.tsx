@@ -14,7 +14,7 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
   toggle,
   layout,
 }) => {
-  const { flexDirection } = useDirection();
+  const { flexDirection, paddingLtr, paddingRtl } = useDirection();
   return (
     <ul className={toggle(` navbar flex ${flexDirection} `, className, layout)}>
       {items.map((item, index) => {
@@ -22,7 +22,7 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
           <li
             className={toggle(
               'navbar__item',
-              'pr-0 pl-20px',
+              `${paddingRtl}-0 ${paddingLtr}-20px`,
               index === 0,
               'px-20px'
             )}

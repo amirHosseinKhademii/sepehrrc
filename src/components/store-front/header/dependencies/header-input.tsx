@@ -1,5 +1,6 @@
 import { ICSearch } from 'icons';
 import { GeneralInput } from 'components';
+import { useDirection } from 'hooks';
 import { FC } from 'react';
 export const HeaderInput: FC<IHeaderInput> = ({
   className,
@@ -10,6 +11,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
   toggle,
   style,
 }) => {
+  const { dirRtl, rightTL } = useDirection();
   return (
     <div className="relative ">
       <GeneralInput
@@ -18,10 +20,10 @@ export const HeaderInput: FC<IHeaderInput> = ({
         layout={layout}
         placeholder="جستجو کنید"
         onChange={onChange}
-        style={{ direction: 'rtl' }}
+        style={{ direction: `${dirRtl}` }}
       />
       <ICSearch
-        className="absolute top-16px right-20px fill-current"
+        className={`absolute top-16px ${rightTL}-20px fill-current`}
         onClick={onClick}
         cssClass="header-input__search"
       />

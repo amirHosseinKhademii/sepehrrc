@@ -34,7 +34,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root={`mr-20px`}
+          root={`${marginRtl}-20px`}
           layout={layout}
           cssClass="header-actions__badge"
         >

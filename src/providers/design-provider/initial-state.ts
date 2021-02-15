@@ -75,7 +75,7 @@ export const designInitialState = {
   pageSettings: {
     key: 'main',
     titleFont: 'yekanbakh',
-    direction: 'rtl',
+    direction: 'ltr',
     textFont: 'yekanbakh',
     primary: '#ed1c24',
     theme: 'default',
