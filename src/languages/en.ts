@@ -56,11 +56,11 @@ export const en = {
   HHeader: 'header',
   HMainPage: 'main page',
   HStoreProducts: 'market products',
-  HABoutUs: 'about us',
+  HAboutUs: 'about us',
   HContactUs: 'contact us',
   HSign: 'signin/signup',
   HSearch: 'search',
-  HProductCategories: 'product categories',
+  HProductsCategories: 'product categories',
   //Footer
   FFooter: 'footer',
   FDFooterSettings: 'footer settings',

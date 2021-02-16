@@ -1,20 +1,21 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import { useDirection } from 'hooks';
 import { GeneralLink } from 'components';
-const items = [
-  { text: 'صفحه اصلی', link: './admin/design' },
-  { text: 'محصولات فروشگاه', link: './admin/design' },
-  { text: 'درباره ما', link: './admin/design' },
-  { text: 'تماس باما', link: './admin/design' },
-];
 export const HeaderNavbar: FC<IHeaderNavbar> = ({
   direction = 'horizental',
   className,
   toggle,
   layout,
+  languageText,
 }) => {
   const { flexDirection, paddingLtr, paddingRtl } = useDirection();
+  const items = [
+    { text: `${languageText.HMainPage}`, link: './admin/design' },
+    { text: `${languageText.HStoreProducts}`, link: './admin/design' },
+    { text: `${languageText.HAboutUs}`, link: './admin/design' },
+    { text: `${languageText.HContactUs}`, link: './admin/design' },
+  ];
+
   return (
     <ul className={toggle(` navbar flex ${flexDirection} `, className, layout)}>
       {items.map((item, index) => {
@@ -28,11 +29,9 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
             )}
             key={index}
           >
-            <Link href="/" passHref>
-              <GeneralLink cssClass="navbar__item__link">
-                {item.text}
-              </GeneralLink>
-            </Link>
+            <GeneralLink cssClass="navbar__item__link" href="/">
+              {item.text}
+            </GeneralLink>
           </li>
         );
       })}

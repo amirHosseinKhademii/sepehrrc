@@ -4,6 +4,6 @@ export const useLanguage = () => {
   const { designState } = useDesign();
   const { language } = designState.pageSettings;
   return {
-    text: language === 'farsi' ? fa : en,
+    languageText: language === 'farsi' ? fa : en,
   };
 };
