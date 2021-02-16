@@ -11,11 +11,13 @@ export const LanguageDrop = () => {
       <DropDown
         className="w-full h-54px "
         options={[
-          { id: 'farsi', title: `فارسی` },
-          { id: 'english', title: `English` },
+          { id: 'rtl', title: `فارسی` },
+          { id: 'ltr', title: `English` },
         ]}
-        onSelect={(value) => onPageSetting({ key: 'language', value })}
-        selected={designState.pageSettings && designState.pageSettings.language}
+        onSelect={(value) => onPageSetting({ key: 'direction', value })}
+        selected={
+          designState.pageSettings && designState.pageSettings.direction
+        }
       />
     </div>
   );
