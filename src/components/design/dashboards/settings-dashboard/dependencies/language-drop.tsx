@@ -1,8 +1,8 @@
 import { DropDown, Text } from 'components';
 import { useDesign } from 'hooks';
 export const LanguageDrop = () => {
-  const { designState } = useDesign();
-  const { language } = designState.pageSettings;
+  const { designState, onPageSetting } = useDesign();
+
   return (
     <div className="flex flex-col mt-25px  px-20px">
       <Text className="mb-15px text-14px text-white_shade-100 text-right">
@@ -11,11 +11,11 @@ export const LanguageDrop = () => {
       <DropDown
         className="w-full h-54px "
         options={[
-          { id: 'farsi', title: `farsi` },
-          { id: 'english', title: `englisi` },
+          { id: 'farsi', title: `فارسی` },
+          { id: 'english', title: `English` },
         ]}
-        // onSelect={(language) => onChangeLanguage({ value: language })}
-        selected={language}
+        onSelect={(value) => onPageSetting({ key: 'language', value })}
+        selected={designState.pageSettings && designState.pageSettings.language}
       />
     </div>
   );
