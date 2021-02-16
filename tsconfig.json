@@ -43,7 +43,10 @@
       ],
       "icons/*": [
         "./icons/*"
-      ]
+      ],
+      "languages/*": [
+        "./languages/*"
+      ],
     },
     "strict": false
   },

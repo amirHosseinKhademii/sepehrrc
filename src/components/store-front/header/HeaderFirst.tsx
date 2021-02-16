@@ -7,11 +7,14 @@ import {
 } from './dependencies';
 import { GeneralLink } from 'components';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { useClass, useUi, useDirection } from 'hooks';
+import { useClass, useUi, useDirection, useLanguage } from 'hooks';
 import Link from 'next/link';
 
 const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { uiState } = useUi();
+
+  const { text } = useLanguage();
+  console.log(text, 'text');
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
