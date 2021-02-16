@@ -80,7 +80,7 @@ export const designInitialState = {
     primary: '#ed1c24',
     theme: 'default',
     secondary: '#000',
-    language: 'pr',
+    language: 'farsi',
   },
   current: {
     uuid: '',

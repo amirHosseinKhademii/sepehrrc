@@ -2,7 +2,7 @@ import { DrawerLayout } from 'components';
 import { ButtonGroupDrawer, HeaderDrawer } from '../common';
 import { useDesign } from 'hooks';
 import { useState } from 'react';
-import { ColorSetting, FontSetting } from './dependencies';
+import { ColorSetting, FontSetting, LanguageDrop } from './dependencies';
 
 const SettingsDashboard = () => {
   const { onPageSetting, designState } = useDesign();
@@ -22,6 +22,7 @@ const SettingsDashboard = () => {
       />
       <FontSetting designState={designState} onPageSetting={onPageSetting} />
       <ButtonGroupDrawer />
+      <LanguageDrop />
     </DrawerLayout>
   );
 };
