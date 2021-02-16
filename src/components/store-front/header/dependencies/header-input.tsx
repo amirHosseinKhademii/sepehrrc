@@ -10,6 +10,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
   layout = true,
   toggle,
   style,
+  languageText,
 }) => {
   const { dirRtl, rightTL } = useDirection();
   return (
@@ -18,7 +19,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
         className={className}
         cssClass="header-input"
         layout={layout}
-        placeholder="جستجو کنید"
+        placeholder={`${languageText.HSearch}`}
         onChange={onChange}
         style={{ direction: `${dirRtl}` }}
       />

@@ -9,11 +9,15 @@ import {
 import { ICSearch, ICShoppingCart } from 'icons';
 import { useClass, useDirection } from 'hooks';
 import { Badge, GeneralLink } from 'components';
-import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
+const HeaderSeventh: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+  languageText,
+}) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
@@ -23,44 +27,46 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
       <div
         className={`header-actions flex ${flexDirection} items-center justify-center`}
       >
-        <Link href="./" passHref>
-          <GeneralLink
-            className={`cursor-pointer ${marginLtr}-8px  ${
-              layout && 'font-bold'
-            } fill-current`}
-            cssClass="header-actions__sign-link"
-            layout={layout}
-          >
-            ورود/عضویت در سایت
-          </GeneralLink>
-        </Link>
-        <Link href="./" passHref>
-          <GeneralLink cssClass="header-actions__search-link" layout={layout}>
-            <ICSearch
-              height="20px"
-              width="20px"
-              className="mx-4 fill-current text-20px"
-            />
-          </GeneralLink>
-        </Link>
+        <GeneralLink
+          className={`cursor-pointer ${marginLtr}-8px  ${
+            layout && 'font-bold'
+          } fill-current`}
+          cssClass="header-actions__sign-link"
+          layout={layout}
+          href="./"
+        >
+          {languageText.HSign}
+
+          {/* ورود/عضویت در سایت */}
+        </GeneralLink>
+        <GeneralLink
+          cssClass="header-actions__search-link"
+          layout={layout}
+          href="./"
+        >
+          <ICSearch
+            height="20px"
+            width="20px"
+            className="mx-4 fill-current text-20px"
+          />
+        </GeneralLink>
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="2"
           layout={layout}
           cssClass="header-actions__badge"
         >
-          <Link href="./" passHref>
-            <GeneralLink
-              layout={layout}
-              cssClass="header-actions__shopping-cart-link"
-            >
-              <ICShoppingCart
-                height="20px"
-                width="20px"
-                className="fill-current text-20px "
-              />
-            </GeneralLink>
-          </Link>
+          <GeneralLink
+            href="./"
+            layout={layout}
+            cssClass="header-actions__shopping-cart-link"
+          >
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="fill-current text-20px "
+            />
+          </GeneralLink>
         </Badge>
       </div>
     );
@@ -85,6 +91,7 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
               toggle={toggle}
               layout={layout}
               className="font-bold text-16px"
+              languageText={languageText}
             />
           </div>
           <div

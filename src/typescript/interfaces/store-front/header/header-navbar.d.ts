@@ -4,4 +4,5 @@ interface IHeaderNavbar {
   className?: string;
   toggle: any;
   layout: boolean;
+  languageText?: any;
 }

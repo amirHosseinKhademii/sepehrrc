@@ -11,11 +11,15 @@ import {
 import { ICShoppingCart } from 'icons';
 import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
-import Link from 'next/link';
 
 const logo = '/assets/images/logo.png';
 
-const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
+const HeaderSixth: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+  languageText,
+}) => {
   const { flexDirection, marginRtl, marginLtr } = useDirection();
 
   const { join, toggle } = useClass();
@@ -38,18 +42,17 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
           layout={layout}
           cssClass="header-actions__badge"
         >
-          <Link href="./" passHref>
-            <GeneralLink
-              layout={layout}
-              cssClass="header-actions__shopping-cart-link"
-            >
-              <ICShoppingCart
-                height="20px"
-                width="20px"
-                className="fill-current text-20px"
-              />
-            </GeneralLink>
-          </Link>
+          <GeneralLink
+            href="./"
+            layout={layout}
+            cssClass="header-actions__shopping-cart-link"
+          >
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="fill-current text-20px"
+            />
+          </GeneralLink>
         </Badge>
       </div>
     );
@@ -78,6 +81,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
+              languageText={languageText}
             />
           </div>
           <div
@@ -90,7 +94,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
-                  : 'ورود/عضویت'
+                  : `${languageText.HSign}`
               }
               link={
                 item.settings?.button && item.settings.button?.link
