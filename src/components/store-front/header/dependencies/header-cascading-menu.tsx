@@ -1,6 +1,5 @@
 import { ICAngleDown } from 'icons';
 import { FC } from 'react';
-import Link from 'next/link';
 import { GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
 
@@ -174,21 +173,20 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
       {item.map((firstLevel, index) => {
         return (
           <li key={index} className="cascading-menu__item">
-            <Link href={firstLevel.link || ''} passHref>
-              <GeneralLink
-                className=""
-                cssClass={`cascading-menu__link flex ${flexDirection}  w-full`}
-              >
-                <span className="cascading-menu__text text-16px">
-                  {firstLevel.text}
-                </span>{' '}
-                {!firstLevel.hasSub ? null : (
-                  <ICAngleDown
-                    className={` text-24px  ${marginRtl}-5px fill-current`}
-                  />
-                )}
-              </GeneralLink>
-            </Link>
+            <GeneralLink
+              href={firstLevel.link || ''}
+              className=""
+              cssClass={`cascading-menu__link flex ${flexDirection}  w-full`}
+            >
+              <span className="cascading-menu__text text-16px">
+                {firstLevel.text}
+              </span>{' '}
+              {!firstLevel.hasSub ? null : (
+                <ICAngleDown
+                  className={` text-24px  ${marginRtl}-5px fill-current`}
+                />
+              )}
+            </GeneralLink>
             {!firstLevel.hasSub ? null : (
               <ul
                 className={join(
@@ -202,16 +200,15 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                       key={index}
                       className="cascading-menu__item cascading-menu__item--1"
                     >
-                      <Link href={secondLevel.link || ''} passHref>
-                        <GeneralLink
-                          cssClass={`cascading-menu__link cascading-menu__link--1 flex ${flexDirection} justify-between w-full`}
-                        >
-                          <span>{secondLevel.text}</span>{' '}
-                          {!secondLevel.hasSub ? null : (
-                            <ICAngleDown className=" text-24px  fill-current" />
-                          )}
-                        </GeneralLink>
-                      </Link>
+                      <GeneralLink
+                        href={firstLevel.link || ''}
+                        cssClass={`cascading-menu__link cascading-menu__link--1 flex ${flexDirection} justify-between w-full`}
+                      >
+                        <span>{secondLevel.text}</span>{' '}
+                        {!secondLevel.hasSub ? null : (
+                          <ICAngleDown className=" text-24px  fill-current" />
+                        )}
+                      </GeneralLink>
                       {!secondLevel.hasSub ? null : (
                         <ul className="cascading-menu-list cascading-menu-list--2">
                           {secondLevel.subMenus.map((thirdLevel, index) => {
@@ -220,17 +217,16 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                                 key={index}
                                 className="cascading-menu__item cascading-menu__item--2"
                               >
-                                <Link href={thirdLevel.link || ''} passHref>
-                                  <GeneralLink
-                                    className=""
-                                    cssClass={`cascading-menu__link cascading-menu__link--2 flex ${flexDirection} justify-between w-full`}
-                                  >
-                                    <span>{thirdLevel.text}</span>
-                                    {!thirdLevel.hasSub ? null : (
-                                      <ICAngleDown className=" text-24px  fill-current" />
-                                    )}
-                                  </GeneralLink>
-                                </Link>
+                                <GeneralLink
+                                  href={firstLevel.link || ''}
+                                  className=""
+                                  cssClass={`cascading-menu__link cascading-menu__link--2 flex ${flexDirection} justify-between w-full`}
+                                >
+                                  <span>{thirdLevel.text}</span>
+                                  {!thirdLevel.hasSub ? null : (
+                                    <ICAngleDown className=" text-24px  fill-current" />
+                                  )}
+                                </GeneralLink>
 
                                 {!thirdLevel.hasSub ? null : (
                                   <ul className="cascading-menu__list cascading-menu__list--3">
@@ -241,17 +237,13 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                                             key={index}
                                             className="cascading-menu__item cascading-menu__item--3"
                                           >
-                                            <Link
-                                              href={fourthLevel.link || ''}
-                                              passHref
+                                            <GeneralLink
+                                              href={firstLevel.link || ''}
+                                              className=""
+                                              cssClass={`cascading-menu__link cascading-menu__link--3 flex ${flexDirection} justify-between w-full`}
                                             >
-                                              <GeneralLink
-                                                className=""
-                                                cssClass={`cascading-menu__link cascading-menu__link--3 flex ${flexDirection} justify-between w-full`}
-                                              >
-                                                <span>{fourthLevel.text}</span>
-                                              </GeneralLink>
-                                            </Link>
+                                              <span>{fourthLevel.text}</span>
+                                            </GeneralLink>
                                           </li>
                                         );
                                       }

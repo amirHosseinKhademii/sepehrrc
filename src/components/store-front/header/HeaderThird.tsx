@@ -8,12 +8,17 @@ import {
   HeaderButton,
   HeaderTel,
 } from './dependencies';
-import Link from 'next/link';
 import { ICShoppingCart } from 'icons';
 import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
+import { LanguageDrop } from 'components/design/dashboards/settings-dashboard/dependencies/language-drop';
 
-const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
+const HeaderThird: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+  languageText,
+}) => {
   const { toggle, join } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
 
@@ -26,18 +31,17 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
           layout={layout}
           cssClass="header-actions__badge"
         >
-          <Link href="./" passHref>
-            <GeneralLink
-              cssClass="header-actions__shopping-cart-link"
-              layout={layout}
-            >
-              <ICShoppingCart
-                height="20px"
-                width="20px"
-                className="fill-current text-20px"
-              />
-            </GeneralLink>
-          </Link>
+          <GeneralLink
+            cssClass="header-actions__shopping-cart-link"
+            layout={layout}
+            href="./"
+          >
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="fill-current text-20px"
+            />
+          </GeneralLink>
         </Badge>
       </div>
     );
@@ -65,6 +69,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
+              languageText={languageText}
             />
           </div>
           <div
@@ -78,7 +83,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
-                  : 'ورود/عضویت'
+                  : `${languageText.HSign}`
               }
               link={
                 item.settings?.button && item.settings.button?.link
@@ -106,6 +111,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             toggle={toggle}
             className="font-bold text-16px"
             layout={layout}
+            languageText={languageText}
           />
 
           <HeaderNavbar
@@ -113,6 +119,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             toggle={toggle}
             layout={layout}
             className="font-bold text-16px"
+            languageText={languageText}
           />
         </div>
         <div className={`header__tel-box w-3/12`}>

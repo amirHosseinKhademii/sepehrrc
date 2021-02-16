@@ -11,11 +11,15 @@ import {
 } from './dependencies';
 import { Badge, GeneralLink } from 'components';
 import { ICSearch, ICShoppingCart } from 'icons';
-import Link from 'next/link';
 import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
+const HeaderEighth: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+  languageText,
+}) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
   const { flexDirection, marginLtr } = useDirection();
@@ -25,11 +29,13 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
       <div
         className={`header-actions flex ${flexDirection} items-center justify-center`}
       >
-        <Link href="./" passHref>
-          <GeneralLink cssClass="header-actions__search-link" layout={layout}>
-            <ICSearch className="mx-4 fill-current" />
-          </GeneralLink>
-        </Link>
+        <GeneralLink
+          cssClass="header-actions__search-link"
+          layout={layout}
+          href="./"
+        >
+          <ICSearch className="mx-4 fill-current" />
+        </GeneralLink>
 
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
@@ -37,15 +43,14 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
           layout={true}
           cssClass="header-actions__badge"
         >
-          <Link href="./" passHref>
-            <GeneralLink
-              layout={layout}
-              cssClass="header-actions__shopping-cart-link"
-            >
-              {' '}
-              <ICShoppingCart className="fill-current" />
-            </GeneralLink>
-          </Link>
+          <GeneralLink
+            href="./"
+            layout={layout}
+            cssClass="header-actions__shopping-cart-link"
+          >
+            {' '}
+            <ICShoppingCart className="fill-current" />
+          </GeneralLink>
         </Badge>
       </div>
     );
