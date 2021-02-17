@@ -15,10 +15,10 @@ export const HeaderTel: FC<IHeaderTel> = ({
     <GeneralLink
       href={`tel:+98${item.settings?.tel ? item.settings.tel : '0910000000'}`}
       className={className}
-      cssClass={`header-tel flex ${flexDirection} items-center justify-end  h-full font-iransans`}
+      cssClass={`sep-header-tel flex ${flexDirection} items-center justify-end  h-full font-iransans`}
       layout={layout}
     >
-      <span className="header-tel__number">
+      <span className="sep-header-tel__number">
         {item.settings?.tel ? item.settings.tel : '0910000000'}
       </span>
 
@@ -26,6 +26,7 @@ export const HeaderTel: FC<IHeaderTel> = ({
         height="20px"
         width="20px"
         className={`${marginRtl}-10px fill-current text-20px`}
+        cssClass="sep-header-tel__phone-ic"
       />
     </GeneralLink>
   );

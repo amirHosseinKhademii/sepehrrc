@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   HeaderNavbar,
   HeaderLogo,
@@ -6,6 +6,7 @@ import {
   HeaderLayout,
   HeaderButton,
   HeaderTel,
+  HeaderSearch,
 } from './dependencies';
 import { ICSearch, ICShoppingCart } from 'icons';
 import { Badge, GeneralLink } from 'components';
@@ -16,38 +17,31 @@ const logo = '/assets/images/logo.png';
 const HeaderFifth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const [openSearch, setOpenSearch] = useState(false);
 
   const Actions = () => {
     return (
       <div
-        className={`header-actions flex ${flexDirection} items-center justify-center`}
+        className={`sep-header-actions flex ${flexDirection}  justify-end w-full`}
       >
-        <GeneralLink
-          cssClass="header-actions__search-link"
-          layout={layout}
-          href="./"
-        >
-          <ICSearch
-            height="20px"
-            width="20px"
-            className="mx-4 fill-current text-20px"
-          />
-        </GeneralLink>
+        <HeaderSearch show={openSearch} showHandler={setOpenSearch} />
+
         <Badge
           layout={layout}
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          cssClass="header-actions__badge"
+          cssClass="sep-header-actions__badge"
         >
           <GeneralLink
             layout={layout}
-            cssClass="header-actions__shopping-cart-link"
+            cssClass="sep-header-actions__shopping-cart-link"
             href="./"
           >
             <ICShoppingCart
               height="20px"
               width="20px"
               className="fill-current text-20px"
+              cssClass="sep-header-actions__shopping-cart-ic"
             />
           </GeneralLink>
         </Badge>
@@ -59,29 +53,33 @@ const HeaderFifth: FC<IHeader> = ({ item, layout = true, designState }) => {
       layout={layout}
       toggle={toggle}
       id="headerFifth"
-      cssClass="header--fifth"
+      cssClass="sep-header--fifth"
     >
-      <div className="header__border border-b-2">
+      <div className="sep-header__border border-b-2">
         <div
-          className={`header__row header__row--1 flex ${flexDirection}  w-full h-122px container mx-auto px-20px   `}
+          className={`sep-header__row header__row--1 flex ${flexDirection}  w-full h-122px container mx-auto px-20px   `}
         >
           <div
-            className={`header__logo-box w-2/12  flex ${flexDirection} items-center `}
+            className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center `}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
+          {!openSearch && (
+            <div
+              className={` sep-header__navbar-box w-6/12 flex ${flexDirection} items-center ${marginRtl}-60px `}
+            >
+              <HeaderNavbar
+                direction="horizental"
+                toggle={toggle}
+                layout={layout}
+                className="font-bold text-16px"
+              />
+            </div>
+          )}
           <div
-            className={` header__navbar-box w-6/12 flex ${flexDirection} items-center ${marginRtl}-60px `}
-          >
-            <HeaderNavbar
-              direction="horizental"
-              toggle={toggle}
-              layout={layout}
-              className="font-bold text-16px"
-            />
-          </div>
-          <div
-            className={`header__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
+            className={`sep-header__actions-box  ${
+              openSearch ? 'w-10/12' : 'w-4/12'
+            }  flex ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
@@ -109,15 +107,15 @@ const HeaderFifth: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={`header__row header__row--2 flex ${flexDirection}  w-full   container mx-auto px-20px`}
+        className={`sep-header__row sep-header__row--2 flex ${flexDirection}  w-full   container mx-auto px-20px`}
       >
         <div
-          className={`header__cascading-menu-box w-9/12 flex ${flexDirection}  items-center `}
+          className={`sep-header__cascading-menu-box w-9/12 flex ${flexDirection}  items-center `}
         >
           <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
         <div
-          className={`header__tel-box w-3/12  flex ${flexDirection}  justify-end`}
+          className={`sep-header__tel-box w-3/12  flex ${flexDirection}  justify-end`}
         >
           <HeaderTel
             layout={layout}

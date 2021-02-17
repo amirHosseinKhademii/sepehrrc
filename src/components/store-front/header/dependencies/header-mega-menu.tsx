@@ -232,51 +232,51 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
   return (
     <div
       className={toggle(
-        `mega-menu flex ${flexDirection} items-center justify-center h-full`,
+        `sep-mega-menu flex ${flexDirection} items-center justify-center h-full`,
         className,
         layout
       )}
     >
       <div
-        className={` mega-menu__wrap flex ${flexDirection} ${marginLtr}-30px   `}
+        className={` sep-mega-menu__wrap flex ${flexDirection} ${marginLtr}-30px   `}
       >
         <ICBars className="text-24px fill-current" />
-        <div className={`mega-menu__title-box  ${marginRtl}-5px  `}>
+        <div className={`sep-mega-menu__title-box  ${marginRtl}-5px  `}>
           <GeneralLink
             layout={layout}
             className="title"
-            cssClass={'link--mega-menu'}
+            cssClass={'sep-mega-menu__link'}
             href={item.link}
           >
             {language.HProductsCategories}
           </GeneralLink>
           <div
-            className={`mega-menu__panel z-30 absolute top-full ${rightTL}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
+            className={`sep-mega-menu__panel z-30 absolute top-full ${rightTL}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
           >
             {item.subMenus.map((firstLevel, index) => {
               return (
                 <ul
                   key={index}
-                  className={`w-1/5 flex flex-col ${textAlignRtl} mb-4 mega-menu__list`}
+                  className={`sep-mega-menu__list w-1/5 flex flex-col ${textAlignRtl} mb-4 `}
                 >
-                  <li className={` text-16px mega-menu__list-title `}>
+                  <li className={` text-16px sep-mega-menu__list-title `}>
                     <GeneralLink
-                      cssClass="link--mega-menu-list-title"
+                      cssClass="sep-mega-menu_list-title-link"
                       layout={layout}
                       href={firstLevel.link}
                     >
                       {firstLevel.text}
                     </GeneralLink>
                   </li>
-                  <ul className="mega-menu__list-items">
+                  <ul className="sep-mega-menu__list-items">
                     {firstLevel.subMenus.map((secondLevel, index) => {
                       return (
-                        <li key={index} className="mega-menu__list-item">
+                        <li key={index} className="sep-mega-menu__list-item">
                           <GeneralLink
                             href={secondLevel.link}
                             className="cursor-pointer opacity-80"
                             layout={layout}
-                            cssClass="link--mega-menu-list-item"
+                            cssClass="sep-mega-menu__list-item-link"
                           >
                             {secondLevel.text}
                           </GeneralLink>
@@ -292,14 +292,14 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
       </div>
       <style jsx>
         {`
-          .mega-menu:hover .mega-menu__panel {
+          .sep-mega-menu:hover .mega-menu__panel {
             visibility: visible;
             pointer-events: all;
             opacity: 1;
             transition: all 0.3s;
           }
 
-          .mega-menu__list-title {
+          .sep-mega-menu__list-title {
             color: ${pageSettings.primary ? pageSettings.primary : 'inherit'};
           }
 

@@ -16,19 +16,25 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
   ];
 
   return (
-    <ul className={toggle(` navbar flex ${flexDirection} `, className, layout)}>
+    <ul
+      className={toggle(
+        ` sep-navbar flex ${flexDirection} `,
+        className,
+        layout
+      )}
+    >
       {items.map((item, index) => {
         return (
           <li
             className={toggle(
-              'navbar__item',
+              'sep-navbar__item',
               `${paddingRtl}-0 ${paddingLtr}-20px`,
               index === 0,
               'px-20px'
             )}
             key={index}
           >
-            <GeneralLink cssClass="navbar__item__link" href="/">
+            <GeneralLink cssClass="sep-navbar__item__link" href="/">
               {item.text}
             </GeneralLink>
           </li>

@@ -11,7 +11,6 @@ import {
 import { ICShoppingCart } from 'icons';
 import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
-import { LanguageDrop } from 'components/design/dashboards/settings-dashboard/dependencies/language-drop';
 
 const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { toggle, join } = useClass();
@@ -19,15 +18,15 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
 
   const Actions = () => {
     return (
-      <div className={`header-actions flex ${flexDirection}`}>
+      <div className={`sep-header-actions flex ${flexDirection}`}>
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
           layout={layout}
-          cssClass="header-actions__badge"
+          cssClass="sep-header-actions__badge"
         >
           <GeneralLink
-            cssClass="header-actions__shopping-cart-link"
+            cssClass="sep-header-actions__shopping-cart-link"
             layout={layout}
             href="./"
           >
@@ -35,6 +34,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
               height="20px"
               width="20px"
               className="fill-current text-20px"
+              cssClass="sep-header-actions__shopping-cart-ic"
             />
           </GeneralLink>
         </Badge>
@@ -46,19 +46,19 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
       layout={layout}
       toggle={toggle}
       id="headerThird"
-      cssClass="header--third"
+      cssClass="sep-header--third"
     >
-      <div className="header__border header__border--1 border-2">
+      <div className="sep-header__border sep-header__border--1 border-2">
         <div
-          className={`header__row header__row-1 w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
+          className={`sep-header__row sep-header__row-1 w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
         >
           <div
-            className={`header__logo-box w-1/12  flex ${flexDirection} items-center justify-start `}
+            className={`sep-header__logo-box w-1/12  flex ${flexDirection} items-center justify-start `}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`header__input-box w-8/12 flex  items-center justify-center`}
+            className={`sep-header__input-box w-8/12 flex  items-center justify-center`}
           >
             <HeaderInput
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
@@ -67,7 +67,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             />
           </div>
           <div
-            className={`header__actions-box w-3/12 flex  ${flexDirection} items-center justify-end`}
+            className={`sep-header__actions-box w-3/12 flex  ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
@@ -95,10 +95,10 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={`header__row header__row--2 w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
+        className={`sep-header__row sep-header__row--2 w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
       >
         <div
-          className={`header__menu-box w-9/12 flex  ${flexDirection} items-center `}
+          className={`sep-header__menu-box w-9/12 flex  ${flexDirection} items-center `}
         >
           <HeaderMegaMenu
             designState={designState}
@@ -114,7 +114,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             className="font-bold text-16px"
           />
         </div>
-        <div className={`header__tel-box w-3/12`}>
+        <div className={`sep-header__tel-box w-3/12`}>
           <HeaderTel
             layout={layout}
             className="text-16px font-bold"
