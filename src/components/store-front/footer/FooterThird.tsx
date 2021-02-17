@@ -9,6 +9,7 @@ import {
   FooterNavbar,
   FooterDownloadButton,
 } from './dependencies';
+const enamad = '/assets/images/enamad.png';
 
 const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
   const { uiState } = useUi();
@@ -28,12 +29,12 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
       <div
         className={`footer__row footer__row--3 flex ${flexDirection} w-full h-217px container mx-auto ${container.padding}   `}
       >
-        <div className={`footer__social-tel-box w-6/12 flex flex-col mt-50px `}>
+        <div className={`footer__col-1 w-6/12 flex flex-col mt-30px `}>
           <FooterNavbar
             direction="horizental"
             layout={layout}
             toggle={toggle}
-            className="font-light text-16px mb-40px"
+            className="font-light text-16px "
           />
           <div className={`flex ${flexDirection}`}>
             <FooterSocialMedia
@@ -57,9 +58,17 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
           </div>
         </div>
         <div
-          className={`footer__copy-right-box w-6/12 flex ${flexDirection}  justify-end mt-50px   `}
+          className={`footer__col-2 w-6/12 flex ${flexDirection}  justify-end mt-30px   `}
         >
-          <FooterDownloadButton title="download on the" market="cafebazar" />
+          <img src={enamad} className="h-116px w-107px" />
+          <div className="flex flex-col">
+            <FooterDownloadButton market="cafebazar" isDark={isDark} />
+            <FooterDownloadButton
+              market="googleplay"
+              isDark={isDark}
+              className="mt-18px"
+            />
+          </div>
         </div>
       </div>
       <div
