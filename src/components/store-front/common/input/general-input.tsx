@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 export const GeneralInput: FC<IInput> = ({
   layout = true,
   cssClass = '',
