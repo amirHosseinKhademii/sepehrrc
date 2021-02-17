@@ -54,7 +54,7 @@ const ProductCard: FC<IProductCard> = ({
       </div>
       <ProductButton
         text="افزودن به سبد خرید"
-        className="rounded-50px"
+        className="rounded-50px "
         layout={layout}
         toggle={toggle}
         designState={designState}

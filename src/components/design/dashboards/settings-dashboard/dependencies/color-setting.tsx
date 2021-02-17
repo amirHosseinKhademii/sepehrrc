@@ -6,7 +6,7 @@ export const ColorSetting = ({
   onPageSetting,
   designState,
 }) => {
-  const { marginRtl, textAlignRtl, flexDirection, language } = useDirection();
+  const { marginLtr, textAlignRtl, flexDirection, language } = useDirection();
 
   return (
     <div className="flex flex-col px-20px pt-30px">
@@ -34,7 +34,7 @@ export const ColorSetting = ({
         <div className={`flex ${flexDirection} justify-between mt-20px`}>
           <div className="flex flex-col items-center">
             <Button
-              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
+              className={`h-50px ${marginLtr}-10px text-14px w-130px `}
               style={{ backgroundColor: designState.pageSettings.primary }}
               onClick={() => setColor({ type: 'primary', open: true })}
             >
@@ -47,7 +47,7 @@ export const ColorSetting = ({
           </div>
           <div className="flex flex-col items-center">
             <Button
-              className={`h-50px ${marginRtl}-10px text-14px w-130px `}
+              className={`h-50px ${marginLtr}-10px text-14px w-130px `}
               style={{ backgroundColor: designState.pageSettings.secondary }}
               onClick={() => setColor({ type: 'secondary', open: true })}
             >
