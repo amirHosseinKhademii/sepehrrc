@@ -4,4 +4,5 @@ interface IFooterCopyRight {
   layout: boolean;
   flexDirection?: string;
   isDark: boolean;
+  text?: string;
 }

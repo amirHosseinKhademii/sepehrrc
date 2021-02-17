@@ -8,12 +8,15 @@ export const FooterTel: FC<IFooterTel> = ({
   isDark,
   marginRtl,
   cssClass,
+  settings,
 }) => {
-  const telNumber = '3434545-021';
+  const defaultTelNumber = '3434545-021';
   return (
     <Fragment>
       <div
-        className={`footer-tel flex ${flexDirection} justify-center items-center `}
+        className={`footer-tel flex ${flexDirection} justify-center items-center ${
+          settings.tel ? '' : 'hidden'
+        } `}
       >
         <span
           className={toggle(
@@ -24,7 +27,7 @@ export const FooterTel: FC<IFooterTel> = ({
             layout,
             cssClass
           )}
-        >{`تلفن : ${telNumber}`}</span>
+        >{`تلفن : ${settings.tel ? settings.tel : defaultTelNumber}`}</span>
       </div>
     </Fragment>
   );

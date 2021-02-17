@@ -12,7 +12,8 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
-  const isDark = designState.pageItems.settings?.backgroundColor || false;
+  const isDark = item.settings ? item.settings.dark : false;
+  const settings = item.settings;
 
   return (
     <FooterLayout
@@ -46,6 +47,7 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
             cssClass={`${marginRtl}-23px`}
             isDark={isDark}
             marginRtl={marginRtl}
+            settings={settings}
           />
         </div>
         <div

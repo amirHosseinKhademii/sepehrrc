@@ -16,7 +16,8 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, dirRtl } = useDirection();
-  const isDark = designState.pageItems.settings?.backgroundColor || false;
+  const isDark = item.settings ? item.settings.dark : false;
+  const settings = item.settings;
 
   return (
     <FooterLayout
@@ -29,75 +30,77 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
       <div
         className={`footer__row footer__row--3 flex ${flexDirection} w-full h-344px container mx-auto ${container.padding}   `}
       >
-        <div className={`footer__col-1 w-3/12 flex flex-col mt-30px `}>
+        <div className={`footer__col-1 w-3/12 flex flex-col mt-45px mb-30px `}>
           <FooterSection
             layout={layout}
             toggle={toggle}
             isDark={isDark}
             withDescription
+            withTel
+            withSocial
             title="درباره فروشگاه"
             dir={dirRtl}
             className="text-24px font-medium mb-22px"
-          />
-          {/* <FooterSocialMedia
-            layout={layout}
-            toggle={toggle}
-            className={`h-40px w-40px rounded-full  ${
-              isDark ? 'bg-gray_shade-800' : 'bg-gray_shade-50'
-            }`}
-            isDark={isDark}
             marginRtl={marginRtl}
             marginLtr={marginLtr}
+            settings={settings}
           />
-          <FooterTel
+        </div>
+        <div
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px   `}
+        >
+          <FooterSection
             layout={layout}
             toggle={toggle}
-            flexDirection={flexDirection}
-            className={`font-bold text-16px ${marginRtl}-23px`}
-            cssClass={`${marginRtl}-23px`}
             isDark={isDark}
-          /> */}
+            withNavbar
+            title="دسترسی سریع"
+            dir={dirRtl}
+            className="text-24px font-medium mb-22px"
+            marginRtl={marginRtl}
+            marginLtr={marginLtr}
+            settings={settings}
+          />
         </div>
         <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  justify-end mt-30px   `}
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px  `}
         >
-          <div className="flex flex-col">
-            {/* <FooterDownloadButton market="cafebazar" isDark={isDark} />
-            <FooterDownloadButton
-              market="googleplay"
-              isDark={isDark}
-              className="mt-18px"
-            /> */}
-          </div>
+          <FooterSection
+            layout={layout}
+            toggle={toggle}
+            isDark={isDark}
+            withNavbar
+            title="خدمات مشتریان"
+            dir={dirRtl}
+            className="text-24px font-medium mb-22px"
+            marginRtl={marginRtl}
+            marginLtr={marginLtr}
+            settings={settings}
+          />
         </div>
         <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  justify-end mt-30px   `}
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px   `}
         >
-          <div className="flex flex-col">
-            {/* <FooterDownloadButton market="cafebazar" isDark={isDark} />
-            <FooterDownloadButton
-              market="googleplay"
-              isDark={isDark}
-              className="mt-18px"
-            /> */}
-          </div>
-        </div>
-        <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  justify-end mt-30px   `}
-        >
-          <div className="flex flex-col">
-            {/* <FooterDownloadButton market="cafebazar" isDark={isDark} />
-            <FooterDownloadButton
-              market="googleplay"
-              isDark={isDark}
-              className="mt-18px"
-            /> */}
-          </div>
+          <FooterSection
+            layout={layout}
+            toggle={toggle}
+            isDark={isDark}
+            withCertificate
+            title="نماد اعتماد"
+            dir={dirRtl}
+            className={`text-24px font-medium mb-22px ${
+              !settings?.trust ? 'hidden' : ''
+            }`}
+            marginRtl={marginRtl}
+            marginLtr={marginLtr}
+            settings={settings}
+          />
         </div>
       </div>
       <div
-        style={{ borderTopWidth: '1px' }}
-        className="footer__nav-bottom border-white_shade-400"
+        className={`footer__nav-bottom border ${
+          isDark ? 'border-gray-800' : 'border-white_shade-400'
+        }`}
       >
         <div
           className={`footer__nav-bottom--container flex ${flexDirection} w-full h-112px container mx-auto ${container.padding} border-t-1 `}
@@ -111,6 +114,7 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
               flexDirection={flexDirection}
               className="font-bold"
               isDark={isDark}
+              text={settings.copyRight}
             />
           </div>
           <div

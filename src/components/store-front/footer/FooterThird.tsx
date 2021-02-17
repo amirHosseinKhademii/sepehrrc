@@ -16,7 +16,8 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
-  const isDark = designState.pageItems.settings?.backgroundColor || false;
+  const isDark = item.settings ? item.settings.dark : false;
+  const settings = item.settings;
 
   return (
     <FooterLayout
@@ -34,9 +35,10 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
             direction="horizental"
             layout={layout}
             toggle={toggle}
-            className="font-light text-16px "
+            className="font-light text-16px"
+            isDark={isDark}
           />
-          <div className={`flex ${flexDirection}`}>
+          <div className={`flex ${flexDirection} `}>
             <FooterSocialMedia
               layout={layout}
               toggle={toggle}
@@ -46,6 +48,7 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
               isDark={isDark}
               marginRtl={marginRtl}
               marginLtr={marginLtr}
+              settings={settings}
             />
             <FooterTel
               layout={layout}
@@ -54,26 +57,38 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
               className={`font-bold text-16px ${marginRtl}-23px`}
               cssClass={`${marginRtl}-23px`}
               isDark={isDark}
+              settings={settings}
             />
           </div>
         </div>
         <div
           className={`footer__col-2 w-6/12 flex ${flexDirection}  justify-end mt-30px   `}
         >
-          <img src={enamad} className="h-116px w-107px" />
+          <img
+            src={enamad}
+            className={`h-116px w-107px bg-white rounded ml-19px ${
+              !settings.trust ? 'hidden' : ''
+            } ${isDark ? 'p-10px' : ''}`}
+          />
           <div className="flex flex-col">
-            <FooterDownloadButton market="cafebazar" isDark={isDark} />
+            <FooterDownloadButton
+              market="cafebazar"
+              isDark={isDark}
+              settings={settings}
+            />
             <FooterDownloadButton
               market="googleplay"
               isDark={isDark}
               className="mt-18px"
+              settings={settings}
             />
           </div>
         </div>
       </div>
       <div
-        style={{ borderTopWidth: '1px' }}
-        className="footer__nav-bottom border-white_shade-400"
+        className={`footer__nav-bottom border ${
+          isDark ? 'border-gray-800' : 'border-white_shade-400'
+        }`}
       >
         <div
           className={`footer__nav-bottom--container flex ${flexDirection} w-full h-112px container mx-auto ${container.padding} border-t-1 `}
@@ -87,6 +102,7 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
               flexDirection={flexDirection}
               className="font-bold"
               isDark={isDark}
+              text={settings.copyRight}
             />
           </div>
           <div

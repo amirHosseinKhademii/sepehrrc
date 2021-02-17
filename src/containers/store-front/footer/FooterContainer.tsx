@@ -42,7 +42,7 @@ const FooterContainer = () => {
         );
       default:
         return (
-          <FooterThird item={item} layout={layout} designState={designState} />
+          <FooterFourth item={item} layout={layout} designState={designState} />
         );
     }
   };
@@ -58,7 +58,7 @@ const FooterContainer = () => {
       }
       item={item}
     >
-      <div className="absolute bottom-0 w-full">
+      <div className="w-full">
         <Footers item={item} layout={layout} designState={designState} />
       </div>
     </GeneralLayout>

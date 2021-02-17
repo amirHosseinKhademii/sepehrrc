@@ -10,11 +10,14 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
   isDark,
   marginLtr,
   marginRtl,
+  settings,
 }) => {
   return (
     <Fragment>
       <GeneralLink
-        cssClass={`footer-social__icon-box flex justify-center items-center ${marginLtr}-9px`}
+        cssClass={`footer-social__icon-box flex justify-center items-center ${marginLtr}-9px ${
+          !settings?.social ? 'hidden' : settings.instagram ? '' : 'hidden'
+        }`}
         layout={layout}
         className={className}
         href="#"
@@ -30,7 +33,9 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
         />
       </GeneralLink>
       <GeneralLink
-        cssClass="footer-social__icon-box flex justify-center items-center"
+        cssClass={`footer-social__icon-box flex justify-center items-center ${
+          !settings?.social ? 'hidden' : settings.telegram ? '' : 'hidden'
+        }`}
         layout={layout}
         className={className}
         href="#"
@@ -46,7 +51,9 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
         />
       </GeneralLink>
       <GeneralLink
-        cssClass={`footer-social__icon-box flex justify-center items-center ${marginRtl}-9px`}
+        cssClass={`footer-social__icon-box flex justify-center items-center ${marginRtl}-9px ${
+          !settings?.social ? 'hidden' : settings.whatsapp ? '' : 'hidden'
+        }`}
         layout={layout}
         className={className}
         href="#"

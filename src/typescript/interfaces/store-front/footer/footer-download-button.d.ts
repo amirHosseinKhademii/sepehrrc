@@ -3,4 +3,5 @@ interface IFooterDownloadButton {
   isDark?: boolean;
   toggle?: any;
   className?: string;
+  settings?: Array;
 }

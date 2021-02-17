@@ -35,10 +35,10 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
       className={join(
         join(className, visibility),
         toggle(
-          `generalLayout  ${
-            item.type !== 'header' ? 'py-25px' : ''
+          `generalLayout ${
+            item.type == 'header' || item.type == 'footer' ? '' : 'py-25px'
           } w-full bg-no-repeat font-iransans `,
-          'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
+          `relative py-25px  border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700 `,
           active
         )
       )}

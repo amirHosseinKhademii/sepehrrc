@@ -14,7 +14,8 @@ const FooterSecond: FC<IFooter> = ({ item, layout = true, designState }) => {
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
-  const isDark = designState.pageItems.settings?.backgroundColor || false;
+  const isDark = item.settings ? item.settings.dark : false;
+  const settings = item.settings;
 
   return (
     <FooterLayout
@@ -35,6 +36,7 @@ const FooterSecond: FC<IFooter> = ({ item, layout = true, designState }) => {
             layout={layout}
             toggle={toggle}
             className="font-light text-16px"
+            isDark={isDark}
           />
         </div>
         <div
@@ -47,6 +49,7 @@ const FooterSecond: FC<IFooter> = ({ item, layout = true, designState }) => {
             className={`font-bold text-16px ${marginLtr}-23px`}
             cssClass={`${marginLtr}-23px`}
             isDark={isDark}
+            settings={settings}
           />
           <FooterSocialMedia
             layout={layout}
@@ -57,12 +60,14 @@ const FooterSecond: FC<IFooter> = ({ item, layout = true, designState }) => {
             isDark={isDark}
             marginRtl={marginRtl}
             marginLtr={marginLtr}
+            settings={settings}
           />
         </div>
       </div>
       <div
-        style={{ borderTopWidth: '1px' }}
-        className="footer__nav-bottom border-white_shade-400"
+        className={`footer__nav-bottom border ${
+          isDark ? 'border-gray-800' : 'border-white_shade-400'
+        }`}
       >
         <div
           className={`footer__nav-bottom--container flex ${flexDirection} w-full h-72px container mx-auto ${container.padding} border-t-1 `}
@@ -76,6 +81,7 @@ const FooterSecond: FC<IFooter> = ({ item, layout = true, designState }) => {
               flexDirection={flexDirection}
               className="font-bold"
               isDark={isDark}
+              text={settings.copyRight}
             />
           </div>
           <div

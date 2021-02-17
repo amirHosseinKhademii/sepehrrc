@@ -4,4 +4,5 @@ interface IFooterNavbar {
   className?: string;
   toggle: any;
   layout: boolean;
+  isDark?: boolean;
 }
