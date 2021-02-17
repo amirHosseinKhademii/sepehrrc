@@ -7,50 +7,55 @@ import {
 } from './dependencies';
 import { GeneralLink } from 'components';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { useClass, useUi, useDirection } from 'hooks';
-import Link from 'next/link';
+import { useClass, useUi, useDirection, useLanguage } from 'hooks';
 
-const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
+const HeaderFirst: FC<IHeader> = ({
+  item,
+  layout = true,
+  designState,
+  languageText,
+}) => {
   const { uiState } = useUi();
+
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr } = useDirection();
   const Actions = () => {
     return (
       <div className={`header-actions flex ${flexDirection}`}>
-        <Link href="/" passHref>
-          <GeneralLink cssClass="header-actions__search-link" layout={layout}>
-            <ICSearch
-              height="20px"
-              width="20px"
-              className="mx-2 fill-current text-20px"
-            />
-          </GeneralLink>
-        </Link>
-        <Link href="/" passHref>
-          <GeneralLink
-            layout={layout}
-            cssClass="header-actions__shopping-cart-link"
-          >
-            <ICShoppingCart
-              height="20px"
-              width="20px"
-              className="mx-2 fill-current text-20px"
-            />{' '}
-          </GeneralLink>
-        </Link>
-        <Link href="/" passHref>
-          <GeneralLink
-            layout={layout}
-            cssClass="header-actions__users-alt-link"
-          >
-            <ICUsersAlt
-              height="20px"
-              width="20px"
-              className={`${marginRtl}-2  fill-current text-20px`}
-            />
-          </GeneralLink>
-        </Link>
+        <GeneralLink
+          cssClass="header-actions__search-link"
+          layout={layout}
+          href="/"
+        >
+          <ICSearch
+            height="20px"
+            width="20px"
+            className="mx-2 fill-current text-20px"
+          />
+        </GeneralLink>
+        <GeneralLink
+          layout={layout}
+          cssClass="header-actions__shopping-cart-link"
+          href="/"
+        >
+          <ICShoppingCart
+            height="20px"
+            width="20px"
+            className="mx-2 fill-current text-20px"
+          />{' '}
+        </GeneralLink>
+        <GeneralLink
+          layout={layout}
+          cssClass="header-actions__users-alt-link"
+          href="/"
+        >
+          <ICUsersAlt
+            height="20px"
+            width="20px"
+            className={`${marginRtl}-2  fill-current text-20px`}
+          />
+        </GeneralLink>
       </div>
     );
   };
@@ -78,6 +83,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
             direction="horizental"
             toggle={toggle}
             layout={layout}
+            languageText={languageText}
           />
         </div>
         <div
@@ -91,7 +97,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
             text={
               item.settings?.button && item.settings.button?.text
                 ? item.settings.button.text
-                : 'محصولات فروشگاه'
+                : `${languageText.HStoreProducts}`
             }
             link={
               item.settings?.button && item.settings.button?.link

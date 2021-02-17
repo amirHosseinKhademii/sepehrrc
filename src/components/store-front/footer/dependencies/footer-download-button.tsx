@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SVGCafeBazar, SVGGooglePlay } from 'svgs';
+import { ICCafeBazar, ICGooglePlay } from 'icons';
 export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
   market,
   isDark,
@@ -8,22 +8,22 @@ export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
   const CafeBazar = () => {
     switch (isDark) {
       case true:
-        return <SVGCafeBazar fill="#d3d7e1" />;
+        return <ICCafeBazar fill="#d3d7e1" />;
       case false:
-        return <SVGCafeBazar fill="#1a191d" />;
+        return <ICCafeBazar fill="#1a191d" />;
       default:
-        return <SVGCafeBazar fill="#1a191d" />;
+        return <ICCafeBazar fill="#1a191d" />;
         break;
     }
   };
   const GooglePlay = () => {
     switch (isDark) {
       case true:
-        return <SVGGooglePlay fill="#d3d7e1" />;
+        return <ICGooglePlay fill="#d3d7e1" />;
       case false:
-        return <SVGGooglePlay fill="#1a191d" />;
+        return <ICGooglePlay fill="#1a191d" />;
       default:
-        return <SVGGooglePlay fill="#1a191d" />;
+        return <ICGooglePlay fill="#1a191d" />;
         break;
     }
   };

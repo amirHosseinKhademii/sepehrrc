@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export const SVGGooglePlay: FC<ISvg> = ({
+export const ICGooglePlay: FC<ISvg> = ({
   className,
   onClick,
   height,

@@ -26,7 +26,7 @@
       "providers/*": ["./providers/*"],
       "utils/*": ["./utils/*"],
       "icons/*": ["./icons/*"],
-      "svgs/*": ["./svgs/*"]
+      "languages/*": ["./languages/*"]
     },
     "strict": false
   },

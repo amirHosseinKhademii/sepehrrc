@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export const SVGCafeBazar: FC<ISvg> = ({
+export const ICCafeBazar: FC<ISvg> = ({
   className,
   onClick,
   height,

@@ -6,4 +6,5 @@ interface IHeaderInput {
   cssAlt?: string;
   toggle: any;
   style?: any;
+  languageText?: any;
 }

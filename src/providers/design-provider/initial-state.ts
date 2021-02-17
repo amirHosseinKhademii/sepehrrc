@@ -75,12 +75,12 @@ export const designInitialState = {
   pageSettings: {
     key: 'main',
     titleFont: 'yekanbakh',
-    direction: 'rtl',
+    direction: 'ltr',
     textFont: 'yekanbakh',
     primary: '#ed1c24',
     theme: 'default',
     secondary: '#000',
-    language: 'pr',
+    language: 'persian',
   },
   current: {
     uuid: '',

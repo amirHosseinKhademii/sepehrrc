@@ -1,4 +1,4 @@
-import { Input, Switch } from 'components';
+import { Input, Switch, Text } from 'components';
 import {
   BackgroundColor,
   ButtonDrawer,
@@ -83,30 +83,61 @@ const BaseSettings = ({ setSetting, settings }) => {
           className="mb-30px"
         />
       )}
-      <Switch
+      <Text className="text-white_shade-100 text-14px">رنگ بندی فوتر</Text>
+      <div className="w-full rounded h-54px mt-14px mb-30px bg-gray_shade-800 flex items-center justify-between">
+        <div
+          className={` w-1/2  flex items-center justify-center h-full border-r rounded-l border-gray_shade-900 cursor-pointer ${
+            settings.dark && 'bg-primary-800'
+          }`}
+          onClick={() => setSetting({ dark: true })}
+        >
+          <Text
+            className={`text-14px ${
+              settings.dark ? 'text-white_shade-100' : 'text-gray_shade-300'
+            }`}
+          >
+            تیره
+          </Text>
+        </div>
+        <div
+          className={` w-1/2  flex items-center justify-center h-full rounded-r cursor-pointer  ${
+            !settings.dark && 'bg-primary-800'
+          }`}
+          onClick={() => setSetting({ dark: false })}
+        >
+          <Text
+            className={`text-14px ${
+              !settings.dark ? 'text-white_shade-100' : 'text-gray_shade-300'
+            }`}
+          >
+            روشن
+          </Text>
+        </div>
+      </div>
+      {/* <Switch
         className="mb-14px"
         label="توصیر زمینه"
         onClick={() =>
           setSetting({ backgroundImage: !settings.backgroundImage })
         }
         checked={settings.backgroundImage}
-      />
-      {settings.backgroundImage && (
+      /> */}
+      {/*settings.backgroundImage && (
         <GenericUploader isBackground className="mb-30px" />
-      )}
+      )*/}
 
-      <Switch
+      {/* <Switch
         label="رنگ زمینه"
         className=" mb-14px"
         onClick={() =>
           setSetting({ backgroundColor: !settings.backgroundColor })
         }
         checked={settings.backgroundColor}
-      />
-      {settings.backgroundColor !== undefined &&
+      /> */}
+      {/*settings.backgroundColor !== undefined &&
         settings.backgroundColor !== false && (
           <BackgroundColor className="mb-30px" />
-        )}
+        )*/}
       <ResponsiveSwitchs className="mt-0px" />
     </div>
   );
