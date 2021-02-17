@@ -5,4 +5,5 @@ interface IFooterSocialMedia {
   isDark: boolean;
   marginLtr?: string;
   marginRtl?: string;
+  settings?: Array;
 }

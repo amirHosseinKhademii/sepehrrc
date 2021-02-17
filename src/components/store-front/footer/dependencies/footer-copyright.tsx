@@ -7,6 +7,7 @@ export const FooterCopyRight: FC<IFooterCopyRight> = ({
   toggle,
   flexDirection,
   isDark,
+  text,
 }) => {
   return (
     <Fragment>
@@ -18,8 +19,9 @@ export const FooterCopyRight: FC<IFooterCopyRight> = ({
             isDark ? 'text-gray_shade-200' : 'text-gray_shade-800'
           } ml-5px`}
         >
-          ©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر
-          است. 1399
+          {text
+            ? text
+            : '©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر است. 1399'}
         </span>
       </div>
     </Fragment>

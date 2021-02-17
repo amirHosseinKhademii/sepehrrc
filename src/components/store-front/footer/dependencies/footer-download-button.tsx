@@ -4,6 +4,7 @@ export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
   market,
   isDark,
   className,
+  settings,
 }) => {
   const CafeBazar = () => {
     switch (isDark) {
@@ -29,11 +30,11 @@ export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
   };
 
   return market === 'cafebazar' ? (
-    <div className={`${className}`}>
+    <div className={`${className} ${!settings.mobileApp ? 'hidden' : ''}`}>
       <CafeBazar />
     </div>
   ) : (
-    <div className={`${className}`}>
+    <div className={`${className} ${!settings.mobileApp ? 'hidden' : ''}`}>
       <GooglePlay />
     </div>
   );

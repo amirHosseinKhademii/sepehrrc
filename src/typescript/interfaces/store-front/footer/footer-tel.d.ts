@@ -6,4 +6,5 @@ interface IFooterTel {
   isDark: boolean;
   marginRtl?: string;
   cssClass?: string;
+  settings?: Array;
 }

@@ -16,7 +16,7 @@ export const StoreFrontDesignContainer = memo(() => {
 
   return (
     <Fragment>
-      <HeaderContainer />
+      {/* <HeaderContainer /> */}
       <Container
         groupName="ADMIN_DESIGN"
         dragClass="bg-red-600"
@@ -42,7 +42,7 @@ export const StoreFrontDesignContainer = memo(() => {
           </Fragment>
         ))}
       </Container>
-      <FooterContainer />
+      {/* <FooterContainer /> */}
     </Fragment>
   );
 });
