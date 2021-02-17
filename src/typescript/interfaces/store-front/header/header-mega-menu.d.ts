@@ -3,5 +3,4 @@ interface IHeaderMegaMenu {
   layout: boolean;
   className?: string;
   toggle?: any;
-  languageText?: any;
 }

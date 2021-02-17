@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { useDesign, useUi, useLanguage } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 import { GeneralLayout } from 'components';
 
 const HeaderFirst = dynamic(
@@ -30,7 +30,6 @@ const HeaderEighth = dynamic(
 const HeaderContainer = () => {
   const { uiState } = useUi();
   const { designState } = useDesign();
-  const { languageText } = useLanguage();
   const { theme } = designState.pageSettings;
   const layout = theme === 'default' ? true : false;
   const item = designState.pageItems.find((item) => item.uuid === 'HEADER');
@@ -39,57 +38,27 @@ const HeaderContainer = () => {
     switch (item.settings.style) {
       case 'first':
         return (
-          <HeaderFirst
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderFirst item={item} layout={layout} designState={designState} />
         );
       case 'second':
         return (
-          <HeaderSecond
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderSecond item={item} layout={layout} designState={designState} />
         );
       case 'third':
         return (
-          <HeaderThird
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderThird item={item} layout={layout} designState={designState} />
         );
       case 'fourth':
         return (
-          <HeaderFourth
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderFourth item={item} layout={layout} designState={designState} />
         );
       case 'fifth':
         return (
-          <HeaderFifth
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderFifth item={item} layout={layout} designState={designState} />
         );
       case 'sixth':
         return (
-          <HeaderSixth
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderSixth item={item} layout={layout} designState={designState} />
         );
       case 'seventh':
         return (
@@ -97,26 +66,15 @@ const HeaderContainer = () => {
             item={item}
             layout={layout}
             designState={designState}
-            languageText={languageText}
           />
         );
       case 'eighth':
         return (
-          <HeaderEighth
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderEighth item={item} layout={layout} designState={designState} />
         );
       default:
         return (
-          <HeaderFirst
-            item={item}
-            layout={layout}
-            designState={designState}
-            languageText={languageText}
-          />
+          <HeaderFirst item={item} layout={layout} designState={designState} />
         );
     }
   };

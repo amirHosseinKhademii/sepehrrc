@@ -5,7 +5,7 @@ export const useDirection = () => {
   const { designState } = useDesign();
   const { direction, language } = designState.pageSettings;
   return {
-    language: language === 'rtl' ? fa : en,
+    language: direction === 'rtl' ? fa : en,
     flexDirection: direction === 'rtl' ? 'flex-row-reverse' : 'flex-row',
     dirRtl: direction === 'rtl' ? 'rtl' : 'ltr',
     dirLtr: direction === 'rtl' ? 'ltr' : 'rtl',

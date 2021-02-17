@@ -13,14 +13,9 @@ import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
 import { LanguageDrop } from 'components/design/dashboards/settings-dashboard/dependencies/language-drop';
 
-const HeaderThird: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-  languageText,
-}) => {
+const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { toggle, join } = useClass();
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
 
   const Actions = () => {
     return (
@@ -69,7 +64,6 @@ const HeaderThird: FC<IHeader> = ({
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
-              languageText={languageText}
             />
           </div>
           <div
@@ -83,7 +77,7 @@ const HeaderThird: FC<IHeader> = ({
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
-                  : `${languageText.HSign}`
+                  : `${language.HSign}`
               }
               link={
                 item.settings?.button && item.settings.button?.link
@@ -111,7 +105,6 @@ const HeaderThird: FC<IHeader> = ({
             toggle={toggle}
             className="font-bold text-16px"
             layout={layout}
-            languageText={languageText}
           />
 
           <HeaderNavbar
@@ -119,7 +112,6 @@ const HeaderThird: FC<IHeader> = ({
             toggle={toggle}
             layout={layout}
             className="font-bold text-16px"
-            languageText={languageText}
           />
         </div>
         <div className={`header__tel-box w-3/12`}>

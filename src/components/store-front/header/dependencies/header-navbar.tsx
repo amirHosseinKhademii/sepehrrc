@@ -6,14 +6,13 @@ export const HeaderNavbar: FC<IHeaderNavbar> = ({
   className,
   toggle,
   layout,
-  languageText,
 }) => {
-  const { flexDirection, paddingLtr, paddingRtl } = useDirection();
+  const { flexDirection, paddingLtr, paddingRtl, language } = useDirection();
   const items = [
-    { text: `${languageText.HMainPage}`, link: './admin/design' },
-    { text: `${languageText.HStoreProducts}`, link: './admin/design' },
-    { text: `${languageText.HAboutUs}`, link: './admin/design' },
-    { text: `${languageText.HContactUs}`, link: './admin/design' },
+    { text: `${language.HMainPage}`, link: './admin/design' },
+    { text: `${language.HStoreProducts}`, link: './admin/design' },
+    { text: `${language.HAboutUs}`, link: './admin/design' },
+    { text: `${language.HContactUs}`, link: './admin/design' },
   ];
 
   return (

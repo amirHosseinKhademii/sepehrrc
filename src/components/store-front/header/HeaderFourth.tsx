@@ -15,14 +15,9 @@ import { useClass, useDirection } from 'hooks';
 
 const logo = '/assets/images/logo.png';
 
-const HeaderFourth: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-  languageText,
-}) => {
+const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { join, toggle } = useClass();
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
 
   const Actions = () => {
     return (
@@ -82,7 +77,6 @@ const HeaderFourth: FC<IHeader> = ({
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
-              languageText={languageText}
             />
           </div>
           <div
@@ -95,7 +89,7 @@ const HeaderFourth: FC<IHeader> = ({
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
-                  : `${languageText.HSign}`
+                  : `${language.HSign}`
               }
               link={
                 item.settings?.button && item.settings.button?.link
@@ -124,7 +118,6 @@ const HeaderFourth: FC<IHeader> = ({
             toggle={toggle}
             className="font-bold text-16px"
             layout={layout}
-            languageText={languageText}
           />
 
           <HeaderNavbar
@@ -132,7 +125,6 @@ const HeaderFourth: FC<IHeader> = ({
             toggle={toggle}
             layout={layout}
             className="font-bold text-16px"
-            languageText={languageText}
           />
         </div>
         <div

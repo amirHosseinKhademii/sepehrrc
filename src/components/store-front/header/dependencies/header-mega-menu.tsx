@@ -219,7 +219,6 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
   layout,
   toggle,
   className,
-  languageText,
 }) => {
   const { pageSettings } = designState;
   const {
@@ -228,6 +227,7 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
     marginRtl,
     rightTL,
     textAlignRtl,
+    language,
   } = useDirection();
   return (
     <div
@@ -248,7 +248,7 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
             cssClass={'link--mega-menu'}
             href={item.link}
           >
-            {languageText.HProductsCategories}
+            {language.HProductsCategories}
           </GeneralLink>
           <div
             className={`mega-menu__panel z-30 absolute top-full ${rightTL}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}

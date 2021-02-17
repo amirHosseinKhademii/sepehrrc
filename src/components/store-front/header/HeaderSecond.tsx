@@ -5,9 +5,9 @@ import { Badge, GeneralLink } from 'components';
 import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-const HeaderSecond: FC<IHeader> = ({ item, layout = true, languageText }) => {
+const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
   const { join, toggle } = useClass();
-  const { flexDirection, marginLtr } = useDirection();
+  const { flexDirection, marginLtr, language } = useDirection();
 
   const Actions = () => {
     return (
@@ -18,7 +18,7 @@ const HeaderSecond: FC<IHeader> = ({ item, layout = true, languageText }) => {
           layout={layout}
           href="./"
         >
-          {languageText.HSign}
+          {language.HSign}
           {/* ورود/عضویت در سایت */}
         </GeneralLink>
         <GeneralLink
@@ -71,7 +71,6 @@ const HeaderSecond: FC<IHeader> = ({ item, layout = true, languageText }) => {
             layout={layout}
             direction="horizental"
             toggle={toggle}
-            languageText={languageText}
           />
         </div>
         <div

@@ -10,16 +10,15 @@ export const HeaderInput: FC<IHeaderInput> = ({
   layout = true,
   toggle,
   style,
-  languageText,
 }) => {
-  const { dirRtl, rightTL } = useDirection();
+  const { dirRtl, rightTL, language } = useDirection();
   return (
     <div className="relative ">
       <GeneralInput
         className={className}
         cssClass="header-input"
         layout={layout}
-        placeholder={`${languageText.HSearch}`}
+        placeholder={`${language.HSearch}`}
         onChange={onChange}
         style={{ direction: `${dirRtl}` }}
       />
