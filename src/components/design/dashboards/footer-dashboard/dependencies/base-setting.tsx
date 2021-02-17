@@ -41,6 +41,7 @@ const BaseSettings = ({ setSetting, settings }) => {
       {settings.tel && (
         <Input
           variant="input"
+          withNumber
           className="mb-30px text-center"
           onBlur={(e) => setSetting({ tel: e.target.value })}
           placeholder={settings.tel !== true ? settings.tel : ' 021-23456789'}
