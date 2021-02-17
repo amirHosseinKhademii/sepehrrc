@@ -15,7 +15,8 @@ export const GeneralLink: React.FC<ILink> = React.forwardRef(
           className={toggle(
             ` link ${cssClass ? cssClass : ''} cursor-pointer`,
             className,
-            layout
+            layout,
+            ''
           )}
           onClick={onClick}
           href={href}

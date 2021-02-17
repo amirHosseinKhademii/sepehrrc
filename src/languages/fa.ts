@@ -66,6 +66,8 @@ export const fa = {
   HContactUs: 'تماس با ما',
   HSign: 'وروود/عضویت',
   HSearch: 'جستجو کنید ',
+  HSearchPlaceholder: 'عبارت مورد نظرخود را اینجا وارد کنید +اینتر',
+
   HProductsCategories: 'دسته بندی محصولات',
   //Footer
   FFooter: 'فوتر',

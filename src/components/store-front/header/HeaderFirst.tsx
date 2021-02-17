@@ -7,24 +7,25 @@ import {
   HeaderSearch,
 } from './dependencies';
 import { GeneralLink } from 'components';
-import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
+import { ICShoppingCart, ICUsersAlt } from 'icons';
 import { useClass, useUi, useDirection } from 'hooks';
 
 const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
-  const [openSearch, setOpenearch] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
   const { uiState } = useUi();
-
   const { container } = uiState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
   const Actions = () => {
     return (
-      <div className={`header-actions flex ${flexDirection} w-full `}>
-        <HeaderSearch show={openSearch} showHandler={setOpenearch} />
+      <div
+        className={`sep-header-actions flex ${flexDirection} w-full justify-end `}
+      >
+        <HeaderSearch show={openSearch} showHandler={setOpenSearch} />
 
         <GeneralLink
           layout={layout}
-          cssClass="header-actions__shopping-cart-link"
+          cssClass="sep-header-actions__shopping-cart-link"
           href="/"
         >
           <ICShoppingCart
@@ -35,7 +36,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
         </GeneralLink>
         <GeneralLink
           layout={layout}
-          cssClass="header-actions__users-alt-link"
+          cssClass="sep-header-actions__users-alt-link"
           href="/"
         >
           <ICUsersAlt
@@ -53,19 +54,19 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
       layout={layout}
       toggle={toggle}
       id="headerFirst"
-      cssClass="header--first"
+      cssClass="sep-header--first"
     >
       <div
-        className={`header__row header__row--1 flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
+        className={`sep-header__row sep-header__row--1 flex ${flexDirection} w-full h-122px container mx-auto ${container.padding}   `}
       >
         <div
-          className={`header__logo-box w-2/12 ${flexDirection} flex items-center justify-start`}
+          className={`sep-header__logo-box w-2/12 ${flexDirection} flex items-center justify-start`}
         >
           <HeaderLogo src={item.images} layout={layout} join={join} />
         </div>
         {!openSearch && (
           <div
-            className={`header__navbar-box w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
+            className={`sep-header__navbar-box w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
           >
             <HeaderNavbar
               className="font-bold text-16px"
@@ -76,9 +77,9 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
           </div>
         )}{' '}
         <div
-          className={`header__actions-box ${
-            openSearch ? 'w-10/12' : 'w-3/12'
-          } flex ${flexDirection}  items-center justify-end `}
+          className={`sep-header__actions-box 
+          ${openSearch ? 'w-10/12' : 'w-3/12'} 
+          flex ${flexDirection}  items-center justify-end `}
         >
           <Actions />
 

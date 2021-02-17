@@ -169,28 +169,34 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
 
   const { pageSettings } = designState;
   return (
-    <ul className={`cascading-menu flex ${flexDirection} flex-wrap font-bold`}>
+    <ul
+      className={`sep-cascading-menu flex ${flexDirection} flex-wrap font-bold`}
+    >
       {item.map((firstLevel, index) => {
         return (
-          <li key={index} className="cascading-menu__item">
+          <li
+            key={index}
+            className="sep-cascading-menu__item sep-cascading-menu__item--1 "
+          >
             <GeneralLink
               href={firstLevel.link || ''}
               className=""
-              cssClass={`cascading-menu__link flex ${flexDirection}  w-full`}
+              cssClass={`sep-cascading-menu__link sep-cascading-menu__link--1 flex ${flexDirection}  w-full`}
             >
-              <span className="cascading-menu__text text-16px">
+              <span className="sep-cascading-menu__text sep-cascading-menu__text--1 text-16px">
                 {firstLevel.text}
               </span>{' '}
               {!firstLevel.hasSub ? null : (
                 <ICAngleDown
                   className={` text-24px  ${marginRtl}-5px fill-current`}
+                  cssClass="sep-cascading-menu__ic sep-cascading-menu__ic--1"
                 />
               )}
             </GeneralLink>
             {!firstLevel.hasSub ? null : (
               <ul
                 className={join(
-                  'cascading-menu__list cascading-menu__list--1',
+                  'sep-cascading-menu__list sep-cascading-menu__list--1',
                   listClassName
                 )}
               >
@@ -198,51 +204,63 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
                   return (
                     <li
                       key={index}
-                      className="cascading-menu__item cascading-menu__item--1"
+                      className="sep-cascading-menu__item sep-cascading-menu__item--2"
                     >
                       <GeneralLink
                         href={firstLevel.link || ''}
-                        cssClass={`cascading-menu__link cascading-menu__link--1 flex ${flexDirection} justify-between w-full`}
+                        cssClass={`sep-cascading-menu__link sep-cascading-menu__link--2 flex ${flexDirection} justify-between w-full`}
                       >
-                        <span>{secondLevel.text}</span>{' '}
+                        <span className="sep-cascading-menu__text sep-cascading-menu__text--2">
+                          {secondLevel.text}
+                        </span>{' '}
                         {!secondLevel.hasSub ? null : (
-                          <ICAngleDown className=" text-24px  fill-current" />
+                          <ICAngleDown
+                            className=" text-24px  fill-current"
+                            cssClass="sep-cascading-menu__ic sep-cascading-menu__ic--2"
+                          />
                         )}
                       </GeneralLink>
                       {!secondLevel.hasSub ? null : (
-                        <ul className="cascading-menu-list cascading-menu-list--2">
+                        <ul className="sep-cascading-menu-list sep-cascading-menu-list--2">
                           {secondLevel.subMenus.map((thirdLevel, index) => {
                             return (
                               <li
                                 key={index}
-                                className="cascading-menu__item cascading-menu__item--2"
+                                className="sep-cascading-menu__item sep-cascading-menu__item--3"
                               >
                                 <GeneralLink
                                   href={firstLevel.link || ''}
                                   className=""
-                                  cssClass={`cascading-menu__link cascading-menu__link--2 flex ${flexDirection} justify-between w-full`}
+                                  cssClass={`sepcascading-menu__link sep-cascading-menu__link--3 flex ${flexDirection} justify-between w-full`}
                                 >
-                                  <span>{thirdLevel.text}</span>
+                                  <span className="sep-cascading-menu__text sep-cascading-menu__text--3">
+                                    {thirdLevel.text}
+                                  </span>
                                   {!thirdLevel.hasSub ? null : (
-                                    <ICAngleDown className=" text-24px  fill-current" />
+                                    <ICAngleDown
+                                      className=" text-24px  fill-current"
+                                      cssClass="sep-cascading-menu__ic sep-cascading-menu__ic--3"
+                                    />
                                   )}
                                 </GeneralLink>
 
                                 {!thirdLevel.hasSub ? null : (
-                                  <ul className="cascading-menu__list cascading-menu__list--3">
+                                  <ul className="sep-cascading-menu__list sep-cascading-menu__list--3">
                                     {thirdLevel.subMenus.map(
                                       (fourthLevel, index) => {
                                         return (
                                           <li
                                             key={index}
-                                            className="cascading-menu__item cascading-menu__item--3"
+                                            className="sep-cascading-menu__item sep-cascading-menu__item--4"
                                           >
                                             <GeneralLink
                                               href={firstLevel.link || ''}
                                               className=""
-                                              cssClass={`cascading-menu__link cascading-menu__link--3 flex ${flexDirection} justify-between w-full`}
+                                              cssClass={`sep-cascading-menu__link sep-cascading-menu__link--4 flex ${flexDirection} justify-between w-full`}
                                             >
-                                              <span>{fourthLevel.text}</span>
+                                              <span className="sep-sep-cascading-menu__text sep-sep-cascading-menu__text--4">
+                                                {fourthLevel.text}
+                                              </span>
                                             </GeneralLink>
                                           </li>
                                         );
@@ -266,14 +284,14 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
       <style jsx>
         {`
         
-          .cascading-menu > li {
+          .sep-cascading-menu > li {
             height: 58px;
             display: flex;
             align-items: center;
             margin-${leftTR}: 20px;
           }
 
-          .cascading-menu > li:before {
+          .sep-cascading-menu > li:before {
             position: absolute;
             top: -2px;
             content: '';
@@ -283,24 +301,24 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             background-color: ${layout ? pageSettings.primary : '#414655'};
           }
 
-          .cascading-menu > li:hover:before {
+          .sep-cascading-menu > li:hover:before {
             display: block;
           }
-          .cascading-menu li {
+          .sep-cascading-menu li {
             position: relative;
           }
 
-          .cascading-menu li:first-child {
+          .sep-cascading-menu li:first-child {
             margin-${rightTL}: 0px;
           }
 
-          .cascading-menu li:hover > ul {
+          .sep-cascading-menu li:hover > ul {
             visibility: visible;
             opacity: 1;
             pointer-events: all;
           }
 
-          .cascading-menu ul {
+          .sep-cascading-menu ul {
             position: absolute;
             top: 100%;
             ${rightTL}: 0;
@@ -316,21 +334,21 @@ export const HeaderCascadingMenu: FC<IHeaderCascadingMenu> = ({
             // color: black;
           }
 
-          .cascading-menu ul ul {
+          .sep-cascading-menu ul ul {
             ${rightTL}: 100%;
             top: 0;
           }
 
-          .cascading-menu li ul li {
+          .sep-cascading-menu li ul li {
             padding: 20px;
             margin-${leftTR}: 0;
             transition: all 0.3s;
             border-bottom: 1px solid #d3d7e1;
           }
-          .cascading-menu li ul li:last-child {
+          .sep-cascading-menu li ul li:last-child {
             border: none;
           }
-          .cascading-menu li ul li:hover {
+          .sep-cascading-menu li ul li:hover {
             padding-${rightTL}: 30px;
           }
         `}

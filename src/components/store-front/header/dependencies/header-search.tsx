@@ -1,34 +1,59 @@
-import { GeneralLink, Input, GeneralInput } from 'components';
-import { ICSearch } from 'icons';
+import { GeneralInput } from 'components';
+import { ICSearch, ICMultiply } from 'icons';
 import { useDirection } from 'hooks';
 export const HeaderSearch = ({ layout = true, show, showHandler }) => {
-  const { leftTR, rightTL } = useDirection();
+  const { leftTR, rightTL, language, flexDirection } = useDirection();
 
   return (
-    <div className="header-search relative w-full">
+    <div
+      className={`sep-header-search relative ${
+        show && `w-full`
+      } flex ${flexDirection} justify-end `}
+    >
       {!show ? (
-        // <GeneralLink cssClass="header-search__link" layout={layout} href="/">
         <ICSearch
           height="20px"
           width="20px"
+          cssClass="sep-header-search__search-ic"
           className="mx-2 fill-current text-20px"
-          onClick={() => showHandler(!show)}
+          onClick={(event) => {
+            event.stopPropagation();
+
+            showHandler(!show);
+          }}
         />
       ) : (
-        // </GeneralLink>
-        <div className={`absolute ${leftTR}-full -top-15px w-full`}>
+        <div
+          className={`sep-header-search__input-box absolute ${leftTR}-0 -top-15px w-full `}
+        >
           <GeneralInput
             layout={layout}
-            className="border-none"
-            cssClass="header-search__input w-full"
-            placeholder="عبارت مورد نظرخود را اینجا وارد کنید"
+            className="border-gray_shade-300 text-14px focus:outline-none "
+            cssClass="sep-header-search__input w-full"
+            placeholder={language.HSearchPlaceholder}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
           />
-          <ICSearch
+          <ICMultiply
             height="20px"
             width="20px"
-            className={`absolute top-16px ${leftTR}-20px fill-current`}
-            onClick={() => showHandler(!show)}
+            cssClass="sep-header-search__multiply-ic"
+            className={`absolute top-16px ${leftTR}-0 fill-current text-gray_shade-300`}
+            onClick={(event) => {
+              event.stopPropagation();
+
+              showHandler(!show);
+            }}
           />
+          <style jsx>
+            {`
+              div :global(input) {
+                border: none;
+                border-bottom: 2px solid #9ba3b5;
+              }
+            `}
+          </style>
         </div>
       )}
     </div>

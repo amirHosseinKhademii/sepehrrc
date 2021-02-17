@@ -11,15 +11,15 @@ export const HeaderLogo: FC<IHeaderLogo> = ({
 
   const [data] = src;
   return (
-    <div className="header-logo">
+    <div className="sep-header-logo">
       <GeneralLink
         href={data?.link ? data.link : '/'}
         target={data?.newTab ? '_target' : '_self'}
-        cssClass="header-logo__link"
+        cssClass="sep-header-logo__link"
       >
         {layout ? (
           <img
-            className="header-logo__img w-140px h-70px object-contain"
+            className="sep-header-logo__img w-140px h-70px object-contain"
             src={data?.value ? data.value : logoAlt}
             alt="logo"
           />

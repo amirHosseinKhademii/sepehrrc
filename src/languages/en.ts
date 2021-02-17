@@ -63,6 +63,8 @@ export const en = {
   HContactUs: 'contact us',
   HSign: 'signin/signup',
   HSearch: 'search',
+  HSearchPlaceholder: 'write the text you want to search here + enter',
+
   HProductsCategories: 'product categories',
   //Footer
   FFooter: 'footer',
