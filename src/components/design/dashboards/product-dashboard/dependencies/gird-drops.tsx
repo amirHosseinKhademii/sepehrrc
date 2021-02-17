@@ -3,14 +3,14 @@ import { useDesign, useDirection } from 'hooks';
 
 export const GridDrops = () => {
   const { setSetting, designState } = useDesign();
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   const RowDrop = () => (
     <div className="w-full col-span-1">
       <Text
         className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
-        تعداد سطر
+        {language.PDRowNumbers}
       </Text>
       <DropDown
         className="w-full h-54px"
@@ -36,7 +36,7 @@ export const GridDrops = () => {
       <Text
         className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
-        تعداد ستون
+        {language.PDColumnNumbers}
       </Text>
       <DropDown
         className="w-full h-54px"

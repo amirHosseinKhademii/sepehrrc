@@ -30,7 +30,7 @@ const HeaderEighth = dynamic(() => import('./dependencies/header-eighth'), {
 });
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
-  const { marginRtl, flexDirection } = useDirection();
+  const { marginRtl, flexDirection, language } = useDirection();
   const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -73,23 +73,23 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return '1 استایل ';
+        return `1 ${language.HDStyle} `;
       case 'second':
-        return '2 استایل ';
+        return `2 ${language.HDStyle} `;
       case 'third':
-        return '3 استایل ';
+        return `3 ${language.HDStyle} `;
       case 'fourth':
-        return '4 استایل ';
+        return `4 ${language.HDStyle} `;
       case 'fifth':
-        return '5 استایل ';
+        return `5 ${language.HDStyle} `;
       case 'sixth':
-        return '6 استایل ';
+        return `6 ${language.HDStyle} `;
       case 'seventh':
-        return '7 استایل ';
+        return `7 ${language.HDStyle} `;
       case 'eighth':
-        return '8 استایل ';
+        return `8 ${language.HDStyle} `;
       default:
-        return '1 استایل ';
+        return `1 ${language.HDStyle} `;
     }
   };
 
@@ -102,10 +102,10 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
         >
           <div className="text-16px font-iransans font-light text-white_shade-100 ">
             {open ? (
-              <span>'انتخاب کنید'</span>
+              <span>{language.HDChoose}</span>
             ) : (
               <div className={`flex ${flexDirection}`}>
-                <span>نمایش:</span> <span>{styleTitle()}</span>
+                <span>{language.HDShow}:</span> <span>{styleTitle()}</span>
               </div>
             )}
           </div>
@@ -115,7 +115,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
             <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
           )}
           <span className="text-14px text-gray_shade-300 ">
-            {open ? 'بازگشت' : 'ویرایش'}
+            {open ? `${language.HDBack}` : `${language.HDEdit}`}
           </span>
         </div>
       </div>

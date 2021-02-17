@@ -22,7 +22,6 @@ const HeaderEighth: FC<IStyleBoxHeader> = ({
         'bg-gray-800 '
       )}
       onClick={onClick}
-      style={{ direction: 'rtl' }}
     >
       <BlueBox
         active={active}

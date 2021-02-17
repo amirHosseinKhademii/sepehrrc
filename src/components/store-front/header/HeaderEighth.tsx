@@ -14,15 +14,10 @@ import { ICSearch, ICShoppingCart } from 'icons';
 import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-const HeaderEighth: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-  languageText,
-}) => {
+const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
-  const { flexDirection, marginLtr } = useDirection();
+  const { flexDirection, marginLtr, language } = useDirection();
 
   const Actions = () => {
     return (

@@ -14,13 +14,8 @@ import { useClass, useDirection } from 'hooks';
 
 const logo = '/assets/images/logo.png';
 
-const HeaderSixth: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-  languageText,
-}) => {
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
 
   const { join, toggle } = useClass();
 
@@ -81,7 +76,6 @@ const HeaderSixth: FC<IHeader> = ({
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
               layout={layout}
               toggle={toggle}
-              languageText={languageText}
             />
           </div>
           <div
@@ -94,7 +88,7 @@ const HeaderSixth: FC<IHeader> = ({
               text={
                 item.settings?.button && item.settings.button?.text
                   ? item.settings.button.text
-                  : `${languageText.HSign}`
+                  : `${language.HSign}`
               }
               link={
                 item.settings?.button && item.settings.button?.link

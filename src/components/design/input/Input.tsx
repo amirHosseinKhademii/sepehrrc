@@ -51,7 +51,9 @@ export const Input: FC<IInput> = ({
             value={value}
             disabled={disabled}
             dir={withLink ? `${dirLtr}` : `${dirRtl}`}
-            className={`${fontFamily} focus:outline-none w-full h-54px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
+            className={`${fontFamily} ${
+              withNumber ? 'text-center' : ''
+            } focus:outline-none w-full h-54px px-4 rounded text-gray_shade-300 bg-gray_shade-800 placeholder-gray_shade-300 focus:ring-2 focus:ring-blue-500`}
           />
         </div>
       ) : variant === 'inputIcon' ? (

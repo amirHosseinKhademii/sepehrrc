@@ -5,7 +5,7 @@ export const InputBox = ({ label, placeholder = '', type }) => {
   const { designState, setSetting, setButtonProps } = useDesign();
   const { settings } = designState.current;
   const currentStyle = designState.current.settings.style;
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   if (
     type === 'tel' &&
@@ -47,7 +47,7 @@ export const InputBox = ({ label, placeholder = '', type }) => {
           placeholder={
             settings?.button && settings.button?.text
               ? settings.button.text
-              : 'ورود/عضویت'
+              : `${language.HDSign}`
           }
           variant="input"
           onBlur={(event) => {
@@ -71,7 +71,7 @@ export const InputBox = ({ label, placeholder = '', type }) => {
         />
         <CheckBox
           className="mt-15px"
-          label="باز کردن صفحه در تب جدید "
+          label={language.HDOpenNewTab}
           onClick={() => {
             setButtonProps({
               key: 'newTab',

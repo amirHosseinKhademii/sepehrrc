@@ -3,7 +3,7 @@ import { useDesign, useDirection } from 'hooks';
 
 export const CategoryDrop = () => {
   const { setSetting, designState } = useDesign();
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   return (
     <div className="w-full ">
@@ -11,15 +11,15 @@ export const CategoryDrop = () => {
         <Text
           className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
         >
-          دسته بندی محصولات
+          {language.PDProductCategories}
         </Text>
         <DropDown
           className="w-full h-54px"
           options={[
-            { id: 'all', title: ' همه دسته ها' },
-            { id: 'bags', title: 'کیف ' },
-            { id: 'clothes', title: 'پوشاک' },
-            { id: 'digital', title: 'دیجیتال' },
+            { id: 'all', title: `${language.PDAllCategories}` },
+            { id: 'bags', title: `${language.PDBag}` },
+            { id: 'clothes', title: `${language.PDClothes}` },
+            { id: 'digital', title: `${language.PDDigital}` },
           ]}
           onSelect={(category) => setSetting({ category })}
           selected={

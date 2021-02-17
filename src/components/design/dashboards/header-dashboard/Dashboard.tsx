@@ -2,35 +2,36 @@ import { HeaderDrawer, DrawerLayout } from 'components';
 import { MenuEditGroup, InputBox, StyleBoxHeader } from './dependencies';
 import { GenericUploader } from '../common';
 import { FC, memo } from 'react';
+import { useDirection } from 'hooks';
 
 const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
   const { settings } = designState.current;
-
+  const { language } = useDirection();
   const BaseSetttings = () => {
     return (
       <div className="w-full flex flex-col items-end pt-30px px-20px">
         <StyleBoxHeader />
         <MenuEditGroup designState={designState} />
         <GenericUploader
-          label="لوگو"
+          label={language.HDLogo}
           number="one"
-          text="انتخاب لوگو"
+          text={language.HDChooseLogo}
           className="mb-30px"
           withLink
           withNewTab
         />
         <InputBox
-          label="شماره تلفن"
+          label={language.HDPhoneNumber}
           type="tel"
           placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
-        <InputBox label="دکمه هدر" type="button" />
+        <InputBox label={language.HDHeaderButton} type="button" />
       </div>
     );
   };
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text="تنظیمات هدر" />
+      <HeaderDrawer setting text={language.HDHeaderSettings} />
       <BaseSetttings />
     </DrawerLayout>
   );

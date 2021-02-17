@@ -1,6 +1,5 @@
 interface IText {
   className?: string;
-  children?: string;
+  children?: any;
   onClick?: any;
 }
-

@@ -1,39 +1,27 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   HeaderNavbar,
   HeaderLogo,
   HeaderLayout,
   HeaderButton,
+  HeaderSearch,
 } from './dependencies';
 import { GeneralLink } from 'components';
 import { ICSearch, ICShoppingCart, ICUsersAlt } from 'icons';
-import { useClass, useUi, useDirection, useLanguage } from 'hooks';
+import { useClass, useUi, useDirection } from 'hooks';
 
-const HeaderFirst: FC<IHeader> = ({
-  item,
-  layout = true,
-  designState,
-  languageText,
-}) => {
+const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
+  const [openSearch, setOpenearch] = useState(false);
   const { uiState } = useUi();
 
   const { container } = uiState;
   const { join, toggle } = useClass();
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
   const Actions = () => {
     return (
-      <div className={`header-actions flex ${flexDirection}`}>
-        <GeneralLink
-          cssClass="header-actions__search-link"
-          layout={layout}
-          href="/"
-        >
-          <ICSearch
-            height="20px"
-            width="20px"
-            className="mx-2 fill-current text-20px"
-          />
-        </GeneralLink>
+      <div className={`header-actions flex ${flexDirection} w-full `}>
+        <HeaderSearch show={openSearch} showHandler={setOpenearch} />
+
         <GeneralLink
           layout={layout}
           cssClass="header-actions__shopping-cart-link"
@@ -75,29 +63,32 @@ const HeaderFirst: FC<IHeader> = ({
         >
           <HeaderLogo src={item.images} layout={layout} join={join} />
         </div>
+        {!openSearch && (
+          <div
+            className={`header__navbar-box w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
+          >
+            <HeaderNavbar
+              className="font-bold text-16px"
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+            />
+          </div>
+        )}{' '}
         <div
-          className={`header__navbar-box w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
-        >
-          <HeaderNavbar
-            className="font-bold text-16px"
-            direction="horizental"
-            toggle={toggle}
-            layout={layout}
-            languageText={languageText}
-          />
-        </div>
-        <div
-          className={`header__actions-box w-3/12 flex ${flexDirection}  items-center justify-end `}
+          className={`header__actions-box ${
+            openSearch ? 'w-10/12' : 'w-3/12'
+          } flex ${flexDirection}  items-center justify-end `}
         >
           <Actions />
 
           <HeaderButton
             layout={layout}
-            className={`   rounded-25px  text-white`}
+            className={`rounded-25px  text-white`}
             text={
               item.settings?.button && item.settings.button?.text
                 ? item.settings.button.text
-                : `${languageText.HStoreProducts}`
+                : `${language.HStoreProducts}`
             }
             link={
               item.settings?.button && item.settings.button?.link

@@ -42,7 +42,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
           active
         )
       )}
-      onClick={() => toggleStyleDrawer('style', item)}
+      // onClick={() => toggleStyleDrawer('style', item)}
     >
       {children}
       <div

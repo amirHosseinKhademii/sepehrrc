@@ -14,8 +14,10 @@ import {
   SliderDrops,
 } from './dependencies';
 import { FC, memo } from 'react';
+import { useDirection } from 'hooks';
 
 const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
+  const { language } = useDirection();
   const isList = designState.current.settings?.screen === 'list';
 
   const BaseSettings = () => {
@@ -33,7 +35,11 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
         ) : (
           <SliderDrops />
         )}
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
+        <GenericUploader
+          label={language.PDBackgroundImage}
+          text={language.PDChoose}
+          isBackground
+        />
         <BackgroundColor />
         <ResponsiveSwitchs />
       </div>
@@ -42,7 +48,7 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
 
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text=" تنظیمات  لیست محصولات " />
+      <HeaderDrawer setting text={language.PProductListSettings} />
       <BaseSettings />
     </DrawerLayout>
   );

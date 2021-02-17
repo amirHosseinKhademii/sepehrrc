@@ -1,25 +1,26 @@
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { ButtonGroup } from 'components';
 import { SettingButton } from './setting-button';
 
 export const SpeedButtonGroup = () => {
   const { designState, setSetting } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
 
   return (
     <ButtonGroup
-      label="سرعت اسلاید ها"
+      label={language.SDSlidesSpeed}
       groupClass="grid grid-cols-3"
       className="mt-30px"
     >
       <SettingButton
-        child="سریع"
+        child={language.SDFast}
         active={settings && settings.speed && settings.speed == 'fast'}
         className=" rounded-l"
         onClick={() => setSetting({ speed: 'fast' })}
       />
       <SettingButton
-        child="متوسط"
+        child={language.SDMedium}
         active={
           (settings && settings.speed && settings.speed == 'normal') ||
           !settings.speed
@@ -28,7 +29,7 @@ export const SpeedButtonGroup = () => {
         onClick={() => setSetting({ speed: 'normal' })}
       />
       <SettingButton
-        child="آرام"
+        child={language.SDSlow}
         active={settings && settings.speed && settings.speed == 'slow'}
         className="rounded-r"
         onClick={() => setSetting({ speed: 'slow' })}
