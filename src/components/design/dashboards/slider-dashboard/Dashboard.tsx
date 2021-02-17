@@ -1,4 +1,4 @@
-import { useUi } from 'hooks';
+import { useUi, useDirection } from 'hooks';
 import { HeaderDrawer, DrawerLayout } from 'components';
 import {
   ResponsiveSwitchs,
@@ -17,6 +17,7 @@ import {
 
 const SliderDashboard = () => {
   const { uiState } = useUi();
+  const { language } = useDirection();
   const setting = uiState.setting;
 
   const BaseSettings = () => {
@@ -25,19 +26,23 @@ const SliderDashboard = () => {
         {setting.type === 'dropZone' && setting.open ? (
           <DndUploadBox
             placeholder={{
-              text: 'تصاویر اسلایدر را اینجا آپلود کنید',
+              text: `${language.SDUplaodHere}`,
               width: 1326,
               height: 442,
             }}
           />
         ) : (
-          <PictureContainer title="تصاویر اسلایدر" count={8} />
+          <PictureContainer title={language.SDSliderImages} count={8} />
         )}
         <SpeedButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />
         <ShowTypeButtonGroup />
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
+        <GenericUploader
+          label={language.SDbackgroundImage}
+          text={language.SDChoose}
+          isBackground
+        />
         <ResponsiveSwitchs />
       </div>
     );
@@ -54,7 +59,7 @@ const SliderDashboard = () => {
 
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text="تنظیمات تصویر" />
+      <HeaderDrawer setting text={language.SDImageSettings} />
       {uiState.setting.type === 'picture' && uiState.setting.open ? (
         <ImageSettings />
       ) : (

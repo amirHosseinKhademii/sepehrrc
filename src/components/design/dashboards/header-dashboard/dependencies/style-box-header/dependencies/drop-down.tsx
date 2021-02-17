@@ -7,14 +7,16 @@ import HeaderFifth from './header-fifth';
 import HeaderSixth from './header-sixth';
 import HeaderSeventh from './header-seventh';
 import HeaderEighth from './header-eighth';
+import { useDirection } from 'hooks';
 
 const DropDown = ({ designState, onSelectClick, toggle, join }) => {
+  const { language } = useDirection();
   const { style } = designState.current.settings;
 
   return (
     <div className="grid grid-cols-1 gap-y-20px focus:ring-2 focus:ring-blue-500 ">
       <div>
-        <LabelBox label="استایل 1" />
+        <LabelBox label={`${language.HDStyle} 1`} />
         <HeaderFirst
           join={join}
           toggle={toggle}
@@ -23,7 +25,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label="استایل 2" />
+        <LabelBox label={`${language.HDStyle} 2`} />
 
         <HeaderSecond
           join={join}
@@ -33,7 +35,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label="استایل 3" />
+        <LabelBox label={`${language.HDStyle} 3`} />
 
         <HeaderThird
           join={join}
@@ -43,7 +45,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label=" استایل 4" />
+        <LabelBox label={`${language.HDStyle} 4`} />
 
         <HeaderFourth
           join={join}
@@ -53,7 +55,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label=" استایل 5" />
+        <LabelBox label={`${language.HDStyle} 5`} />
 
         <HeaderFifth
           join={join}
@@ -63,7 +65,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label="استایل 6 " />
+        <LabelBox label={`${language.HDStyle} 6 `} />
 
         <HeaderSixth
           join={join}
@@ -73,7 +75,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label="استایل 7 " />
+        <LabelBox label={`${language.HDStyle} 7 `} />
 
         <HeaderSeventh
           join={join}
@@ -83,7 +85,7 @@ const DropDown = ({ designState, onSelectClick, toggle, join }) => {
         />
       </div>
       <div>
-        <LabelBox label="استایل 8 " />
+        <LabelBox label={`${language.HDStyle} 8 `} />
 
         <HeaderEighth
           join={join}

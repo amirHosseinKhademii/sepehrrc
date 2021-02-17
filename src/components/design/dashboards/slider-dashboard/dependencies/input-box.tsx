@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
   const { designState, setImage } = useDesign();
+  const { language } = useDirection();
   const { pureImage, current } = designState;
   const { number } = designState.current.settings;
   const currentImage =
@@ -12,16 +13,16 @@ export const InputBox = () => {
   return (
     <Fragment>
       <Input
-        label="عنوان تصویر"
+        label={language.SDImageTitle}
         className="mt-25px"
         variant="input"
         onBlur={(e) => setImage({ key: 'title', payload: e.target.value })}
         placeholder={
-          pureImage.title ? pureImage.title : 'عنوان را اینجا بنویسید'
+          pureImage.title ? pureImage.title : `${language.SDWriteTitleHere}`
         }
       />
       <Input
-        label="توضیحات تصویر"
+        label={language.SDImageExplainations}
         className="mt-25px"
         variant="textArea"
         onBlur={(e) =>
@@ -30,22 +31,24 @@ export const InputBox = () => {
         placeholder={
           currentImage && currentImage.description
             ? currentImage.description
-            : 'توضیحات را اینجا بنویسید'
+            : `${language.SDWriteExplanationsHere}`
         }
       />
 
-      <Text className="mt-25px text-14px text-white_shade-100">لینک تصویر</Text>
+      <Text className="mt-25px text-14px text-white_shade-100">
+        {language.SDImagelink}
+      </Text>
       <Input
         withLink
         placeholder={currentImage && currentImage.link ? currentImage.link : ''}
         variant="inputIcon"
-        label="لینک تصویر"
+        label={language.SDImagelink}
         className="mt-14px"
         fontFamily="font-lato"
         onBlur={(e) => setImage({ key: 'link', payload: e.target.value })}
       />
       <CheckBox
-        label="باز کردن در تب جدید"
+        label={language.SDOpenNewTab}
         className="mt-15px"
         onClick={() => {
           setImage({

@@ -2,19 +2,19 @@ import { DropDown } from 'components';
 import { Fragment } from 'react';
 import { useDirection } from 'hooks';
 export const FontSetting = ({ designState, onPageSetting }) => {
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   return (
     <Fragment>
       <div className="flex flex-col px-20px pt-30px">
         <p className={`${textAlignRtl} text-white_shade-100 pt-15px text-14px`}>
-          انتخاب فونت تیتر ها
+          {language.DChooseTitlesFont}
         </p>
         <div className="felx flex-col mt-20px">
           <DropDown
             options={[
-              { id: 'yekanbakh', title: 'یکان بخ' },
-              { id: 'iransans', title: 'ایران سنس' },
+              { id: 'yekanbakh', title: `${language.DYekanBakh}` },
+              { id: 'iransans', title: `${language.DIransans}` },
             ]}
             height="54px"
             onSelect={(value) => onPageSetting({ key: 'titleFont', value })}
@@ -28,13 +28,13 @@ export const FontSetting = ({ designState, onPageSetting }) => {
         <p
           className={`${textAlignRtl}  text-white_shade-100 pt-15px text-14px`}
         >
-          انتخاب فونت نوشته ها
+          {language.DChooseTextsFont}
         </p>
         <div className="felx flex-col mt-20px">
           <DropDown
             options={[
-              { id: 'yekanbakh', title: 'یکان بخ' },
-              { id: 'iransans', title: 'ایران سنس' },
+              { id: 'yekanbakh', title: `${language.DYekanBakh}` },
+              { id: 'iransans', title: `${language.DIransans}` },
             ]}
             height="54px"
             onSelect={(value) => onPageSetting({ key: 'textFont', value })}
@@ -48,13 +48,13 @@ export const FontSetting = ({ designState, onPageSetting }) => {
         <p
           className={`${textAlignRtl}  text-white_shade-100 pt-15px text-14px`}
         >
-          انتخاب قالب
+          {language.DChooseTheme}
         </p>
         <div className="felx flex-col mt-20px">
           <DropDown
             options={[
-              { id: 'default', title: ' پیش فرض' },
-              { id: 'simple', title: ' ساده' },
+              { id: 'default', title: `${language.DDefaultTheme}` },
+              { id: 'simple', title: `${language.DSimpleTheme}` },
             ]}
             height="54px"
             onSelect={(value) => onPageSetting({ key: 'theme', value })}

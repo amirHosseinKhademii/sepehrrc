@@ -1,9 +1,11 @@
 import { useDesign } from 'hooks';
+import { en, fa } from 'languages';
 
 export const useDirection = () => {
   const { designState } = useDesign();
-  const { direction } = designState.pageSettings;
+  const { direction, language } = designState.pageSettings;
   return {
+    language: language === 'rtl' ? fa : en,
     flexDirection: direction === 'rtl' ? 'flex-row-reverse' : 'flex-row',
     dirRtl: direction === 'rtl' ? 'rtl' : 'ltr',
     dirLtr: direction === 'rtl' ? 'ltr' : 'rtl',
