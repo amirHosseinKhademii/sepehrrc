@@ -2,8 +2,6 @@ import { FC } from 'react';
 import { Drawer } from 'components';
 import { useUi, useClass, useDesign } from 'hooks';
 import dynamic from 'next/dynamic';
-import HeaderContainer from '../../../containers/store-front/header/HeaderContainer';
-import FooterContainer from '../../../containers/store-front/footer/FooterContainer';
 
 const ModalCrop = dynamic(() => import('components/design/modal/ModalCrop'));
 const ModalConfirm = dynamic(
@@ -39,11 +37,7 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
             : () => {}
         }
       >
-        <HeaderContainer />
-        <div className=" w-full h-auto flex-grow relative pb-28 bg-gray_tint-16">
-          {children}
-        </div>
-        <FooterContainer />
+        {children}
       </div>
       <Drawer />
       {uiState.modal.type === 'image' && uiState.modal.open && <ModalCrop />}
