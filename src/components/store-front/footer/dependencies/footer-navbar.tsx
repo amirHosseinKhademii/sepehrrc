@@ -28,7 +28,7 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
         return (
           <li
             className={toggle(
-              'footer-navbar__item',
+              'footer-navbar__item mb-55px',
               'pr-0 pl-30px',
               index === 0,
               'pl-30px'

@@ -37,7 +37,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
         toggle(
           `generalLayout  ${
             item.type !== 'header' ? 'py-25px' : ''
-          } w-full bg-no-repeat font-${pageSettings.textFont} `,
+          } w-full bg-no-repeat font-iransans `,
           'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
           active
         )

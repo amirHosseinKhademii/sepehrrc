@@ -43,6 +43,7 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
             toggle={toggle}
             flexDirection={flexDirection}
             className={`font-bold text-16px ${marginRtl}-23px`}
+            cssClass={`${marginRtl}-23px`}
             isDark={isDark}
             marginRtl={marginRtl}
           />

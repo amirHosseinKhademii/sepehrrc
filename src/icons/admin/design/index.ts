@@ -44,3 +44,5 @@ export * from './times-circle';
 export * from './theme-logo';
 export * from './warning';
 export * from './sepehr';
+export * from './cafe-bazar';
+export * from './google-play';

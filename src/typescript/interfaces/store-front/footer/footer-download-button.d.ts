@@ -1,5 +1,6 @@
 interface IFooterDownloadButton {
-  icon?: any;
-  title?: string;
-  market?: string;
+  market?: 'cafebazar' | 'googleplay';
+  isDark?: boolean;
+  toggle?: any;
+  className?: string;
 }
