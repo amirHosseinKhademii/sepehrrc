@@ -4,14 +4,14 @@ import { useDesign, useDirection } from 'hooks';
 export const SliderDrops = () => {
   const { setSetting, designState } = useDesign();
   const { settings } = designState.current;
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   const TotalItems = () => (
     <div className="w-full col-span-1">
       <Text
         className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
-        تعداد کل
+        {language.PDTotalNumbers}
       </Text>
       <Input
         className="w-full"
@@ -29,7 +29,7 @@ export const SliderDrops = () => {
       <Text
         className={`mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
-        تعداد ستون
+        {language.PDColumnNumbers}
       </Text>
       <DropDown
         className="w-full h-54px"

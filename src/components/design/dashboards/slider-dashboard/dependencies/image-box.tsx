@@ -6,7 +6,7 @@ import { DndUploadBox } from '../../common/';
 import Dropzone, { useDropzone } from 'react-dropzone';
 
 export const ImageBox = () => {
-  const { marginRtl, paddingRtl } = useDirection();
+  const { marginRtl, paddingRtl, language } = useDirection();
   const { designState, setPureImage } = useDesign();
   const { toggleModal, uiState } = useUi();
   const { images } = designState.current;
@@ -18,7 +18,7 @@ export const ImageBox = () => {
         <DndUploadBox
           number={number}
           placeholder={{
-            text: 'تصاویر اسلایدر را اینجا آپلود کنید',
+            text: `${language.SDUplaodHere}`,
             width: 1326,
             height: 442,
           }}
@@ -53,7 +53,7 @@ export const ImageBox = () => {
                     className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer`}
                     // onClick={() => setPureImage({ onUpload: true, number })}
                   >
-                    ویرایش تصویر
+                    {language.SDImagesEdit}
                   </Text>
                   <ICEditSettings fill="#fff" />
                 </div>
@@ -66,7 +66,7 @@ export const ImageBox = () => {
                   toggleModal({ open: true, editImage: true, type: 'image' })
                 }
               >
-                برش تصویر
+                {language.SDImagesCrop}
               </Text>
               <ICCropAlt fill="#fff" />
             </div>

@@ -1,7 +1,6 @@
 import { DrawerLayout } from 'components';
 import { useDesign } from 'hooks';
 import dynamic from 'next/dynamic';
-
 const HeaderDashboard = dynamic(
   () => import('components/design/dashboards/header-dashboard/Dashboard'),
   { loading: () => <DrawerLayout /> }

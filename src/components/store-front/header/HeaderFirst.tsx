@@ -93,7 +93,7 @@ const HeaderFirst: FC<IHeader> = ({
 
           <HeaderButton
             layout={layout}
-            className={`   rounded-25px  text-white`}
+            className={`rounded-25px  text-white`}
             text={
               item.settings?.button && item.settings.button?.text
                 ? item.settings.button.text

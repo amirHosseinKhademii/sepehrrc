@@ -1,7 +1,9 @@
 import { ButtonDrawer } from 'components';
-
+import { useDirection } from 'hooks';
 export const MenuEditGroup = ({ designState }) => {
+  const { language } = useDirection();
   const { settings } = designState.current;
+
   const showCategory =
     settings?.style &&
     (settings.style === 'third' || settings.style === 'fourth');
@@ -16,14 +18,14 @@ export const MenuEditGroup = ({ designState }) => {
       <ButtonDrawer
         withPush
         onPush="https://mountainshop.mysepehr.com/admin"
-        text="ویرایش منوی سایت "
+        text={language.HDEditWebsiteMenu}
         className="justify-center mb-15px cursor-pointer"
       />
       {showCategory && (
         <ButtonDrawer
           withPush
           onPush="https://mountainshop.mysepehr.com/products.aspx"
-          text="ویرایش دسته بندی محصولات "
+          text={language.HDEditProductsCategory}
           className="justify-center mb-15px cursor-pointer"
         />
       )}
@@ -31,7 +33,7 @@ export const MenuEditGroup = ({ designState }) => {
         <ButtonDrawer
           withPush
           onPush="https://mountainshop.mysepehr.com/basketwatch.aspx"
-          text="ویرایش شبکه های اجتماعی "
+          text={language.HDEditSocailMedias}
           className="justify-center mb-15px cursor-pointer"
         />
       )}

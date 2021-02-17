@@ -1,14 +1,15 @@
 import { SettingButton } from './setting-button';
 import { ButtonGroup } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { ICSliderBtnThree, ICSliderBtnTwo, ICSliderBtnOne } from 'icons';
 
 export const ShowTypeButtonGroup = () => {
   const { designState, setSetting } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
   return (
     <ButtonGroup
-      label="حالت نمایش قبلی / بعدی"
+      label={language.SDNextPrevDisplayMode}
       groupClass="grid grid-cols-3"
       className="my-30px"
     >

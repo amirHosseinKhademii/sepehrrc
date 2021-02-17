@@ -3,7 +3,7 @@ import { useDesign, useDirection } from 'hooks';
 
 export const ShowDrop = () => {
   const { setSetting, designState } = useDesign();
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
 
   return (
     <div className="w-full  gap-30px">
@@ -11,14 +11,14 @@ export const ShowDrop = () => {
         <Text
           className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
         >
-          نمایش بر اساس
+          {language.PDShowBy}
         </Text>
         <DropDown
           className="w-full h-54px"
           options={[
-            { id: 'all', title: 'همه' },
-            { id: 'newests', title: '   جدیدترین محصولات' },
-            { id: 'bestSellers', title: 'پرفروش ترین ها' },
+            { id: 'all', title: `${language.PDAll}` },
+            { id: 'newests', title: `${language.PDLatestProducts}` },
+            { id: 'bestSellers', title: `${language.PDBestSellers}` },
           ]}
           defaultValue="bestSellers"
           onSelect={(showby) => setSetting({ showby })}

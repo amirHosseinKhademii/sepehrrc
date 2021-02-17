@@ -1,9 +1,10 @@
 import { ButtonGroup } from 'components';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 
 export const ScreenButtonGroup = () => {
   const { toggle } = useClass();
   const { designState, setSetting } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
 
   const SettingButton = ({ text, active, className, onClick }) => (
@@ -22,18 +23,18 @@ export const ScreenButtonGroup = () => {
 
   return (
     <ButtonGroup
-      label=" حالت نمایش "
+      label={language.PDDisplayMode}
       groupClass="grid grid-cols-2"
       className="mt-30px mb-30px"
     >
       <SettingButton
-        text=" لیست"
+        text={language.PDList}
         active={settings && settings.screen && settings.screen == 'list'}
         className=" rounded-l border-r border-gray_shade-900"
         onClick={() => setSetting({ screen: 'list' })}
       />
       <SettingButton
-        text=" اسلایدر"
+        text={language.PDSlider}
         active={settings && settings.screen !== 'list'}
         className="rounded-r "
         onClick={() => setSetting({ screen: 'slider' })}
