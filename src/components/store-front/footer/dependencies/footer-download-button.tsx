@@ -1,20 +1,40 @@
 import { FC } from 'react';
-
+import { SVGCafeBazar, SVGGooglePlay } from 'svgs';
 export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
-  icon,
-  title,
   market,
+  isDark,
+  className,
 }) => {
-  return (
-    <div
-      style={{ borderWidth: '1px' }}
-      className="h-45px w-155px flex justify-center items-center rounded  border-alert-900"
-    >
-      <div></div>
-      <div className="flex flex-col justify-center items-center">
-        <span className="text-8px uppercase">{title}</span>
-        <span className="text-12px uppercase">{market}</span>
-      </div>
+  const CafeBazar = () => {
+    switch (isDark) {
+      case true:
+        return <SVGCafeBazar fill="#d3d7e1" />;
+      case false:
+        return <SVGCafeBazar fill="#1a191d" />;
+      default:
+        return <SVGCafeBazar fill="#1a191d" />;
+        break;
+    }
+  };
+  const GooglePlay = () => {
+    switch (isDark) {
+      case true:
+        return <SVGGooglePlay fill="#d3d7e1" />;
+      case false:
+        return <SVGGooglePlay fill="#1a191d" />;
+      default:
+        return <SVGGooglePlay fill="#1a191d" />;
+        break;
+    }
+  };
+
+  return market === 'cafebazar' ? (
+    <div className={`${className}`}>
+      <CafeBazar />
+    </div>
+  ) : (
+    <div className={`${className}`}>
+      <GooglePlay />
     </div>
   );
 };

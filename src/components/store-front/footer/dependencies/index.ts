@@ -5,3 +5,4 @@ export * from './footer-copyright';
 export * from './footer-power';
 export * from './footer-navbar';
 export * from './footer-download-button';
+export * from './footer-section';
