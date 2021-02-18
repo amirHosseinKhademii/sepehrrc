@@ -28,7 +28,7 @@ export const ResponsiveSwitchs: FC<{ className?: string }> = ({
     return (
       <Switch
         label="نمایش فقط در مانیتور"
-        className=" mt-10px "
+        className=" mt-25px "
         onClick={() =>
           setSetting({
             monitor: settings && settings.monitor ? !settings.monitor : true,

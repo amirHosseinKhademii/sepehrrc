@@ -40,6 +40,9 @@ export const StoreFrontDesignContainer = memo(() => {
               {item.type == 'slider' && <SliderContainer item={item} />}
               {item.type == 'banner' && <BannerContainer item={item} />}
               {item.type == 'brands' && <BrandContainer item={item} />}
+              {item.type == 'blog' && (
+                <div className="text-center py-121px text-lg">مقالات</div>
+              )}
             </Fragment>
           ))}
         </Container>
