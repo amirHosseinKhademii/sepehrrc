@@ -25,6 +25,10 @@ const FooterDashboard = dynamic(
   () => import('components/design/dashboards/footer-dashboard/Dashboard'),
   { loading: () => <DrawerLayout /> }
 );
+const BlogDashboard = dynamic(
+  () => import('components/design/dashboards/blog-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
 
 const StyleDashboard = () => {
   const { designState } = useDesign();
@@ -40,7 +44,9 @@ const StyleDashboard = () => {
     case 'brands':
       return <BrandDashboard />;
     case 'footer':
-      return <FooterDashboard designState={designState} />;
+      return <FooterDashboard />;
+    case 'blog':
+      return <BlogDashboard />;
     default:
       return <HeaderDashboard designState={designState} />;
   }

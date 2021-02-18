@@ -30,8 +30,8 @@ export const designInitialState = {
     },
     {
       id: '4',
-      type: 'news',
-      title: 'لیست اخبار',
+      type: 'blog',
+      title: 'مقالات',
       images: [],
       settings: {},
     },
