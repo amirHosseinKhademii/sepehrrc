@@ -22,7 +22,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const Actions = () => {
     return (
       <div
-        className={`header-actions flex ${flexDirection} items-center justify-center`}
+        className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
       >
         <HeaderTel
           layout={layout}
@@ -35,17 +35,18 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
           badgeContent="6"
           root={`${marginRtl}-20px`}
           layout={layout}
-          cssClass="header-actions__badge"
+          cssClass="sep-header-actions__badge"
         >
           <GeneralLink
             href="./"
             layout={layout}
-            cssClass="header-actions__shopping-cart-link"
+            cssClass="sep-header-actions__shopping-cart-link"
           >
             <ICShoppingCart
               height="20px"
               width="20px"
               className="fill-current text-20px"
+              cssClass="sep-header-actions__shopping-cart-ic"
             />
           </GeneralLink>
         </Badge>
@@ -57,20 +58,20 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
     <HeaderLayout
       layout={layout}
       toggle={toggle}
-      cssClass="header--six"
+      cssClass="sep-header--six"
       id="headerSix"
     >
-      <div className="header__border border-b-2">
+      <div className="sep-header__border border-b-2">
         <div
-          className={`header__row header__row--1 flex ${flexDirection}     w-full h-122px  container mx-auto px-20px`}
+          className={`sep-header__row sep-header__row--1 flex ${flexDirection}     w-full h-122px  container mx-auto px-20px`}
         >
           <div
-            className={`header__logo-box w-2/12  flex ${flexDirection} items-center justify-start `}
+            className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center justify-start `}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`header__input-box w-6/12 flex ${flexDirection} items-center  justify-center `}
+            className={`sep-header__input-box w-6/12 flex ${flexDirection} items-center  justify-center `}
           >
             <HeaderInput
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
@@ -79,7 +80,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
             />
           </div>
           <div
-            className={`header__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
+            className={`sep-header__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
@@ -107,15 +108,15 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={`header__row header__row--2 w-full  flex ${flexDirection}  container mx-auto px-20px `}
+        className={`sep-header__row sep-header__row--2 w-full  flex ${flexDirection}  container mx-auto px-20px `}
       >
         <div
-          className={`header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
+          className={`sep-header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
         >
           <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
         <div
-          className={`header__socail-box w-3/12 flex ${flexDirection}  justify-end text-16px `}
+          className={`sep-header__socail-box w-3/12 flex ${flexDirection}  justify-end text-16px `}
         >
           <Social />
         </div>

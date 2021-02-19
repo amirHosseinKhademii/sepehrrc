@@ -20,7 +20,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
       <a
         target={newTab ? '_blank' : ''}
         className={toggle(
-          `header-button h-50px px-25px ${marginRtl}-35px flex items-center justify-center text-center text-16px border-2   cursor-pointer focus:outline-none font-iransans font-light`,
+          `sep-header-button h-50px px-25px ${marginRtl}-35px flex items-center justify-center text-center text-16px border-2   cursor-pointer focus:outline-none font-iransans font-light`,
           className,
           layout,
           cssAlt

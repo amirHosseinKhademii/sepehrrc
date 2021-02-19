@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   HeaderNavbar,
   HeaderLogo,
   HeaderLayout,
   HeaderCascadingMenu,
   HeaderTel,
+  HeaderSearch,
 } from './dependencies';
 import { ICSearch, ICShoppingCart } from 'icons';
 import { useClass, useDirection } from 'hooks';
@@ -16,50 +17,45 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const [openSearch, setOpenSearch] = useState(false);
 
   const Actions = () => {
     return (
       <div
-        className={`header-actions flex ${flexDirection} items-center justify-center`}
+        className={`sep-header-actions flex ${flexDirection}  justify-end w-full`}
       >
-        <GeneralLink
-          className={`cursor-pointer ${marginLtr}-8px  ${
-            layout && 'font-bold'
-          } fill-current`}
-          cssClass="header-actions__sign-link"
-          layout={layout}
-          href="./"
-        >
-          {language.HSign}
+        {!openSearch && (
+          <GeneralLink
+            className={`cursor-pointer ${marginLtr}-8px  ${
+              layout && 'font-bold'
+            } fill-current`}
+            cssClass="sep-header-actions__sign-link"
+            layout={layout}
+            href="./"
+          >
+            {language.HSign}
 
-          {/* ورود/عضویت در سایت */}
-        </GeneralLink>
-        <GeneralLink
-          cssClass="header-actions__search-link"
-          layout={layout}
-          href="./"
-        >
-          <ICSearch
-            height="20px"
-            width="20px"
-            className="mx-4 fill-current text-20px"
-          />
-        </GeneralLink>
+            {/* ورود/عضویت در سایت */}
+          </GeneralLink>
+        )}
+        <HeaderSearch show={openSearch} showHandler={setOpenSearch} />
+
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="2"
           layout={layout}
-          cssClass="header-actions__badge"
+          cssClass="sep-header-actions__badge"
         >
           <GeneralLink
             href="./"
             layout={layout}
-            cssClass="header-actions__shopping-cart-link"
+            cssClass="sep-header-actions__shopping-cart-link"
           >
             <ICShoppingCart
               height="20px"
               width="20px"
               className="fill-current text-20px "
+              cssClass="sep-header-actions__shopping-cart-ic"
             />
           </GeneralLink>
         </Badge>
@@ -71,15 +67,15 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
     <HeaderLayout
       layout={layout}
       toggle={toggle}
-      cssClass="header--seven"
+      cssClass="sep-header--seven"
       id={'headerSeven'}
     >
-      <div className="header__border border-b-2">
+      <div className="sep-header__border border-b-2">
         <div
-          className={`header__row header__row--1 flex ${flexDirection} container mx-auto  w-full h-122px px-20px `}
+          className={`sep-header__row sep-header__row--1 flex ${flexDirection} container mx-auto  w-full h-122px px-20px `}
         >
           <div
-            className={`header__navbar-box w-6/12 flex ${flexDirection} items-center `}
+            className={`sep-header__navbar-box w-6/12 flex ${flexDirection} items-center `}
           >
             <HeaderNavbar
               direction="horizental"
@@ -88,30 +84,31 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
               className="font-bold text-16px"
             />
           </div>
+
           <div
-            className={`header__logo-box w-2/12  flex ${flexDirection} items-center justify-start `}
+            className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center justify-start `}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`heaer__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
+            className={`sep-heaer__actions-box   w-4/12 flex ${flexDirection} items-center `}
           >
             <Actions />
           </div>
         </div>
       </div>
       <div
-        className="header__background"
+        className="sep-header__background"
         style={{
           backgroundColor: `${layout ? `${pageSettings.primary}` : `#fff`}`,
           color: `${layout ? `#fff` : 'initial'}`,
         }}
       >
         <div
-          className={`header__row header__row--2 flex ${flexDirection}   w-full container mx-auto  px-20px `}
+          className={`sep-header__row sep-header__row--2 flex ${flexDirection}   w-full container mx-auto  px-20px `}
         >
           <div
-            className={`header__cascading-menu-box w-9/12 ${flexDirection} flex items-center `}
+            className={`sep-header__cascading-menu-box w-9/12 ${flexDirection} flex items-center `}
           >
             <HeaderCascadingMenu
               listClassName="text-black"
@@ -120,7 +117,7 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
             />
           </div>
           <div
-            className={`header__tel-box w-9/12   flex  ${flexDirection} justify-end `}
+            className={`sep-header__tel-box w-9/12   flex  ${flexDirection} justify-end `}
           >
             <HeaderTel
               layout={layout}

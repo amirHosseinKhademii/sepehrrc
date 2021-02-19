@@ -22,10 +22,10 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const Actions = () => {
     return (
       <div
-        className={`header-actions flex ${flexDirection} items-center justify-center`}
+        className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
       >
         <GeneralLink
-          cssClass="header-actions__search-link"
+          cssClass="sep-header-actions__search-link"
           layout={layout}
           href="./"
         >
@@ -36,15 +36,18 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
           layout={true}
-          cssClass="header-actions__badge"
+          cssClass="sep-header-actions__badge"
         >
           <GeneralLink
             href="./"
             layout={layout}
-            cssClass="header-actions__shopping-cart-link"
+            cssClass="sep-header-actions__shopping-cart-link"
           >
             {' '}
-            <ICShoppingCart className="fill-current" />
+            <ICShoppingCart
+              className="fill-current"
+              cssClass="sep-header-actions__shopping-cart-ic"
+            />
           </GeneralLink>
         </Badge>
       </div>
@@ -55,21 +58,21 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
     <HeaderLayout
       layout={layout}
       toggle={toggle}
-      cssClass="header--eight"
+      cssClass="sep-header--eight"
       id="headerEight"
     >
       <div
-        className="header__background"
+        className="sep-header__background"
         style={{
           backgroundColor: `${layout ? `${pageSettings.primary}` : `#fff`}`,
           color: `${layout ? `#fff` : 'initial'}`,
         }}
       >
         <div
-          className={` header__row header__row--1 flex ${flexDirection}   w-full h-58px  container mx-auto px-20px`}
+          className={` sep-header__row sep-header__row--1 flex ${flexDirection}   w-full h-58px  container mx-auto px-20px`}
         >
           <div
-            className={`header__navbar-box w-9/12  flex ${flexDirection} items-center `}
+            className={`sep-header__navbar-box w-9/12  flex ${flexDirection} items-center `}
           >
             <HeaderNavbar
               direction="horizental"
@@ -79,7 +82,7 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
             />
           </div>
           <div
-            className={`header__social-box w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
+            className={`sep-header__social-box w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
             style={{
               color: `${layout ? `#fff` : 'initial'}`,
             }}
@@ -89,17 +92,17 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
 
-      <div className="header__border border-b-2 border-t-2">
+      <div className="sep-header__border border-b-2 border-t-2">
         <div
-          className={`header__row  header__row--2 flex ${flexDirection}  w-full h-122px container mx-auto px-20px `}
+          className={`sep-header__row  sep-header__row--2 flex ${flexDirection}  w-full h-122px container mx-auto px-20px `}
         >
           <div
-            className={`header__logo-box w-2/12  flex ${flexDirection} items-center`}
+            className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center`}
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`header__input-box w-6/12 flex ${flexDirection} items-center justify-center `}
+            className={`sep-header__input-box w-6/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
               className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
@@ -108,7 +111,7 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
             />
           </div>
           <div
-            className={`header__actions-box w-4/12 flex ${flexDirection} items-center justify-end `}
+            className={`sep-header__actions-box w-4/12 flex ${flexDirection} items-center justify-end `}
           >
             <Actions />
             <HeaderButton
@@ -136,15 +139,15 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
         </div>
       </div>
       <div
-        className={`header__row header__row--3 flex ${flexDirection}  items-center w-full container mx-auto px-20px `}
+        className={`sep-header__row sep-header__row--3 flex ${flexDirection}  items-center w-full container mx-auto px-20px `}
       >
         <div
-          className={`header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
+          className={`sep-header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
         >
           <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
         <div
-          className={`header__tel-box w-3/12 h-full flex ${flexDirection} items-center justify-end `}
+          className={`sep-header__tel-box w-3/12 h-full flex ${flexDirection} items-center justify-end `}
         >
           <HeaderTel
             layout={layout}

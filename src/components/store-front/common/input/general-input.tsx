@@ -8,18 +8,23 @@ export const GeneralInput: FC<IInput> = ({
   placeholder,
   onChange,
   onBlur,
+  onClick,
 }) => {
   const { toggle } = useClass();
+  const { dirRtl } = useDirection();
   return (
     <input
       className={toggle(
-        `input border-2  px-12  py-4 ${cssClass}`,
+        `input ${cssClass} border-2  px-2  py-4 `,
         className,
         layout
       )}
       placeholder={placeholder}
       onBlur={onBlur}
       onChange={onChange}
+      onClick={onClick}
+      dir={dirRtl}
+      style={style}
     ></input>
   );
 };

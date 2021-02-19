@@ -12,7 +12,7 @@ export const HeaderLayout: FC<IHeaderLayout> = ({
   return (
     <div
       className={toggle(
-        `header ${cssClass} bg-white `,
+        `sep-header ${cssClass} bg-white `,
         ' shadow-custom-1',
         layout,
         cssAlt

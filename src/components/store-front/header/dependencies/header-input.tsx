@@ -16,7 +16,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
     <div className="relative ">
       <GeneralInput
         className={className}
-        cssClass="header-input"
+        cssClass="sep-header-input"
         layout={layout}
         placeholder={`${language.HSearch}`}
         onChange={onChange}
@@ -25,7 +25,7 @@ export const HeaderInput: FC<IHeaderInput> = ({
       <ICSearch
         className={`absolute top-16px ${rightTL}-20px fill-current`}
         onClick={onClick}
-        cssClass="header-input__search"
+        cssClass="sep-header-input__search"
       />
     </div>
   );

@@ -5,6 +5,7 @@ interface IInput {
   className?: string;
   label?: string;
   onChange?: any;
+  onClick?: any;
   value?: any;
   onBlur?;
   variant?: 'input' | 'inputIcon' | 'textArea';
