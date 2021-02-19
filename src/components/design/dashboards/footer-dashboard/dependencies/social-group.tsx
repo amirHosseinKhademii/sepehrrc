@@ -3,7 +3,7 @@ import { ICInstagram, ICTelegram, ICWhatsapp } from 'icons';
 
 const SocialGroup = ({ settings, setSetting }) => {
   return (
-    <div className="flex flex-col w-full mb-30px">
+    <div className="flex flex-col w-full mt-14px">
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
         onClick={() => setSetting({ telegram: !settings.telegram })}
