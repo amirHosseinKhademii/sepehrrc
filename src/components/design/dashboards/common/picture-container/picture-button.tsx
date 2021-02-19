@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useDesign, useUi, useDirection } from 'hooks';
-import Dropzone, { useDropzone } from 'react-dropzone';
+import Dropzone from 'react-dropzone';
 import { ICPlus, ICMultiply } from 'icons';
 
 export const PictureButton: FC<IPictureButton> = ({
@@ -11,6 +11,7 @@ export const PictureButton: FC<IPictureButton> = ({
   const { setPureImage, deleteImage } = useDesign();
   const { toggleSettingState, toggleModal } = useUi();
   const { rightTL } = useDirection();
+
   if (withAdd)
     return (
       <Dropzone

@@ -7,6 +7,9 @@ export const ButtonImage = ({
   settings,
   setSetting,
   className,
+  showCondition,
+  deleteImage,
+  currentImage,
 }) => {
   const ButtonPicture = () => (
     <div
@@ -37,26 +40,25 @@ export const ButtonImage = ({
       <ICMultiply
         fill="#9ba3b5"
         className="w-15px h-15px ml-20px cursor-pointer"
-        onClick={() => setSetting({ backgroundImage: '' })}
+        onClick={() =>
+          isBackground
+            ? setSetting({ backgroundImage: '' })
+            : deleteImage(number)
+        }
       />
       <label className="text-gray_shade-400 text-14px pl-10px" htmlFor="upload">
         حذف عکس
       </label>
       <img
         className="w-54px h-54px rounded-r"
-        src={settings?.backgroundImage}
+        src={isBackground ? settings?.backgroundImage : currentImage?.value}
       />
     </div>
   );
 
   return (
     <div className={`w-full ${className}`}>
-      {typeof settings.backgroundImage === 'string' &&
-      settings.backgroundImage !== '' ? (
-        <ButtonRemove />
-      ) : (
-        <ButtonPicture />
-      )}
+      {showCondition ? <ButtonRemove /> : <ButtonPicture />}
     </div>
   );
 };
