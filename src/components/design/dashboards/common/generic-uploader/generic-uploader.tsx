@@ -51,6 +51,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
             showCondition={showCondition}
             deleteImage={deleteImage}
             currentImage={currentImage}
+            withSwitch={withSwitch}
             className="mt-30px"
           />
         )
@@ -64,6 +65,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
           showCondition={showCondition}
           deleteImage={deleteImage}
           currentImage={currentImage}
+          withSwitch={withSwitch}
           className=""
         />
       )}
