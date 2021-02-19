@@ -43,6 +43,9 @@ export const StoreFrontDesignContainer = memo(() => {
               {item.type == 'blog' && (
                 <div className="text-center py-121px text-lg">مقالات</div>
               )}
+              {item.type == 'product-group' && (
+                <div className="text-center py-121px text-lg">گروه محصولات</div>
+              )}
             </Fragment>
           ))}
         </Container>

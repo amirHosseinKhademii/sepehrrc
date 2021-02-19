@@ -9,3 +9,4 @@ export * from './checkbox';
 export * from './switch';
 export * from './range';
 export * from './color-picker';
+export * from './label';

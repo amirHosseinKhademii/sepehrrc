@@ -12,7 +12,7 @@ export const ResponsiveSwitchs: FC<{ className?: string }> = ({
     return (
       <Switch
         label="نمایش فقط در موبایل"
-        className=" "
+        className="mt-30px"
         onClick={() =>
           setSetting({
             mobile: settings && settings.mobile ? !settings.mobile : true,
@@ -28,7 +28,7 @@ export const ResponsiveSwitchs: FC<{ className?: string }> = ({
     return (
       <Switch
         label="نمایش فقط در مانیتور"
-        className=" mt-25px "
+        className=""
         onClick={() =>
           setSetting({
             monitor: settings && settings.monitor ? !settings.monitor : true,
@@ -42,8 +42,8 @@ export const ResponsiveSwitchs: FC<{ className?: string }> = ({
 
   return (
     <div className={`flex flex-col w-full ${className}`}>
-      <MobileSwitch />
       <MonitorSwitch />
+      <MobileSwitch />
     </div>
   );
 };

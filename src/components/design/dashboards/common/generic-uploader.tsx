@@ -1,8 +1,8 @@
 import { useClass, useDesign, useDirection } from 'hooks';
-import { Text, Input, CheckBox } from 'components';
+import { Text, Input, CheckBox, Switch } from 'components';
 import { FC } from 'react';
 import { ButtonDrawer } from '.';
-import { ButtonBackground } from './button-background';
+import { ButtonImage } from './button-image';
 
 export const GenericUploader: FC<IGenericUploader> = ({
   label,
@@ -12,6 +12,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
   withLink,
   className,
   isBackground,
+  withSwitch,
 }) => {
   const { textAlignRtl } = useDirection();
   const { join } = useClass();
@@ -30,13 +31,35 @@ export const GenericUploader: FC<IGenericUploader> = ({
           {label}
         </Text>
       )}
-      {isBackground ? (
-        <ButtonBackground
+      {withSwitch && (
+        <Switch
+          className=""
+          label="توصیر زمینه"
+          onClick={() =>
+            setSetting({ backgroundImage: !settings.backgroundImage })
+          }
+          checked={settings.backgroundImage}
+        />
+      )}
+      {isBackground && withSwitch ? (
+        settings.backgroundImage && (
+          <ButtonImage
+            setPureImage={setPureImage}
+            isBackground={isBackground}
+            number={number}
+            settings={settings}
+            setSetting={setSetting}
+            className="mt-30px"
+          />
+        )
+      ) : isBackground ? (
+        <ButtonImage
           setPureImage={setPureImage}
           isBackground={isBackground}
           number={number}
           settings={settings}
           setSetting={setSetting}
+          className=""
         />
       ) : (
         <ButtonDrawer

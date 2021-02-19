@@ -6,6 +6,7 @@ interface IGenericUploader {
   withLink?: boolean;
   className?: string;
   isBackground?: boolean;
+  withSwitch?: boolean;
 }
 
 interface IPictureButton {
