@@ -42,7 +42,7 @@ const FooterContainer = () => {
         );
       default:
         return (
-          <FooterFourth item={item} layout={layout} designState={designState} />
+          <FooterFirst item={item} layout={layout} designState={designState} />
         );
     }
   };

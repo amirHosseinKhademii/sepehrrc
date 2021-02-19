@@ -36,9 +36,9 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ watsapp: !settings.watsapp })}
+        onClick={() => setSetting({ whatsapp: !settings.whatsapp })}
       >
-        {settings.watsapp ? (
+        {settings.whatsapp ? (
           <CheckBox className="" secondary checked />
         ) : (
           <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
