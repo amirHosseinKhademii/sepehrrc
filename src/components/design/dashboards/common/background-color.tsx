@@ -14,7 +14,7 @@ export const BackgroundColor: FC<{
 
   const ButtonColor = () => (
     <div
-      className={`w-full flex items-center justify-between  h-54px bg-gray_shade-800 rounded cursor-pointer mt-30px`}
+      className={`w-full flex items-center justify-between  h-54px bg-gray_shade-800 rounded cursor-pointer mt-14px`}
       onClick={() => setOpen(true)}
     >
       <div
