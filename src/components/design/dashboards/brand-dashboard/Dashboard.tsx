@@ -34,8 +34,8 @@ const BrandDashboard = () => {
           />
         )}
         <DropDownGroup />
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
-        <BackgroundColor />
+        <GenericUploader text="انتخاب کنید" isBackground withSwitch />
+        <BackgroundColor withSwitch className="mt-30px" />
         <ResponsiveSwitchs />
       </div>
     );

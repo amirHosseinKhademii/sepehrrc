@@ -10,8 +10,20 @@ export const ButtonImage = ({
   showCondition,
   deleteImage,
   currentImage,
+  withSwitch,
 }) => {
-  const ButtonPicture = () => (
+  const show = () => {
+    if (withSwitch && isBackground) {
+      return (
+        typeof settings.backgroundImage === 'string' &&
+        settings.backgroundImage !== ''
+      );
+    } else if (withSwitch && !isBackground) {
+      currentImage.value;
+    } else return showCondition;
+  };
+
+  const ButtonUpload = () => (
     <div
       className={`w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between `}
     >
@@ -58,7 +70,7 @@ export const ButtonImage = ({
 
   return (
     <div className={`w-full ${className}`}>
-      {showCondition ? <ButtonRemove /> : <ButtonPicture />}
+      {show() ? <ButtonRemove /> : <ButtonUpload />}
     </div>
   );
 };
