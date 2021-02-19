@@ -1,52 +1,74 @@
 import { useClass, useDesign, useDirection } from 'hooks';
-import { Text, Input, CheckBox } from 'components';
+import { Input, CheckBox, Switch, Label } from 'components';
 import { FC } from 'react';
-import { ButtonDrawer } from '.';
-import { ButtonBackground } from './button-background';
+import { ButtonImage } from './button-image';
 
 export const GenericUploader: FC<IGenericUploader> = ({
   label,
-  text,
   number = 'one',
   withNewTab,
   withLink,
   className,
   isBackground,
+  withSwitch,
 }) => {
   const { textAlignRtl } = useDirection();
   const { join } = useClass();
-  const { setPureImage, designState, setImage, setSetting } = useDesign();
+  const {
+    setPureImage,
+    designState,
+    setImage,
+    setSetting,
+    deleteImage,
+  } = useDesign();
   const { current } = designState;
   const { settings } = current;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
+  const showCondition = isBackground ? settings.backgroundImage : currentImage;
 
   return (
     <div className={join('w-full', className)}>
-      {label && (
-        <Text
-          className={`mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
-        >
-          {label}
-        </Text>
+      {label && <Label className="mb-14px">{label}</Label>}
+      {withSwitch && (
+        <Switch
+          className=""
+          label="توصیر زمینه"
+          onClick={() =>
+            setSetting({ backgroundImage: !settings.backgroundImage })
+          }
+          checked={settings.backgroundImage}
+        />
       )}
-      {isBackground ? (
-        <ButtonBackground
+      {withSwitch ? (
+        showCondition && (
+          <ButtonImage
+            setPureImage={setPureImage}
+            isBackground={isBackground}
+            number={number}
+            settings={settings}
+            setSetting={setSetting}
+            showCondition={showCondition}
+            deleteImage={deleteImage}
+            currentImage={currentImage}
+            className="mt-30px"
+          />
+        )
+      ) : (
+        <ButtonImage
           setPureImage={setPureImage}
           isBackground={isBackground}
           number={number}
           settings={settings}
           setSetting={setSetting}
-        />
-      ) : (
-        <ButtonDrawer
-          withUpload
-          text={text}
-          onUpload={(value) => setPureImage({ value, number, isBackground })}
+          showCondition={showCondition}
+          deleteImage={deleteImage}
+          currentImage={currentImage}
+          className=""
         />
       )}
 
-      {withLink && (
+      {withLink && showCondition && (
         <Input
           withLink
           variant="inputIcon"
@@ -60,7 +82,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
           disabled={!currentImage || currentImage.value === ''}
         />
       )}
-      {withNewTab && (
+      {withNewTab && showCondition && (
         <CheckBox
           className="mt-15px"
           label="باز کردن صفحه در تب جدید "

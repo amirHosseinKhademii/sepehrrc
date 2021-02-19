@@ -37,8 +37,8 @@ export const designInitialState = {
     },
     {
       id: '5',
-      type: 'textImage',
-      title: 'متن با تصویر',
+      type: 'product-group',
+      title: '  گروه محصولات',
       images: [],
       settings: {},
     },

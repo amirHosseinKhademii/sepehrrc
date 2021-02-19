@@ -6,4 +6,5 @@ interface IDropDown {
   defaultValue?: string;
   selected?: any;
   height?: string;
+  label?: string;
 }

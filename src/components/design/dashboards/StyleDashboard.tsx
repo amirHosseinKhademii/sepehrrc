@@ -29,6 +29,11 @@ const BlogDashboard = dynamic(
   () => import('components/design/dashboards/blog-dashboard/Dashboard'),
   { loading: () => <DrawerLayout /> }
 );
+const ProductGroupDashboard = dynamic(
+  () =>
+    import('components/design/dashboards/product-group-dashboard/Dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
 
 const StyleDashboard = () => {
   const { designState } = useDesign();
@@ -47,6 +52,8 @@ const StyleDashboard = () => {
       return <FooterDashboard />;
     case 'blog':
       return <BlogDashboard />;
+    case 'product-group':
+      return <ProductGroupDashboard />;
     default:
       return <HeaderDashboard designState={designState} />;
   }
