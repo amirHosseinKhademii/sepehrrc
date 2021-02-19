@@ -5,16 +5,14 @@ import {
   TitleInput,
 } from '../../common';
 import { StyleBoxBlog } from './style-box-footer';
-import { Text, DropDown, Switch } from 'components';
+import { Label, DropDown, Switch } from 'components';
 
 export const BaseSettings = ({ settings, setSetting }) => {
   return (
     <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxBlog className="mb-30px" />
       <TitleInput />
-      <Text className="text-white_shade-100 mt-30px mb-14px text-14px">
-        نمایش به صورت
-      </Text>
+      <Label className=" mb-14px mt-30px ">نمایش به صورت</Label>
       <DropDown
         options={[
           { id: '2', title: '  دو ستون' },
@@ -24,9 +22,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         onSelect={(cols) => setSetting({ cols })}
         selected={settings.cols ? settings.cols : '2'}
       />
-      <Text className="text-white_shade-100 mt-30px mb-14px text-14px">
-        منبع نمایش
-      </Text>
+      <Label className="mb-14px mt-30px">منبع نمایش</Label>
       <DropDown
         options={[{ id: 'latest', title: '   آخرین مقالات' }]}
         onSelect={(showBy) => setSetting({ showBy })}
@@ -62,30 +58,9 @@ export const BaseSettings = ({ settings, setSetting }) => {
         checked={settings.date}
         className="mt-30px"
       />
-      <Switch
-        className=" mt-30px"
-        label="توصیر زمینه"
-        onClick={() =>
-          setSetting({ backgroundImage: !settings.backgroundImage })
-        }
-        checked={settings.backgroundImage}
-      />
-      {settings.backgroundImage && (
-        <GenericUploader isBackground className="mt-14px" />
-      )}
-      <Switch
-        label="رنگ زمینه"
-        className=" mb-14px mt-30px"
-        onClick={() =>
-          setSetting({ backgroundColor: !settings.backgroundColor })
-        }
-        checked={settings.backgroundColor}
-      />
-      {settings.backgroundColor !== undefined &&
-        settings.backgroundColor !== false && (
-          <BackgroundColor className="mb-20px" />
-        )}
-      <ResponsiveSwitchs className="mt-10px" />
+      <GenericUploader isBackground className="mt-30px" withSwitch />
+      <BackgroundColor className="mt-30px" withSwitch />
+      <ResponsiveSwitchs className="mt-30px" />
     </div>
   );
 };

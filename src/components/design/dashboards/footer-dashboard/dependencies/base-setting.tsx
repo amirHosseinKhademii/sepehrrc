@@ -1,12 +1,9 @@
-import { Input, Switch, Text } from 'components';
-import {
-  BackgroundColor,
-  ButtonDrawer,
-  GenericUploader,
-  ResponsiveSwitchs,
-} from '../../common';
+import { Input, Switch } from 'components';
+import dynamic from 'next/dynamic';
+import { ButtonDrawer, ResponsiveSwitchs } from '../../common';
 import { StyleBoxFooter } from './style-box-footer';
-import SocialGroup from '../../common/social-group';
+
+const SocialGroup = dynamic(() => import('./social-group'));
 
 const BaseSettings = ({ setSetting, settings }) => {
   return (
@@ -34,7 +31,7 @@ const BaseSettings = ({ setSetting, settings }) => {
       />
       <Switch
         label=" تلفن تماس"
-        className="mt-30px mb-20px"
+        className="mt-30px"
         onClick={() => setSetting({ tel: !settings.tel })}
         checked={settings.tel}
       />
@@ -42,7 +39,7 @@ const BaseSettings = ({ setSetting, settings }) => {
         <Input
           variant="input"
           withNumber
-          className="mb-30px text-center"
+          className=" text-center mt-14px"
           onBlur={(e) => setSetting({ tel: e.target.value })}
           placeholder={settings.tel !== true ? settings.tel : ' 021-23456789'}
         />
@@ -51,29 +48,28 @@ const BaseSettings = ({ setSetting, settings }) => {
         label=" شبکه های اجتماعی"
         onClick={() => setSetting({ social: !settings.social })}
         checked={settings.social}
-        className="mb-14px"
+        className="mt-30px"
       />
 
       {settings.social && (
         <SocialGroup setSetting={setSetting} settings={settings} />
       )}
-
       <Switch
         label="نماد اعتماد"
         onClick={() => setSetting({ trust: !settings.trust })}
         checked={settings.trust}
-        className="mb-14px"
+        className="mt-30px"
       />
       {settings.trust && (
         <ButtonDrawer
           withSetting
           text="تنظیمات نماد اعتماد"
-          className="mb-30px"
+          className="mt-14px"
         />
       )}
       <Switch
         label="اپلیکیشن موبایل"
-        className="mb-14px"
+        className=" mt-30px"
         onClick={() => setSetting({ mobileApp: !settings.mobileApp })}
         checked={settings.mobileApp}
       />
@@ -81,64 +77,17 @@ const BaseSettings = ({ setSetting, settings }) => {
         <ButtonDrawer
           withSetting
           text="تنظیمات  اپلیکیشن موبایل"
-          className="mb-30px"
+          className="mt-14px"
         />
       )}
-      <Text className="text-white_shade-100 text-14px">رنگ بندی فوتر</Text>
-      <div className="w-full rounded h-54px mt-14px mb-30px bg-gray_shade-800 flex items-center justify-between">
-        <div
-          className={` w-1/2  flex items-center justify-center h-full border-r rounded-l border-gray_shade-900 cursor-pointer ${
-            settings.dark && 'bg-primary-800'
-          }`}
-          onClick={() => setSetting({ dark: true })}
-        >
-          <Text
-            className={`text-14px ${
-              settings.dark ? 'text-white_shade-100' : 'text-gray_shade-300'
-            }`}
-          >
-            تیره
-          </Text>
-        </div>
-        <div
-          className={` w-1/2  flex items-center justify-center h-full rounded-r cursor-pointer  ${
-            !settings.dark && 'bg-primary-800'
-          }`}
-          onClick={() => setSetting({ dark: false })}
-        >
-          <Text
-            className={`text-14px ${
-              !settings.dark ? 'text-white_shade-100' : 'text-gray_shade-300'
-            }`}
-          >
-            روشن
-          </Text>
-        </div>
-      </div>
-      {/* <Switch
-        className="mb-14px"
-        label="توصیر زمینه"
+      <Switch
+        className="my-30px"
+        label="دارک مود"
         onClick={() =>
-          setSetting({ backgroundImage: !settings.backgroundImage })
+          setSetting({ dark: settings.dark ? !settings.dark : true })
         }
-        checked={settings.backgroundImage}
-      /> */}
-      {/*settings.backgroundImage && (
-        <GenericUploader isBackground className="mb-30px" />
-      )*/}
-
-      {/* <Switch
-        label="رنگ زمینه"
-        className=" mb-14px"
-        onClick={() =>
-          setSetting({ backgroundColor: !settings.backgroundColor })
-        }
-        checked={settings.backgroundColor}
-      /> */}
-      {/*settings.backgroundColor !== undefined &&
-        settings.backgroundColor !== false && (
-          <BackgroundColor className="mb-30px" />
-        )*/}
+        checked={settings.dark}
+      />
       <ResponsiveSwitchs className="mt-0px" />
     </div>
   );

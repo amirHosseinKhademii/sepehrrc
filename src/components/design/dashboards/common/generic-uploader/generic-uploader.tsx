@@ -52,7 +52,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
             deleteImage={deleteImage}
             currentImage={currentImage}
             withSwitch={withSwitch}
-            className="mt-30px"
+            className="mt-14px"
           />
         )
       ) : (

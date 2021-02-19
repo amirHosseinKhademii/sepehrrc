@@ -9,7 +9,7 @@ export const TitleInput = () => {
     <Fragment>
       <Switch
         label="عنوان بخش"
-        className="mb-14px"
+        className=""
         onClick={() =>
           setSetting({ title: settings.title ? !settings.title : true })
         }
@@ -25,6 +25,7 @@ export const TitleInput = () => {
               ? designState.current.settings.title
               : 'عنوان بخش'
           }
+          className="mt-14px"
         />
       )}
     </Fragment>
