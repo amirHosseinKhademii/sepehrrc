@@ -33,7 +33,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
       {withSwitch && (
         <Switch
           className=""
-          label="توصیر زمینه"
+          label="تصویر زمینه"
           onClick={() =>
             setSetting({ backgroundImage: !settings.backgroundImage })
           }

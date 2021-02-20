@@ -15,4 +15,5 @@ interface IInput {
   disabled?: boolean;
   height?: string;
   withSwitch?: boolean;
+  clearInputIcon?: Function;
 }

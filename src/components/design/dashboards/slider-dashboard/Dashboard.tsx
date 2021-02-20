@@ -5,8 +5,10 @@ import {
   GenericUploader,
   PictureContainer,
   DndUploadBox,
+  BackgroundColor,
 } from '../common';
 import {
+  HightButtonGroup,
   SpeedButtonGroup,
   WidthButtonGroup,
   EffectDrop,
@@ -34,16 +36,14 @@ const SliderDashboard = () => {
         ) : (
           <PictureContainer title={language.SDSliderImages} count={8} />
         )}
-        <SpeedButtonGroup />
+        <HightButtonGroup />
         <WidthButtonGroup />
         <EffectDrop />
+        <SpeedButtonGroup />
         <ShowTypeButtonGroup />
-        <GenericUploader
-          label={language.SDbackgroundImage}
-          text={language.SDChoose}
-          isBackground
-        />
-        <ResponsiveSwitchs />
+        <GenericUploader text={language.SDChoose} isBackground withSwitch />
+        <BackgroundColor withSwitch className="mt-30px" />
+        <ResponsiveSwitchs className="mt-30px mb-30px" />
       </div>
     );
   };
