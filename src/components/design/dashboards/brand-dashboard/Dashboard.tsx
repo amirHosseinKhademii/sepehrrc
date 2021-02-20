@@ -17,6 +17,7 @@ const BrandDashboard = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
         <TitleInput />
+        <DropDownGroup />
         {designState.pureImage.onUpload ? (
           <DndUploadBox
             placeholder={{
@@ -33,8 +34,12 @@ const BrandDashboard = () => {
             marginTop="25px"
           />
         )}
-        <DropDownGroup />
-        <GenericUploader text="انتخاب کنید" isBackground withSwitch />
+        <GenericUploader
+          text="انتخاب کنید"
+          className="mt-30px"
+          isBackground
+          withSwitch
+        />
         <BackgroundColor withSwitch className="mt-30px" />
         <ResponsiveSwitchs />
       </div>

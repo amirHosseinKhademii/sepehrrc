@@ -1,5 +1,10 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
-import { TitleInput } from '../common';
+import {
+  TitleInput,
+  ResponsiveSwitchs,
+  BackgroundColor,
+  GenericUploader,
+} from '../common';
 import { UploadButtonGroup, StyleBoxBanner } from './dependencies';
 import { FC, memo } from 'react';
 
@@ -9,6 +14,9 @@ const BannerDashboard: FC<IBannerDashboard> = memo(({ designState }) => {
       <TitleInput />
       <StyleBoxBanner />
       <UploadButtonGroup designState={designState} />
+      <GenericUploader isBackground className="mt-0px" withSwitch />
+      <BackgroundColor className="mt-30px" withSwitch />
+      <ResponsiveSwitchs className="mt-30px" />
     </div>
   );
 

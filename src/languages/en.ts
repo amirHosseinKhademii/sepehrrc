@@ -99,9 +99,13 @@ export const en = {
 
   SDSliderImages: 'slider images',
   SDSlidesSpeed: 'slides speed',
+  SDSlidesHeight: 'slides height',
   SDSlow: 'slow',
   SDMedium: 'medium',
   SDFast: 'fast',
+  SDSmallHeight: 'small',
+  SDMediumHeight: 'medium',
+  SDBigHeight: 'big',
   SDSliderWidth: 'sliderWidth',
   SDSliderWidthSimple: 'simple',
   SDSliderFullWidth: 'full width',
