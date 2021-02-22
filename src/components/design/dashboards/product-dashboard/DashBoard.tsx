@@ -1,4 +1,4 @@
-import { HeaderDrawer, DrawerLayout } from 'components';
+import { HeaderDrawer, DrawerLayout, ReactChipInput } from 'components';
 import {
   BackgroundColor,
   TitleInput,
@@ -13,7 +13,7 @@ import {
   PageButtonGroup,
   SliderDrops,
 } from './dependencies';
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
 import { useDirection } from 'hooks';
 
 const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
