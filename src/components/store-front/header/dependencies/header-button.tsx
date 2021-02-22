@@ -32,7 +32,7 @@ export const HeaderButton: FC<IHeaderButton> = ({
         <style jsx>
           {`
           
-          .header-button {
+          .sep-header-button {
             background-color: ${layout ? pageSettings.primary : 'initial'};
             border-color: ${layout ? pageSettings.primary : 'initial'};
             color: ${layout ? '#fff' : 'initial'};
