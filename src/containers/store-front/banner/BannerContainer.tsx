@@ -46,6 +46,7 @@ const BannerContainer = ({ item }) => {
         default:
           return <BannerFirst item={item} layout={layout} />;
       }
+    else return <BannerFirst item={item} layout={layout} />;
   };
 
   return (
