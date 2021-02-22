@@ -31,7 +31,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
           <ICShoppingCart
             height="20px"
             width="20px"
-            className="mx-2 fill-current text-20px"
+            className="sep-header-actions__shopping-cart-ic mx-2 fill-current text-20px"
           />{' '}
         </GeneralLink>
         <GeneralLink
@@ -42,7 +42,7 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
           <ICUsersAlt
             height="20px"
             width="20px"
-            className={`${marginRtl}-2  fill-current text-20px`}
+            className={`sep-header-actions__users-alt-ic ${marginRtl}-2  fill-current text-20px`}
           />
         </GeneralLink>
       </div>
