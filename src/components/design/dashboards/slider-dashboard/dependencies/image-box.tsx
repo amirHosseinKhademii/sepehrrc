@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { useDesign, useUi, useDirection } from 'hooks';
 import { Text } from 'components';
-import { ICEditSettings, ICCropAlt } from 'icons';
+import { ICEditPicture, ICNewPicture } from 'icons';
 import { DndUploadBox } from '../../common/';
 import Dropzone, { useDropzone } from 'react-dropzone';
 
@@ -53,9 +53,9 @@ export const ImageBox = () => {
                     className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer`}
                     // onClick={() => setPureImage({ onUpload: true, number })}
                   >
-                    {language.SDImagesEdit}
+                    {language.SDImageNew}
                   </Text>
-                  <ICEditSettings fill="#fff" />
+                  <ICNewPicture fill="#9ba3b5" className="text-16px" />
                 </div>
               )}
             </Dropzone>
@@ -66,9 +66,9 @@ export const ImageBox = () => {
                   toggleModal({ open: true, editImage: true, type: 'image' })
                 }
               >
-                {language.SDImagesCrop}
+                {language.SDImageEdit}
               </Text>
-              <ICCropAlt fill="#fff" />
+              <ICEditPicture fill="#9ba3b5" className="text-16px" />
             </div>
           </div>
         </>

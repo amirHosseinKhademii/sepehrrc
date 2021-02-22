@@ -31,17 +31,17 @@ export const ButtonDrawer: FC<IButton> = ({
     <div className={`flex ${flexDirection} items-center`}>
       {withSetting && withHover
         ? hover && (
-            <ButtonIcon onClick={onSetting} className={` ${paddingRtl}-13px `}>
+            <ButtonIcon onClick={onSetting}>
               <ICSettingCog fill="#fff" />
             </ButtonIcon>
           )
         : withSetting && (
-            <ButtonIcon onClick={onSetting} className={`${paddingRtl}-13px`}>
+            <ButtonIcon onClick={onSetting}>
               <ICSettingCog fill="#9ba3b5" />
             </ButtonIcon>
           )}
       {withDelete && hover && (
-        <ButtonIcon onClick={onDelete}>
+        <ButtonIcon onClick={onDelete} className={`${paddingRtl}-13px`}>
           <ICTrash fill="#fff" />
         </ButtonIcon>
       )}

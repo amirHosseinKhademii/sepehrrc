@@ -10,19 +10,19 @@ export const DropDownGroup = () => {
       <Text
         className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
-        تعداد ستون
+        نمایش بر اساس
       </Text>
       <DropDown
         className="w-full h-54px"
         options={[
-          { id: '4', title: '4' },
-          { id: '6', title: '6' },
+          { id: 'random', title: 'تصادفی' },
+          { id: 'history', title: 'تاریخ آپلود' },
         ]}
         onSelect={(cols) => setSetting({ cols })}
         selected={
           designState.current.settings && designState.current.settings.cols
             ? designState.current.settings.cols
-            : '4'
+            : 'random'
         }
       />
     </div>
