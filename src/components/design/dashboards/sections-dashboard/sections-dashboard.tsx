@@ -1,4 +1,4 @@
-import { Draggable, Container } from 'react-smooth-dnd';
+import { Draggable, Container, smoothDnD } from 'react-smooth-dnd';
 import { useDesign, useUi } from 'hooks';
 import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';

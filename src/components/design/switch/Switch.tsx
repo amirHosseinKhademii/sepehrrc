@@ -18,15 +18,15 @@ export const Switch: FC<ISwitch> = ({
           className
         )}
       >
-        <div className=" flex flex-row items-center justify-between w-52px h-32px p-2px bg-gray_shade-800 rounded-full cursor-pointer">
+        <div className=" flex flex-row items-center justify-between w-38px h-24px p-2px bg-gray_shade-800 rounded-full cursor-pointer">
           {checked ? (
             <>
               <div />
-              <div className="w-28px h-28px rounded-full bg-primary-700"></div>
+              <div className="w-18px h-18px rounded-full bg-primary-700"></div>
             </>
           ) : (
             <>
-              <div className="w-28px h-28px rounded-full bg-gray_shade-900"></div>
+              <div className="w-18px h-18px rounded-full bg-gray_shade-900"></div>
               <div />
             </>
           )}
@@ -43,15 +43,15 @@ export const Switch: FC<ISwitch> = ({
         )}
         onClick={onClick}
       >
-        <div className=" flex flex-row items-center justify-between w-52px h-32px p-2px bg-gray_shade-800 rounded-full cursor-pointer">
+        <div className=" flex flex-row items-center justify-between w-38px h-24px p-2px bg-gray_shade-800 rounded-full cursor-pointer">
           {checked ? (
             <>
               <div />
-              <div className="w-28px h-28px rounded-full bg-primary-700"></div>
+              <div className="w-18px h-18px rounded-full bg-primary-700"></div>
             </>
           ) : (
             <>
-              <div className="w-28px h-28px rounded-full  bg-gray_shade-900"></div>
+              <div className="w-18px h-18px rounded-full  bg-gray_shade-900"></div>
               <div />
             </>
           )}

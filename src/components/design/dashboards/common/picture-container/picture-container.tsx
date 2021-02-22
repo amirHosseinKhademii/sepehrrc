@@ -31,7 +31,7 @@ export const PictureContainer = ({ title, count = 8, marginTop = '0' }) => {
       onDragEnter={() => handleOnDragEnter()}
     >
       <Text
-        className={` mb-6px text-14px text-white_shade-100 ${textAlignRtl}`}
+        className={` mb-10px text-14px text-white_shade-100 ${textAlignRtl}`}
       >
         {title}
       </Text>

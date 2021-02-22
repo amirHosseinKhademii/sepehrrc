@@ -1,4 +1,4 @@
-import { Draggable, Container } from 'react-smooth-dnd';
+import { Draggable, Container, smoothDnD } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
@@ -31,6 +31,8 @@ const AddDashboard = () => {
         }
         style={{ width: 270 }}
         behaviour="copy"
+        onDragEnd={() => smoothDnD.cancelDrag()}
+        removeOnDropOut
       >
         {(designState.menuItems || [])
           .filter((item) => item.type !== 'header')

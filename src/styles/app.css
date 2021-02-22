@@ -189,6 +189,12 @@ html {
 .cover:hover > .delIcon {
   opacity: 1;
 }
+.cover:hover > .editIconBox {
+  opacity: 0.5;
+}
+.cover:hover > .editIcon {
+  opacity: 1;
+}
 .cover:hover > .coverImage {
   border-width: 2px;
 }

@@ -1,4 +1,4 @@
-import { ICMultiply } from 'icons';
+import { ICMultiply, ICImagePlaceholder } from 'icons';
 
 export const ButtonImage = ({
   setPureImage,
@@ -41,7 +41,9 @@ export const ButtonImage = ({
           setPureImage({ value: e.target.files[0], number, isBackground })
         }
       />
-      <div className="w-54px h-54px border-l bg-gray_shade-700 border-gray_shade-900 rounded-r" />
+      <div className="w-54px h-54px flex justify-center items-center border-l bg-gray_shade-700 border-gray_shade-900 rounded-r">
+        <ICImagePlaceholder fill="#9ba3b5" className="text-18px" />
+      </div>
     </div>
   );
 

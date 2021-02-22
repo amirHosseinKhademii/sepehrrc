@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDesign, useUi, useDirection } from 'hooks';
 import Dropzone from 'react-dropzone';
-import { ICPlus, ICMultiply } from 'icons';
+import { ICPlus, ICMultiply, ICEditPen } from 'icons';
 
 export const PictureButton: FC<IPictureButton> = ({
   withAdd,
@@ -44,14 +44,11 @@ export const PictureButton: FC<IPictureButton> = ({
     return (
       <div className="cover relative rounded ">
         <img
-          onClick={() =>
-            toggleSettingState({ type: 'picture', number, open: true })
-          }
           className="coverImage w-full h-60px rounded border-primary-700 cursor-pointer"
           src={picture}
         />
         <div
-          className={`delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -${rightTL}-1 bg-alert-300 rounded-full cursor-pointer opacity-0`}
+          className={`delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -${rightTL}-1 bg-alert-300 rounded-full z-20 cursor-pointer opacity-0`}
         >
           <ICMultiply
             onClick={() =>
@@ -65,6 +62,19 @@ export const PictureButton: FC<IPictureButton> = ({
             fill="white"
             width="10px"
             height="10px"
+            className="cursor-pointer"
+          />
+        </div>
+        <div
+          className={`editIconBox flex justify-center items-center absolute  inset-x-0 inset-y-0 mx-auto bg-primary-700 rounded z-10 opacity-0`}
+        />
+        <div className="editIcon w-full h-full flex justify-center items-center absolute inset-x-0 inset-y-0 mx-auto z-20 opacity-0">
+          <ICEditPen
+            onClick={() =>
+              toggleSettingState({ type: 'picture', number, open: true })
+            }
+            fill="white"
+            className="text-16px cursor-pointer"
           />
         </div>
       </div>
