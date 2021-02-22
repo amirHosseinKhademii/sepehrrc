@@ -1,13 +1,14 @@
 import { Fragment, memo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Container } from 'react-smooth-dnd';
+import { Container, smoothDnD } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import HeaderContainer from './header/HeaderContainer';
 import FooterContainer from './footer/FooterContainer';
+import SliderContainer from './slider/SliderContainer';
 
 const ProductContainer = dynamic(() => import('./product/ProductContainer'));
 const BrandContainer = dynamic(() => import('./brand/BrandContainer'));
-const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
+// const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
 const BannerContainer = dynamic(() => import('./banner/BannerContainer'));
 
 export const StoreFrontDesignContainer = memo(() => {
@@ -29,7 +30,7 @@ export const StoreFrontDesignContainer = memo(() => {
             minHeight: '60vh',
           }}
           dropPlaceholder={{
-            animationDuration: 150,
+            animationDuration: 250,
             showOnTop: true,
             className: 'drop-preview',
           }}
