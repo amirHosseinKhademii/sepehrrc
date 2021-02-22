@@ -9,7 +9,7 @@ const ProductContainer = dynamic(() => import('./product/ProductContainer'));
 const BrandContainer = dynamic(() => import('./brand/BrandContainer'));
 const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
 const BannerContainer = dynamic(() => import('./banner/BannerContainer'));
-
+const BlogContainer = dynamic(() => import('./blog/BlogContainer'));
 export const StoreFrontDesignContainer = memo(() => {
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
@@ -40,9 +40,7 @@ export const StoreFrontDesignContainer = memo(() => {
               {item.type == 'slider' && <SliderContainer item={item} />}
               {item.type == 'banner' && <BannerContainer item={item} />}
               {item.type == 'brands' && <BrandContainer item={item} />}
-              {item.type == 'blog' && (
-                <div className="text-center py-121px text-lg">مقالات</div>
-              )}
+              {item.type == 'blog' && <BlogContainer item={item} />}
               {item.type == 'product-group' && (
                 <div className="text-center py-121px text-lg">گروه محصولات</div>
               )}
