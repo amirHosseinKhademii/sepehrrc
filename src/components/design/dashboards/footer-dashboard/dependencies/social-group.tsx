@@ -1,14 +1,15 @@
-import { CheckBox, Text } from 'components';
+import { CheckBox, Text, Switch } from 'components';
 import { ICInstagram, ICTelegram, ICWhatsapp } from 'icons';
+import { Fragment } from 'react';
 
 const SocialGroup = ({ settings, setSetting }) => {
-  return (
+  const SocialCheck = () => (
     <div className="flex flex-col w-full mt-14px">
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ telegram: !settings.telegram })}
+        onClick={() => setSetting({ socialegram: !settings.socialegram })}
       >
-        {settings.telegram ? (
+        {settings.socialegram ? (
           <CheckBox className="" secondary checked />
         ) : (
           <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
@@ -50,6 +51,26 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
     </div>
   );
+
+  return (
+    <Fragment>
+      <Switch
+        label=" شبکه های اجتماعی"
+        onClick={() =>
+          setSetting({
+            social: settings.social === undefined ? false : !settings.social,
+          })
+        }
+        checked={settings.social === undefined ? true : settings.social}
+        className="mt-30px"
+      />
+      {settings.social === undefined ? (
+        <SocialCheck />
+      ) : (
+        settings.social && <SocialCheck />
+      )}
+    </Fragment>
+  );
 };
 
-export default SocialGroup;
+export { SocialGroup };

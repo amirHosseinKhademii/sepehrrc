@@ -1,9 +1,12 @@
 import { Input, Switch } from 'components';
-import dynamic from 'next/dynamic';
 import { ButtonDrawer, ResponsiveSwitchs } from '../../common';
-import { StyleBoxFooter } from './style-box-footer';
-
-const SocialGroup = dynamic(() => import('./social-group'));
+import {
+  StyleBoxFooter,
+  TelInput,
+  SocialGroup,
+  TrustSetting,
+  MobileSetting,
+} from '.';
 
 const BaseSettings = ({ setSetting, settings }) => {
   return (
@@ -29,57 +32,10 @@ const BaseSettings = ({ setSetting, settings }) => {
           settings.copyRight ? settings.copyRight : 'توضیحات را اینجا بنویسید'
         }
       />
-      <Switch
-        label=" تلفن تماس"
-        className="mt-30px"
-        onClick={() => setSetting({ tel: !settings.tel })}
-        checked={settings.tel}
-      />
-      {settings.tel && (
-        <Input
-          variant="input"
-          withNumber
-          className=" text-center mt-14px"
-          onBlur={(e) => setSetting({ tel: e.target.value })}
-          placeholder={settings.tel !== true ? settings.tel : ' 021-23456789'}
-        />
-      )}
-      <Switch
-        label=" شبکه های اجتماعی"
-        onClick={() => setSetting({ social: !settings.social })}
-        checked={settings.social}
-        className="mt-30px"
-      />
-
-      {settings.social && (
-        <SocialGroup setSetting={setSetting} settings={settings} />
-      )}
-      <Switch
-        label="نماد اعتماد"
-        onClick={() => setSetting({ trust: !settings.trust })}
-        checked={settings.trust}
-        className="mt-30px"
-      />
-      {settings.trust && (
-        <ButtonDrawer
-          withSetting
-          text="تنظیمات نماد اعتماد"
-          className="mt-14px"
-        />
-      )}
-      <Switch
-        label="اپلیکیشن موبایل"
-        className=" mt-30px"
-        onClick={() => setSetting({ mobileApp: !settings.mobileApp })}
-        checked={settings.mobileApp}
-      />
-      {settings.mobileApp && (
-        <ButtonDrawer
-          withSetting
-          text="تنظیمات  اپلیکیشن موبایل"
-          className="mt-14px"
-        />
-      )}
+      <TelInput settings={settings} setSetting={setSetting} />
+      <SocialGroup setSetting={setSetting} settings={settings} />
+      <TrustSetting setSetting={setSetting} settings={settings} />
+      <MobileSetting setSetting={setSetting} settings={settings} />
       <Switch
         className="my-30px"
         label="دارک مود"
