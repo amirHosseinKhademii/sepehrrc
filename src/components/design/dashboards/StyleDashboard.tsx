@@ -14,7 +14,7 @@ const SliderDashboard = dynamic(
   { loading: () => <DrawerLayout /> }
 );
 const ProductDashboard = dynamic(
-  () => import('components/design/dashboards/product-dashboard/DashBoard'),
+  () => import('components/design/dashboards/product-dashboard/Dashboard'),
   { loading: () => <DrawerLayout /> }
 );
 const BrandDashboard = dynamic(
