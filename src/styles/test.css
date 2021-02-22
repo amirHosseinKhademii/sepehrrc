@@ -1,0 +1,14 @@
+.react-autosuggest__container {
+  font-family: 'IRANSansFaNum';
+  font-size: 14px;
+  color: #9ba3b5;
+  padding: 5px 8px 5px 8px;
+}
+.react-autosuggest__input {
+  background-color: #414655;
+  width: 80px;
+  color: #9ba3b5;
+}
+.react-autosuggest__input--focused {
+  outline: 0;
+}

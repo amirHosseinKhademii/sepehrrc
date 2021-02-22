@@ -1,5 +1,6 @@
 import '../styles/index.css';
 import '../styles/style.css';
+import '../styles/test.css';
 import { UiProvider } from 'providers/ui-provider';
 import { DesignProvider } from 'providers/design-provider';
 import { QueryClient, QueryClientProvider } from 'react-query';
