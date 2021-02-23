@@ -1,8 +1,11 @@
+import { useDirection } from 'hooks';
 export const LabelBox = ({ label }) => {
+  const { textAlignRtl } = useDirection();
   return (
-    <span className="mb-10px text-gray_shade-300 text-14px font-iransans">
-      {' '}
+    <div
+      className={`mb-10px w-full text-gray_shade-300 text-14px font-iransans ${textAlignRtl} `}
+    >
       {label}
-    </span>
+    </div>
   );
 };
