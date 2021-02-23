@@ -1,5 +1,5 @@
 import { useClass, useDesign, useDirection } from 'hooks';
-import { FC, useState } from 'react';
+import { FC, Fragment, useState } from 'react';
 import { ICEditStyle } from 'icons';
 import { HeaderFirst } from './dependencies';
 import dynamic from 'next/dynamic';
@@ -94,8 +94,8 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
   };
 
   return (
-    <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
-      <div className={`flex ${flexDirection} justify-between pb-20px`}>
+    <Fragment>
+      <div className={`w-full flex ${flexDirection} justify-between`}>
         <div className={`flex ${flexDirection} `}>
           <div className="text-16px font-iransans font-light text-white_shade-100 ">
             <div className={`flex`}>
@@ -118,16 +118,18 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
           )}
         </div>
       </div>
-      {open ? (
-        <DropDown
-          designState={designState}
-          toggle={toggle}
-          join={join}
-          onSelectClick={onSelectClick}
-        />
-      ) : (
-        <ShowBox />
-      )}
-    </div>
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px py-15px mt-10px">
+        {open ? (
+          <DropDown
+            designState={designState}
+            toggle={toggle}
+            join={join}
+            onSelectClick={onSelectClick}
+          />
+        ) : (
+          <ShowBox />
+        )}
+      </div>
+    </Fragment>
   );
 };
