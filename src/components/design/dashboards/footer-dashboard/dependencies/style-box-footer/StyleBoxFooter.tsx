@@ -7,6 +7,12 @@ import FooterFirst from './dependencies/footer-first';
 const FooterSecond = dynamic(() => import('./dependencies/footer-second'), {
   loading: () => <FooterFirst />,
 });
+const FooterThird = dynamic(() => import('./dependencies/footer-third'), {
+  loading: () => <FooterFirst />,
+});
+const FooterFourth = dynamic(() => import('./dependencies/footer-fourth'), {
+  loading: () => <FooterFirst />,
+});
 const DropDown = dynamic(() => import('./dependencies/drop-down'), {
   loading: () => <FooterFirst />,
 });
@@ -34,8 +40,12 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
         return <FooterFirst className="" active />;
       case 'second':
         return <FooterSecond className="" join={join} active />;
+      case 'third':
+        return <FooterThird active />;
+      case 'fourth':
+        return <FooterFourth active />;
       default:
-        return <FooterFirst className="" join={join} active />;
+        return <FooterFirst active />;
     }
   };
 
@@ -43,6 +53,8 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
     const { style } = designState.current.settings;
     if (!style || style === 'first') return '1 نمایش : استایل ';
     else if (style === 'second') return '2 نمایش : استایل ';
+    else if (style === 'third') return '3 نمایش : استایل ';
+    else if (style === 'fourth') return '4 نمایش : استایل ';
   };
 
   return (
