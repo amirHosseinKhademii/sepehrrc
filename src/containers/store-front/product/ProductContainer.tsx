@@ -83,14 +83,10 @@ const ProductContainer = ({ item }) => {
     return (
       <div className="container mx-auto flex flex-col w-full  px-20px pb-25px">
         <ContainerTitle
-          text={
-            item?.settings && item.settings?.title
-              ? item.settings.title
-              : item.title
-          }
-          layout={layout}
           designState={designState}
+          item={item}
           join={join}
+          layout={layout}
         />
         <ProductGrid
           col={
