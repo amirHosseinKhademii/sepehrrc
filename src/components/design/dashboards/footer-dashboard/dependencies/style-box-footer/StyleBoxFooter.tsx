@@ -1,6 +1,6 @@
 import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
-import { ICEditSettings } from 'icons';
+import { ICEditStyle } from 'icons';
 import dynamic from 'next/dynamic';
 import FooterFirst from './dependencies/footer-first';
 
@@ -62,7 +62,10 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
       <div className="flex justify-between">
         <div className="flex cursor-pointer" onClick={toggleDropdown}>
           {!open && (
-            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
+            <ICEditStyle
+              fill="#9ba3b5"
+              className={`${marginRtl}-1 text-18px cursor-pointer`}
+            />
           )}
           <span className="text-14px font-iransans text-gray_shade-300">
             {open ? 'بازگشت' : 'ویرایش'}

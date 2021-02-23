@@ -15,13 +15,13 @@ export const MenuEditGroup = ({ designState }) => {
       settings.style === 'eighth');
 
   return (
-    <div className="w-full flex flex-col mt-30px mb-10px">
+    <div className="w-full flex flex-col mt-10px mb-10px">
       <ButtonDrawer
         withPush
         withIcon
         onPush="https://mountainshop.mysepehr.com/admin"
         text={language.HDEditWebsiteMenu}
-        className="justify-center mb-15px cursor-pointer"
+        className="justify-center mb-10px cursor-pointer"
         children={<ICSettingMenu fill="#9ba3b5" className="text-18px" />}
       />
       {showCategory && (
@@ -30,7 +30,7 @@ export const MenuEditGroup = ({ designState }) => {
           withIcon
           onPush="https://mountainshop.mysepehr.com/products.aspx"
           text={language.HDEditProductsCategory}
-          className="justify-center mb-15px cursor-pointer"
+          className="justify-center mb-10px cursor-pointer"
           children={<ICSettingMenu fill="#9ba3b5" className="text-18px" />}
         />
       )}
@@ -40,7 +40,7 @@ export const MenuEditGroup = ({ designState }) => {
           withIcon
           onPush="https://mountainshop.mysepehr.com/basketwatch.aspx"
           text={language.HDEditSocailMedias}
-          className="justify-center mb-15px cursor-pointer"
+          className="justify-center mb-10px cursor-pointer"
           children={<ICSettingMenu fill="#9ba3b5" className="text-18px" />}
         />
       )}
