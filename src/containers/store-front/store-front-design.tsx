@@ -4,13 +4,15 @@ import { Container, smoothDnD } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import HeaderContainer from './header/HeaderContainer';
 import FooterContainer from './footer/FooterContainer';
-import SliderContainer from './slider/SliderContainer';
 
 const ProductContainer = dynamic(() => import('./product/ProductContainer'));
 const BrandContainer = dynamic(() => import('./brand/BrandContainer'));
-// const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
+const SliderContainer = dynamic(() => import('./slider/SliderContainer'));
 const BannerContainer = dynamic(() => import('./banner/BannerContainer'));
 const BlogContainer = dynamic(() => import('./blog/BlogContainer'));
+const ProductGroupContainer = dynamic(
+  () => import('./product-group/ProductGroupContainer')
+);
 export const StoreFrontDesignContainer = memo(() => {
   const [drop, setDrop] = useState({});
   const { onHorizontalDrop, setChildPayload, designState } = useDesign();
@@ -43,7 +45,7 @@ export const StoreFrontDesignContainer = memo(() => {
               {item.type == 'brands' && <BrandContainer item={item} />}
               {item.type == 'blog' && <BlogContainer item={item} />}
               {item.type == 'product-group' && (
-                <div className="text-center py-121px text-lg">گروه محصولات</div>
+                <ProductGroupContainer item={item} />
               )}
             </Fragment>
           ))}
