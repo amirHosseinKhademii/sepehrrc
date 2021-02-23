@@ -63,11 +63,7 @@ const BannerContainer = ({ item }) => {
     >
       <ContainerTitle
         designState={designState}
-        text={
-          item?.settings && item.settings?.title
-            ? item.settings.title
-            : item.title
-        }
+        item={item}
         join={join}
         layout={layout}
       />

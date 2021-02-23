@@ -79,7 +79,7 @@ const ProductSlider: FC<IProductSlider> = ({
       className="relative container mx-auto px-20px pb-6  flex flex-col w-full"
     >
       <ContainerTitle
-        text={title}
+        item={item}
         designState={designState}
         layout={layout}
         join={join}

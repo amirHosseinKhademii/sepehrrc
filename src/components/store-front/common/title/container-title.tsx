@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 export const ContainerTitle: FC<IContainerTitle> = ({
-  text,
+  item,
   className,
   join,
   designState,
@@ -15,7 +15,11 @@ export const ContainerTitle: FC<IContainerTitle> = ({
         className
       )}
     >
-      {text}
+      {item && item.settings && item.settings.title
+        ? typeof item.settings.title === 'string'
+          ? item.settings.title
+          : item.title
+        : null}
     </div>
   );
 };

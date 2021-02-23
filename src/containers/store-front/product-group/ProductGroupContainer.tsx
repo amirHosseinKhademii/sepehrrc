@@ -1,4 +1,4 @@
-import { GeneralLayout } from 'components';
+import { ContainerTitle, GeneralLayout } from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
 import dynamic from 'next/dynamic';
 
@@ -72,6 +72,12 @@ const ProductGroupContainer = ({ item }) => {
       item={item}
       layout={layout}
     >
+      <ContainerTitle
+        designState={designState}
+        item={item}
+        join={join}
+        layout={layout}
+      />
       <div
         className={`container mx-auto  grid grid-cols-${
           cols || 3
