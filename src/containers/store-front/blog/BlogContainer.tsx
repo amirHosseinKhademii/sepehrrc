@@ -1,6 +1,6 @@
 import { useDesign, useUi } from 'hooks';
 import dynamic from 'next/dynamic';
-import { GeneralLayout } from 'components';
+import { GeneralLayout, ContainedButton, OulinedButton } from 'components';
 import { data } from './data';
 const BlogFirst = dynamic(
   () => import('components/store-front/card/blog-card/BlogFirst')
@@ -77,6 +77,13 @@ const BlogContainer = ({ item }) => {
             <Blogs layout={layout} data={item} designState={designState} />
           );
         })}
+        <OulinedButton
+          layout={layout}
+          text="test"
+          className=""
+          cssClass=""
+          designState={designState}
+        />
       </div>
     </GeneralLayout>
   );

@@ -13,7 +13,7 @@ export const GeneralLink: React.FC<ILink> = React.forwardRef(
         <a
           style={style}
           className={toggle(
-            ` link ${cssClass ? cssClass : ''} cursor-pointer`,
+            ` sep-link ${cssClass ? cssClass : ''} cursor-pointer`,
             className,
             layout,
             ''
