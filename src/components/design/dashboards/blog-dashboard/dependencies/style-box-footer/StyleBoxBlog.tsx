@@ -1,6 +1,6 @@
 import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
-import { ICEditSettings } from 'icons';
+import { ICEditStyle } from 'icons';
 import dynamic from 'next/dynamic';
 import BlogFirst from './dependencies/blog-first';
 
@@ -12,7 +12,7 @@ const DropDown = dynamic(() => import('./dependencies/drop-down'), {
 });
 
 export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
-  const { marginRtl } = useDirection();
+  const { marginRtl, language } = useDirection();
 
   const { join } = useClass();
   const { designState, setSetting } = useDesign();
@@ -48,11 +48,16 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
   return (
     <div className={`flex flex-col justify-between w-full ${className}`}>
       <div className="flex justify-between">
-        <div className="flex cursor-pointer" onClick={toggleDropdown}>
+        <div
+          className="flex cursor-pointer  text-gray_shade-300"
+          onClick={toggleDropdown}
+        >
           {!open && (
-            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
+            <ICEditStyle
+              className={`${marginRtl}-1 cursor-pointer fill-current mt-3px`}
+            />
           )}
-          <span className="text-14px font-iransans text-gray_shade-300">
+          <span className="text-14px font-iransans">
             {open ? 'بازگشت' : 'ویرایش'}
           </span>
         </div>

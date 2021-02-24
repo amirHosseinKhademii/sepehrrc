@@ -8,36 +8,47 @@ import {
   BlogLink,
 } from './dependencies';
 import { useClass } from 'hooks';
-const BlogFirst: FC<IBlogCard> = ({ layout, item, designState }) => {
+const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
   const { pageSettings } = designState;
   const { toggle } = useClass();
+  const { settings } = item;
   return (
-    <div className="blog flex flex-col bg-white">
+    <div
+      className={toggle(`blog flex flex-col bg-white`, 'rounded-5px', layout)}
+    >
       <BlogLink layout={layout} type={'post'}>
-        <BlogImage toggle={toggle} layout={layout} src={item.imgSrc} />
+        <BlogImage toggle={toggle} layout={layout} src={data.imgSrc} />
       </BlogLink>
       <div className="p-30px text-right">
         <BlogLink layout={layout} type={'post'}>
           <BlogTitle
-            text={item.title}
+            text={data.title}
             layout={layout}
             toggle={toggle}
             className="font-bold text-16px"
           />
         </BlogLink>
 
-        <BlogAbstract toggle={toggle} layout={layout} text={item.abstract} />
+        {settings.description && (
+          <BlogAbstract toggle={toggle} layout={layout} text={data.abstract} />
+        )}
 
-        <div className="flex flex-row-reverse justify-between">
-          <BlogLink layout={layout} type={'author'}>
-            <BlogAuthor
-              text={item.author}
-              designState={designState}
-              layout={layout}
-            />
-          </BlogLink>
-          <BlogDate text={item.date} toggle={toggle} layout={layout} />
-        </div>
+        {(settings.author || settings.date) && (
+          <div className="flex flex-row-reverse justify-between">
+            {settings.author && (
+              <BlogLink layout={layout} type={'author'}>
+                <BlogAuthor
+                  text={data.author}
+                  designState={designState}
+                  layout={layout}
+                />
+              </BlogLink>
+            )}
+            {settings.date && (
+              <BlogDate text={data.date} toggle={toggle} layout={layout} />
+            )}
+          </div>
+        )}
       </div>
       <style jsx>
         {`

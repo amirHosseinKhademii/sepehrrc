@@ -1,5 +1,5 @@
 import { FC } from 'react';
-
+import { useDirection } from 'hooks';
 export const BlogTitle: FC<IBlogTitle> = ({
   layout = true,
   className,
@@ -9,11 +9,11 @@ export const BlogTitle: FC<IBlogTitle> = ({
   toggle,
   text,
 }) => {
+  const { textAlignRtl } = useDirection();
   return (
     <div
-      style={{ direction: 'rtl' }}
       className={toggle(
-        ` blog-title ${cssClass ? cssClass : ''} `,
+        ` blog-title mb-20px ${textAlignRtl}  ${cssClass ? cssClass : ''} `,
         `${className ? className : ''}`,
         layout
       )}

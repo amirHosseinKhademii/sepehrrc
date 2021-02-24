@@ -187,4 +187,10 @@ export const en = {
   BDChoose: 'choose',
   BDChooseFie: 'choose File',
   BDOpenNewTab: 'open page in new tab',
+
+  //blog
+  BShowMore: 'show more ', //show more post
+
+  //blog dashboard
+  BDBlogShowSettings: 'blog show settings', //blog show settings
 };

@@ -29,6 +29,11 @@ export const ButtonDrawer: FC<IButton> = ({
 
   const EndItem = () => (
     <div className={`flex ${flexDirection} items-center`}>
+      {withDelete && hover && (
+        <ButtonIcon onClick={onDelete} className={`${paddingRtl}-13px`}>
+          <ICTrash fill="#fff" />
+        </ButtonIcon>
+      )}
       {withSetting && withHover
         ? hover && (
             <ButtonIcon onClick={onSetting}>
@@ -40,11 +45,6 @@ export const ButtonDrawer: FC<IButton> = ({
               <ICSettingCog fill="#9ba3b5" />
             </ButtonIcon>
           )}
-      {withDelete && hover && (
-        <ButtonIcon onClick={onDelete} className={`${paddingRtl}-13px`}>
-          <ICTrash fill="#fff" />
-        </ButtonIcon>
-      )}
       {withUpload && (
         <input
           type="file"
