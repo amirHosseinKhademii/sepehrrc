@@ -1,6 +1,6 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
-import { DropDownGroup } from './dependencies';
-import { useDesign } from 'hooks';
+import { DropDownGroup, ImageBox, InputBox } from './dependencies';
+import { useDesign, useUi } from 'hooks';
 import {
   BackgroundColor,
   TitleInput,
@@ -12,27 +12,24 @@ import {
 
 const BrandDashboard = () => {
   const { designState } = useDesign();
+  const { uiState } = useUi();
+  const setting = uiState.setting;
 
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
         <TitleInput />
         <DropDownGroup />
-        {designState.pureImage.onUpload ? (
+        {setting.type === 'dropZone' && setting.open ? (
           <DndUploadBox
             placeholder={{
               text: 'تصاویر لوگو را اینجا آپلود کنید',
               width: 121,
               height: 54,
             }}
-            marginTop="25px"
           />
         ) : (
-          <PictureContainer
-            title="تصاویر لوگو ها"
-            count={24}
-            marginTop="25px"
-          />
+          <PictureContainer title="تصاویر لوگو ها" count={8} />
         )}
         <GenericUploader
           text="انتخاب کنید"
@@ -46,10 +43,23 @@ const BrandDashboard = () => {
     );
   };
 
+  const ImageSettings = () => {
+    return (
+      <div className="flex flex-col items-end pt-30px px-20px">
+        <ImageBox />
+        <InputBox />
+      </div>
+    );
+  };
+
   return (
     <DrawerLayout>
       <HeaderDrawer setting text=" تنظیمات لوگو مشتریان " />
-      <BaseSettings />
+      {uiState.setting.type === 'picture' && uiState.setting.open ? (
+        <ImageSettings />
+      ) : (
+        <BaseSettings />
+      )}
     </DrawerLayout>
   );
 };
