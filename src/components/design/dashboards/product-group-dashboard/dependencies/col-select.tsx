@@ -9,19 +9,19 @@ export const ColSelect = ({ settings, setSetting }) => {
       className="mt-30px"
     >
       <SettingButton
-        child="پنج ستون"
+        child="5 ستون"
         active={settings && settings.cols && settings.cols == '5'}
         className="rounded-l font-bold"
         onClick={() => setSetting({ cols: '5' })}
       />
       <SettingButton
-        child="چهار ستون"
+        child="4 ستون"
         active={settings && settings.cols && settings.cols == '4'}
         className="border-r border-l border-gray_shade-900 font-bold"
         onClick={() => setSetting({ cols: '4' })}
       />
       <SettingButton
-        child="سه ستون"
+        child="3 ستون"
         active={
           (settings && settings.cols && settings.cols == '3') || !settings.cols
         }
