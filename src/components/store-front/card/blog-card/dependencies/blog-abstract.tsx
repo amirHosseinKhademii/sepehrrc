@@ -1,8 +1,12 @@
 import { FC } from 'react';
-
+import { useDirection } from 'hooks';
 export const BlogAbstract: FC<IBlogAbstract> = ({ text, toggle, layout }) => {
+  const { textAlignRtl } = useDirection();
+
   return (
-    <div className="blog-abstract text-14px my-20px h-90px overflow-ellipsis overflow-hidden leading-loose">
+    <div
+      className={`blog-abstract ${textAlignRtl} text-14px mb-20px h-90px overflow-ellipsis overflow-hidden leading-loose`}
+    >
       {text}
       <style jsx>{`
         .blog-abstract {

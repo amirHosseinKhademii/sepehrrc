@@ -6,4 +6,5 @@ interface IBlogCard {
   style?: any;
   designState: any;
   item: any;
+  data?: any;
 }
