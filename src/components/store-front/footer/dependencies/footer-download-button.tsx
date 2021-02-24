@@ -30,11 +30,15 @@ export const FooterDownloadButton: FC<IFooterDownloadButton> = ({
   };
 
   return market === 'cafebazar' ? (
-    <div className={`${className} ${!settings.mobileApp ? 'hidden' : ''}`}>
+    <div
+      className={`${className} ${settings.mobileApp == false ? 'hidden' : ''}`}
+    >
       <CafeBazar />
     </div>
   ) : (
-    <div className={`${className} ${!settings.mobileApp ? 'hidden' : ''}`}>
+    <div
+      className={`${className} ${settings.mobileApp == false ? 'hidden' : ''}`}
+    >
       <GooglePlay />
     </div>
   );
