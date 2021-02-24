@@ -1,42 +1,18 @@
 import { Fragment } from 'react';
-import { useDesign, useDirection } from 'hooks';
+import { useDesign, useDirection, useUi } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
   const { designState, setImage } = useDesign();
+  const { uiState } = useUi();
   const { language } = useDirection();
-  const { pureImage, current } = designState;
-  const { number } = designState.current.settings;
+  const { current } = designState;
+  const { number } = uiState.setting;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
 
   return (
     <Fragment>
-      <Input
-        label={language.SDImageTitle}
-        className="mt-25px"
-        variant="input"
-        onBlur={(e) => setImage({ key: 'title', payload: e.target.value })}
-        placeholder={
-          current.settings && current.settings.title
-            ? current.settings.title
-            : `${language.SDWriteTitleHere}`
-        }
-      />
-      <Input
-        label={language.SDImageExplainations}
-        className="mt-25px"
-        variant="textArea"
-        onBlur={(e) =>
-          setImage({ payload: e.target.value, key: 'description' })
-        }
-        placeholder={
-          currentImage && currentImage.description
-            ? currentImage.description
-            : `${language.SDWriteExplanationsHere}`
-        }
-      />
-
       <Text className="mt-25px text-14px text-white_shade-100">
         {language.SDImagelink}
       </Text>
