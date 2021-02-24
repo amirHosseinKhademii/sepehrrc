@@ -12,7 +12,6 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
   marginRtl,
   settings,
 }) => {
-  console.log(settings);
   return (
     <Fragment>
       <GeneralLink

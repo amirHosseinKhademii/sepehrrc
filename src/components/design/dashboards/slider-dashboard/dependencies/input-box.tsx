@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
-import { useDesign, useDirection } from 'hooks';
+import { useDesign, useDirection, useUi } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
   const { designState, setImage } = useDesign();
+  const { uiState } = useUi();
   const { language } = useDirection();
   const { pureImage, current } = designState;
-  const { number } = designState.current.settings;
+  const { number } = uiState.setting;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
 
@@ -18,7 +19,9 @@ export const InputBox = () => {
         variant="input"
         onBlur={(e) => setImage({ key: 'title', payload: e.target.value })}
         placeholder={
-          pureImage.title ? pureImage.title : `${language.SDWriteTitleHere}`
+          currentImage.title
+            ? currentImage.title
+            : `${language.SDWriteTitleHere}`
         }
       />
       <Input

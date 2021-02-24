@@ -8,10 +8,10 @@ export const PictureButton: FC<IPictureButton> = ({
   picture,
   number,
 }) => {
-  const { setPureImage, deleteImage } = useDesign();
+  const { setPureImage } = useDesign();
   const { toggleSettingState, toggleModal } = useUi();
   const { rightTL } = useDirection();
-
+  
   if (withAdd)
     return (
       <Dropzone
