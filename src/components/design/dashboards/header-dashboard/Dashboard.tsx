@@ -1,6 +1,6 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
 import { MenuEditGroup, InputBox, StyleBoxHeader } from './dependencies';
-import { GenericUploader } from '../common';
+import { GenericUploader, ResponsiveSwitchs, SocialGroup } from '../common';
 import { FC, memo } from 'react';
 import { useDirection } from 'hooks';
 
@@ -20,12 +20,14 @@ const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
           withLink
           withNewTab
         />
+        <InputBox label={language.HDHeaderButton} type="button" />
         <InputBox
           label={language.HDPhoneNumber}
           type="tel"
           placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
-        <InputBox label={language.HDHeaderButton} type="button" />
+        <InputBox label="" type="social" />
+        <ResponsiveSwitchs />
       </div>
     );
   };

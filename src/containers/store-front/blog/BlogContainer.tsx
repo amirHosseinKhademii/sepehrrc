@@ -1,7 +1,8 @@
-import { useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi } from 'hooks';
 import dynamic from 'next/dynamic';
-import { GeneralLayout, ContainedButton, OulinedButton } from 'components';
+import { GeneralLayout, ContainerTitle, OulinedButton } from 'components';
 import { data } from './data';
+
 const BlogFirst = dynamic(
   () => import('components/store-front/card/blog-card/BlogFirst')
 );
@@ -22,6 +23,7 @@ const BlogSixth = dynamic(
 );
 
 const BlogContainer = ({ item }) => {
+  const { join } = useClass();
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
@@ -71,6 +73,12 @@ const BlogContainer = ({ item }) => {
       item={item}
       layout={layout}
     >
+      <ContainerTitle
+        designState={designState}
+        item={item}
+        join={join}
+        layout={layout}
+      />
       <div className="grid grid-cols-4 gap-30px container mx-auto p-20px">
         {data.map((item) => {
           return (

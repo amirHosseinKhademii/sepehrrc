@@ -8,3 +8,4 @@ export * from './button-drawer';
 export * from './button-group-drawer';
 export * from './header-drawer';
 export * from './setting-button';
+export * from './social-group';

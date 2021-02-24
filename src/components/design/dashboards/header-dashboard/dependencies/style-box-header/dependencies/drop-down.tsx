@@ -1,5 +1,5 @@
-import { LabelBox } from '.';
-import { HeaderFirst } from '.';
+import { LabelBox } from './label-box';
+import { HeaderFirst } from './header-first';
 import HeaderSecond from './header-second';
 import HeaderThird from './header-third';
 import HeaderFourth from './header-fourth';

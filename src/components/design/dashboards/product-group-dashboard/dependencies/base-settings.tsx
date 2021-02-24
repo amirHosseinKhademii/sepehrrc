@@ -21,7 +21,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         selected={settings.showBy ? settings.showBy : 'groups'}
       />
       <ColSelect settings={settings} setSetting={setSetting} />
-      <GenericUploader withSwitch isBackground />
+      <GenericUploader withSwitch isBackground className="mt-30px" />
       <BackgroundColor withSwitch className="mt-30px" />
       <ResponsiveSwitchs />
     </div>

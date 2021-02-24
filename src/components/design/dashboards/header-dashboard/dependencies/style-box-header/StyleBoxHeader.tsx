@@ -1,6 +1,6 @@
 import { useClass, useDesign, useDirection } from 'hooks';
-import { FC, useState } from 'react';
-import { ICEditSettings } from 'icons';
+import { FC, Fragment, useState } from 'react';
+import { ICEditStyle } from 'icons';
 import { HeaderFirst } from './dependencies';
 import dynamic from 'next/dynamic';
 
@@ -30,7 +30,7 @@ const HeaderEighth = dynamic(() => import('./dependencies/header-eighth'), {
 });
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
-  const { marginRtl, flexDirection, language } = useDirection();
+  const { marginRtl, flexDirection, language, dirRtl } = useDirection();
   const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -73,62 +73,63 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return `1 ${language.HDStyle} `;
+        return `${language.HDStyle} 1`;
       case 'second':
-        return `2 ${language.HDStyle} `;
+        return `${language.HDStyle} 2`;
       case 'third':
-        return `3 ${language.HDStyle} `;
+        return `${language.HDStyle} 3`;
       case 'fourth':
-        return `4 ${language.HDStyle} `;
+        return `${language.HDStyle} 4`;
       case 'fifth':
-        return `5 ${language.HDStyle} `;
+        return `${language.HDStyle} 5`;
       case 'sixth':
-        return `6 ${language.HDStyle} `;
+        return `${language.HDStyle} 6`;
       case 'seventh':
-        return `7 ${language.HDStyle} `;
+        return `${language.HDStyle} 7`;
       case 'eighth':
-        return `8 ${language.HDStyle} `;
+        return `${language.HDStyle} 8`;
       default:
-        return `1 ${language.HDStyle} `;
+        return `${language.HDStyle} 1`;
     }
   };
 
   return (
-    <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
-      <div className="flex justify-between pb-20px">
+    <Fragment>
+      <div className={`w-full flex ${flexDirection} justify-between`}>
+        <div className={`flex ${flexDirection} `}>
+          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+            <div className={`flex`}>
+              <span dir={dirRtl}>{`${language.HDShow}: ${styleTitle()}`}</span>
+            </div>
+          </div>
+        </div>
         <div
           className={`flex ${flexDirection} cursor-pointer`}
           onClick={toggleDropdown}
         >
-          <div className="text-16px font-iransans font-light text-white_shade-100 ">
-            {open ? (
-              <span>{language.HDChoose}</span>
-            ) : (
-              <div className={`flex ${flexDirection}`}>
-                <span>{language.HDShow}:</span> <span>{styleTitle()}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className={`flex ${flexDirection}`}>
-          {!open && (
-            <ICEditSettings className={`${marginRtl}-1 cursor-pointer`} />
-          )}
           <span className="text-14px text-gray_shade-300 ">
             {open ? `${language.HDBack}` : `${language.HDEdit}`}
           </span>
+          {!open && (
+            <ICEditStyle
+              className={`${marginRtl}-1 text-16px cursor-pointer`}
+              fill="#9ba3b5"
+            />
+          )}
         </div>
       </div>
-      {open ? (
-        <DropDown
-          designState={designState}
-          toggle={toggle}
-          join={join}
-          onSelectClick={onSelectClick}
-        />
-      ) : (
-        <ShowBox />
-      )}
-    </div>
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px py-15px mt-10px">
+        {open ? (
+          <DropDown
+            designState={designState}
+            toggle={toggle}
+            join={join}
+            onSelectClick={onSelectClick}
+          />
+        ) : (
+          <ShowBox />
+        )}
+      </div>
+    </Fragment>
   );
 };

@@ -1,5 +1,7 @@
+import { Fragment } from 'react';
 import { useDesign, useDirection } from 'hooks';
-import { Text, Input, CheckBox } from 'components';
+import { Text, Input, CheckBox, Switch } from 'components';
+import { SocialGroup } from '../../common';
 
 export const InputBox = ({ label, placeholder = '', type }) => {
   const { designState, setSetting, setButtonProps } = useDesign();
@@ -14,21 +16,56 @@ export const InputBox = ({ label, placeholder = '', type }) => {
     currentStyle
   ) {
     return (
-      <div className="w-full  mb-30px ">
-        <Text
-          className={` mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
-        >
-          {label}
-        </Text>
+      // <div className="w-full  mb-30px ">
+      //   <Text
+      //     className={` mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
+      //   >
+      //     {label}
+      //   </Text>
 
-        <Input
-          placeholder={placeholder}
-          maxLength={15}
-          variant="input"
-          withNumber
-          onBlur={(event) => setSetting({ tel: event.target.value })}
+      //   <Input
+      //     placeholder={placeholder}
+      //     maxLength={15}
+      //     variant="input"
+      //     withNumber
+      //     onBlur={(event) => setSetting({ tel: event.target.value })}
+      //   />
+      // </div>
+      <Fragment>
+        <Switch
+          label={label}
+          className="mt-30px"
+          onClick={() =>
+            setSetting({
+              tel: settings.tel === undefined ? false : !settings.tel,
+            })
+          }
+          checked={settings.tel == undefined ? true : settings.tel}
         />
-      </div>
+        {settings.tel === undefined ? (
+          <Input
+            variant="input"
+            withNumber
+            className=" text-center mt-14px"
+            onBlur={(e) => setSetting({ tel: e.target.value })}
+            placeholder={
+              typeof settings.tel === 'string' ? settings.tel : '021-23456789'
+            }
+          />
+        ) : (
+          settings.tel && (
+            <Input
+              variant="input"
+              withNumber
+              className=" text-center mt-14px"
+              onBlur={(e) => setSetting({ tel: e.target.value })}
+              placeholder={
+                settings.tel !== true ? settings.tel : ' 021-23456789'
+              }
+            />
+          )
+        )}
+      </Fragment>
     );
   } else if (
     type === 'button' &&
@@ -36,7 +73,7 @@ export const InputBox = ({ label, placeholder = '', type }) => {
     currentStyle !== 'seventh'
   ) {
     return (
-      <div className="w-full  mb-90px ">
+      <div className="w-full ">
         <Text
           className={` mb-14px text-14px text-white_shade-100 ${textAlignRtl}`}
         >
@@ -86,6 +123,12 @@ export const InputBox = ({ label, placeholder = '', type }) => {
         />
       </div>
     );
+  } else if (
+    (type === 'social' && currentStyle == 'fourth') ||
+    currentStyle == 'sixth' ||
+    currentStyle == 'eighth'
+  ) {
+    return <SocialGroup settings={settings} setSetting={setSetting} />;
   } else {
     return null;
   }

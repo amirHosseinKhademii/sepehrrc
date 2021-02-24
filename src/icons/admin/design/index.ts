@@ -53,3 +53,4 @@ export * from './edit-pen';
 export * from './edit-picture';
 export * from './new-picture';
 export * from './image-placeholder';
+export * from './setting-menu';
