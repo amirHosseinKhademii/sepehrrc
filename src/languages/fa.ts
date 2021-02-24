@@ -185,4 +185,10 @@ export const fa = {
   BDChoose: 'انتخاب',
   BDChooseFie: 'انتخاب فایل',
   BDOpenNewTab: 'باز کردن صفحه در تب جدید',
+
+  //Blog
+  BShowMore: 'مشاهده بیشتر', //show more post
+
+  //blog dashboard
+  BDBlogShowSettings: 'تنظیمات نمایش مقالات',
 };

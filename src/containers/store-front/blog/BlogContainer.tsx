@@ -1,7 +1,8 @@
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi, useDirection } from 'hooks';
 import dynamic from 'next/dynamic';
-import { GeneralLayout, ContainerTitle, OulinedButton } from 'components';
+import { GeneralLayout, ContainerTitle, ContainedButton } from 'components';
 import { data } from './data';
+import { settings } from 'cluster';
 
 const BlogFirst = dynamic(
   () => import('components/store-front/card/blog-card/BlogFirst')
@@ -28,36 +29,73 @@ const BlogContainer = ({ item }) => {
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
   const layout = theme === 'default' ? true : false;
+  const { language } = useDirection();
 
-  const Blogs = ({ data, designState, layout }) => {
-    switch (item.settings.style) {
+  const Blogs = ({ data, designState, layout, item }) => {
+    const { settings } = item;
+    switch (settings.style) {
       case 'first':
         return (
-          <BlogFirst item={data} layout={layout} designState={designState} />
+          <BlogFirst
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       case 'second':
         return (
-          <BlogSecond item={data} layout={layout} designState={designState} />
+          <BlogSecond
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       case 'third':
         return (
-          <BlogThird item={data} layout={layout} designState={designState} />
+          <BlogThird
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       case 'forth':
         return (
-          <BlogFourth item={data} layout={layout} designState={designState} />
+          <BlogFourth
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       case 'fifth':
         return (
-          <BlogFifth item={data} layout={layout} designState={designState} />
+          <BlogFifth
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       case 'sixth':
         return (
-          <BlogSixth item={data} layout={layout} designState={designState} />
+          <BlogSixth
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
       default:
         return (
-          <BlogFirst item={data} layout={layout} designState={designState} />
+          <BlogFirst
+            data={data}
+            layout={layout}
+            designState={designState}
+            item={item}
+          />
         );
     }
   };
@@ -80,19 +118,27 @@ const BlogContainer = ({ item }) => {
         layout={layout}
       />
       <div className="grid grid-cols-4 gap-30px container mx-auto p-20px">
-        {data.map((item) => {
+        {data.map((data) => {
           return (
-            <Blogs layout={layout} data={item} designState={designState} />
+            <Blogs
+              layout={layout}
+              data={data}
+              item={item}
+              designState={designState}
+            />
           );
         })}
-        <OulinedButton
-          layout={layout}
-          text="test"
-          className=""
-          cssClass=""
-          designState={designState}
-        />
       </div>
+      {item.settings.more && (
+        <div className="flex flex-row-reverse items-center justify-center">
+          <ContainedButton
+            layout={layout}
+            text={language.BShowMore}
+            designState={designState}
+            className="rounded-25px"
+          />
+        </div>
+      )}
     </GeneralLayout>
   );
 };

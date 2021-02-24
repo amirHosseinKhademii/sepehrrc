@@ -7,7 +7,7 @@ export const BlogImage: FC<IBlogImage> = ({
   style,
   toggle,
 }) => {
-  const productAlt = '/assets/images/themeImg.png';
+  const imgAlt = '/assets/images/themeImg.png';
   return (
     <img
       className={toggle(
@@ -16,7 +16,7 @@ export const BlogImage: FC<IBlogImage> = ({
         layout
       )}
       onClick={onClick}
-      src={layout ? src : productAlt}
+      src={src ? src : imgAlt}
       alt="عکس مقاله"
       style={style}
     />

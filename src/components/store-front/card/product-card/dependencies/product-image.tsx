@@ -18,7 +18,7 @@ export const ProductImage: FC<IProductImage> = ({
         cssAlt
       )}
       onClick={onClick}
-      src={layout ? src : productAlt}
+      src={src ? src : productAlt}
       alt="عکس محصول"
       style={style}
     />
