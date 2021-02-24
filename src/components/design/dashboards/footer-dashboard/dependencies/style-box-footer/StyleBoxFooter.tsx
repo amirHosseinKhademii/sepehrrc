@@ -76,7 +76,7 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
         </span>
       </div>
 
-      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px mt-10px py-17px">
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col justify-center items-center px-18px mt-10px py-18px">
         {open ? (
           <DropDown
             designState={designState}
