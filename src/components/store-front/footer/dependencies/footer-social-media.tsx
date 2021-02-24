@@ -12,11 +12,16 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
   marginRtl,
   settings,
 }) => {
+  console.log(settings);
   return (
     <Fragment>
       <GeneralLink
         cssClass={`footer-social__icon-box flex justify-center items-center ${marginLtr}-9px ${
-          !settings?.social ? 'hidden' : settings.instagram ? '' : 'hidden'
+          settings?.social === undefined || settings.social == true
+            ? settings?.instagram === undefined || settings?.instagram == true
+              ? ''
+              : 'hidden'
+            : 'hidden'
         }`}
         layout={layout}
         className={className}
@@ -34,7 +39,11 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
       </GeneralLink>
       <GeneralLink
         cssClass={`footer-social__icon-box flex justify-center items-center ${
-          !settings?.social ? 'hidden' : settings.telegram ? '' : 'hidden'
+          settings?.social === undefined || settings.social == true
+            ? settings?.telegram === undefined || settings?.telegram == true
+              ? ''
+              : 'hidden'
+            : 'hidden'
         }`}
         layout={layout}
         className={className}
@@ -52,7 +61,11 @@ export const FooterSocialMedia: FC<IFooterSocialMedia> = ({
       </GeneralLink>
       <GeneralLink
         cssClass={`footer-social__icon-box flex justify-center items-center ${marginRtl}-9px ${
-          !settings?.social ? 'hidden' : settings.whatsapp ? '' : 'hidden'
+          settings?.social === undefined || settings.social == true
+            ? settings?.whatsapp === undefined || settings?.whatsapp == true
+              ? ''
+              : 'hidden'
+            : 'hidden'
         }`}
         layout={layout}
         className={className}

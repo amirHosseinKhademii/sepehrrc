@@ -15,7 +15,7 @@ export const FooterTel: FC<IFooterTel> = ({
     <Fragment>
       <div
         className={`footer-tel flex ${flexDirection} justify-center items-center ${
-          settings.tel ? '' : 'hidden'
+          settings.tel === false ? 'hidden' : ''
         } `}
       >
         <span
@@ -27,7 +27,9 @@ export const FooterTel: FC<IFooterTel> = ({
             layout,
             cssClass
           )}
-        >{`تلفن : ${settings.tel ? settings.tel : defaultTelNumber}`}</span>
+        >{`تلفن : ${
+          typeof settings.tel === 'string' ? settings.tel : defaultTelNumber
+        }`}</span>
       </div>
     </Fragment>
   );

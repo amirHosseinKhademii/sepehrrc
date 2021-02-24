@@ -7,12 +7,21 @@ const SocialGroup = ({ settings, setSetting }) => {
     <div className="flex flex-col w-full mt-14px">
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ socialegram: !settings.socialegram })}
+        onClick={() =>
+          setSetting({
+            telegram:
+              settings.telegram === undefined ? false : !settings.telegram,
+          })
+        }
       >
-        {settings.socialegram ? (
-          <CheckBox className="" secondary checked />
+        {settings.telegram !== undefined ? (
+          settings.telegram == false ? (
+            <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          ) : (
+            <CheckBox className="" secondary checked />
+          )
         ) : (
-          <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          <CheckBox className="" secondary checked />
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">تلگرام</Text>
@@ -21,12 +30,21 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer my-10px"
-        onClick={() => setSetting({ instagram: !settings.instagram })}
+        onClick={() =>
+          setSetting({
+            instagram:
+              settings.instagram === undefined ? false : !settings.instagram,
+          })
+        }
       >
-        {settings.instagram ? (
-          <CheckBox className="" secondary checked />
+        {settings.instagram !== undefined ? (
+          settings.instagram == false ? (
+            <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          ) : (
+            <CheckBox className="" secondary checked />
+          )
         ) : (
-          <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          <CheckBox className="" secondary checked />
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">
@@ -37,12 +55,21 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ whatsapp: !settings.whatsapp })}
+        onClick={() =>
+          setSetting({
+            whatsapp:
+              settings.whatsapp === undefined ? false : !settings.whatsapp,
+          })
+        }
       >
-        {settings.whatsapp ? (
-          <CheckBox className="" secondary checked />
+        {settings.whatsapp !== undefined ? (
+          settings.whatsapp == false ? (
+            <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          ) : (
+            <CheckBox className="" secondary checked />
+          )
         ) : (
-          <div className="bg-gray_shade-900 h-18px w-18px rounded ml-7px" />
+          <CheckBox className="" secondary checked />
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">واتس اپ</Text>
