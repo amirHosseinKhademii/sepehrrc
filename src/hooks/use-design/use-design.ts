@@ -132,6 +132,9 @@ export const useDesign = () => {
     getPage: useCallback(() => {
       return onGet({ url: '' });
     }, []),
+    setImageSetting: useCallback((payload) => {
+      designDispatch({ type: designTypes.ON_SET_IMAGE_SETTING, payload });
+    }, []),
     designState: useMemo(() => designState, [designState]),
   };
 };
