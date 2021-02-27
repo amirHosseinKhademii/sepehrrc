@@ -11,7 +11,7 @@ export const PictureButton: FC<IPictureButton> = ({
   const { setPureImage } = useDesign();
   const { toggleSettingState, toggleModal } = useUi();
   const { rightTL } = useDirection();
-  
+
   if (withAdd)
     return (
       <Dropzone
@@ -48,17 +48,17 @@ export const PictureButton: FC<IPictureButton> = ({
           src={picture}
         />
         <div
-          className={`delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -${rightTL}-1 bg-alert-300 rounded-full z-20 cursor-pointer opacity-0`}
+          onClick={() =>
+            toggleModal({
+              open: true,
+              type: 'confirm',
+              target: 'image',
+              number,
+            })
+          }
+          className={`delIcon h-14px w-14px flex justify-center items-center absolute -top-1 -${rightTL}-1 bg-alert-300 rounded-full z-50 cursor-pointer opacity-0`}
         >
           <ICMultiply
-            onClick={() =>
-              toggleModal({
-                open: true,
-                type: 'confirm',
-                target: 'image',
-                number,
-              })
-            }
             fill="white"
             width="10px"
             height="10px"
