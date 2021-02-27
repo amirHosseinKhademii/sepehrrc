@@ -68,8 +68,8 @@ const ProductContainer = ({ item }) => {
   };
 
   const SyncWithColRow = (data) => {
-    const col = item?.settings && item.settings?.cols ? item.settings.cols : 4;
-    const row = item?.settings && item.settings?.rows ? item.settings.rows : 1;
+    const col = item?.settings && item.settings?.cols ? item.settings.cols : 3;
+    const row = item?.settings && item.settings?.rows ? item.settings.rows : 2;
     const calculateItems = col * row;
     const orderArr = data.slice(0, calculateItems);
     return orderArr;
@@ -141,7 +141,7 @@ const ProductContainer = ({ item }) => {
           item={item}
           layout={layout}
           designState={designState}
-          col={item?.settings && item.settings?.cols ? item.settings.cols : 4}
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           title={
             item?.settings && item.settings?.title
               ? item.settings.title

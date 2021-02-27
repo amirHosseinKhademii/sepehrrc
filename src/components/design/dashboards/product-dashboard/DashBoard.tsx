@@ -7,11 +7,11 @@ import {
 } from '../common';
 import {
   CategoryDrop,
-  GridDrops,
+  ColRowListSetting,
   ShowDrop,
   ScreenButtonGroup,
   PageButtonGroup,
-  SliderDrops,
+  ColSliderSetting,
 } from './dependencies';
 import { FC, memo, useState } from 'react';
 import { useDirection } from 'hooks';
@@ -25,15 +25,15 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
       <div className="flex flex-col items-end pt-30px px-20px overflow-auto">
         <TitleInput />
         <CategoryDrop />
-        <ShowDrop />
+        {/* <ShowDrop /> */}
         <ScreenButtonGroup />
         {isList ? (
           <>
-            <GridDrops />
+            <ColRowListSetting />
             <PageButtonGroup />
           </>
         ) : (
-          <SliderDrops />
+          <ColSliderSetting />
         )}
         <GenericUploader
           label={language.PDBackgroundImage}

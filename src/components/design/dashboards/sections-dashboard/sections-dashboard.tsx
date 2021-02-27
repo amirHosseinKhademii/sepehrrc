@@ -22,7 +22,7 @@ const SectionsDashboard = () => {
         className="mb-25px cursor-pointer"
         text={headerItem.title}
         onSetting={() => toggleStyleDrawer('style', headerItem)}
-        onClick={() => console.log('e')}
+        //onClick={() => console.log('e')}
       />
       <Container
         groupName="1"
