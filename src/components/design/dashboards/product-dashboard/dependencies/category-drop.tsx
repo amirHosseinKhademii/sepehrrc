@@ -5,7 +5,7 @@ import { useDesign, useDirection } from 'hooks';
 export const CategoryDrop = () => {
   const { setSetting, designState } = useDesign();
   const { textAlignRtl, language } = useDirection();
-  const [chip, setChip] = useState(['کیف']);
+  const [chip, setChip] = useState([]);
 
   const addChip = (value) => {
     const chips = chip.slice();
@@ -19,19 +19,19 @@ export const CategoryDrop = () => {
   };
 
   return (
-    <div className="w-full ">
-      <div className="w-full ">
+    <div className="w-full">
+      <div className="w-full">
         <Text
           className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
         >
           {language.PDProductCategories}
         </Text>
-        {/* <ReactChipInput
+        <ReactChipInput
           chips={chip}
           onSubmit={(value) => addChip(value)}
           onRemove={(index) => removeChip(index)}
-        /> */}
-        <DropDown
+        />
+        {/* <DropDown
           className="w-full h-54px"
           options={[
             { id: 'all', title: `${language.PDAllCategories}` },
@@ -46,7 +46,7 @@ export const CategoryDrop = () => {
               ? designState.current.settings.category
               : 'all'
           }
-        />
+        /> */}
       </div>
     </div>
   );
