@@ -120,7 +120,6 @@ export const designReducer = (
         pageItems: clonePage,
         current: cloneCurrent,
       };
-
     case designTypes.ON_CLEAR_CURRENT:
       return {
         ...state,
@@ -151,6 +150,20 @@ export const designReducer = (
         ...state,
         pageItems: clonePage,
         current: cloneCurrent,
+      };
+    case designTypes.ON_SET_IMAGE_SETTING:
+      const cloneItemImage = cloneItem.images
+        ? cloneItem.images.find((item) => item.number == payload.number)
+        : {};
+      const cloneCurrentImage = cloneCurrent.images
+        ? cloneCurrent.images.find((item) => item.number == payload.number)
+        : {};
+      cloneItemImage[payload.key] = payload.value;
+      cloneCurrentImage[payload.key] = payload.value;
+      return {
+        ...state,
+        current: cloneCurrent,
+        pageItems: clonePage,
       };
     default:
       return state;
