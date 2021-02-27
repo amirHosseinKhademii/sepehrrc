@@ -15,7 +15,10 @@ const ModalCrop = () => {
   const { uiState, toggleSettingState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
-  const pageItem = designState.pageItems.find((item) => item.type === 'slider');
+  const pageItem =
+    uiState.modal.target == 'brands'
+      ? designState.pageItems.find((item) => item.type === 'brands')
+      : designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
   const { marginRtl, paddingLtr } = useDirection();
 

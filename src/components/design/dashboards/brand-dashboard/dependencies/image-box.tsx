@@ -63,7 +63,12 @@ export const ImageBox = () => {
               <Text
                 className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer `}
                 onClick={() =>
-                  toggleModal({ open: true, editImage: true, type: 'image' })
+                  toggleModal({
+                    open: true,
+                    editImage: true,
+                    type: 'image',
+                    target: 'brands',
+                  })
                 }
               >
                 {language.SDImageEdit}

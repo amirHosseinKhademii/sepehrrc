@@ -89,9 +89,7 @@ const ProductContainer = ({ item }) => {
           layout={layout}
         />
         <ProductGrid
-          col={
-            item?.settings && item.settings?.cols ? item.settings.cols : null
-          }
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           // row={
           //   item?.settings && item.settings?.rows ? item.settings.rows : null
           // }
