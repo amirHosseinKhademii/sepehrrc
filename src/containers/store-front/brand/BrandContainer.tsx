@@ -1,11 +1,14 @@
 import { Brand } from 'components';
-import { useDesign, useUi, useDirection } from 'hooks';
-import { GeneralLayout } from 'components';
+import { useDesign, useUi, useDirection, useClass } from 'hooks';
+import { GeneralLayout, ContainerTitle } from 'components';
+import CustomerBrandSlider from '../../../components/store-front/slider/CustomerBrandSlider';
+import { SwiperSlide } from 'swiper/react';
 
 const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { marginRtl } = useDirection();
+  const { join } = useClass();
 
   const { settings } = item;
   const { theme } = designState.pageSettings;
@@ -13,16 +16,29 @@ const BrandContainer = ({ item }) => {
 
   const handleChild = () => {
     const arr = [];
-    item.images.map((item, index) => {
-      arr.push(
-        <div
-          key={index}
-          className={`flex justify-center items-center bg-white h-107px rounded-lg ${marginRtl}-30px`}
-        >
-          <img src={item.value} className={`h-54px w-121px `} />
-        </div>
-      );
-    });
+    const arrAlt = Array.from({ length: 6 });
+    const imgAlt = '/assets/images/themeImg2.png';
+    if (item.images.length > 0) {
+      item.images.map((item, index) => {
+        arr.push(
+          <SwiperSlide className="swiper-slide h-105px bg-white " key={index}>
+            <img src={item.value} className={` object-cover `} />
+          </SwiperSlide>
+        );
+      });
+    } else {
+      arrAlt.map((item, index) => {
+        arr.push(
+          <SwiperSlide
+            className="swiper-slide  flex flex-row-reverse items-center justify-center h-105px p-24px bg-white"
+            key={index}
+          >
+            <img src={imgAlt} className={`object-contain `} />
+          </SwiperSlide>
+        );
+      });
+    }
+
     return arr;
   };
 
@@ -38,14 +54,21 @@ const BrandContainer = ({ item }) => {
       item={item}
       layout={layout}
     >
-      <div
-        style={{ width: '1326px' }}
-        className={` flex justify-center items-center mx-auto`}
-      >
-        {/* <Brand child={handleChild()} /> */}
-        <div className="flex justify-center items-center text-gray_shade-700 text-2xl">
-          برند
-        </div>
+      <div className={`  items-center mx-auto`}>
+        <ContainerTitle
+          item={item}
+          layout={layout}
+          designState={designState}
+          join={join}
+        />
+        <CustomerBrandSlider
+          layout={layout}
+          designState={designState}
+          item={item}
+          col={4}
+        >
+          {handleChild()}
+        </CustomerBrandSlider>
       </div>
     </GeneralLayout>
   );
