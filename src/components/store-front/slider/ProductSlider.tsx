@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ContainerTitle } from 'components';
+import { ContainerTitle, InlineMenu } from 'components';
 import { useClass } from 'hooks';
 import SwiperCore, {
   Navigation,
@@ -41,6 +41,7 @@ interface IProductSlider {
   col?: number;
   layout: boolean;
   designState: any;
+  settings: any;
 }
 
 const ProductCard = dynamic(
@@ -53,6 +54,7 @@ const ProductSlider: FC<IProductSlider> = ({
   data,
   col,
   designState,
+  settings,
   layout,
 }) => {
   const { join } = useClass();
@@ -84,6 +86,15 @@ const ProductSlider: FC<IProductSlider> = ({
         layout={layout}
         join={join}
       />
+      {settings?.showTab && settings.showTab ? (
+        <InlineMenu
+          data={
+            settings?.categories && settings.categories
+              ? settings.categories
+              : []
+          }
+        />
+      ) : null}
       <Swiper
         key={col}
         slidesPerView={col}
