@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { ContainerTitle } from 'components';
+import { Swiper } from 'swiper/react';
 import { useClass } from 'hooks';
 import SwiperCore, {
   Navigation,
@@ -12,6 +11,7 @@ import SwiperCore, {
   EffectCube,
   EffectFlip,
 } from 'swiper';
+import { ICAngelRight, ICAngelLeft } from 'icons';
 import 'swiper/swiper.min.css';
 import '../../../../node_modules/swiper/components/navigation/navigation.min.css';
 import '../../../../node_modules/swiper/components/pagination/pagination.min.css';
@@ -70,10 +70,7 @@ const CustomerBrandSlider: FC<ICustomerBrandSlider> = ({
           type: 'bullets',
           clickable: true,
         }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
+        navigation
         autoplay={{ delay: 200, disableOnInteraction: false }}
         onSwiper={(e) => setState(e)}
         className={`h-full w-full rounded z-0  `}

@@ -21,8 +21,12 @@ const BrandContainer = ({ item }) => {
     if (item.images.length > 0) {
       item.images.map((item, index) => {
         arr.push(
-          <SwiperSlide className="swiper-slide h-105px bg-white " key={index}>
-            <img src={item.value} className={` object-cover `} />
+          <SwiperSlide
+            className="swiper-slide bg-white "
+            key={index}
+            style={{ height: '100px' }}
+          >
+            <img src={item.value} />
           </SwiperSlide>
         );
       });
@@ -33,7 +37,7 @@ const BrandContainer = ({ item }) => {
             className="swiper-slide  flex flex-row-reverse items-center justify-center h-105px p-24px bg-white"
             key={index}
           >
-            <img src={imgAlt} className={`object-contain `} />
+            <img src={imgAlt} />
           </SwiperSlide>
         );
       });
