@@ -14,7 +14,7 @@ export const HeaderSearch = ({ layout = true, show, showHandler }) => {
         <ICSearch
           height="20px"
           width="20px"
-          cssClass="sep-header-search__search-ic"
+          cssClass="sep-header-search__search-ic cursor-pointer"
           className="mx-2 fill-current text-20px"
           onClick={(event) => {
             event.stopPropagation();
