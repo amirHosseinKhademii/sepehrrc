@@ -7,21 +7,26 @@ import {
   BlogAbstract,
   BlogAuthor,
   BlogLayout,
-  BlogImageBackground,
 } from './dependencies';
 import { useClass, useDirection } from 'hooks';
 const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
   const { toggle } = useClass();
   const { dirRtl } = useDirection();
   const { settings } = item;
-  const modern = item.settings?.display === 'modern';
+  const modern =
+    settings.display == undefined ? true : settings.display === 'modern';
+  const showDate = settings.date == undefined ? true : settings.date;
+  const showDescription =
+    settings.description == undefined ? true : settings.description;
+  const showAuthor = settings.author == undefined ? true : settings.author;
+
   if (modern) {
     return (
       <BlogLayout
         layout={layout}
         toggle={toggle}
         cssClass="blog--third flex flex-row-reverse  bg-white"
-        className="   pt-238px"
+        className="  rounded-5px "
         modern={modern}
         imgSrc={data.imgSrc}
       >
@@ -30,7 +35,7 @@ const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
             <BlogImage src={data.imgSrc} toggle={toggle} layout={layout} />
           )}
         </div>
-        <div className="w-1/2  p-30px ">
+        <div className="w-1/2  p-30px  ">
           <BlogLink layout={layout} type={'post'}>
             <BlogTitle
               text={data.title}
@@ -39,16 +44,16 @@ const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
               className="font-bold text-16px "
             />
           </BlogLink>
-          {settings.description && (
+          {showDescription && (
             <BlogAbstract
               toggle={toggle}
               layout={layout}
               text={data.abstract}
             />
           )}
-          {(settings.author || settings.date) && (
+          {(showAuthor || showDate) && (
             <div className="flex flex-row-reverse justify-between">
-              {settings.author && (
+              {showAuthor && (
                 <BlogLink layout={layout} type={'author'}>
                   <BlogAuthor
                     text={data.author}
@@ -57,7 +62,7 @@ const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
                   />
                 </BlogLink>
               )}
-              {settings.date && (
+              {showDate && (
                 <BlogDate text={data.date} toggle={toggle} layout={layout} />
               )}
             </div>
@@ -86,16 +91,16 @@ const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
                 className="font-bold text-16px"
               />
             </BlogLink>
-            {settings.description && (
+            {showDescription && (
               <BlogAbstract
                 toggle={toggle}
                 layout={layout}
                 text={data.abstract}
               />
             )}
-            {(settings.author || settings.date) && (
+            {(showAuthor || showDate) && (
               <div className="flex flex-row-reverse justify-between">
-                {settings.author && (
+                {showAuthor && (
                   <BlogLink layout={layout} type={'author'}>
                     <BlogAuthor
                       text={data.author}
@@ -104,7 +109,7 @@ const BlogThird: FC<IBlogCard> = ({ layout, designState, item, data }) => {
                     />
                   </BlogLink>
                 )}
-                {settings.date && (
+                {showDate && (
                   <BlogDate text={data.date} toggle={toggle} layout={layout} />
                 )}
               </div>

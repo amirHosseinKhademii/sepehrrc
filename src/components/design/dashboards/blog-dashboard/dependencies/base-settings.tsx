@@ -5,7 +5,7 @@ import {
   TitleInput,
   SettingButton,
 } from '../../common';
-import { StyleBoxBlog } from './style-box-footer';
+import { StyleBoxBlog } from './style-box-blog';
 import { Label, DropDown, Switch, ButtonGroup } from 'components';
 import { useDirection } from 'hooks';
 
@@ -53,7 +53,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
             more: settings.more ? !settings.more : true,
           })
         }
-        checked={settings.more}
+        checked={settings.more == undefined ? true : settings.more}
         className="mt-13px"
       />
 
@@ -70,7 +70,9 @@ export const BaseSettings = ({ settings, setSetting }) => {
             description: settings.description ? !settings.description : true,
           })
         }
-        checked={settings.description}
+        checked={
+          settings.description == undefined ? true : settings.description
+        }
         className="mt-30px"
       />
       <Switch
@@ -80,7 +82,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
             author: settings.author ? !settings.author : true,
           })
         }
-        checked={settings.author}
+        checked={settings.author == undefined ? true : settings.author}
         className="mt-30px"
       />
       <Switch
@@ -90,7 +92,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
             date: settings.date ? !settings.date : true,
           })
         }
-        checked={settings.date}
+        checked={settings.date == undefined ? true : settings.date}
         className="mt-30px"
       />
       <GenericUploader isBackground className="mt-30px" withSwitch />
