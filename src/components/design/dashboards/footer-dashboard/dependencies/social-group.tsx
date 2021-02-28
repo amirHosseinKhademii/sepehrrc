@@ -1,8 +1,11 @@
-import { CheckBox, Text, Switch } from 'components';
-import { ICInstagram, ICTelegram, ICWhatsapp } from 'icons';
 import { Fragment } from 'react';
+import { CheckBox, Text, Switch } from 'components';
+import { ICInstagram, ICTelegram, ICWhatsapp, ICForwardLink } from 'icons';
+import { GeneralLink } from '../../../../store-front/common';
+import { useDirection } from 'hooks';
 
 const SocialGroup = ({ settings, setSetting }) => {
+  const { flexDirection, marginRtl } = useDirection();
   const SocialCheck = () => (
     <div className="flex flex-col w-full mt-14px">
       <div
@@ -76,6 +79,19 @@ const SocialGroup = ({ settings, setSetting }) => {
           <ICWhatsapp fill="#9ba3b5" />
         </div>
       </div>
+      <GeneralLink href="#">
+        <div className={`flex ${flexDirection} items-center mt-10px`}>
+          <p className="m-0 mt-1 text-14px font-light text-gray_shade-300">
+            برای ویرایش به{' '}
+            <span className="font-medium text-gray_shade-50">تنظیمات</span>{' '}
+            مراجعه کنید
+          </p>
+          <ICForwardLink
+            fill="#9ba3b5"
+            className={`${marginRtl}-4px text-12px`}
+          />
+        </div>
+      </GeneralLink>
     </div>
   );
 

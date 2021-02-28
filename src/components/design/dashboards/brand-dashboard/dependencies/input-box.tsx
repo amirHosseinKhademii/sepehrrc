@@ -3,7 +3,7 @@ import { useDesign, useDirection, useUi } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
-  const { designState, setImage } = useDesign();
+  const { designState, setImageSetting } = useDesign();
   const { uiState } = useUi();
   const { language } = useDirection();
   const { current } = designState;
@@ -23,16 +23,18 @@ export const InputBox = () => {
         label={language.SDImagelink}
         className="mt-14px"
         fontFamily="font-lato"
-        onBlur={(e) => setImage({ key: 'link', payload: e.target.value })}
+        onBlur={(e) =>
+          setImageSetting({ key: 'link', value: e.target.value, number })
+        }
       />
       <CheckBox
         label={language.SDOpenNewTab}
         className="mt-15px"
         onClick={() => {
-          setImage({
+          setImageSetting({
             key: 'newTab',
-            // payload: pureImage.newTab ? false : true,
-            payload: !currentImage || !currentImage.newTab ? true : false,
+            value: !currentImage || !currentImage.newTab ? true : false,
+            number,
           });
         }}
         checked={currentImage && currentImage.newTab}

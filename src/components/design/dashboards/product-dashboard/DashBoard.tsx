@@ -36,11 +36,12 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
           <ColSliderSetting />
         )}
         <GenericUploader
-          label={language.PDBackgroundImage}
-          text={language.PDChoose}
+          text="انتخاب کنید"
+          className="mt-30px"
           isBackground
+          withSwitch
         />
-        <BackgroundColor />
+        <BackgroundColor withSwitch className="mt-30px" />
         <ResponsiveSwitchs />
       </div>
     );

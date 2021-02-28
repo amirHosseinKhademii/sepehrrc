@@ -1,51 +1,54 @@
-import { useState } from 'react';
-import { Text, DropDown, ReactChipInput } from 'components';
+import { Text, ReactChipInput } from 'components';
 import { useDesign, useDirection } from 'hooks';
+
+const initialSuggest = [
+  {
+    id: 'bag',
+    title: 'کیف',
+  },
+  {
+    id: 'dress',
+    title: 'لباس',
+  },
+  {
+    id: 'digital',
+    title: 'دیجیتال',
+  },
+];
 
 export const CategoryDrop = () => {
   const { setSetting, designState } = useDesign();
   const { textAlignRtl, language } = useDirection();
-  const [chip, setChip] = useState(['کیف']);
 
-  const addChip = (value) => {
-    const chips = chip.slice();
-    chips.push(value);
-    setChip(chips);
+  const categories = designState.current.settings.categories
+    ? designState.current.settings.categories
+    : [];
+
+  const onSelect = (item) => {
+    setSetting({ categories: [...categories, item] });
   };
-  const removeChip = (index) => {
-    const chips = chip.slice();
-    chips.splice(index, 1);
-    setChip(chips);
+
+  const onRemove = (item) => {
+    setSetting({
+      categories: categories.filter((category) => category.id !== item.id),
+    });
   };
 
   return (
-    <div className="w-full ">
-      <div className="w-full ">
+    <div className="w-full">
+      <div className="w-full">
         <Text
           className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
         >
           {language.PDProductCategories}
         </Text>
-        {/* <ReactChipInput
-          chips={chip}
-          onSubmit={(value) => addChip(value)}
-          onRemove={(index) => removeChip(index)}
-        /> */}
-        <DropDown
-          className="w-full h-54px"
-          options={[
-            { id: 'all', title: `${language.PDAllCategories}` },
-            { id: 'bags', title: `${language.PDBag}` },
-            { id: 'clothes', title: `${language.PDClothes}` },
-            { id: 'digital', title: `${language.PDDigital}` },
-          ]}
-          onSelect={(category) => setSetting({ category })}
-          selected={
-            designState.current.settings &&
-            designState.current.settings.category
-              ? designState.current.settings.category
-              : 'all'
-          }
+        <ReactChipInput
+          chips={categories}
+          onSelect={(item) => onSelect(item)}
+          onRemove={(item) => onRemove(item)}
+          initialSuggest={initialSuggest.filter(
+            (sug) => !categories.map((item) => item.id).includes(sug.id)
+          )}
         />
       </div>
     </div>

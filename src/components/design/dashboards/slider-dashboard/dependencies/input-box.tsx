@@ -3,10 +3,10 @@ import { useDesign, useDirection, useUi } from 'hooks';
 import { Input, CheckBox, Text } from 'components';
 
 export const InputBox = () => {
-  const { designState, setImage } = useDesign();
+  const { designState, setImageSetting } = useDesign();
   const { uiState } = useUi();
   const { language } = useDirection();
-  const { pureImage, current } = designState;
+  const { current } = designState;
   const { number } = uiState.setting;
   const currentImage =
     current.images && current.images.find((item) => item.number == number);
@@ -17,9 +17,11 @@ export const InputBox = () => {
         label={language.SDImageTitle}
         className="mt-25px"
         variant="input"
-        onBlur={(e) => setImage({ key: 'title', payload: e.target.value })}
+        onBlur={(e) =>
+          setImageSetting({ key: 'title', value: e.target.value, number })
+        }
         placeholder={
-          currentImage.title
+          currentImage && currentImage.title
             ? currentImage.title
             : `${language.SDWriteTitleHere}`
         }
@@ -29,7 +31,7 @@ export const InputBox = () => {
         className="mt-25px"
         variant="textArea"
         onBlur={(e) =>
-          setImage({ payload: e.target.value, key: 'description' })
+          setImageSetting({ value: e.target.value, key: 'description', number })
         }
         placeholder={
           currentImage && currentImage.description
@@ -48,16 +50,18 @@ export const InputBox = () => {
         label={language.SDImagelink}
         className="mt-14px"
         fontFamily="font-lato"
-        onBlur={(e) => setImage({ key: 'link', payload: e.target.value })}
+        onBlur={(e) =>
+          setImageSetting({ key: 'link', value: e.target.value, number })
+        }
       />
       <CheckBox
         label={language.SDOpenNewTab}
         className="mt-15px"
         onClick={() => {
-          setImage({
+          setImageSetting({
             key: 'newTab',
-            // payload: pureImage.newTab ? false : true,
-            payload: !currentImage || !currentImage.newTab ? true : false,
+            value: !currentImage || !currentImage.newTab ? true : false,
+            number,
           });
         }}
         checked={currentImage && currentImage.newTab}
