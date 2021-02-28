@@ -1,4 +1,9 @@
-import { GeneralLayout, ProductGrid, ContainerTitle } from 'components';
+import {
+  GeneralLayout,
+  ProductGrid,
+  ContainerTitle,
+  InlineMenu,
+} from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
 import dynamic from 'next/dynamic';
 import { data } from './data';
@@ -20,6 +25,9 @@ const ProductContainer = ({ item }) => {
   const { current } = designState;
   const { theme } = designState.pageSettings;
   const layout = theme === 'default' ? true : false;
+  const { settings } = designState.pageItems.find(
+    (item) => item.type == 'products'
+  );
 
   const showPagination =
     (item?.settings &&
@@ -88,6 +96,15 @@ const ProductContainer = ({ item }) => {
           join={join}
           layout={layout}
         />
+        {settings?.showTab && settings.showTab ? (
+          <InlineMenu
+            data={
+              settings?.categories && settings.categories
+                ? settings.categories
+                : []
+            }
+          />
+        ) : null}
         <ProductGrid
           col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           // row={
@@ -139,6 +156,7 @@ const ProductContainer = ({ item }) => {
           item={item}
           layout={layout}
           designState={designState}
+          settings={settings}
           col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           title={
             item?.settings && item.settings?.title
