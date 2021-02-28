@@ -17,7 +17,10 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+
   const [openSearch, setOpenSearch] = useState(false);
+  const { settings } = item;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
@@ -108,7 +111,9 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
           className={`sep-header__row sep-header__row--2 flex ${flexDirection}   w-full container mx-auto  px-20px `}
         >
           <div
-            className={`sep-header__cascading-menu-box w-9/12 ${flexDirection} flex items-center `}
+            className={`sep-header__cascading-menu-box ${
+              showTel ? 'w-9/12' : 'w-full'
+            } ${flexDirection} flex items-center `}
           >
             <HeaderCascadingMenu
               listClassName="text-black"
@@ -116,16 +121,18 @@ const HeaderSeventh: FC<IHeader> = ({ item, layout = true, designState }) => {
               layout={layout}
             />
           </div>
-          <div
-            className={`sep-header__tel-box w-9/12   flex  ${flexDirection} justify-end `}
-          >
-            <HeaderTel
-              layout={layout}
-              className="text-16px font-bold"
-              item={item}
-              toggle={toggle}
-            />
-          </div>
+          {showTel && (
+            <div
+              className={`sep-header__tel-box w-9/12   flex  ${flexDirection} justify-end `}
+            >
+              <HeaderTel
+                layout={layout}
+                className="text-16px font-bold"
+                item={item}
+                toggle={toggle}
+              />
+            </div>
+          )}
         </div>
       </div>
     </HeaderLayout>

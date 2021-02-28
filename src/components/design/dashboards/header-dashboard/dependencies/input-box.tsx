@@ -48,9 +48,7 @@ export const InputBox = ({ label, placeholder = '', type }) => {
             withNumber
             className=" text-center mt-14px"
             onBlur={(e) => setSetting({ tel: e.target.value })}
-            placeholder={
-              typeof settings.tel === 'string' ? settings.tel : '021-23456789'
-            }
+            placeholder={'021-23456789'}
           />
         ) : (
           settings.tel && (

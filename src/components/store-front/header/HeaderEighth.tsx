@@ -18,6 +18,9 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
   const { flexDirection, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showSocial = settings.social == undefined ? true : settings.social;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
@@ -72,7 +75,9 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
           className={` sep-header__row sep-header__row--1 flex ${flexDirection}   w-full h-58px  container mx-auto px-20px`}
         >
           <div
-            className={`sep-header__navbar-box w-9/12  flex ${flexDirection} items-center `}
+            className={`sep-header__navbar-box ${
+              showSocial ? 'w-9/12' : 'w-full'
+            }  flex ${flexDirection} items-center `}
           >
             <HeaderNavbar
               direction="horizental"
@@ -81,14 +86,16 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
               className="font-bold text-16px"
             />
           </div>
-          <div
-            className={`sep-header__social-box w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
-            style={{
-              color: `${layout ? `#fff` : 'initial'}`,
-            }}
-          >
-            <Social />
-          </div>
+          {showSocial && (
+            <div
+              className={`sep-header__social-box w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
+              style={{
+                color: `${layout ? `#fff` : 'initial'}`,
+              }}
+            >
+              <Social item={item} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -105,7 +112,7 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
             className={`sep-header__input-box w-6/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
-              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  px-35px "
               layout={layout}
               toggle={toggle}
             />
@@ -142,20 +149,24 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
         className={`sep-header__row sep-header__row--3 flex ${flexDirection}  items-center w-full container mx-auto px-20px `}
       >
         <div
-          className={`sep-header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
+          className={`sep-header__cascading-menu-box  ${
+            showTel ? 'w-9/12' : 'w-full'
+          } flex ${flexDirection} items-center `}
         >
           <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div
-          className={`sep-header__tel-box w-3/12 h-full flex ${flexDirection} items-center justify-end `}
-        >
-          <HeaderTel
-            layout={layout}
-            className="text-16px font-bold"
-            item={item}
-            toggle={toggle}
-          />
-        </div>
+        {showTel && (
+          <div
+            className={`sep-header__tel-box w-3/12 h-full flex ${flexDirection} items-center justify-end `}
+          >
+            <HeaderTel
+              layout={layout}
+              className="text-16px font-bold"
+              item={item}
+              toggle={toggle}
+            />
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );

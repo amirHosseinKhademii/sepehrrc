@@ -13,13 +13,13 @@ export const HeaderTel: FC<IHeaderTel> = ({
 
   return (
     <GeneralLink
-      href={`tel:+98${item.settings?.tel ? item.settings.tel : '0910000000'}`}
+      href={`tel:+98${item.settings?.tel ? item.settings.tel : '021-23456789'}`}
       className={className}
       cssClass={`sep-header-tel flex ${flexDirection} items-center justify-end  h-full font-iransans`}
       layout={layout}
     >
       <span className="sep-header-tel__number">
-        {item.settings?.tel ? item.settings.tel : '0910000000'}
+        {item.settings?.tel ? item.settings.tel : '021-23456789'}
       </span>
 
       <ICPhoneVolume
