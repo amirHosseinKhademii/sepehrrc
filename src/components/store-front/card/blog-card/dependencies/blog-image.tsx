@@ -11,7 +11,7 @@ export const BlogImage: FC<IBlogImage> = ({
   return (
     <img
       className={toggle(
-        'blog-image h-238px ',
+        'blog-image h-294px ',
         `${className ? className : ''}`,
         layout
       )}
