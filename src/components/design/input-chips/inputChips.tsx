@@ -64,7 +64,7 @@ export const ReactChipInput = ({
             </div>
           ))}
           <form
-            className="w-1/2"
+            className="flex-grow"
             onSubmit={(e) => {
               e.preventDefault();
               const item = suggestions.find(
