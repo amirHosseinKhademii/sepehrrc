@@ -6,7 +6,6 @@ import {
   BlogAbstract,
   BlogTitle,
   BlogLink,
-  BlogImageBackground,
   BlogLayout,
 } from './dependencies';
 import { useClass, useDirection } from 'hooks';
@@ -15,7 +14,12 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
   const { toggle } = useClass();
   const { textAlignRtl } = useDirection();
   const { settings } = item;
-  const modern = item.settings?.display === 'modern';
+  const modern =
+    settings.display == undefined ? true : settings.display === 'modern';
+  const showDate = settings.date == undefined ? true : settings.date;
+  const showDescription =
+    settings.description == undefined ? true : settings.description;
+  const showAuthor = settings.author == undefined ? true : settings.author;
 
   if (modern) {
     return (
@@ -40,7 +44,7 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
             />
           </BlogLink>
 
-          {settings.description && (
+          {showDescription && (
             <BlogAbstract
               toggle={toggle}
               layout={layout}
@@ -48,9 +52,9 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
             />
           )}
 
-          {(settings.author || settings.date) && (
+          {(showAuthor || showDate) && (
             <div className="flex flex-row-reverse justify-between">
-              {settings.author && (
+              {showAuthor && (
                 <BlogLink layout={layout} type={'author'}>
                   <BlogAuthor
                     text={data.author}
@@ -59,7 +63,7 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
                   />
                 </BlogLink>
               )}
-              {settings.date && (
+              {showDate && (
                 <BlogDate text={data.date} toggle={toggle} layout={layout} />
               )}
             </div>
@@ -93,7 +97,7 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
             />
           </BlogLink>
 
-          {settings.description && (
+          {showDescription && (
             <BlogAbstract
               toggle={toggle}
               layout={layout}
@@ -101,9 +105,9 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
             />
           )}
 
-          {(settings.author || settings.date) && (
+          {(showAuthor || showDate) && (
             <div className="flex flex-row-reverse justify-between">
-              {settings.author && (
+              {showAuthor && (
                 <BlogLink layout={layout} type={'author'}>
                   <BlogAuthor
                     text={data.author}
@@ -112,7 +116,7 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
                   />
                 </BlogLink>
               )}
-              {settings.date && (
+              {showDate && (
                 <BlogDate text={data.date} toggle={toggle} layout={layout} />
               )}
             </div>
