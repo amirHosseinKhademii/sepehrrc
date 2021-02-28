@@ -7,6 +7,9 @@ export const OulinedButton: FC<IOutlinedButton> = ({
   className,
   cssClass,
   designState,
+  textColor = 'initial',
+  bgColor = 'initial',
+  borderColor = 'initial',
 }) => {
   const { join } = useClass();
   const { pageSettings } = designState;
@@ -21,10 +24,10 @@ export const OulinedButton: FC<IOutlinedButton> = ({
         <style jsx>
           {`
             :global(.sep-button--outlined) {
-              color: ${layout ? pageSettings.primary : 'initial'};
-              background-color: ${layout ? '#ffffff' : 'initial'};
+              color: ${layout ? pageSettings.primary : textColor};
+              background-color: ${layout ? '#ffffff' : bgColor};
               border: 1px solid;
-              border-color: ${layout ? pageSettings.primary : 'initial'};
+              border-color: ${layout ? pageSettings.primary : borderColor};
             }
           `}
         </style>
