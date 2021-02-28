@@ -13,24 +13,31 @@ const BlogSecond = dynamic(
 const BlogThird = dynamic(
   () => import('components/store-front/card/blog-card/BlogThird')
 );
-const BlogFourth = dynamic(
-  () => import('components/store-front/card/blog-card/BlogFourth')
-);
-const BlogFifth = dynamic(
-  () => import('components/store-front/card/blog-card/BlogFifth')
-);
-const BlogSixth = dynamic(
-  () => import('components/store-front/card/blog-card/BlogSixth')
-);
 
 const BlogContainer = ({ item }) => {
   const { join } = useClass();
   const { uiState } = useUi();
   const { designState } = useDesign();
   const { theme } = designState.pageSettings;
+  const { settings } = item;
   const layout = theme === 'default' ? true : false;
-  const { language } = useDirection();
+  let cols; // cols for different blog style
+  switch (settings?.style) {
+    case 'first':
+      cols = 4;
+      break;
+    case 'second':
+      cols = 3;
+      break;
+    case 'third':
+      cols = 2;
+      break;
+    default:
+      cols = 4;
+      break;
+  }
 
+  const { language } = useDirection();
   const Blogs = ({ data, designState, layout, item }) => {
     const { settings } = item;
     switch (settings.style) {
@@ -45,7 +52,7 @@ const BlogContainer = ({ item }) => {
         );
       case 'second':
         return (
-          <BlogSecond
+          <BlogFirst
             data={data}
             layout={layout}
             designState={designState}
@@ -55,33 +62,6 @@ const BlogContainer = ({ item }) => {
       case 'third':
         return (
           <BlogThird
-            data={data}
-            layout={layout}
-            designState={designState}
-            item={item}
-          />
-        );
-      case 'forth':
-        return (
-          <BlogFourth
-            data={data}
-            layout={layout}
-            designState={designState}
-            item={item}
-          />
-        );
-      case 'fifth':
-        return (
-          <BlogFifth
-            data={data}
-            layout={layout}
-            designState={designState}
-            item={item}
-          />
-        );
-      case 'sixth':
-        return (
-          <BlogSixth
             data={data}
             layout={layout}
             designState={designState}
@@ -117,7 +97,9 @@ const BlogContainer = ({ item }) => {
         join={join}
         layout={layout}
       />
-      <div className="grid grid-cols-4 gap-30px container mx-auto p-20px">
+      <div
+        className={`grid grid-cols-${cols} gap-30px container mx-auto p-20px`}
+      >
         {data.map((data) => {
           return (
             <Blogs

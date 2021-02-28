@@ -2,13 +2,22 @@ import { useClass, useDesign, useDirection } from 'hooks';
 import { FC, useState } from 'react';
 import { ICEditStyle } from 'icons';
 import dynamic from 'next/dynamic';
-import BlogFirst from './dependencies/blog-first';
+import BlogStyleFirst from './dependencies/blog-style-first';
 
-const BlogSecond = dynamic(() => import('./dependencies/blog-second'), {
-  loading: () => <BlogFirst />,
-});
+const BlogStyleSecond = dynamic(
+  () => import('./dependencies/blog-style-second'),
+  {
+    loading: () => <BlogStyleFirst />,
+  }
+);
+const BlogStyleThird = dynamic(
+  () => import('./dependencies/blog-style-third'),
+  {
+    loading: () => <BlogStyleFirst />,
+  }
+);
 const DropDown = dynamic(() => import('./dependencies/drop-down'), {
-  loading: () => <BlogFirst />,
+  loading: () => <BlogStyleFirst />,
 });
 
 export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
@@ -31,18 +40,31 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return <BlogFirst className="" active />;
+        return <BlogStyleFirst className="" active />;
       case 'second':
-        return <BlogSecond className="" join={join} active />;
+        return <BlogStyleSecond className="" join={join} active />;
       default:
-        return <BlogFirst className="" join={join} active />;
+        return <BlogStyleThird className="" join={join} active />;
     }
   };
 
   const styleTitle = () => {
     const { style } = designState.current.settings;
-    if (!style || style === 'first') return '1 نمایش : استایل ';
-    else if (style === 'second') return '2 نمایش : استایل ';
+
+    switch (style) {
+      case 'first':
+        return '1 نمایش : استایل ';
+        break;
+      case 'second':
+        return '2 نمایش : استایل ';
+        break;
+      case 'third':
+        return '3 نمایش : استایل ';
+        break;
+
+      default:
+        return '1 نمایش : استایل ';
+    }
   };
 
   return (

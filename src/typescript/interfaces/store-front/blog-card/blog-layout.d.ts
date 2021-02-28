@@ -1,12 +1,11 @@
-interface IBlogImageBackground {
+interface IBlogLayout {
   layout: boolean;
   className?: string;
   cssClass?: string;
   onClick?: any;
   style?: any;
   toggle: any;
-  chidren?: any;
-  imgSrc: string;
+  children?: any;
+  imgSrc?: any;
   modern?: boolean;
-  cssClass?: string;
 }

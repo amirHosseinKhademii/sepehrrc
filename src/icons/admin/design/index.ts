@@ -54,4 +54,7 @@ export * from './edit-picture';
 export * from './new-picture';
 export * from './image-placeholder';
 export * from './setting-menu';
+export * from './blog-style-1';
+export * from './blog-style-2';
+export * from './blog-style-3';
 export * from './forward-link';
