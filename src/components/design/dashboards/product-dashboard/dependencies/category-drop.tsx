@@ -1,4 +1,4 @@
-import { Text, ReactChipInput } from 'components';
+import { Text, ReactChipInput, CheckBox } from 'components';
 import { useDesign, useDirection } from 'hooks';
 
 const initialSuggest = [
@@ -17,8 +17,9 @@ const initialSuggest = [
 ];
 
 export const CategoryDrop = () => {
-  const { setSetting, designState } = useDesign();
+  const { setSetting, designState, setButtonProps } = useDesign();
   const { textAlignRtl, language } = useDirection();
+  const { settings } = designState.current;
 
   const categories = designState.current.settings.categories
     ? designState.current.settings.categories
@@ -49,6 +50,19 @@ export const CategoryDrop = () => {
           initialSuggest={initialSuggest.filter(
             (sug) => !categories.map((item) => item.id).includes(sug.id)
           )}
+        />
+        <CheckBox
+          className="mt-15px"
+          label="نمایش به صورت تب"
+          onClick={() => {
+            setSetting({
+              showTab:
+                settings?.showTab && settings.showTab
+                  ? !settings.showTab
+                  : true,
+            });
+          }}
+          checked={settings?.showTab && settings.showTab}
         />
       </div>
     </div>

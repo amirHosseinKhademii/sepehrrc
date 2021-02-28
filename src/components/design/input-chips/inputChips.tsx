@@ -64,7 +64,7 @@ export const ReactChipInput = ({
             </div>
           ))}
           <form
-            className="w-1/2"
+            className="flex-grow"
             onSubmit={(e) => {
               e.preventDefault();
               const item = suggestions.find(
@@ -75,6 +75,7 @@ export const ReactChipInput = ({
           >
             <input
               name="chip"
+              autoComplete="off"
               ref={formControlRef}
               className="w-full bg-gray_shade-800  text-14px focus:outline-none px-2 text-gray_shade-300"
               placeholder={chips.length == 0 ? 'همه دسته بندی ها' : ''}

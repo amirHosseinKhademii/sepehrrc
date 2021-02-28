@@ -5,4 +5,7 @@ interface IOutlinedButton {
   onClick?: any;
   text: string;
   designState?: any;
+  textColor?: string;
+  bgColor?: string;
+  borderColor?: string;
 }

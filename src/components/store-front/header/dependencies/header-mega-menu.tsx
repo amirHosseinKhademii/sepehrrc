@@ -292,7 +292,7 @@ export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
       </div>
       <style jsx>
         {`
-          .sep-mega-menu:hover .mega-menu__panel {
+          .sep-mega-menu:hover .sep-mega-menu__panel {
             visibility: visible;
             pointer-events: all;
             opacity: 1;

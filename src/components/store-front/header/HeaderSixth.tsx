@@ -18,18 +18,23 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
 
   const { join, toggle } = useClass();
+  const { settings } = item;
+  const showSocial = settings.social == undefined ? true : settings.social;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
       <div
         className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
       >
-        <HeaderTel
-          layout={layout}
-          className="text-16px font-bold"
-          item={item}
-          toggle={toggle}
-        />
+        {showTel && (
+          <HeaderTel
+            layout={layout}
+            className="text-16px font-bold"
+            item={item}
+            toggle={toggle}
+          />
+        )}
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
@@ -74,7 +79,7 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
             className={`sep-header__input-box w-6/12 flex ${flexDirection} items-center  justify-center `}
           >
             <HeaderInput
-              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  px-35px "
               layout={layout}
               toggle={toggle}
             />
@@ -111,15 +116,19 @@ const HeaderSixth: FC<IHeader> = ({ item, layout = true, designState }) => {
         className={`sep-header__row sep-header__row--2 w-full  flex ${flexDirection}  container mx-auto px-20px `}
       >
         <div
-          className={`sep-header__cascading-menu-box w-9/12  flex ${flexDirection} items-center `}
+          className={`sep-header__cascading-menu-box ${
+            showSocial ? 'w-9/12' : 'w-full'
+          }   flex ${flexDirection} items-center `}
         >
           <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div
-          className={`sep-header__socail-box w-3/12 flex ${flexDirection}  justify-end text-16px `}
-        >
-          <Social />
-        </div>
+        {showSocial && (
+          <div
+            className={`sep-header__socail-box w-3/12 flex ${flexDirection}  justify-end text-16px `}
+          >
+            <Social item={item} />
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );
