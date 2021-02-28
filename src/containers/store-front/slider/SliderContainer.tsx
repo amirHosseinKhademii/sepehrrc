@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { GeneralLayout } from 'components';
+import { GeneralLayout, OulinedButton } from 'components';
 import { useDesign, useUi } from 'hooks';
 import Link from 'next/link';
 import Slider from 'components/store-front/slider/ImageSlider';
+import { url } from 'inspector';
 
 const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
@@ -33,9 +34,23 @@ const SliderContainer = ({ item }) => {
           arr.push(
             <Link href={item.link ? item.link : '#'} key={index}>
               <a target={item.newTab ? '_blank' : ''}>
+                <div className="absolute inset-x-0 inset-y-0 flex flex-col justify-center items-center text-white z-20">
+                  <span className="text-24px font-bold">{item.title}</span>
+                  <span className="text-16px font-light mt-25px">
+                    {item.description}
+                  </span>
+                  <OulinedButton
+                    text="رفتن به لینک"
+                    layout={false}
+                    designState={designState}
+                    cssClass="mt-25px"
+                    borderColor="white"
+                    textColor="white"
+                  />
+                </div>
                 <img
                   src={item.value}
-                  className={`h-450px w-full rounded`}
+                  className={`relative h-450px w-full rounded z-10`}
                   alt={item.title}
                   about={item.description}
                   onDragStart={handleDragStart}
