@@ -10,8 +10,8 @@ export const ICAngelLeft: FC<IIcon> = ({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width ? width : 58}
-      height={height ? height : 58}
+      width={width ? width : '1em'}
+      height={height ? height : '1em'}
       viewBox="0 0 24 24"
       className={className}
       onClick={onClick}
