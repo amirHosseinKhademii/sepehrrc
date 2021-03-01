@@ -27,14 +27,14 @@ export const ButtonImage = ({
     <div
       className={`w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between `}
     >
-      <label
+      {/* <label
         className="text-gray_shade-600 text-14px pl-10px cursor-pointer"
         htmlFor="upload"
       >
         برای قرار دادن تصویر کلیک کنید
-      </label>
+      </label> */}
       <input
-        className="hidden"
+        className="  w-80px ml-22px"
         type="file"
         id="upload"
         onChange={(e) =>
