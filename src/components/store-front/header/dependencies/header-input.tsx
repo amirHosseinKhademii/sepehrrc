@@ -16,14 +16,14 @@ export const HeaderInput: FC<IHeaderInput> = ({
     <div className="relative ">
       <GeneralInput
         className={className}
-        cssClass="sep-header-input"
+        cssClass="sep-header-input focus:outline-none"
         layout={layout}
         placeholder={`${language.HSearch}`}
         onChange={onChange}
         style={{ direction: `${dirRtl}` }}
       />
       <ICSearch
-        className={`absolute top-16px ${rightTL}-20px fill-current`}
+        className={`absolute top-16px ${rightTL}-10px fill-current`}
         onClick={onClick}
         cssClass="sep-header-input__search"
       />

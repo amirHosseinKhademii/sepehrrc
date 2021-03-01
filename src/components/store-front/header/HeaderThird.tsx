@@ -15,6 +15,8 @@ import { useClass, useDirection } from 'hooks';
 const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { toggle, join } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
@@ -61,7 +63,7 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             className={`sep-header__input-box w-8/12 flex  items-center justify-center`}
           >
             <HeaderInput
-              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300 px-35px "
               layout={layout}
               toggle={toggle}
             />
@@ -98,7 +100,9 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
         className={`sep-header__row sep-header__row--2 w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
       >
         <div
-          className={`sep-header__menu-box w-9/12 flex  ${flexDirection} items-center `}
+          className={`sep-header__menu-box ${
+            showTel ? 'w-9/12' : 'w-full'
+          } flex  ${flexDirection} items-center `}
         >
           <HeaderMegaMenu
             designState={designState}
@@ -114,14 +118,16 @@ const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
             className="font-bold text-16px"
           />
         </div>
-        <div className={`sep-header__tel-box w-3/12`}>
-          <HeaderTel
-            layout={layout}
-            className="text-16px font-bold"
-            item={item}
-            toggle={toggle}
-          />
-        </div>
+        {showTel && (
+          <div className={`sep-header__tel-box w-3/12`}>
+            <HeaderTel
+              layout={layout}
+              className="text-16px font-bold"
+              item={item}
+              toggle={toggle}
+            />
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );

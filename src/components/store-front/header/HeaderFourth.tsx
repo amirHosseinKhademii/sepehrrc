@@ -18,19 +18,23 @@ const logo = '/assets/images/logo.png';
 const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { join, toggle } = useClass();
   const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showSocial = settings.social == undefined ? true : settings.social;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
       <div
         className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
       >
-        <HeaderTel
-          layout={layout}
-          className="text-16px font-bold"
-          item={item}
-          toggle={toggle}
-        />
-
+        {showTel && (
+          <HeaderTel
+            layout={layout}
+            className="text-16px font-bold"
+            item={item}
+            toggle={toggle}
+          />
+        )}
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="6"
@@ -75,7 +79,7 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
             className={`sep-header__input-box w-7/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
-              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  "
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  px-35px "
               layout={layout}
               toggle={toggle}
             />
@@ -112,7 +116,9 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
         className={`sep-header__row sep-header__row--1 flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
       >
         <div
-          className={`sep-header__menu-box w-9/12  flex ${flexDirection} items-center  `}
+          className={`sep-header__menu-box ${
+            showSocial ? 'w-9/12' : 'w-full'
+          }  flex ${flexDirection} items-center  `}
         >
           <HeaderMegaMenu
             designState={designState}
@@ -128,11 +134,13 @@ const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
             className="font-bold text-16px"
           />
         </div>
-        <div
-          className={`sep-header__social-box w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
-        >
-          <Social />
-        </div>
+        {showSocial && (
+          <div
+            className={`sep-header__social-box w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
+          >
+            <Social item={item} />
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );

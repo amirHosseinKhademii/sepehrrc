@@ -11,6 +11,7 @@ import { useDirection } from 'hooks';
 
 export const BaseSettings = ({ settings, setSetting }) => {
   const { dirRtl } = useDirection();
+  console.log(settings.author, 'settings.auhor');
   return (
     <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxBlog className="mb-30px" />
@@ -50,7 +51,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         label={`"نمایش "مشاهده بیشتر`}
         onClick={() =>
           setSetting({
-            more: settings.more ? !settings.more : true,
+            more: settings.more == undefined ? false : !settings.more,
           })
         }
         checked={settings.more == undefined ? true : settings.more}
@@ -67,7 +68,8 @@ export const BaseSettings = ({ settings, setSetting }) => {
         label="نمایش توضیحات مختصر"
         onClick={() =>
           setSetting({
-            description: settings.description ? !settings.description : true,
+            description:
+              settings.description == undefined ? false : !settings.description,
           })
         }
         checked={
@@ -79,7 +81,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         label="نمایش نام نویسنده"
         onClick={() =>
           setSetting({
-            author: settings.author ? !settings.author : true,
+            author: settings.author == undefined ? false : !settings.author,
           })
         }
         checked={settings.author == undefined ? true : settings.author}
@@ -89,7 +91,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         label="نمایش  تاریخ انتشار"
         onClick={() =>
           setSetting({
-            date: settings.date ? !settings.date : true,
+            date: settings.date == undefined ? false : !settings.date,
           })
         }
         checked={settings.date == undefined ? true : settings.date}

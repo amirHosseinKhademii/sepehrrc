@@ -62,6 +62,10 @@ export const en = {
   HAboutUs: 'about us',
   HContactUs: 'contact us',
   HSign: 'signin/signup',
+  HDInstagram: 'instagram',
+  HDTwitter: 'twitter',
+  HDWhatsapp: 'whatsapp',
+  HDTelegram: 'telegram',
   HSearch: 'search',
   HSearchPlaceholder: 'write the text you want to search here + enter',
 

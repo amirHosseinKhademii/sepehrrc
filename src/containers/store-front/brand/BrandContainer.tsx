@@ -1,6 +1,6 @@
 import { Brand } from 'components';
 import { useDesign, useUi, useDirection, useClass } from 'hooks';
-import { GeneralLayout, ContainerTitle } from 'components';
+import { GeneralLayout, ContainerTitle, GeneralLink } from 'components';
 import CustomerBrandSlider from '../../../components/store-front/slider/CustomerBrandSlider';
 import { SwiperSlide } from 'swiper/react';
 
@@ -21,8 +21,18 @@ const BrandContainer = ({ item }) => {
     if (item.images.length > 0) {
       item.images.map((item, index) => {
         arr.push(
-          <SwiperSlide className="swiper-slide h-105px bg-white " key={index}>
-            <img src={item.value} className={` object-cover `} />
+          <SwiperSlide
+            className="swiper-slide bg-white "
+            key={index}
+            style={{ height: '100px' }}
+          >
+            <GeneralLink
+              href={item?.link ? item.link : '/'}
+              target={item?.newTab ? '_target' : '_self'}
+              cssClass="sep-customer-brand__link"
+            >
+              <img src={item.value} alt={'logoImg'} />
+            </GeneralLink>
           </SwiperSlide>
         );
       });
@@ -33,7 +43,7 @@ const BrandContainer = ({ item }) => {
             className="swiper-slide  flex flex-row-reverse items-center justify-center h-105px p-24px bg-white"
             key={index}
           >
-            <img src={imgAlt} className={`object-contain `} />
+            <img src={imgAlt} />
           </SwiperSlide>
         );
       });
