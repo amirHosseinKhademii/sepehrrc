@@ -25,11 +25,13 @@ export const FooterSection: FC<IFooterSection> = ({
     'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است';
 
   return (
-    <div dir={dir} className="flex flex-col">
+    <div dir={dir} className={`flex flex-col`}>
       <span
         className={toggle(
           `font-light text-14px ${
             isDark ? 'text-gray_shade-100' : 'text-gray_shade-800'
+          } ${
+            withCertificate ? (settings.trust == false ? 'hidden' : '') : ''
           } mb-29px`,
           className,
           layout,
@@ -92,8 +94,8 @@ export const FooterSection: FC<IFooterSection> = ({
       {withCertificate ? (
         <div
           className={`flex justify-center bg-white rounded ${
-            !settings?.trust ? 'hidden' : ''
-          } ${isDark ? 'p-22px' : ''}`}
+            settings.trust == false ? 'hidden' : ''
+          }  ${isDark ? 'p-22px' : ''}`}
         >
           <img src={enamad} />
           <img src={sazmandehi} />
