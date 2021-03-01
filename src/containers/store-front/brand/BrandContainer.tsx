@@ -1,6 +1,6 @@
 import { Brand } from 'components';
 import { useDesign, useUi, useDirection, useClass } from 'hooks';
-import { GeneralLayout, ContainerTitle } from 'components';
+import { GeneralLayout, ContainerTitle, GeneralLink } from 'components';
 import CustomerBrandSlider from '../../../components/store-front/slider/CustomerBrandSlider';
 import { SwiperSlide } from 'swiper/react';
 
@@ -26,7 +26,13 @@ const BrandContainer = ({ item }) => {
             key={index}
             style={{ height: '100px' }}
           >
-            <img src={item.value} />
+            <GeneralLink
+              href={item?.link ? item.link : '/'}
+              target={item?.newTab ? '_target' : '_self'}
+              cssClass="sep-customer-brand__link"
+            >
+              <img src={item.value} alt={'logoImg'} />
+            </GeneralLink>
           </SwiperSlide>
         );
       });
