@@ -220,7 +220,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               fill="none"
               stroke="#36a7ff"
               stroke-linecap="round"
-              stroke-width="3"
+              strokeWidth="3"
             />
           </g>
         </g>
