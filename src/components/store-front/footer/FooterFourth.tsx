@@ -88,9 +88,7 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
             withCertificate
             title="نماد اعتماد"
             dir={dirRtl}
-            className={`text-24px font-medium mb-22px ${
-              !settings?.trust ? 'hidden' : ''
-            }`}
+            className={`text-24px font-medium mb-22px `}
             marginRtl={marginRtl}
             marginLtr={marginLtr}
             settings={settings}

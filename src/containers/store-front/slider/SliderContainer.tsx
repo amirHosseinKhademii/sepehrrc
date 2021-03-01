@@ -39,14 +39,16 @@ const SliderContainer = ({ item }) => {
                   <span className="text-16px font-light mt-25px">
                     {item.description}
                   </span>
-                  <OulinedButton
-                    text="رفتن به لینک"
-                    layout={false}
-                    designState={designState}
-                    cssClass="mt-25px"
-                    borderColor="white"
-                    textColor="white"
-                  />
+                  {item.link ? (
+                    <OulinedButton
+                      text="رفتن به لینک"
+                      layout={false}
+                      designState={designState}
+                      cssClass="mt-25px"
+                      borderColor="white"
+                      textColor="white"
+                    />
+                  ) : null}
                 </div>
                 <img
                   src={item.value}

@@ -82,7 +82,11 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         onSlideChanged={() => updateIndex()}
         disableButtonsControls={button === 'first' ? true : false}
       />
-      <div className="flex justify-center items-center pt-2">
+      <div
+        className={`flex justify-center items-center pt-2 ${
+          button === 'second' ? 'hidden' : ''
+        }`}
+      >
         {child.map(navItem)}
       </div>
     </Fragment>
