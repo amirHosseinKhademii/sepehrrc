@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Swiper } from 'swiper/react';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -66,11 +66,14 @@ const CustomerBrandSlider: FC<ICustomerBrandSlider> = ({
         spaceBetween={30}
         speed={2000}
         pagination={{
-          el: '.swiper-paginations',
+          el: '.paginations',
           type: 'bullets',
           clickable: true,
         }}
-        navigation
+        navigation={{
+          nextEl: '.button-next',
+          prevEl: '.button-prev',
+        }}
         autoplay={{ delay: 200, disableOnInteraction: false }}
         onSwiper={(e) => setState(e)}
         className={`h-full w-full rounded z-0  `}
@@ -78,9 +81,22 @@ const CustomerBrandSlider: FC<ICustomerBrandSlider> = ({
         {children}
       </Swiper>
       <div
-        className={`swiper-paginations absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center  focus:outline-none'
+        onClick={(e) => e.stopPropagation()}
+        className={`paginations absolute bottom-0 inset-x-0 mx-auto flex justify-center items-center z-50 focus:outline-none'
         `}
       ></div>
+      <div className="button-next absolute inset-x-0 inset-y-0 -right-25px flex justify-end items-center focus:outline-none">
+        <ICAngelRight
+          onClick={(e) => e.stopPropagation()}
+          className="text-24px -mt-6 cursor-pointer z-50"
+        />
+      </div>
+      <div className="button-next absolute inset-x-0 inset-y-0 -left-25px flex justify-start items-center focus:outline-none">
+        <ICAngelLeft
+          onClick={(e) => e.stopPropagation()}
+          className="text-24px -mt-6 cursor-pointer z-50"
+        />
+      </div>
     </div>
   );
 };

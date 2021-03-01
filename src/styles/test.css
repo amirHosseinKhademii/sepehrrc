@@ -12,3 +12,7 @@
 .react-autosuggest__input--focused {
   outline: 0;
 }
+
+.swiper-pagination-bullet:focus {
+  outline: none;
+}

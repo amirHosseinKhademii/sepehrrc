@@ -18,7 +18,7 @@ export const BannerImage: FC<IBanner> = ({
         <a target={itemImage.newTab ? '_blank' : ''}>
           <img
             className={join(
-              'w-full rounded object-cover object-center',
+              'w-full rounded object-fill object-center',
               className
             )}
             src={itemImage.value}

@@ -22,16 +22,21 @@ const BrandContainer = ({ item }) => {
       item.images.map((item, index) => {
         arr.push(
           <SwiperSlide
-            className="swiper-slide bg-white "
+            className="swiper-slide bg-white h-105px "
             key={index}
-            style={{ height: '100px' }}
+            style={{ height: '100px', width: '196px' }}
           >
             <GeneralLink
               href={item?.link ? item.link : '/'}
               target={item?.newTab ? '_target' : '_self'}
               cssClass="sep-customer-brand__link"
             >
-              <img src={item.value} alt={'logoImg'} />
+              <img
+                src={item.value}
+                style={{ height: '100px', width: '100%' }}
+                className="object-contain"
+                alt={'logoImg'}
+              />
             </GeneralLink>
           </SwiperSlide>
         );
@@ -40,10 +45,11 @@ const BrandContainer = ({ item }) => {
       arrAlt.map((item, index) => {
         arr.push(
           <SwiperSlide
-            className="swiper-slide  flex flex-row-reverse items-center justify-center h-105px p-24px bg-white"
+            className="swiper-slide  flex flex-row-reverse items-center justify-center p-24px bg-white"
+            style={{ height: '100px', width: '196px' }}
             key={index}
           >
-            <img src={imgAlt} />
+            <img src={imgAlt} className="object-cover" />
           </SwiperSlide>
         );
       });
@@ -75,7 +81,7 @@ const BrandContainer = ({ item }) => {
           layout={layout}
           designState={designState}
           item={item}
-          col={4}
+          col={6}
         >
           {handleChild()}
         </CustomerBrandSlider>
