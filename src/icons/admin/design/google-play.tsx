@@ -23,7 +23,7 @@ export const ICGooglePlay: FC<ISvg> = ({
           transform="translate(297 1307)"
           fill="none"
           stroke={fill ? fill : ''}
-          stroke-width="1"
+          strokeWidth="1"
         >
           <rect width="159" height="49" rx="5" stroke="none" />
           <rect x="0.5" y="0.5" width="158" height="48" rx="4.5" fill="none" />
