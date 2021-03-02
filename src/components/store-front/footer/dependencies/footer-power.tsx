@@ -1,5 +1,6 @@
 import { FC, Fragment } from 'react';
 import { ICSepehr } from 'icons';
+import { useDirection } from 'hooks';
 
 export const FooterPower: FC<IFooterPower> = ({
   className,
@@ -8,6 +9,7 @@ export const FooterPower: FC<IFooterPower> = ({
   flexDirection,
   isDark,
 }) => {
+  const { language, marginRtl, marginLtr } = useDirection();
   return (
     <Fragment>
       <div
@@ -16,22 +18,22 @@ export const FooterPower: FC<IFooterPower> = ({
         <span
           className={`footer-power__first-span font-light text-14px ${
             isDark ? 'text-gray_shade-200' : 'text-gray_shade-800'
-          } ml-5px`}
+          } ${marginLtr}-5px`}
         >
-          قدرت گرفته از
+          {language.FPoweredBy}
         </span>
         <ICSepehr className="footer-power__logo text-xl" />
         <span
           className={toggle(
             `footer-copy-right__last-span font-light text-14px ${
               isDark ? 'text-gray_shade-100' : 'text-gray_shade-900'
-            } mr-5px`,
+            } ${marginRtl}-5px`,
             className,
             layout,
             ''
           )}
         >
-          فروشگاه ساز سپهر
+          {language.FSepehrCc}
         </span>
       </div>
     </Fragment>
