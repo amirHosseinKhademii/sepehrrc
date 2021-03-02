@@ -83,7 +83,7 @@ export const fa = {
   FDMarketStory: 'درباره فروشگاه',
   FDWriteExplanations: 'توضیحات خود را اینجا بنویسید.',
   FDCopyrightText: 'متن کپی رایت',
-  FDTelephone: 'شماره تلفن',
+  FDTelephone: 'تلفن',
   FDSocialMedias: 'شبکه های اجتماعی',
   FDEnamad: 'نماد اعتماد',
   FDMobileApplication: 'اپلیکیشن موبایل',
@@ -98,7 +98,8 @@ export const fa = {
   FAboutUs: 'درباره ما',
   FCopyrightText:
     '©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر است. 1399',
-  FPoweredBy: 'قدرت گرفته از فروشگاه ساز سپهر',
+  FPoweredBy: 'قدرت گرفته از',
+  FSepehrCc: 'فروشگاه ساز سپهر',
 
   //slider
 

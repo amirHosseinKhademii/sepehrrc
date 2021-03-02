@@ -4,5 +4,7 @@ interface ISvg {
   height?: string;
   width?: string;
   fill?: string;
+  fillSecondary?: string;
+  stroke?: string;
   cssClass?: string;
 }
