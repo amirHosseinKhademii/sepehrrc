@@ -52,20 +52,25 @@ export const ButtonImage = ({
 
   const ButtonRemove = () => (
     <div
-      className={`w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between `}
+      className={`w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between pl-20px `}
     >
-      <ICMultiply
-        fill="#9ba3b5"
-        className="w-15px h-15px ml-20px cursor-pointer"
+      <div
+        className="w-full flex items-center justify-between cursor-pointer"
         onClick={() =>
           isBackground
             ? setSetting({ backgroundImage: '' })
             : deleteImage(number)
         }
-      />
-      <label className="text-gray_shade-400 text-14px pl-10px" htmlFor="upload">
-        حذف عکس
-      </label>
+      >
+        <ICMultiply fill="#9ba3b5" className="w-15px h-15px cursor-pointer" />
+        <label
+          className="text-gray_shade-400 text-14px pr-30px cursor-pointer"
+          htmlFor="upload"
+        >
+          حذف عکس
+        </label>
+      </div>
+
       <img
         className="w-54px h-54px rounded-r"
         src={isBackground ? settings?.backgroundImage : currentImage?.value}

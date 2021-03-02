@@ -27,7 +27,7 @@ const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
           placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
         <InputBox label="" type="social" />
-        <ResponsiveSwitchs />
+        <ResponsiveSwitchs className="mb-50px mt-30px" />
       </div>
     );
   };
