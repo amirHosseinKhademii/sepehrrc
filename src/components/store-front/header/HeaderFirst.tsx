@@ -64,21 +64,22 @@ const HeaderFirst: FC<IHeader> = ({ item, layout = true, designState }) => {
         >
           <HeaderLogo src={item.images} layout={layout} join={join} />
         </div>
-        {!openSearch && (
-          <div
-            className={`sep-header__navbar-box w-7/12 flex ${flexDirection} items-center ${marginRtl}-60px  `}
-          >
-            <HeaderNavbar
-              className="font-bold text-16px"
-              direction="horizental"
-              toggle={toggle}
-              layout={layout}
-            />
-          </div>
-        )}{' '}
+        <div
+          className={`sep-header__navbar-box  w-7/12  ${marginRtl}-60px flex ${flexDirection} items-center 
+          ${openSearch ? 'opacity-0 pointer-events-none ' : `opacity-100   `}
+           `}
+        >
+          <HeaderNavbar
+            className="font-bold text-16px"
+            direction="horizental"
+            toggle={toggle}
+            layout={layout}
+          />
+        </div>
+
         <div
           className={`sep-header__actions-box 
-          ${openSearch ? 'w-10/12' : 'w-3/12'} 
+         w-3/12
           flex ${flexDirection}  items-center justify-end `}
         >
           <Actions />
