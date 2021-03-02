@@ -1,18 +1,17 @@
 import { FC } from 'react';
 import {
-  BlogAuthor,
-  BlogDate,
   BlogImage,
-  BlogAbstract,
-  BlogTitle,
   BlogLink,
+  BlogTitle,
+  BlogDate,
+  BlogAbstract,
+  BlogAuthor,
   BlogLayout,
 } from './dependencies';
 import { useClass, useDirection } from 'hooks';
-const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
-  const { pageSettings } = designState;
+const BlogSecond: FC<IBlogCard> = ({ layout, designState, item, data }) => {
   const { toggle } = useClass();
-  const { textAlignRtl } = useDirection();
+  const { dirRtl, flexDirection } = useDirection();
   const { settings } = item;
   const modern =
     settings.display == undefined ? true : settings.display === 'modern';
@@ -24,26 +23,30 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
   if (modern) {
     return (
       <BlogLayout
-        modern={modern}
-        toggle={toggle}
-        imgSrc={data.imgSrc}
         layout={layout}
-        className={` rounded-5px  pt-238px `}
-        cssClass={`blog--first  bg-white`}
+        toggle={toggle}
+        cssClass={`blog--third flex ${flexDirection} bg-white `}
+        className=" h-310px rounded-5px "
+        modern={modern}
+        imgSrc={data.imgSrc}
       >
-        {!layout && (
-          <BlogImage layout={layout} toggle={toggle} src={data.imgSrc} />
-        )}
-        <div className={`p-30px`}>
-          <BlogLink layout={layout} type={'post'}>
-            <BlogTitle
-              text={data.title}
-              layout={layout}
+        <div className="w-1/2 h-full  ">
+          {!layout && (
+            <BlogImage
+              src={data.imgSrc}
               toggle={toggle}
-              className="font-bold text-16px "
+              layout={layout}
+              className="h-310px"
             />
-          </BlogLink>
-
+          )}
+        </div>
+        <div className="w-1/2  p-30px  ">
+          <BlogTitle
+            text={data.title}
+            layout={layout}
+            toggle={toggle}
+            className="font-bold text-16px "
+          />
           {showDescription && (
             <BlogAbstract
               toggle={toggle}
@@ -51,9 +54,8 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
               text={data.abstract}
             />
           )}
-
           {(showAuthor || showDate) && (
-            <div className="flex flex-row-reverse justify-between">
+            <div className={`flex ${flexDirection} justify-between`}>
               {showAuthor && (
                 <BlogLink layout={layout} type={'author'}>
                   <BlogAuthor
@@ -69,69 +71,75 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
             </div>
           )}
         </div>
-        <style jsx>
-          {`
-            div :global(.blog-author__icon-box) {
-              color: ${layout ? pageSettings.primary : 'initial'};
-            }
-          `}
-        </style>
       </BlogLayout>
     );
   } else {
     return (
       <BlogLayout
-        className={` rounded-5px `}
-        cssClass={`blog--first bg-white`}
+        cssClass={` blog--third flex ${flexDirection} bg-white `}
         layout={layout}
         toggle={toggle}
+        className=" h-310px rounded-5px "
       >
-        <BlogImage layout={layout} toggle={toggle} src={data.imgSrc} />
-        <div className="p-30px">
-          <BlogLink layout={layout} type={'post'}>
+        <div className="first-part w-1/2 h-full table-cell ">
+          <BlogImage
+            src={data.imgSrc}
+            toggle={toggle}
+            layout={layout}
+            className="h-310px"
+          />
+        </div>
+
+        <div className="w-1/2 ">
+          <div className="p-30px">
             <BlogTitle
               text={data.title}
               layout={layout}
               toggle={toggle}
               className="font-bold text-16px"
             />
-          </BlogLink>
-
-          {showDescription && (
-            <BlogAbstract
-              toggle={toggle}
-              layout={layout}
-              text={data.abstract}
-            />
-          )}
-
-          {(showAuthor || showDate) && (
-            <div className="flex flex-row-reverse justify-between">
-              {showAuthor && (
-                <BlogLink layout={layout} type={'author'}>
-                  <BlogAuthor
-                    text={data.author}
-                    designState={designState}
-                    layout={layout}
-                  />
-                </BlogLink>
-              )}
-              {showDate && (
-                <BlogDate text={data.date} toggle={toggle} layout={layout} />
-              )}
-            </div>
-          )}
-          <style jsx>
-            {`
-              div :global(.blog-author__icon-box) {
-                color: ${layout ? pageSettings.primary : 'initial'};
-              }
-            `}
-          </style>
+            {showDescription && (
+              <BlogAbstract
+                toggle={toggle}
+                layout={layout}
+                text={data.abstract}
+              />
+            )}
+            {(showAuthor || showDate) && (
+              <div
+                className={`flex ${flexDirection} flex-wrap justify-between`}
+              >
+                {showAuthor && (
+                  <BlogLink layout={layout} type={'author'}>
+                    <BlogAuthor
+                      text={data.author}
+                      designState={designState}
+                      layout={layout}
+                    />
+                  </BlogLink>
+                )}
+                {showDate && (
+                  <BlogDate text={data.date} toggle={toggle} layout={layout} />
+                )}
+              </div>
+            )}
+          </div>
         </div>
+        {/* <style jsx>
+          {`
+            .first-part {
+              height: 200px;
+              background-image: url(${data.imgSrc && layout
+                ? data.imgSrc
+                : ''});
+              background-size: cover;
+              background-position: center center;
+            }
+          `}
+        </style> */}
       </BlogLayout>
     );
   }
 };
 
-export default BlogFirst;
+export default BlogSecond;
