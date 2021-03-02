@@ -17,7 +17,12 @@ const SocialGroup = ({ settings, setSetting }) => {
     <div className="flex flex-col w-full mt-14px">
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ telegram: !settings.telegram })}
+        onClick={() =>
+          setSetting({
+            telegram:
+              settings.telegram == undefined ? false : !settings.telegram,
+          })
+        }
       >
         {checkedTelegram ? (
           <CheckBox className="" secondary checked />
@@ -33,7 +38,12 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer my-10px"
-        onClick={() => setSetting({ instagram: !settings.instagram })}
+        onClick={() =>
+          setSetting({
+            instagram:
+              settings.instagram == undefined ? false : !settings.instagram,
+          })
+        }
       >
         {checkedInstagram ? (
           <CheckBox className="" secondary checked />
@@ -49,7 +59,12 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer mb-10px"
-        onClick={() => setSetting({ whatsapp: !settings.whatsapp })}
+        onClick={() =>
+          setSetting({
+            whatsapp:
+              settings.whatsapp == undefined ? false : !settings.whatsapp,
+          })
+        }
       >
         {checkedWhatsapp ? (
           <CheckBox className="" secondary checked />
@@ -65,7 +80,11 @@ const SocialGroup = ({ settings, setSetting }) => {
       </div>
       <div
         className="w-full bg-gray_shade-800 h-37px rounded flex items-center justify-between cursor-pointer"
-        onClick={() => setSetting({ twitter: !settings.twitter })}
+        onClick={() =>
+          setSetting({
+            twitter: settings.twitter == undefined ? false : !settings.twitter,
+          })
+        }
       >
         {checkedTwitter ? (
           <CheckBox className="" secondary checked />
