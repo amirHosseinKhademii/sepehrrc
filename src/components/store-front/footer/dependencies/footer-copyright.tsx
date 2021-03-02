@@ -1,5 +1,5 @@
 import { FC, Fragment } from 'react';
-import { ICSepehr } from 'icons';
+import { useDirection } from 'hooks';
 
 export const FooterCopyRight: FC<IFooterCopyRight> = ({
   className,
@@ -9,6 +9,7 @@ export const FooterCopyRight: FC<IFooterCopyRight> = ({
   isDark,
   text,
 }) => {
+  const { language, marginLtr } = useDirection();
   return (
     <Fragment>
       <div
@@ -19,9 +20,7 @@ export const FooterCopyRight: FC<IFooterCopyRight> = ({
             isDark ? 'text-gray_shade-200' : 'text-gray_shade-800'
           } ml-5px`}
         >
-          {text
-            ? text
-            : '©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر است. 1399'}
+          {text ? text : language.FCopyrightText}
         </span>
       </div>
     </Fragment>

@@ -78,12 +78,11 @@ export const en = {
   FDStyle: 'style',
   FDBack: 'back',
   FDChoose: 'choose',
-
   FDWebsiteMenuSettings: 'websiet menu settings',
   FDMarketStory: 'market story',
   FDWriteExplanations: 'write explanations hear',
   FDCopyrightText: 'copyright text',
-  FDTelephone: 'telephone number',
+  FDTelephone: 'phone',
   FDSocialMedias: 'social medias',
   FDEnamad: 'enamad',
   FDMobileApplication: 'mobile application',
@@ -96,8 +95,9 @@ export const en = {
   FAboutStore: 'about store',
   FCantactUs: 'contact us',
   FAboutUs: 'about us',
-  FCopyrightText: 'all  rights  reserved for SepehrCC 1399.',
-  FPoweredBy: 'powered by sepehr page builder',
+  FCopyrightText: 'All Rights Reserved For SepehrCC 1399©',
+  FPoweredBy: 'powered by',
+  FSepehrCc: 'sepehr page builder',
 
   //slider
 

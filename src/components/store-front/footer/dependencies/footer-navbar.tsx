@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { useDirection } from 'hooks';
 import { GeneralLink } from 'components';
+
 const items = [
   { text: 'صفحه اصلی', link: './admin/design' },
   { text: 'محصولات', link: './admin/design' },
@@ -17,6 +18,7 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
   isDark,
 }) => {
   const { flexDirection } = useDirection();
+  const { language, marginLtr } = useDirection();
   if (direction === 'horizental') {
     return (
       <ul

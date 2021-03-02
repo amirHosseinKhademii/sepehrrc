@@ -40,11 +40,13 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return <BlogStyleFirst className="" active />;
+        return <BlogStyleFirst className="" active={true} />;
       case 'second':
-        return <BlogStyleSecond className="" join={join} active />;
+        return <BlogStyleSecond className="" join={join} active={true} />;
+      case 'third':
+        return <BlogStyleThird className="" join={join} active={true} />;
       default:
-        return <BlogStyleThird className="" join={join} active />;
+        return <BlogStyleFirst className="" join={join} active={true} />;
     }
   };
 
@@ -88,7 +90,7 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
         </span>
       </div>
 
-      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px mt-10px py-17px">
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col justify-center items-center px-16px mt-10px pt-10px pb-18px">
         {open ? (
           <DropDown
             designState={designState}
