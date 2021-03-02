@@ -11,7 +11,8 @@ export const BlogAbstract: FC<IBlogAbstract> = ({ text, toggle, layout }) => {
       <style jsx>{`
         .blog-abstract {
           position: relative;
-          height: 3.6em;
+          height: 6.9em;
+          line-height:2.3
           overflow: hidden;
         }
 

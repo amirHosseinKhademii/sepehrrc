@@ -11,7 +11,6 @@ import { useDirection } from 'hooks';
 
 export const BaseSettings = ({ settings, setSetting }) => {
   const { dirRtl } = useDirection();
-  console.log(settings.author, 'settings.auhor');
   return (
     <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxBlog className="mb-30px" />

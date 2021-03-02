@@ -8,7 +8,7 @@ export const BlogLink: FC<IBlogLink> = ({
 }) => {
   return (
     <GeneralLink
-      href={type === 'author' ? './' : './'}
+      href={type === 'author' ? './author' : './'}
       cssClass={type === 'author' ? 'blog-author-link' : 'blog-post-link'}
       layout={layout}
       className={className}

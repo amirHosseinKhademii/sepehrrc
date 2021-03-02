@@ -20,13 +20,14 @@ const ProductCard: FC<IProductCard> = ({
     <ProductLayout className={`rounded-10px `} layout={layout} toggle={toggle}>
       <ProductImage
         src={item.cover}
-        className="h-188px w-188px"
+        className=" w-188px"
         toggle={toggle}
         layout={layout}
       />
       <ProductName
         text={item.name}
-        className="text-18px mt-25px font-iransans"
+        className=" overflow-hidden text-18px h-50px mt-10px
+         "
         toggle={toggle}
         layout={layout}
       />
@@ -35,7 +36,7 @@ const ProductCard: FC<IProductCard> = ({
           <ProductPrice
             prev
             text={item.price}
-            className={`${marginLtr}-5px mt-20px text-lg font-bold font-iransans  `}
+            className={` h-50px mt-10px ${marginLtr}-5px  overflow-hidden  text-lg font-bold  `}
             layout={layout}
             toggle={toggle}
             designState={designState}
@@ -45,7 +46,7 @@ const ProductCard: FC<IProductCard> = ({
         <ProductPrice
           withUnit
           text={item.price}
-          className=" mt-20px text-lg font-bold font-iransans "
+          className="h-50px mt-10px overflow-hidden text-lg font-bold font-iransans "
           unitClassName={`text-sm font-bold ${marginRtl}-1 `}
           toggle={toggle}
           layout={layout}
