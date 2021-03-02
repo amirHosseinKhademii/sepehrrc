@@ -77,7 +77,9 @@ export const ReactChipInput = ({
               name="chip"
               autoComplete="off"
               ref={formControlRef}
-              className="w-full bg-gray_shade-800  text-14px focus:outline-none px-2 text-gray_shade-300"
+              className={`w-full bg-gray_shade-800  text-14px focus:outline-none px-2 text-gray_shade-300 ${
+                chips.length >= 3 && 'h-58px rounded-b'
+              }`}
               placeholder={chips.length == 0 ? 'همه دسته بندی ها' : ''}
               onChange={(e) => onChange(e)}
               onFocus={() => setOpen(true)}
