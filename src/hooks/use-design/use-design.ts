@@ -110,6 +110,19 @@ export const useDesign = () => {
             [key]: key === 'value' ? result.data.secure_url : payload,
           },
         });
+      designDispatch({
+        type: designTypes.ON_SET_PURE_IMAGE,
+        payload: {
+          value: '',
+          number: '',
+          newTab: false,
+          link: '',
+          onUpload: true,
+          description: '',
+          title: '',
+          isBackground: false,
+        },
+      });
       toggleModal({ open: false, type: '' });
     },
     clearCurrent: useCallback(() => {

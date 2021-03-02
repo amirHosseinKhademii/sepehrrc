@@ -11,27 +11,27 @@ const data = [
   {
     id: 0,
     title: 'انواع پاور بانک',
-    imgUrl: '/assets/images/product.png',
+    imgUrl: '/assets/images/bag.jpg',
   },
   {
     id: 1,
     title: 'انواع دوربین',
-    imgUrl: '/assets/images/product.png',
+    imgUrl: '/assets/images/bag.jpg',
   },
   {
     id: 2,
     title: 'هدفون و هندزفری',
-    imgUrl: '/assets/images/product.png',
+    imgUrl: '/assets/images/bag.jpg',
   },
   {
     id: 3,
     title: 'انواع تبلت',
-    imgUrl: '/assets/images/product.png',
+    imgUrl: '/assets/images/bag.jpg',
   },
   {
     id: 3,
     title: 'لپ تاپ',
-    imgUrl: '/assets/images/product.png',
+    imgUrl: '/assets/images/bag.jpg',
   },
 ];
 
@@ -46,18 +46,6 @@ const ProductGroupContainer = ({ item }) => {
   const { cols } = settings;
 
   const newData = data.slice(0, cols || 3);
-
-  const handleChild = () => {
-    return newData.map((i, index) => (
-      <ProductGroupCard
-        key={index}
-        layout={layout}
-        designState={designState}
-        imgUrl={i.imgUrl}
-        title={i.title}
-      />
-    ));
-  };
 
   return (
     <GeneralLayout
@@ -83,7 +71,15 @@ const ProductGroupContainer = ({ item }) => {
           cols || 3
         } gap-x-7 px-20px`}
       >
-        {handleChild()}
+        {newData.map((i, index) => (
+          <ProductGroupCard
+            key={index}
+            layout={layout}
+            designState={designState}
+            imgUrl={i.imgUrl}
+            title={i.title}
+          />
+        ))}
       </div>
     </GeneralLayout>
   );

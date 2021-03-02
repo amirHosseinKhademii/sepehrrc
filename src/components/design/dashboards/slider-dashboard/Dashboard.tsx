@@ -43,7 +43,7 @@ const SliderDashboard = () => {
         <ShowTypeButtonGroup />
         <GenericUploader text={language.SDChoose} isBackground withSwitch />
         <BackgroundColor withSwitch className="mt-30px" />
-        <ResponsiveSwitchs className="mt-30px mb-30px" />
+        <ResponsiveSwitchs className="mt-30px mb-50px" />
       </div>
     );
   };

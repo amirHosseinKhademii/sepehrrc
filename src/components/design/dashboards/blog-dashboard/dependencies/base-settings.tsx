@@ -98,7 +98,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
       />
       <GenericUploader isBackground className="mt-30px" withSwitch />
       <BackgroundColor className="mt-30px" withSwitch />
-      <ResponsiveSwitchs className="mt-30px" />
+      <ResponsiveSwitchs className="mt-30px mb-50px" />
     </div>
   );
 };

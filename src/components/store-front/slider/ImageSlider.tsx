@@ -1,5 +1,5 @@
 import { Fragment, useRef, useState } from 'react';
-import { useDirection } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { ICAngelLeft, ICAngelRight } from 'icons';
 import AliceCarousel from 'react-alice-carousel';
 import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
@@ -8,6 +8,9 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
   const sliderRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const { rightTL, leftTR, marginRtl, marginLtr } = useDirection();
+  const { designState } = useDesign();
+
+  const { direction } = designState.pageSettings;
 
   const clickDots = (e, i) => {
     e.stopPropagation();
@@ -46,10 +49,17 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickPrev(e)}
       >
-        <ICAngelLeft
-          fill="#2e323d"
-          className={`text-32px -${marginLtr}-40px`}
-        />
+        {direction === 'rtl' ? (
+          <ICAngelLeft
+            fill="#2e323d"
+            className={`text-32px -${marginLtr}-40px`}
+          />
+        ) : (
+          <ICAngelRight
+            fill="#2e323d"
+            className={`text-32px -${marginLtr}-40px`}
+          />
+        )}
       </div>
     );
   };
@@ -61,10 +71,17 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickNext(e)}
       >
-        <ICAngelRight
-          fill="#2e323d"
-          className={`text-32px -${marginRtl}-40px`}
-        />
+        {direction === 'rtl' ? (
+          <ICAngelRight
+            fill="#2e323d"
+            className={`text-32px -${marginRtl}-40px`}
+          />
+        ) : (
+          <ICAngelLeft
+            fill="#2e323d"
+            className={`text-32px -${marginRtl}-40px`}
+          />
+        )}
       </div>
     );
   };

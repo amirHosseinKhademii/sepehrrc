@@ -16,7 +16,7 @@ const BannerDashboard: FC<IBannerDashboard> = memo(({ designState }) => {
       <UploadButtonGroup designState={designState} />
       <GenericUploader isBackground className="mt-0px" withSwitch />
       <BackgroundColor className="mt-30px" withSwitch />
-      <ResponsiveSwitchs className="mt-30px" />
+      <ResponsiveSwitchs className="mt-30px mb-50px" />
     </div>
   );
 

@@ -7,7 +7,7 @@ export const ICMultiply: FC<IIcon> = ({
   height,
   width,
   fill,
-  layout,
+  layout = true,
 }) => {
   const { toggle } = useClass();
   return (

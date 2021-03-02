@@ -25,7 +25,6 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
       <div className="flex flex-col items-end pt-30px px-20px overflow-auto">
         <TitleInput />
         <CategoryDrop />
-        {/* <ShowDrop /> */}
         <ScreenButtonGroup />
         {isList ? (
           <>
@@ -42,7 +41,7 @@ const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
           withSwitch
         />
         <BackgroundColor withSwitch className="mt-30px" />
-        <ResponsiveSwitchs />
+        <ResponsiveSwitchs className="mb-50px mt-30px" />
       </div>
     );
   };

@@ -11,8 +11,12 @@ const ProductGroupCard: FC<IProductGroupCard> = ({
   const { toggle } = useClass();
   const { marginRtl, marginLtr } = useDirection();
   return (
-    <ProductGroupLayout className="rounded" layout={layout} toggle={toggle}>
-      <img src={imgUrl} className="h-238px w-full rounded" />
+    <ProductGroupLayout
+      className="rounded pt-20px"
+      layout={layout}
+      toggle={toggle}
+    >
+      <img src={imgUrl} className="h-200px w-full rounded object-contain" />
       <div
         className={`h-full flex justify-center items-center text-14px text-gray_shade-800  ${
           layout ? '' : 'font-light'
