@@ -23,7 +23,7 @@ const DropDown = ({ designState, onSelectClick, join }) => {
       <BlogStyleThird
         className="border-gray-400 cursor-pointer"
         onClick={() => onSelectClick({ style: 'third' })}
-        active={style === 'second'}
+        active={style === 'third'}
       />
     </div>
   );

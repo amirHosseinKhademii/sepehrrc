@@ -40,13 +40,13 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return <BlogStyleFirst className="" active />;
+        return <BlogStyleFirst className="" active={true} />;
       case 'second':
-        return <BlogStyleSecond className="" join={join} active />;
+        return <BlogStyleSecond className="" join={join} active={true} />;
       case 'third':
-        return <BlogStyleThird className="" join={join} active />;
+        return <BlogStyleThird className="" join={join} active={true} />;
       default:
-        return <BlogStyleFirst className="" join={join} active />;
+        return <BlogStyleFirst className="" join={join} active={true} />;
     }
   };
 
