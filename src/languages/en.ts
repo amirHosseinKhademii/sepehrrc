@@ -98,6 +98,10 @@ export const en = {
   FCopyrightText: 'All Rights Reserved For SepehrCC 1399©',
   FPoweredBy: 'powered by',
   FSepehrCc: 'sepehr page builder',
+  FAboutShop: 'About Shop',
+  FQuickAccess: 'Quick Access',
+  FCustomerServices: 'Customer Services',
+  FTrustSymbol: 'Certification',
 
   //slider
 

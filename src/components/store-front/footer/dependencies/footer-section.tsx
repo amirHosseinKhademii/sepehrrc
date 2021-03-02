@@ -3,6 +3,7 @@ import { FooterTel, FooterSocialMedia, FooterNavbar } from './index';
 const enamad = '/assets/images/enamad.png';
 const sazmandehi = '/assets/images/sazmandehi.png';
 import { ICSepehr } from 'icons';
+import { useDirection, useDesign } from 'hooks';
 
 export const FooterSection: FC<IFooterSection> = ({
   className,
@@ -23,6 +24,10 @@ export const FooterSection: FC<IFooterSection> = ({
 }) => {
   const description =
     'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است';
+  const descriptionEn =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium viverra suspendisse potenti nullam ac. Lectus quam id leo in vitae turpis.';
+  const { designState } = useDesign();
+  const selectLanguage = designState.pageSettings.direction;
 
   return (
     <div dir={dir} className={`flex flex-col`}>
@@ -46,7 +51,11 @@ export const FooterSection: FC<IFooterSection> = ({
             isDark ? 'text-gray_shade-200' : 'text-gray_shade-800'
           }`}
         >
-          {settings?.about ? settings.about : description}
+          {settings?.about
+            ? settings.about
+            : selectLanguage == 'rtl'
+            ? description
+            : descriptionEn}
         </span>
       ) : null}
       {withTel ? (
