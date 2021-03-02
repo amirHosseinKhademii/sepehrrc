@@ -24,7 +24,7 @@ export const HeaderSearch = ({ layout = true, show, showHandler }) => {
         />
       ) : (
         <div
-          className={`sep-header-search__input-box absolute ${leftTR}-0 -top-15px w-full mx-2 `}
+          className={`sep-header-search__input-box absolute ${leftTR}-0 -top-15px sm:w-200px md:w-400px lg:w-500px xl:w-850px `}
         >
           <GeneralInput
             layout={layout}

@@ -66,22 +66,24 @@ const HeaderFifth: FC<IHeader> = ({ item, layout = true, designState }) => {
           >
             <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          {!openSearch && (
-            <div
-              className={` sep-header__navbar-box w-6/12 flex ${flexDirection} items-center ${marginRtl}-60px `}
-            >
-              <HeaderNavbar
-                direction="horizental"
-                toggle={toggle}
-                layout={layout}
-                className="font-bold text-16px"
-              />
-            </div>
-          )}
+
           <div
-            className={`sep-header__actions-box  ${
-              openSearch ? 'w-10/12' : 'w-4/12'
-            }  flex ${flexDirection} items-center justify-end`}
+            className={` sep-header__navbar-box w-6/12 flex ${flexDirection}  items-center ${marginRtl}-60px   ${
+              openSearch ? `opacity-0 pointer-events-none ` : `opacity-100`
+            }   `}
+          >
+            <HeaderNavbar
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+              className="font-bold text-16px"
+            />
+          </div>
+
+          <div
+            className={`sep-header__actions-box  w-4/12
+            
+              flex ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton

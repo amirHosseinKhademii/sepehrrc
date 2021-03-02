@@ -76,7 +76,9 @@ const HeaderSecond: FC<IHeader> = ({ item, layout = true }) => {
           />
         </div>
         <div
-          className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center `}
+          className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center   ${
+            openSearch ? 'opacity-0 pointer-events-none ' : `opacity-100   `
+          }`}
         >
           <HeaderLogo layout={layout} src={item.images} join={join} />
         </div>
