@@ -10,7 +10,7 @@ import {
   Social,
 } from './dependencies';
 import { Badge, GeneralLink } from 'components';
-import { ICSearch, ICShoppingCart } from 'icons';
+import { ICUsersAlt, ICShoppingCart } from 'icons';
 import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
@@ -28,11 +28,11 @@ const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
         className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
       >
         <GeneralLink
-          cssClass="sep-header-actions__search-link"
+          cssClass="sep-header-actions__user-alt-link"
           layout={layout}
           href="./"
         >
-          <ICSearch className="mx-4 fill-current" />
+          <ICUsersAlt className="mx-4 fill-current" />
         </GeneralLink>
 
         <Badge
