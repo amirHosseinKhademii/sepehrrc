@@ -6,5 +6,6 @@ interface ISvg {
   fill?: string;
   fillSecondary?: string;
   stroke?: string;
+  strokeSecondary?: string;
   cssClass?: string;
 }

@@ -58,3 +58,7 @@ export * from './blog-style-1';
 export * from './blog-style-2';
 export * from './blog-style-3';
 export * from './forward-link';
+export * from './footer-style-1';
+export * from './footer-style-2';
+export * from './footer-style-3';
+export * from './footer-style-4';

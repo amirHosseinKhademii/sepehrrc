@@ -18,7 +18,11 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
       height={height ? height : 47}
       viewBox="0 0 234 47"
     >
-      <g id="Blog-Style-1" transform="translate(-102 -346)">
+      <g
+        id="Blog-Style-1"
+        transform="translate(-102 -346)"
+        className="iconClass"
+      >
         <g
           id="Group_1403"
           data-name="Group 1403"
@@ -36,6 +40,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               height="47"
               rx="2"
               fill={fill ? fill : 'current'}
+              className="fillIcon"
             />
           </g>
           <path
@@ -43,6 +48,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
             d="M23.5,7.5H8.5a1,1,0,0,0-1,1v15a1,1,0,0,0,1,1h15a1,1,0,0,0,1-1V8.5A1,1,0,0,0,23.5,7.5Zm-3.374,3.488A1.311,1.311,0,1,1,18.815,12.3,1.313,1.313,0,0,1,20.126,10.988Zm1.96,9.974a.1.1,0,0,1-.086.05H10a.1.1,0,0,1-.087-.149l3.358-5.9a.1.1,0,0,1,.086-.051.117.117,0,0,1,.087.048l1.2,1.98L17.3,12.663a.1.1,0,0,1,.172,0l4.618,8.2A.1.1,0,0,1,22.086,20.962Z"
             transform="translate(343.66 291.5)"
             fill={fillSecondary ? fillSecondary : 'current'}
+            className="fillSecondaryIcon"
           />
           <g
             id="Group_1404"
@@ -56,6 +62,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(4 -2)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -66,6 +73,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(24 3)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -88,6 +96,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               height="47"
               rx="2"
               fill={fill ? fill : 'current'}
+              className="fillIcon"
             />
           </g>
           <path
@@ -96,6 +105,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
             d="M23.5,7.5H8.5a1,1,0,0,0-1,1v15a1,1,0,0,0,1,1h15a1,1,0,0,0,1-1V8.5A1,1,0,0,0,23.5,7.5Zm-3.374,3.488A1.311,1.311,0,1,1,18.815,12.3,1.313,1.313,0,0,1,20.126,10.988Zm1.96,9.974a.1.1,0,0,1-.086.05H10a.1.1,0,0,1-.087-.149l3.358-5.9a.1.1,0,0,1,.086-.051.117.117,0,0,1,.087.048l1.2,1.98L17.3,12.663a.1.1,0,0,1,.172,0l4.618,8.2A.1.1,0,0,1,22.086,20.962Z"
             transform="translate(343.66 291.5)"
             fill={fillSecondary ? fillSecondary : 'current'}
+            className="fillSecondaryIcon"
           />
           <g
             id="Group_1404-2"
@@ -109,6 +119,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(0 -2)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -119,6 +130,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(20 3)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -141,6 +153,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               height="47"
               rx="2"
               fill={fill ? fill : 'current'}
+              className="fillIcon"
             />
           </g>
           <path
@@ -149,6 +162,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
             d="M23.5,7.5H8.5a1,1,0,0,0-1,1v15a1,1,0,0,0,1,1h15a1,1,0,0,0,1-1V8.5A1,1,0,0,0,23.5,7.5Zm-3.374,3.488A1.311,1.311,0,1,1,18.815,12.3,1.313,1.313,0,0,1,20.126,10.988Zm1.96,9.974a.1.1,0,0,1-.086.05H10a.1.1,0,0,1-.087-.149l3.358-5.9a.1.1,0,0,1,.086-.051.117.117,0,0,1,.087.048l1.2,1.98L17.3,12.663a.1.1,0,0,1,.172,0l4.618,8.2A.1.1,0,0,1,22.086,20.962Z"
             transform="translate(343.66 291.5)"
             fill={fillSecondary ? fillSecondary : 'current'}
+            className="fillSecondaryIcon"
           />
           <g
             id="Group_1404-3"
@@ -162,6 +176,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(4 -2)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -172,6 +187,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(24 3)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -190,6 +206,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               height="47"
               rx="2"
               fill={fill ? fill : 'current'}
+              className="fillIcon"
             />
           </g>
           <path
@@ -198,6 +215,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
             d="M23.5,7.5H8.5a1,1,0,0,0-1,1v15a1,1,0,0,0,1,1h15a1,1,0,0,0,1-1V8.5A1,1,0,0,0,23.5,7.5Zm-3.374,3.488A1.311,1.311,0,1,1,18.815,12.3,1.313,1.313,0,0,1,20.126,10.988Zm1.96,9.974a.1.1,0,0,1-.086.05H10a.1.1,0,0,1-.087-.149l3.358-5.9a.1.1,0,0,1,.086-.051.117.117,0,0,1,.087.048l1.2,1.98L17.3,12.663a.1.1,0,0,1,.172,0l4.618,8.2A.1.1,0,0,1,22.086,20.962Z"
             transform="translate(343.66 291.5)"
             fill={fillSecondary ? fillSecondary : 'current'}
+            className="fillSecondaryIcon"
           />
           <g
             id="Group_1404-4"
@@ -211,6 +229,7 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(0 -2)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
@@ -221,12 +240,29 @@ export const ICBlogStyleFirst: FC<ISvg> = ({
               transform="translate(20 3)"
               fill="none"
               stroke={stroke ? stroke : 'current'}
+              className="strokeIcon"
               stroke-linecap="round"
               strokeWidth="3"
             />
           </g>
         </g>
       </g>
+      <style jsx>
+        {`
+          .iconClass:hover .fillIcon {
+            fill: #1578e6;
+            transition: 0.5s;
+          }
+          .iconClass:hover .fillSecondaryIcon {
+            fill: #36a7ff;
+            transition: 0.5s;
+          }
+          .iconClass:hover .strokeIcon {
+            stroke: #36a7ff;
+            transition: 0.5s;
+          }
+        `}
+      </style>
     </svg>
   );
 };
