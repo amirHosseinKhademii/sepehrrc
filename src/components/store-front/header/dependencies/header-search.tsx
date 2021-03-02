@@ -24,7 +24,7 @@ export const HeaderSearch = ({ layout = true, show, showHandler }) => {
         />
       ) : (
         <div
-          className={`sep-header-search__input-box absolute ${leftTR}-0 -top-15px w-full `}
+          className={`sep-header-search__input-box absolute ${leftTR}-0 -top-15px w-full mx-2 `}
         >
           <GeneralInput
             layout={layout}
@@ -38,8 +38,9 @@ export const HeaderSearch = ({ layout = true, show, showHandler }) => {
           <ICMultiply
             height="20px"
             width="20px"
-            cssClass="sep-header-search__multiply-ic"
-            className={`absolute top-16px ${leftTR}-0 fill-current text-gray_shade-300`}
+            cssClass="sep-header-search__multiply-ic cursor-pointer"
+            className={`absolute top-16px ${leftTR}-0 fill-current text-gray_shade-300  `}
+            layout={layout}
             onClick={(event) => {
               event.stopPropagation();
 
