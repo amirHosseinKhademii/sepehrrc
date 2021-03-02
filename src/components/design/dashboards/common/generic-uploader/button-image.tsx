@@ -1,4 +1,5 @@
 import { ICMultiply, ICImagePlaceholder } from 'icons';
+import { v4 as uuid } from 'uuid';
 
 export const ButtonImage = ({
   setPureImage,
@@ -23,20 +24,22 @@ export const ButtonImage = ({
     } else return showCondition;
   };
 
+  const randomId = uuid();
+
   const ButtonUpload = () => (
     <div
       className={`w-full h-54px bg-gray_shade-800 rounded flex items-center justify-between `}
     >
-      {/* <label
-        className="text-gray_shade-600 text-14px pl-10px cursor-pointer"
-        htmlFor="upload"
+      <label
+        className="text-gray_shade-600 text-14px pl-25px cursor-pointer"
+        htmlFor={randomId}
       >
         برای قرار دادن تصویر کلیک کنید
-      </label> */}
+      </label>
       <input
-        className="  w-80px ml-22px"
+        className="hidden"
         type="file"
-        id="upload"
+        id={randomId}
         onChange={(e) =>
           setPureImage({ value: e.target.files[0], number, isBackground })
         }
