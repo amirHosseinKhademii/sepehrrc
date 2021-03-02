@@ -100,6 +100,10 @@ export const fa = {
     '©کلیه حقوق مادی و معنوی این سایت محفوظ و متعلق به رایانش ابری سپهر است. 1399',
   FPoweredBy: 'قدرت گرفته از',
   FSepehrCc: 'فروشگاه ساز سپهر',
+  FAboutShop: 'درباره فروشگاه',
+  FQuickAccess: 'دسترسی سریع',
+  FCustomerServices: 'خدمات مشتریان',
+  FTrustSymbol: 'نماد اعتماد',
 
   //slider
 

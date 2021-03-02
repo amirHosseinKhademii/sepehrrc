@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { useDirection } from 'hooks';
+import { useDirection, useDesign } from 'hooks';
 import { GeneralLink } from 'components';
 
 const items = [
-  { text: 'صفحه اصلی', link: './admin/design' },
-  { text: 'محصولات', link: './admin/design' },
-  { text: 'درباره فروشگاه', link: './admin/design' },
-  { text: 'تماس با ما', link: './admin/design' },
-  { text: 'درباره ما', link: './admin/design' },
+  { text: 'صفحه اصلی', en: 'Home', link: './admin/design' },
+  { text: 'محصولات', en: 'Products', link: './admin/design' },
+  { text: 'درباره فروشگاه', en: 'About Shop', link: './admin/design' },
+  { text: 'تماس با ما', en: 'Contact Us', link: './admin/design' },
+  { text: 'درباره ما', en: 'About US', link: './admin/design' },
 ];
 export const FooterNavbar: FC<IFooterNavbar> = ({
   direction = 'horizental',
@@ -16,14 +16,16 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
   toggle,
   layout,
   isDark,
+  cssClass,
 }) => {
-  const { flexDirection } = useDirection();
-  const { language, marginLtr } = useDirection();
+  const { designState } = useDesign();
+  const selectLanguage = designState.pageSettings.direction;
+  const { language, marginLtr, flexDirection, paddingLtr } = useDirection();
   if (direction === 'horizental') {
     return (
       <ul
         className={toggle(
-          `footer-navbar flex ${flexDirection} font-light ${
+          `footer-navbar flex ${flexDirection} font-light ${cssClass} ${
             isDark ? 'text-gray_shade-200' : 'text-alert-700'
           } `,
           className,
@@ -34,10 +36,10 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
           return (
             <li
               className={toggle(
-                'footer-navbar__item mb-55px',
-                'pr-0 pl-30px',
+                'footer-navbar__item',
+                `pr-0 ${paddingLtr}-30px`,
                 index === 0,
-                'pl-30px'
+                `${paddingLtr}-30px`
               )}
               key={index}
             >
@@ -45,7 +47,7 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
                 cssClass="footer-navbar__item__link"
                 href={item.link}
               >
-                {item.text}
+                {selectLanguage == 'rtl' ? item.text : item.en}
               </GeneralLink>
             </li>
           );
@@ -78,7 +80,7 @@ export const FooterNavbar: FC<IFooterNavbar> = ({
                 cssClass="footer-navbar__item__link"
                 href={item.link}
               >
-                {item.text}
+                {selectLanguage == 'rtl' ? item.text : item.en}
               </GeneralLink>
             </li>
           );

@@ -37,6 +37,7 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
             toggle={toggle}
             className="font-light text-16px"
             isDark={isDark}
+            cssClass="mb-55px"
           />
           <div className={`flex ${flexDirection} `}>
             <FooterSocialMedia

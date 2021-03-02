@@ -7,7 +7,7 @@ import '../../../../node_modules/react-alice-carousel/lib/alice-carousel.css';
 const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
   const sliderRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { rightTL, leftTR } = useDirection();
+  const { rightTL, leftTR, marginRtl, marginLtr } = useDirection();
 
   const clickDots = (e, i) => {
     e.stopPropagation();
@@ -46,7 +46,10 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickPrev(e)}
       >
-        <ICAngelLeft fill="white" />
+        <ICAngelLeft
+          fill="#2e323d"
+          className={`text-32px -${marginLtr}-40px`}
+        />
       </div>
     );
   };
@@ -58,7 +61,10 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         style={{ opacity: isDisabled ? '0.5' : 1 }}
         onClick={(e) => clickNext(e)}
       >
-        <ICAngelRight fill="white" />
+        <ICAngelRight
+          fill="#2e323d"
+          className={`text-32px -${marginRtl}-40px`}
+        />
       </div>
     );
   };
