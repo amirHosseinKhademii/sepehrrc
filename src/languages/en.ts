@@ -27,7 +27,7 @@ export const en = {
   DPrimaryColor: 'primary color',
   DSecondaryColor: 'secondarycolor',
   DChooseTitlesFont: 'choose  titles font',
-  DChooseTextFonts: 'choose texts font',
+  DChooseTextsFont: 'choose texts font',
   DYekanBakh: 'yekanbackh',
   DIransans: 'iransans',
   DDefaultTheme: 'default',

@@ -19,7 +19,6 @@ const BannerDashboard: FC<IBannerDashboard> = memo(({ designState }) => {
       <ResponsiveSwitchs className="mt-30px mb-50px" />
     </div>
   );
-
   return (
     <DrawerLayout>
       <HeaderDrawer setting text="تنظیمات بنر تبلیغاتی" />
