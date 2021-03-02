@@ -13,10 +13,11 @@ const DropDown = ({ designState, onSelectClick, join }) => {
         onClick={() => onSelectClick({ style: 'first' })}
         join={join}
         active={!style || style === 'first'}
+        className="cursor-pointer"
       />
       <LabelBox label="استایل 2" />
       <FooterSecond
-        className="border-gray-400"
+        className="border-gray-400 cursor-pointer"
         onClick={() => onSelectClick({ style: 'second' })}
         join={join}
         active={style === 'second'}
@@ -25,11 +26,13 @@ const DropDown = ({ designState, onSelectClick, join }) => {
       <FooterThird
         onClick={() => onSelectClick({ style: 'third' })}
         active={style === 'third'}
+        className="cursor-pointer"
       />
       <LabelBox label="استایل 4" />
       <FooterFourth
         onClick={() => onSelectClick({ style: 'fourth' })}
         active={style === 'fourth'}
+        className="cursor-pointer"
       />
     </div>
   );
