@@ -9,9 +9,6 @@ const BlogFirst = dynamic(
 const BlogSecond = dynamic(
   () => import('components/store-front/card/blog-card/BlogSecond')
 );
-const BlogThird = dynamic(
-  () => import('components/store-front/card/blog-card/BlogThird')
-);
 
 const BlogContainer = ({ item }) => {
   const { join } = useClass();
@@ -23,23 +20,24 @@ const BlogContainer = ({ item }) => {
   const showMore = settings.more == undefined ? true : settings.more;
   let blogData;
   let cols; // cols for different blog style
+  console.log(settings.style, 'style');
   switch (settings?.style) {
     case 'first':
-      cols = 4;
-      blogData = settings.more ? data.slice(0, 4) : data;
+      cols = `md:grid-cols-2 lg:grid-cols-4`;
+      blogData = data.slice(0, 4);
       break;
     case 'second':
-      cols = 3;
-      blogData = settings.more ? data.slice(0, 3) : data;
+      cols = `md:grid-cols-2 lg:grid-cols-3`;
+      blogData = data.slice(0, 3);
 
       break;
     case 'third':
-      cols = 2;
-      blogData = settings.more ? data.slice(0, 2) : data;
+      cols = ` lg:grid-cols-2`;
+      blogData = data.slice(0, 2);
 
       break;
     default:
-      cols = 4;
+      cols = `md:grid-cols-2 lg:grid-cols-4`;
       blogData = data;
       break;
   }
@@ -59,7 +57,7 @@ const BlogContainer = ({ item }) => {
         );
       case 'second':
         return (
-          <BlogSecond
+          <BlogFirst
             data={data}
             layout={layout}
             designState={designState}
@@ -68,7 +66,7 @@ const BlogContainer = ({ item }) => {
         );
       case 'third':
         return (
-          <BlogThird
+          <BlogSecond
             data={data}
             layout={layout}
             designState={designState}
@@ -105,7 +103,7 @@ const BlogContainer = ({ item }) => {
         layout={layout}
       />
       <div
-        className={`grid grid-cols-${cols} gap-30px container mx-auto p-20px`}
+        className={`grid xs:grid-cols-1 ${cols} gap-30px container mx-auto p-20px`}
       >
         {blogData.map((data) => {
           return (

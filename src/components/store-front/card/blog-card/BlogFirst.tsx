@@ -35,14 +35,12 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
           <BlogImage layout={layout} toggle={toggle} src={data.imgSrc} />
         )}
         <div className={`p-30px`}>
-          <BlogLink layout={layout} type={'post'}>
-            <BlogTitle
-              text={data.title}
-              layout={layout}
-              toggle={toggle}
-              className="font-bold text-16px "
-            />
-          </BlogLink>
+          <BlogTitle
+            text={data.title}
+            layout={layout}
+            toggle={toggle}
+            className="font-bold text-16px "
+          />
 
           {showDescription && (
             <BlogAbstract
@@ -53,7 +51,7 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
           )}
 
           {(showAuthor || showDate) && (
-            <div className="flex flex-row-reverse justify-between">
+            <div className="flex flex-row-reverse flex-wrap justify-between">
               {showAuthor && (
                 <BlogLink layout={layout} type={'author'}>
                   <BlogAuthor
@@ -88,14 +86,12 @@ const BlogFirst: FC<IBlogCard> = ({ layout, item, designState, data }) => {
       >
         <BlogImage layout={layout} toggle={toggle} src={data.imgSrc} />
         <div className="p-30px">
-          <BlogLink layout={layout} type={'post'}>
-            <BlogTitle
-              text={data.title}
-              layout={layout}
-              toggle={toggle}
-              className="font-bold text-16px"
-            />
-          </BlogLink>
+          <BlogTitle
+            text={data.title}
+            layout={layout}
+            toggle={toggle}
+            className="font-bold text-16px"
+          />
 
           {showDescription && (
             <BlogAbstract
