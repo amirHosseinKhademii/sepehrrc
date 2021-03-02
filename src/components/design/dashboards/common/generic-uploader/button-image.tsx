@@ -1,5 +1,5 @@
 import { ICMultiply, ICImagePlaceholder } from 'icons';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export const ButtonImage = ({
   setPureImage,
@@ -24,7 +24,7 @@ export const ButtonImage = ({
     } else return showCondition;
   };
 
-  const randomId = uuid();
+  const randomId = uuidv4();
 
   const ButtonUpload = () => (
     <div
