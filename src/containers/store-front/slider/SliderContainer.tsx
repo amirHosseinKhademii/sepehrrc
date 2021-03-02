@@ -52,7 +52,7 @@ const SliderContainer = ({ item }) => {
                 </div>
                 <img
                   src={item.value}
-                  className={`relative h-450px w-full rounded z-10`}
+                  className={`relative h-450px w-full rounded z-10 object-fill`}
                   alt={item.title}
                   about={item.description}
                   onDragStart={handleDragStart}
