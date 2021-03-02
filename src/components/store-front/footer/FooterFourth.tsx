@@ -15,7 +15,14 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
   const { uiState } = useUi();
   const { container } = uiState;
   const { join, toggle } = useClass();
-  const { flexDirection, marginRtl, marginLtr, dirRtl } = useDirection();
+  const {
+    flexDirection,
+    marginRtl,
+    marginLtr,
+    dirRtl,
+    language,
+    paddingRtl,
+  } = useDirection();
   const isDark = item.settings ? item.settings.dark : false;
   const settings = item.settings;
 
@@ -38,7 +45,7 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
             withDescription
             withTel
             withSocial
-            title="درباره فروشگاه"
+            title={language.FAboutShop}
             dir={dirRtl}
             className="text-24px font-medium mb-22px"
             marginRtl={marginRtl}
@@ -47,14 +54,14 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
           />
         </div>
         <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px   `}
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px ${paddingRtl}-80px   `}
         >
           <FooterSection
             layout={layout}
             toggle={toggle}
             isDark={isDark}
             withNavbar
-            title="دسترسی سریع"
+            title={language.FQuickAccess}
             dir={dirRtl}
             className="text-24px font-medium mb-22px"
             marginRtl={marginRtl}
@@ -63,14 +70,14 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
           />
         </div>
         <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px  `}
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px ${paddingRtl}-80px  `}
         >
           <FooterSection
             layout={layout}
             toggle={toggle}
             isDark={isDark}
             withNavbar
-            title="خدمات مشتریان"
+            title={language.FCustomerServices}
             dir={dirRtl}
             className="text-24px font-medium mb-22px"
             marginRtl={marginRtl}
@@ -79,14 +86,14 @@ const FooterFourth: FC<IFooter> = ({ item, layout = true, designState }) => {
           />
         </div>
         <div
-          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px pr-80px   `}
+          className={`footer__col-2 w-3/12 flex ${flexDirection}  mt-45px mb-30px ${paddingRtl}-80px   `}
         >
           <FooterSection
             layout={layout}
             toggle={toggle}
             isDark={isDark}
             withCertificate
-            title="نماد اعتماد"
+            title={language.FTrustSymbol}
             dir={dirRtl}
             className={`text-24px font-medium mb-22px `}
             marginRtl={marginRtl}
