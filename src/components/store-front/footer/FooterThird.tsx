@@ -67,7 +67,7 @@ const FooterThird: FC<IFooter> = ({ item, layout = true, designState }) => {
         >
           <img
             src={enamad}
-            className={`h-116px w-107px bg-white rounded ml-19px ${
+            className={`h-116px w-107px bg-white rounded ${marginLtr}-19px ${
               settings.trust == false ? 'hidden' : ''
             } ${isDark ? 'p-10px' : ''}`}
           />
