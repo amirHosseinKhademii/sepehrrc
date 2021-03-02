@@ -1,13 +1,33 @@
-import { Input } from 'components';
+import { Input, Switch } from 'components';
 import { useDesign } from 'hooks';
+import { Fragment } from 'react';
 
 export const TitleInput = () => {
   const { setSetting, designState } = useDesign();
+  const { settings } = designState.current;
   return (
-    <Input
-      label="عنوان بخش"
-      onBlur={(e) => setSetting({ title: e.target.value })}
-      placeholder={designState.current.title}
-    />
+    <Fragment>
+      <Switch
+        label="عنوان بخش"
+        className=""
+        onClick={() =>
+          setSetting({ title: settings.title ? !settings.title : true })
+        }
+        checked={settings.title}
+      />
+      {settings.title && (
+        <Input
+          onBlur={(e) =>
+            e.target.value !== '' && setSetting({ title: e.target.value })
+          }
+          placeholder={
+            designState.current.settings && designState.current.settings.title
+              ? designState.current.settings.title
+              : 'عنوان بخش'
+          }
+          className="mt-14px"
+        />
+      )}
+    </Fragment>
   );
 };

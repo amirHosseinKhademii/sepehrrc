@@ -1,6 +1,6 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
-import { DropDownGroup } from './dependencies';
-import { useDesign } from 'hooks';
+import { DropDownGroup, ImageBox, InputBox } from './dependencies';
+import { useDesign, useUi } from 'hooks';
 import {
   BackgroundColor,
   TitleInput,
@@ -10,33 +10,44 @@ import {
   DndUploadBox,
 } from '../common';
 
-export const BrandDashboard = () => {
+const BrandDashboard = () => {
   const { designState } = useDesign();
+  const { uiState } = useUi();
+  const setting = uiState.setting;
 
   const BaseSettings = () => {
     return (
       <div className="flex flex-col items-end pt-30px px-20px">
         <TitleInput />
-        {designState.pureImage.onUpload ? (
+        <DropDownGroup />
+        {setting.type === 'dropZone' && setting.open ? (
           <DndUploadBox
             placeholder={{
               text: 'تصاویر لوگو را اینجا آپلود کنید',
               width: 121,
               height: 54,
             }}
-            marginTop="25px"
           />
         ) : (
-          <PictureContainer
-            title="تصاویر لوگو ها"
-            count={24}
-            marginTop="25px"
-          />
+          <PictureContainer title="تصاویر لوگو ها" count={8} />
         )}
-        <DropDownGroup />
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
-        <BackgroundColor />
+        <GenericUploader
+          text="انتخاب کنید"
+          className="mt-30px"
+          isBackground
+          withSwitch
+        />
+        <BackgroundColor withSwitch className="mt-30px" />
         <ResponsiveSwitchs />
+      </div>
+    );
+  };
+
+  const ImageSettings = () => {
+    return (
+      <div className="flex flex-col items-end pt-30px px-20px">
+        <ImageBox />
+        <InputBox />
       </div>
     );
   };
@@ -44,7 +55,13 @@ export const BrandDashboard = () => {
   return (
     <DrawerLayout>
       <HeaderDrawer setting text=" تنظیمات لوگو مشتریان " />
-      <BaseSettings />
+      {uiState.setting.type === 'picture' && uiState.setting.open ? (
+        <ImageSettings />
+      ) : (
+        <BaseSettings />
+      )}
     </DrawerLayout>
   );
 };
+
+export default BrandDashboard;

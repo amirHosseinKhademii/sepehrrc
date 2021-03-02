@@ -1,41 +1,42 @@
 import { HeaderDrawer, DrawerLayout } from 'components';
 import { MenuEditGroup, InputBox, StyleBoxHeader } from './dependencies';
-import { GenericUploader } from '../common';
+import { GenericUploader, ResponsiveSwitchs, SocialGroup } from '../common';
 import { FC, memo } from 'react';
+import { useDirection } from 'hooks';
 
-export const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
-  const { current } = designState;
-
+const HeaderDashboard: FC<IHeaderDashboard> = memo(({ designState }) => {
+  const { settings } = designState.current;
+  const { language } = useDirection();
   const BaseSetttings = () => {
     return (
       <div className="w-full flex flex-col items-end pt-30px px-20px">
         <StyleBoxHeader />
         <MenuEditGroup designState={designState} />
         <GenericUploader
-          label="لوگو"
+          label={language.HDLogo}
           number="one"
-          text="انتخاب لوگو"
+          text={language.HDChooseLogo}
           className="mb-30px"
           withLink
           withNewTab
         />
+        <InputBox label={language.HDHeaderButton} type="button" />
         <InputBox
-          label="شماره تلفن"
+          label={language.HDPhoneNumber}
           type="tel"
-          placeholder={current?.telNumber ? current.telNumber : '09100000000'}
+          placeholder={settings?.tel ? settings.tel : '09100000000'}
         />
-        <InputBox
-          label="دکمه هدر"
-          type="button"
-          placeholder={current?.buttonText ? current.buttonText : 'ورود/عضویت'}
-        />
+        <InputBox label="" type="social" />
+        <ResponsiveSwitchs className="mb-50px mt-30px" />
       </div>
     );
   };
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text="تنظیمات هدر" />
+      <HeaderDrawer setting text={language.HDHeaderSettings} />
       <BaseSetttings />
     </DrawerLayout>
   );
 });
+
+export default HeaderDashboard;

@@ -6,93 +6,131 @@ import {
   HeaderLayout,
   HeaderMegaMenu,
   HeaderButton,
+  HeaderTel,
 } from './dependencies';
-import Link from 'next/link';
-import { ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge } from 'components';
-import { useClass, useDesign, useDirection } from 'hooks';
+import { ICShoppingCart } from 'icons';
+import { Badge, GeneralLink } from 'components';
+import { useClass, useDirection } from 'hooks';
 
-export const HeaderThird: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderThird: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { toggle, join } = useClass();
-  const { designState } = useDesign();
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
-      <>
+      <div className={`sep-header-actions flex ${flexDirection}`}>
         <Badge
           className=" text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root={`${marginLtr}-20px`}
+          layout={layout}
+          cssClass="sep-header-actions__badge"
         >
-          <Link href="./">
-            <a>
-              <ICShoppingCart
-                height="20px"
-                width="20px"
-                className="fill-current text-20px"
-              />
-            </a>
-          </Link>
+          <GeneralLink
+            cssClass="sep-header-actions__shopping-cart-link"
+            layout={layout}
+            href="./"
+          >
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="fill-current text-20px"
+              cssClass="sep-header-actions__shopping-cart-ic"
+            />
+          </GeneralLink>
         </Badge>
-      </>
+      </div>
     );
   };
   return (
-    <HeaderLayout layout={layout} toggle={toggle}>
-      <div className="border-2">
+    <HeaderLayout
+      layout={layout}
+      toggle={toggle}
+      id="headerThird"
+      cssClass="sep-header--third"
+    >
+      <div className="sep-header__border sep-header__border--1 border-2">
         <div
-          className={`w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
+          className={`sep-header__row sep-header__row-1 w-full  flex ${flexDirection}    h-122px container mx-auto px-20px `}
         >
           <div
-            className={`w-1/12  flex ${flexDirection} items-center justify-start `}
+            className={`sep-header__logo-box w-1/12  flex ${flexDirection} items-center justify-start `}
           >
-            <HeaderLogo src={item.images} join={join} />
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className={`w-8/12 flex  items-center justify-center`}>
+          <div
+            className={`sep-header__input-box w-8/12 flex  items-center justify-center`}
+          >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300 px-35px "
               layout={layout}
               toggle={toggle}
             />
           </div>
           <div
-            className={`w-3/12 flex  ${flexDirection} items-center justify-end`}
+            className={`sep-header__actions-box w-3/12 flex  ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
               toggle={toggle}
               layout={layout}
               className="   rounded-25px  text-white"
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              text={
+                item.settings?.button && item.settings.button?.text
+                  ? item.settings.button.text
+                  : `${language.HSign}`
+              }
+              link={
+                item.settings?.button && item.settings.button?.link
+                  ? item.settings.button.link
+                  : '/signup'
+              }
+              newTab={
+                item.settings?.button && item.settings.button?.newTab
+                  ? item.settings.button.newTab
+                  : false
+              }
               designState={designState}
             />
           </div>
         </div>
       </div>
       <div
-        className={` w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
+        className={`sep-header__row sep-header__row--2 w-full  flex ${flexDirection}  h-58px   container mx-auto px-20px relative`}
       >
-        <div className={`w-9/12 flex  ${flexDirection} items-center `}>
-          <HeaderMegaMenu designState={designState} />
+        <div
+          className={`sep-header__menu-box ${
+            showTel ? 'w-9/12' : 'w-full'
+          } flex  ${flexDirection} items-center `}
+        >
+          <HeaderMegaMenu
+            designState={designState}
+            toggle={toggle}
+            className="font-bold text-16px"
+            layout={layout}
+          />
 
-          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <HeaderNavbar
+            direction="horizental"
+            toggle={toggle}
+            layout={layout}
+            className="font-bold text-16px"
+          />
         </div>
-        <div className={`w-3/12`}>
-          <a
-            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className={` flex ${flexDirection} items-center justify-end text-16px h-full font-iransans`}
-          >
-            <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-
-            <ICPhoneVolume
-              height="20px"
-              width="20px"
-              className={`${marginRtl}-10px fill-current text-20px`}
+        {showTel && (
+          <div className={`sep-header__tel-box w-3/12`}>
+            <HeaderTel
+              layout={layout}
+              className="text-16px font-bold"
+              item={item}
+              toggle={toggle}
             />
-          </a>
-        </div>
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );
 };
+
+export default HeaderThird;

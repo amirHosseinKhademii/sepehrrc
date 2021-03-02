@@ -1,10 +1,7 @@
 import { FC } from 'react';
 import { ICBars } from 'icons';
-import Link from 'next/link';
 import { useDirection } from 'hooks';
-interface IHEaderCategory {
-  designState?: any;
-}
+import { GeneralLink } from 'components';
 const item = {
   text: 'دسته بندی محصولات',
   link: '',
@@ -217,50 +214,72 @@ const item = {
   ],
 };
 
-export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
+export const HeaderMegaMenu: FC<IHeaderMegaMenu> = ({
+  designState,
+  layout,
+  toggle,
+  className,
+}) => {
   const { pageSettings } = designState;
   const {
     flexDirection,
     marginLtr,
     marginRtl,
-    absoluteRtl,
-    textAlign,
+    rightTL,
+    textAlignRtl,
+    language,
   } = useDirection();
   return (
     <div
-      className={`headerMegaMenu flex ${flexDirection} items-center justify-center h-full `}
+      className={toggle(
+        `sep-mega-menu flex ${flexDirection} items-center justify-center h-full`,
+        className,
+        layout
+      )}
     >
-      <div className={` flex ${flexDirection} ${marginLtr}-30px   `}>
+      <div
+        className={` sep-mega-menu__wrap flex ${flexDirection} ${marginLtr}-30px   `}
+      >
         <ICBars className="text-24px fill-current" />
-        <div
-          className={`  ${marginRtl}-5px text-16px font-bold   headerMegaMenuPanel`}
-        >
-          <Link href={item.link}>
-            <a className="title"> {item.text} </a>
-          </Link>
+        <div className={`sep-mega-menu__title-box  ${marginRtl}-5px  `}>
+          <GeneralLink
+            layout={layout}
+            className="title"
+            cssClass={'sep-mega-menu__link'}
+            href={item.link}
+          >
+            {language.HProductsCategories}
+          </GeneralLink>
           <div
-            className={`z-30 absolute top-full ${absoluteRtl}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
+            className={`sep-mega-menu__panel z-30 absolute top-full ${rightTL}-0  w-full flex ${flexDirection}  flex-wrap opacity-0 invisible pointer-events-none px-20px py-25px border-t-2  bg-white shadow-md `}
           >
             {item.subMenus.map((firstLevel, index) => {
               return (
                 <ul
                   key={index}
-                  className={`w-1/5 flex flex-col ${textAlign} mb-4 `}
+                  className={`sep-mega-menu__list w-1/5 flex flex-col ${textAlignRtl} mb-4 `}
                 >
-                  <li className={`listTitle  text-16px  `}>
-                    <Link href={firstLevel.link}>
-                      <a>{firstLevel.text}</a>
-                    </Link>
+                  <li className={` text-16px sep-mega-menu__list-title `}>
+                    <GeneralLink
+                      cssClass="sep-mega-menu_list-title-link"
+                      layout={layout}
+                      href={firstLevel.link}
+                    >
+                      {firstLevel.text}
+                    </GeneralLink>
                   </li>
-                  <ul>
+                  <ul className="sep-mega-menu__list-items">
                     {firstLevel.subMenus.map((secondLevel, index) => {
                       return (
-                        <li key={index}>
-                          <Link href={secondLevel.link}>
-                            <a className="cursor-pointer opacity-80">
-                              {secondLevel.text}
-                            </a>
-                          </Link>
+                        <li key={index} className="sep-mega-menu__list-item">
+                          <GeneralLink
+                            href={secondLevel.link}
+                            className="cursor-pointer opacity-80"
+                            layout={layout}
+                            cssClass="sep-mega-menu__list-item-link"
+                          >
+                            {secondLevel.text}
+                          </GeneralLink>
                         </li>
                       );
                     })}
@@ -273,14 +292,14 @@ export const HeaderMegaMenu: FC<IHEaderCategory> = ({ designState }) => {
       </div>
       <style jsx>
         {`
-          .headerMegaMenu:hover .headerMegaMenuPanel > div {
+          .sep-mega-menu:hover .sep-mega-menu__panel {
             visibility: visible;
             pointer-events: all;
             opacity: 1;
             transition: all 0.3s;
           }
 
-          .listTitle {
+          .sep-mega-menu__list-title {
             color: ${pageSettings.primary ? pageSettings.primary : 'inherit'};
           }
 

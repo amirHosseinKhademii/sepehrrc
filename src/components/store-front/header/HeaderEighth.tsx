@@ -6,82 +6,139 @@ import {
   HeaderLayout,
   HeaderButton,
   HeaderCascadingMenu,
+  HeaderTel,
   Social,
 } from './dependencies';
-import { Badge } from 'components';
-import { ICSearch, ICShoppingCart, ICPhoneVolume } from 'icons';
-import Link from 'next/link';
-import { useDesign, useClass } from 'hooks';
+import { Badge, GeneralLink } from 'components';
+import { ICUsersAlt, ICShoppingCart } from 'icons';
+import { useClass, useDirection } from 'hooks';
 const logo = '/assets/images/logo.png';
 
-export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
-  const { designState } = useDesign();
+const HeaderEighth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { pageSettings } = designState;
   const { join, toggle } = useClass();
+  const { flexDirection, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showSocial = settings.social == undefined ? true : settings.social;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
-      <>
-        <Link href="./">
-          <a>
-            <ICSearch className="mx-4 fill-current" />
-          </a>
-        </Link>
+      <div
+        className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
+      >
+        <GeneralLink
+          cssClass="sep-header-actions__user-alt-link"
+          layout={layout}
+          href="./"
+        >
+          <ICUsersAlt className="mx-4 fill-current" />
+        </GeneralLink>
 
         <Badge
           className="bg-red-600 text-white h-18px w-18px leading-tight "
           badgeContent="6"
+          layout={true}
+          cssClass="sep-header-actions__badge"
         >
-          <Link href="./">
-            <a>
-              <ICShoppingCart className="fill-current" />
-            </a>
-          </Link>
+          <GeneralLink
+            href="./"
+            layout={layout}
+            cssClass="sep-header-actions__shopping-cart-link"
+          >
+            {' '}
+            <ICShoppingCart
+              className="fill-current"
+              cssClass="sep-header-actions__shopping-cart-ic"
+            />
+          </GeneralLink>
         </Badge>
-      </>
+      </div>
     );
   };
 
   return (
-    <HeaderLayout layout={layout} toggle={toggle}>
+    <HeaderLayout
+      layout={layout}
+      toggle={toggle}
+      cssClass="sep-header--eight"
+      id="headerEight"
+    >
       <div
-        className=" text-white"
-        style={{ backgroundColor: `${pageSettings.primary}` }}
+        className="sep-header__background"
+        style={{
+          backgroundColor: `${layout ? `${pageSettings.primary}` : `#fff`}`,
+          color: `${layout ? `#fff` : 'initial'}`,
+        }}
       >
         <div
-          className={`grid  grid-cols-12    w-full h-58px  container mx-auto px-20px`}
-          style={{ direction: 'rtl' }}
+          className={` sep-header__row sep-header__row--1 flex ${flexDirection}   w-full h-58px  container mx-auto px-20px`}
         >
-          <div className="col-span-9  flex items-center ">
-            <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
+          <div
+            className={`sep-header__navbar-box ${
+              showSocial ? 'w-9/12' : 'w-full'
+            }  flex ${flexDirection} items-center `}
+          >
+            <HeaderNavbar
+              direction="horizental"
+              toggle={toggle}
+              layout={layout}
+              className="font-bold text-16px"
+            />
           </div>
-          <div className="col-span-3 flex items-center justify-end text-16px text-white">
-            <Social />
-          </div>
+          {showSocial && (
+            <div
+              className={`sep-header__social-box w-3/12 flex ${flexDirection} items-center justify-end text-16px `}
+              style={{
+                color: `${layout ? `#fff` : 'initial'}`,
+              }}
+            >
+              <Social item={item} />
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="border-b-2">
+      <div className="sep-header__border border-b-2 border-t-2">
         <div
-          className={`grid  grid-cols-12   w-full h-122px container mx-auto px-20px `}
-          style={{ direction: 'rtl' }}
+          className={`sep-header__row  sep-header__row--2 flex ${flexDirection}  w-full h-122px container mx-auto px-20px `}
         >
-          <div className="col-span-1  flex items-center">
-            <HeaderLogo src={item.images} join={join} />
+          <div
+            className={`sep-header__logo-box w-2/12  flex ${flexDirection} items-center`}
+          >
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
-          <div className="col-span-7 flex items-center justify-center ">
+          <div
+            className={`sep-header__input-box w-6/12 flex ${flexDirection} items-center justify-center `}
+          >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  px-35px "
               layout={layout}
               toggle={toggle}
             />
           </div>
-          <div className="col-span-4 flex items-center justify-end ">
+          <div
+            className={`sep-header__actions-box w-4/12 flex ${flexDirection} items-center justify-end `}
+          >
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-25px rounded-25px  text-white "
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              className="  rounded-25px  text-white "
+              text={
+                item.settings?.button && item.settings.button?.text
+                  ? item.settings.button.text
+                  : 'ورود/عضویت'
+              }
+              link={
+                item.settings?.button && item.settings.button?.link
+                  ? item.settings.button.link
+                  : '/signup'
+              }
+              newTab={
+                item.settings?.button && item.settings.button?.newTab
+                  ? item.settings.button.newTab
+                  : false
+              }
               toggle={toggle}
               designState={designState}
             />
@@ -89,28 +146,30 @@ export const HeaderEighth: FC<IHeader> = ({ item, layout = true }) => {
         </div>
       </div>
       <div
-        className={`grid  grid-cols-12    w-full container mx-auto px-20px `}
-        style={{ direction: 'rtl' }}
+        className={`sep-header__row sep-header__row--3 flex ${flexDirection}  items-center w-full container mx-auto px-20px `}
       >
-        <div className="col-span-9  flex items-center ">
-          <HeaderCascadingMenu designState={designState} />
+        <div
+          className={`sep-header__cascading-menu-box  ${
+            showTel ? 'w-9/12' : 'w-full'
+          } flex ${flexDirection} items-center `}
+        >
+          <HeaderCascadingMenu designState={designState} layout={layout} />
         </div>
-        <div className="col-span-3 h-full flex items-center justify-end ">
-          <a
-            href={`tel:+98${!item.telNumber ? 0 : item.telNumber}`}
-            className=" h-full flex items-center justify-end  text-20px font-iransans"
+        {showTel && (
+          <div
+            className={`sep-header__tel-box w-3/12 h-full flex ${flexDirection} items-center justify-end `}
           >
-            <span className="text-16px">
-              {!item.telNumber ? '0910000000' : item.telNumber}{' '}
-            </span>
-            <ICPhoneVolume
-              height="20px"
-              width="20px"
-              className="mr-10px fill-current"
+            <HeaderTel
+              layout={layout}
+              className="text-16px font-bold"
+              item={item}
+              toggle={toggle}
             />
-          </a>
-        </div>
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );
 };
+
+export default HeaderEighth;

@@ -27,7 +27,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 3"
               text="انتخاب کنید"
               number="three"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -72,7 +72,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 5"
               text="انتخاب کنید"
               number="five"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -125,7 +125,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 6"
               text="انتخاب کنید"
               number="six"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -162,7 +162,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 4"
               text="انتخاب کنید"
               number="four"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -183,7 +183,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 2"
               text="انتخاب کنید"
               number="two"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -212,7 +212,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 3"
               text="انتخاب کنید"
               number="three"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />
@@ -241,7 +241,7 @@ export const UploadButtonGroup: FC<IBannerDashboard> = memo(
               label="تصویر 3"
               text="انتخاب کنید"
               number="three"
-              className="mb-122px"
+              className="mb-30px"
               withNewTab
               withLink
             />

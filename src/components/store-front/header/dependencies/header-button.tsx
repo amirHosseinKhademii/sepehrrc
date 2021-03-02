@@ -1,7 +1,10 @@
 import { FC } from 'react';
-
+import Link from 'next/link';
+import { useDirection } from 'hooks';
 export const HeaderButton: FC<IHeaderButton> = ({
   text,
+  newTab,
+  link,
   layout = true,
   onClick,
   className,
@@ -10,27 +13,32 @@ export const HeaderButton: FC<IHeaderButton> = ({
   designState,
 }) => {
   const { pageSettings } = designState;
-  return (
-    <button
-      className={toggle(
-        'headerButton px-25px py-14px  text-16px border-2 text-white  cursor-pointer focus:outline-none font-iransans font-light',
-        className,
-        layout,
-        cssAlt
-      )}
-      onClick={onClick}
-    >
-      {text}
+  const { marginRtl } = useDirection();
 
-      <style jsx>
-        {`
-          .headerButton {
-            background-color:${` ${layout ? pageSettings.primary : 'initial'}`};
-            border-color: ${`${layout ? pageSettings.primary : 'initial'} `};
-            color: ${`${layout ? '#fff' : 'initial'}`};
-            border-radius:27px
+  return (
+    <Link href={link ? link : ''} replace>
+      <a
+        target={newTab ? '_blank' : ''}
+        className={toggle(
+          `sep-header-button h-50px px-25px ${marginRtl}-35px flex items-center justify-center text-center text-16px border-2   cursor-pointer focus:outline-none  font-light `,
+          className,
+          layout,
+          cssAlt
+        )}
+        onClick={onClick}
+      >
+        {text}
+
+        <style jsx>
+          {`
+          
+          .sep-header-button {
+            background-color: ${layout ? pageSettings.primary : 'initial'};
+            border-color: ${layout ? pageSettings.primary : 'initial'};
+            color: ${layout ? '#fff' : 'initial'};
                  `}
-      </style>
-    </button>
+        </style>
+      </a>
+    </Link>
   );
 };

@@ -1,27 +1,40 @@
-import { settings } from 'cluster';
 import {
   GeneralLayout,
-  ProductTitle,
   ProductGrid,
-  ProductCard,
-  Pagination,
-  ProductSlider,
+  ContainerTitle,
+  InlineMenu,
 } from 'components';
 import { useDesign, useUi, useClass } from 'hooks';
+import dynamic from 'next/dynamic';
 import { data } from './data';
 
-export const ProductContainer = ({ item }) => {
+const Pagination = dynamic(
+  () => import('components/store-front/pagination/Pagination')
+);
+const ProductSlider = dynamic(
+  () => import('components/store-front/slider/ProductSlider')
+);
+const ProductCard = dynamic(
+  () => import('components/store-front/card/product-card/ProductCard')
+);
+
+const ProductContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { join } = useClass();
   const { current } = designState;
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? true : false;
+  const { settings } = designState.pageItems.find(
+    (item) => item.type == 'products'
+  );
 
   const showPagination =
     (item?.settings &&
-      item.settings?.page &&
-      item.settings.page !== 'disabled') ||
+      item.settings?.pagination &&
+      item.settings.pagination !== 'disabled') ||
     !item?.settings ||
-    !item.settings?.page;
+    !item.settings?.pagination;
 
   const displayList =
     item?.settings && item.settings?.screen && item.settings.screen == 'list';
@@ -63,8 +76,8 @@ export const ProductContainer = ({ item }) => {
   };
 
   const SyncWithColRow = (data) => {
-    const col = item?.settings && item.settings?.cols ? item.settings.cols : 4;
-    const row = item?.settings && item.settings?.rows ? item.settings.rows : 1;
+    const col = item?.settings && item.settings?.cols ? item.settings.cols : 3;
+    const row = item?.settings && item.settings?.rows ? item.settings.rows : 2;
     const calculateItems = col * row;
     const orderArr = data.slice(0, calculateItems);
     return orderArr;
@@ -76,33 +89,46 @@ export const ProductContainer = ({ item }) => {
 
   const ProductList = () => {
     return (
-      <div className="container mx-auto flex flex-col w-full  px-20px py-25px">
-        <ProductTitle
-          text={
-            item?.settings && item.settings?.title
-              ? item.settings.title
-              : item.title
-          }
-          layout={true}
+      <div className="container mx-auto flex flex-col w-full  px-20px pb-25px">
+        <ContainerTitle
           designState={designState}
+          item={item}
           join={join}
+          layout={layout}
         />
+        {settings?.showTab && settings.showTab ? (
+          <InlineMenu
+            data={
+              settings?.categories && settings.categories
+                ? settings.categories
+                : []
+            }
+          />
+        ) : null}
         <ProductGrid
-          col={
-            item?.settings && item.settings?.cols ? item.settings.cols : null
-          }
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           // row={
           //   item?.settings && item.settings?.rows ? item.settings.rows : null
           // }
         >
           {productsOrdered?.map((item, index) => (
-            <ProductCard item={item} key={index} layout={true} />
+            <ProductCard
+              item={item}
+              key={index}
+              layout={layout}
+              designState={designState}
+            />
           ))}
         </ProductGrid>
 
         {showPagination && (
           <div className="flex justify-center w-full mt-20px">
-            <Pagination />
+            <Pagination
+              className={`shadow-custom-1 rounded-7px `}
+              layout={layout}
+              designState={designState}
+              total={productsOrdered.length}
+            />
           </div>
         )}
       </div>
@@ -120,6 +146,7 @@ export const ProductContainer = ({ item }) => {
       }
       className="my-25px"
       item={item}
+      layout={layout}
     >
       {displayList ? (
         <ProductList />
@@ -127,6 +154,10 @@ export const ProductContainer = ({ item }) => {
         <ProductSlider
           data={productsToshow}
           item={item}
+          layout={layout}
+          designState={designState}
+          settings={settings}
+          col={item?.settings && item.settings?.cols ? item.settings.cols : 3}
           title={
             item?.settings && item.settings?.title
               ? item.settings.title
@@ -137,3 +168,5 @@ export const ProductContainer = ({ item }) => {
     </GeneralLayout>
   );
 };
+
+export default ProductContainer;

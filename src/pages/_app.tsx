@@ -1,4 +1,6 @@
 import '../styles/index.css';
+import '../styles/style.css';
+import '../styles/test.css';
 import { UiProvider } from 'providers/ui-provider';
 import { DesignProvider } from 'providers/design-provider';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -13,14 +15,6 @@ function MyApp({ Component, pageProps }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
           rel="stylesheet"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.css"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
         ></link>
       </Head>
       <main>

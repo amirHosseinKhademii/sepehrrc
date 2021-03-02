@@ -6,6 +6,9 @@ export const uiInitialState = {
   modal: {
     open: false,
     editImage: false,
+    type: '',
+    number: '',
+    target: '',
   },
   container: {
     padding: 'p-20px',
@@ -15,4 +18,5 @@ export const uiInitialState = {
     open: false,
     number: '',
   },
+  style: '.btn { background: red; color:yellow; padding:10px;  }',
 };

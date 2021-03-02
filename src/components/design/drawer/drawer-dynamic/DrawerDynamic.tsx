@@ -1,11 +1,30 @@
 import { FC } from 'react';
 import { useUi } from 'hooks';
-import {
-  StyleDashboard,
-  AddDashboard,
-  SectionsDashboard,
-  SettingsDashboard,
-} from 'components';
+import dynamic from 'next/dynamic';
+import { DrawerLayout } from 'components';
+
+const SectionsDashboard = dynamic(
+  () =>
+    import(
+      'components/design/dashboards/sections-dashboard/sections-dashboard'
+    ),
+  { loading: () => <DrawerLayout /> }
+);
+const AddDashboard = dynamic(
+  () => import('components/design/dashboards/add-dashboard/add-dashboard'),
+  { loading: () => <DrawerLayout /> }
+);
+const SettingsDashboard = dynamic(
+  () =>
+    import(
+      'components/design/dashboards/settings-dashboard/settings-dashboard'
+    ),
+  { loading: () => <DrawerLayout /> }
+);
+const StyleDashboard = dynamic(
+  () => import('components/design/dashboards/StyleDashboard'),
+  { loading: () => <DrawerLayout /> }
+);
 
 export const DrawerDynamic: FC<IDrawer> = () => {
   const { uiState } = useUi();

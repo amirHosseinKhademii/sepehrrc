@@ -1,22 +1,39 @@
-import { useUi } from 'hooks';
+import { useUi, useClass } from 'hooks';
 import { FC, Fragment } from 'react';
 
-export const Modal: FC<IModal> = ({ children, open }) => {
+export const Modal: FC<IModal> = ({ children, open, style }) => {
   const { toggleModal } = useUi();
-  if (open)
+  const { toggle } = useClass();
+
+  const BackDrop = () => {
     return (
-      <Fragment>
-        <div
-          className=" fixed top-0 left-0 w-3/5 h-437px mt-160px z-50 shadow-lg rounded "
-          style={{ marginLeft: '11%' }}
-        >
-          {children}
-        </div>
-        <div
-          className="bg-black opacity-60  fixed inset-0"
-          onClick={() => toggleModal({ open: false })}
-        ></div>
-      </Fragment>
+      <div
+        className={toggle(
+          'bg-black  fixed  inset-0 transition-all duration-300',
+          'opacity-60 pointer-events-auto',
+          open,
+          'opacity-0 pointer-events-none'
+        )}
+        style={{ zIndex: 100 }}
+        onClick={() => toggleModal({ open: false })}
+      ></div>
     );
-  else return null;
+  };
+
+  return (
+    <>
+      <div
+        className={toggle(
+          ' fixed  flex items-center justify-center transition-all duration-300 ',
+          'visible opacity-100 pointer-events-auto  ',
+          open,
+          'invisible opacity-0 pointer-events-none '
+        )}
+        style={style}
+      >
+        <div className=" w-full h-full shadow-lg rounded">{children}</div>
+      </div>
+      <BackDrop />
+    </>
+  );
 };

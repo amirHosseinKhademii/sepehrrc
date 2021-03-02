@@ -1,4 +1,6 @@
 import { ICSearch } from 'icons';
+import { GeneralInput } from 'components';
+import { useDirection } from 'hooks';
 import { FC } from 'react';
 export const HeaderInput: FC<IHeaderInput> = ({
   className,
@@ -7,23 +9,23 @@ export const HeaderInput: FC<IHeaderInput> = ({
   cssAlt,
   layout = true,
   toggle,
+  style,
 }) => {
+  const { dirRtl, rightTL, language } = useDirection();
   return (
     <div className="relative ">
-      <input
-        className={toggle(
-          'headerInput text-16px px-12  py-4  focus:outline-none',
-          className,
-          layout,
-          cssAlt
-        )}
-        placeholder="جستجو کنید"
+      <GeneralInput
+        className={className}
+        cssClass="sep-header-input focus:outline-none"
+        layout={layout}
+        placeholder={`${language.HSearch}`}
         onChange={onChange}
-        style={{ direction: 'rtl' }}
+        style={{ direction: `${dirRtl}` }}
       />
       <ICSearch
-        className="absolute top-16px right-20px fill-current"
+        className={`absolute top-16px ${rightTL}-10px fill-current`}
         onClick={onClick}
+        cssClass="sep-header-input__search"
       />
     </div>
   );

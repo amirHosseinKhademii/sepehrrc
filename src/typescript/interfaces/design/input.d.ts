@@ -5,6 +5,7 @@ interface IInput {
   className?: string;
   label?: string;
   onChange?: any;
+  onClick?: any;
   value?: any;
   onBlur?;
   variant?: 'input' | 'inputIcon' | 'textArea';
@@ -12,6 +13,7 @@ interface IInput {
   withNumber?: boolean;
   fontFamily?: 'font-body' | 'font-yekanbakh' | 'font-iransans' | 'font-lato';
   disabled?: boolean;
+  height?: string;
+  withSwitch?: boolean;
+  clearInputIcon?: Function;
 }
-
-

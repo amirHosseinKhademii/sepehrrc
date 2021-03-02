@@ -185,3 +185,30 @@ html {
 .originalSlider {
   width: 100% !important;
 }
+
+.cover:hover > .delIcon {
+  opacity: 1;
+}
+.cover:hover > .editIconBox {
+  opacity: 0.5;
+}
+.cover:hover > .editIcon {
+  opacity: 1;
+}
+.cover:hover > .coverImage {
+  border-width: 2px;
+}
+
+.alice-carousel__prev-btn {
+  padding: 0 !important;
+  display: block !important;
+}
+.alice-carousel__next-btn {
+  padding: 0 !important;
+  display: block !important;
+}
+
+.alice-carousel__dots {
+  margin: 0 !important;
+  margin-top: 5px;
+}

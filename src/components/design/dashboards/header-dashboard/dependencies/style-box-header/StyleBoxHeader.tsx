@@ -1,19 +1,36 @@
-import { useClass, useDesign } from 'hooks';
-import { FC, useState } from 'react';
-import { ICEditSettings } from 'icons';
-import {
-  HeaderFirst,
-  HeaderSecond,
-  HeaderThird,
-  HeaderFourth,
-  HeaderFifth,
-  HeaderSixth,
-  HeaderSeventh,
-  HeaderEighth,
-  LabelBox,
-} from './dependencies';
+import { useClass, useDesign, useDirection } from 'hooks';
+import { FC, Fragment, useState } from 'react';
+import { ICEditStyle } from 'icons';
+import { HeaderFirst } from './dependencies';
+import dynamic from 'next/dynamic';
+
+const DropDown = dynamic(() => import('./dependencies/drop-down'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderSecond = dynamic(() => import('./dependencies/header-second'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderThird = dynamic(() => import('./dependencies/header-third'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderFourth = dynamic(() => import('./dependencies/header-fourth'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderFifth = dynamic(() => import('./dependencies/header-fifth'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderSixth = dynamic(() => import('./dependencies/header-sixth'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderSeventh = dynamic(() => import('./dependencies/header-seventh'), {
+  loading: () => <HeaderFirst />,
+});
+const HeaderEighth = dynamic(() => import('./dependencies/header-eighth'), {
+  loading: () => <HeaderFirst />,
+});
 
 export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
+  const { marginRtl, flexDirection, language, dirRtl } = useDirection();
   const { join, toggle } = useClass();
   const { designState, setSetting } = useDesign();
   const [open, setopen] = useState(false);
@@ -51,136 +68,68 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
         return <HeaderFirst active join={join} toggle={toggle} />;
     }
   };
-  const DropDown = () => {
-    const { style } = designState.current.settings;
-
-    return (
-      <div
-        className="grid grid-cols-1 gap-y-20px focus:ring-2 focus:ring-blue-500 "
-        style={{ direction: 'rtl' }}
-      >
-        <div>
-          <LabelBox label="استایل 1" />
-          <HeaderFirst
-            join={join}
-            toggle={toggle}
-            active={!style || style === 'first'}
-            onClick={() => onSelectClick({ style: 'first' })}
-          />
-        </div>
-        <div>
-          <LabelBox label="استایل 2" />
-
-          <HeaderSecond
-            join={join}
-            toggle={toggle}
-            active={style === 'second'}
-            onClick={() => onSelectClick({ style: 'second' })}
-          />
-        </div>
-        <div>
-          <LabelBox label="استایل 3" />
-
-          <HeaderThird
-            join={join}
-            toggle={toggle}
-            active={style === 'third'}
-            onClick={() => onSelectClick({ style: 'third' })}
-          />
-        </div>
-        <div>
-          <LabelBox label=" استایل 4" />
-
-          <HeaderFourth
-            join={join}
-            toggle={toggle}
-            active={style === 'fourth'}
-            onClick={() => onSelectClick({ style: 'fourth' })}
-          />
-        </div>
-        <div>
-          <LabelBox label=" استایل 5" />
-
-          <HeaderFifth
-            join={join}
-            toggle={toggle}
-            active={style === 'fifth'}
-            onClick={() => onSelectClick({ style: 'fifth' })}
-          />
-        </div>
-        <div>
-          <LabelBox label="استایل 6 " />
-
-          <HeaderSixth
-            join={join}
-            toggle={toggle}
-            active={style === 'sixth'}
-            onClick={() => onSelectClick({ style: 'sixth' })}
-          />
-        </div>
-        <div>
-          <LabelBox label="استایل 7 " />
-
-          <HeaderSeventh
-            join={join}
-            toggle={toggle}
-            active={style === 'seventh'}
-            onClick={() => onSelectClick({ style: 'seventh' })}
-          />
-        </div>
-        <div>
-          <LabelBox label="استایل 8 " />
-
-          <HeaderEighth
-            join={join}
-            toggle={toggle}
-            active={style === 'eighth'}
-            onClick={() => onSelectClick({ style: 'eighth' })}
-          />
-        </div>
-      </div>
-    );
-  };
 
   const styleTitle = () => {
     const { style } = designState.current.settings;
     switch (style) {
       case 'first':
-        return '1 نمایش : استایل ';
+        return `${language.HDStyle} 1`;
       case 'second':
-        return '2 نمایش : استایل ';
+        return `${language.HDStyle} 2`;
       case 'third':
-        return '3 نمایش : استایل ';
+        return `${language.HDStyle} 3`;
       case 'fourth':
-        return '4 نمایش : استایل ';
+        return `${language.HDStyle} 4`;
       case 'fifth':
-        return '5 نمایش : استایل ';
+        return `${language.HDStyle} 5`;
       case 'sixth':
-        return '6 نمایش : استایل ';
+        return `${language.HDStyle} 6`;
       case 'seventh':
-        return '7 نمایش : استایل ';
+        return `${language.HDStyle} 7`;
       case 'eighth':
-        return '8 نمایش : استایل ';
-
+        return `${language.HDStyle} 8`;
       default:
-        return '1 نمایش : استایل ';
+        return `${language.HDStyle} 1`;
     }
   };
 
   return (
-    <div className="w-full bg-gray_shade-800 rounded flex flex-col  px-16px py-21px">
-      <div className="flex justify-between pb-20px">
-        <div className="flex cursor-pointer" onClick={toggleDropdown}>
-          {!open && <ICEditSettings className="mr-1 cursor-pointer" />}
-          <span className="text-14px text-gray_shade-300 ">
-            {open ? 'بازگشت' : 'ویرایش'}
-          </span>
+    <Fragment>
+      <div className={`w-full flex ${flexDirection} justify-between`}>
+        <div className={`flex ${flexDirection} `}>
+          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+            <div className={`flex`}>
+              <span dir={dirRtl}>{`${language.HDShow}: ${styleTitle()}`}</span>
+            </div>
+          </div>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
-          {open ? 'انتخاب کنید' : styleTitle()}
-        </span>
+        <div
+          className={`flex ${flexDirection} cursor-pointer`}
+          onClick={toggleDropdown}
+        >
+          <span className="text-14px text-gray_shade-300 ">
+            {open ? `${language.HDBack}` : `${language.HDEdit}`}
+          </span>
+          {!open && (
+            <ICEditStyle
+              className={`${marginRtl}-1 text-16px cursor-pointer`}
+              fill="#9ba3b5"
+            />
+          )}
+        </div>
       </div>
-      {open ? <DropDown /> : <ShowBox />}
-    </div>
+      <div className="w-full bg-gray_shade-800 rounded flex flex-col px-16px py-15px mt-10px">
+        {open ? (
+          <DropDown
+            designState={designState}
+            toggle={toggle}
+            join={join}
+            onSelectClick={onSelectClick}
+          />
+        ) : (
+          <ShowBox />
+        )}
+      </div>
+    </Fragment>
   );
 };

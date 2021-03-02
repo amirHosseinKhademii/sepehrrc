@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi, useDirection } from 'hooks';
 
 export const GeneralLayout: FC<IGeneralLayout> = ({
   children,
   active,
   item,
   className,
+  layout,
 }) => {
   const { join, toggle } = useClass();
   const { designState } = useDesign();
   const { toggleStyleDrawer } = useUi();
   const { pageSettings } = designState;
+  const { leftTR } = useDirection();
 
   const DisplayHandler = () => {
     if (item?.settings) {
@@ -28,15 +30,15 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
 
   const visibility = DisplayHandler();
 
-  
   return (
-
     <div
       className={join(
         join(className, visibility),
         toggle(
-          `generalLayout w-full bg-no-repeat font-${pageSettings.textFont} `,
-          'relative py-25px border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700',
+          `generalLayout ${
+            item.type == 'header' || item.type == 'footer' ? '' : 'py-25px'
+          } w-full bg-no-repeat font-iransans `,
+          `relative py-25px  border-t-2 border-b-2 border-dashed border-opacity-70 border-primary-700 `,
           active
         )
       )}
@@ -46,7 +48,7 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
       <div
         className={toggle(
           '',
-          'absolute top-0 left-0 opacity-10 w-full h-full bg-primary-700',
+          `absolute top-0 ${leftTR}-0 opacity-10 w-full h-full bg-primary-700`,
           active,
           'hidden'
         )}
@@ -54,14 +56,16 @@ export const GeneralLayout: FC<IGeneralLayout> = ({
       <style jsx>
         {`
           .generalLayout {
-            color: ${pageSettings.secondary};
+            color: ${layout ? pageSettings.secondary : ''};
             background-color: ${
-              item?.settings && item.settings?.backgroundColor
+              item?.settings && item.settings?.backgroundColor && layout
                 ? item.settings.backgroundColor
-                : '#ebedf0'
+                : ''
             };
             background-image: url(${
-              item?.backgroundImage ? item.backgroundImage : ''
+              item.settings && item.settings.backgroundImage
+                ? item.settings.backgroundImage
+                : ''
             });
             background-size: 100% 100%;
             background-position: center center;

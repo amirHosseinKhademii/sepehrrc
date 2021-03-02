@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
-import { GeneralLayout } from 'components';
+import { GeneralLayout, OulinedButton } from 'components';
 import { useDesign, useUi } from 'hooks';
-import { SwiperSlide } from 'swiper/react';
-import { Slider, Display } from 'components';
 import Link from 'next/link';
+import Slider from 'components/store-front/slider/ImageSlider';
+import { url } from 'inspector';
 
-export const SliderContainer = ({ item }) => {
+const SliderContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
   const { settings } = item;
-
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? true : false;
   useEffect(() => {}, [settings]);
 
   const handleScreen = () => {
@@ -24,48 +25,79 @@ export const SliderContainer = ({ item }) => {
   };
 
   const handleChild = () => {
+    const imgAlt = '/assets/images/themeImg.png';
+
     const arr = [];
-    item.images.map((item, index) => {
-      arr.push(
-        <SwiperSlide className="w-full originalSlider" key={index}>
-          <Link href={item.link ? item.link : '#'}>
-            <a target={item.newTab ? '_blank' : ''}>
-              <img
-                src={item.value}
-                className={`h-full w-full`}
-                alt={item.title}
-                about={item.description}
-              />
-            </a>
-          </Link>
-        </SwiperSlide>
-      );
-    });
+    const handleDragStart = (e) => e.preventDefault();
+    item.images.length > 0
+      ? item.images.map((item, index) => {
+          arr.push(
+            <Link href={item.link ? item.link : '#'} key={index}>
+              <a target={item.newTab ? '_blank' : ''}>
+                <div className="absolute inset-x-0 inset-y-0 flex flex-col justify-center items-center text-white z-20">
+                  <span className="text-24px font-bold">{item.title}</span>
+                  <span className="text-16px font-light mt-25px">
+                    {item.description}
+                  </span>
+                  {item.link ? (
+                    <OulinedButton
+                      text="رفتن به لینک"
+                      layout={false}
+                      designState={designState}
+                      cssClass="mt-25px"
+                      borderColor="white"
+                      textColor="white"
+                    />
+                  ) : null}
+                </div>
+                <img
+                  src={item.value}
+                  className={`relative h-450px w-full rounded z-10 object-fill`}
+                  alt={item.title}
+                  about={item.description}
+                  onDragStart={handleDragStart}
+                />
+              </a>
+            </Link>
+          );
+        })
+      : arr.push(
+          <div
+            className={
+              'h-450px w-full flex items-center justify-center bg-white rounded '
+            }
+          >
+            <img
+              className={'w-145px h-107px rounded object-contain object-center'}
+              src={imgAlt}
+            />
+          </div>
+        );
     return arr;
   };
 
   const handleSpeed = () => {
     switch (settings.speed) {
       case 'fast':
-        return 250;
+        return 3000;
       case 'slow':
-        return 3500;
+        return 7000;
       case 'normal':
-        return 2500;
+        return 5000;
       default:
-        return 2500;
+        return 5000;
     }
   };
-  // const handleEffect = () => {
-  //   switch (settings.effect) {
-  //     case 'fade':
-  //       return 'fade';
-  //     case 'simple':
-  //       return 'slide';
-  //     default:
-  //       return 'fade';
-  //   }
-  // };
+  const handleEffect = () => {
+    switch (settings.effect) {
+      case 'fade':
+        return 'fadeout';
+      case 'simple':
+        return 'slide';
+      default:
+        return 'fadeout';
+    }
+  };
 
   return (
     <GeneralLayout
@@ -77,34 +109,30 @@ export const SliderContainer = ({ item }) => {
           : false
       }
       item={item}
+      layout={layout}
     >
-      <Display mobile={settings?.mobile} desktop={settings?.monitor}>
-        <div
-          className={`${
-            settings.screen ? handleScreen() : 'container mx-auto'
-          } py-25px `}
-        >
-          {settings?.effect === 'simple' ? (
-            <Slider
-              child={handleChild()}
-              speed={settings.speed ? handleSpeed() : 2500}
-              screen={settings?.screen}
-              button={settings?.button}
-              effect="slide"
-            />
-          ) : (
-            <div className="w-full">
-              <Slider
-                child={handleChild()}
-                speed={handleSpeed()}
-                screen={settings?.screen}
-                button={settings?.button}
-                effect="fade"
-              />
-            </div>
-          )}
-        </div>
-      </Display>
+      <div
+        className={`${
+          settings.screen ? handleScreen() : 'container mx-auto px-20px'
+        } ${
+          uiState.drawer.type === 'style' &&
+          designState.current.type == 'slider' &&
+          item.uuid == designState.current.uuid
+            ? ''
+            : 'py-25px'
+        }  `}
+      >
+        <Slider
+          child={handleChild()}
+          speed={settings.speed ? handleSpeed() : 5000}
+          screen={settings?.screen}
+          button={settings?.button}
+          effect={settings.effect ? handleEffect() : 'fadeout'}
+          layout={layout}
+        />
+      </div>
     </GeneralLayout>
   );
 };
+
+export default SliderContainer;

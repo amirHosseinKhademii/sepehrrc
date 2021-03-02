@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useClass } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 import { ButtonIcon } from 'components';
 import { ICSettingCog, ICTrash } from 'icons';
 
@@ -9,29 +9,40 @@ export const ButtonDrawer: FC<IButton> = ({
   withSetting,
   withPush,
   withUpload,
+  withHover,
   withIcon,
   onDelete,
   onSetting,
   onUpload,
   onClick,
+  onClickCapture,
   onPush,
   className,
   children,
   text,
 }) => {
+  const { paddingRtl, flexDirection } = useDirection();
+
   const { join } = useClass();
   const { push } = useRouter();
+  const [hover, setHover] = useState(false);
 
-  const StartItem = () => (
-    <div className="flex flex-row items-center">
-      {withSetting && (
-        <ButtonIcon onClick={onSetting} className="pr-13px">
-          <ICSettingCog fill="#b8bdca" />
-        </ButtonIcon>
-      )}
-      {withDelete && (
-        <ButtonIcon onClick={onDelete}>
-          <ICTrash fill="#b8bdca" />
+  const EndItem = () => (
+    <div className={`flex ${flexDirection} items-center`}>
+      {withSetting && withHover
+        ? hover && (
+            <ButtonIcon onClick={onSetting}>
+              <ICSettingCog fill="#fff" />
+            </ButtonIcon>
+          )
+        : withSetting && (
+            <ButtonIcon onClick={onSetting}>
+              <ICSettingCog fill="#9ba3b5" />
+            </ButtonIcon>
+          )}
+      {withDelete && hover && (
+        <ButtonIcon onClick={onDelete} className={`${paddingRtl}-13px`}>
+          <ICTrash fill="#fff" />
         </ButtonIcon>
       )}
       {withUpload && (
@@ -46,8 +57,8 @@ export const ButtonDrawer: FC<IButton> = ({
     </div>
   );
 
-  const EndItem = () => (
-    <div className="w-full" style={{ direction: 'rtl' }}>
+  const StartItem = () => (
+    <div onClickCapture={onClickCapture}>
       {withUpload ? (
         <p className="text-14px text-gray_shade-300">{text}</p>
       ) : withPush ? (
@@ -66,10 +77,14 @@ export const ButtonDrawer: FC<IButton> = ({
   return (
     <div
       className={join(
-        'focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex items-center justify-between px-16px',
+        `focus:outline-none w-full h-58px bg-gray_shade-800 rounded flex ${flexDirection} items-center justify-between px-16px ${
+          withHover && 'hover:bg-primary-800'
+        }`,
         className
       )}
       onClick={onClick}
+      onMouseEnter={() => (withHover ? setHover(true) : {})}
+      onMouseLeave={() => (withHover ? setHover(false) : {})}
     >
       <StartItem />
       <EndItem />

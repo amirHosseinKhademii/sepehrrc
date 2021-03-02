@@ -1,30 +1,68 @@
-import { Text, DropDown } from 'components';
-import { useDesign } from 'hooks';
+import { Text, ReactChipInput, CheckBox } from 'components';
+import { useDesign, useDirection } from 'hooks';
+
+const initialSuggest = [
+  {
+    id: 'bag',
+    title: 'کیف',
+  },
+  {
+    id: 'dress',
+    title: 'لباس',
+  },
+  {
+    id: 'digital',
+    title: 'دیجیتال',
+  },
+];
 
 export const CategoryDrop = () => {
-  const { setSetting, designState } = useDesign();
+  const { setSetting, designState, setButtonProps } = useDesign();
+  const { textAlignRtl, language } = useDirection();
+  const { settings } = designState.current;
+
+  const categories = designState.current.settings.categories
+    ? designState.current.settings.categories
+    : [];
+
+  const onSelect = (item) => {
+    setSetting({ categories: [...categories, item] });
+  };
+
+  const onRemove = (item) => {
+    setSetting({
+      categories: categories.filter((category) => category.id !== item.id),
+    });
+  };
 
   return (
-    <div className="w-full ">
-      <div className="w-full ">
-        <Text className="mt-30px mb-15px text-14px text-white_shade-100 text-right">
-          دسته بندی محصولات
+    <div className="w-full">
+      <div className="w-full">
+        <Text
+          className={`mt-30px mb-15px text-14px text-white_shade-100 ${textAlignRtl}`}
+        >
+          {language.PDProductCategories}
         </Text>
-        <DropDown
-          className="w-full h-54px"
-          options={[
-            { id: 'all', title: ' همه دسته ها' },
-            { id: 'bags', title: 'کیف ' },
-            { id: 'clothes', title: 'پوشاک' },
-            { id: 'digital', title: 'دیجیتال' },
-          ]}
-          onSelect={(category) => setSetting({ category })}
-          selected={
-            designState.current.settings &&
-            designState.current.settings.category
-              ? designState.current.settings.category
-              : 'all'
-          }
+        <ReactChipInput
+          chips={categories}
+          onSelect={(item) => onSelect(item)}
+          onRemove={(item) => onRemove(item)}
+          initialSuggest={initialSuggest.filter(
+            (sug) => !categories.map((item) => item.id).includes(sug.id)
+          )}
+        />
+        <CheckBox
+          className="mt-15px"
+          label="نمایش به صورت تب"
+          onClick={() => {
+            setSetting({
+              showTab:
+                settings?.showTab && settings.showTab
+                  ? !settings.showTab
+                  : true,
+            });
+          }}
+          checked={settings?.showTab && settings.showTab}
         />
       </div>
     </div>

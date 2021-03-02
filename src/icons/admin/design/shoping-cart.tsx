@@ -1,6 +1,5 @@
-import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
-
+import { useClass } from 'hooks';
 
 export const ICShoppingCart: FC<IIcon> = ({
   className,
@@ -9,13 +8,15 @@ export const ICShoppingCart: FC<IIcon> = ({
   width,
   fill,
 }) => {
+  const { join } = useClass();
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : 24}
       height={height ? height : 24}
       viewBox="0 0 24 24"
-      className={className}
+      className={join('ic ic-shopping-cart', className)}
       onClick={onClick}
     >
       <path data-name="Rectangle 40" fill="none" d="M0 0h24v24H0z" />

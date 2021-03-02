@@ -1,30 +1,42 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import { useDirection } from 'hooks';
-const items = [
-  { text: 'صفحه اصلی', link: './admin/design' },
-  { text: 'محصولات فروشگاه', link: './admin/design' },
-  { text: 'درباره ما', link: './admin/design' },
-  { text: 'تماس باما', link: './admin/design' },
-];
+import { GeneralLink } from 'components';
 export const HeaderNavbar: FC<IHeaderNavbar> = ({
   direction = 'horizental',
   className,
-  join,
   toggle,
+  layout,
 }) => {
-  const { flexDirection } = useDirection();
+  const { flexDirection, paddingLtr, paddingRtl, language } = useDirection();
+  const items = [
+    { text: `${language.HMainPage}`, link: './admin/design' },
+    { text: `${language.HStoreProducts}`, link: './admin/design' },
+    { text: `${language.HAboutUs}`, link: './admin/design' },
+    { text: `${language.HContactUs}`, link: './admin/design' },
+  ];
+
   return (
-    <ul className={join(` headerNavbar flex `, className)}>
+    <ul
+      className={toggle(
+        ` sep-navbar flex ${flexDirection} `,
+        className,
+        layout
+      )}
+    >
       {items.map((item, index) => {
         return (
           <li
-            className={toggle('', 'pr-0 pl-20px', index === 0, 'px-20px')}
+            className={toggle(
+              'sep-navbar__item',
+              `${paddingRtl}-0 ${paddingLtr}-20px`,
+              index === 0,
+              'px-20px'
+            )}
             key={index}
           >
-            <Link href="/">
-              <a className="font-bold text-16px">{item.text}</a>
-            </Link>
+            <GeneralLink cssClass="sep-navbar__item__link" href="/">
+              {item.text}
+            </GeneralLink>
           </li>
         );
       })}

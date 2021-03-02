@@ -7,80 +7,105 @@ import {
   HeaderMegaMenu,
   HeaderButton,
   Social,
+  HeaderTel,
 } from './dependencies';
-import { ICShoppingCart, ICPhoneVolume } from 'icons';
-import { Badge } from 'components';
-import { useClass, useDesign, useDirection } from 'hooks';
-import Link from 'next/link';
+import { ICShoppingCart } from 'icons';
+import { Badge, GeneralLink } from 'components';
+import { useClass, useDirection } from 'hooks';
 
 const logo = '/assets/images/logo.png';
 
-export const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
+const HeaderFourth: FC<IHeader> = ({ item, layout = true, designState }) => {
   const { join, toggle } = useClass();
-  const { designState } = useDesign();
-  const { flexDirection, marginRtl, marginLtr } = useDirection();
+  const { flexDirection, marginRtl, marginLtr, language } = useDirection();
+  const { settings } = item;
+  const showSocial = settings.social == undefined ? true : settings.social;
+  const showTel = settings.tel == undefined ? true : settings.tel;
 
   const Actions = () => {
     return (
-      <>
-        <a
-          href={`tel:+98${!item.telNumber ? '09100000000' : item.telNumber}`}
-          className={`flex ${flexDirection} text-16px font-iransans`}
-        >
-          <span> {!item.telNumber ? '0910000000' : item.telNumber} </span>
-
-          <ICPhoneVolume
-            height="20px"
-            width="20px"
-            className="mr-10px  text-20px fill-current"
+      <div
+        className={`sep-header-actions flex ${flexDirection} items-center justify-center`}
+      >
+        {showTel && (
+          <HeaderTel
+            layout={layout}
+            className="text-16px font-bold"
+            item={item}
+            toggle={toggle}
           />
-        </a>
-
+        )}
         <Badge
           className="text-white h-18px w-18px leading-tight "
           badgeContent="6"
-          root="mr-20px"
+          root={`${marginRtl}-20px`}
+          layout={layout}
+          cssClass="sep-header-actions__badge"
         >
-          <Link href="./">
-            <a>
-              <ICShoppingCart
-                height="20px"
-                width="20px"
-                className="fill-current text-20px"
-              />
-            </a>
-          </Link>
+          <GeneralLink
+            cssClass="sep-header-actions__shopping-cart-link"
+            layout={layout}
+            href="./"
+          >
+            <ICShoppingCart
+              height="20px"
+              width="20px"
+              className="fill-current text-20px"
+              cssClass="sep-header-actions__shopping-cart-ic"
+            />
+          </GeneralLink>
         </Badge>
-      </>
+      </div>
     );
   };
 
   return (
-    <HeaderLayout layout={layout} toggle={toggle}>
-      <div className="border-b-2">
+    <HeaderLayout
+      layout={layout}
+      toggle={toggle}
+      cssClass="header--fourth"
+      id="headerFourth"
+    >
+      <div className="sep-header__border border-b-2">
         <div
-          className={`flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
+          className={`sep-header__row sep-header__row--1 flex ${flexDirection} w-full h-122px container mx-auto     px-20px `}
         >
-          <div className={`w-1/12  flex ${flexDirection} items-center `}>
-            <HeaderLogo src={item.images} join={join} />
+          <div
+            className={`sep-header__logo-box w-1/12  flex ${flexDirection} items-center `}
+          >
+            <HeaderLogo src={item.images} join={join} layout={layout} />
           </div>
           <div
-            className={`w-7/12 flex ${flexDirection} items-center justify-center `}
+            className={`sep-header__input-box w-7/12 flex ${flexDirection} items-center justify-center `}
           >
             <HeaderInput
-              className="w-535px rounded-25px  bg-white_shade-200 border-white_shade-300 border-2"
+              className="w-535px text-16px rounded-25px  bg-white_shade-200 border-white_shade-300  px-35px "
               layout={layout}
               toggle={toggle}
             />
           </div>
           <div
-            className={`w-4/12 flex ${flexDirection} items-center justify-end`}
+            className={`sep-header__actions-box w-4/12 flex ${flexDirection} items-center justify-end`}
           >
             <Actions />
             <HeaderButton
               layout={layout}
-              className=" mr-35px rounded-25px  text-white "
-              text={item?.buttonText ? item.buttonText : 'ورود/عضویت'}
+              className="  rounded-25px  text-white "
+              text={
+                item.settings?.button && item.settings.button?.text
+                  ? item.settings.button.text
+                  : `${language.HSign}`
+              }
+              link={
+                item.settings?.button && item.settings.button?.link
+                  ? item.settings.button.link
+                  : '/signup'
+              }
+              newTab={
+                item.settings?.button && item.settings.button?.newTab
+                  ? item.settings.button.newTab
+                  : false
+              }
               toggle={toggle}
               designState={designState}
             />
@@ -88,19 +113,37 @@ export const HeaderFourth: FC<IHeader> = ({ item, layout = true }) => {
         </div>
       </div>
       <div
-        className={`flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
+        className={`sep-header__row sep-header__row--1 flex ${flexDirection}   w-full h-58px   container mx-auto px-20px relative`}
       >
-        <div className={`w-9/12  flex ${flexDirection} items-center  `}>
-          <HeaderMegaMenu designState={designState} />
-
-          <HeaderNavbar direction="horizental" join={join} toggle={toggle} />
-        </div>
         <div
-          className={`w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
+          className={`sep-header__menu-box ${
+            showSocial ? 'w-9/12' : 'w-full'
+          }  flex ${flexDirection} items-center  `}
         >
-          <Social />
+          <HeaderMegaMenu
+            designState={designState}
+            toggle={toggle}
+            className="font-bold text-16px"
+            layout={layout}
+          />
+
+          <HeaderNavbar
+            direction="horizental"
+            toggle={toggle}
+            layout={layout}
+            className="font-bold text-16px"
+          />
         </div>
+        {showSocial && (
+          <div
+            className={`sep-header__social-box w-3/12 flex  ${flexDirection} items-center justify-end text-16px`}
+          >
+            <Social item={item} />
+          </div>
+        )}
       </div>
     </HeaderLayout>
   );
 };
+
+export default HeaderFourth;

@@ -1,4 +1,4 @@
-import { HeaderDrawer, DrawerLayout } from 'components';
+import { HeaderDrawer, DrawerLayout, ReactChipInput } from 'components';
 import {
   BackgroundColor,
   TitleInput,
@@ -7,15 +7,17 @@ import {
 } from '../common';
 import {
   CategoryDrop,
-  GridDrops,
+  ColRowListSetting,
   ShowDrop,
   ScreenButtonGroup,
   PageButtonGroup,
-  SliderDrops,
+  ColSliderSetting,
 } from './dependencies';
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
+import { useDirection } from 'hooks';
 
-export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
+const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
+  const { language } = useDirection();
   const isList = designState.current.settings?.screen === 'list';
 
   const BaseSettings = () => {
@@ -23,27 +25,33 @@ export const ProductDashboard: FC<IDashboard> = memo(({ designState }) => {
       <div className="flex flex-col items-end pt-30px px-20px overflow-auto">
         <TitleInput />
         <CategoryDrop />
-        <ShowDrop />
         <ScreenButtonGroup />
         {isList ? (
           <>
-            <GridDrops />
+            <ColRowListSetting />
             <PageButtonGroup />
           </>
         ) : (
-          <SliderDrops />
+          <ColSliderSetting />
         )}
-        <GenericUploader label="تصویر زمینه" text="انتخاب کنید" isBackground />
-        <BackgroundColor />
-        <ResponsiveSwitchs />
+        <GenericUploader
+          text="انتخاب کنید"
+          className="mt-30px"
+          isBackground
+          withSwitch
+        />
+        <BackgroundColor withSwitch className="mt-30px" />
+        <ResponsiveSwitchs className="mb-50px mt-30px" />
       </div>
     );
   };
 
   return (
     <DrawerLayout>
-      <HeaderDrawer setting text=" تنظیمات  لیست محصولات " />
+      <HeaderDrawer setting text={language.PProductListSettings} />
       <BaseSettings />
     </DrawerLayout>
   );
 });
+
+export default ProductDashboard;

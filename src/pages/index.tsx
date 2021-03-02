@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const { push } = useRouter();
+
   useEffect(() => {
     push('./admin/design');
   }, []);
+
   return (
     <div>
       <Head>

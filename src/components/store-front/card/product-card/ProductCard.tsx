@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   ProductImage,
   ProductName,
@@ -5,27 +6,28 @@ import {
   ProductPrice,
   ProductButton,
 } from './dependencies';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDirection } from 'hooks';
 
-export const ProductCard = ({ item, layout = true }) => {
+const ProductCard: FC<IProductCard> = ({
+  item,
+  layout = true,
+  designState,
+}) => {
   const { toggle } = useClass();
-  const { designState } = useDesign();
+  const { marginRtl, marginLtr } = useDirection();
+
   return (
-    <ProductLayout
-      className={' bg-white h-450px py-40px'}
-      layout={layout}
-      style={{ direction: 'rtl', borderRadius: '10px' }}
-      toggle={toggle}
-    >
+    <ProductLayout className={`rounded-10px `} layout={layout} toggle={toggle}>
       <ProductImage
         src={item.cover}
-        className="h-188px w-188px object-contain"
+        className=" w-188px"
         toggle={toggle}
         layout={layout}
       />
       <ProductName
         text={item.name}
-        className="text-18px mt-25px font-iransans"
+        className=" overflow-hidden text-18px h-50px mt-10px
+         "
         toggle={toggle}
         layout={layout}
       />
@@ -34,7 +36,7 @@ export const ProductCard = ({ item, layout = true }) => {
           <ProductPrice
             prev
             text={item.price}
-            className=" ml-5px mt-20px text-lg font-bold font-iransans  "
+            className={` h-50px mt-10px ${marginLtr}-5px  overflow-hidden  text-lg font-bold  `}
             layout={layout}
             toggle={toggle}
             designState={designState}
@@ -44,8 +46,8 @@ export const ProductCard = ({ item, layout = true }) => {
         <ProductPrice
           withUnit
           text={item.price}
-          className=" mt-20px text-lg font-bold font-iransans "
-          unitClassName="text-sm font-bold mr-1 "
+          className="h-50px mt-10px overflow-hidden text-lg font-bold font-iransans "
+          unitClassName={`text-sm font-bold ${marginRtl}-1 `}
           toggle={toggle}
           layout={layout}
           designState={designState}
@@ -53,6 +55,7 @@ export const ProductCard = ({ item, layout = true }) => {
       </div>
       <ProductButton
         text="افزودن به سبد خرید"
+        className="rounded-50px "
         layout={layout}
         toggle={toggle}
         designState={designState}
@@ -60,3 +63,5 @@ export const ProductCard = ({ item, layout = true }) => {
     </ProductLayout>
   );
 };
+
+export default ProductCard;

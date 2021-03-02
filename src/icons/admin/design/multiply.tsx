@@ -1,20 +1,22 @@
 import { FC } from 'react';
-import { IIcon } from '../../interfaces';
-
+import { useClass } from 'hooks';
 export const ICMultiply: FC<IIcon> = ({
+  cssClass,
   className,
   onClick,
   height,
   width,
   fill,
+  layout = true,
 }) => {
+  const { toggle } = useClass();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width ? width : 24}
-      height={height ? height : 24}
+      width={width ? width : '1em'}
+      height={height ? height : '1em'}
       viewBox="0 0 24 24"
-      className={className}
+      className={toggle(`ic ic-multiply ${cssClass}`, className, layout)}
       onClick={onClick}
     >
       <path fill="none" d="M0 0H24V24H0z" />

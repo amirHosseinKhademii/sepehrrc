@@ -6,8 +6,9 @@ import { UIContext, uiTypes } from 'providers/ui-provider';
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
   const { uiDispatch } = useContext(UIContext);
-  const { upload } = useService();
+  const { upload, onPost, onGet } = useService();
   const { toggleModal } = useUi();
+  const { mutate: onSave } = onPost({ url: '' });
 
   return {
     onHorizontalDrop: (drop) => (dropResult) => {
@@ -42,6 +43,12 @@ export const useDesign = () => {
     setProps: (payload) => {
       designDispatch({
         type: designTypes.ON_SET_ITEM_PROPS,
+        payload,
+      });
+    },
+    setButtonProps: (payload) => {
+      designDispatch({
+        type: designTypes.ON_SET_BUTTON_PROPS,
         payload,
       });
     },
@@ -84,18 +91,17 @@ export const useDesign = () => {
               : designState.pureImage.isBackground,
         },
       });
-      if (value) toggleModal({ open: true });
+      if (value) toggleModal({ open: true, type: 'image' });
     },
     setImage: async ({ key, payload }) => {
       const result =
         key == 'value' || key === 'backgroundImage'
           ? await upload(payload)
           : { data: { secure_url: '' } };
-
       if (key == 'backgroundImage') {
         designDispatch({
-          type: designTypes.ON_SET_ITEM_PROPS,
-          payload: { key, value: result.data.secure_url },
+          type: designTypes.ON_SET_ITEM_SETTING,
+          payload: { [key]: result.data.secure_url },
         });
       } else
         designDispatch({
@@ -104,7 +110,20 @@ export const useDesign = () => {
             [key]: key === 'value' ? result.data.secure_url : payload,
           },
         });
-      toggleModal({ open: false });
+      designDispatch({
+        type: designTypes.ON_SET_PURE_IMAGE,
+        payload: {
+          value: '',
+          number: '',
+          newTab: false,
+          link: '',
+          onUpload: true,
+          description: '',
+          title: '',
+          isBackground: false,
+        },
+      });
+      toggleModal({ open: false, type: '' });
     },
     clearCurrent: useCallback(() => {
       designDispatch({ type: designTypes.ON_CLEAR_CURRENT });
@@ -115,6 +134,20 @@ export const useDesign = () => {
       },
       [designState.current]
     ),
+    savePage: useCallback(() => {
+      onSave(
+        JSON.stringify({
+          pageItems: designState.pageItems,
+          pageSettings: designState.pageSettings,
+        })
+      );
+    }, [designState.pageItems, designState.pageSettings]),
+    getPage: useCallback(() => {
+      return onGet({ url: '' });
+    }, []),
+    setImageSetting: useCallback((payload) => {
+      designDispatch({ type: designTypes.ON_SET_IMAGE_SETTING, payload });
+    }, []),
     designState: useMemo(() => designState, [designState]),
   };
 };

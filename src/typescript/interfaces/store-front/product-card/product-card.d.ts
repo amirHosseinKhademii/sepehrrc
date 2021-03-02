@@ -4,4 +4,6 @@ interface IProductCard {
   children?: any;
   layout?: boolean;
   style?: any;
+  designState: any;
+  item: any;
 }

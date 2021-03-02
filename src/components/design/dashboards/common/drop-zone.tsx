@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Dropzone from 'react-dropzone';
-import { useDesign } from 'hooks';
+import { useDesign, useUi } from 'hooks';
 
 interface IDropZone {
   number?: number;
@@ -14,6 +14,7 @@ export const DndUploadBox: FC<IDropZone> = ({
   marginTop,
 }) => {
   const { designState, setPureImage } = useDesign();
+  const { toggleSettingState } = useUi();
   return (
     <Dropzone
       onDrop={(acceptedFiles) =>
@@ -24,8 +25,11 @@ export const DndUploadBox: FC<IDropZone> = ({
         })
       }
     >
-      {({ getRootProps, getInputProps }) => (
+      {({ getRootProps, getInputProps, isDragAccept }) => (
         <div
+          onDragLeaveCapture={() =>
+            toggleSettingState({ type: 'dropZone', open: false })
+          }
           className={`mt-${marginTop} h-90px w-full flex flex-col justify-center items-center bg-gray_shade-800 border-2 border-gray_shade-600 border-dashed cursor-pointer focus:outline-none`}
           {...getRootProps()}
         >

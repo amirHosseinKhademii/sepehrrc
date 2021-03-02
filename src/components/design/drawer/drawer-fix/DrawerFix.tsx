@@ -1,4 +1,4 @@
-import { useClass, useUi, useDesign } from 'hooks';
+import { useClass, useUi, useDesign, useDirection } from 'hooks';
 import { Fragment } from 'react';
 import {
   AddButton,
@@ -16,6 +16,7 @@ export const DrawerFix = () => {
   const { drawer } = uiState;
   const { designState } = useDesign();
   const { direction } = designState.pageSettings;
+  const { rightTL } = useDirection();
 
   const handleClickBackButton = () => {
     if (uiState.setting.open && uiState.setting.type === 'picture') {
@@ -29,9 +30,8 @@ export const DrawerFix = () => {
 
   return (
     <div
-      className={`w-68px h-full fixed   ${
-        direction === 'rtl' ? 'right-0' : 'left-0'
-      } top-0 bg-gray_shade-800 flex flex-col items-center z-50`}
+      className={`w-68px h-full fixed  ${rightTL}-0
+       top-0 bg-gray_shade-800 flex flex-col items-center z-50`}
     >
       {drawer.open && drawer.type === 'style' ? (
         <BackButton handleClickBackButton={handleClickBackButton} />

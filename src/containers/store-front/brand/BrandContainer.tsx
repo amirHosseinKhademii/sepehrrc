@@ -1,26 +1,60 @@
 import { Brand } from 'components';
+import { useDesign, useUi, useDirection, useClass } from 'hooks';
+import { GeneralLayout, ContainerTitle, GeneralLink } from 'components';
+import CustomerBrandSlider from '../../../components/store-front/slider/CustomerBrandSlider';
 import { SwiperSlide } from 'swiper/react';
-import { useDesign, useUi } from 'hooks';
-import { GeneralLayout } from 'components';
-import { Display } from 'components';
 
-export const BrandContainer = ({ item }) => {
+const BrandContainer = ({ item }) => {
   const { designState } = useDesign();
   const { uiState } = useUi();
+  const { marginRtl } = useDirection();
+  const { join } = useClass();
+
   const { settings } = item;
+  const { theme } = designState.pageSettings;
+  const layout = theme === 'default' ? true : false;
 
   const handleChild = () => {
     const arr = [];
-    item.images.map((item, index) => {
-      arr.push(
-        <SwiperSlide
-          key={index}
-          className="flex justify-center items-center bg-white h-107px rounded-lg"
-        >
-          <img src={item.value} className={`h-54px w-121px `} />
-        </SwiperSlide>
-      );
-    });
+    const arrAlt = Array.from({ length: 6 });
+    const imgAlt = '/assets/images/themeImg2.png';
+    if (item.images.length > 0) {
+      item.images.map((item, index) => {
+        arr.push(
+          <SwiperSlide
+            className="swiper-slide bg-white h-105px "
+            key={index}
+            style={{ height: '100px', width: '196px' }}
+          >
+            <GeneralLink
+              href={item?.link ? item.link : '/'}
+              target={item?.newTab ? '_target' : '_self'}
+              cssClass="sep-customer-brand__link"
+            >
+              <img
+                src={item.value}
+                style={{ height: '100px', width: '100%' }}
+                className="object-contain"
+                alt={'logoImg'}
+              />
+            </GeneralLink>
+          </SwiperSlide>
+        );
+      });
+    } else {
+      arrAlt.map((item, index) => {
+        arr.push(
+          <SwiperSlide
+            className="swiper-slide  flex flex-row-reverse items-center justify-center p-24px bg-white"
+            style={{ height: '100px', width: '196px' }}
+            key={index}
+          >
+            <img src={imgAlt} className="object-cover" />
+          </SwiperSlide>
+        );
+      });
+    }
+
     return arr;
   };
 
@@ -34,15 +68,26 @@ export const BrandContainer = ({ item }) => {
           : false
       }
       item={item}
+      layout={layout}
     >
-      <Display mobile={settings?.mobile} desktop={settings?.monitor}>
-        <div
-          style={{ width: '1326px' }}
-          className={`h-224px flex justify-center items-center mx-auto my-25px`}
+      <div className={`  items-center mx-auto`}>
+        <ContainerTitle
+          item={item}
+          layout={layout}
+          designState={designState}
+          join={join}
+        />
+        <CustomerBrandSlider
+          layout={layout}
+          designState={designState}
+          item={item}
+          col={6}
         >
-          <Brand child={handleChild()} slidesPerView={settings?.col} />
-        </div>
-      </Display>
+          {handleChild()}
+        </CustomerBrandSlider>
+      </div>
     </GeneralLayout>
   );
 };
+
+export default BrandContainer;

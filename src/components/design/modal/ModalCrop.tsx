@@ -1,31 +1,39 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal, ButtonAction, Range } from 'components';
 import { ICRedo, ICRotateHorizontal, ICRotateVertical } from 'icons';
-import { useClass, useDesign, useUi } from 'hooks';
+import { useClass, useDesign, useUi, useDirection } from 'hooks';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 
-export const ModalCrop = () => {
+const ModalCrop = () => {
   const [isLoading, setisLoading] = useState(false);
   const [operations, setOperations] = useState({
     zoom: 0,
     rotate: 0,
   });
   const { designState, setImage } = useDesign();
-  const { uiState } = useUi();
+  const { uiState, toggleSettingState } = useUi();
   const { toggle } = useClass();
   const cropperRef = useRef(null);
-  const { images } = designState.current;
+  const pageItem =
+    uiState.modal.target == 'brands'
+      ? designState.pageItems.find((item) => item.type === 'brands')
+      : designState.pageItems.find((item) => item.type === 'slider');
   const { number } = uiState.setting;
+  const { marginRtl, paddingLtr } = useDirection();
 
   const handleSubmit = async () => {
     setisLoading(true);
+
     if (designState.pureImage.isBackground) {
       setImage({
         key: 'backgroundImage',
         payload: designState.pureImage.value,
       });
-    } else setImage({ key: 'value', payload: designState.pureImage.value });
+    } else {
+      setImage({ key: 'value', payload: designState.pureImage.value });
+      toggleSettingState({ type: 'dropZone', open: false });
+    }
   };
 
   const ModalImage = ({ src }) => (
@@ -42,7 +50,7 @@ export const ModalCrop = () => {
 
   const ModalFooter = () => (
     <div
-      className="flex items-center w-full h-85px pl-35px opacity-70 rounded-b"
+      className={`flex items-center w-full h-85px ${paddingLtr}-35px opacity-70 rounded-b`}
       style={{ backgroundColor: '#1a191d    ' }}
     >
       <ButtonAction
@@ -64,13 +72,13 @@ export const ModalCrop = () => {
       </div>
       <Range
         title="چرخش تصویر"
-        className="w-370px mr-20px"
+        className={`w-370px ${marginRtl}-20px`}
         onChange={(value) => {}}
       />
       <Range
         title="زوم تصویر"
         unit="%"
-        className="w-370px mr-20px"
+        className={`w-370px ${marginRtl}-20px`}
         value={operations.zoom}
         onChange={(value) => {
           setOperations((prev) => ({ ...prev, zoom: parseInt(value) }));
@@ -92,16 +100,34 @@ export const ModalCrop = () => {
 
   if (uiState.modal.editImage) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
-          <ModalImage src={images[number] ? images[number].value : ''} />
+          <ModalImage
+            src={pageItem.images[number] ? pageItem.images[number].value : ''}
+          />
           <ModalFooter />
         </div>
       </Modal>
     );
   } else if (designState.pureImage.value) {
     return (
-      <Modal open={uiState.modal.open}>
+      <Modal
+        open={uiState.modal.open}
+        style={{
+          zIndex: 200,
+          left: '20%',
+          right: '20%',
+          top: '15%',
+        }}
+      >
         <div className="flex flex-col">
           <ModalImage src={URL.createObjectURL(designState.pureImage.value)} />
           <ModalFooter />
@@ -110,3 +136,5 @@ export const ModalCrop = () => {
     );
   } else return null;
 };
+
+export default ModalCrop;

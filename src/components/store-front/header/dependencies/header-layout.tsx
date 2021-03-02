@@ -6,15 +6,18 @@ export const HeaderLayout: FC<IHeaderLayout> = ({
   layout = true,
   cssAlt,
   toggle,
+  id,
+  cssClass,
 }) => {
   return (
     <div
       className={toggle(
-        'headerLayout',
-        'bg-white shadow-custom-1',
+        `sep-header ${cssClass} bg-white `,
+        ' shadow-custom-1',
         layout,
         cssAlt
       )}
+      id={id}
     >
       {children}
     </div>

@@ -1,25 +1,32 @@
-import React, { FC } from 'react';
-import Link from 'next/link';
-
-export const HeaderLogo: FC<IHeaderLogo> = ({ className, src, join }) => {
+import { FC } from 'react';
+import { ICThemeLogo } from 'icons';
+import { GeneralLink } from 'components';
+export const HeaderLogo: FC<IHeaderLogo> = ({
+  className,
+  src,
+  join,
+  layout,
+}) => {
   const logoAlt = '/assets/images/logo.png';
+
   const [data] = src;
   return (
-    <div className="headerLogo">
-      <Link href={data?.link ? data.link : '/'}>
-        <a
-          target={data?.newTab ? '_target' : '_self'}
-          className="cursor-pointer"
-        >
-          <div className={join('flex items-center', className)}>
-            <img
-              className="w-140px h-70px object-contain"
-              src={data?.value ? data.value : logoAlt}
-              alt="logo"
-            />
-          </div>
-        </a>
-      </Link>
+    <div className="sep-header-logo">
+      <GeneralLink
+        href={data?.link ? data.link : '/'}
+        target={data?.newTab ? '_target' : '_self'}
+        cssClass="sep-header-logo__link"
+      >
+        {layout ? (
+          <img
+            className="sep-header-logo__img w-140px h-70px object-contain"
+            src={data?.value ? data.value : logoAlt}
+            alt="logo"
+          />
+        ) : (
+          <ICThemeLogo />
+        )}
+      </GeneralLink>
     </div>
   );
 };

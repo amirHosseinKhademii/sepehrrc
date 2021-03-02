@@ -1,6 +1,5 @@
-
-import { IIcon } from 'icons/interfaces';
 import { FC } from 'react';
+import { useClass } from 'hooks';
 
 export const ICTwitter: FC<IIcon> = ({
   className,
@@ -9,13 +8,15 @@ export const ICTwitter: FC<IIcon> = ({
   width,
   fill,
 }) => {
+  const { join } = useClass();
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : '1em'}
       height={height ? height : '1em'}
       viewBox="0 0 24 24"
-      className={className}
+      className={join('ic ic-twitter', className)}
       onClick={onClick}
     >
       <path fill="none" d="M0 0h24v24H0z" />

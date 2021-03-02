@@ -1,10 +1,10 @@
-import { Draggable, Container } from 'react-smooth-dnd';
+import { Draggable, Container, smoothDnD } from 'react-smooth-dnd';
 import { useDesign } from 'hooks';
 import { DrawerLayout } from 'components';
 import { ButtonDrawer, ButtonGroupDrawer, HeaderDrawer } from '../common';
 import { ICProductList, ICSlider, ICText } from 'icons';
 
-export const AddDashboard = () => {
+const AddDashboard = () => {
   const { designState, setChildPayload } = useDesign();
 
   const AddItemIC = (type) => {
@@ -31,6 +31,8 @@ export const AddDashboard = () => {
         }
         style={{ width: 270 }}
         behaviour="copy"
+        onDragEnd={() => smoothDnD.cancelDrag()}
+        removeOnDropOut
       >
         {(designState.menuItems || [])
           .filter((item) => item.type !== 'header')
@@ -57,3 +59,5 @@ export const AddDashboard = () => {
     </DrawerLayout>
   );
 };
+
+export default AddDashboard;

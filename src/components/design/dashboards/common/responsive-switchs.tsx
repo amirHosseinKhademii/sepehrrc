@@ -1,7 +1,10 @@
 import { Switch } from 'components';
 import { useDesign } from 'hooks';
+import { FC } from 'react';
 
-export const ResponsiveSwitchs = () => {
+export const ResponsiveSwitchs: FC<{ className?: string }> = ({
+  className = 'mt-35px',
+}) => {
   const { setSetting, designState } = useDesign();
   const { settings } = designState.current;
 
@@ -9,7 +12,7 @@ export const ResponsiveSwitchs = () => {
     return (
       <Switch
         label="نمایش فقط در موبایل"
-        className=" mt-35px"
+        className="mt-30px"
         onClick={() =>
           setSetting({
             mobile: settings && settings.mobile ? !settings.mobile : true,
@@ -25,7 +28,7 @@ export const ResponsiveSwitchs = () => {
     return (
       <Switch
         label="نمایش فقط در مانیتور"
-        className=" mt-10px mb-116px"
+        className=""
         onClick={() =>
           setSetting({
             monitor: settings && settings.monitor ? !settings.monitor : true,
@@ -38,9 +41,9 @@ export const ResponsiveSwitchs = () => {
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <MobileSwitch />
+    <div className={`flex flex-col w-full ${className}`}>
       <MonitorSwitch />
+      <MobileSwitch />
     </div>
   );
 };

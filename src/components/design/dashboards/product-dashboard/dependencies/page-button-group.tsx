@@ -1,9 +1,10 @@
 import { ButtonGroup } from 'components';
-import { useClass, useDesign } from 'hooks';
+import { useClass, useDesign, useDirection } from 'hooks';
 
 export const PageButtonGroup = () => {
   const { toggle } = useClass();
   const { designState, setSetting } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
   const SettingButton = ({ text, active, className, onClick }) => (
     <button
@@ -21,21 +22,21 @@ export const PageButtonGroup = () => {
 
   return (
     <ButtonGroup
-      label="  نمایش صفحه بندی "
+      label={language.PDShowPagination}
       groupClass="grid grid-cols-2"
       className="my-30px"
     >
       <SettingButton
-        text=" غیر فعال"
-        active={settings && settings.page == 'disabled'}
+        text={language.PDInactive}
+        active={settings && settings.pagination == 'disabled'}
         className="rounded-l border-r border-gray_shade-900"
-        onClick={() => setSetting({ page: 'disabled' })}
+        onClick={() => setSetting({ pagination: 'disabled' })}
       />
       <SettingButton
-        text=" فعال"
-        active={settings && settings.page !== 'disabled'}
+        text={language.PDActive}
+        active={settings && settings.pagination !== 'disabled'}
         className=" rounded-r "
-        onClick={() => setSetting({ page: 'enabled' })}
+        onClick={() => setSetting({ pagination: 'enabled' })}
       />
     </ButtonGroup>
   );
