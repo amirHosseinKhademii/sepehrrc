@@ -1,17 +1,18 @@
 import { Switch } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { FC } from 'react';
 
 export const ResponsiveSwitchs: FC<{ className?: string }> = ({
   className = 'mt-35px',
 }) => {
   const { setSetting, designState } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
 
   const MobileSwitch = () => {
     return (
       <Switch
-        label="نمایش فقط در موبایل"
+        label={language.DCDisplayMobile}
         className="mt-30px"
         onClick={() =>
           setSetting({
@@ -27,7 +28,7 @@ export const ResponsiveSwitchs: FC<{ className?: string }> = ({
   const MonitorSwitch = () => {
     return (
       <Switch
-        label="نمایش فقط در مانیتور"
+        label={language.DCDisplayMonitor}
         className=""
         onClick={() =>
           setSetting({

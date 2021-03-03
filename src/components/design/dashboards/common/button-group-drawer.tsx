@@ -5,7 +5,7 @@ import { useUi, useDirection } from 'hooks';
 
 export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
   const { toggleDrawer } = useUi();
-  const { marginLtr, flexDirection } = useDirection();
+  const { marginLtr, flexDirection, language } = useDirection();
 
   const onCancelClick = () => {
     if (onCancel) {
@@ -21,10 +21,10 @@ export const ButtonGroupDrawer: FC<IButton> = ({ onCancel, onSave }) => {
         className={`bg-gradient-200 ${marginLtr}-10px`}
         onClick={onSave}
       >
-        ذخیره تغییرات
+        {language.DCSaveChanges}
       </ButtonAction>
       <ButtonAction className="bg-gray_shade-400" onClick={onCancelClick}>
-        لغو تغییرات
+        {language.DCCancelChanges}{' '}
       </ButtonAction>
     </div>
   );

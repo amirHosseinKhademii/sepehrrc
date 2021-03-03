@@ -1,14 +1,15 @@
 import { Input, Switch } from 'components';
-import { useDesign } from 'hooks';
+import { useDesign, useDirection } from 'hooks';
 import { Fragment } from 'react';
 
 export const TitleInput = () => {
   const { setSetting, designState } = useDesign();
+  const { language } = useDirection();
   const { settings } = designState.current;
   return (
     <Fragment>
       <Switch
-        label="عنوان بخش"
+        label={language.DCSectionTitle}
         className=""
         onClick={() =>
           setSetting({ title: settings.title ? !settings.title : true })
@@ -23,7 +24,7 @@ export const TitleInput = () => {
           placeholder={
             designState.current.settings && designState.current.settings.title
               ? designState.current.settings.title
-              : 'عنوان بخش'
+              : language.DCSectionTitle
           }
           className="mt-14px"
         />

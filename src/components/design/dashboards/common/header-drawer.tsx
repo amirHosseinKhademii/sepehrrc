@@ -7,13 +7,10 @@ interface IDrawerHeader {
   setting?: boolean;
   text?: string;
 }
-export const HeaderDrawer: FC<IDrawerHeader> = ({
-  setting = false,
-  text = 'تنظیمات قالب',
-}) => {
+export const HeaderDrawer: FC<IDrawerHeader> = ({ setting = false, text }) => {
   const { onPageSetting, designState } = useDesign();
-  const { marginRtl, textAlignRtl, flexDirection } = useDirection();
-
+  const { marginRtl, textAlignRtl, flexDirection, language } = useDirection();
+  text = text ? text : language.DThemeSettings;
   return (
     <div
       className={`flex ${flexDirection} items-center border-b border-gray_shade-800 px-20px pb-17px justify-between`}
@@ -28,14 +25,14 @@ export const HeaderDrawer: FC<IDrawerHeader> = ({
           selected={designState.pageSettings && designState.pageSettings.key}
           onSelect={(value) => onPageSetting({ key: 'key', value })}
           options={[
-            { id: 'main', title: 'صفحه اصلی سایت' },
-            { id: 'products', title: 'صفحه  محصول' },
-            { id: 'archive', title: 'صفحه  آرشیو محصولات' },
-            { id: 'news', title: 'صفحه خبر وبلاگ' },
-            { id: 'news-archive', title: 'صفحه آرشیو اخبار وبلاگ ' },
-            { id: 'questions', title: 'صفحه  سوالات متداول  ' },
-            { id: 'contact-us', title: 'صفحه   تماس با ما ' },
-            { id: 'about-us', title: 'صفحه   درباره ما ' },
+            { id: 'main', title: language.DMainPage },
+            { id: 'products', title: language.DProductPage },
+            { id: 'archive', title: language.DProductArchivePage },
+            { id: 'news', title: language.DBlogNewsPage },
+            { id: 'news-archive', title: language.DBlogArchivePage },
+            { id: 'questions', title: language.DFaqPage },
+            { id: 'contact-us', title: language.DContactUS },
+            { id: 'about-us', title: language.DAboutUS },
           ]}
         />
       )}
