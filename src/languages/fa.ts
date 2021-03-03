@@ -13,7 +13,8 @@ export const fa = {
   DText: 'متن',
   DMainPage: 'صفحه اصلی',
   DProductPage: 'صفحه محصول',
-  DProductArchivePage: 'صفحه ارشیو پیج',
+  DProductArchivePage: 'صفحه ارشیو محصول',
+  DBlogArchivePage: 'صفحه ارشیو اخبار وبلاگ',
   DBlogNewsPage: 'صفحه لیست اخبار',
   DFaqPage: 'صفحه سوالات متداول',
   DContactUS: 'صفحه تماس با ما',
@@ -58,10 +59,6 @@ export const fa = {
   HDOpenNewTab: 'باز کردن صفحه در تب جدید',
   HDHeaderButton: 'دکمه هدر',
   HDSign: 'ورود/عضویت',
-  HDInstagram: 'اینستاگرام',
-  HDTwitter: 'توییتر',
-  HDWhatsapp: 'واتس اپ',
-  HDTelegram: 'تلگرام',
   HDHeaderSettings: 'تنظیمات هدر',
   HHeader: 'هدر',
   HMainPage: 'صفحه اصلی',
@@ -197,7 +194,33 @@ export const fa = {
 
   //Blog
   BShowMore: 'مشاهده بیشتر', //show more post
-
   //blog dashboard
   BDBlogShowSettings: 'تنظیمات نمایش مقالات',
+  BDDisplayMode: 'حالت نمایش',
+  BDSimple: 'ساده',
+  BDModern: 'مدرن',
+  BDDisplayShowMore: 'نمایش "مشاهده بیشتر',
+  BDDisplaySource: 'منبع نمایش',
+  BDLatestArticles: ' آخرین مقالات',
+  BDShowDescriptions: 'نمایش توضیحات مختصر',
+  BDShowAuthorName: 'نمایش نام نویسنده',
+  BDShowReleaseDate: 'نمایش  تاریخ انتشار',
+
+  //Dashboard Common
+  DCDisplayMobile: 'نمایش فقط در موبایل ',
+  DCDisplayMonitor: 'نمایش فقط در مانیتور',
+  DCInstagram: 'اینستاگرام',
+  DCTwitter: 'توییتر',
+  DCWhatsapp: 'واتس اپ',
+  DCTelegram: 'تلگرام',
+  DCSocialNetworks: 'شبکه های اجتماعی',
+  DCClickToPutImage: 'برای قرار دادن تصویر کلیک کنید',
+  DCDeleteImage: ' حذف عکس',
+  DCBackground: 'تصویر زمینه',
+  DCOpenInNewTab: 'باز کردن صفحه در تب جدید',
+  DCEditColor: 'ویرایش رنگ  ',
+  DCBackgroundColor: 'رنگ زمینه',
+  DCSaveChanges: 'ذخیره تغییرات',
+  DCCancelChanges: ' لغو تغییرات',
+  DCSectionTitle: 'عنوان بخش',
 };

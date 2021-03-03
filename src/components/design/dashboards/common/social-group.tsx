@@ -31,7 +31,7 @@ const SocialGroup = ({ settings, setSetting }) => {
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">
-            {language.HDTelegram}
+            {language.DCTelegram}
           </Text>
           <ICTelegram fill="#9ba3b5" />
         </div>
@@ -52,7 +52,7 @@ const SocialGroup = ({ settings, setSetting }) => {
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">
-            {language.HDInstagram}{' '}
+            {language.DCInstagram}{' '}
           </Text>
           <ICInstagram fill="#9ba3b5" />
         </div>
@@ -73,7 +73,7 @@ const SocialGroup = ({ settings, setSetting }) => {
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">
-            {language.HDWhatsapp}
+            {language.DCWhatsapp}
           </Text>
           <ICWhatsapp fill="#9ba3b5" />
         </div>
@@ -93,7 +93,7 @@ const SocialGroup = ({ settings, setSetting }) => {
         )}
         <div className="flex items-center pr-7px">
           <Text className="text-gray_shade-300 mr-7px text-14px">
-            {language.HDTwitter}
+            {language.DCTwitter}
           </Text>
           <ICTwitter fill="#9ba3b5" />
         </div>
@@ -104,7 +104,7 @@ const SocialGroup = ({ settings, setSetting }) => {
   return (
     <Fragment>
       <Switch
-        label=" شبکه های اجتماعی"
+        label={language.DCSocialNetworks}
         onClick={() =>
           setSetting({
             social: settings.social === undefined ? false : !settings.social,
