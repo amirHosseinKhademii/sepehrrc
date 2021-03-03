@@ -10,7 +10,7 @@ export const BackgroundColor: FC<{
   const { setSetting, designState } = useDesign();
   const { settings } = designState.current;
   const [open, setOpen] = useState(false);
-  const { paddingRtl } = useDirection();
+  const { paddingRtl, language } = useDirection();
 
   const ButtonColor = () => (
     <div
@@ -26,7 +26,7 @@ export const BackgroundColor: FC<{
       />
       <div className={`flex ${paddingRtl}-10px`}>
         <Text className={` text-gray_shade-300 ${paddingRtl}-5px `}>
-          ویرایش رنگ
+          {language.DCEditColor}{' '}
         </Text>
         <ICEditSettings />
       </div>
@@ -41,7 +41,7 @@ export const BackgroundColor: FC<{
             onChange={(color) => setSetting({ backgroundColor: color.hex })}
             onClose={() => setOpen(false)}
             value={designState.current.settings.backgroundColor || '#fff'}
-            label="رنگ زمینه"
+            label={language.DCBackgroundColor}
             open={open}
           />
         </div>
@@ -50,7 +50,7 @@ export const BackgroundColor: FC<{
           {withSwitch ? (
             <Fragment>
               <Switch
-                label="رنگ زمینه"
+                label={language.DCBackgroundColor}
                 onClick={() =>
                   setSetting({ backgroundColor: !settings.backgroundColor })
                 }

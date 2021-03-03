@@ -14,6 +14,7 @@ export const en = {
   DMainPage: 'main page',
   DProductPage: 'product page',
   DProductArchivePage: 'product archive page',
+  DBlogArchivePage: 'blog archive page',
   DBlogNewsPage: 'blog news page',
   DFaqPage: 'frequently asked questions page',
   DContactUS: 'contact us page',
@@ -62,10 +63,6 @@ export const en = {
   HAboutUs: 'about us',
   HContactUs: 'contact us',
   HSign: 'signin/signup',
-  HDInstagram: 'instagram',
-  HDTwitter: 'twitter',
-  HDWhatsapp: 'whatsapp',
-  HDTelegram: 'telegram',
   HSearch: 'search',
   HSearchPlaceholder: 'write the text you want to search here + enter',
 
@@ -201,4 +198,32 @@ export const en = {
 
   //blog dashboard
   BDBlogShowSettings: 'blog show settings', //blog show settings
+  BDDisplayMode: 'display mode',
+  BDSimple: 'basic', //baisc display mode
+  BDModern: 'modern',
+  BDDisplayShowMore: 'display show more', //display show more button
+  BDDisplaySource: 'dislpay source',
+  BDLatestArticles: ' latest articles',
+  BDShowDescriptions: 'show descriptions',
+  BDShowAuthorName: 'show author name',
+  BDShowReleaseDate: 'show release date',
+
+  //Dashboard Common
+
+  DCDisplayMobile: 'display only on mobile',
+  DCDisplayMonitor: 'diplay only on monitor',
+  DCInstagram: 'instagram',
+  DCTwitter: 'twitter',
+  DCWhatsapp: 'whatsapp',
+  DCTelegram: 'telegram',
+  DCSocialNetworks: 'social networks',
+  DCClickToPutImage: 'click to put image',
+  DCDeleteImage: ' delete image',
+  DCBackground: ' background image',
+  DCOpenInNewTab: 'open image in new tab',
+  DCEditColor: 'edit color  ',
+  DCBackgroundColor: 'background color',
+  DCSaveChanges: 'save changes',
+  DCCancelChanges: ' cancel changes',
+  DCSectionTitle: 'section title',
 };

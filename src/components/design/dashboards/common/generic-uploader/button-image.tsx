@@ -1,6 +1,6 @@
 import { ICMultiply, ICImagePlaceholder } from 'icons';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useDirection } from 'hooks';
 export const ButtonImage = ({
   setPureImage,
   number,
@@ -13,6 +13,7 @@ export const ButtonImage = ({
   currentImage,
   withSwitch,
 }) => {
+  const { language } = useDirection();
   const show = () => {
     if (withSwitch && isBackground) {
       return (
@@ -34,7 +35,7 @@ export const ButtonImage = ({
         className="text-gray_shade-600 text-14px pl-25px cursor-pointer"
         htmlFor={randomId}
       >
-        برای قرار دادن تصویر کلیک کنید
+        {language.DCClickToPutImage}
       </label>
       <input
         className="hidden"
@@ -67,7 +68,7 @@ export const ButtonImage = ({
           className="text-gray_shade-400 text-14px pr-30px cursor-pointer"
           htmlFor="upload"
         >
-          حذف عکس
+          {language.DCDeleteImage}
         </label>
       </div>
 
