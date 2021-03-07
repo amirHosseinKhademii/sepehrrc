@@ -51,6 +51,7 @@ export const ButtonDrawer: FC<IButton> = ({
           id="actual-btn"
           className=" w-81px h-22px rounded text-14px cursor-pointer"
           onChange={(e) => onUpload(e.target.files[0])}
+          style={{ fontFamily: 'inherit' }}
         />
       )}
       {withIcon && children}

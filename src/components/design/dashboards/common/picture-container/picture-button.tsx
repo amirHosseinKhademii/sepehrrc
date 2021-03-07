@@ -34,7 +34,7 @@ export const PictureButton: FC<IPictureButton> = ({
               isDragAccept ? 'bg-primary-700' : 'bg-gray_shade-800'
             } cursor-pointer focus:outline-none`}
           >
-            <input {...getInputProps()} />
+            <input {...getInputProps()} style={{ fontFamily: 'inherit' }} />
             <ICPlus fill="#fff" />
           </div>
         )}

@@ -35,7 +35,7 @@ const Pagination: FC<IPagination> = ({
         )}
         style={{ backgroundColor: `${activeColor}` }}
       >
-        <span className="font-iransans">{number} </span>
+        <span>{number} </span>
       </div>
     );
   };

@@ -73,7 +73,7 @@ export const StyleBoxBanner: FC<IStyleBox> = () => {
     <Fragment>
       <div className={`w-full flex ${flexDirection} justify-between mt-30px`}>
         <div className={`flex ${flexDirection} cursor-pointer`}>
-          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+          <div className="text-16px  font-light text-white_shade-100 ">
             <div className="flex">
               <span dir={dirRtl}>{`نمایش : ${styleTitle()}`}</span>
             </div>

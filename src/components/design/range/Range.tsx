@@ -31,6 +31,7 @@ export const Range: FC<IRange> = ({
             onChange(e.target.value);
           }
         }}
+        style={{ fontFamily: 'inherit' }}
       />
     </div>
   );
