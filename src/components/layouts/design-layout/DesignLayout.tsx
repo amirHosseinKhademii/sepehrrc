@@ -17,7 +17,7 @@ export const DesignLayout: FC<IDesignLayout> = ({ children }) => {
 
   return (
     <div
-      className={`h-screen  flex overflow-x-hidden ${
+      className={`design-layout h-screen  flex overflow-x-hidden ${
         direction === 'rtl' ? 'flex-row' : 'flex-row-reverse'
       }`}
     >

@@ -6,7 +6,7 @@ import {
   DarkSelect,
 } from '../../dependencies';
 
-export const DashboardFirst = ({ setSetting, settings }) => {
+const DashboardFirst = ({ setSetting, settings }) => {
   return (
     <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxFooter />
@@ -17,3 +17,4 @@ export const DashboardFirst = ({ setSetting, settings }) => {
     </div>
   );
 };
+export default DashboardFirst;

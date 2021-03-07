@@ -1,11 +1,19 @@
 import { Input, Switch } from 'components';
 import { ButtonDrawer, ResponsiveSwitchs } from '../../common';
-import {
-  DashboardFirst,
-  DashboardSecond,
-  DashboardThird,
-  DashboardFourth,
-} from './style-dashboard-footer';
+import dynamic from 'next/dynamic';
+
+const DashboardFirst = dynamic(
+  () => import('./style-dashboard-footer/dashboard-first')
+);
+const DashboardSecond = dynamic(
+  () => import('./style-dashboard-footer/dashboard-second')
+);
+const DashboardThird = dynamic(
+  () => import('./style-dashboard-footer/dashboard-third')
+);
+const DashboardFourth = dynamic(
+  () => import('./style-dashboard-footer/dashboard-fourth')
+);
 
 const BaseSettings = ({ setSetting, settings }) => {
   const HandleDashboardStyle = () => {
