@@ -15,7 +15,7 @@ export const HeaderTel: FC<IHeaderTel> = ({
     <GeneralLink
       href={`tel:+98${item.settings?.tel ? item.settings.tel : '021-23456789'}`}
       className={className}
-      cssClass={`sep-header-tel flex ${flexDirection} items-center justify-end  h-full font-iransans`}
+      cssClass={`sep-header-tel flex ${flexDirection} items-center justify-end  h-full `}
       layout={layout}
     >
       <span className="sep-header-tel__number">

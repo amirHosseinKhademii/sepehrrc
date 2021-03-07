@@ -81,11 +81,11 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
               className={`${marginRtl}-1 cursor-pointer fill-current mt-3px`}
             />
           )}
-          <span className="text-14px font-iransans">
+          <span className="text-14px ">
             {open ? language.BDBack : language.BDEdit}
           </span>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
+        <span className="text-16px  font-light text-white_shade-100 ">
           {styleTitle()}
         </span>
       </div>

@@ -48,7 +48,10 @@ export const ImageBox = () => {
                   {...getRootProps()}
                   className={`flex items-center ${marginRtl}-auto focus:outline-none`}
                 >
-                  <input {...getInputProps()} />
+                  <input
+                    {...getInputProps()}
+                    style={{ fontFamily: 'inherit' }}
+                  />
                   <Text
                     className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer`}
                     // onClick={() => setPureImage({ onUpload: true, number })}

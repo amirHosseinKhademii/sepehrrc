@@ -84,6 +84,7 @@ export const ReactChipInput = ({
               onChange={(e) => onChange(e)}
               onFocus={() => setOpen(true)}
               onBlur={() => setOpen(false)}
+              style={{ fontFamily: 'inherit' }}
             />
           </form>
         </div>
