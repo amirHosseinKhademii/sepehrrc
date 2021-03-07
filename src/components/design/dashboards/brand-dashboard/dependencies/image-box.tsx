@@ -51,6 +51,7 @@ export const ImageBox = () => {
                   <input
                     {...getInputProps()}
                     style={{ fontFamily: 'inherit' }}
+                    className="hidden"
                   />
                   <Text
                     className={`text-14px text-gray_shade-300 ${paddingRtl}-12px cursor-pointer`}
