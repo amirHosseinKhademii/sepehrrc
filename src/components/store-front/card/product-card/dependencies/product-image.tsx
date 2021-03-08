@@ -8,7 +8,7 @@ export const ProductImage: FC<IProductImage> = ({
   cssAlt,
   toggle,
 }) => {
-  const productAlt = '/assets/images/themeImg.png';
+  const productAlt = '/assets/images/default.png';
   return (
     <img
       className={toggle(

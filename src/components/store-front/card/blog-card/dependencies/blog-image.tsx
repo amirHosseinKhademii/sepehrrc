@@ -8,7 +8,7 @@ export const BlogImage: FC<IBlogImage> = ({
   style,
   toggle,
 }) => {
-  const imgAlt = '/assets/images/themeImg.png';
+  const imgAlt = '/assets/images/default.png';
   const { rightTL } = useDirection();
   return (
     <>

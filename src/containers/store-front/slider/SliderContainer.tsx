@@ -25,7 +25,7 @@ const SliderContainer = ({ item }) => {
   };
 
   const handleChild = () => {
-    const imgAlt = '/assets/images/themeImg.png';
+    const imgAlt = '/assets/images/default.png';
 
     const arr = [];
     const handleDragStart = (e) => e.preventDefault();
