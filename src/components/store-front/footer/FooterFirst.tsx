@@ -38,6 +38,7 @@ const FooterFirst: FC<IFooter> = ({ item, layout = false, designState }) => {
             isDark={isDark}
             marginRtl={marginRtl}
             marginLtr={marginLtr}
+            settings={settings}
           />
           <FooterTel
             layout={layout}
