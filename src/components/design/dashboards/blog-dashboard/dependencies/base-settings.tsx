@@ -10,7 +10,7 @@ import { Label, DropDown, Switch, ButtonGroup } from 'components';
 import { useDirection } from 'hooks';
 
 export const BaseSettings = ({ settings, setSetting }) => {
-  const { dirRtl } = useDirection();
+  const { dirRtl, language } = useDirection();
   return (
     <div className="flex flex-col items-end py-30px px-20px">
       <StyleBoxBlog className="mb-30px" />
@@ -26,18 +26,18 @@ export const BaseSettings = ({ settings, setSetting }) => {
         selected={settings.cols ? settings.cols : '2'}
       /> */}
       <ButtonGroup
-        label="حالت نمایش"
+        label={language.BDDisplayMode}
         groupClass="grid grid-cols-2"
         className="mt-30px"
       >
         <SettingButton
-          child="ساده"
+          child={language.BDSimple}
           active={settings && settings.display && settings.display == 'basic'}
           className="rounded-l"
           onClick={() => setSetting({ display: 'basic' })}
         />
         <SettingButton
-          child="مدرن"
+          child={language.BDModern}
           active={
             (settings && settings.display && settings.display == 'modern') ||
             !settings.display
@@ -47,7 +47,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         />
       </ButtonGroup>
       <Switch
-        label={`"نمایش "مشاهده بیشتر`}
+        label={language.BDDisplayShowMore}
         onClick={() =>
           setSetting({
             more: settings.more == undefined ? false : !settings.more,
@@ -57,14 +57,14 @@ export const BaseSettings = ({ settings, setSetting }) => {
         className="mt-13px"
       />
 
-      <Label className="mb-14px mt-30px">منبع نمایش</Label>
+      <Label className="mb-14px mt-30px">{language.BDDisplaySource}</Label>
       <DropDown
-        options={[{ id: 'latest', title: '   آخرین مقالات' }]}
+        options={[{ id: 'latest', title: language.BDLatestArticles }]}
         onSelect={(showBy) => setSetting({ showBy })}
         selected={settings.showBy ? settings.showBy : 'latest'}
       />
       <Switch
-        label="نمایش توضیحات مختصر"
+        label={language.BDShowDescriptions}
         onClick={() =>
           setSetting({
             description:
@@ -77,7 +77,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         className="mt-30px"
       />
       <Switch
-        label="نمایش نام نویسنده"
+        label={language.BDShowAuthorName}
         onClick={() =>
           setSetting({
             author: settings.author == undefined ? false : !settings.author,
@@ -87,7 +87,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         className="mt-30px"
       />
       <Switch
-        label="نمایش  تاریخ انتشار"
+        label={language.BDShowReleaseDate}
         onClick={() =>
           setSetting({
             date: settings.date == undefined ? false : !settings.date,

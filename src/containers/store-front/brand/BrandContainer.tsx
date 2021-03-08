@@ -17,7 +17,7 @@ const BrandContainer = ({ item }) => {
   const handleChild = () => {
     const arr = [];
     const arrAlt = Array.from({ length: 6 });
-    const imgAlt = '/assets/images/themeImg2.png';
+    const imgAlt = '/assets/images/defaultAlt.png';
     if (item.images.length > 0) {
       item.images.map((item, index) => {
         arr.push(

@@ -24,7 +24,7 @@ export const GeneralInput: FC<IInput> = ({
       onChange={onChange}
       onClick={onClick}
       dir={dirRtl}
-      style={style}
+      style={{ ...style, fontFamily: 'inherit' }}
     ></input>
   );
 };

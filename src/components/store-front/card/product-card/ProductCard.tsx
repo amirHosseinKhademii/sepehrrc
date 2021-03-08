@@ -46,7 +46,7 @@ const ProductCard: FC<IProductCard> = ({
         <ProductPrice
           withUnit
           text={item.price}
-          className="h-50px mt-10px overflow-hidden text-lg font-bold font-iransans "
+          className="h-50px mt-10px overflow-hidden text-lg font-bold  "
           unitClassName={`text-sm font-bold ${marginRtl}-1 `}
           toggle={toggle}
           layout={layout}

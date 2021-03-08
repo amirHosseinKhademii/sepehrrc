@@ -52,12 +52,16 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         {direction === 'rtl' ? (
           <ICAngelLeft
             fill="#2e323d"
-            className={`text-32px -${marginLtr}-40px`}
+            className={`text-32px ${
+              screen !== 'full' ? `-${marginLtr}-40px` : ''
+            }`}
           />
         ) : (
           <ICAngelRight
             fill="#2e323d"
-            className={`text-32px -${marginLtr}-40px`}
+            className={`text-32px ${
+              screen !== 'full' ? `-${marginLtr}-40px` : ''
+            }`}
           />
         )}
       </div>
@@ -74,12 +78,16 @@ const ImageSlider = ({ child, speed, screen, button, effect, layout }) => {
         {direction === 'rtl' ? (
           <ICAngelRight
             fill="#2e323d"
-            className={`text-32px -${marginRtl}-40px`}
+            className={`text-32px  ${
+              screen !== 'full' ? `-${marginRtl}-40px` : ''
+            }`}
           />
         ) : (
           <ICAngelLeft
             fill="#2e323d"
-            className={`text-32px -${marginRtl}-40px`}
+            className={`text-32px  ${
+              screen !== 'full' ? `-${marginRtl}-40px` : ''
+            }`}
           />
         )}
       </div>

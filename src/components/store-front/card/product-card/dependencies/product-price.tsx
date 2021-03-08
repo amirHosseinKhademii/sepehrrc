@@ -23,7 +23,7 @@ export const ProductPrice: FC<IProductPrice> = ({
   return (
     <div
       className={toggle(
-        `font-iransans mt-10px  ${
+        ` mt-10px  ${
           prev ? 'product-prev-price line-through ' : 'product-price'
         }`,
         className,

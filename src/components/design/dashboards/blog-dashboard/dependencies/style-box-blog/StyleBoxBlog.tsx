@@ -55,17 +55,17 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
 
     switch (style) {
       case 'first':
-        return '1 نمایش : استایل ';
+        return `1 ${language.BDShow} : ${language.BDStyle} `;
         break;
       case 'second':
-        return '2 نمایش : استایل ';
+        return `2 ${language.BDShow} : ${language.BDStyle} `;
         break;
       case 'third':
-        return '3 نمایش : استایل ';
+        return `3 ${language.BDShow} : ${language.BDStyle} `;
         break;
 
       default:
-        return '1 نمایش : استایل ';
+        return `1 ${language.BDShow} : ${language.BDStyle} `;
     }
   };
 
@@ -81,11 +81,11 @@ export const StyleBoxBlog: FC<IStyleBox> = ({ className }) => {
               className={`${marginRtl}-1 cursor-pointer fill-current mt-3px`}
             />
           )}
-          <span className="text-14px font-iransans">
-            {open ? 'بازگشت' : 'ویرایش'}
+          <span className="text-14px ">
+            {open ? language.BDBack : language.BDEdit}
           </span>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
+        <span className="text-16px  font-light text-white_shade-100 ">
           {styleTitle()}
         </span>
       </div>

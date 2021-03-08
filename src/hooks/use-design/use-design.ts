@@ -6,9 +6,8 @@ import { UIContext, uiTypes } from 'providers/ui-provider';
 export const useDesign = () => {
   const { designDispatch, designState } = useContext(DesignContext);
   const { uiDispatch } = useContext(UIContext);
-  const { upload, onPost, onGet } = useService();
+  const { upload } = useService();
   const { toggleModal } = useUi();
-  const { mutate: onSave } = onPost({ url: '' });
 
   return {
     onHorizontalDrop: (drop) => (dropResult) => {
@@ -55,36 +54,17 @@ export const useDesign = () => {
     setPureImage: (props: {
       value?: any;
       number?: any;
-      newTab?: boolean;
-      link?: string;
       onUpload?: boolean;
-      description?: string;
-      title?: string;
       isBackground?: boolean;
     }) => {
-      const {
-        value,
-        number,
-        newTab,
-        link,
-        onUpload,
-        description,
-        title,
-        isBackground,
-      } = props;
+      const { value, number, onUpload, isBackground } = props;
       designDispatch({
         type: designTypes.ON_SET_PURE_IMAGE,
         payload: {
           value: value ? value : designState.pureImage.value,
           number: number !== undefined ? number : designState.pureImage.number,
-          newTab: newTab !== undefined ? newTab : designState.pureImage.newTab,
-          link: link ? link : designState.pureImage.link,
           onUpload:
             onUpload !== undefined ? onUpload : designState.pureImage.onUpload,
-          description: description
-            ? description
-            : designState.pureImage.description,
-          title: title ? title : designState.pureImage.title,
           isBackground:
             isBackground !== undefined
               ? isBackground
@@ -115,11 +95,6 @@ export const useDesign = () => {
         payload: {
           value: '',
           number: '',
-          newTab: false,
-          link: '',
-          onUpload: true,
-          description: '',
-          title: '',
           isBackground: false,
         },
       });
@@ -134,17 +109,6 @@ export const useDesign = () => {
       },
       [designState.current]
     ),
-    savePage: useCallback(() => {
-      onSave(
-        JSON.stringify({
-          pageItems: designState.pageItems,
-          pageSettings: designState.pageSettings,
-        })
-      );
-    }, [designState.pageItems, designState.pageSettings]),
-    getPage: useCallback(() => {
-      return onGet({ url: '' });
-    }, []),
     setImageSetting: useCallback((payload) => {
       designDispatch({ type: designTypes.ON_SET_IMAGE_SETTING, payload });
     }, []),

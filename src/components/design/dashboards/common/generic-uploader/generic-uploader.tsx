@@ -12,12 +12,12 @@ export const GenericUploader: FC<IGenericUploader> = ({
   isBackground,
   withSwitch,
 }) => {
-  const { textAlignRtl } = useDirection();
+  const { textAlignRtl, language } = useDirection();
   const { join } = useClass();
   const {
     setPureImage,
     designState,
-    setImage,
+    setImageSetting,
     setSetting,
     deleteImage,
   } = useDesign();
@@ -33,7 +33,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
       {withSwitch && (
         <Switch
           className=""
-          label="تصویر زمینه"
+          label={language.DCBackground}
           onClick={() =>
             setSetting({ backgroundImage: !settings.backgroundImage })
           }
@@ -78,20 +78,21 @@ export const GenericUploader: FC<IGenericUploader> = ({
           placeholder={
             currentImage && currentImage.link ? currentImage.link : ''
           }
-          onBlur={(event) => {
-            setImage({ key: 'link', payload: event.target.value });
-          }}
+          onBlur={(e) =>
+            setImageSetting({ key: 'link', value: e.target.value, number })
+          }
           disabled={!currentImage || currentImage.value === ''}
         />
       )}
       {withNewTab && showCondition && (
         <CheckBox
           className="mt-15px"
-          label="باز کردن صفحه در تب جدید "
+          label={language.DCOpenInNewTab}
           onClick={() => {
-            setImage({
+            setImageSetting({
               key: 'newTab',
-              payload: !currentImage || !currentImage.newTab ? true : false,
+              value: !currentImage || !currentImage.newTab ? true : false,
+              number,
             });
           }}
           checked={currentImage && currentImage.newTab}

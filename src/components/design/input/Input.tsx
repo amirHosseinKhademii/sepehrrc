@@ -42,6 +42,7 @@ export const Input: FC<IInput> = ({
             </Text>
           )}
           <input
+            style={{ fontFamily: 'inherit' }}
             maxLength={maxLength}
             id={label}
             placeholder={placeholder}
@@ -66,6 +67,7 @@ export const Input: FC<IInput> = ({
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
+            style={{ fontFamily: 'inherit' }}
           />
           <div className={`absolute inset-y-0 ${rightTL}-4 flex items-center `}>
             <ICLink fill="#9ba3b5" />

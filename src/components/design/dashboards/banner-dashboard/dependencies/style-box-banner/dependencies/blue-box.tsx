@@ -10,7 +10,7 @@ export const BlueBox = ({ className, number, active = false, join }) => (
     <span
       className={`${
         active ? 'text-primary-400' : 'text-gray_shade-500'
-      } text-14px font-iransans`}
+      } text-14px `}
     >
       {number}
     </span>

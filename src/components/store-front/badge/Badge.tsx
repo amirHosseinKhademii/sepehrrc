@@ -23,7 +23,7 @@ export const Badge: FC<IBadge> = ({
       {children}
       <div
         className={toggle(
-          `badge ${cssClass} absolute ${rightTL}-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full font-iransans text-12px `,
+          `badge ${cssClass} absolute ${rightTL}-0 top-0 transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center flex-wrap rounded-full  text-12px `,
           className,
           layout,
           'hidden'

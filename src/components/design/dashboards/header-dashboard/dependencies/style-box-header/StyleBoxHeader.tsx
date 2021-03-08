@@ -97,7 +97,7 @@ export const StyleBoxHeader: FC<IStyleBoxHeader> = () => {
     <Fragment>
       <div className={`w-full flex ${flexDirection} justify-between`}>
         <div className={`flex ${flexDirection} `}>
-          <div className="text-16px font-iransans font-light text-white_shade-100 ">
+          <div className="text-16px  font-light text-white_shade-100 ">
             <div className={`flex`}>
               <span dir={dirRtl}>{`${language.HDShow}: ${styleTitle()}`}</span>
             </div>

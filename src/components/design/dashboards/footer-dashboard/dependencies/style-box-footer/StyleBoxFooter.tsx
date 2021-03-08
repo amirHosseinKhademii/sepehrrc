@@ -67,11 +67,11 @@ export const StyleBoxFooter: FC<IStyleBox> = () => {
               className={`${marginRtl}-1 text-18px cursor-pointer`}
             />
           )}
-          <span className="text-14px font-iransans text-gray_shade-300">
+          <span className="text-14px  text-gray_shade-300">
             {open ? 'بازگشت' : 'ویرایش'}
           </span>
         </div>
-        <span className="text-16px font-iransans font-light text-white_shade-100 ">
+        <span className="text-16px  font-light text-white_shade-100 ">
           {styleTitle()}
         </span>
       </div>
