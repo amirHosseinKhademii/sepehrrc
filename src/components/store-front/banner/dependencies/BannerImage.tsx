@@ -10,7 +10,7 @@ export const BannerImage: FC<IBanner> = ({
 }) => {
   const { join } = useClass();
   const itemImage = item.images.find((img) => img.number == number);
-  const imgAlt = '/assets/images/themeImg.png';
+  const imgAlt = '/assets/images/default.png';
 
   if (item.images && itemImage)
     return (

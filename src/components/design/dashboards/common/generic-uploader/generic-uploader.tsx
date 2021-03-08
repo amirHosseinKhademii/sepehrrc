@@ -17,7 +17,7 @@ export const GenericUploader: FC<IGenericUploader> = ({
   const {
     setPureImage,
     designState,
-    setImage,
+    setImageSetting,
     setSetting,
     deleteImage,
   } = useDesign();
@@ -78,9 +78,9 @@ export const GenericUploader: FC<IGenericUploader> = ({
           placeholder={
             currentImage && currentImage.link ? currentImage.link : ''
           }
-          onBlur={(event) => {
-            setImage({ key: 'link', payload: event.target.value });
-          }}
+          onBlur={(e) =>
+            setImageSetting({ key: 'link', value: e.target.value, number })
+          }
           disabled={!currentImage || currentImage.value === ''}
         />
       )}
@@ -89,9 +89,10 @@ export const GenericUploader: FC<IGenericUploader> = ({
           className="mt-15px"
           label={language.DCOpenInNewTab}
           onClick={() => {
-            setImage({
+            setImageSetting({
               key: 'newTab',
-              payload: !currentImage || !currentImage.newTab ? true : false,
+              value: !currentImage || !currentImage.newTab ? true : false,
+              number,
             });
           }}
           checked={currentImage && currentImage.newTab}

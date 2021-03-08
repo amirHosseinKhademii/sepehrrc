@@ -87,7 +87,7 @@ export const BaseSettings = ({ settings, setSetting }) => {
         className="mt-30px"
       />
       <Switch
-        label={language.BDShowDescriptions}
+        label={language.BDShowReleaseDate}
         onClick={() =>
           setSetting({
             date: settings.date == undefined ? false : !settings.date,
